@@ -5,17 +5,17 @@
   
 
   
-  <title>Hexo</title>
+  <title>ok</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
+<meta property="og:title" content="ok">
 <meta property="og:url" content="http://yoursite.com/index.html">
-<meta property="og:site_name" content="Hexo">
+<meta property="og:site_name" content="ok">
 <meta property="og:locale" content="default">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
+<meta name="twitter:title" content="ok">
   
-    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+    <link rel="alternate" href="/atom.xml" title="ok" type="application/atom+xml">
   
   
     <link rel="icon" href="/favicon.png">
@@ -34,7 +34,7 @@
   <div id="header-outer" class="outer">
     <div id="header-title" class="inner">
       <h1 id="logo-wrap">
-        <a href="/" id="logo">Hexo</a>
+        <a href="/" id="logo">ok</a>
       </h1>
       
     </div>
@@ -61,6 +61,68 @@
 </header>
       <div class="outer">
         <section id="main">
+  
+    <article id="post-域名配置" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/10/29/域名配置/" class="article-date">
+  <time datetime="2018-10-29T11:13:24.000Z" itemprop="datePublished">2018-10-29</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/10/29/域名配置/">域名配置</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ol>
+<li><p>域名解析：<a href="http://www.misswuer.cn" target="_blank" rel="noopener">www.misswuer.cn</a> CNAME 到 <a href="http://lovexwu.github.io" target="_blank" rel="noopener">lovexwu.github.io</a> 上</p>
+</li>
+<li><p>github pages 里面自定义域名到 <a href="http://www.misswuer.cn" target="_blank" rel="noopener">www.misswuer.cn</a></p>
+</li>
+<li><p>hexo 里面的 _config.yml 的 public_dir 改为 github 仓库名 即 newblog</p>
+</li>
+<li><p>hexo 里面的 _config.yml 配置下 deploy 的仓库 为 newblog 的仓库路径 git://<a href="http://github.com/lovexwu/newblog.git" target="_blank" rel="noopener">github.com/lovexwu/newblog.git</a>，branch 设置为 master</p>
+</li>
+<li><p>npm install hexo-deployer-git –save</p>
+</li>
+<li><p>hexo d</p>
+</li>
+</ol>
+<p>完成</p>
+<p>配置好后，接下来就可以愉快地工作啦</p>
+<ol>
+<li><p>hexo new xxx</p>
+</li>
+<li><p>typora 编辑 xxx</p>
+</li>
+<li><p>hexo g 生成 html 文件，hexo s 预览下，如果之前开过 hexo s，之后就不用开了</p>
+</li>
+<li><p>hexo d 发布到网站上</p>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/10/29/域名配置/" data-id="cjnu7ucy50004yks6wjp1ax5y" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
   
     <article id="post-JS对象" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
@@ -126,10 +188,11 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">function  sortString(str)&#123;</span><br><span class="line">    //补全</span><br><span class="line">&#125;</span><br><span class="line">var str = &apos;jirenguhungervalley&apos;</span><br><span class="line">var str2 = sortString(str)</span><br><span class="line">console.log(str2) // &apos;yellavregnuhugnerij&apos;</span><br></pre></td></tr></table></figure>
 <p>答案：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span>  <span class="title">sortString</span>(<span class="params">str</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> str.split(<span class="string">''</span>).reverse().join(<span class="string">''</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/29/JS对象/" data-id="cjnu53zdj00039cs626renpxj" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/29/JS对象/" data-id="cjnu7ucy40003yks6ppcqb1e1" class="article-share-link">Share</a>
       
       
     </footer>
@@ -183,7 +246,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/29/ES5数组方法的那些事/" data-id="cjnu53zdd00009cs63vhac3f3" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/29/ES5数组方法的那些事/" data-id="cjnu7ucxy0000yks6my5e46v3" class="article-share-link">Share</a>
       
       
     </footer>
@@ -224,7 +287,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/29/谈谈JavaScript的作用域链/" data-id="cjnu53zdk00049cs6p242wx1i" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/29/谈谈JavaScript的作用域链/" data-id="cjnu7ucy60006yks6tzuq379t" class="article-share-link">Share</a>
       
       
     </footer>
@@ -268,7 +331,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/29/白屏和FOUC现象/" data-id="cjnu53zdl00059cs6bnvq609d" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/29/白屏和FOUC现象/" data-id="cjnu7ucy60005yks6ocvvlhkh" class="article-share-link">Share</a>
       
       
     </footer>
@@ -319,7 +382,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/29/Git命令使用/" data-id="cjnu53zdi00029cs6e7t4gnzt" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/29/Git命令使用/" data-id="cjnu7ucy30002yks6s0g2frw9" class="article-share-link">Share</a>
       
       
     </footer>
@@ -369,7 +432,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/29/Git-使用方法/" data-id="cjnu53zdh00019cs6jg870fwp" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/29/Git-使用方法/" data-id="cjnu7ucy10001yks67es168ql" class="article-share-link">Share</a>
       
       
     </footer>
@@ -410,6 +473,10 @@
       <ul>
         
           <li>
+            <a href="/2018/10/29/域名配置/">域名配置</a>
+          </li>
+        
+          <li>
             <a href="/2018/10/29/JS对象/">JS对象</a>
           </li>
         
@@ -423,10 +490,6 @@
         
           <li>
             <a href="/2018/10/29/白屏和FOUC现象/">白屏和FOUC现象</a>
-          </li>
-        
-          <li>
-            <a href="/2018/10/29/Git命令使用/">Git命令使用</a>
           </li>
         
       </ul>
