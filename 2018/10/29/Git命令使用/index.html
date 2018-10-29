@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>Git命令使用 | Hexo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="大家在使用git提交代码的过程中，难免会因为各种原因执行一些错误的commit / push，想要修复这些错误，reset和revert就能很好的帮到我们。 首先我们到区分几个概念，工作区，暂存区，版本库。 工作区所谓工作区，即我们电脑中所看到的目录。 版本库在工作区有一个隐藏目录.git，这是Git的版本库。 暂存区Git的版本库里存了很多东西，其中最重要的就是称为stage（或者叫index）">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Git命令使用">
+<meta property="og:url" content="http://yoursite.com/2018/10/29/Git命令使用/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="大家在使用git提交代码的过程中，难免会因为各种原因执行一些错误的commit / push，想要修复这些错误，reset和revert就能很好的帮到我们。 首先我们到区分几个概念，工作区，暂存区，版本库。 工作区所谓工作区，即我们电脑中所看到的目录。 版本库在工作区有一个隐藏目录.git，这是Git的版本库。 暂存区Git的版本库里存了很多东西，其中最重要的就是称为stage（或者叫index）">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14339384-b42621a6dd3db2d3.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14339384-8d7e52440fcb334f.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14339384-e4d7a68891094b51.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14339384-25e76b753234941f.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14339384-6419fb2ce901c22a.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14339384-4ad49e7c87bc5a24.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14339384-efe2bb12e2043bb6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14339384-d66f6700cbe7a215.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2018-10-29T09:59:57.742Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Git命令使用">
+<meta name="twitter:description" content="大家在使用git提交代码的过程中，难免会因为各种原因执行一些错误的commit / push，想要修复这些错误，reset和revert就能很好的帮到我们。 首先我们到区分几个概念，工作区，暂存区，版本库。 工作区所谓工作区，即我们电脑中所看到的目录。 版本库在工作区有一个隐藏目录.git，这是Git的版本库。 暂存区Git的版本库里存了很多东西，其中最重要的就是称为stage（或者叫index）">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/14339384-b42621a6dd3db2d3.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Hexo</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Git命令使用" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/10/29/Git命令使用/" class="article-date">
+  <time datetime="2018-10-29T09:59:22.000Z" itemprop="datePublished">2018-10-29</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Git命令使用
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>大家在使用git提交代码的过程中，难免会因为各种原因执行一些错误的commit / push，想要修复这些错误，reset和revert就能很好的帮到我们。</p>
+<p>首先我们到区分几个概念，工作区，暂存区，版本库。</p>
+<p><strong>工作区</strong><br>所谓工作区，即我们电脑中所看到的目录。</p>
+<p><strong>版本库</strong><br>在工作区有一个隐藏目录.git，这是Git的版本库。</p>
+<p><strong>暂存区</strong><br>Git的版本库里存了很多东西，其中最重要的就是称为stage（或者叫index）的暂存区，还有Git为我们自动创建的第一个分支master，以及指向master的一个指针叫HEAD</p>
+<p>#小小实例了解下</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14339384-b42621a6dd3db2d3.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="1.jpg"></p>
+<p><strong>开始做几次提交</strong><br><img src="https://upload-images.jianshu.io/upload_images/14339384-8d7e52440fcb334f.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="2.jpg"></p>
+<p><strong>看下提交log</strong><br><img src="https://upload-images.jianshu.io/upload_images/14339384-e4d7a68891094b51.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="3.jpg"></p>
+<p><strong>当前提交的readme</strong><br><img src="https://upload-images.jianshu.io/upload_images/14339384-25e76b753234941f.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="4.jpg"></p>
+<p><strong>一种方式，soft模式</strong><br><img src="https://upload-images.jianshu.io/upload_images/14339384-6419fb2ce901c22a.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="6.jpg"><br>采用这种模式，git不回清除你的stage区，因此，git status时就显示了stage区相对于second commit的变化。此时工作区是clean 的，而stage区则有变化</p>
+<p><strong>另一种方式，hard模式</strong><br><img src="https://upload-images.jianshu.io/upload_images/14339384-4ad49e7c87bc5a24.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="7.jpg"><br>采用这种模式，git回用first commit 的内容覆盖stage区和工作区，因此所有的内容都回到了first commit的状态。</p>
+<p>#区别（重点）</p>
+<p><strong>reset</strong><br>是起到了撤销commit的作用，但实质上它是将HEAD的指向移动了位置<br><img src="https://upload-images.jianshu.io/upload_images/14339384-efe2bb12e2043bb6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="12.png"></p>
+<p><strong>revert</strong><br>是一次新的commit，HEAD会继续向前执行<br><img src="https://upload-images.jianshu.io/upload_images/14339384-d66f6700cbe7a215.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="13.png"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/10/29/Git命令使用/" data-id="cjnu53zdi00029cs6e7t4gnzt" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2018/10/29/白屏和FOUC现象/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          白屏和FOUC现象
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/10/29/Git-使用方法/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Git-使用方法</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/10/29/JS对象/">JS对象</a>
+          </li>
+        
+          <li>
+            <a href="/2018/10/29/ES5数组方法的那些事/">ES5数组方法的那些事</a>
+          </li>
+        
+          <li>
+            <a href="/2018/10/29/谈谈JavaScript的作用域链/">谈谈JavaScript的作用域链</a>
+          </li>
+        
+          <li>
+            <a href="/2018/10/29/白屏和FOUC现象/">白屏和FOUC现象</a>
+          </li>
+        
+          <li>
+            <a href="/2018/10/29/Git命令使用/">Git命令使用</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
