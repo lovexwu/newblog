@@ -80,4 +80,4 @@ theme: landscape
 deploy:
   type: git
   repo: git@github.com:lovexwu/newblog.git
-  branch: master
+  branch: gh-pages
