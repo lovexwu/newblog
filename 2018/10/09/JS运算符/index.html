@@ -14,7 +14,7 @@
 <meta property="og:site_name" content="Miss Xwu">
 <meta property="og:description" content="加号运算符有些操作符对不同数据类型有不同的含义，比如 +  在两个操作数都是数字的时候，会做加法运算 两个参数都是字符串或在有一个参数是字符串的情况下会把另外一个参数转换为字符串做字符串拼接 在参数有对象的情况下会调用其valueOf 或 toString 在只有一个字符串参数的时候会尝试将其转换为数字 在只有一个数字参数的时候返回其正数值  123456789101112131415consol">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-10-31T05:32:52.749Z">
+<meta property="og:updated_time" content="2018-10-31T05:45:00.033Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JS运算符">
 <meta name="twitter:description" content="加号运算符有些操作符对不同数据类型有不同的含义，比如 +  在两个操作数都是数字的时候，会做加法运算 两个参数都是字符串或在有一个参数是字符串的情况下会把另外一个参数转换为字符串做字符串拼接 在参数有对象的情况下会调用其valueOf 或 toString 在只有一个字符串参数的时候会尝试将其转换为数字 在只有一个数字参数的时候返回其正数值  123456789101112131415consol">
@@ -95,16 +95,13 @@
 <li>在只有一个数字参数的时候返回其正数值</li>
 </ul>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="number">2</span>+<span class="number">4</span>) <span class="comment">//6</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"2"</span>+<span class="string">"4"</span>) <span class="comment">//"24"</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">2</span>+<span class="string">"4"</span>) <span class="comment">//"24"</span></span><br><span class="line"><span class="built_in">console</span>.log(+<span class="string">"4"</span>) <span class="comment">//4</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">    toString:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">10</span></span><br><span class="line">    &#125;,</span><br><span class="line">    valueOf:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"100"</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(+obj) <span class="comment">// 100</span></span><br><span class="line"><span class="comment">//这里是因为obj的valueOf级别高于toString，所以是返回字符串100,然后+号会强制转为数字</span></span><br></pre></td></tr></table></figure>
-<h5 id="JS运算符"><a href="#JS运算符" class="headerlink" title="JS运算符"></a>JS运算符</h5><p><code>NaN</code>是什么？ 有什么特别之处</p>
-<p>NaN 是number类型中一个特殊的数值，但是不是一个有效的数字</p>
-<p>特别之处：</p>
-<p>1、任何数值除以非数值（字符串、undefined、object）都会返回NaN</p>
-<p>2、NaN与任何值都不相等，包括NaN自身</p>
+<p><u>其他运算符参考</u></p>
+<p> <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators" target="_blank" rel="noopener">https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators</a></p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/09/JS运算符/" data-id="cjnwpxchk0000aus6ofb3wcil" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/09/JS运算符/" data-id="cjnwpwjhl0005k2s6zrl5i8dq" class="article-share-link">Share</a>
       
       
     </footer>
