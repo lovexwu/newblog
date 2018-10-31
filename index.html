@@ -62,10 +62,10 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-javascript入门" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <article id="post-JS运算符" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2018/10/30/javascript入门/" class="article-date">
-  <time datetime="2018-10-30T10:07:46.000Z" itemprop="datePublished">2018-10-30</time>
+    <a href="/2018/10/09/JS运算符/" class="article-date">
+  <time datetime="2018-10-09T15:23:25.000Z" itemprop="datePublished">2018-10-09</time>
 </a>
     
   </div>
@@ -76,7 +76,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/10/30/javascript入门/">javascript入门</a>
+      <a class="article-title" href="/2018/10/09/JS运算符/">JS运算符</a>
     </h1>
   
 
@@ -84,73 +84,25 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/30/javascript入门/" data-id="cjnvktv620004q9s69t2lb4eh" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-域名配置" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/10/29/域名配置/" class="article-date">
-  <time datetime="2018-10-29T11:13:24.000Z" itemprop="datePublished">2018-10-29</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/10/29/域名配置/">域名配置</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <ol>
-<li><p>域名解析：<a href="http://www.misswuer.cn" target="_blank" rel="noopener">www.misswuer.cn</a> CNAME 到 <a href="http://lovexwu.github.io" target="_blank" rel="noopener">lovexwu.github.io</a> 上</p>
-</li>
-<li><p>github pages 里面自定义域名到 <a href="http://www.misswuer.cn" target="_blank" rel="noopener">www.misswuer.cn</a></p>
-</li>
-<li><p>hexo 里面的 _config.yml 的 public_dir 改为 github 仓库名 即 newblog</p>
-</li>
-<li><p>hexo 里面的 _config.yml 配置下 deploy 的仓库 为 newblog 的仓库路径 git://<a href="http://github.com/lovexwu/newblog.git" target="_blank" rel="noopener">github.com/lovexwu/newblog.git</a>，branch 设置为 master</p>
-</li>
-<li><p>npm install hexo-deployer-git –save</p>
-</li>
-<li><p>hexo d</p>
-</li>
-</ol>
-<p>完成</p>
-<p>配置好后，接下来就可以愉快地工作啦</p>
-<ol>
-<li><p>hexo new xxx</p>
-</li>
-<li><p>typora 编辑 xxx</p>
-</li>
-<li><p>hexo g 生成 html 文件，hexo s 预览下，如果之前开过 hexo s，之后就不用开了</p>
-</li>
-<li><p>hexo d 发布到网站上</p>
-</li>
-</ol>
+        <h5 id="加号运算符"><a href="#加号运算符" class="headerlink" title="加号运算符"></a>加号运算符</h5><p>有些操作符对不同数据类型有不同的含义，比如 +</p>
+<ul>
+<li>在两个操作数都是数字的时候，会做加法运算</li>
+<li>两个参数都是字符串或在有一个参数是字符串的情况下会把另外一个参数转换为字符串做字符串拼接</li>
+<li>在参数有对象的情况下会调用其valueOf 或 toString</li>
+<li>在只有一个字符串参数的时候会尝试将其转换为数字</li>
+<li>在只有一个数字参数的时候返回其正数值</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="number">2</span>+<span class="number">4</span>) <span class="comment">//6</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"2"</span>+<span class="string">"4"</span>) <span class="comment">//"24"</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">2</span>+<span class="string">"4"</span>) <span class="comment">//"24"</span></span><br><span class="line"><span class="built_in">console</span>.log(+<span class="string">"4"</span>) <span class="comment">//4</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">    toString:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">10</span></span><br><span class="line">    &#125;,</span><br><span class="line">    valueOf:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"100"</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(+obj) <span class="comment">// 100</span></span><br><span class="line"><span class="comment">//这里是因为obj的valueOf级别高于toString，所以是返回字符串100,然后+号会强制转为数字</span></span><br></pre></td></tr></table></figure>
+<h5 id="JS运算符"><a href="#JS运算符" class="headerlink" title="JS运算符"></a>JS运算符</h5><p><code>NaN</code>是什么？ 有什么特别之处</p>
+<p>NaN 是number类型中一个特殊的数值，但是不是一个有效的数字</p>
+<p>特别之处：</p>
+<p>1、任何数值除以非数值（字符串、undefined、object）都会返回NaN</p>
+<p>2、NaN与任何值都不相等，包括NaN自身</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/29/域名配置/" data-id="cjnvktv630005q9s6pzk4rfxn" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/09/JS运算符/" data-id="cjnwpxchk0000aus6ofb3wcil" class="article-share-link">Share</a>
       
       
     </footer>
@@ -162,8 +114,8 @@
   
     <article id="post-JS对象" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2018/10/29/JS对象/" class="article-date">
-  <time datetime="2018-10-29T10:07:30.000Z" itemprop="datePublished">2018-10-29</time>
+    <a href="/2018/10/08/JS对象/" class="article-date">
+  <time datetime="2018-10-08T10:07:30.000Z" itemprop="datePublished">2018-10-08</time>
 </a>
     
   </div>
@@ -174,7 +126,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/10/29/JS对象/">JS对象</a>
+      <a class="article-title" href="/2018/10/08/JS对象/">JS对象</a>
     </h1>
   
 
@@ -228,7 +180,224 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/29/JS对象/" data-id="cjnvktv600002q9s60ndmr5nz" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/08/JS对象/" data-id="cjnvw11s90002qhs646hj3nph" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-javascript入门" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/10/07/javascript入门/" class="article-date">
+  <time datetime="2018-10-07T10:07:46.000Z" itemprop="datePublished">2018-10-07</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/10/07/javascript入门/">javascript入门</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="JS-基本概念"><a href="#JS-基本概念" class="headerlink" title="JS 基本概念:"></a>JS 基本概念:</h3><h4 id="基本语法"><a href="#基本语法" class="headerlink" title="基本语法"></a>基本语法</h4><h5 id="调试"><a href="#调试" class="headerlink" title="调试"></a>调试</h5><p>打开chrome开发工具</p>
+<ul>
+<li>win     F12</li>
+<li>Mac    Command + Option + l</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">'xwu'</span></span><br><span class="line"><span class="built_in">console</span>.log(str)</span><br></pre></td></tr></table></figure>
+<h5 id="语句"><a href="#语句" class="headerlink" title="语句"></a>语句</h5><p> Javascript 程序的执行单位为行，也就是一行一行地执行。</p>
+<p>语句是为了完成某种任务而进行的操作，比如下面是一行赋值语句：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var a = 1 + 3</span><br></pre></td></tr></table></figure>
+<p>这条语句先用var 命令，声明了变量a，然后将1 + 3 的运算结果赋值给a</p>
+<h5 id="表达式"><a href="#表达式" class="headerlink" title="表达式"></a>表达式</h5><p>指一个为了得到返回值的计算式。上面的1+3叫做表达式</p>
+<p><u>语句，表达式区别：前者主要是为了进行某种操作，一般情况下不需要返回值，后者是为了得到返回值，一定会返回一个值。</u></p>
+<h5 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h5><p>是对值的引用，使用变量等同于引用一个值。每一个变量都有一个变量名</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">1</span></span><br></pre></td></tr></table></figure>
+<h5 id="变量提升"><a href="#变量提升" class="headerlink" title="变量提升"></a>变量提升</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var a = 1 等同于 var a,a = 3 右边就是先声明这个变量，再去赋值</span><br></pre></td></tr></table></figure>
+<h5 id="标识符"><a href="#标识符" class="headerlink" title="标识符"></a>标识符</h5><p>用来识别具体对象的一个名称。最常见的标识符是变量，及后面提到的函数。js的标识符对大小写敏感，所以a 和A 是两个不同的标识符</p>
+<p>简单地说，标识符命名规则如下：</p>
+<ul>
+<li><p>第一个字符，可以是任意Unicode字母（包括英文字母和其他语言的字母),及美元符号（$）和下划线（_）</p>
+</li>
+<li><p>第二个字符及后面的字符，除了Unicode字母、美元符号和下划线，还可以用数字0-9</p>
+</li>
+</ul>
+<h5 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h5><p>JS提供两种注释:</p>
+<p>一种是单行注释，另一种是多行注释,如下</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 这是单行注释</span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">这是</span></span><br><span class="line"><span class="comment">多行</span></span><br><span class="line"><span class="comment">注释</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line">由于JS兼容HTML代码的注释，所以&lt;!-- 和--&gt; 也被视为单行注释</span><br></pre></td></tr></table></figure>
+<h5 id="区块"><a href="#区块" class="headerlink" title="区块"></a>区块</h5><p>JS用大括号，将多个相关的语句组合在一起，称为区块（block）</p>
+<p>与大多数编程语言不一样，JS的区块不构成单独的作用域，也就是说，区块中的变量与区块外的变量，属于同一个作用域</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="keyword">var</span> a = <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line">a <span class="comment">//1</span></span><br></pre></td></tr></table></figure>
+<p>上面代码在区块内部，声明并赋值变量a，然后在区块外部，变量a依然有效，说明区块不构成单独的作用域</p>
+<h3 id="JS数据类型"><a href="#JS数据类型" class="headerlink" title="JS数据类型"></a>JS数据类型</h3><p>JS的数据类型，共有六种(ES6 又新增了第七种Symbol类型的值)</p>
+<ul>
+<li><p>数值(number)：整数和小数（如1和3.14）</p>
+</li>
+<li><p>字符串(string)：字符组成的文本（如“hello”）</p>
+</li>
+<li><p>布尔值(boolean)：true和false</p>
+</li>
+<li><p>Undefined：表示未定义或不存在，即由于目前没有定义，所以暂时没有任何值</p>
+</li>
+<li><p>Null：表示无值，即此处的值就是无的状态</p>
+</li>
+<li><p>对象(object)：各种值组成的集合</p>
+</li>
+</ul>
+<p>通常我们将数值、字符串、布尔值称为原始类型，而将对象称为合成类型(引用类型)的值，</p>
+<p>至于null 和 undefined 是两个特殊的值</p>
+<p>对象可以分成三个子类型</p>
+<ul>
+<li><p>狭义的对象(object)</p>
+</li>
+<li><p>数组(array)</p>
+</li>
+<li>函数(function)</li>
+</ul>
+<h5 id="typeof-运算符"><a href="#typeof-运算符" class="headerlink" title="typeof 运算符"></a>typeof 运算符</h5><p>JS有三种方法，可以确定一个值到底是什么类型</p>
+<ul>
+<li><p>typeof 运算符</p>
+</li>
+<li><p>instanceof 运算符</p>
+</li>
+<li><p>Object.prototype.toString 运算符</p>
+</li>
+</ul>
+<p><u><strong>null返回 Object 、undefined返回undefined</strong></u></p>
+<h5 id="布尔值"><a href="#布尔值" class="headerlink" title="布尔值"></a>布尔值</h5><p>转换规则除了下面六个值被转为false,其他都是true</p>
+<ul>
+<li><p>undefined</p>
+</li>
+<li><p>null</p>
+</li>
+<li><p>false</p>
+</li>
+<li><p>0</p>
+</li>
+<li><p>NaN</p>
+</li>
+<li><p>‘’’’ 或‘ ‘ （空字符串）</p>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/10/07/javascript入门/" data-id="cjnvw11sc0005qhs61chsxv8k" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-git命令使用" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/10/06/git命令使用/" class="article-date">
+  <time datetime="2018-10-06T09:59:22.000Z" itemprop="datePublished">2018-10-06</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/10/06/git命令使用/">Git命令使用</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>大家在使用git提交代码的过程中，难免会因为各种原因执行一些错误的commit / push，想要修复这些错误，reset和revert就能很好的帮到我们。</p>
+<p>首先我们到区分几个概念，工作区，暂存区，版本库。</p>
+<p><strong>工作区</strong><br>所谓工作区，即我们电脑中所看到的目录。</p>
+<p><strong>版本库</strong><br>在工作区有一个隐藏目录.git，这是Git的版本库。</p>
+<p><strong>暂存区</strong><br>Git的版本库里存了很多东西，其中最重要的就是称为stage（或者叫index）的暂存区，还有Git为我们自动创建的第一个分支master，以及指向master的一个指针叫HEAD</p>
+<p>#小小实例了解下</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14339384-b42621a6dd3db2d3.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="1.jpg"></p>
+<p><strong>开始做几次提交</strong><br><img src="https://upload-images.jianshu.io/upload_images/14339384-8d7e52440fcb334f.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="2.jpg"></p>
+<p><strong>看下提交log</strong><br><img src="https://upload-images.jianshu.io/upload_images/14339384-e4d7a68891094b51.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="3.jpg"></p>
+<p><strong>当前提交的readme</strong><br><img src="https://upload-images.jianshu.io/upload_images/14339384-25e76b753234941f.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="4.jpg"></p>
+<p><strong>一种方式，soft模式</strong><br><img src="https://upload-images.jianshu.io/upload_images/14339384-6419fb2ce901c22a.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="6.jpg"><br>采用这种模式，git不回清除你的stage区，因此，git status时就显示了stage区相对于second commit的变化。此时工作区是clean 的，而stage区则有变化</p>
+<p><strong>另一种方式，hard模式</strong><br><img src="https://upload-images.jianshu.io/upload_images/14339384-4ad49e7c87bc5a24.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="7.jpg"><br>采用这种模式，git回用first commit 的内容覆盖stage区和工作区，因此所有的内容都回到了first commit的状态。</p>
+<p>#区别（重点）</p>
+<p><strong>reset</strong><br>是起到了撤销commit的作用，但实质上它是将HEAD的指向移动了位置<br><img src="https://upload-images.jianshu.io/upload_images/14339384-efe2bb12e2043bb6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="12.png"></p>
+<p><strong>revert</strong><br>是一次新的commit，HEAD会继续向前执行<br><img src="https://upload-images.jianshu.io/upload_images/14339384-d66f6700cbe7a215.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="13.png"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/10/06/git命令使用/" data-id="cjnvw11sb0004qhs6e7tn4vjr" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Git-使用方法" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/10/05/Git-使用方法/" class="article-date">
+  <time datetime="2018-10-05T09:13:09.000Z" itemprop="datePublished">2018-10-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/10/05/Git-使用方法/">Git-使用方法</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>首先我们打开mac终端输入<br><img src="https://upload-images.jianshu.io/upload_images/14260087-7ae4d51cbdd5ba28.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="1.png"></p>
+<p>如果终端告诉你<br><img src="https://upload-images.jianshu.io/upload_images/14260087-16999227ad4fc005.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="2.png"></p>
+<p>那么说明你已经有git了，不需下载安装</p>
+<p>#本地仓库创建<br><img src="https://upload-images.jianshu.io/upload_images/14339384-fb2d559ba2b3d088.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="3.png"></p>
+<p>再输入命令<br><img src="https://upload-images.jianshu.io/upload_images/14260087-02bb43d7f21a3ccd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="4.png"></p>
+<p>这样子 ，本地仓库就建好了</p>
+<p>#创建远程仓库<br>首页登陆Github，并选择创建<br><img src="https://upload-images.jianshu.io/upload_images/14260087-e90d9b087fce4015.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="5.png"></p>
+<p>填写仓库名称，这里注意仓库名称不要写中文，中文显示不出来<br><img src="https://upload-images.jianshu.io/upload_images/14339384-2f8260b4006c805a.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="6.jpg"></p>
+<p>这样远程仓库也创建好了</p>
+<p>#将本地仓库与远程仓库进行关联<br>在终端中输入<br><img src="https://upload-images.jianshu.io/upload_images/14260087-c93fc4f2200df010.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="7.png"><br>git remote add origin后的网址是你的远程仓库的地址，如下图<br><img src="https://upload-images.jianshu.io/upload_images/14339384-6e1a5c5e8128f6b8.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="8.jpg"></p>
+<p>OK现在已经关联成功了</p>
+<p>#克隆地址<br>终端输入<br><img src="https://upload-images.jianshu.io/upload_images/14260087-725d2a374013e595.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="9.png"></p>
+<p>这样子git 可以正常使用了</p>
+<p>#常用命令行如下<br>git status     查看本地git仓库的状态<br>git add -A    添加所有修改的内容<br>git commit -m “提交详情内容记录”      提交更新到本地仓库<br>git push -u origin master    将本地仓库更新的内容提交到远程仓库<br>git diff   查看修改的内容<br>git log   查看历史版本，显示从最近到最远的提交日志</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/10/05/Git-使用方法/" data-id="cjnvw11s80001qhs6x2edyvi1" class="article-share-link">Share</a>
       
       
     </footer>
@@ -240,8 +409,8 @@
   
     <article id="post-ES5数组方法的那些事" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2018/10/29/ES5数组方法的那些事/" class="article-date">
-  <time datetime="2018-10-29T10:05:14.000Z" itemprop="datePublished">2018-10-29</time>
+    <a href="/2018/10/04/ES5数组方法的那些事/" class="article-date">
+  <time datetime="2018-10-04T10:05:14.000Z" itemprop="datePublished">2018-10-04</time>
 </a>
     
   </div>
@@ -252,7 +421,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/10/29/ES5数组方法的那些事/">ES5数组方法的那些事</a>
+      <a class="article-title" href="/2018/10/04/ES5数组方法的那些事/">ES5数组方法的那些事</a>
     </h1>
   
 
@@ -282,7 +451,69 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/29/ES5数组方法的那些事/" data-id="cjnvktv5y0001q9s6d2meaj6x" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/04/ES5数组方法的那些事/" data-id="cjnvw11s40000qhs6e2o8ncri" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-域名配置" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/10/03/域名配置/" class="article-date">
+  <time datetime="2018-10-03T11:13:24.000Z" itemprop="datePublished">2018-10-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/10/03/域名配置/">域名配置</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ol>
+<li><p>域名解析：<a href="http://www.misswuer.cn" target="_blank" rel="noopener">www.misswuer.cn</a> CNAME 到 <a href="http://lovexwu.github.io" target="_blank" rel="noopener">lovexwu.github.io</a> 上</p>
+</li>
+<li><p>github pages 里面自定义域名到 <a href="http://www.misswuer.cn" target="_blank" rel="noopener">www.misswuer.cn</a></p>
+</li>
+<li><p>hexo 里面的 _config.yml 的 public_dir 改为 github 仓库名 即 newblog</p>
+</li>
+<li><p>hexo 里面的 _config.yml 配置下 deploy 的仓库 为 newblog 的仓库路径 git://<a href="http://github.com/lovexwu/newblog.git" target="_blank" rel="noopener">github.com/lovexwu/newblog.git</a>，branch 设置为 master</p>
+</li>
+<li><p>npm install hexo-deployer-git –save</p>
+</li>
+<li><p>hexo d</p>
+</li>
+</ol>
+<p>完成</p>
+<p>配置好后，接下来就可以愉快地工作啦</p>
+<ol>
+<li><p>hexo new xxx</p>
+</li>
+<li><p>typora 编辑 xxx</p>
+</li>
+<li><p>hexo g 生成 html 文件，hexo s 预览下，如果之前开过 hexo s，之后就不用开了</p>
+</li>
+<li><p>hexo d 发布到网站上</p>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/10/03/域名配置/" data-id="cjnvw11sd0006qhs6xl0x5fj2" class="article-share-link">Share</a>
       
       
     </footer>
@@ -294,8 +525,8 @@
   
     <article id="post-谈谈JavaScript的作用域链" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2018/10/29/谈谈JavaScript的作用域链/" class="article-date">
-  <time datetime="2018-10-29T10:03:06.000Z" itemprop="datePublished">2018-10-29</time>
+    <a href="/2018/10/02/谈谈JavaScript的作用域链/" class="article-date">
+  <time datetime="2018-10-02T10:03:06.000Z" itemprop="datePublished">2018-10-02</time>
 </a>
     
   </div>
@@ -306,7 +537,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/10/29/谈谈JavaScript的作用域链/">谈谈JavaScript的作用域链</a>
+      <a class="article-title" href="/2018/10/02/谈谈JavaScript的作用域链/">谈谈JavaScript的作用域链</a>
     </h1>
   
 
@@ -323,7 +554,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/29/谈谈JavaScript的作用域链/" data-id="cjnvktv650007q9s60643fs1d" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/02/谈谈JavaScript的作用域链/" data-id="cjnvw11sf0008qhs6qqejx9vm" class="article-share-link">Share</a>
       
       
     </footer>
@@ -335,8 +566,8 @@
   
     <article id="post-白屏和FOUC现象" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2018/10/29/白屏和FOUC现象/" class="article-date">
-  <time datetime="2018-10-29T10:01:20.000Z" itemprop="datePublished">2018-10-29</time>
+    <a href="/2018/10/01/白屏和FOUC现象/" class="article-date">
+  <time datetime="2018-10-01T10:01:20.000Z" itemprop="datePublished">2018-10-01</time>
 </a>
     
   </div>
@@ -347,7 +578,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/10/29/白屏和FOUC现象/">白屏和FOUC现象</a>
+      <a class="article-title" href="/2018/10/01/白屏和FOUC现象/">白屏和FOUC现象</a>
     </h1>
   
 
@@ -367,108 +598,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/29/白屏和FOUC现象/" data-id="cjnvktv640006q9s6pncftbnf" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-git命令使用" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/10/29/git命令使用/" class="article-date">
-  <time datetime="2018-10-29T09:59:22.000Z" itemprop="datePublished">2018-10-29</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/10/29/git命令使用/">Git命令使用</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>大家在使用git提交代码的过程中，难免会因为各种原因执行一些错误的commit / push，想要修复这些错误，reset和revert就能很好的帮到我们。</p>
-<p>首先我们到区分几个概念，工作区，暂存区，版本库。</p>
-<p><strong>工作区</strong><br>所谓工作区，即我们电脑中所看到的目录。</p>
-<p><strong>版本库</strong><br>在工作区有一个隐藏目录.git，这是Git的版本库。</p>
-<p><strong>暂存区</strong><br>Git的版本库里存了很多东西，其中最重要的就是称为stage（或者叫index）的暂存区，还有Git为我们自动创建的第一个分支master，以及指向master的一个指针叫HEAD</p>
-<p>#小小实例了解下</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/14339384-b42621a6dd3db2d3.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="1.jpg"></p>
-<p><strong>开始做几次提交</strong><br><img src="https://upload-images.jianshu.io/upload_images/14339384-8d7e52440fcb334f.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="2.jpg"></p>
-<p><strong>看下提交log</strong><br><img src="https://upload-images.jianshu.io/upload_images/14339384-e4d7a68891094b51.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="3.jpg"></p>
-<p><strong>当前提交的readme</strong><br><img src="https://upload-images.jianshu.io/upload_images/14339384-25e76b753234941f.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="4.jpg"></p>
-<p><strong>一种方式，soft模式</strong><br><img src="https://upload-images.jianshu.io/upload_images/14339384-6419fb2ce901c22a.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="6.jpg"><br>采用这种模式，git不回清除你的stage区，因此，git status时就显示了stage区相对于second commit的变化。此时工作区是clean 的，而stage区则有变化</p>
-<p><strong>另一种方式，hard模式</strong><br><img src="https://upload-images.jianshu.io/upload_images/14339384-4ad49e7c87bc5a24.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="7.jpg"><br>采用这种模式，git回用first commit 的内容覆盖stage区和工作区，因此所有的内容都回到了first commit的状态。</p>
-<p>#区别（重点）</p>
-<p><strong>reset</strong><br>是起到了撤销commit的作用，但实质上它是将HEAD的指向移动了位置<br><img src="https://upload-images.jianshu.io/upload_images/14339384-efe2bb12e2043bb6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="12.png"></p>
-<p><strong>revert</strong><br>是一次新的commit，HEAD会继续向前执行<br><img src="https://upload-images.jianshu.io/upload_images/14339384-d66f6700cbe7a215.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="13.png"></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/29/git命令使用/" data-id="cjnvktv610003q9s6opng3xbx" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Git-使用方法" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/10/29/Git-使用方法/" class="article-date">
-  <time datetime="2018-10-29T09:13:09.000Z" itemprop="datePublished">2018-10-29</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/10/29/Git-使用方法/">Git-使用方法</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>首先我们打开mac终端输入<br><img src="https://upload-images.jianshu.io/upload_images/14260087-7ae4d51cbdd5ba28.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="1.png"></p>
-<p>如果终端告诉你<br><img src="https://upload-images.jianshu.io/upload_images/14260087-16999227ad4fc005.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="2.png"></p>
-<p>那么说明你已经有git了，不需下载安装</p>
-<p>#本地仓库创建<br><img src="https://upload-images.jianshu.io/upload_images/14339384-fb2d559ba2b3d088.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="3.png"></p>
-<p>再输入命令<br><img src="https://upload-images.jianshu.io/upload_images/14260087-02bb43d7f21a3ccd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="4.png"></p>
-<p>这样子 ，本地仓库就建好了</p>
-<p>#创建远程仓库<br>首页登陆Github，并选择创建<br><img src="https://upload-images.jianshu.io/upload_images/14260087-e90d9b087fce4015.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="5.png"></p>
-<p>填写仓库名称，这里注意仓库名称不要写中文，中文显示不出来<br><img src="https://upload-images.jianshu.io/upload_images/14339384-2f8260b4006c805a.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="6.jpg"></p>
-<p>这样远程仓库也创建好了</p>
-<p>#将本地仓库与远程仓库进行关联<br>在终端中输入<br><img src="https://upload-images.jianshu.io/upload_images/14260087-c93fc4f2200df010.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="7.png"><br>git remote add origin后的网址是你的远程仓库的地址，如下图<br><img src="https://upload-images.jianshu.io/upload_images/14339384-6e1a5c5e8128f6b8.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="8.jpg"></p>
-<p>OK现在已经关联成功了</p>
-<p>#克隆地址<br>终端输入<br><img src="https://upload-images.jianshu.io/upload_images/14260087-725d2a374013e595.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="9.png"></p>
-<p>这样子git 可以正常使用了</p>
-<p>#常用命令行如下<br>git status     查看本地git仓库的状态<br>git add -A    添加所有修改的内容<br>git commit -m “提交详情内容记录”      提交更新到本地仓库<br>git push -u origin master    将本地仓库更新的内容提交到远程仓库<br>git diff   查看修改的内容<br>git log   查看历史版本，显示从最近到最远的提交日志</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/29/Git-使用方法/" data-id="cjnvktv5u0000q9s6695aeqb8" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/01/白屏和FOUC现象/" data-id="cjnvw11se0007qhs61oksofpc" class="article-share-link">Share</a>
       
       
     </footer>
@@ -509,23 +639,23 @@
       <ul>
         
           <li>
-            <a href="/2018/10/30/javascript入门/">javascript入门</a>
+            <a href="/2018/10/09/JS运算符/">JS运算符</a>
           </li>
         
           <li>
-            <a href="/2018/10/29/域名配置/">域名配置</a>
+            <a href="/2018/10/08/JS对象/">JS对象</a>
           </li>
         
           <li>
-            <a href="/2018/10/29/JS对象/">JS对象</a>
+            <a href="/2018/10/07/javascript入门/">javascript入门</a>
           </li>
         
           <li>
-            <a href="/2018/10/29/ES5数组方法的那些事/">ES5数组方法的那些事</a>
+            <a href="/2018/10/06/git命令使用/">Git命令使用</a>
           </li>
         
           <li>
-            <a href="/2018/10/29/谈谈JavaScript的作用域链/">谈谈JavaScript的作用域链</a>
+            <a href="/2018/10/05/Git-使用方法/">Git-使用方法</a>
           </li>
         
       </ul>
