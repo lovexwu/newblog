@@ -32,6 +32,18 @@ console.log(+obj) // 100
 //这里是因为obj的valueOf级别高于toString，所以是返回字符串100,然后+号会强制转为数字
 ```
 
-<u>其他运算符参考</u>
+##### 逻辑运算符
+
+能够转换为false的表达式有：
+
+- `null`；
+- `NaN`；
+- `0`；
+- 空字符串（`""`）；
+- `undefined`。
+
+<u>
+
+其他运算符参考</u>
 
  https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators
