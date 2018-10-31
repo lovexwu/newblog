@@ -32,14 +32,6 @@ console.log(+obj) // 100
 //这里是因为obj的valueOf级别高于toString，所以是返回字符串100,然后+号会强制转为数字
 ```
 
-##### JS运算符
+<u>其他运算符参考</u>
 
-`NaN`是什么？ 有什么特别之处
-
-NaN 是number类型中一个特殊的数值，但是不是一个有效的数字
-
-特别之处：
-
-1、任何数值除以非数值（字符串、undefined、object）都会返回NaN
-
-2、NaN与任何值都不相等，包括NaN自身
+ https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators
