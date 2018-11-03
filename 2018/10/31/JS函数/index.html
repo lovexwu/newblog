@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>JS函数 | Miss Xwu</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="解密类型转换if的判断12if(xxx)&amp;#123;&amp;#125; js是如何处理的？做几道测试题看一看 题目 如下代码输出什么？12345678910111213141516171819if （&quot;hello&quot;)&amp;#123;	//true	console.log(&quot;hello&quot;)&amp;#125; //&quot;hell0&quot;if(&quot;&quot;)&amp;#123;//false	console.log(&apos;empty&apos;)&amp;#125">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JS函数">
+<meta property="og:url" content="http://yoursite.com/2018/10/31/JS函数/index.html">
+<meta property="og:site_name" content="Miss Xwu">
+<meta property="og:description" content="解密类型转换if的判断12if(xxx)&amp;#123;&amp;#125; js是如何处理的？做几道测试题看一看 题目 如下代码输出什么？12345678910111213141516171819if （&quot;hello&quot;)&amp;#123;	//true	console.log(&quot;hello&quot;)&amp;#125; //&quot;hell0&quot;if(&quot;&quot;)&amp;#123;//false	console.log(&apos;empty&apos;)&amp;#125">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-10-31T10:46:11.208Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JS函数">
+<meta name="twitter:description" content="解密类型转换if的判断12if(xxx)&amp;#123;&amp;#125; js是如何处理的？做几道测试题看一看 题目 如下代码输出什么？12345678910111213141516171819if （&quot;hello&quot;)&amp;#123;	//true	console.log(&quot;hello&quot;)&amp;#125; //&quot;hell0&quot;if(&quot;&quot;)&amp;#123;//false	console.log(&apos;empty&apos;)&amp;#125">
+  
+    <link rel="alternate" href="/atom.xml" title="Miss Xwu" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Miss Xwu</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-JS函数" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/10/31/JS函数/" class="article-date">
+  <time datetime="2018-10-31T05:57:45.000Z" itemprop="datePublished">2018-10-31</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      JS函数
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="解密类型转换"><a href="#解密类型转换" class="headerlink" title="解密类型转换"></a>解密类型转换</h3><h4 id="if的判断"><a href="#if的判断" class="headerlink" title="if的判断"></a>if的判断</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(xxx)&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>js是如何处理的？做几道测试题看一看</p>
+<h6 id="题目-如下代码输出什么？"><a href="#题目-如下代码输出什么？" class="headerlink" title="题目 如下代码输出什么？"></a>题目 如下代码输出什么？</h6><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> （<span class="string">"hello"</span>)&#123;	<span class="comment">//true</span></span><br><span class="line">	<span class="built_in">console</span>.log(<span class="string">"hello"</span>)</span><br><span class="line">&#125; <span class="comment">//"hell0"</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(<span class="string">""</span>)&#123;<span class="comment">//false</span></span><br><span class="line">	<span class="built_in">console</span>.log(<span class="string">'empty'</span>)</span><br><span class="line">&#125; <span class="comment">//不输出</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(<span class="string">" "</span>)&#123;<span class="comment">//true</span></span><br><span class="line">	<span class="built_in">console</span>.log(<span class="string">'blank'</span>)</span><br><span class="line">&#125;<span class="comment">//'blank</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>([<span class="number">0</span>])&#123;<span class="comment">//true</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'array'</span>)</span><br><span class="line">&#125;<span class="comment">//'array'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(<span class="string">'0.00'</span>)&#123;<span class="comment">//true</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'0.00'</span>)</span><br><span class="line">&#125;<span class="comment">//0.00</span></span><br></pre></td></tr></table></figure>
+<h4 id="解密"><a href="#解密" class="headerlink" title="解密"></a>解密</h4><p>对括号里的表达式，会被强制转换为布尔类型</p>
+<h4 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h4><table>
+<thead>
+<tr>
+<th style="text-align:left">类型</th>
+<th style="text-align:center">结果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Undefined</td>
+<td style="text-align:center">false</td>
+</tr>
+<tr>
+<td style="text-align:left">Null</td>
+<td style="text-align:center">false</td>
+</tr>
+<tr>
+<td style="text-align:left">Boolean</td>
+<td style="text-align:center">直接判断</td>
+</tr>
+<tr>
+<td style="text-align:left">Number</td>
+<td style="text-align:center">+0,-0,或NaN为false,其他为true</td>
+</tr>
+<tr>
+<td style="text-align:left">String</td>
+<td style="text-align:center">空字符串为false,其他都为true</td>
+</tr>
+<tr>
+<td style="text-align:left">Object</td>
+<td style="text-align:center">true</td>
+</tr>
+</tbody>
+</table>
+<h4 id="的判断"><a href="#的判断" class="headerlink" title="==的判断"></a>==的判断</h4><p>对于==的判断，js是怎么处理的？做几道题看看</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">""</span> == <span class="number">0</span> <span class="comment">//true ""转数字是0</span></span><br><span class="line"><span class="string">" "</span> == <span class="number">0</span> <span class="comment">//true " "转数字也是0 </span></span><br><span class="line"><span class="string">""</span> == <span class="literal">true</span> <span class="comment">//false</span></span><br><span class="line"><span class="string">""</span> == <span class="literal">false</span><span class="comment">//true</span></span><br><span class="line"><span class="string">" "</span> == <span class="literal">true</span><span class="comment">//false</span></span><br><span class="line"></span><br><span class="line">!<span class="string">" "</span> == <span class="literal">true</span>  <span class="comment">//false " "转布尔是true 取反就是false</span></span><br><span class="line">!<span class="string">" "</span> == <span class="literal">false</span> <span class="comment">//true " "转布尔是true 取反就是false</span></span><br><span class="line"><span class="string">"hello"</span> == <span class="literal">true</span> <span class="comment">//false "hello"转数字是NaN </span></span><br><span class="line"><span class="string">"hello"</span> == <span class="literal">false</span> <span class="comment">//false</span></span><br><span class="line"><span class="string">"0"</span> == <span class="literal">true</span> <span class="comment">//false</span></span><br><span class="line"><span class="string">"00"</span> == <span class="literal">true</span> <span class="comment">//false</span></span><br><span class="line"><span class="string">"0.00"</span> == <span class="literal">false</span> <span class="comment">//true</span></span><br><span class="line"></span><br><span class="line"><span class="literal">undefined</span> == <span class="literal">null</span> <span class="comment">//true</span></span><br><span class="line">&#123;&#125; == <span class="literal">true</span> <span class="comment">// false &#123;&#125;转数字为[object object],ture转数字是1</span></span><br><span class="line">[] == <span class="literal">true</span> <span class="comment">// false</span></span><br><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">    a: <span class="number">0</span>,</span><br><span class="line">    valueOf:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;<span class="keyword">return</span> <span class="number">1</span>&#125;</span><br><span class="line">&#125;</span><br><span class="line">obj == <span class="string">"[object object]"</span> <span class="comment">//false 因为obj返回的是1</span></span><br><span class="line">obj == <span class="number">1</span> <span class="comment">//true</span></span><br><span class="line">obj == <span class="literal">true</span> <span class="comment">//true</span></span><br></pre></td></tr></table></figure>
+<p><u><strong>只有空白字符串（“ ”）转布尔值是true,其他都是false</strong></u></p>
+<h4 id="解密-1"><a href="#解密-1" class="headerlink" title="解密"></a>解密</h4><table>
+<thead>
+<tr>
+<th style="text-align:left">x</th>
+<th style="text-align:center">y</th>
+<th style="text-align:left">结果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">null</td>
+<td style="text-align:center">undefined</td>
+<td style="text-align:left">ture</td>
+</tr>
+<tr>
+<td style="text-align:left">Number</td>
+<td style="text-align:center">String</td>
+<td style="text-align:left">x == toNumber(y)</td>
+</tr>
+<tr>
+<td style="text-align:left">Boolean</td>
+<td style="text-align:center">(any)</td>
+<td style="text-align:left">toNumber(x) == y</td>
+</tr>
+<tr>
+<td style="text-align:left">Object</td>
+<td style="text-align:center">String or Number</td>
+<td style="text-align:left">toPrimitive(x) == y</td>
+</tr>
+<tr>
+<td style="text-align:left">otherwise</td>
+<td style="text-align:center">otherwise</td>
+<td style="text-align:left">false</td>
+</tr>
+</tbody>
+</table>
+<h4 id="toNumber"><a href="#toNumber" class="headerlink" title="toNumber"></a>toNumber</h4><table>
+<thead>
+<tr>
+<th style="text-align:left">type</th>
+<th style="text-align:center">result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Undefined</td>
+<td style="text-align:center">NaN</td>
+</tr>
+<tr>
+<td style="text-align:left">Null</td>
+<td style="text-align:center">0</td>
+</tr>
+<tr>
+<td style="text-align:left">Boolean</td>
+<td style="text-align:center">true -&gt;1,false -&gt;0</td>
+</tr>
+<tr>
+<td style="text-align:left">String</td>
+<td style="text-align:center">“abc” -&gt; NaN, “123” -&gt; 123</td>
+</tr>
+</tbody>
+</table>
+<h4 id="toPrimitive"><a href="#toPrimitive" class="headerlink" title="toPrimitive"></a>toPrimitive</h4><p>对于Object 类型，先尝试调用.valueOf方法获取结果。如果没有定义，再尝试调用.toString方法获取结果</p>
+<h4 id="arguments"><a href="#arguments" class="headerlink" title="arguments"></a>arguments</h4><p>在函数内部，你可以使用arguments对象获取到该函数的所有传入参数</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">pop</span>(<span class="params">name,age,sex</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(name)</span><br><span class="line">    <span class="built_in">console</span>.log(age)</span><br><span class="line">    <span class="built_in">console</span>.log(sex)</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="built_in">arguments</span>)</span><br><span class="line">&#125;</span><br><span class="line">pop(<span class="string">'xiaowu'</span>,<span class="number">19</span>,<span class="string">'boy'</span>)</span><br><span class="line"><span class="comment">// xiaowu</span></span><br><span class="line"><span class="comment">//19</span></span><br><span class="line"><span class="comment">//boy</span></span><br><span class="line"><span class="comment">//Arguments(3) ["xiaowu", 19, "boy", callee: ƒ, Symbol(Symbol.iterator): ƒ]</span></span><br></pre></td></tr></table></figure>
+<p>命名冲突</p>
+<p>当在同一个作用域内定义了名字相同的变量和方法的话，无论其顺序如何，变量的赋值会覆盖方法的赋值</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> fn = <span class="number">3</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>)</span>&#123;&#125;</span><br><span class="line"><span class="built_in">console</span>.log(fn) <span class="comment">//3</span></span><br><span class="line"></span><br><span class="line">相当于</span><br><span class="line"><span class="keyword">var</span> fn</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>)</span>&#123;&#125; <span class="comment">//覆盖上面的</span></span><br><span class="line">fn = <span class="number">3</span> <span class="comment">// 重新赋值</span></span><br><span class="line"><span class="built_in">console</span>.log(fn)</span><br></pre></td></tr></table></figure>
+<p>当函数执行有命令冲突时，可以认为在还是内部一开始有隐藏的声明变量这个操作</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params">fn</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(fn)</span><br><span class="line">    <span class="keyword">var</span> fn = <span class="number">3</span>;</span><br><span class="line">    <span class="built_in">console</span>.log(fn);</span><br><span class="line">&#125;</span><br><span class="line">fn(<span class="number">10</span>)</span><br><span class="line"></span><br><span class="line">相当于</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> fn = <span class="built_in">arguments</span>[<span class="number">0</span>]</span><br><span class="line">    <span class="built_in">console</span>.log(fn)</span><br><span class="line">    <span class="keyword">var</span> fn = <span class="number">3</span>;</span><br><span class="line">    <span class="built_in">console</span>.log(fn)</span><br><span class="line">&#125;</span><br><span class="line">fn(<span class="number">10</span>) <span class="comment">//10 3</span></span><br></pre></td></tr></table></figure>
+<h4 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h4><p>简单来说自已调用自已</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fact</span>(<span class="params">n</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(n === <span class="number">1</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> n = <span class="number">1</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> n*fact(n<span class="number">-1</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(fact(<span class="number">3</span>)) <span class="comment">//6</span></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/10/31/JS函数/" data-id="cjnxdh6g40004xps6zukvmdut" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2018/10/09/JS运算符/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">JS运算符</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/10/31/JS函数/">JS函数</a>
+          </li>
+        
+          <li>
+            <a href="/2018/10/09/JS运算符/">JS运算符</a>
+          </li>
+        
+          <li>
+            <a href="/2018/10/08/JS作用域和Js引用类型/">JS作用域和Js引用类型</a>
+          </li>
+        
+          <li>
+            <a href="/2018/10/08/JS对象/">JS对象</a>
+          </li>
+        
+          <li>
+            <a href="/2018/10/07/javascript入门/">javascript入门</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

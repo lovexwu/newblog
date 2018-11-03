@@ -62,10 +62,10 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-JS运算符" class="article article-type-post" itemscope="" itemprop="blogPost">
+    <article id="post-JS作用域和Js引用类型" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2018/10/09/JS运算符/" class="article-date">
-  <time datetime="2018-10-09T15:23:25.000Z" itemprop="datePublished">2018-10-09</time>
+    <a href="/2018/10/11/JS作用域和Js引用类型/" class="article-date">
+  <time datetime="2018-10-11T13:45:40.000Z" itemprop="datePublished">2018-10-11</time>
 </a>
     
   </div>
@@ -76,7 +76,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/10/09/JS运算符/">JS运算符</a>
+      <a class="article-title" href="/2018/10/11/JS作用域和Js引用类型/">JS作用域和Js引用类型</a>
     </h1>
   
 
@@ -84,22 +84,79 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h5 id="加号运算符"><a href="#加号运算符" class="headerlink" title="加号运算符"></a>加号运算符</h5><p>有些操作符对不同数据类型有不同的含义，比如 +</p>
-<ul>
-<li>在两个操作数都是数字的时候，会做加法运算</li>
-<li>两个参数都是字符串或在有一个参数是字符串的情况下会把另外一个参数转换为字符串做字符串拼接</li>
-<li>在参数有对象的情况下会调用其valueOf 或 toString</li>
-<li>在只有一个字符串参数的时候会尝试将其转换为数字</li>
-<li>在只有一个数字参数的时候返回其正数值</li>
+        <h4 id="JS作用域链"><a href="#JS作用域链" class="headerlink" title="JS作用域链"></a>JS作用域链</h4><p><strong>题1</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">1</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn1</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">fn2</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(a)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">fn3</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">var</span> a = <span class="number">4</span></span><br><span class="line">        fn2()</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">var</span> a = <span class="number">2</span></span><br><span class="line">    <span class="keyword">return</span> fn3</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> fn = fn1()</span><br><span class="line">fn() <span class="comment">// 2</span></span><br><span class="line"></span><br><span class="line">分析：</span><br><span class="line">调用fn1()后，返回fn3，而fn3中又调用了fn2()，而fn2输出a，但是fn2中没有定义a，所以在上级作用域找a，即fn1的作用域，所以输出<span class="number">2</span></span><br></pre></td></tr></table></figure>
+<p><strong>题2</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">1</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn1</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">fn3</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">var</span> a = <span class="number">4</span></span><br><span class="line">        fn2()</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">var</span> a = <span class="number">2</span></span><br><span class="line">    <span class="keyword">return</span> fn3</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn2</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(a)</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> fn = fn1()</span><br><span class="line">fn() <span class="comment">// 1</span></span><br><span class="line"></span><br><span class="line">分析：</span><br><span class="line">调用fn1之后，<span class="keyword">return</span> fn3，而fn3调用了fn2，fn2输出a，而fn2中没有a，所以在fn2的上级作用域中找a，所以输出全局作用域的a，即<span class="number">1</span></span><br></pre></td></tr></table></figure>
+<p><strong>题3</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">1</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn1</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">fn3</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">fn2</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">      <span class="built_in">console</span>.log(a)</span><br><span class="line">    &#125;</span><br><span class="line">    fn2()</span><br><span class="line">    <span class="keyword">var</span> a = <span class="number">4</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">var</span> a = <span class="number">2</span></span><br><span class="line">  <span class="keyword">return</span> fn3</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> fn = fn1()</span><br><span class="line">fn() <span class="comment">// undefined</span></span><br><span class="line"></span><br><span class="line">分析：</span><br><span class="line">调用fn2时，在fn3的作用域下，a被声明了，但是还没被赋值</span><br></pre></td></tr></table></figure>
+<h5 id="解密"><a href="#解密" class="headerlink" title="解密"></a>解密</h5><p>1､函数在执行的过程中，先从自已内部找变量</p>
+<p>2､如果找不到，再从创建当前函数所在的作用域去找，以此往上</p>
+<h4 id="基本类型、引用类型"><a href="#基本类型、引用类型" class="headerlink" title="基本类型、引用类型"></a>基本类型、引用类型</h4><ul>
+<li><p>基本类型值（数值、字符串、布尔值、null和undefine）：指保存在栈内存中的简单数据段</p>
+</li>
+<li><p>引用类型值（对象、数组、函数、正则）:指那些保存在堆内存中的对象，变量中保存的实际上只是一个指针，这个指针执行内存中的另一个位置，由该位置保存对象</p>
+</li>
 </ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="number">2</span>+<span class="number">4</span>) <span class="comment">//6</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"2"</span>+<span class="string">"4"</span>) <span class="comment">//"24"</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">2</span>+<span class="string">"4"</span>) <span class="comment">//"24"</span></span><br><span class="line"><span class="built_in">console</span>.log(+<span class="string">"4"</span>) <span class="comment">//4</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">    toString:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">10</span></span><br><span class="line">    &#125;,</span><br><span class="line">    valueOf:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"100"</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(+obj) <span class="comment">// 100</span></span><br><span class="line"><span class="comment">//这里是因为obj的valueOf级别高于toString，所以是返回字符串100,然后+号会强制转为数字</span></span><br></pre></td></tr></table></figure>
-<p><u>其他运算符参考</u></p>
-<p> <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators" target="_blank" rel="noopener">https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators</a></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a;</span><br><span class="line"><span class="keyword">var</span> b;</span><br><span class="line"><span class="keyword">var</span> obj;</span><br><span class="line"><span class="keyword">var</span> obj2;</span><br><span class="line"></span><br><span class="line">a = <span class="number">1</span>;</span><br><span class="line">b = <span class="number">2</span>;</span><br><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">    name: <span class="string">'xwu'</span>,</span><br><span class="line">    sex: <span class="string">'girl'</span>,</span><br><span class="line">    age: <span class="number">18</span>,</span><br><span class="line">    friend :&#123;</span><br><span class="line">        name: <span class="string">'hello'</span>,</span><br><span class="line">        age: <span class="number">100</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> newObj = &#123;&#125;;</span><br><span class="line"></span><br><span class="line">b = a;</span><br><span class="line"><span class="built_in">console</span>.log(b); <span class="comment">//1</span></span><br><span class="line"><span class="keyword">var</span> obj2 = obj;</span><br><span class="line">obj <span class="comment">//&#123;name: "xwu", sex: "girl", age: 18, friend: &#123;…&#125;&#125;</span></span><br><span class="line">obj2 <span class="comment">//&#123;name: "xwu", sex: "girl", age: 18, friend: &#123;…&#125;&#125;</span></span><br><span class="line"></span><br><span class="line">obj.name = <span class="string">'xxwu'</span> <span class="comment">//"xxwu"</span></span><br><span class="line">obj2.name  <span class="comment">//"xxwu"</span></span><br><span class="line"><span class="comment">// 只有一个东西，取了不同名字，这就是引用类型</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> obj3 = &#123;<span class="attr">name</span>: <span class="string">'hello'</span>&#125;;</span><br><span class="line"><span class="keyword">var</span> obj4 = &#123;<span class="attr">name</span>: <span class="string">'hello'</span>&#125;;</span><br><span class="line">obj3 === obj4 <span class="comment">//false</span></span><br></pre></td></tr></table></figure>
+<p><img src="https://upload-images.jianshu.io/upload_images/9375265-61edb0c547ce4ef6.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="p1.jpg"></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sum</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line"> <span class="built_in">console</span>.log(<span class="string">'sum.....'</span>)   </span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> sum2 = sum</span><br><span class="line">sum2() <span class="comment">// sum.....</span></span><br><span class="line">sum2 === sum <span class="comment">//true</span></span><br></pre></td></tr></table></figure>
+<p>如下图可知，sum和sum2指向的是同一个地址code，即同一个东西，取了不同名字sum、sum2,这就是引用类型</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/9375265-51635ec7cc5406df.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="p2.jpg"></p>
+<h4 id="函数的参数传递"><a href="#函数的参数传递" class="headerlink" title="函数的参数传递"></a>函数的参数传递</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">inc</span>(<span class="params">n</span>)</span>&#123;</span><br><span class="line">    n++;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> a = <span class="number">10</span>;</span><br><span class="line">inc(a);</span><br><span class="line"><span class="built_in">console</span>.log(a);<span class="comment">//10</span></span><br><span class="line"></span><br><span class="line">相当于</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">inc</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> n = <span class="built_in">arguments</span>[<span class="number">0</span>]</span><br><span class="line">    n++ <span class="comment">//可以使用arguments对象在函数中引用函数的参数,此对象包含传递给函数的每个参数,第一个参数在索引0处</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> a = <span class="number">10</span></span><br><span class="line">inc(a)</span><br><span class="line"><span class="built_in">console</span>.log(a) <span class="comment">//10</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">incObj</span>(<span class="params">obj</span>)</span>&#123;</span><br><span class="line">    <span class="comment">//var obj = o // 0x0001</span></span><br><span class="line">    obj.n++;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> o = &#123;<span class="attr">n</span>: <span class="number">10</span>&#125;; <span class="comment">//o = 0x0001</span></span><br><span class="line">incObj(o);</span><br><span class="line"><span class="built_in">console</span>.log(o);</span><br></pre></td></tr></table></figure>
+<p>引用类型存的对象地址,如下图</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/9375265-43b27d969403eae3.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="p3.jpg"></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">squireArr</span>(<span class="params">arr</span>)</span>&#123;</span><br><span class="line">    <span class="comment">//var arr = 0x0011</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i&lt;arr.length; i++)&#123;</span><br><span class="line">        arr[i] = arr[i]*arr[i]</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">squireArr2</span>(<span class="params">arr</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> newArr = []</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i&lt; arr.length; i++)&#123;</span><br><span class="line">        newArr = arr[i]*arr[i]</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> newArr</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> arr = [<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>] <span class="comment">// arr 0x0011</span></span><br><span class="line">squireArr(arr)</span><br><span class="line"><span class="built_in">console</span>.log(arr) <span class="comment">// [4,9,16,25] </span></span><br><span class="line"><span class="comment">//在原数组操作</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> arr2 = squireArr2(arr)</span><br><span class="line"><span class="built_in">console</span>.log(arr2) <span class="comment">// [4,9,16,25]</span></span><br><span class="line"><span class="comment">//得到一个新数组，原数组没变</span></span><br></pre></td></tr></table></figure>
+<h4 id="对象深拷贝和浅拷贝"><a href="#对象深拷贝和浅拷贝" class="headerlink" title="对象深拷贝和浅拷贝"></a>对象深拷贝和浅拷贝</h4><p>//浅拷贝 （即拷贝一层）</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">shallowCopy</span>(<span class="params">oldObj</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> newObj = &#123;&#125;;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i <span class="keyword">in</span> oldObj)&#123;</span><br><span class="line">        <span class="keyword">if</span>(oldObj.hasOwnProperty(i))&#123;</span><br><span class="line">            newObj[i] = oldObj[i];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> newObj;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>//深拷贝 （）</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">deepCopy</span>(<span class="params">oldObj</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> newObj = &#123;&#125;;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> key <span class="keyword">in</span> oldObj)&#123;</span><br><span class="line">        <span class="keyword">if</span>(<span class="keyword">typeof</span> oldObj[key] === <span class="string">'object'</span>)&#123;</span><br><span class="line">            newObj[key] = deepCopy(oldObj[key]);</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            newObj[key] = oldObj[key];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> newObj;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/09/JS运算符/" data-id="cjnwpwjhl0005k2s6zrl5i8dq" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/11/JS作用域和Js引用类型/" data-id="cjnx7rmbv0001dxs6u80p1vgt" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-谈谈JavaScript的作用域链" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/10/07/谈谈JavaScript的作用域链/" class="article-date">
+  <time datetime="2018-10-07T10:03:06.000Z" itemprop="datePublished">2018-10-07</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/10/07/谈谈JavaScript的作用域链/">谈谈JavaScript的作用域链</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="作用域链"><a href="#作用域链" class="headerlink" title="作用域链"></a><strong>作用域链</strong></h2><p>每当声明一个函数的时候会有一个独立的的作用域，遇到函数执行需要调用某一个变量的时候，需要先在当前函数的作用域下寻找。如果当前函数的作用域下找不到该值变量，就需要进入到创建该函数所在的作用域下寻找，以此往上直至找到为止。这样就形成了一条作用域链。</p>
+<p><strong>来看一个实例</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">1</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn1</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">fn2</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(a)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">fn3</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> a = <span class="number">4</span></span><br><span class="line">    fn2()</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">var</span> a = <span class="number">2</span></span><br><span class="line">  <span class="keyword">return</span> fn3</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> fn = fn1()</span><br><span class="line">fn()</span><br></pre></td></tr></table></figure>
+<p><strong>分析上面实例：</strong><br>在function fn1内是一个独立的作用域，在function fn2和function fn3中又是两个独立的作用域。当输出fn1的时候，需要先找到fn1下返回fn3的值。对应到fn3中需要找到fn2输出的a。而在fn2的作用域中，找不到变量a，需要返回到创建function fn2的作用域下寻找，即fn1的作用域中，得到var a = 2，因此代码输出结果为2</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>1、函数在执行的过程中，先从自己内部找变量<br>2、如果找不到，再从创建当前函数所在的作用域去找, 以此往上<br>3、注意找的是变量的当前的状态</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/10/07/谈谈JavaScript的作用域链/" data-id="cjnv5cj1y0006wys6e7nutsil" class="article-share-link">Share</a>
       
       
     </footer>
@@ -111,8 +168,8 @@
   
     <article id="post-JS对象" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2018/10/08/JS对象/" class="article-date">
-  <time datetime="2018-10-08T10:07:30.000Z" itemprop="datePublished">2018-10-08</time>
+    <a href="/2018/10/06/JS对象/" class="article-date">
+  <time datetime="2018-10-06T10:07:30.000Z" itemprop="datePublished">2018-10-06</time>
 </a>
     
   </div>
@@ -123,7 +180,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/10/08/JS对象/">JS对象</a>
+      <a class="article-title" href="/2018/10/06/JS对象/">JS对象</a>
     </h1>
   
 
@@ -142,42 +199,363 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> key <span class="keyword">in</span> company)&#123;</span><br><span class="line"><span class="built_in">console</span>.log(company[key])</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>第 3 题</p>
 <p>使用 JSON 对象实现一个简单的深拷贝函数(deepCopy)。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">    name: <span class="string">'xwu'</span>,</span><br><span class="line">    age: <span class="string">'18'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> obj2 = <span class="built_in">JSON</span>.parse(Json.stringify(obj))</span><br><span class="line">obj.age = <span class="number">4</span></span><br><span class="line"><span class="built_in">console</span>.log(obj) <span class="comment">//4</span></span><br><span class="line">obj2.age = <span class="number">3</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">    name: <span class="string">'xwu'</span>,</span><br><span class="line">    age: <span class="string">'18'</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//JSON.stringify 将对象转化为字符串</span></span><br><span class="line"><span class="comment">//JSON.parse 将JSON字符串转化为对象</span></span><br><span class="line"><span class="keyword">var</span> obj2 = <span class="built_in">JSON</span>.parse(Json.stringify(obj))</span><br><span class="line">obj.age = <span class="number">4</span> </span><br><span class="line"><span class="built_in">console</span>.log(obj) <span class="comment">//4</span></span><br><span class="line">obj2.age = <span class="number">3</span></span><br></pre></td></tr></table></figure>
 <p>第 4 题 </p>
 <p>分别举例说明数组方法<code>push</code>、<code>pop</code>、<code>shift</code>、<code>unshift</code>、<code>join</code>、<code>splice</code>、<code>sort</code>、<code>reverse</code>、<code>concat</code>的作用？</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line">arr.push(<span class="string">'ok'</span>)   <span class="comment">//给数组最后添加一个元素</span></span><br><span class="line"><span class="comment">//[1, 2, 3, "ok"] </span></span><br><span class="line"></span><br><span class="line">arr.pop() <span class="comment">//把数组最后一位踢出来</span></span><br><span class="line"><span class="comment">//[1, 2, 3]</span></span><br><span class="line"></span><br><span class="line">arr.shift() <span class="comment">//把数组第一位踢出来</span></span><br><span class="line"><span class="comment">//[2, 3]</span></span><br><span class="line"></span><br><span class="line">arr.unshift(<span class="string">'haha'</span>) <span class="comment">//在数组第一位添加一个元素</span></span><br><span class="line"><span class="comment">//["haha", 2, 3]</span></span><br><span class="line"></span><br><span class="line">arr.join(<span class="string">'-'</span>) <span class="comment">//连接</span></span><br><span class="line"><span class="comment">//"2-3"</span></span><br><span class="line"></span><br><span class="line">arr.splice(<span class="number">1</span>,<span class="number">1</span>,<span class="string">'hello'</span>,<span class="string">'one'</span>,<span class="string">'two'</span>) <span class="comment">//从数组的第一位开始，替换掉一位</span></span><br><span class="line"><span class="comment">//[2, "hello", "one", "two"]</span></span><br><span class="line"></span><br><span class="line">arr.sort()  <span class="comment">//排序</span></span><br><span class="line"><span class="comment">//[2, "hello", "one", "two"]</span></span><br><span class="line"></span><br><span class="line">arr.reverse() <span class="comment">//逆序即倒序</span></span><br><span class="line"><span class="comment">//["two", "one", "hello", 2]</span></span><br><span class="line"></span><br><span class="line">arr.concat(<span class="string">'super'</span>) <span class="comment">//拼接</span></span><br><span class="line"><span class="comment">//["two", "one", "hello", 2, "super"]</span></span><br></pre></td></tr></table></figure>
 <p>第 5 题</p>
 <p>写一个函数，操作数组，返回一个新数组，新数组中只包含正数。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">function filterPositive(arr)&#123;</span><br><span class="line">补全</span><br><span class="line">&#125;</span><br><span class="line">var arr = [3, -1,  2,  &apos;饥人谷&apos;, true]</span><br><span class="line">filterPositive(arr)</span><br><span class="line">console.log(filterPositive(arr)) //[3,  2]</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">filterPositive</span>(<span class="params">arr</span>)</span>&#123;</span><br><span class="line">补全</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> arr = [<span class="number">3</span>, <span class="number">-1</span>,  <span class="number">2</span>,  <span class="string">'饥人谷'</span>, <span class="literal">true</span>]</span><br><span class="line">filterPositive(arr)</span><br><span class="line"><span class="built_in">console</span>.log(filterPositive(arr)) <span class="comment">//[3,  2]</span></span><br></pre></td></tr></table></figure>
 <p>答案：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">方法<span class="number">1</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">filterPositive</span>(<span class="params">arr</span>)</span>&#123;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i&lt; arr.length; i++)&#123;</span><br><span class="line">         <span class="keyword">var</span> newArr = [];</span><br><span class="line">         <span class="keyword">if</span>(<span class="keyword">typeof</span>(arr[i]) === <span class="string">'number'</span> &amp;&amp; arr[i] &gt; <span class="number">0</span>)&#123;</span><br><span class="line">            newArr.push(arr[i]) </span><br><span class="line">         &#125;</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> newArr</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> arr = [<span class="number">3</span>, <span class="number">-1</span>,  <span class="number">2</span>,  <span class="string">'饥人谷'</span>, <span class="literal">true</span>]</span><br><span class="line">filterPositive(arr)</span><br><span class="line"><span class="built_in">console</span>.log(filterPositive(arr)) <span class="comment">//[3,  2]</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line">方法<span class="number">2</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">filterPositive</span>(<span class="params">arr</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> arr.filter(<span class="function"><span class="keyword">function</span>(<span class="params">val</span>)</span>&#123;</span><br><span class="line">     <span class="keyword">return</span> <span class="keyword">typeof</span> val === <span class="string">'number'</span> &amp;&amp; val &gt; <span class="number">0</span> </span><br><span class="line">  &#125;)</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> arr = [<span class="number">3</span>, <span class="number">-1</span>,  <span class="number">2</span>,  <span class="string">'饥人谷'</span>, <span class="literal">true</span>]</span><br><span class="line">filterPositive(arr)</span><br><span class="line"><span class="built_in">console</span>.log(filterPositive(arr)) <span class="comment">//[3,  2]</span></span><br></pre></td></tr></table></figure>
 <p>第 6 题</p>
 <p>用 splice函数分别实现 <code>push</code>、<code>pop</code>、<code>shift</code>、<code>unshift</code>方法, 如：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">function push(arr, value)&#123;</span><br><span class="line">    arr.splice(arr.length, 0, value)</span><br><span class="line">    return arr.length</span><br><span class="line">&#125;</span><br><span class="line">var arr = [3, 4, 5]</span><br><span class="line">arr.push(10) // arr 变成[3,4,5,10]，返回4</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">push</span>(<span class="params">arr, value</span>)</span>&#123;</span><br><span class="line">    arr.splice(arr.length, <span class="number">0</span>, value)</span><br><span class="line">    <span class="keyword">return</span> arr.length</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> arr = [<span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]</span><br><span class="line">arr.push(<span class="number">10</span>) <span class="comment">// arr 变成[3,4,5,10]，返回4</span></span><br></pre></td></tr></table></figure>
 <p>答案：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span>、pop 把数组的最后一位踢出去</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">pop</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    arr.splice(arr.length<span class="number">-1</span>,<span class="number">1</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> arr = [<span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]</span><br><span class="line">arr.pop() <span class="comment">// [3,4]</span></span><br><span class="line"></span><br><span class="line"><span class="number">2</span>、shift 把数组的第一位踢出去</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">shift</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    arr.splice(<span class="number">0</span>,<span class="number">1</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> arr = [<span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]</span><br><span class="line">arr.shift() <span class="comment">// [4,5]</span></span><br><span class="line"></span><br><span class="line"><span class="number">3</span>､ unshift 在数组的第一位添加元素</span><br><span class="line">    arr.splice(<span class="number">0</span>,<span class="number">1</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> arr = [<span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]</span><br><span class="line">arr.unshift(<span class="number">10</span>)</span><br></pre></td></tr></table></figure>
 <p>第 7 题</p>
 <p>对以下代码 users中的对象，分别以 name 字段、age 字段、company 字段进行排序</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var users = [</span><br><span class="line">  &#123; name: &quot;John&quot;, age: 20, company: &quot;Baidu&quot; &#125;,</span><br><span class="line">  &#123; name: &quot;Pete&quot;, age: 18, company: &quot;Alibaba&quot; &#125;,</span><br><span class="line">  &#123; name: &quot;Ann&quot;, age: 19, company: &quot;Tecent&quot; &#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> users = [</span><br><span class="line">  &#123; <span class="attr">name</span>: <span class="string">"John"</span>, <span class="attr">age</span>: <span class="number">20</span>, <span class="attr">company</span>: <span class="string">"Baidu"</span> &#125;,</span><br><span class="line">  &#123; <span class="attr">name</span>: <span class="string">"Pete"</span>, <span class="attr">age</span>: <span class="number">18</span>, <span class="attr">company</span>: <span class="string">"Alibaba"</span> &#125;,</span><br><span class="line">  &#123; <span class="attr">name</span>: <span class="string">"Ann"</span>, <span class="attr">age</span>: <span class="number">19</span>, <span class="attr">company</span>: <span class="string">"Tecent"</span> &#125;</span><br><span class="line">]</span><br></pre></td></tr></table></figure>
 <p>答案：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">1、 name字段排序</span><br><span class="line">users.sort(function(v1,v2)&#123;</span><br><span class="line">    return v1.name &gt; v2.name</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">2､ age 字段排序</span><br><span class="line">users.sort(function(v1,v2)&#123;</span><br><span class="line">    return v1.age - v2.age</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">3、company 字段排序</span><br><span class="line">users.sort(function(v1,v2)&#123;</span><br><span class="line">    return v1.company &gt; v2.company</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span>、 name字段排序</span><br><span class="line">users.sort(<span class="function"><span class="keyword">function</span>(<span class="params">v1,v2</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> v1.name &gt; v2.name</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="number">2</span>､ age 字段排序</span><br><span class="line">users.sort(<span class="function"><span class="keyword">function</span>(<span class="params">v1,v2</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> v1.age - v2.age</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="number">3</span>、company 字段排序</span><br><span class="line">users.sort(<span class="function"><span class="keyword">function</span>(<span class="params">v1,v2</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> v1.company &gt; v2.company</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 <p>第 8 题</p>
 <p>分别举例说明ES5数组方法 indexOf、forEach、map、every、some、filter、reduce的用法？</p>
 <p>答案：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line">indexOf </span><br><span class="line">查找数组内指定元素的位置，查找到第一个返回其索引，没有返回-1</span><br><span class="line">var arr = [1,2,3,4,5]</span><br><span class="line">console.log(arr.indexOf(3)) 2</span><br><span class="line">console.log(arr.indexOf(9)) -1</span><br><span class="line"></span><br><span class="line">forEach(element,index,array)</span><br><span class="line"> 遍历数组，参数为一个回调函数，回调函数有三个参数：</span><br><span class="line"> 1、当前元素</span><br><span class="line"> 2、当前元素索引</span><br><span class="line"> 3、整个数组</span><br><span class="line"></span><br><span class="line">var arr = [1,2,3,4,5]</span><br><span class="line">arr.forEach(function(e,index)&#123;</span><br><span class="line">    arr[index] = e + 1      </span><br><span class="line">&#125;)</span><br><span class="line">console.log(arr) [2, 3, 4, 5, 6]</span><br><span class="line"></span><br><span class="line">map 与forEach类似，遍历数组，回调函数返回值组成一个新数组返回，新数组索引结构和原数组一致，原数组不变</span><br><span class="line">var arr = [1,2,3,4,5]</span><br><span class="line">console.log(arr.map(function(e)&#123;</span><br><span class="line">   return e*e  [1, 4, 9, 16, 25]</span><br><span class="line">&#125;))</span><br><span class="line">console.log(arr) [1, 2, 3, 4, 5]</span><br><span class="line"></span><br><span class="line">注：在空数组上调用,every返回true,some 返回false</span><br><span class="line"></span><br><span class="line">every 所有函数的每个回调函数都返回true时才会返回true,当遇到false时终止执行，返回false</span><br><span class="line">var arr = [1,2,3,4,5]</span><br><span class="line">arr.every(function(val)&#123;</span><br><span class="line">    return val&gt;0?true:false</span><br><span class="line">&#125;)true</span><br><span class="line"></span><br><span class="line">some 只要有一个回调函数返回true时终止执行并返回true,否则返回false </span><br><span class="line">var arr = [1,2,3,4,5]</span><br><span class="line">arr.some(function(val)&#123;</span><br><span class="line">    return val&gt;0?true:false</span><br><span class="line">&#125;)true</span><br><span class="line"></span><br><span class="line">filter</span><br><span class="line">filter(function(element))</span><br><span class="line">返回一个子集，回调函数用于逻辑判断是否返回，返回true则把当前元素加入到返回数组中，false则不加</span><br><span class="line">新数组只包含返回true的值，索引缺失的不包括，原数组保持不变</span><br><span class="line">var arr = [1,2,3,4,5,6]</span><br><span class="line">console.log(arr.filter(function(val)&#123;</span><br><span class="line">    return val &gt; 3</span><br><span class="line">&#125;))  [4, 5, 6]</span><br><span class="line">console.log(arr)  [1,2,3,4,5,6]</span><br><span class="line"></span><br><span class="line">reduce </span><br><span class="line">reduce(function(v1,v2),value)</span><br><span class="line">遍历数组，调用回调函数，将数组元素组合成一个值，从索引最小值开始，方法有两个参数</span><br><span class="line">1、回调函数：把两个值合为一个，返回结果</span><br><span class="line">2、value : 一个初始值，可选</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br></pre></td><td class="code"><pre><span class="line">indexOf </span><br><span class="line">查找数组内指定元素的位置，查找到第一个返回其索引，没有返回<span class="number">-1</span></span><br><span class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</span><br><span class="line"><span class="built_in">console</span>.log(arr.indexOf(<span class="number">3</span>)) <span class="number">2</span></span><br><span class="line"><span class="built_in">console</span>.log(arr.indexOf(<span class="number">9</span>)) <span class="number">-1</span></span><br><span class="line"></span><br><span class="line">forEach(element,index,array)</span><br><span class="line"> 遍历数组，参数为一个回调函数，回调函数有三个参数：</span><br><span class="line"> <span class="number">1</span>、当前元素</span><br><span class="line"> <span class="number">2</span>、当前元素索引</span><br><span class="line"> <span class="number">3</span>、整个数组</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</span><br><span class="line">arr.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">e,index</span>)</span>&#123;</span><br><span class="line">    arr[index] = e + <span class="number">1</span>      </span><br><span class="line">&#125;)</span><br><span class="line"><span class="built_in">console</span>.log(arr) [<span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>]</span><br><span class="line"></span><br><span class="line">map 与forEach类似，遍历数组，回调函数返回值组成一个新数组返回，新数组索引结构和原数组一致，原数组不变</span><br><span class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</span><br><span class="line"><span class="built_in">console</span>.log(arr.map(<span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;</span><br><span class="line">   <span class="keyword">return</span> e*e  [<span class="number">1</span>, <span class="number">4</span>, <span class="number">9</span>, <span class="number">16</span>, <span class="number">25</span>]</span><br><span class="line">&#125;))</span><br><span class="line"><span class="built_in">console</span>.log(arr) [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>, <span class="number">4</span>, <span class="number">5</span>]</span><br><span class="line"></span><br><span class="line">注：在空数组上调用,every返回<span class="literal">true</span>,some 返回<span class="literal">false</span></span><br><span class="line"></span><br><span class="line">every 所有函数的每个回调函数都返回<span class="literal">true</span>时才会返回<span class="literal">true</span>,当遇到<span class="literal">false</span>时终止执行，返回<span class="literal">false</span></span><br><span class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</span><br><span class="line">arr.every(<span class="function"><span class="keyword">function</span>(<span class="params">val</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> val&gt;<span class="number">0</span>?<span class="literal">true</span>:<span class="literal">false</span></span><br><span class="line">&#125;)<span class="literal">true</span></span><br><span class="line"></span><br><span class="line">some 只要有一个回调函数返回<span class="literal">true</span>时终止执行并返回<span class="literal">true</span>,否则返回<span class="literal">false</span> </span><br><span class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</span><br><span class="line">arr.some(<span class="function"><span class="keyword">function</span>(<span class="params">val</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> val&gt;<span class="number">0</span>?<span class="literal">true</span>:<span class="literal">false</span></span><br><span class="line">&#125;)<span class="literal">true</span></span><br><span class="line"></span><br><span class="line">filter</span><br><span class="line">filter(<span class="function"><span class="keyword">function</span>(<span class="params">element</span>))</span></span><br><span class="line"><span class="function">返回一个子集，回调函数用于逻辑判断是否返回，返回<span class="title">true</span>则把当前元素加入到返回数组中，<span class="title">false</span>则不加</span></span><br><span class="line"><span class="function">新数组只包含返回<span class="title">true</span>的值，索引缺失的不包括，原数组保持不变</span></span><br><span class="line">var arr = [1,2,3,4,5,6]</span><br><span class="line"><span class="built_in">console</span>.log(arr.filter(<span class="function"><span class="keyword">function</span>(<span class="params">val</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> val &gt; <span class="number">3</span></span><br><span class="line">&#125;))  [<span class="number">4</span>, <span class="number">5</span>, <span class="number">6</span>]</span><br><span class="line"><span class="built_in">console</span>.log(arr)  [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]</span><br><span class="line"></span><br><span class="line">reduce </span><br><span class="line">reduce(<span class="function"><span class="keyword">function</span>(<span class="params">v1,v2</span>),<span class="title">value</span>)</span></span><br><span class="line"><span class="function">遍历数组，调用回调函数，将数组元素组合成一个值，从索引最小值开始，方法有两个参数</span></span><br><span class="line"><span class="function">1、回调函数：把两个值合为一个，返回结果</span></span><br><span class="line"><span class="function">2、<span class="title">value</span> : 一个初始值，可选</span></span><br></pre></td></tr></table></figure>
 <p>第9题</p>
 <p>以下代码输出什么？</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="number">1</span>、</span><br><span class="line"><span class="keyword">var</span> name = <span class="string">'sex'</span></span><br><span class="line"><span class="keyword">var</span> company = &#123;</span><br><span class="line">    name: <span class="string">'饥人谷'</span>,</span><br><span class="line">    age: <span class="number">3</span>,</span><br><span class="line">    sex: <span class="string">'男'</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(company.name) <span class="comment">//饥人谷 </span></span><br><span class="line"></span><br><span class="line">分析：company.name中的name是指的company对象中的属性name，因为它的值是饥人谷，所以最后结果是饥人谷</span><br><span class="line"></span><br><span class="line"><span class="number">2</span>､</span><br><span class="line"><span class="keyword">var</span> name = <span class="string">'sex'</span></span><br><span class="line"><span class="keyword">var</span> company = &#123;</span><br><span class="line">    name: <span class="string">'饥人谷'</span>,</span><br><span class="line">    age: <span class="number">3</span>,</span><br><span class="line">    sex: <span class="string">'男'</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(company[name]) <span class="comment">//男</span></span><br><span class="line"></span><br><span class="line">分析：此处的company[name]中的name是指变量name，它的值是sex,然后再读取company对象中的sex的值，sex的值是男，所以最后输出男</span><br></pre></td></tr></table></figure>
 <p>第10题</p>
 <p>写补全sortString函数，实现字符串倒序</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">function  sortString(str)&#123;</span><br><span class="line">    //补全</span><br><span class="line">&#125;</span><br><span class="line">var str = &apos;jirenguhungervalley&apos;</span><br><span class="line">var str2 = sortString(str)</span><br><span class="line">console.log(str2) // &apos;yellavregnuhugnerij&apos;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span>  <span class="title">sortString</span>(<span class="params">str</span>)</span>&#123;</span><br><span class="line">    <span class="comment">//补全</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> str = <span class="string">'jirenguhungervalley'</span></span><br><span class="line"><span class="keyword">var</span> str2 = sortString(str)</span><br><span class="line"><span class="built_in">console</span>.log(str2) <span class="comment">// 'yellavregnuhugnerij'</span></span><br></pre></td></tr></table></figure>
 <p>答案：</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span>  <span class="title">sortString</span>(<span class="params">str</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> str.split(<span class="string">''</span>).reverse().join(<span class="string">''</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/08/JS对象/" data-id="cjnv5cj1u0002wys6gx1biz3c" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/06/JS对象/" data-id="cjnv5cj1u0002wys6gx1biz3c" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-JS函数" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/10/05/JS函数/" class="article-date">
+  <time datetime="2018-10-05T05:57:45.000Z" itemprop="datePublished">2018-10-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/10/05/JS函数/">JS函数</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="解密类型转换"><a href="#解密类型转换" class="headerlink" title="解密类型转换"></a>解密类型转换</h3><h4 id="if的判断"><a href="#if的判断" class="headerlink" title="if的判断"></a>if的判断</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(xxx)&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>js是如何处理的？做几道测试题看一看</p>
+<h6 id="题目-如下代码输出什么？"><a href="#题目-如下代码输出什么？" class="headerlink" title="题目 如下代码输出什么？"></a>题目 如下代码输出什么？</h6><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> （<span class="string">"hello"</span>)&#123;	<span class="comment">//true</span></span><br><span class="line">	<span class="built_in">console</span>.log(<span class="string">"hello"</span>)</span><br><span class="line">&#125; <span class="comment">//"hell0"</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(<span class="string">""</span>)&#123;<span class="comment">//false</span></span><br><span class="line">	<span class="built_in">console</span>.log(<span class="string">'empty'</span>)</span><br><span class="line">&#125; <span class="comment">//不输出</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(<span class="string">" "</span>)&#123;<span class="comment">//true</span></span><br><span class="line">	<span class="built_in">console</span>.log(<span class="string">'blank'</span>)</span><br><span class="line">&#125;<span class="comment">//'blank</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>([<span class="number">0</span>])&#123;<span class="comment">//true</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'array'</span>)</span><br><span class="line">&#125;<span class="comment">//'array'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(<span class="string">'0.00'</span>)&#123;<span class="comment">//true</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'0.00'</span>)</span><br><span class="line">&#125;<span class="comment">//0.00</span></span><br></pre></td></tr></table></figure>
+<h4 id="解密"><a href="#解密" class="headerlink" title="解密"></a>解密</h4><p>对括号里的表达式，会被强制转换为布尔类型</p>
+<h4 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h4><table>
+<thead>
+<tr>
+<th style="text-align:left">类型</th>
+<th style="text-align:center">结果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Undefined</td>
+<td style="text-align:center">false</td>
+</tr>
+<tr>
+<td style="text-align:left">Null</td>
+<td style="text-align:center">false</td>
+</tr>
+<tr>
+<td style="text-align:left">Boolean</td>
+<td style="text-align:center">直接判断</td>
+</tr>
+<tr>
+<td style="text-align:left">Number</td>
+<td style="text-align:center">+0,-0,或NaN为false,其他为true</td>
+</tr>
+<tr>
+<td style="text-align:left">String</td>
+<td style="text-align:center">空字符串为false,其他都为true</td>
+</tr>
+<tr>
+<td style="text-align:left">Object</td>
+<td style="text-align:center">true</td>
+</tr>
+</tbody>
+</table>
+<h4 id="的判断"><a href="#的判断" class="headerlink" title="==的判断"></a>==的判断</h4><p>对于==的判断，js是怎么处理的？做几道题看看</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">""</span> == <span class="number">0</span> <span class="comment">//true ""转数字是0</span></span><br><span class="line"><span class="string">" "</span> == <span class="number">0</span> <span class="comment">//true " "转数字也是0 </span></span><br><span class="line"><span class="string">""</span> == <span class="literal">true</span> <span class="comment">//false</span></span><br><span class="line"><span class="string">""</span> == <span class="literal">false</span><span class="comment">//true</span></span><br><span class="line"><span class="string">" "</span> == <span class="literal">true</span><span class="comment">//false</span></span><br><span class="line"></span><br><span class="line">!<span class="string">" "</span> == <span class="literal">true</span>  <span class="comment">//false " "转布尔是true 取反就是false</span></span><br><span class="line">!<span class="string">" "</span> == <span class="literal">false</span> <span class="comment">//true " "转布尔是true 取反就是false</span></span><br><span class="line"><span class="string">"hello"</span> == <span class="literal">true</span> <span class="comment">//false "hello"转数字是NaN </span></span><br><span class="line"><span class="string">"hello"</span> == <span class="literal">false</span> <span class="comment">//false</span></span><br><span class="line"><span class="string">"0"</span> == <span class="literal">true</span> <span class="comment">//false</span></span><br><span class="line"><span class="string">"00"</span> == <span class="literal">true</span> <span class="comment">//false</span></span><br><span class="line"><span class="string">"0.00"</span> == <span class="literal">false</span> <span class="comment">//true</span></span><br><span class="line"></span><br><span class="line"><span class="literal">undefined</span> == <span class="literal">null</span> <span class="comment">//true</span></span><br><span class="line">&#123;&#125; == <span class="literal">true</span> <span class="comment">// false &#123;&#125;转数字为[object object],ture转数字是1</span></span><br><span class="line">[] == <span class="literal">true</span> <span class="comment">// false</span></span><br><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">    a: <span class="number">0</span>,</span><br><span class="line">    valueOf:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;<span class="keyword">return</span> <span class="number">1</span>&#125;</span><br><span class="line">&#125;</span><br><span class="line">obj == <span class="string">"[object object]"</span> <span class="comment">//false 因为obj返回的是1</span></span><br><span class="line">obj == <span class="number">1</span> <span class="comment">//true</span></span><br><span class="line">obj == <span class="literal">true</span> <span class="comment">//true</span></span><br></pre></td></tr></table></figure>
+<p><u><strong>只有空白字符串（“ ”）转布尔值是true,其他都是false</strong></u></p>
+<h4 id="解密-1"><a href="#解密-1" class="headerlink" title="解密"></a>解密</h4><table>
+<thead>
+<tr>
+<th style="text-align:left">x</th>
+<th style="text-align:center">y</th>
+<th style="text-align:left">结果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">null</td>
+<td style="text-align:center">undefined</td>
+<td style="text-align:left">ture</td>
+</tr>
+<tr>
+<td style="text-align:left">Number</td>
+<td style="text-align:center">String</td>
+<td style="text-align:left">x == toNumber(y)</td>
+</tr>
+<tr>
+<td style="text-align:left">Boolean</td>
+<td style="text-align:center">(any)</td>
+<td style="text-align:left">toNumber(x) == y</td>
+</tr>
+<tr>
+<td style="text-align:left">Object</td>
+<td style="text-align:center">String or Number</td>
+<td style="text-align:left">toPrimitive(x) == y</td>
+</tr>
+<tr>
+<td style="text-align:left">otherwise</td>
+<td style="text-align:center">otherwise</td>
+<td style="text-align:left">false</td>
+</tr>
+</tbody>
+</table>
+<h4 id="toNumber"><a href="#toNumber" class="headerlink" title="toNumber"></a>toNumber</h4><table>
+<thead>
+<tr>
+<th style="text-align:left">type</th>
+<th style="text-align:center">result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Undefined</td>
+<td style="text-align:center">NaN</td>
+</tr>
+<tr>
+<td style="text-align:left">Null</td>
+<td style="text-align:center">0</td>
+</tr>
+<tr>
+<td style="text-align:left">Boolean</td>
+<td style="text-align:center">true -&gt;1,false -&gt;0</td>
+</tr>
+<tr>
+<td style="text-align:left">String</td>
+<td style="text-align:center">“abc” -&gt; NaN, “123” -&gt; 123</td>
+</tr>
+</tbody>
+</table>
+<h4 id="toPrimitive"><a href="#toPrimitive" class="headerlink" title="toPrimitive"></a>toPrimitive</h4><p>对于Object 类型，先尝试调用.valueOf方法获取结果。如果没有定义，再尝试调用.toString方法获取结果</p>
+<h4 id="arguments"><a href="#arguments" class="headerlink" title="arguments"></a>arguments</h4><p>在函数内部，你可以使用arguments对象获取到该函数的所有传入参数</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">pop</span>(<span class="params">name,age,sex</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(name)</span><br><span class="line">    <span class="built_in">console</span>.log(age)</span><br><span class="line">    <span class="built_in">console</span>.log(sex)</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="built_in">arguments</span>)</span><br><span class="line">&#125;</span><br><span class="line">pop(<span class="string">'xiaowu'</span>,<span class="number">19</span>,<span class="string">'boy'</span>)</span><br><span class="line"><span class="comment">// xiaowu</span></span><br><span class="line"><span class="comment">//19</span></span><br><span class="line"><span class="comment">//boy</span></span><br><span class="line"><span class="comment">//Arguments(3) ["xiaowu", 19, "boy", callee: ƒ, Symbol(Symbol.iterator): ƒ]</span></span><br></pre></td></tr></table></figure>
+<p>命名冲突</p>
+<p>当在同一个作用域内定义了名字相同的变量和方法的话，无论其顺序如何，变量的赋值会覆盖方法的赋值</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> fn = <span class="number">3</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>)</span>&#123;&#125;</span><br><span class="line"><span class="built_in">console</span>.log(fn) <span class="comment">//3</span></span><br><span class="line"></span><br><span class="line">相当于</span><br><span class="line"><span class="keyword">var</span> fn</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>)</span>&#123;&#125; <span class="comment">//覆盖上面的</span></span><br><span class="line">fn = <span class="number">3</span> <span class="comment">// 重新赋值</span></span><br><span class="line"><span class="built_in">console</span>.log(fn)</span><br></pre></td></tr></table></figure>
+<p>当函数执行有命令冲突时，可以认为在还是内部一开始有隐藏的声明变量这个操作</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params">fn</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(fn)</span><br><span class="line">    <span class="keyword">var</span> fn = <span class="number">3</span>;</span><br><span class="line">    <span class="built_in">console</span>.log(fn);</span><br><span class="line">&#125;</span><br><span class="line">fn(<span class="number">10</span>)</span><br><span class="line"></span><br><span class="line">相当于</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> fn = <span class="built_in">arguments</span>[<span class="number">0</span>]</span><br><span class="line">    <span class="built_in">console</span>.log(fn)</span><br><span class="line">    <span class="keyword">var</span> fn = <span class="number">3</span>;</span><br><span class="line">    <span class="built_in">console</span>.log(fn)</span><br><span class="line">&#125;</span><br><span class="line">fn(<span class="number">10</span>) <span class="comment">//10 3</span></span><br></pre></td></tr></table></figure>
+<h4 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h4><p>简单来说自已调用自已</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fact</span>(<span class="params">n</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(n === <span class="number">1</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> n = <span class="number">1</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> n*fact(n<span class="number">-1</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(fact(<span class="number">3</span>)) <span class="comment">//6</span></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/10/05/JS函数/" data-id="cjnwr1v2p0000dxs6spy4rh1h" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-JS运算符" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/10/04/JS运算符/" class="article-date">
+  <time datetime="2018-10-04T15:23:25.000Z" itemprop="datePublished">2018-10-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/10/04/JS运算符/">JS运算符</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h5 id="加号运算符"><a href="#加号运算符" class="headerlink" title="加号运算符"></a>加号运算符</h5><p>有些操作符对不同数据类型有不同的含义，比如 +</p>
+<ul>
+<li>在两个操作数都是数字的时候，会做加法运算</li>
+<li>两个参数都是字符串或在有一个参数是字符串的情况下会把另外一个参数转换为字符串做字符串拼接</li>
+<li>在参数有对象的情况下会调用其valueOf 或 toString</li>
+<li>在只有一个字符串参数的时候会尝试将其转换为数字</li>
+<li>在只有一个数字参数的时候返回其正数值</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="number">2</span>+<span class="number">4</span>) <span class="comment">//6</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"2"</span>+<span class="string">"4"</span>) <span class="comment">//"24"</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">2</span>+<span class="string">"4"</span>) <span class="comment">//"24"</span></span><br><span class="line"><span class="built_in">console</span>.log(+<span class="string">"4"</span>) <span class="comment">//4</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">    toString:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">10</span></span><br><span class="line">    &#125;,</span><br><span class="line">    valueOf:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"100"</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(+obj) <span class="comment">// 100</span></span><br><span class="line"><span class="comment">//这里是因为obj的valueOf级别高于toString，所以是返回字符串100,然后+号会强制转为数字</span></span><br></pre></td></tr></table></figure>
+<h5 id="逻辑运算符"><a href="#逻辑运算符" class="headerlink" title="逻辑运算符"></a>逻辑运算符</h5><p>能够转换为false的表达式有：</p>
+<ul>
+<li><code>null</code>；</li>
+<li><code>NaN</code>；</li>
+<li><code>0</code>；</li>
+<li>空字符串（<code>&quot;&quot;</code>）；</li>
+<li><code>undefined</code>。</li>
+</ul>
+<p><u></u></p>
+<p>其他运算符参考</p>
+<p> <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators" target="_blank" rel="noopener">https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/10/04/JS运算符/" data-id="cjnwpwjhl0005k2s6zrl5i8dq" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-ES5数组方法的那些事" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/10/04/ES5数组方法的那些事/" class="article-date">
+  <time datetime="2018-10-04T10:05:14.000Z" itemprop="datePublished">2018-10-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/10/04/ES5数组方法的那些事/">ES5数组方法的那些事</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p># </p>
+<p>indexOf、forEach、map、every、some、filter、reduce的用法</p>
+<p>###indexOf(element)<br>查找数组内指定元素的位置，查找到第一个返回其索引，没有返回-1</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</span><br><span class="line"><span class="built_in">console</span>.log(arr.indexOf(<span class="number">3</span>)) <span class="comment">//2</span></span><br><span class="line"><span class="built_in">console</span>.log(arr.indexOf(<span class="number">9</span>)) <span class="comment">//-1</span></span><br></pre></td></tr></table></figure>
+<h3 id="forEach-element-index-array"><a href="#forEach-element-index-array" class="headerlink" title="forEach(element,index,array)"></a>forEach(element,index,array)</h3><p> 遍历数组，参数为一个回调函数，回调函数有三个参数：</p>
+<p>1、当前元素<br>2、当前元素索引<br>3、整个数组</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</span><br><span class="line">arr.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">e,index</span>)</span>&#123;</span><br><span class="line">   arr[index] = e + <span class="number">1</span>      </span><br><span class="line">&#125;)</span><br><span class="line"><span class="built_in">console</span>.log(arr) <span class="comment">//[2, 3, 4, 5, 6]</span></span><br></pre></td></tr></table></figure>
+<p>###map (function(element))<br>与forEach类似，遍历数组，回调函数返回值组成一个新数组返回，新数组索引结构和原数组一致，原数组不变</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</span><br><span class="line"><span class="built_in">console</span>.log(arr.map(<span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;</span><br><span class="line">   <span class="keyword">return</span> e*e <span class="comment">// [1, 4, 9, 16, 25]</span></span><br><span class="line">&#125;))</span><br><span class="line"><span class="built_in">console</span>.log(arr) <span class="comment">//[1, 2, 3, 4, 5]</span></span><br></pre></td></tr></table></figure>
+<p><strong>注：在空数组上调用,every返回true,some 返回false</strong></p>
+<h3 id="every-function-element-index-array"><a href="#every-function-element-index-array" class="headerlink" title="every (function(element,index,array))"></a>every (function(element,index,array))</h3><p>所有函数的每个回调函数都返回true时才会返回true,当遇到false时终止执行，返回false</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</span><br><span class="line">arr.every(<span class="function"><span class="keyword">function</span>(<span class="params">val</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> val&gt;<span class="number">0</span>?<span class="literal">true</span>:<span class="literal">false</span></span><br><span class="line">&#125;)<span class="comment">//true</span></span><br></pre></td></tr></table></figure>
+<p>###some (function(element,index,array))<br>只要有一个回调函数返回true时终止执行并返回true,否则返回false </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</span><br><span class="line">arr.some(<span class="function"><span class="keyword">function</span>(<span class="params">val</span>)</span>&#123;</span><br><span class="line">   <span class="keyword">return</span> val&gt;<span class="number">0</span>?<span class="literal">true</span>:<span class="literal">false</span></span><br><span class="line">&#125;)<span class="comment">//true</span></span><br></pre></td></tr></table></figure>
+<h3 id="filter-function-element"><a href="#filter-function-element" class="headerlink" title="filter(function(element))"></a>filter(function(element))</h3><p>返回一个子集，回调函数用于逻辑判断是否返回，返回true则把当前元素加入到返回数组中，false则不加<br>数组只包含返回true的值，索引缺失的不包括，原数组保持不变</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]</span><br><span class="line"><span class="built_in">console</span>.log(arr.filter(<span class="function"><span class="keyword">function</span>(<span class="params">val</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> val &gt; <span class="number">3</span></span><br><span class="line">&#125;)) <span class="comment">// [4, 5, 6]</span></span><br><span class="line"><span class="built_in">console</span>.log(arr) <span class="comment">// [1,2,3,4,5,6]</span></span><br></pre></td></tr></table></figure>
+<h3 id="reduce-function-v1-v2-value"><a href="#reduce-function-v1-v2-value" class="headerlink" title="reduce(function(v1,v2),value)"></a>reduce(function(v1,v2),value)</h3><p>遍历数组，调用回调函数，将数组元素组合成一个值，从索引最小值开始，方法有两个参数</p>
+<p>1、回调函数：把两个值合为一个，返回结果<br>2、value : 一个初始值，可选</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]</span><br><span class="line">arr.reduce(<span class="function"><span class="keyword">function</span>(<span class="params">v1,v2</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> v1 + v2</span><br><span class="line">&#125;) <span class="comment">//21</span></span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/10/04/ES5数组方法的那些事/" data-id="cjnv5cj1p0000wys6ep03u3k5" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-域名配置" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/10/03/域名配置/" class="article-date">
+  <time datetime="2018-10-03T11:13:24.000Z" itemprop="datePublished">2018-10-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/10/03/域名配置/">域名配置</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ol>
+<li><p>域名解析：<a href="http://www.misswuer.cn" target="_blank" rel="noopener">www.misswuer.cn</a> CNAME 到 <a href="http://lovexwu.github.io" target="_blank" rel="noopener">lovexwu.github.io</a> 上</p>
+</li>
+<li><p>github pages 里面自定义域名到 <a href="http://www.misswuer.cn" target="_blank" rel="noopener">www.misswuer.cn</a></p>
+</li>
+<li><p>hexo 里面的 _config.yml 的 public_dir 改为 github 仓库名 即 newblog</p>
+</li>
+<li><p>hexo 里面的 _config.yml 配置下 deploy 的仓库 为 newblog 的仓库路径 git://<a href="http://github.com/lovexwu/newblog.git" target="_blank" rel="noopener">github.com/lovexwu/newblog.git</a>，branch 设置为 master</p>
+</li>
+<li><p>npm install hexo-deployer-git –save</p>
+</li>
+<li><p>hexo d</p>
+</li>
+</ol>
+<p>完成</p>
+<p>配置好后，接下来就可以愉快地工作啦</p>
+<ol>
+<li><p>hexo new xxx</p>
+</li>
+<li><p>typora 编辑 xxx</p>
+</li>
+<li><p>hexo g 生成 html 文件，hexo s 预览下，如果之前开过 hexo s，之后就不用开了</p>
+</li>
+<li><p>hexo d 发布到网站上</p>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/10/03/域名配置/" data-id="cjnv5cj1w0004wys6i7cxf3rk" class="article-share-link">Share</a>
       
       
     </footer>
@@ -189,8 +567,8 @@
   
     <article id="post-javascript入门" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2018/10/07/javascript入门/" class="article-date">
-  <time datetime="2018-10-07T10:07:46.000Z" itemprop="datePublished">2018-10-07</time>
+    <a href="/2018/10/03/javascript入门/" class="article-date">
+  <time datetime="2018-10-03T10:07:46.000Z" itemprop="datePublished">2018-10-03</time>
 </a>
     
   </div>
@@ -201,7 +579,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/10/07/javascript入门/">javascript入门</a>
+      <a class="article-title" href="/2018/10/03/javascript入门/">javascript入门</a>
     </h1>
   
 
@@ -293,7 +671,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/07/javascript入门/" data-id="cjnvkjjf300006zs61fke4a2e" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/03/javascript入门/" data-id="cjnvkjjf300006zs61fke4a2e" class="article-share-link">Share</a>
       
       
     </footer>
@@ -305,8 +683,8 @@
   
     <article id="post-git命令使用" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2018/10/06/git命令使用/" class="article-date">
-  <time datetime="2018-10-06T09:59:22.000Z" itemprop="datePublished">2018-10-06</time>
+    <a href="/2018/10/02/git命令使用/" class="article-date">
+  <time datetime="2018-10-02T09:59:22.000Z" itemprop="datePublished">2018-10-02</time>
 </a>
     
   </div>
@@ -317,7 +695,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/10/06/git命令使用/">Git命令使用</a>
+      <a class="article-title" href="/2018/10/02/git命令使用/">Git命令使用</a>
     </h1>
   
 
@@ -344,7 +722,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/06/git命令使用/" data-id="cjnv5cj1v0003wys6a0rqvssf" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/02/git命令使用/" data-id="cjnv5cj1v0003wys6a0rqvssf" class="article-share-link">Share</a>
       
       
     </footer>
@@ -356,8 +734,8 @@
   
     <article id="post-Git-使用方法" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2018/10/05/Git-使用方法/" class="article-date">
-  <time datetime="2018-10-05T09:13:09.000Z" itemprop="datePublished">2018-10-05</time>
+    <a href="/2018/10/02/Git-使用方法/" class="article-date">
+  <time datetime="2018-10-02T09:13:09.000Z" itemprop="datePublished">2018-10-02</time>
 </a>
     
   </div>
@@ -368,7 +746,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/10/05/Git-使用方法/">Git-使用方法</a>
+      <a class="article-title" href="/2018/10/02/Git-使用方法/">Git-使用方法</a>
     </h1>
   
 
@@ -394,208 +772,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/05/Git-使用方法/" data-id="cjnv5cj1s0001wys6m2b2fxso" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-ES5数组方法的那些事" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/10/04/ES5数组方法的那些事/" class="article-date">
-  <time datetime="2018-10-04T10:05:14.000Z" itemprop="datePublished">2018-10-04</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/10/04/ES5数组方法的那些事/">ES5数组方法的那些事</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p># </p>
-<p>indexOf、forEach、map、every、some、filter、reduce的用法</p>
-<p>###indexOf<br>查找数组内指定元素的位置，查找到第一个返回其索引，没有返回-1</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</span><br><span class="line"><span class="built_in">console</span>.log(arr.indexOf(<span class="number">3</span>)) <span class="comment">//2</span></span><br><span class="line"><span class="built_in">console</span>.log(arr.indexOf(<span class="number">9</span>)) <span class="comment">//-1</span></span><br></pre></td></tr></table></figure>
-<h3 id="forEach"><a href="#forEach" class="headerlink" title="forEach"></a>forEach</h3><p> 遍历数组，参数为一个回调函数，回调函数有三个参数：</p>
-<p>1、当前元素<br>2、当前元素索引<br>3、整个数组</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</span><br><span class="line">arr.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">e,index</span>)</span>&#123;</span><br><span class="line">   arr[index] = e + <span class="number">1</span>      </span><br><span class="line">&#125;)</span><br><span class="line"><span class="built_in">console</span>.log(arr) <span class="comment">//[2, 3, 4, 5, 6]</span></span><br></pre></td></tr></table></figure>
-<p>###map<br>与forEach类似，遍历数组，回调函数返回值组成一个新数组返回，新数组索引结构和原数组一致，原数组不变</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</span><br><span class="line"><span class="built_in">console</span>.log(arr.map(<span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;</span><br><span class="line">   <span class="keyword">return</span> e*e <span class="comment">// [1, 4, 9, 16, 25]</span></span><br><span class="line">&#125;))</span><br><span class="line"><span class="built_in">console</span>.log(arr) <span class="comment">//[1, 2, 3, 4, 5]</span></span><br></pre></td></tr></table></figure>
-<p><strong>注：在空数组上调用,every返回true,some 返回false</strong></p>
-<h3 id="every"><a href="#every" class="headerlink" title="every"></a>every</h3><p>所有函数的每个回调函数都返回true时才会返回true,当遇到false时终止执行，返回false</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</span><br><span class="line">arr.every(<span class="function"><span class="keyword">function</span>(<span class="params">val</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> val&gt;<span class="number">0</span>?<span class="literal">true</span>:<span class="literal">false</span></span><br><span class="line">&#125;)<span class="comment">//true</span></span><br></pre></td></tr></table></figure>
-<p>###some<br>只要有一个回调函数返回true时终止执行并返回true,否则返回false </p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</span><br><span class="line">arr.some(<span class="function"><span class="keyword">function</span>(<span class="params">val</span>)</span>&#123;</span><br><span class="line">   <span class="keyword">return</span> val&gt;<span class="number">0</span>?<span class="literal">true</span>:<span class="literal">false</span></span><br><span class="line">&#125;)<span class="comment">//true</span></span><br></pre></td></tr></table></figure>
-<h3 id="filter-function-element"><a href="#filter-function-element" class="headerlink" title="filter(function(element))"></a>filter(function(element))</h3><p>返回一个子集，回调函数用于逻辑判断是否返回，返回true则把当前元素加入到返回数组中，false则不加<br>数组只包含返回true的值，索引缺失的不包括，原数组保持不变</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]</span><br><span class="line"><span class="built_in">console</span>.log(arr.filter(<span class="function"><span class="keyword">function</span>(<span class="params">val</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> val &gt; <span class="number">3</span></span><br><span class="line">&#125;)) <span class="comment">// [4, 5, 6]</span></span><br><span class="line"><span class="built_in">console</span>.log(arr) <span class="comment">// [1,2,3,4,5,6]</span></span><br></pre></td></tr></table></figure>
-<h3 id="reduce-function-v1-v2-value"><a href="#reduce-function-v1-v2-value" class="headerlink" title="reduce(function(v1,v2),value)"></a>reduce(function(v1,v2),value)</h3><p>遍历数组，调用回调函数，将数组元素组合成一个值，从索引最小值开始，方法有两个参数</p>
-<p>1、回调函数：把两个值合为一个，返回结果<br>2、value : 一个初始值，可选</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]</span><br><span class="line">arr.reduce(<span class="function"><span class="keyword">function</span>(<span class="params">v1,v2</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> v1 + v2</span><br><span class="line">&#125;) <span class="comment">//21</span></span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/04/ES5数组方法的那些事/" data-id="cjnv5cj1p0000wys6ep03u3k5" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-域名配置" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/10/03/域名配置/" class="article-date">
-  <time datetime="2018-10-03T11:13:24.000Z" itemprop="datePublished">2018-10-03</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/10/03/域名配置/">域名配置</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <ol>
-<li><p>域名解析：<a href="http://www.misswuer.cn" target="_blank" rel="noopener">www.misswuer.cn</a> CNAME 到 <a href="http://lovexwu.github.io" target="_blank" rel="noopener">lovexwu.github.io</a> 上</p>
-</li>
-<li><p>github pages 里面自定义域名到 <a href="http://www.misswuer.cn" target="_blank" rel="noopener">www.misswuer.cn</a></p>
-</li>
-<li><p>hexo 里面的 _config.yml 的 public_dir 改为 github 仓库名 即 newblog</p>
-</li>
-<li><p>hexo 里面的 _config.yml 配置下 deploy 的仓库 为 newblog 的仓库路径 git://<a href="http://github.com/lovexwu/newblog.git" target="_blank" rel="noopener">github.com/lovexwu/newblog.git</a>，branch 设置为 master</p>
-</li>
-<li><p>npm install hexo-deployer-git –save</p>
-</li>
-<li><p>hexo d</p>
-</li>
-</ol>
-<p>完成</p>
-<p>配置好后，接下来就可以愉快地工作啦</p>
-<ol>
-<li><p>hexo new xxx</p>
-</li>
-<li><p>typora 编辑 xxx</p>
-</li>
-<li><p>hexo g 生成 html 文件，hexo s 预览下，如果之前开过 hexo s，之后就不用开了</p>
-</li>
-<li><p>hexo d 发布到网站上</p>
-</li>
-</ol>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/03/域名配置/" data-id="cjnv5cj1w0004wys6i7cxf3rk" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-谈谈JavaScript的作用域链" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/10/02/谈谈JavaScript的作用域链/" class="article-date">
-  <time datetime="2018-10-02T10:03:06.000Z" itemprop="datePublished">2018-10-02</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/10/02/谈谈JavaScript的作用域链/">谈谈JavaScript的作用域链</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="作用域链"><a href="#作用域链" class="headerlink" title="作用域链"></a><strong>作用域链</strong></h2><p>每当声明一个函数的时候会有一个独立的的作用域，遇到函数执行需要调用某一个变量的时候，需要先在当前函数的作用域下寻找。如果当前函数的作用域下找不到该值变量，就需要进入到创建该函数所在的作用域下寻找，以此往上直至找到为止。这样就形成了一条作用域链。</p>
-<p><strong>来看一个实例</strong></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">1</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn1</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">fn2</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(a)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">fn3</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> a = <span class="number">4</span></span><br><span class="line">    fn2()</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">var</span> a = <span class="number">2</span></span><br><span class="line">  <span class="keyword">return</span> fn3</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> fn = fn1()</span><br><span class="line">fn()</span><br></pre></td></tr></table></figure>
-<p><strong>分析上面实例：</strong><br>在function fn1内是一个独立的作用域，在function fn2和function fn3中又是两个独立的作用域。当输出fn1的时候，需要先找到fn1下返回fn3的值。对应到fn3中需要找到fn2输出的a。而在fn2的作用域中，找不到变量a，需要返回到创建function fn2的作用域下寻找，即fn1的作用域中，得到var a = 2，因此代码输出结果为2</p>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>1、函数在执行的过程中，先从自己内部找变量<br>2、如果找不到，再从创建当前函数所在的作用域去找, 以此往上<br>3、注意找的是变量的当前的状态</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/02/谈谈JavaScript的作用域链/" data-id="cjnv5cj1y0006wys6e7nutsil" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-白屏和FOUC现象" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/10/01/白屏和FOUC现象/" class="article-date">
-  <time datetime="2018-10-01T10:01:20.000Z" itemprop="datePublished">2018-10-01</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/10/01/白屏和FOUC现象/">白屏和FOUC现象</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>通过以下语句将CSS文件的加载时间拉长，来演示白屏和FOUC现象<br><img src="https://upload-images.jianshu.io/upload_images/14339384-fcb99d394be45e4c.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="p1.jpg"></p>
-<p>#白屏效果</p>
-<p>Chrome浏览器的加载机制会出现白屏的现象当我们访问服务器时，css在加载过程中，页面是这样的：<br><img src="https://upload-images.jianshu.io/upload_images/14339384-816e95cceee328f4.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="p2.jpg"></p>
-<p>当有一个css文件加载完成时，页面依然白屏：<br><img src="https://upload-images.jianshu.io/upload_images/14339384-dfce2b6069e4ee24.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="p3.jpg"></p>
-<p>当所有css文件加载完成时，浏览布局渲染，页面显示出来应有的效果：<br><img src="https://upload-images.jianshu.io/upload_images/14339384-16f43d75920527b3.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="p4.jpg"></p>
-<p>#FOUC效果<br>Firefox浏览器的加载机制会出现FOUC的现象当我们访问服务器时，在任何一个css文件未加载完成时，页面已经有显示文本显示了：<br><img src="https://upload-images.jianshu.io/upload_images/14339384-802f547fe7896b1d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="p5.png"></p>
-<p>当有一个css文件加载完成时，浏览器就会通过已经加载完成的css文件渲染页面，没有加载完成的继续加载：<br><img src="https://upload-images.jianshu.io/upload_images/14339384-4ca7c061954e6490.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="p6.png"></p>
-<p>当全部css文件加载完成后，页面的最终呈现最终的效果，在每一个css文件加载完成后，页面的样式会发生变化：<br><img src="https://upload-images.jianshu.io/upload_images/14339384-f45228727bc00c4b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="p7.png"></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/01/白屏和FOUC现象/" data-id="cjnv5cj1x0005wys6qq6pmag2" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/02/Git-使用方法/" data-id="cjnv5cj1s0001wys6m2b2fxso" class="article-share-link">Share</a>
       
       
     </footer>
@@ -606,6 +783,11 @@
 
   
 
+
+  <nav id="page-nav">
+    
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+  </nav>
 
 </section>
         
@@ -636,23 +818,23 @@
       <ul>
         
           <li>
-            <a href="/2018/10/09/JS运算符/">JS运算符</a>
+            <a href="/2018/10/11/JS作用域和Js引用类型/">JS作用域和Js引用类型</a>
           </li>
         
           <li>
-            <a href="/2018/10/08/JS对象/">JS对象</a>
+            <a href="/2018/10/07/谈谈JavaScript的作用域链/">谈谈JavaScript的作用域链</a>
           </li>
         
           <li>
-            <a href="/2018/10/07/javascript入门/">javascript入门</a>
+            <a href="/2018/10/06/JS对象/">JS对象</a>
           </li>
         
           <li>
-            <a href="/2018/10/06/git命令使用/">Git命令使用</a>
+            <a href="/2018/10/05/JS函数/">JS函数</a>
           </li>
         
           <li>
-            <a href="/2018/10/05/Git-使用方法/">Git-使用方法</a>
+            <a href="/2018/10/04/JS运算符/">JS运算符</a>
           </li>
         
       </ul>

@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>JS作用域和Js引用类型 | Miss Xwu</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="JS作用域链题1 1234567891011121314151617var a = 1function fn1()&amp;#123;    function fn2()&amp;#123;        console.log(a)    &amp;#125;    function fn3()&amp;#123;        var a = 4        fn2()    &amp;#125;    var a = 2">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JS作用域和Js引用类型">
+<meta property="og:url" content="http://yoursite.com/2018/10/11/JS作用域和Js引用类型/index.html">
+<meta property="og:site_name" content="Miss Xwu">
+<meta property="og:description" content="JS作用域链题1 1234567891011121314151617var a = 1function fn1()&amp;#123;    function fn2()&amp;#123;        console.log(a)    &amp;#125;    function fn3()&amp;#123;        var a = 4        fn2()    &amp;#125;    var a = 2">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9375265-61edb0c547ce4ef6.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9375265-51635ec7cc5406df.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9375265-43b27d969403eae3.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2018-11-03T06:32:12.615Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JS作用域和Js引用类型">
+<meta name="twitter:description" content="JS作用域链题1 1234567891011121314151617var a = 1function fn1()&amp;#123;    function fn2()&amp;#123;        console.log(a)    &amp;#125;    function fn3()&amp;#123;        var a = 4        fn2()    &amp;#125;    var a = 2">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/9375265-61edb0c547ce4ef6.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+  
+    <link rel="alternate" href="/atom.xml" title="Miss Xwu" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">Miss Xwu</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-JS作用域和Js引用类型" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/10/11/JS作用域和Js引用类型/" class="article-date">
+  <time datetime="2018-10-11T13:45:40.000Z" itemprop="datePublished">2018-10-11</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      JS作用域和Js引用类型
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="JS作用域链"><a href="#JS作用域链" class="headerlink" title="JS作用域链"></a>JS作用域链</h4><p><strong>题1</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">1</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn1</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">fn2</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(a)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">fn3</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">var</span> a = <span class="number">4</span></span><br><span class="line">        fn2()</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">var</span> a = <span class="number">2</span></span><br><span class="line">    <span class="keyword">return</span> fn3</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> fn = fn1()</span><br><span class="line">fn() <span class="comment">// 2</span></span><br><span class="line"></span><br><span class="line">分析：</span><br><span class="line">调用fn1()后，返回fn3，而fn3中又调用了fn2()，而fn2输出a，但是fn2中没有定义a，所以在上级作用域找a，即fn1的作用域，所以输出<span class="number">2</span></span><br></pre></td></tr></table></figure>
+<p><strong>题2</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">1</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn1</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">fn3</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">var</span> a = <span class="number">4</span></span><br><span class="line">        fn2()</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">var</span> a = <span class="number">2</span></span><br><span class="line">    <span class="keyword">return</span> fn3</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn2</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(a)</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> fn = fn1()</span><br><span class="line">fn() <span class="comment">// 1</span></span><br><span class="line"></span><br><span class="line">分析：</span><br><span class="line">调用fn1之后，<span class="keyword">return</span> fn3，而fn3调用了fn2，fn2输出a，而fn2中没有a，所以在fn2的上级作用域中找a，所以输出全局作用域的a，即<span class="number">1</span></span><br></pre></td></tr></table></figure>
+<p><strong>题3</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">1</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn1</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">fn3</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">fn2</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">      <span class="built_in">console</span>.log(a)</span><br><span class="line">    &#125;</span><br><span class="line">    fn2()</span><br><span class="line">    <span class="keyword">var</span> a = <span class="number">4</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">var</span> a = <span class="number">2</span></span><br><span class="line">  <span class="keyword">return</span> fn3</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> fn = fn1()</span><br><span class="line">fn() <span class="comment">// undefined</span></span><br><span class="line"></span><br><span class="line">分析：</span><br><span class="line">调用fn2时，在fn3的作用域下，a被声明了，但是还没被赋值</span><br></pre></td></tr></table></figure>
+<h5 id="解密"><a href="#解密" class="headerlink" title="解密"></a>解密</h5><p>1､函数在执行的过程中，先从自已内部找变量</p>
+<p>2､如果找不到，再从创建当前函数所在的作用域去找，以此往上</p>
+<h4 id="基本类型、引用类型"><a href="#基本类型、引用类型" class="headerlink" title="基本类型、引用类型"></a>基本类型、引用类型</h4><ul>
+<li><p>基本类型值（数值、字符串、布尔值、null和undefine）：指保存在栈内存中的简单数据段</p>
+</li>
+<li><p>引用类型值（对象、数组、函数、正则）:指那些保存在堆内存中的对象，变量中保存的实际上只是一个指针，这个指针执行内存中的另一个位置，由该位置保存对象</p>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a;</span><br><span class="line"><span class="keyword">var</span> b;</span><br><span class="line"><span class="keyword">var</span> obj;</span><br><span class="line"><span class="keyword">var</span> obj2;</span><br><span class="line"></span><br><span class="line">a = <span class="number">1</span>;</span><br><span class="line">b = <span class="number">2</span>;</span><br><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">    name: <span class="string">'xwu'</span>,</span><br><span class="line">    sex: <span class="string">'girl'</span>,</span><br><span class="line">    age: <span class="number">18</span>,</span><br><span class="line">    friend :&#123;</span><br><span class="line">        name: <span class="string">'hello'</span>,</span><br><span class="line">        age: <span class="number">100</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> newObj = &#123;&#125;;</span><br><span class="line"></span><br><span class="line">b = a;</span><br><span class="line"><span class="built_in">console</span>.log(b); <span class="comment">//1</span></span><br><span class="line"><span class="keyword">var</span> obj2 = obj;</span><br><span class="line">obj <span class="comment">//&#123;name: "xwu", sex: "girl", age: 18, friend: &#123;…&#125;&#125;</span></span><br><span class="line">obj2 <span class="comment">//&#123;name: "xwu", sex: "girl", age: 18, friend: &#123;…&#125;&#125;</span></span><br><span class="line"></span><br><span class="line">obj.name = <span class="string">'xxwu'</span> <span class="comment">//"xxwu"</span></span><br><span class="line">obj2.name  <span class="comment">//"xxwu"</span></span><br><span class="line"><span class="comment">// 只有一个东西，取了不同名字，这就是引用类型</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> obj3 = &#123;<span class="attr">name</span>: <span class="string">'hello'</span>&#125;;</span><br><span class="line"><span class="keyword">var</span> obj4 = &#123;<span class="attr">name</span>: <span class="string">'hello'</span>&#125;;</span><br><span class="line">obj3 === obj4 <span class="comment">//false</span></span><br></pre></td></tr></table></figure>
+<p><img src="https://upload-images.jianshu.io/upload_images/9375265-61edb0c547ce4ef6.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="p1.jpg"></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sum</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line"> <span class="built_in">console</span>.log(<span class="string">'sum.....'</span>)   </span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> sum2 = sum</span><br><span class="line">sum2() <span class="comment">// sum.....</span></span><br><span class="line">sum2 === sum <span class="comment">//true</span></span><br></pre></td></tr></table></figure>
+<p>如下图可知，sum和sum2指向的是同一个地址code，即同一个东西，取了不同名字sum、sum2,这就是引用类型</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/9375265-51635ec7cc5406df.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="p2.jpg"></p>
+<h4 id="函数的参数传递"><a href="#函数的参数传递" class="headerlink" title="函数的参数传递"></a>函数的参数传递</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">inc</span>(<span class="params">n</span>)</span>&#123;</span><br><span class="line">    n++;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> a = <span class="number">10</span>;</span><br><span class="line">inc(a);</span><br><span class="line"><span class="built_in">console</span>.log(a);<span class="comment">//10</span></span><br><span class="line"></span><br><span class="line">相当于</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">inc</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> n = <span class="built_in">arguments</span>[<span class="number">0</span>]</span><br><span class="line">    n++ <span class="comment">//可以使用arguments对象在函数中引用函数的参数,此对象包含传递给函数的每个参数,第一个参数在索引0处</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> a = <span class="number">10</span></span><br><span class="line">inc(a)</span><br><span class="line"><span class="built_in">console</span>.log(a) <span class="comment">//10</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">incObj</span>(<span class="params">obj</span>)</span>&#123;</span><br><span class="line">    <span class="comment">//var obj = o // 0x0001</span></span><br><span class="line">    obj.n++;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> o = &#123;<span class="attr">n</span>: <span class="number">10</span>&#125;; <span class="comment">//o = 0x0001</span></span><br><span class="line">incObj(o);</span><br><span class="line"><span class="built_in">console</span>.log(o);</span><br></pre></td></tr></table></figure>
+<p>引用类型存的对象地址,如下图</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/9375265-43b27d969403eae3.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="p3.jpg"></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">squireArr</span>(<span class="params">arr</span>)</span>&#123;</span><br><span class="line">    <span class="comment">//var arr = 0x0011</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i&lt;arr.length; i++)&#123;</span><br><span class="line">        arr[i] = arr[i]*arr[i]</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">squireArr2</span>(<span class="params">arr</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> newArr = []</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i&lt; arr.length; i++)&#123;</span><br><span class="line">        newArr = arr[i]*arr[i]</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> newArr</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> arr = [<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>] <span class="comment">// arr 0x0011</span></span><br><span class="line">squireArr(arr)</span><br><span class="line"><span class="built_in">console</span>.log(arr) <span class="comment">// [4,9,16,25] </span></span><br><span class="line"><span class="comment">//在原数组操作</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> arr2 = squireArr2(arr)</span><br><span class="line"><span class="built_in">console</span>.log(arr2) <span class="comment">// [4,9,16,25]</span></span><br><span class="line"><span class="comment">//得到一个新数组，原数组没变</span></span><br></pre></td></tr></table></figure>
+<h4 id="对象深拷贝和浅拷贝"><a href="#对象深拷贝和浅拷贝" class="headerlink" title="对象深拷贝和浅拷贝"></a>对象深拷贝和浅拷贝</h4><p>//浅拷贝 （即拷贝一层）</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">shallowCopy</span>(<span class="params">oldObj</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> newObj = &#123;&#125;;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i <span class="keyword">in</span> oldObj)&#123;</span><br><span class="line">        <span class="keyword">if</span>(oldObj.hasOwnProperty(i))&#123;</span><br><span class="line">            newObj[i] = oldObj[i];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> newObj;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>//深拷贝 （）</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">deepCopy</span>(<span class="params">oldObj</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> newObj = &#123;&#125;;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> key <span class="keyword">in</span> oldObj)&#123;</span><br><span class="line">        <span class="keyword">if</span>(<span class="keyword">typeof</span> oldObj[key] === <span class="string">'object'</span>)&#123;</span><br><span class="line">            newObj[key] = deepCopy(oldObj[key]);</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            newObj[key] = oldObj[key];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> newObj;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/10/11/JS作用域和Js引用类型/" data-id="cjnx7rmbv0001dxs6u80p1vgt" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2018/10/07/谈谈JavaScript的作用域链/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">谈谈JavaScript的作用域链</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+
+  
+    
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2018/10/11/JS作用域和Js引用类型/">JS作用域和Js引用类型</a>
+          </li>
+        
+          <li>
+            <a href="/2018/10/07/谈谈JavaScript的作用域链/">谈谈JavaScript的作用域链</a>
+          </li>
+        
+          <li>
+            <a href="/2018/10/06/JS对象/">JS对象</a>
+          </li>
+        
+          <li>
+            <a href="/2018/10/05/JS函数/">JS函数</a>
+          </li>
+        
+          <li>
+            <a href="/2018/10/04/JS运算符/">JS运算符</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2018 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

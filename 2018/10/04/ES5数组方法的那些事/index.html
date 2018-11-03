@@ -7,17 +7,17 @@
   
   <title>ES5数组方法的那些事 | Miss Xwu</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="#  indexOf、forEach、map、every、some、filter、reduce的用法 ###indexOf查找数组内指定元素的位置，查找到第一个返回其索引，没有返回-1 123var arr = [1,2,3,4,5]console.log(arr.indexOf(3)) //2console.log(arr.indexOf(9)) //-1 forEach 遍历数组，参数为一个回">
+  <meta name="description" content="#  indexOf、forEach、map、every、some、filter、reduce的用法 ###indexOf(element)查找数组内指定元素的位置，查找到第一个返回其索引，没有返回-1 123var arr = [1,2,3,4,5]console.log(arr.indexOf(3)) //2console.log(arr.indexOf(9)) //-1 forEach(el">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ES5数组方法的那些事">
 <meta property="og:url" content="http://yoursite.com/2018/10/04/ES5数组方法的那些事/index.html">
 <meta property="og:site_name" content="Miss Xwu">
-<meta property="og:description" content="#  indexOf、forEach、map、every、some、filter、reduce的用法 ###indexOf查找数组内指定元素的位置，查找到第一个返回其索引，没有返回-1 123var arr = [1,2,3,4,5]console.log(arr.indexOf(3)) //2console.log(arr.indexOf(9)) //-1 forEach 遍历数组，参数为一个回">
+<meta property="og:description" content="#  indexOf、forEach、map、every、some、filter、reduce的用法 ###indexOf(element)查找数组内指定元素的位置，查找到第一个返回其索引，没有返回-1 123var arr = [1,2,3,4,5]console.log(arr.indexOf(3)) //2console.log(arr.indexOf(9)) //-1 forEach(el">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2018-10-31T05:32:13.090Z">
+<meta property="og:updated_time" content="2018-11-02T15:09:30.424Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ES5数组方法的那些事">
-<meta name="twitter:description" content="#  indexOf、forEach、map、every、some、filter、reduce的用法 ###indexOf查找数组内指定元素的位置，查找到第一个返回其索引，没有返回-1 123var arr = [1,2,3,4,5]console.log(arr.indexOf(3)) //2console.log(arr.indexOf(9)) //-1 forEach 遍历数组，参数为一个回">
+<meta name="twitter:description" content="#  indexOf、forEach、map、every、some、filter、reduce的用法 ###indexOf(element)查找数组内指定元素的位置，查找到第一个返回其索引，没有返回-1 123var arr = [1,2,3,4,5]console.log(arr.indexOf(3)) //2console.log(arr.indexOf(9)) //-1 forEach(el">
   
     <link rel="alternate" href="/atom.xml" title="Miss Xwu" type="application/atom+xml">
   
@@ -88,17 +88,17 @@
       
         <p># </p>
 <p>indexOf、forEach、map、every、some、filter、reduce的用法</p>
-<p>###indexOf<br>查找数组内指定元素的位置，查找到第一个返回其索引，没有返回-1</p>
+<p>###indexOf(element)<br>查找数组内指定元素的位置，查找到第一个返回其索引，没有返回-1</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</span><br><span class="line"><span class="built_in">console</span>.log(arr.indexOf(<span class="number">3</span>)) <span class="comment">//2</span></span><br><span class="line"><span class="built_in">console</span>.log(arr.indexOf(<span class="number">9</span>)) <span class="comment">//-1</span></span><br></pre></td></tr></table></figure>
-<h3 id="forEach"><a href="#forEach" class="headerlink" title="forEach"></a>forEach</h3><p> 遍历数组，参数为一个回调函数，回调函数有三个参数：</p>
+<h3 id="forEach-element-index-array"><a href="#forEach-element-index-array" class="headerlink" title="forEach(element,index,array)"></a>forEach(element,index,array)</h3><p> 遍历数组，参数为一个回调函数，回调函数有三个参数：</p>
 <p>1、当前元素<br>2、当前元素索引<br>3、整个数组</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</span><br><span class="line">arr.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">e,index</span>)</span>&#123;</span><br><span class="line">   arr[index] = e + <span class="number">1</span>      </span><br><span class="line">&#125;)</span><br><span class="line"><span class="built_in">console</span>.log(arr) <span class="comment">//[2, 3, 4, 5, 6]</span></span><br></pre></td></tr></table></figure>
-<p>###map<br>与forEach类似，遍历数组，回调函数返回值组成一个新数组返回，新数组索引结构和原数组一致，原数组不变</p>
+<p>###map (function(element))<br>与forEach类似，遍历数组，回调函数返回值组成一个新数组返回，新数组索引结构和原数组一致，原数组不变</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</span><br><span class="line"><span class="built_in">console</span>.log(arr.map(<span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;</span><br><span class="line">   <span class="keyword">return</span> e*e <span class="comment">// [1, 4, 9, 16, 25]</span></span><br><span class="line">&#125;))</span><br><span class="line"><span class="built_in">console</span>.log(arr) <span class="comment">//[1, 2, 3, 4, 5]</span></span><br></pre></td></tr></table></figure>
 <p><strong>注：在空数组上调用,every返回true,some 返回false</strong></p>
-<h3 id="every"><a href="#every" class="headerlink" title="every"></a>every</h3><p>所有函数的每个回调函数都返回true时才会返回true,当遇到false时终止执行，返回false</p>
+<h3 id="every-function-element-index-array"><a href="#every-function-element-index-array" class="headerlink" title="every (function(element,index,array))"></a>every (function(element,index,array))</h3><p>所有函数的每个回调函数都返回true时才会返回true,当遇到false时终止执行，返回false</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</span><br><span class="line">arr.every(<span class="function"><span class="keyword">function</span>(<span class="params">val</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> val&gt;<span class="number">0</span>?<span class="literal">true</span>:<span class="literal">false</span></span><br><span class="line">&#125;)<span class="comment">//true</span></span><br></pre></td></tr></table></figure>
-<p>###some<br>只要有一个回调函数返回true时终止执行并返回true,否则返回false </p>
+<p>###some (function(element,index,array))<br>只要有一个回调函数返回true时终止执行并返回true,否则返回false </p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</span><br><span class="line">arr.some(<span class="function"><span class="keyword">function</span>(<span class="params">val</span>)</span>&#123;</span><br><span class="line">   <span class="keyword">return</span> val&gt;<span class="number">0</span>?<span class="literal">true</span>:<span class="literal">false</span></span><br><span class="line">&#125;)<span class="comment">//true</span></span><br></pre></td></tr></table></figure>
 <h3 id="filter-function-element"><a href="#filter-function-element" class="headerlink" title="filter(function(element))"></a>filter(function(element))</h3><p>返回一个子集，回调函数用于逻辑判断是否返回，返回true则把当前元素加入到返回数组中，false则不加<br>数组只包含返回true的值，索引缺失的不包括，原数组保持不变</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]</span><br><span class="line"><span class="built_in">console</span>.log(arr.filter(<span class="function"><span class="keyword">function</span>(<span class="params">val</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> val &gt; <span class="number">3</span></span><br><span class="line">&#125;)) <span class="comment">// [4, 5, 6]</span></span><br><span class="line"><span class="built_in">console</span>.log(arr) <span class="comment">// [1,2,3,4,5,6]</span></span><br></pre></td></tr></table></figure>
@@ -117,11 +117,11 @@
     
 <nav id="article-nav">
   
-    <a href="/2018/10/05/Git-使用方法/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2018/10/04/JS运算符/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          Git-使用方法
+          JS运算符
         
       </div>
     </a>
@@ -166,23 +166,23 @@
       <ul>
         
           <li>
-            <a href="/2018/10/09/JS运算符/">JS运算符</a>
+            <a href="/2018/10/11/JS作用域和Js引用类型/">JS作用域和Js引用类型</a>
           </li>
         
           <li>
-            <a href="/2018/10/08/JS对象/">JS对象</a>
+            <a href="/2018/10/07/谈谈JavaScript的作用域链/">谈谈JavaScript的作用域链</a>
           </li>
         
           <li>
-            <a href="/2018/10/07/javascript入门/">javascript入门</a>
+            <a href="/2018/10/06/JS对象/">JS对象</a>
           </li>
         
           <li>
-            <a href="/2018/10/06/git命令使用/">Git命令使用</a>
+            <a href="/2018/10/05/JS函数/">JS函数</a>
           </li>
         
           <li>
-            <a href="/2018/10/05/Git-使用方法/">Git-使用方法</a>
+            <a href="/2018/10/04/JS运算符/">JS运算符</a>
           </li>
         
       </ul>
