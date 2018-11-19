@@ -8,7 +8,7 @@ tags:
 
 indexOf、forEach、map、every、some、filter、reduce的用法
 
-###indexOf 
+###indexOf(element)
 查找数组内指定元素的位置，查找到第一个返回其索引，没有返回-1
 
 ```javascript
@@ -16,7 +16,7 @@ var arr = [1,2,3,4,5]
 console.log(arr.indexOf(3)) //2
 console.log(arr.indexOf(9)) //-1
 ```
-### forEach
+### forEach(element,index,array)
  遍历数组，参数为一个回调函数，回调函数有三个参数：
 
 1、当前元素
@@ -30,7 +30,7 @@ arr.forEach(function(e,index){
 })
 console.log(arr) //[2, 3, 4, 5, 6]
 ```
-###map 
+###map (function(element))
 与forEach类似，遍历数组，回调函数返回值组成一个新数组返回，新数组索引结构和原数组一致，原数组不变
 
 ```javascript
@@ -42,7 +42,7 @@ console.log(arr) //[1, 2, 3, 4, 5]
 ```
 **注：在空数组上调用,every返回true,some 返回false**
 
-### every 
+### every (function(element,index,array))
 所有函数的每个回调函数都返回true时才会返回true,当遇到false时终止执行，返回false
 
 ```javascript
@@ -51,7 +51,7 @@ arr.every(function(val){
     return val>0?true:false
 })//true
 ```
-###some 
+###some (function(element,index,array))
 只要有一个回调函数返回true时终止执行并返回true,否则返回false 
 
 ```javascript

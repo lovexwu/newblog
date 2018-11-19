@@ -1,6 +1,6 @@
 ---
 title: JS对象
-date: 2018-10-08 18:07:30
+date: 2018-10-06 18:07:30
 tags:
 ---
 
@@ -30,8 +30,6 @@ var company = {
     age: 3,
     sex: '男'
 }
-
-
 ```
 
 答案：
@@ -54,8 +52,10 @@ var obj = {
     age: '18'
 }
 
+//JSON.stringify 将对象转化为字符串
+//JSON.parse 将JSON字符串转化为对象
 var obj2 = JSON.parse(Json.stringify(obj))
-obj.age = 4
+obj.age = 4 
 console.log(obj) //4
 obj2.age = 3
 
@@ -99,7 +99,7 @@ arr.concat('super') //拼接
 
 写一个函数，操作数组，返回一个新数组，新数组中只包含正数。
 
-```
+```javascript
 function filterPositive(arr){
 补全
 }
@@ -144,7 +144,7 @@ console.log(filterPositive(arr)) //[3,  2]
 
 用 splice函数分别实现 `push`、`pop`、`shift`、`unshift`方法, 如：
 
-```
+```javascript
 function push(arr, value){
     arr.splice(arr.length, 0, value)
     return arr.length
@@ -183,7 +183,7 @@ arr.unshift(10)
 
 对以下代码 users中的对象，分别以 name 字段、age 字段、company 字段进行排序
 
-```
+```javascript
 var users = [
   { name: "John", age: 20, company: "Baidu" },
   { name: "Pete", age: 18, company: "Alibaba" },
@@ -193,7 +193,7 @@ var users = [
 
 答案：
 
-```
+```javascript
 1、 name字段排序
 users.sort(function(v1,v2){
     return v1.name > v2.name
@@ -218,7 +218,7 @@ users.sort(function(v1,v2){
 
 答案：
 
-```
+```javascript
 indexOf 
 查找数组内指定元素的位置，查找到第一个返回其索引，没有返回-1
 var arr = [1,2,3,4,5]
@@ -310,7 +310,7 @@ console.log(company[name]) //男
 
 写补全sortString函数，实现字符串倒序
 
-```
+```javascript
 function  sortString(str){
     //补全
 }
