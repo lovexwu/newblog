@@ -201,7 +201,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/05/JS函数/" data-id="cjoqylocp0002f7s6a6lc47mj" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/05/JS函数/" data-id="cjorbct6g000310s6sr2224gj" class="article-share-link">Share</a>
       
       
     </footer>
@@ -257,7 +257,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/04/JS运算符/" data-id="cjoqylocv0005f7s6i8qyzql6" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/04/JS运算符/" data-id="cjorbct6i000510s6dadgk883" class="article-share-link">Share</a>
       
       
     </footer>
@@ -311,7 +311,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/04/ES5数组方法的那些事/" data-id="cjoqyloci0000f7s6ddakg099" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/04/ES5数组方法的那些事/" data-id="cjorbct6b000010s677nq08x4" class="article-share-link">Share</a>
       
       
     </footer>
@@ -373,7 +373,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/03/域名配置/" data-id="cjoqylod6000ff7s6gkzw1bya" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/03/域名配置/" data-id="cjorbct6r000f10s6wggb6xkb" class="article-share-link">Share</a>
       
       
     </footer>
@@ -489,7 +489,61 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/03/javascript入门/" data-id="cjoqylocz0009f7s673epngbs" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/03/javascript入门/" data-id="cjorbct6m000a10s6vzkrei5b" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-git命令讲解" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/10/02/git命令讲解/" class="article-date">
+  <time datetime="2018-10-02T10:28:37.000Z" itemprop="datePublished">2018-10-02</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/10/02/git命令讲解/">git命令讲解</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="起步"><a href="#起步" class="headerlink" title="起步"></a>起步</h3><p>初次使用需要设置姓名和邮箱</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name <span class="string">"你的姓名"</span></span><br><span class="line">git config --global user.email 邮箱地址（如<span class="number">123</span>@<span class="number">163.</span>com）</span><br></pre></td></tr></table></figure>
+<h3 id="clone项目"><a href="#clone项目" class="headerlink" title="clone项目"></a>clone项目</h3><p>用于把一个GitHub上的项目clone（下载）到本地，变为本地仓库</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git clone git@github.com:jirengu/blog.git</span><br><span class="line">cd blog</span><br></pre></td></tr></table></figure>
+<h3 id="添加文件并提交"><a href="#添加文件并提交" class="headerlink" title="添加文件并提交"></a>添加文件并提交</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#创建文件</span><br><span class="line">touch a.md</span><br><span class="line"></span><br><span class="line">#在文件里写入一个字符串</span><br><span class="line">echo <span class="string">"hello"</span> &gt; a.md</span><br><span class="line">git status</span><br></pre></td></tr></table></figure>
+<p><img src="https://upload-images.jianshu.io/upload_images/14339384-81b25ac7b0cd1e77.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="添加文件并提交1.jpg"></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#在当前目录下的新增和修改的文件添加到暂存区</span><br><span class="line">git add .</span><br><span class="line">git status</span><br></pre></td></tr></table></figure>
+<p><img src="https://upload-images.jianshu.io/upload_images/14339384-1252dd98333c031a.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="添加文件并提交2.jpg"></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#把暂存区的更新提交到本地库</span><br><span class="line">git commit -am <span class="string">"add file"</span></span><br><span class="line">git status</span><br></pre></td></tr></table></figure>
+<p><img src="https://upload-images.jianshu.io/upload_images/14339384-8d7658adef991691.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="添加文件并提交3.jpg"></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#把当前本地库里的改动推送到远程库（origin) 的master分支</span><br><span class="line">git push origin master <span class="comment">//如果之前提交过，以后只需要git push即可</span></span><br></pre></td></tr></table></figure>
+<p><img src="https://upload-images.jianshu.io/upload_images/14339384-ceb545cf25896176.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="添加文件并提交4.jpg"></p>
+<h3 id="修改删除文件"><a href="#修改删除文件" class="headerlink" title="修改删除文件"></a>修改删除文件</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">#把远程仓库的变动更新合并到本地仓库</span><br><span class="line">git pull</span><br><span class="line"><span class="comment">//如果远程仓库有修改，切记一定要git pull，这样子远程的修改才可以更新到本地仓库,不然会报错！</span></span><br><span class="line"></span><br><span class="line">#修改文件</span><br><span class="line">vim a.md</span><br><span class="line">git add .</span><br><span class="line"></span><br><span class="line"><span class="comment">// 这里需注意：</span></span><br><span class="line"><span class="comment">// 如果提交消息包含大量字符串，提交参数不用加m</span></span><br><span class="line"><span class="comment">// 此时会进入vim 界面，按下i 进入编辑状态，进行编辑</span></span><br><span class="line"><span class="comment">// 编辑完成后按下esc 进入命令状态，输入 :wq 保存退出 vim</span></span><br><span class="line"></span><br><span class="line">git commit -a</span><br><span class="line">git push origin master</span><br><span class="line"></span><br><span class="line">rm -rf a.md</span><br><span class="line">git add .</span><br></pre></td></tr></table></figure>
+<h3 id="本地创建一个git项目推送到远程空仓库"><a href="#本地创建一个git项目推送到远程空仓库" class="headerlink" title="本地创建一个git项目推送到远程空仓库"></a>本地创建一个git项目推送到远程空仓库</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">mkdir newProject</span><br><span class="line">cd newProject</span><br><span class="line"></span><br><span class="line"># 把一个文件夹初始化成一个本地 git仓库</span><br><span class="line"># 注意 仓库和文件夹的区别在于仓库下有一个隐藏的.git文件夹，里面有一些信息</span><br><span class="line"># 对于一个仓库，删除.git 文件夹，就变成一个普通的文件夹了</span><br><span class="line"></span><br><span class="line"><span class="comment">//如何把本地空文件夹变成仓库呢？我们用git init 初始化</span></span><br><span class="line">git init <span class="comment">//初始化，把本地的空文件夹变成仓库，才执行，</span></span><br><span class="line">#注意别克隆一个项目，再用git init，因为克隆的项目里，本身是一个仓库，它已经有了.git,</span><br><span class="line">#完全不需要你去操作，如果再去执行.git init的话，会把它的.git全给覆盖掉，把以前仓库的记录的信息全给抹掉 </span><br><span class="line"></span><br><span class="line">touch index.html</span><br><span class="line">echo <span class="string">"hello"</span> &gt; index.html</span><br><span class="line"></span><br><span class="line">git add .</span><br><span class="line">git commit -am <span class="string">"init"</span></span><br><span class="line"></span><br><span class="line"># 查看本地库里记录的远程库地址</span><br><span class="line">git remote -v</span><br><span class="line"></span><br><span class="line"># 这里把远程库的地址添加个标签origin</span><br><span class="line">git remote add origin git@github.com:jirengu/blog2.git</span><br><span class="line"></span><br><span class="line"># 推送到远程库地址</span><br><span class="line">git push origin master</span><br><span class="line"></span><br><span class="line"># 慎用，这样会强制推送，会覆盖别人的代码</span><br><span class="line">git push -f origin master</span><br><span class="line"></span><br><span class="line"># 在添加一个远程库的标签</span><br><span class="line">git remote add gitlab git@gitlab.com:abc/blog.git</span><br><span class="line"></span><br><span class="line"># 推送到gitlab标签的地址上</span><br><span class="line">git push gitlab master</span><br><span class="line"></span><br><span class="line"># 删除gitlab 标签</span><br><span class="line">git remote remove gitlab</span><br><span class="line"></span><br><span class="line"># 修改origin标签对应的地址</span><br><span class="line">git remote set-url origin git@github.com:jirengu/blog3.git</span><br><span class="line"></span><br><span class="line"># 把gitlab标签改名为coding</span><br><span class="line">git remote rename gitlab coding</span><br></pre></td></tr></table></figure>
+<h3 id="分支操作-很重要的一部分"><a href="#分支操作-很重要的一部分" class="headerlink" title="分支操作(很重要的一部分)"></a>分支操作(很重要的一部分)</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"># 创建本地库dev 分支</span><br><span class="line">git branch dev</span><br><span class="line"></span><br><span class="line"># 切换到dev 分支</span><br><span class="line">git checkout dev</span><br><span class="line"></span><br><span class="line">touch b.md</span><br><span class="line">git add .</span><br><span class="line">git commit -am <span class="string">"add b.md"</span></span><br><span class="line"></span><br><span class="line"># 推送到origin 地址的 dev 分支上</span><br><span class="line">git push origin dev</span><br></pre></td></tr></table></figure>
+<h3 id="分支合并"><a href="#分支合并" class="headerlink" title="分支合并"></a>分支合并</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git checkout master</span><br><span class="line"></span><br><span class="line"># 把dev 分支上的内容合并到当前分支（master）上</span><br><span class="line">git merge dev</span><br></pre></td></tr></table></figure>
+<h3 id="冲突"><a href="#冲突" class="headerlink" title="冲突"></a>冲突</h3><h6 id="当自已和别人改同一个文件的同一个地方，在执行git-pull-时更新本地合并时会出现冲突"><a href="#当自已和别人改同一个文件的同一个地方，在执行git-pull-时更新本地合并时会出现冲突" class="headerlink" title="当自已和别人改同一个文件的同一个地方，在执行git pull 时更新本地合并时会出现冲突"></a>当自已和别人改同一个文件的同一个地方，在执行<u>git pull</u> 时更新本地合并时会出现冲突</h6><p>1､ 修改冲突文件</p>
+<p>2､ 重新提交</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/10/02/git命令讲解/" data-id="cjorbct6l000910s673eywl50" class="article-share-link">Share</a>
       
       
     </footer>
@@ -540,7 +594,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/02/git命令使用/" data-id="cjoqylocy0008f7s6j7d434rz" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/02/git命令使用/" data-id="cjorbct6l000810s6seoggvg0" class="article-share-link">Share</a>
       
       
     </footer>
@@ -590,7 +644,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/02/Git-使用方法/" data-id="cjoqylocm0001f7s6cg3j56mb" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/02/Git-使用方法/" data-id="cjorbct6e000110s65ob5dffg" class="article-share-link">Share</a>
       
       
     </footer>
@@ -666,7 +720,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/02/命令行基础/" data-id="cjoqylod5000ef7s6mxyf1j1e" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/02/命令行基础/" data-id="cjorbct7f000k10s6xgu0xyzc" class="article-share-link">Share</a>
       
       
     </footer>
@@ -710,70 +764,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/01/白屏和FOUC现象/" data-id="cjoqylod8000if7s6jeqhf6ua" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-工具安装" class="article article-type-post" itemscope="" itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/10/01/工具安装/" class="article-date">
-  <time datetime="2018-10-01T04:04:15.000Z" itemprop="datePublished">2018-10-01</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2018/10/01/工具安装/">工具安装</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p><a href="http://md2ppt.jscode.me/md2ppt?url=https%3A%2F%2Fraw.githubusercontent.com%2Fjirengu%2Ffrontend-knowledge-ppt%2Fmaster%2F%25E5%2589%258D%25E7%25AB%25AF%25E5%2585%25A5%25E9%2597%25A8-%25E5%25B7%25A5%25E5%2585%25B7%25E5%25AE%2589%25E8%25A3%2585.md%3Ftoken%3DAKZzb3sU30DMxhI1FgM-E0Gn_jrtsD3Aks5bj46RwA%253D%253D&amp;theme=blood&amp;trans=convex#/" target="_blank" rel="noopener">查看 ppt</a></p>
-<p>浏览器、编辑器、Git、NodeJS、翻墙软件(<a href="https://shadowsocks.to" target="_blank" rel="noopener">https://shadowsocks.to</a>  进入后点Order now按钮，进入<a href="https://portal.shadowsocks.nu/cart.php" target="_blank" rel="noopener">https://portal.shadowsocks.nu/cart.php</a> 进行购买即可 )的安装</p>
-<h2 id="科学上网"><a href="#科学上网" class="headerlink" title="科学上网"></a>科学上网</h2><p>科学上网是学习前端的第一步</p>
-<ul>
-<li><a href="https://portal.shadowsocks.se/" target="_blank" rel="noopener">购买地址</a> (地址后缀经常变，保持关注)</li>
-</ul>
-<h2 id="浏览器"><a href="#浏览器" class="headerlink" title="浏览器"></a>浏览器</h2><ul>
-<li><a href="http://www.google.cn/intl/zh-CN/chrome/browser/desktop/index.html" target="_blank" rel="noopener">Chrome下载</a></li>
-<li>也可bing搜索chrome安装</li>
-</ul>
-<h2 id="编辑器"><a href="#编辑器" class="headerlink" title="编辑器"></a>编辑器</h2><ul>
-<li><a href="https://www.jetbrains.com/webstorm/" target="_blank" rel="noopener">webstrom</a> (操作复杂、收费、功能强大，启动有点慢)</li>
-<li><a href="http://code.visualstudio.com/" target="_blank" rel="noopener">vscode</a> (操作普通，免费，用起来方便)</li>
-<li><a href="https://atom.io/" target="_blank" rel="noopener">atom</a> (操作普通，免费，windows 略卡)</li>
-<li><a href="https://www.sublimetext.com/" target="_blank" rel="noopener">sublime</a> (操作简单，启动运行速度快，功能弱，插件库烂)</li>
-</ul>
-<h2 id="Git"><a href="#Git" class="headerlink" title="Git"></a>Git</h2><ul>
-<li><a href="https://git-scm.com/downloads" target="_blank" rel="noopener">下载地址</a></li>
-</ul>
-<h2 id="NodeJS"><a href="#NodeJS" class="headerlink" title="NodeJS"></a>NodeJS</h2><ul>
-<li><a href="https://nodejs.org/zh-cn/" target="_blank" rel="noopener">下载地址</a></li>
-</ul>
-<h2 id="搜索引擎"><a href="#搜索引擎" class="headerlink" title="搜索引擎"></a>搜索引擎</h2><ul>
-<li><a href="https://www.google.com/" target="_blank" rel="noopener">Google</a> 最优</li>
-<li><a href="http://www.bing.com/" target="_blank" rel="noopener">bing</a> 懒得翻墙的时候用</li>
-<li><a href="http://baidu.com/" target="_blank" rel="noopener">百度</a> 少用</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/01/工具安装/" data-id="cjoqylod6000gf7s6ymen4ymd" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/01/白屏和FOUC现象/" data-id="cjorbct6u000i10s64l00jbgg" class="article-share-link">Share</a>
       
       
     </footer>
@@ -787,7 +778,7 @@
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+    <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
   </nav>
 
 </section>
