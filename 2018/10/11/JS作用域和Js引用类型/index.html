@@ -17,7 +17,7 @@
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9375265-61edb0c547ce4ef6.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9375265-51635ec7cc5406df.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9375265-43b27d969403eae3.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2018-11-03T06:32:12.615Z">
+<meta property="og:updated_time" content="2018-11-06T14:33:14.237Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JS作用域和Js引用类型">
 <meta name="twitter:description" content="JS作用域链题1 1234567891011121314151617var a = 1function fn1()&amp;#123;    function fn2()&amp;#123;        console.log(a)    &amp;#125;    function fn3()&amp;#123;        var a = 4        fn2()    &amp;#125;    var a = 2">
@@ -95,7 +95,7 @@
 <p><strong>题2</strong></p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">1</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn1</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">fn3</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">var</span> a = <span class="number">4</span></span><br><span class="line">        fn2()</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">var</span> a = <span class="number">2</span></span><br><span class="line">    <span class="keyword">return</span> fn3</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn2</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(a)</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> fn = fn1()</span><br><span class="line">fn() <span class="comment">// 1</span></span><br><span class="line"></span><br><span class="line">分析：</span><br><span class="line">调用fn1之后，<span class="keyword">return</span> fn3，而fn3调用了fn2，fn2输出a，而fn2中没有a，所以在fn2的上级作用域中找a，所以输出全局作用域的a，即<span class="number">1</span></span><br></pre></td></tr></table></figure>
 <p><strong>题3</strong></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">1</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn1</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">fn3</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">fn2</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">      <span class="built_in">console</span>.log(a)</span><br><span class="line">    &#125;</span><br><span class="line">    fn2()</span><br><span class="line">    <span class="keyword">var</span> a = <span class="number">4</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">var</span> a = <span class="number">2</span></span><br><span class="line">  <span class="keyword">return</span> fn3</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> fn = fn1()</span><br><span class="line">fn() <span class="comment">// undefined</span></span><br><span class="line"></span><br><span class="line">分析：</span><br><span class="line">调用fn2时，在fn3的作用域下，a被声明了，但是还没被赋值</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">1</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn1</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">fn3</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">fn2</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">      <span class="built_in">console</span>.log(a)</span><br><span class="line">    &#125;</span><br><span class="line">    fn2()</span><br><span class="line">    <span class="keyword">var</span> a = <span class="number">4</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">var</span> a = <span class="number">2</span></span><br><span class="line">  <span class="keyword">return</span> fn3</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> fn = fn1()</span><br><span class="line">fn() <span class="comment">// undefined</span></span><br><span class="line"></span><br><span class="line">分析：</span><br><span class="line">调用fn2时，在fn3的作用域下，a被声明了，但是还没被赋值</span><br></pre></td></tr></table></figure>
 <h5 id="解密"><a href="#解密" class="headerlink" title="解密"></a>解密</h5><p>1､函数在执行的过程中，先从自已内部找变量</p>
 <p>2､如果找不到，再从创建当前函数所在的作用域去找，以此往上</p>
 <h4 id="基本类型、引用类型"><a href="#基本类型、引用类型" class="headerlink" title="基本类型、引用类型"></a>基本类型、引用类型</h4><ul>
@@ -121,7 +121,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/11/JS作用域和Js引用类型/" data-id="cjnx7rmbv0001dxs6u80p1vgt" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/11/JS作用域和Js引用类型/" data-id="cjonz5qsk0001vws6sb8bg105" class="article-share-link">Share</a>
       
       
     </footer>
@@ -129,6 +129,15 @@
   
     
 <nav id="article-nav">
+  
+    <a href="/2018/11/06/正则表达式/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          正则表达式
+        
+      </div>
+    </a>
   
   
     <a href="/2018/10/07/谈谈JavaScript的作用域链/" id="article-nav-older" class="article-nav-link-wrap">
@@ -157,7 +166,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li></ul>
     </div>
   </div>
 
@@ -170,23 +179,23 @@
       <ul>
         
           <li>
-            <a href="/2018/10/11/JS作用域和Js引用类型/">JS作用域和Js引用类型</a>
+            <a href="/2018/11/18/cookie、session、localStorage/">cookie、session、localStorage</a>
           </li>
         
           <li>
-            <a href="/2018/10/07/谈谈JavaScript的作用域链/">谈谈JavaScript的作用域链</a>
+            <a href="/2018/11/16/form表单/">form表单</a>
           </li>
         
           <li>
-            <a href="/2018/10/06/JS对象/">JS对象</a>
+            <a href="/2018/11/15/事件传播机制、阻止传播、取消默认事件、事件代理/">事件传 播机制、阻止传播、取消默认事件、事件代理</a>
           </li>
         
           <li>
-            <a href="/2018/10/05/JS函数/">JS函数</a>
+            <a href="/2018/11/14/onclick与addEventListener区别/">onclick与addEventListener区别</a>
           </li>
         
           <li>
-            <a href="/2018/10/04/JS运算符/">JS运算符</a>
+            <a href="/2018/11/07/任务队列异步函数节流/">任务队列异步函数节流</a>
           </li>
         
       </ul>

@@ -62,6 +62,624 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-JS函数" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/10/05/JS函数/" class="article-date">
+  <time datetime="2018-10-05T05:57:45.000Z" itemprop="datePublished">2018-10-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/10/05/JS函数/">JS函数</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="解密类型转换"><a href="#解密类型转换" class="headerlink" title="解密类型转换"></a>解密类型转换</h3><h4 id="if的判断"><a href="#if的判断" class="headerlink" title="if的判断"></a>if的判断</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(xxx)&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>js是如何处理的？做几道测试题看一看</p>
+<h6 id="题目-如下代码输出什么？"><a href="#题目-如下代码输出什么？" class="headerlink" title="题目 如下代码输出什么？"></a>题目 如下代码输出什么？</h6><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> （<span class="string">"hello"</span>)&#123;	<span class="comment">//true</span></span><br><span class="line">	<span class="built_in">console</span>.log(<span class="string">"hello"</span>)</span><br><span class="line">&#125; <span class="comment">//"hell0"</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(<span class="string">""</span>)&#123;<span class="comment">//false</span></span><br><span class="line">	<span class="built_in">console</span>.log(<span class="string">'empty'</span>)</span><br><span class="line">&#125; <span class="comment">//不输出</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(<span class="string">" "</span>)&#123;<span class="comment">//true</span></span><br><span class="line">	<span class="built_in">console</span>.log(<span class="string">'blank'</span>)</span><br><span class="line">&#125;<span class="comment">//'blank</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>([<span class="number">0</span>])&#123;<span class="comment">//true</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'array'</span>)</span><br><span class="line">&#125;<span class="comment">//'array'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(<span class="string">'0.00'</span>)&#123;<span class="comment">//true</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'0.00'</span>)</span><br><span class="line">&#125;<span class="comment">//0.00</span></span><br></pre></td></tr></table></figure>
+<h4 id="解密"><a href="#解密" class="headerlink" title="解密"></a>解密</h4><p>对括号里的表达式，会被强制转换为布尔类型</p>
+<h4 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h4><table>
+<thead>
+<tr>
+<th style="text-align:left">类型</th>
+<th style="text-align:center">结果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Undefined</td>
+<td style="text-align:center">false</td>
+</tr>
+<tr>
+<td style="text-align:left">Null</td>
+<td style="text-align:center">false</td>
+</tr>
+<tr>
+<td style="text-align:left">Boolean</td>
+<td style="text-align:center">直接判断</td>
+</tr>
+<tr>
+<td style="text-align:left">Number</td>
+<td style="text-align:center">+0,-0,或NaN为false,其他为true</td>
+</tr>
+<tr>
+<td style="text-align:left">String</td>
+<td style="text-align:center">空字符串为false,其他都为true</td>
+</tr>
+<tr>
+<td style="text-align:left">Object</td>
+<td style="text-align:center">true</td>
+</tr>
+</tbody>
+</table>
+<h4 id="的判断"><a href="#的判断" class="headerlink" title="==的判断"></a>==的判断</h4><p>对于==的判断，js是怎么处理的？做几道题看看</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">""</span> == <span class="number">0</span> <span class="comment">//true ""转数字是0</span></span><br><span class="line"><span class="string">" "</span> == <span class="number">0</span> <span class="comment">//true " "转数字也是0 </span></span><br><span class="line"><span class="string">""</span> == <span class="literal">true</span> <span class="comment">//false</span></span><br><span class="line"><span class="string">""</span> == <span class="literal">false</span><span class="comment">//true</span></span><br><span class="line"><span class="string">" "</span> == <span class="literal">true</span><span class="comment">//false</span></span><br><span class="line"></span><br><span class="line">!<span class="string">" "</span> == <span class="literal">true</span>  <span class="comment">//false " "转布尔是true 取反就是false</span></span><br><span class="line">!<span class="string">" "</span> == <span class="literal">false</span> <span class="comment">//true " "转布尔是true 取反就是false</span></span><br><span class="line"><span class="string">"hello"</span> == <span class="literal">true</span> <span class="comment">//false "hello"转数字是NaN </span></span><br><span class="line"><span class="string">"hello"</span> == <span class="literal">false</span> <span class="comment">//false</span></span><br><span class="line"><span class="string">"0"</span> == <span class="literal">true</span> <span class="comment">//false</span></span><br><span class="line"><span class="string">"00"</span> == <span class="literal">true</span> <span class="comment">//false</span></span><br><span class="line"><span class="string">"0.00"</span> == <span class="literal">false</span> <span class="comment">//true</span></span><br><span class="line"></span><br><span class="line"><span class="literal">undefined</span> == <span class="literal">null</span> <span class="comment">//true</span></span><br><span class="line">&#123;&#125; == <span class="literal">true</span> <span class="comment">// false &#123;&#125;转数字为[object object],ture转数字是1</span></span><br><span class="line">[] == <span class="literal">true</span> <span class="comment">// false</span></span><br><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">    a: <span class="number">0</span>,</span><br><span class="line">    valueOf:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;<span class="keyword">return</span> <span class="number">1</span>&#125;</span><br><span class="line">&#125;</span><br><span class="line">obj == <span class="string">"[object object]"</span> <span class="comment">//false 因为obj返回的是1</span></span><br><span class="line">obj == <span class="number">1</span> <span class="comment">//true</span></span><br><span class="line">obj == <span class="literal">true</span> <span class="comment">//true</span></span><br></pre></td></tr></table></figure>
+<p><u><strong>只有空白字符串（“ ”）转布尔值是true,其他都是false</strong></u></p>
+<h4 id="解密-1"><a href="#解密-1" class="headerlink" title="解密"></a>解密</h4><table>
+<thead>
+<tr>
+<th style="text-align:left">x</th>
+<th style="text-align:center">y</th>
+<th style="text-align:left">结果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">null</td>
+<td style="text-align:center">undefined</td>
+<td style="text-align:left">ture</td>
+</tr>
+<tr>
+<td style="text-align:left">Number</td>
+<td style="text-align:center">String</td>
+<td style="text-align:left">x == toNumber(y)</td>
+</tr>
+<tr>
+<td style="text-align:left">Boolean</td>
+<td style="text-align:center">(any)</td>
+<td style="text-align:left">toNumber(x) == y</td>
+</tr>
+<tr>
+<td style="text-align:left">Object</td>
+<td style="text-align:center">String or Number</td>
+<td style="text-align:left">toPrimitive(x) == y</td>
+</tr>
+<tr>
+<td style="text-align:left">otherwise</td>
+<td style="text-align:center">otherwise</td>
+<td style="text-align:left">false</td>
+</tr>
+</tbody>
+</table>
+<h4 id="toNumber"><a href="#toNumber" class="headerlink" title="toNumber"></a>toNumber</h4><table>
+<thead>
+<tr>
+<th style="text-align:left">type</th>
+<th style="text-align:center">result</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">Undefined</td>
+<td style="text-align:center">NaN</td>
+</tr>
+<tr>
+<td style="text-align:left">Null</td>
+<td style="text-align:center">0</td>
+</tr>
+<tr>
+<td style="text-align:left">Boolean</td>
+<td style="text-align:center">true -&gt;1,false -&gt;0</td>
+</tr>
+<tr>
+<td style="text-align:left">String</td>
+<td style="text-align:center">“abc” -&gt; NaN, “123” -&gt; 123</td>
+</tr>
+</tbody>
+</table>
+<h4 id="toPrimitive"><a href="#toPrimitive" class="headerlink" title="toPrimitive"></a>toPrimitive</h4><p>对于Object 类型，先尝试调用.valueOf方法获取结果。如果没有定义，再尝试调用.toString方法获取结果</p>
+<h4 id="arguments"><a href="#arguments" class="headerlink" title="arguments"></a>arguments</h4><p>在函数内部，你可以使用arguments对象获取到该函数的所有传入参数</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">pop</span>(<span class="params">name,age,sex</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(name)</span><br><span class="line">    <span class="built_in">console</span>.log(age)</span><br><span class="line">    <span class="built_in">console</span>.log(sex)</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="built_in">arguments</span>)</span><br><span class="line">&#125;</span><br><span class="line">pop(<span class="string">'xiaowu'</span>,<span class="number">19</span>,<span class="string">'boy'</span>)</span><br><span class="line"><span class="comment">// xiaowu</span></span><br><span class="line"><span class="comment">//19</span></span><br><span class="line"><span class="comment">//boy</span></span><br><span class="line"><span class="comment">//Arguments(3) ["xiaowu", 19, "boy", callee: ƒ, Symbol(Symbol.iterator): ƒ]</span></span><br></pre></td></tr></table></figure>
+<p>命名冲突</p>
+<p>当在同一个作用域内定义了名字相同的变量和方法的话，无论其顺序如何，变量的赋值会覆盖方法的赋值</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> fn = <span class="number">3</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>)</span>&#123;&#125;</span><br><span class="line"><span class="built_in">console</span>.log(fn) <span class="comment">//3</span></span><br><span class="line"></span><br><span class="line">相当于</span><br><span class="line"><span class="keyword">var</span> fn</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>)</span>&#123;&#125; <span class="comment">//覆盖上面的</span></span><br><span class="line">fn = <span class="number">3</span> <span class="comment">// 重新赋值</span></span><br><span class="line"><span class="built_in">console</span>.log(fn)</span><br></pre></td></tr></table></figure>
+<p>当函数执行有命令冲突时，可以认为在还是内部一开始有隐藏的声明变量这个操作</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params">fn</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(fn)</span><br><span class="line">    <span class="keyword">var</span> fn = <span class="number">3</span>;</span><br><span class="line">    <span class="built_in">console</span>.log(fn);</span><br><span class="line">&#125;</span><br><span class="line">fn(<span class="number">10</span>)</span><br><span class="line"></span><br><span class="line">相当于</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> fn = <span class="built_in">arguments</span>[<span class="number">0</span>]</span><br><span class="line">    <span class="built_in">console</span>.log(fn)</span><br><span class="line">    <span class="keyword">var</span> fn = <span class="number">3</span>;</span><br><span class="line">    <span class="built_in">console</span>.log(fn)</span><br><span class="line">&#125;</span><br><span class="line">fn(<span class="number">10</span>) <span class="comment">//10 3</span></span><br></pre></td></tr></table></figure>
+<h4 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h4><p>简单来说自已调用自已</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fact</span>(<span class="params">n</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(n === <span class="number">1</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> n = <span class="number">1</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> n*fact(n<span class="number">-1</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(fact(<span class="number">3</span>)) <span class="comment">//6</span></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/10/05/JS函数/" data-id="cjonz5qsn0003vws6sjetd1vr" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-JS运算符" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/10/04/JS运算符/" class="article-date">
+  <time datetime="2018-10-04T15:23:25.000Z" itemprop="datePublished">2018-10-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/10/04/JS运算符/">JS运算符</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h5 id="加号运算符"><a href="#加号运算符" class="headerlink" title="加号运算符"></a>加号运算符</h5><p>有些操作符对不同数据类型有不同的含义，比如 +</p>
+<ul>
+<li>在两个操作数都是数字的时候，会做加法运算</li>
+<li>两个参数都是字符串或在有一个参数是字符串的情况下会把另外一个参数转换为字符串做字符串拼接</li>
+<li>在参数有对象的情况下会调用其valueOf 或 toString</li>
+<li>在只有一个字符串参数的时候会尝试将其转换为数字</li>
+<li>在只有一个数字参数的时候返回其正数值</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(<span class="number">2</span>+<span class="number">4</span>) <span class="comment">//6</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">"2"</span>+<span class="string">"4"</span>) <span class="comment">//"24"</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="number">2</span>+<span class="string">"4"</span>) <span class="comment">//"24"</span></span><br><span class="line"><span class="built_in">console</span>.log(+<span class="string">"4"</span>) <span class="comment">//4</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">    toString:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">10</span></span><br><span class="line">    &#125;,</span><br><span class="line">    valueOf:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">"100"</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(+obj) <span class="comment">// 100</span></span><br><span class="line"><span class="comment">//这里是因为obj的valueOf级别高于toString，所以是返回字符串100,然后+号会强制转为数字</span></span><br></pre></td></tr></table></figure>
+<h5 id="逻辑运算符"><a href="#逻辑运算符" class="headerlink" title="逻辑运算符"></a>逻辑运算符</h5><p>能够转换为false的表达式有：</p>
+<ul>
+<li><code>null</code>；</li>
+<li><code>NaN</code>；</li>
+<li><code>0</code>；</li>
+<li>空字符串（<code>&quot;&quot;</code>）；</li>
+<li><code>undefined</code>。</li>
+</ul>
+<p><u></u></p>
+<p>其他运算符参考</p>
+<p> <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators" target="_blank" rel="noopener">https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Operators</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/10/04/JS运算符/" data-id="cjonz5qsq0005vws643lv53gp" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-ES5数组方法的那些事" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/10/04/ES5数组方法的那些事/" class="article-date">
+  <time datetime="2018-10-04T10:05:14.000Z" itemprop="datePublished">2018-10-04</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/10/04/ES5数组方法的那些事/">ES5数组方法的那些事</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p># </p>
+<p>indexOf、forEach、map、every、some、filter、reduce的用法</p>
+<p>###indexOf(element)<br>查找数组内指定元素的位置，查找到第一个返回其索引，没有返回-1</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</span><br><span class="line"><span class="built_in">console</span>.log(arr.indexOf(<span class="number">3</span>)) <span class="comment">//2</span></span><br><span class="line"><span class="built_in">console</span>.log(arr.indexOf(<span class="number">9</span>)) <span class="comment">//-1</span></span><br></pre></td></tr></table></figure>
+<h3 id="forEach-element-index-array"><a href="#forEach-element-index-array" class="headerlink" title="forEach(element,index,array)"></a>forEach(element,index,array)</h3><p> 遍历数组，参数为一个回调函数，回调函数有三个参数：</p>
+<p>1、当前元素<br>2、当前元素索引<br>3、整个数组</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</span><br><span class="line">arr.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">e,index</span>)</span>&#123;</span><br><span class="line">   arr[index] = e + <span class="number">1</span>      </span><br><span class="line">&#125;)</span><br><span class="line"><span class="built_in">console</span>.log(arr) <span class="comment">//[2, 3, 4, 5, 6]</span></span><br></pre></td></tr></table></figure>
+<p>###map (function(element))<br>与forEach类似，遍历数组，回调函数返回值组成一个新数组返回，新数组索引结构和原数组一致，原数组不变</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</span><br><span class="line"><span class="built_in">console</span>.log(arr.map(<span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;</span><br><span class="line">   <span class="keyword">return</span> e*e <span class="comment">// [1, 4, 9, 16, 25]</span></span><br><span class="line">&#125;))</span><br><span class="line"><span class="built_in">console</span>.log(arr) <span class="comment">//[1, 2, 3, 4, 5]</span></span><br></pre></td></tr></table></figure>
+<p><strong>注：在空数组上调用,every返回true,some 返回false</strong></p>
+<h3 id="every-function-element-index-array"><a href="#every-function-element-index-array" class="headerlink" title="every (function(element,index,array))"></a>every (function(element,index,array))</h3><p>所有函数的每个回调函数都返回true时才会返回true,当遇到false时终止执行，返回false</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</span><br><span class="line">arr.every(<span class="function"><span class="keyword">function</span>(<span class="params">val</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> val&gt;<span class="number">0</span>?<span class="literal">true</span>:<span class="literal">false</span></span><br><span class="line">&#125;)<span class="comment">//true</span></span><br></pre></td></tr></table></figure>
+<p>###some (function(element,index,array))<br>只要有一个回调函数返回true时终止执行并返回true,否则返回false </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</span><br><span class="line">arr.some(<span class="function"><span class="keyword">function</span>(<span class="params">val</span>)</span>&#123;</span><br><span class="line">   <span class="keyword">return</span> val&gt;<span class="number">0</span>?<span class="literal">true</span>:<span class="literal">false</span></span><br><span class="line">&#125;)<span class="comment">//true</span></span><br></pre></td></tr></table></figure>
+<h3 id="filter-function-element"><a href="#filter-function-element" class="headerlink" title="filter(function(element))"></a>filter(function(element))</h3><p>返回一个子集，回调函数用于逻辑判断是否返回，返回true则把当前元素加入到返回数组中，false则不加<br>数组只包含返回true的值，索引缺失的不包括，原数组保持不变</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]</span><br><span class="line"><span class="built_in">console</span>.log(arr.filter(<span class="function"><span class="keyword">function</span>(<span class="params">val</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> val &gt; <span class="number">3</span></span><br><span class="line">&#125;)) <span class="comment">// [4, 5, 6]</span></span><br><span class="line"><span class="built_in">console</span>.log(arr) <span class="comment">// [1,2,3,4,5,6]</span></span><br></pre></td></tr></table></figure>
+<h3 id="reduce-function-v1-v2-value"><a href="#reduce-function-v1-v2-value" class="headerlink" title="reduce(function(v1,v2),value)"></a>reduce(function(v1,v2),value)</h3><p>遍历数组，调用回调函数，将数组元素组合成一个值，从索引最小值开始，方法有两个参数</p>
+<p>1、回调函数：把两个值合为一个，返回结果<br>2、value : 一个初始值，可选</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]</span><br><span class="line">arr.reduce(<span class="function"><span class="keyword">function</span>(<span class="params">v1,v2</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> v1 + v2</span><br><span class="line">&#125;) <span class="comment">//21</span></span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/10/04/ES5数组方法的那些事/" data-id="cjonz5qsg0000vws659ztaos5" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-域名配置" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/10/03/域名配置/" class="article-date">
+  <time datetime="2018-10-03T11:13:24.000Z" itemprop="datePublished">2018-10-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/10/03/域名配置/">域名配置</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ol>
+<li><p>域名解析：<a href="http://www.misswuer.cn" target="_blank" rel="noopener">www.misswuer.cn</a> CNAME 到 <a href="http://lovexwu.github.io" target="_blank" rel="noopener">lovexwu.github.io</a> 上</p>
+</li>
+<li><p>github pages 里面自定义域名到 <a href="http://www.misswuer.cn" target="_blank" rel="noopener">www.misswuer.cn</a></p>
+</li>
+<li><p>hexo 里面的 _config.yml 的 public_dir 改为 github 仓库名 即 newblog</p>
+</li>
+<li><p>hexo 里面的 _config.yml 配置下 deploy 的仓库 为 newblog 的仓库路径 git://<a href="http://github.com/lovexwu/newblog.git" target="_blank" rel="noopener">github.com/lovexwu/newblog.git</a>，branch 设置为 master</p>
+</li>
+<li><p>npm install hexo-deployer-git –save</p>
+</li>
+<li><p>hexo d</p>
+</li>
+</ol>
+<p>完成</p>
+<p>配置好后，接下来就可以愉快地工作啦</p>
+<ol>
+<li><p>hexo new xxx</p>
+</li>
+<li><p>typora 编辑 xxx</p>
+</li>
+<li><p>hexo g 生成 html 文件，hexo s 预览下，如果之前开过 hexo s，之后就不用开了</p>
+</li>
+<li><p>hexo d 发布到网站上</p>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/10/03/域名配置/" data-id="cjonz5qt1000fvws6uiy2rak7" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-javascript入门" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/10/03/javascript入门/" class="article-date">
+  <time datetime="2018-10-03T10:07:46.000Z" itemprop="datePublished">2018-10-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/10/03/javascript入门/">javascript入门</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="JS-基本概念"><a href="#JS-基本概念" class="headerlink" title="JS 基本概念:"></a>JS 基本概念:</h3><h4 id="基本语法"><a href="#基本语法" class="headerlink" title="基本语法"></a>基本语法</h4><h5 id="调试"><a href="#调试" class="headerlink" title="调试"></a>调试</h5><p>打开chrome开发工具</p>
+<ul>
+<li>win     F12</li>
+<li>Mac    Command + Option + l</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">'xwu'</span></span><br><span class="line"><span class="built_in">console</span>.log(str)</span><br></pre></td></tr></table></figure>
+<h5 id="语句"><a href="#语句" class="headerlink" title="语句"></a>语句</h5><p> Javascript 程序的执行单位为行，也就是一行一行地执行。</p>
+<p>语句是为了完成某种任务而进行的操作，比如下面是一行赋值语句：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var a = 1 + 3</span><br></pre></td></tr></table></figure>
+<p>这条语句先用var 命令，声明了变量a，然后将1 + 3 的运算结果赋值给a</p>
+<h5 id="表达式"><a href="#表达式" class="headerlink" title="表达式"></a>表达式</h5><p>指一个为了得到返回值的计算式。上面的1+3叫做表达式</p>
+<p><u>语句，表达式区别：前者主要是为了进行某种操作，一般情况下不需要返回值，后者是为了得到返回值，一定会返回一个值。</u></p>
+<h5 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h5><p>是对值的引用，使用变量等同于引用一个值。每一个变量都有一个变量名</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">1</span></span><br></pre></td></tr></table></figure>
+<h5 id="变量提升"><a href="#变量提升" class="headerlink" title="变量提升"></a>变量提升</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var a = 1 等同于 var a,a = 3 右边就是先声明这个变量，再去赋值</span><br></pre></td></tr></table></figure>
+<h5 id="标识符"><a href="#标识符" class="headerlink" title="标识符"></a>标识符</h5><p>用来识别具体对象的一个名称。最常见的标识符是变量，及后面提到的函数。js的标识符对大小写敏感，所以a 和A 是两个不同的标识符</p>
+<p>简单地说，标识符命名规则如下：</p>
+<ul>
+<li><p>第一个字符，可以是任意Unicode字母（包括英文字母和其他语言的字母),及美元符号（$）和下划线（_）</p>
+</li>
+<li><p>第二个字符及后面的字符，除了Unicode字母、美元符号和下划线，还可以用数字0-9</p>
+</li>
+</ul>
+<h5 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h5><p>JS提供两种注释:</p>
+<p>一种是单行注释，另一种是多行注释,如下</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 这是单行注释</span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">这是</span></span><br><span class="line"><span class="comment">多行</span></span><br><span class="line"><span class="comment">注释</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line">由于JS兼容HTML代码的注释，所以&lt;!-- 和--&gt; 也被视为单行注释</span><br></pre></td></tr></table></figure>
+<h5 id="区块"><a href="#区块" class="headerlink" title="区块"></a>区块</h5><p>JS用大括号，将多个相关的语句组合在一起，称为区块（block）</p>
+<p>与大多数编程语言不一样，JS的区块不构成单独的作用域，也就是说，区块中的变量与区块外的变量，属于同一个作用域</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="keyword">var</span> a = <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line">a <span class="comment">//1</span></span><br></pre></td></tr></table></figure>
+<p>上面代码在区块内部，声明并赋值变量a，然后在区块外部，变量a依然有效，说明区块不构成单独的作用域</p>
+<h3 id="JS数据类型"><a href="#JS数据类型" class="headerlink" title="JS数据类型"></a>JS数据类型</h3><p>JS的数据类型，共有六种(ES6 又新增了第七种Symbol类型的值)</p>
+<ul>
+<li><p>数值(number)：整数和小数（如1和3.14）</p>
+</li>
+<li><p>字符串(string)：字符组成的文本（如“hello”）</p>
+</li>
+<li><p>布尔值(boolean)：true和false</p>
+</li>
+<li><p>Undefined：表示未定义或不存在，即由于目前没有定义，所以暂时没有任何值</p>
+</li>
+<li><p>Null：表示无值，即此处的值就是无的状态</p>
+</li>
+<li><p>对象(object)：各种值组成的集合</p>
+</li>
+</ul>
+<p>通常我们将数值、字符串、布尔值称为原始类型，而将对象称为合成类型(引用类型)的值，</p>
+<p>至于null 和 undefined 是两个特殊的值</p>
+<p>对象可以分成三个子类型</p>
+<ul>
+<li><p>狭义的对象(object)</p>
+</li>
+<li><p>数组(array)</p>
+</li>
+<li>函数(function)</li>
+</ul>
+<h5 id="typeof-运算符"><a href="#typeof-运算符" class="headerlink" title="typeof 运算符"></a>typeof 运算符</h5><p>JS有三种方法，可以确定一个值到底是什么类型</p>
+<ul>
+<li><p>typeof 运算符</p>
+</li>
+<li><p>instanceof 运算符</p>
+</li>
+<li><p>Object.prototype.toString 运算符</p>
+</li>
+</ul>
+<p><u><strong>null返回 Object 、undefined返回undefined</strong></u></p>
+<h5 id="布尔值"><a href="#布尔值" class="headerlink" title="布尔值"></a>布尔值</h5><p>转换规则除了下面六个值被转为false,其他都是true</p>
+<ul>
+<li><p>undefined</p>
+</li>
+<li><p>null</p>
+</li>
+<li><p>false</p>
+</li>
+<li><p>0</p>
+</li>
+<li><p>NaN</p>
+</li>
+<li><p>‘’’’ 或‘ ‘ （空字符串）</p>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/10/03/javascript入门/" data-id="cjonz5qst0008vws6d5cv3mth" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-git命令使用" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/10/02/git命令使用/" class="article-date">
+  <time datetime="2018-10-02T09:59:22.000Z" itemprop="datePublished">2018-10-02</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/10/02/git命令使用/">Git命令使用</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>大家在使用git提交代码的过程中，难免会因为各种原因执行一些错误的commit / push，想要修复这些错误，reset和revert就能很好的帮到我们。</p>
+<p>首先我们到区分几个概念，工作区，暂存区，版本库。</p>
+<p><strong>工作区</strong><br>所谓工作区，即我们电脑中所看到的目录。</p>
+<p><strong>版本库</strong><br>在工作区有一个隐藏目录.git，这是Git的版本库。</p>
+<p><strong>暂存区</strong><br>Git的版本库里存了很多东西，其中最重要的就是称为stage（或者叫index）的暂存区，还有Git为我们自动创建的第一个分支master，以及指向master的一个指针叫HEAD</p>
+<p>#小小实例了解下</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14339384-b42621a6dd3db2d3.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="1.jpg"></p>
+<p><strong>开始做几次提交</strong><br><img src="https://upload-images.jianshu.io/upload_images/14339384-8d7e52440fcb334f.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="2.jpg"></p>
+<p><strong>看下提交log</strong><br><img src="https://upload-images.jianshu.io/upload_images/14339384-e4d7a68891094b51.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="3.jpg"></p>
+<p><strong>当前提交的readme</strong><br><img src="https://upload-images.jianshu.io/upload_images/14339384-25e76b753234941f.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="4.jpg"></p>
+<p><strong>一种方式，soft模式</strong><br><img src="https://upload-images.jianshu.io/upload_images/14339384-6419fb2ce901c22a.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="6.jpg"><br>采用这种模式，git不回清除你的stage区，因此，git status时就显示了stage区相对于second commit的变化。此时工作区是clean 的，而stage区则有变化</p>
+<p><strong>另一种方式，hard模式</strong><br><img src="https://upload-images.jianshu.io/upload_images/14339384-4ad49e7c87bc5a24.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="7.jpg"><br>采用这种模式，git回用first commit 的内容覆盖stage区和工作区，因此所有的内容都回到了first commit的状态。</p>
+<p>#区别（重点）</p>
+<p><strong>reset</strong><br>是起到了撤销commit的作用，但实质上它是将HEAD的指向移动了位置<br><img src="https://upload-images.jianshu.io/upload_images/14339384-efe2bb12e2043bb6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="12.png"></p>
+<p><strong>revert</strong><br>是一次新的commit，HEAD会继续向前执行<br><img src="https://upload-images.jianshu.io/upload_images/14339384-d66f6700cbe7a215.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="13.png"></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/10/02/git命令使用/" data-id="cjonz5qss0007vws6sf6vqn0z" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-Git-使用方法" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/10/02/Git-使用方法/" class="article-date">
+  <time datetime="2018-10-02T09:13:09.000Z" itemprop="datePublished">2018-10-02</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/10/02/Git-使用方法/">Git-使用方法</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>首先我们打开mac终端输入<br><img src="https://upload-images.jianshu.io/upload_images/14260087-7ae4d51cbdd5ba28.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="1.png"></p>
+<p>如果终端告诉你<br><img src="https://upload-images.jianshu.io/upload_images/14260087-16999227ad4fc005.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="2.png"></p>
+<p>那么说明你已经有git了，不需下载安装</p>
+<p>#本地仓库创建<br><img src="https://upload-images.jianshu.io/upload_images/14339384-fb2d559ba2b3d088.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="3.png"></p>
+<p>再输入命令<br><img src="https://upload-images.jianshu.io/upload_images/14260087-02bb43d7f21a3ccd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="4.png"></p>
+<p>这样子 ，本地仓库就建好了</p>
+<p>#创建远程仓库<br>首页登陆Github，并选择创建<br><img src="https://upload-images.jianshu.io/upload_images/14260087-e90d9b087fce4015.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="5.png"></p>
+<p>填写仓库名称，这里注意仓库名称不要写中文，中文显示不出来<br><img src="https://upload-images.jianshu.io/upload_images/14339384-2f8260b4006c805a.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="6.jpg"></p>
+<p>这样远程仓库也创建好了</p>
+<p>#将本地仓库与远程仓库进行关联<br>在终端中输入<br><img src="https://upload-images.jianshu.io/upload_images/14260087-c93fc4f2200df010.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="7.png"><br>git remote add origin后的网址是你的远程仓库的地址，如下图<br><img src="https://upload-images.jianshu.io/upload_images/14339384-6e1a5c5e8128f6b8.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="8.jpg"></p>
+<p>OK现在已经关联成功了</p>
+<p>#克隆地址<br>终端输入<br><img src="https://upload-images.jianshu.io/upload_images/14260087-725d2a374013e595.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="9.png"></p>
+<p>这样子git 可以正常使用了</p>
+<p>#常用命令行如下<br>git status     查看本地git仓库的状态<br>git add -A    添加所有修改的内容<br>git commit -m “提交详情内容记录”      提交更新到本地仓库<br>git push -u origin master    将本地仓库更新的内容提交到远程仓库<br>git diff   查看修改的内容<br>git log   查看历史版本，显示从最近到最远的提交日志</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/10/02/Git-使用方法/" data-id="cjonz5qsm0002vws6s7kevz0j" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-命令行基础" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/10/02/命令行基础/" class="article-date">
+  <time datetime="2018-10-02T07:13:38.000Z" itemprop="datePublished">2018-10-02</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/10/02/命令行基础/">命令行基础</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="一些名词"><a href="#一些名词" class="headerlink" title="一些名词"></a>一些名词</h2><ul>
+<li>「图形界面」</li>
+<li>「命令行」</li>
+<li>「终端」</li>
+<li>「shell」</li>
+<li>「bash」</li>
+</ul>
+<h2 id="安装使用"><a href="#安装使用" class="headerlink" title="安装使用"></a>安装使用</h2><ul>
+<li>Windws: 安装git, 打开 gitbash</li>
+<li>Linux 打开终端</li>
+<li>Mac 打开终端</li>
+</ul>
+<h2 id="基本命令"><a href="#基本命令" class="headerlink" title="基本命令"></a>基本命令</h2><h3 id="查看当前完整路径"><a href="#查看当前完整路径" class="headerlink" title="查看当前完整路径"></a>查看当前完整路径</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pwd</span><br></pre></td></tr></table></figure>
+<h3 id="查看当前目录下文件"><a href="#查看当前目录下文件" class="headerlink" title="查看当前目录下文件"></a>查看当前目录下文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># 不包括隐藏文件</span><br><span class="line">ls</span><br><span class="line"></span><br><span class="line"># 查看当前目录下所有文件(包括隐藏文件)</span><br><span class="line">ls -a</span><br><span class="line"></span><br><span class="line"># 查看当前目录下所有文件(包括隐藏文件)的详细信息</span><br><span class="line">ls -al</span><br></pre></td></tr></table></figure>
+<h3 id="切换目录"><a href="#切换目录" class="headerlink" title="切换目录"></a>切换目录</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cd /c/project</span><br><span class="line">cd code</span><br><span class="line">cd ../css</span><br><span class="line">cd ~/Desktop</span><br></pre></td></tr></table></figure>
+<h3 id="创建文件"><a href="#创建文件" class="headerlink" title="创建文件"></a>创建文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">touch readme.md</span><br></pre></td></tr></table></figure>
+<h3 id="删除文件"><a href="#删除文件" class="headerlink" title="删除文件"></a>删除文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#创建readme.md</span><br><span class="line">rm readme.md </span><br><span class="line"></span><br><span class="line">#删除node_modules文件夹，不提示</span><br><span class="line">rm -rf node_modules</span><br></pre></td></tr></table></figure>
+<h3 id="重命名文件"><a href="#重命名文件" class="headerlink" title="重命名文件"></a>重命名文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mv readme.md README.md</span><br></pre></td></tr></table></figure>
+<h3 id="创建文件夹"><a href="#创建文件夹" class="headerlink" title="创建文件夹"></a>创建文件夹</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir projects</span><br></pre></td></tr></table></figure>
+<h2 id="文件路径"><a href="#文件路径" class="headerlink" title="文件路径"></a>文件路径</h2><h3 id="根目录"><a href="#根目录" class="headerlink" title="根目录"></a>根目录</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd /</span><br></pre></td></tr></table></figure>
+<h3 id="家目录"><a href="#家目录" class="headerlink" title="家目录"></a>家目录</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd ~</span><br><span class="line">pwd</span><br></pre></td></tr></table></figure>
+<h3 id="当前目录"><a href="#当前目录" class="headerlink" title="当前目录"></a>当前目录</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd books</span><br><span class="line">cd ./books</span><br></pre></td></tr></table></figure>
+<h3 id="上级目录"><a href="#上级目录" class="headerlink" title="上级目录"></a>上级目录</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd ..</span><br><span class="line">cd ../css</span><br></pre></td></tr></table></figure>
+<h2 id="编辑器vim"><a href="#编辑器vim" class="headerlink" title="编辑器vim"></a>编辑器vim</h2><blockquote>
+<p>编辑模式<br>命令模式</p>
+</blockquote>
+<ol>
+<li><code>vim a.md</code> 初始进入编辑器命令模式</li>
+<li><code>i</code> 进入编辑模式</li>
+<li>键盘左上角<code>esc</code> 进入命令命令模式</li>
+<li><code>:wq</code> 保存退出</li>
+<li><code>:q!</code> 不保存强制退出</li>
+</ol>
+<h2 id="安装服务器"><a href="#安装服务器" class="headerlink" title="安装服务器"></a>安装服务器</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install -g http-server</span><br><span class="line">http-server</span><br></pre></td></tr></table></figure>
+<h2 id="登录开发机"><a href="#登录开发机" class="headerlink" title="登录开发机"></a>登录开发机</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ssh jirengu@47.91.156.35</span><br><span class="line"><span class="comment">#passwd: woaixueqianduan</span></span><br></pre></td></tr></table></figure>
+<h2 id="文件权限"><a href="#文件权限" class="headerlink" title="文件权限"></a>文件权限</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">chmod 777 index.html</span><br><span class="line">chown -R git:git ruoyu</span><br></pre></td></tr></table></figure>
+<h2 id="新手最大的问题"><a href="#新手最大的问题" class="headerlink" title="新手最大的问题"></a>新手最大的问题</h2><blockquote>
+<ol>
+<li>大小写看错</li>
+<li>空格写漏</li>
+<li>把多个命令当成一个命令</li>
+</ol>
+</blockquote>
+<h2 id="推荐资料"><a href="#推荐资料" class="headerlink" title="推荐资料"></a>推荐资料</h2><p><a href="http://www.cnblogs.com/peida/tag/linux%E5%91%BD%E4%BB%A4/default.html?page=4" target="_blank" rel="noopener">http://www.cnblogs.com/peida/tag/linux%E5%91%BD%E4%BB%A4/default.html?page=4</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/10/02/命令行基础/" data-id="cjonz5qt0000evws6zmp2wt94" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-白屏和FOUC现象" class="article article-type-post" itemscope="" itemprop="blogPost">
   <div class="article-meta">
     <a href="/2018/10/01/白屏和FOUC现象/" class="article-date">
@@ -96,7 +714,70 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/10/01/白屏和FOUC现象/" data-id="cjnv5cj1x0005wys6qq6pmag2" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2018/10/01/白屏和FOUC现象/" data-id="cjonz5qt4000ivws654hc3aim" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-工具安装" class="article article-type-post" itemscope="" itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2018/10/01/工具安装/" class="article-date">
+  <time datetime="2018-10-01T04:04:15.000Z" itemprop="datePublished">2018-10-01</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/10/01/工具安装/">工具安装</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p><a href="http://md2ppt.jscode.me/md2ppt?url=https%3A%2F%2Fraw.githubusercontent.com%2Fjirengu%2Ffrontend-knowledge-ppt%2Fmaster%2F%25E5%2589%258D%25E7%25AB%25AF%25E5%2585%25A5%25E9%2597%25A8-%25E5%25B7%25A5%25E5%2585%25B7%25E5%25AE%2589%25E8%25A3%2585.md%3Ftoken%3DAKZzb3sU30DMxhI1FgM-E0Gn_jrtsD3Aks5bj46RwA%253D%253D&amp;theme=blood&amp;trans=convex#/" target="_blank" rel="noopener">查看 ppt</a></p>
+<p>浏览器、编辑器、Git、NodeJS、翻墙软件(<a href="https://shadowsocks.to" target="_blank" rel="noopener">https://shadowsocks.to</a>  进入后点Order now按钮，进入<a href="https://portal.shadowsocks.nu/cart.php" target="_blank" rel="noopener">https://portal.shadowsocks.nu/cart.php</a> 进行购买即可 )的安装</p>
+<h2 id="科学上网"><a href="#科学上网" class="headerlink" title="科学上网"></a>科学上网</h2><p>科学上网是学习前端的第一步</p>
+<ul>
+<li><a href="https://portal.shadowsocks.se/" target="_blank" rel="noopener">购买地址</a> (地址后缀经常变，保持关注)</li>
+</ul>
+<h2 id="浏览器"><a href="#浏览器" class="headerlink" title="浏览器"></a>浏览器</h2><ul>
+<li><a href="http://www.google.cn/intl/zh-CN/chrome/browser/desktop/index.html" target="_blank" rel="noopener">Chrome下载</a></li>
+<li>也可bing搜索chrome安装</li>
+</ul>
+<h2 id="编辑器"><a href="#编辑器" class="headerlink" title="编辑器"></a>编辑器</h2><ul>
+<li><a href="https://www.jetbrains.com/webstorm/" target="_blank" rel="noopener">webstrom</a> (操作复杂、收费、功能强大，启动有点慢)</li>
+<li><a href="http://code.visualstudio.com/" target="_blank" rel="noopener">vscode</a> (操作普通，免费，用起来方便)</li>
+<li><a href="https://atom.io/" target="_blank" rel="noopener">atom</a> (操作普通，免费，windows 略卡)</li>
+<li><a href="https://www.sublimetext.com/" target="_blank" rel="noopener">sublime</a> (操作简单，启动运行速度快，功能弱，插件库烂)</li>
+</ul>
+<h2 id="Git"><a href="#Git" class="headerlink" title="Git"></a>Git</h2><ul>
+<li><a href="https://git-scm.com/downloads" target="_blank" rel="noopener">下载地址</a></li>
+</ul>
+<h2 id="NodeJS"><a href="#NodeJS" class="headerlink" title="NodeJS"></a>NodeJS</h2><ul>
+<li><a href="https://nodejs.org/zh-cn/" target="_blank" rel="noopener">下载地址</a></li>
+</ul>
+<h2 id="搜索引擎"><a href="#搜索引擎" class="headerlink" title="搜索引擎"></a>搜索引擎</h2><ul>
+<li><a href="https://www.google.com/" target="_blank" rel="noopener">Google</a> 最优</li>
+<li><a href="http://www.bing.com/" target="_blank" rel="noopener">bing</a> 懒得翻墙的时候用</li>
+<li><a href="http://baidu.com/" target="_blank" rel="noopener">百度</a> 少用</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2018/10/01/工具安装/" data-id="cjonz5qt2000gvws6ovrbzzay" class="article-share-link">Share</a>
       
       
     </footer>
@@ -129,7 +810,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/11/">November 2018</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/10/">October 2018</a></li></ul>
     </div>
   </div>
 
@@ -142,23 +823,23 @@
       <ul>
         
           <li>
-            <a href="/2018/10/11/JS作用域和Js引用类型/">JS作用域和Js引用类型</a>
+            <a href="/2018/11/18/cookie、session、localStorage/">cookie、session、localStorage</a>
           </li>
         
           <li>
-            <a href="/2018/10/07/谈谈JavaScript的作用域链/">谈谈JavaScript的作用域链</a>
+            <a href="/2018/11/16/form表单/">form表单</a>
           </li>
         
           <li>
-            <a href="/2018/10/06/JS对象/">JS对象</a>
+            <a href="/2018/11/15/事件传播机制、阻止传播、取消默认事件、事件代理/">事件传 播机制、阻止传播、取消默认事件、事件代理</a>
           </li>
         
           <li>
-            <a href="/2018/10/05/JS函数/">JS函数</a>
+            <a href="/2018/11/14/onclick与addEventListener区别/">onclick与addEventListener区别</a>
           </li>
         
           <li>
-            <a href="/2018/10/04/JS运算符/">JS运算符</a>
+            <a href="/2018/11/07/任务队列异步函数节流/">任务队列异步函数节流</a>
           </li>
         
       </ul>
