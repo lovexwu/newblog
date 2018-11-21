@@ -126,6 +126,22 @@ obj3 === obj4 //false
 
 ```
 
+```javascript
+function test(m){//m是形参
+	m.k = 5;
+}
+var m = {
+	k: 30
+}
+test(m);//m是实参
+console.log(m);
+// {k: 5}
+因为 对象属于引用类型, 传进去的 m 实际是 m 的地址~ 所以 test 还是对 m 进行操作的
+
+//定义 的时候 参数都是形参 
+//调用都是实参调用的
+```
+
 
 
 ![p1.jpg](https://upload-images.jianshu.io/upload_images/9375265-61edb0c547ce4ef6.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
