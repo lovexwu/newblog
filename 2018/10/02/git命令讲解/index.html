@@ -1,0 +1,171 @@
+<html>
+  <head><meta name="generator" content="Hexo 3.8.0">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  
+    <link rel="icon" href="/images/favicon.ico">
+  
+  <title>Wuer</title>
+  <link rel="stylesheet" href="/css/styles.css">
+  <script src="/lib/jquery.js"></script>
+  <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css">
+  <script src="/js/common.js"></script>
+  <script src="/lib/bootstrap/js/bootstrap.js"></script>
+  <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+</head>
+
+  <body>
+    <header class="header">
+  <div class="color-bar">
+    <ul>
+      <li class="bar1"></li>
+      <li class="bar2"></li>
+      <li class="bar3"></li>
+      <li class="bar4"></li>
+      <li class="bar5"></li>
+      <li class="bar6"></li>
+    </ul>
+  </div>
+  <div class="header-wrapper">
+    <div class="blog-title">
+      
+        <img class="logo" src="/images/logo.png" alt="logo">
+      
+      <a href="/" class="title">Wuer</a>
+    </div>
+    <nav class="navbar navbar-menu">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" id="nav-btn" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+      </div>
+        <ul class="menu menu-pc">
+          
+            <li class="menu-item">
+              <a href="/" class="menu-item-link"><i class="fa fa-home"></i><span>首页</span></a>
+            </li>
+          
+            <li class="menu-item">
+              <a href="/tags/" class="menu-item-link"><i class="fa fa-tags"></i><span>Tags</span></a>
+            </li>
+          
+            <li class="menu-item">
+              <a href="/archives/" class="menu-item-link"><i class="fa fa-file"></i><span>归档</span></a>
+            </li>
+          
+            <li class="menu-item">
+              <a href="https://github.com/littleee/" class="menu-item-link"><i class="fa fa-github"></i><span>github</span></a>
+            </li>
+          
+        </ul>
+    </nav>
+  </div>
+</header>
+<div class="collapse nav-collapse" style="position:fixed;top:59px;" id="bs-example-navbar-collapse-1">
+  <ul class="menu menu-mobile" style="list-style:none">
+    
+      <li class="menu-item">
+        <a href="/" class="menu-item-link"><i class="fa fa-home"></i><span>首页</span></a>
+      </li>
+    
+      <li class="menu-item">
+        <a href="/tags/" class="menu-item-link"><i class="fa fa-tags"></i><span>Tags</span></a>
+      </li>
+    
+      <li class="menu-item">
+        <a href="/archives/" class="menu-item-link"><i class="fa fa-file"></i><span>归档</span></a>
+      </li>
+    
+      <li class="menu-item">
+        <a href="https://github.com/littleee/" class="menu-item-link"><i class="fa fa-github"></i><span>github</span></a>
+      </li>
+    
+  </ul>
+</div>
+
+    <main class="main">
+      <div class="content">
+        
+  <article class="post">
+    <div class="post-title">
+      <h2 class="title">git命令讲解</h2>
+       
+    </div>
+     <div class="post-meta">
+      <span class="post-time">2018-10-02</span>
+    </div>
+    <div class="post-content">
+      <h3 id="起步"><a href="#起步" class="headerlink" title="起步"></a>起步</h3><p>初次使用需要设置姓名和邮箱</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name <span class="string">"你的姓名"</span></span><br><span class="line">git config --global user.email 邮箱地址（如<span class="number">123</span>@<span class="number">163.</span>com）</span><br></pre></td></tr></table></figure>
+<h3 id="clone项目"><a href="#clone项目" class="headerlink" title="clone项目"></a>clone项目</h3><p>用于把一个GitHub上的项目clone（下载）到本地，变为本地仓库</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git clone git@github.com:jirengu/blog.git</span><br><span class="line">cd blog</span><br></pre></td></tr></table></figure>
+<h3 id="添加文件并提交"><a href="#添加文件并提交" class="headerlink" title="添加文件并提交"></a>添加文件并提交</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#创建文件</span><br><span class="line">touch a.md</span><br><span class="line"></span><br><span class="line">#在文件里写入一个字符串</span><br><span class="line">echo <span class="string">"hello"</span> &gt; a.md</span><br><span class="line">git status</span><br></pre></td></tr></table></figure>
+<p><img src="https://upload-images.jianshu.io/upload_images/14339384-81b25ac7b0cd1e77.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="添加文件并提交1.jpg"></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#在当前目录下的新增和修改的文件添加到暂存区</span><br><span class="line">git add .</span><br><span class="line">git status</span><br></pre></td></tr></table></figure>
+<p><img src="https://upload-images.jianshu.io/upload_images/14339384-1252dd98333c031a.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="添加文件并提交2.jpg"></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#把暂存区的更新提交到本地库</span><br><span class="line">git commit -am <span class="string">"add file"</span></span><br><span class="line">git status</span><br></pre></td></tr></table></figure>
+<p><img src="https://upload-images.jianshu.io/upload_images/14339384-8d7658adef991691.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="添加文件并提交3.jpg"></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#把当前本地库里的改动推送到远程库（origin) 的master分支</span><br><span class="line">git push origin master <span class="comment">//如果之前提交过，以后只需要git push即可</span></span><br></pre></td></tr></table></figure>
+<p><img src="https://upload-images.jianshu.io/upload_images/14339384-ceb545cf25896176.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="添加文件并提交4.jpg"></p>
+<h3 id="修改删除文件"><a href="#修改删除文件" class="headerlink" title="修改删除文件"></a>修改删除文件</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">#把远程仓库的变动更新合并到本地仓库</span><br><span class="line">git pull</span><br><span class="line"><span class="comment">//如果远程仓库有修改，切记一定要git pull，这样子远程的修改才可以更新到本地仓库,不然会报错！</span></span><br><span class="line"></span><br><span class="line">#修改文件</span><br><span class="line">vim a.md</span><br><span class="line">git add .</span><br><span class="line"></span><br><span class="line"><span class="comment">// 这里需注意：</span></span><br><span class="line"><span class="comment">// 如果提交消息包含大量字符串，提交参数不用加m</span></span><br><span class="line"><span class="comment">// 此时会进入vim 界面，按下i 进入编辑状态，进行编辑</span></span><br><span class="line"><span class="comment">// 编辑完成后按下esc 进入命令状态，输入 :wq 保存退出 vim</span></span><br><span class="line"></span><br><span class="line">git commit -a</span><br><span class="line">git push origin master</span><br><span class="line"></span><br><span class="line">rm -rf a.md</span><br><span class="line">git add .</span><br></pre></td></tr></table></figure>
+<h3 id="本地创建一个git项目推送到远程空仓库"><a href="#本地创建一个git项目推送到远程空仓库" class="headerlink" title="本地创建一个git项目推送到远程空仓库"></a>本地创建一个git项目推送到远程空仓库</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">mkdir newProject</span><br><span class="line">cd newProject</span><br><span class="line"></span><br><span class="line"># 把一个文件夹初始化成一个本地 git仓库</span><br><span class="line"># 注意 仓库和文件夹的区别在于仓库下有一个隐藏的.git文件夹，里面有一些信息</span><br><span class="line"># 对于一个仓库，删除.git 文件夹，就变成一个普通的文件夹了</span><br><span class="line"></span><br><span class="line"><span class="comment">//如何把本地空文件夹变成仓库呢？我们用git init 初始化</span></span><br><span class="line">git init <span class="comment">//初始化，把本地的空文件夹变成仓库，才执行，</span></span><br><span class="line">#注意别克隆一个项目，再用git init，因为克隆的项目里，本身是一个仓库，它已经有了.git,</span><br><span class="line">#完全不需要你去操作，如果再去执行.git init的话，会把它的.git全给覆盖掉，把以前仓库的记录的信息全给抹掉 </span><br><span class="line"></span><br><span class="line">touch index.html</span><br><span class="line">echo <span class="string">"hello"</span> &gt; index.html</span><br><span class="line"></span><br><span class="line">git add .</span><br><span class="line">git commit -am <span class="string">"init"</span></span><br><span class="line"></span><br><span class="line"># 查看本地库里记录的远程库地址</span><br><span class="line">git remote -v</span><br><span class="line"></span><br><span class="line"># 这里把远程库的地址添加个标签origin</span><br><span class="line">git remote add origin git@github.com:jirengu/blog2.git</span><br><span class="line"></span><br><span class="line"># 推送到远程库地址</span><br><span class="line">git push origin master</span><br><span class="line"></span><br><span class="line"># 慎用，这样会强制推送，会覆盖别人的代码</span><br><span class="line">git push -f origin master</span><br><span class="line"></span><br><span class="line"># 在添加一个远程库的标签</span><br><span class="line">git remote add gitlab git@gitlab.com:abc/blog.git</span><br><span class="line"></span><br><span class="line"># 推送到gitlab标签的地址上</span><br><span class="line">git push gitlab master</span><br><span class="line"></span><br><span class="line"># 删除gitlab 标签</span><br><span class="line">git remote remove gitlab</span><br><span class="line"></span><br><span class="line"># 修改origin标签对应的地址</span><br><span class="line">git remote set-url origin git@github.com:jirengu/blog3.git</span><br><span class="line"></span><br><span class="line"># 把gitlab标签改名为coding</span><br><span class="line">git remote rename gitlab coding</span><br></pre></td></tr></table></figure>
+<h3 id="分支操作-很重要的一部分"><a href="#分支操作-很重要的一部分" class="headerlink" title="分支操作(很重要的一部分)"></a>分支操作(很重要的一部分)</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"># 创建本地库dev 分支</span><br><span class="line">git branch dev</span><br><span class="line"></span><br><span class="line"># 切换到dev 分支</span><br><span class="line">git checkout dev</span><br><span class="line"></span><br><span class="line">touch b.md</span><br><span class="line">git add .</span><br><span class="line">git commit -am <span class="string">"add b.md"</span></span><br><span class="line"></span><br><span class="line"># 推送到origin 地址的 dev 分支上</span><br><span class="line">git push origin dev</span><br></pre></td></tr></table></figure>
+<h3 id="分支合并"><a href="#分支合并" class="headerlink" title="分支合并"></a>分支合并</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git checkout master</span><br><span class="line"></span><br><span class="line"># 把dev 分支上的内容合并到当前分支（master）上</span><br><span class="line">git merge dev</span><br></pre></td></tr></table></figure>
+<h3 id="冲突"><a href="#冲突" class="headerlink" title="冲突"></a>冲突</h3><h6 id="当自已和别人改同一个文件的同一个地方，在执行git-pull-时更新本地合并时会出现冲突"><a href="#当自已和别人改同一个文件的同一个地方，在执行git-pull-时更新本地合并时会出现冲突" class="headerlink" title="当自已和别人改同一个文件的同一个地方，在执行git pull 时更新本地合并时会出现冲突"></a>当自已和别人改同一个文件的同一个地方，在执行<u>git pull</u> 时更新本地合并时会出现冲突</h6><p>1､ 修改冲突文件</p>
+<p>2､ 重新提交</p>
+
+    </div>
+  </article>
+  <div class="post-nav">
+    <div class="post-nav-next post-nav-item">
+      
+        <a href="/2018/10/02/git命令使用/" rel="next" title="Git命令使用">
+          <i class="fa fa-chevron-left"></i> Git命令使用
+        </a>
+      
+    </div>
+
+    <span class="post-nav-divider"></span>
+
+    <div class="post-nav-prev post-nav-item">
+    
+        <a href="/2018/10/03/javascript入门/" rel="prev" title="javascript入门">
+          javascript入门 <i class="fa fa-chevron-right"></i>
+        </a>
+      
+    </div>
+  </div>
+
+
+
+      </div>
+        <div class="footer">
+  <div class="footer-wrapper">
+    <div class="copyright">
+      
+      <span>&copy;</span>
+      
+      <span>2017 - 2018</span>
+      
+      <span class="author"><i class="fa fa-user"></i>Wuer</span>
+    </div>
+    
+      <span>Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> </span>
+    
+    
+      <span>|</span> <span>Theme - <a href="https://github.com/littleee/corazon">Corazon</a></span>
+      
+        <span>v1.0.0</span>
+      
+    
+  </div>
+</div>
+
+    </main>
+  </body>
+</html>

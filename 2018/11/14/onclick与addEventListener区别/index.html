@@ -1,0 +1,199 @@
+<html>
+  <head><meta name="generator" content="Hexo 3.8.0">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  
+    <link rel="icon" href="/images/favicon.ico">
+  
+  <title>Wuer</title>
+  <link rel="stylesheet" href="/css/styles.css">
+  <script src="/lib/jquery.js"></script>
+  <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css">
+  <script src="/js/common.js"></script>
+  <script src="/lib/bootstrap/js/bootstrap.js"></script>
+  <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+</head>
+
+  <body>
+    <header class="header">
+  <div class="color-bar">
+    <ul>
+      <li class="bar1"></li>
+      <li class="bar2"></li>
+      <li class="bar3"></li>
+      <li class="bar4"></li>
+      <li class="bar5"></li>
+      <li class="bar6"></li>
+    </ul>
+  </div>
+  <div class="header-wrapper">
+    <div class="blog-title">
+      
+        <img class="logo" src="/images/logo.png" alt="logo">
+      
+      <a href="/" class="title">Wuer</a>
+    </div>
+    <nav class="navbar navbar-menu">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" id="nav-btn" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+      </div>
+        <ul class="menu menu-pc">
+          
+            <li class="menu-item">
+              <a href="/" class="menu-item-link"><i class="fa fa-home"></i><span>首页</span></a>
+            </li>
+          
+            <li class="menu-item">
+              <a href="/tags/" class="menu-item-link"><i class="fa fa-tags"></i><span>Tags</span></a>
+            </li>
+          
+            <li class="menu-item">
+              <a href="/archives/" class="menu-item-link"><i class="fa fa-file"></i><span>归档</span></a>
+            </li>
+          
+            <li class="menu-item">
+              <a href="https://github.com/littleee/" class="menu-item-link"><i class="fa fa-github"></i><span>github</span></a>
+            </li>
+          
+        </ul>
+    </nav>
+  </div>
+</header>
+<div class="collapse nav-collapse" style="position:fixed;top:59px;" id="bs-example-navbar-collapse-1">
+  <ul class="menu menu-mobile" style="list-style:none">
+    
+      <li class="menu-item">
+        <a href="/" class="menu-item-link"><i class="fa fa-home"></i><span>首页</span></a>
+      </li>
+    
+      <li class="menu-item">
+        <a href="/tags/" class="menu-item-link"><i class="fa fa-tags"></i><span>Tags</span></a>
+      </li>
+    
+      <li class="menu-item">
+        <a href="/archives/" class="menu-item-link"><i class="fa fa-file"></i><span>归档</span></a>
+      </li>
+    
+      <li class="menu-item">
+        <a href="https://github.com/littleee/" class="menu-item-link"><i class="fa fa-github"></i><span>github</span></a>
+      </li>
+    
+  </ul>
+</div>
+
+    <main class="main">
+      <div class="content">
+        
+  <article class="post">
+    <div class="post-title">
+      <h2 class="title">onclick与addEventListener区别</h2>
+       
+    </div>
+     <div class="post-meta">
+      <span class="post-time">2018-11-14</span>
+    </div>
+    <div class="post-content">
+      <p>addEventListener和onclick有什么不一样？于是Google查了下，稍微整理了下：</p>
+<ul>
+<li><p>onclick 只能绑定一个事件，绑定多个会产生覆盖；不能设置参数，使用默认的事件冒泡阶段。</p>
+</li>
+<li><p>addEventListener中有第3个参数，attachEvent没有。第3个参数传递的是false或true。这个参数可选，默认是false。<br> false–表示事件处理将在冒泡阶段执行。<br> true–表示事件处理将在捕获阶段执行。</p>
+</li>
+<li><p>理论上，Event Listeners (addEventListener、attachEvent（IE使用 ）)可以无限增加事件监听给某个一元素。实际应用的约束就是客户端内存的限制，这一点因每个浏览器而异。</p>
+</li>
+</ul>
+<p><strong>onclick</strong> 属性返回当前元素的 <code>click</code> 事件处理器代码</p>
+<p>语法</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">element.onclick = functionRef;</span><br></pre></td></tr></table></figure>
+<p><em>functionRef</em> 是一个函数：通常是在别处声明的函数名或者是一个函数表达式（<em>function expression</em>）</p>
+<p><strong>来个实例：</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;ul id = <span class="string">"list"</span>&gt;</span><br><span class="line"> &lt;li id = <span class="string">"add_event"</span>&gt;white&lt;<span class="regexp">/li&gt;</span></span><br><span class="line"><span class="regexp"> &lt;li id = "on_click"&gt;black&lt;/</span>li&gt;</span><br><span class="line">&lt;<span class="regexp">/ul&gt;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">&lt;script&gt;</span></span><br><span class="line"><span class="regexp">var on_click = document.getElementById('on_click');</span></span><br><span class="line"><span class="regexp">on_click.onclick = function()&#123;</span></span><br><span class="line"><span class="regexp">    alert('我是click1');</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br><span class="line"><span class="regexp">on_click.onclick = function()&#123;</span></span><br><span class="line"><span class="regexp">    alert('我是click2');</span></span><br><span class="line"><span class="regexp">&#125; </span></span><br><span class="line"><span class="regexp">&lt;/</span>script&gt;</span><br></pre></td></tr></table></figure>
+<p><strong>运行结果：</strong></p>
+<p>可想而知，只会弹出一个弹出框(我是 click2)，虽然绑定了两次</p>
+<p>一个click处理器在同一时间只能指向唯一的对象。因此就算对于一个对象绑定了多次，但是仍然只会出现最后的一次绑定</p>
+<p><strong>addEventListener绑定click事件</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">currentTarget.addEventListener(type,listener,option)</span><br></pre></td></tr></table></figure>
+<p><strong>来个实例：</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;ul id = <span class="string">"list"</span>&gt;</span><br><span class="line"> &lt;li id = <span class="string">"add_event"</span>&gt;white&lt;<span class="regexp">/li&gt;</span></span><br><span class="line"><span class="regexp"> &lt;li id = "on_click"&gt;black&lt;/</span>li&gt;</span><br><span class="line">&lt;<span class="regexp">/ul&gt;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">&lt;script&gt;</span></span><br><span class="line"><span class="regexp">var addEvent = document.getElementById('add_event');</span></span><br><span class="line"><span class="regexp">addEvent.onclick = function()&#123;</span></span><br><span class="line"><span class="regexp">    alert('我是addEvent1');</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br><span class="line"><span class="regexp">addEvent.onclick = function()&#123;</span></span><br><span class="line"><span class="regexp">    alert('我是addEvent2');</span></span><br><span class="line"><span class="regexp">&#125; </span></span><br><span class="line"><span class="regexp">&lt;/</span>script&gt;</span><br></pre></td></tr></table></figure>
+<p><strong>运行结果：</strong></p>
+<p>两次绑定的事件，都能够成功运行，也就是前后弹出’我是addEvent1’ ‘我是addEvent2’</p>
+<p><strong>由此可见，对于一个可以绑定的事件对象，想多次绑定事件都能运行，选用addEventListener</strong></p>
+<p>通过addEventListener添加的事件必须通过相对应的为removeListener注销事件。但是如果像上面的用匿名函数的方式注册的事件，不能使用removeListener注销，因为没用对应事件的引用。</p>
+<p>所以注册事件如果需要取消，最好使用一个引用，即:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var eventName = function () &#123;</span><br><span class="line">    //something</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>也正是这种方式，对于一个对象多次绑定同样的eventName，那么不会重复执行，只会执行一次。对于上面的匿名函数，就算内容一样，也会依次执行，<strong>因为并不能算是相同事件处理器</strong>。</p>
+<p>里面的this引用，不是window对象，而是触发事件的元素的引用。</p>
+<p>对于IE9之前，相对应的是attachEvent和detachEvent</p>
+<p><strong>最后总结：</strong></p>
+<ol>
+<li><p>onclick事件在同一时间只能指向唯一对象</p>
+</li>
+<li><p>addEventListener给一个事件注册多个listener</p>
+</li>
+<li><p>addEventListener对任何DOM都是有效的，而onclick仅限于HTML</p>
+</li>
+<li><p>addEventListener可以控制listener的触发阶段，（捕获/冒泡）。对于多个相同的事件处理器，不会重复触发，不需要手动使用removeEventListener清除</p>
+</li>
+<li><p>IE9使用attachEvent和detachEvent</p>
+</li>
+</ol>
+<p>可参考: <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/GlobalEventHandlers/onclick" target="_blank" rel="noopener">https://developer.mozilla.org/zh-CN/docs/Web/API/GlobalEventHandlers/onclick</a></p>
+<p>​             <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/EventTarget/addEventListener" target="_blank" rel="noopener">https://developer.mozilla.org/zh-CN/docs/Web/API/EventTarget/addEventListener</a></p>
+
+    </div>
+  </article>
+  <div class="post-nav">
+    <div class="post-nav-next post-nav-item">
+      
+        <a href="/2018/11/07/任务队列异步函数节流/" rel="next" title="任务队列异步函数节流">
+          <i class="fa fa-chevron-left"></i> 任务队列异步函数节流
+        </a>
+      
+    </div>
+
+    <span class="post-nav-divider"></span>
+
+    <div class="post-nav-prev post-nav-item">
+    
+        <a href="/2018/11/15/事件传播机制、阻止传播、取消默认事件、事件代理/" rel="prev" title="事件传 播机制、阻止传播、取消默认事件、事件代理">
+          事件传 播机制、阻止传播、取消默认事件、事件代理 <i class="fa fa-chevron-right"></i>
+        </a>
+      
+    </div>
+  </div>
+
+
+
+      </div>
+        <div class="footer">
+  <div class="footer-wrapper">
+    <div class="copyright">
+      
+      <span>&copy;</span>
+      
+      <span>2017 - 2018</span>
+      
+      <span class="author"><i class="fa fa-user"></i>Wuer</span>
+    </div>
+    
+      <span>Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> </span>
+    
+    
+      <span>|</span> <span>Theme - <a href="https://github.com/littleee/corazon">Corazon</a></span>
+      
+        <span>v1.0.0</span>
+      
+    
+  </div>
+</div>
+
+    </main>
+  </body>
+</html>

@@ -1,0 +1,161 @@
+<html>
+  <head><meta name="generator" content="Hexo 3.8.0">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  
+    <link rel="icon" href="/images/favicon.ico">
+  
+  <title>Wuer</title>
+  <link rel="stylesheet" href="/css/styles.css">
+  <script src="/lib/jquery.js"></script>
+  <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css">
+  <script src="/js/common.js"></script>
+  <script src="/lib/bootstrap/js/bootstrap.js"></script>
+  <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+</head>
+
+  <body>
+    <header class="header">
+  <div class="color-bar">
+    <ul>
+      <li class="bar1"></li>
+      <li class="bar2"></li>
+      <li class="bar3"></li>
+      <li class="bar4"></li>
+      <li class="bar5"></li>
+      <li class="bar6"></li>
+    </ul>
+  </div>
+  <div class="header-wrapper">
+    <div class="blog-title">
+      
+        <img class="logo" src="/images/logo.png" alt="logo">
+      
+      <a href="/" class="title">Wuer</a>
+    </div>
+    <nav class="navbar navbar-menu">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" id="nav-btn" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+      </div>
+        <ul class="menu menu-pc">
+          
+            <li class="menu-item">
+              <a href="/" class="menu-item-link"><i class="fa fa-home"></i><span>首页</span></a>
+            </li>
+          
+            <li class="menu-item">
+              <a href="/tags/" class="menu-item-link"><i class="fa fa-tags"></i><span>Tags</span></a>
+            </li>
+          
+            <li class="menu-item">
+              <a href="/archives/" class="menu-item-link"><i class="fa fa-file"></i><span>归档</span></a>
+            </li>
+          
+            <li class="menu-item">
+              <a href="https://github.com/littleee/" class="menu-item-link"><i class="fa fa-github"></i><span>github</span></a>
+            </li>
+          
+        </ul>
+    </nav>
+  </div>
+</header>
+<div class="collapse nav-collapse" style="position:fixed;top:59px;" id="bs-example-navbar-collapse-1">
+  <ul class="menu menu-mobile" style="list-style:none">
+    
+      <li class="menu-item">
+        <a href="/" class="menu-item-link"><i class="fa fa-home"></i><span>首页</span></a>
+      </li>
+    
+      <li class="menu-item">
+        <a href="/tags/" class="menu-item-link"><i class="fa fa-tags"></i><span>Tags</span></a>
+      </li>
+    
+      <li class="menu-item">
+        <a href="/archives/" class="menu-item-link"><i class="fa fa-file"></i><span>归档</span></a>
+      </li>
+    
+      <li class="menu-item">
+        <a href="https://github.com/littleee/" class="menu-item-link"><i class="fa fa-github"></i><span>github</span></a>
+      </li>
+    
+  </ul>
+</div>
+
+    <main class="main">
+      <div class="content">
+        
+  <article class="post">
+    <div class="post-title">
+      <h2 class="title">白屏和FOUC现象</h2>
+       
+    </div>
+     <div class="post-meta">
+      <span class="post-time">2018-10-01</span>
+    </div>
+    <div class="post-content">
+      <p>通过以下语句将CSS文件的加载时间拉长，来演示白屏和FOUC现象<br><img src="https://upload-images.jianshu.io/upload_images/14339384-fcb99d394be45e4c.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="p1.jpg"></p>
+<p>#白屏效果</p>
+<p>Chrome浏览器的加载机制会出现白屏的现象当我们访问服务器时，css在加载过程中，页面是这样的：<br><img src="https://upload-images.jianshu.io/upload_images/14339384-816e95cceee328f4.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="p2.jpg"></p>
+<p>当有一个css文件加载完成时，页面依然白屏：<br><img src="https://upload-images.jianshu.io/upload_images/14339384-dfce2b6069e4ee24.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="p3.jpg"></p>
+<p>当所有css文件加载完成时，浏览布局渲染，页面显示出来应有的效果：<br><img src="https://upload-images.jianshu.io/upload_images/14339384-16f43d75920527b3.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="p4.jpg"></p>
+<p>#FOUC效果<br>Firefox浏览器的加载机制会出现FOUC的现象当我们访问服务器时，在任何一个css文件未加载完成时，页面已经有显示文本显示了：<br><img src="https://upload-images.jianshu.io/upload_images/14339384-802f547fe7896b1d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="p5.png"></p>
+<p>当有一个css文件加载完成时，浏览器就会通过已经加载完成的css文件渲染页面，没有加载完成的继续加载：<br><img src="https://upload-images.jianshu.io/upload_images/14339384-4ca7c061954e6490.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="p6.png"></p>
+<p>当全部css文件加载完成后，页面的最终呈现最终的效果，在每一个css文件加载完成后，页面的样式会发生变化：<br><img src="https://upload-images.jianshu.io/upload_images/14339384-f45228727bc00c4b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="p7.png"></p>
+
+    </div>
+  </article>
+  <div class="post-nav">
+    <div class="post-nav-next post-nav-item">
+      
+        <a href="/2018/10/01/工具安装/" rel="next" title="工具安装">
+          <i class="fa fa-chevron-left"></i> 工具安装
+        </a>
+      
+    </div>
+
+    <span class="post-nav-divider"></span>
+
+    <div class="post-nav-prev post-nav-item">
+    
+        <a href="/2018/10/02/命令行基础/" rel="prev" title="命令行基础">
+          命令行基础 <i class="fa fa-chevron-right"></i>
+        </a>
+      
+    </div>
+  </div>
+
+
+
+      </div>
+        <div class="footer">
+  <div class="footer-wrapper">
+    <div class="copyright">
+      
+      <span>&copy;</span>
+      
+      <span>2017 - 2018</span>
+      
+      <span class="author"><i class="fa fa-user"></i>Wuer</span>
+    </div>
+    
+      <span>Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> </span>
+    
+    
+      <span>|</span> <span>Theme - <a href="https://github.com/littleee/corazon">Corazon</a></span>
+      
+        <span>v1.0.0</span>
+      
+    
+  </div>
+</div>
+
+    </main>
+  </body>
+</html>

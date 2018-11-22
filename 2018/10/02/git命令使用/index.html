@@ -1,0 +1,168 @@
+<html>
+  <head><meta name="generator" content="Hexo 3.8.0">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  
+    <link rel="icon" href="/images/favicon.ico">
+  
+  <title>Wuer</title>
+  <link rel="stylesheet" href="/css/styles.css">
+  <script src="/lib/jquery.js"></script>
+  <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css">
+  <script src="/js/common.js"></script>
+  <script src="/lib/bootstrap/js/bootstrap.js"></script>
+  <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+</head>
+
+  <body>
+    <header class="header">
+  <div class="color-bar">
+    <ul>
+      <li class="bar1"></li>
+      <li class="bar2"></li>
+      <li class="bar3"></li>
+      <li class="bar4"></li>
+      <li class="bar5"></li>
+      <li class="bar6"></li>
+    </ul>
+  </div>
+  <div class="header-wrapper">
+    <div class="blog-title">
+      
+        <img class="logo" src="/images/logo.png" alt="logo">
+      
+      <a href="/" class="title">Wuer</a>
+    </div>
+    <nav class="navbar navbar-menu">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" id="nav-btn" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+      </div>
+        <ul class="menu menu-pc">
+          
+            <li class="menu-item">
+              <a href="/" class="menu-item-link"><i class="fa fa-home"></i><span>首页</span></a>
+            </li>
+          
+            <li class="menu-item">
+              <a href="/tags/" class="menu-item-link"><i class="fa fa-tags"></i><span>Tags</span></a>
+            </li>
+          
+            <li class="menu-item">
+              <a href="/archives/" class="menu-item-link"><i class="fa fa-file"></i><span>归档</span></a>
+            </li>
+          
+            <li class="menu-item">
+              <a href="https://github.com/littleee/" class="menu-item-link"><i class="fa fa-github"></i><span>github</span></a>
+            </li>
+          
+        </ul>
+    </nav>
+  </div>
+</header>
+<div class="collapse nav-collapse" style="position:fixed;top:59px;" id="bs-example-navbar-collapse-1">
+  <ul class="menu menu-mobile" style="list-style:none">
+    
+      <li class="menu-item">
+        <a href="/" class="menu-item-link"><i class="fa fa-home"></i><span>首页</span></a>
+      </li>
+    
+      <li class="menu-item">
+        <a href="/tags/" class="menu-item-link"><i class="fa fa-tags"></i><span>Tags</span></a>
+      </li>
+    
+      <li class="menu-item">
+        <a href="/archives/" class="menu-item-link"><i class="fa fa-file"></i><span>归档</span></a>
+      </li>
+    
+      <li class="menu-item">
+        <a href="https://github.com/littleee/" class="menu-item-link"><i class="fa fa-github"></i><span>github</span></a>
+      </li>
+    
+  </ul>
+</div>
+
+    <main class="main">
+      <div class="content">
+        
+  <article class="post">
+    <div class="post-title">
+      <h2 class="title">Git命令使用</h2>
+       
+    </div>
+     <div class="post-meta">
+      <span class="post-time">2018-10-02</span>
+    </div>
+    <div class="post-content">
+      <p>大家在使用git提交代码的过程中，难免会因为各种原因执行一些错误的commit / push，想要修复这些错误，reset和revert就能很好的帮到我们。</p>
+<p>首先我们到区分几个概念，工作区，暂存区，版本库。</p>
+<p><strong>工作区</strong><br>所谓工作区，即我们电脑中所看到的目录。</p>
+<p><strong>版本库</strong><br>在工作区有一个隐藏目录.git，这是Git的版本库。</p>
+<p><strong>暂存区</strong><br>Git的版本库里存了很多东西，其中最重要的就是称为stage（或者叫index）的暂存区，还有Git为我们自动创建的第一个分支master，以及指向master的一个指针叫HEAD</p>
+<p>#小小实例了解下</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14339384-b42621a6dd3db2d3.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="1.jpg"></p>
+<p><strong>开始做几次提交</strong><br><img src="https://upload-images.jianshu.io/upload_images/14339384-8d7e52440fcb334f.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="2.jpg"></p>
+<p><strong>看下提交log</strong><br><img src="https://upload-images.jianshu.io/upload_images/14339384-e4d7a68891094b51.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="3.jpg"></p>
+<p><strong>当前提交的readme</strong><br><img src="https://upload-images.jianshu.io/upload_images/14339384-25e76b753234941f.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="4.jpg"></p>
+<p><strong>一种方式，soft模式</strong><br><img src="https://upload-images.jianshu.io/upload_images/14339384-6419fb2ce901c22a.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="6.jpg"><br>采用这种模式，git不回清除你的stage区，因此，git status时就显示了stage区相对于second commit的变化。此时工作区是clean 的，而stage区则有变化</p>
+<p><strong>另一种方式，hard模式</strong><br><img src="https://upload-images.jianshu.io/upload_images/14339384-4ad49e7c87bc5a24.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="7.jpg"><br>采用这种模式，git回用first commit 的内容覆盖stage区和工作区，因此所有的内容都回到了first commit的状态。</p>
+<p>#区别（重点）</p>
+<p><strong>reset</strong><br>是起到了撤销commit的作用，但实质上它是将HEAD的指向移动了位置<br><img src="https://upload-images.jianshu.io/upload_images/14339384-efe2bb12e2043bb6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="12.png"></p>
+<p><strong>revert</strong><br>是一次新的commit，HEAD会继续向前执行<br><img src="https://upload-images.jianshu.io/upload_images/14339384-d66f6700cbe7a215.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="13.png"></p>
+
+    </div>
+  </article>
+  <div class="post-nav">
+    <div class="post-nav-next post-nav-item">
+      
+        <a href="/2018/10/02/Git-使用方法/" rel="next" title="Git-使用方法">
+          <i class="fa fa-chevron-left"></i> Git-使用方法
+        </a>
+      
+    </div>
+
+    <span class="post-nav-divider"></span>
+
+    <div class="post-nav-prev post-nav-item">
+    
+        <a href="/2018/10/02/git命令讲解/" rel="prev" title="git命令讲解">
+          git命令讲解 <i class="fa fa-chevron-right"></i>
+        </a>
+      
+    </div>
+  </div>
+
+
+
+      </div>
+        <div class="footer">
+  <div class="footer-wrapper">
+    <div class="copyright">
+      
+      <span>&copy;</span>
+      
+      <span>2017 - 2018</span>
+      
+      <span class="author"><i class="fa fa-user"></i>Wuer</span>
+    </div>
+    
+      <span>Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> </span>
+    
+    
+      <span>|</span> <span>Theme - <a href="https://github.com/littleee/corazon">Corazon</a></span>
+      
+        <span>v1.0.0</span>
+      
+    
+  </div>
+</div>
+
+    </main>
+  </body>
+</html>

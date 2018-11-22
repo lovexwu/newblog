@@ -1,0 +1,167 @@
+<html>
+  <head><meta name="generator" content="Hexo 3.8.0">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  
+    <link rel="icon" href="/images/favicon.ico">
+  
+  <title>Wuer</title>
+  <link rel="stylesheet" href="/css/styles.css">
+  <script src="/lib/jquery.js"></script>
+  <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css">
+  <script src="/js/common.js"></script>
+  <script src="/lib/bootstrap/js/bootstrap.js"></script>
+  <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+</head>
+
+  <body>
+    <header class="header">
+  <div class="color-bar">
+    <ul>
+      <li class="bar1"></li>
+      <li class="bar2"></li>
+      <li class="bar3"></li>
+      <li class="bar4"></li>
+      <li class="bar5"></li>
+      <li class="bar6"></li>
+    </ul>
+  </div>
+  <div class="header-wrapper">
+    <div class="blog-title">
+      
+        <img class="logo" src="/images/logo.png" alt="logo">
+      
+      <a href="/" class="title">Wuer</a>
+    </div>
+    <nav class="navbar navbar-menu">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" id="nav-btn" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+      </div>
+        <ul class="menu menu-pc">
+          
+            <li class="menu-item">
+              <a href="/" class="menu-item-link"><i class="fa fa-home"></i><span>首页</span></a>
+            </li>
+          
+            <li class="menu-item">
+              <a href="/tags/" class="menu-item-link"><i class="fa fa-tags"></i><span>Tags</span></a>
+            </li>
+          
+            <li class="menu-item">
+              <a href="/archives/" class="menu-item-link"><i class="fa fa-file"></i><span>归档</span></a>
+            </li>
+          
+            <li class="menu-item">
+              <a href="https://github.com/littleee/" class="menu-item-link"><i class="fa fa-github"></i><span>github</span></a>
+            </li>
+          
+        </ul>
+    </nav>
+  </div>
+</header>
+<div class="collapse nav-collapse" style="position:fixed;top:59px;" id="bs-example-navbar-collapse-1">
+  <ul class="menu menu-mobile" style="list-style:none">
+    
+      <li class="menu-item">
+        <a href="/" class="menu-item-link"><i class="fa fa-home"></i><span>首页</span></a>
+      </li>
+    
+      <li class="menu-item">
+        <a href="/tags/" class="menu-item-link"><i class="fa fa-tags"></i><span>Tags</span></a>
+      </li>
+    
+      <li class="menu-item">
+        <a href="/archives/" class="menu-item-link"><i class="fa fa-file"></i><span>归档</span></a>
+      </li>
+    
+      <li class="menu-item">
+        <a href="https://github.com/littleee/" class="menu-item-link"><i class="fa fa-github"></i><span>github</span></a>
+      </li>
+    
+  </ul>
+</div>
+
+    <main class="main">
+      <div class="content">
+        
+  <article class="post">
+    <div class="post-title">
+      <h2 class="title">Git-使用方法</h2>
+       
+    </div>
+     <div class="post-meta">
+      <span class="post-time">2018-10-02</span>
+    </div>
+    <div class="post-content">
+      <p>首先我们打开mac终端输入<br><img src="https://upload-images.jianshu.io/upload_images/14260087-7ae4d51cbdd5ba28.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="1.png"></p>
+<p>如果终端告诉你<br><img src="https://upload-images.jianshu.io/upload_images/14260087-16999227ad4fc005.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="2.png"></p>
+<p>那么说明你已经有git了，不需下载安装</p>
+<p>#本地仓库创建<br><img src="https://upload-images.jianshu.io/upload_images/14339384-fb2d559ba2b3d088.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="3.png"></p>
+<p>再输入命令<br><img src="https://upload-images.jianshu.io/upload_images/14260087-02bb43d7f21a3ccd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="4.png"></p>
+<p>这样子 ，本地仓库就建好了</p>
+<p>#创建远程仓库<br>首页登陆Github，并选择创建<br><img src="https://upload-images.jianshu.io/upload_images/14260087-e90d9b087fce4015.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="5.png"></p>
+<p>填写仓库名称，这里注意仓库名称不要写中文，中文显示不出来<br><img src="https://upload-images.jianshu.io/upload_images/14339384-2f8260b4006c805a.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="6.jpg"></p>
+<p>这样远程仓库也创建好了</p>
+<p>#将本地仓库与远程仓库进行关联<br>在终端中输入<br><img src="https://upload-images.jianshu.io/upload_images/14260087-c93fc4f2200df010.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="7.png"><br>git remote add origin后的网址是你的远程仓库的地址，如下图<br><img src="https://upload-images.jianshu.io/upload_images/14339384-6e1a5c5e8128f6b8.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="8.jpg"></p>
+<p>OK现在已经关联成功了</p>
+<p>#克隆地址<br>终端输入<br><img src="https://upload-images.jianshu.io/upload_images/14260087-725d2a374013e595.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="9.png"></p>
+<p>这样子git 可以正常使用了</p>
+<p>#常用命令行如下<br>git status     查看本地git仓库的状态<br>git add -A    添加所有修改的内容<br>git commit -m “提交详情内容记录”      提交更新到本地仓库<br>git push -u origin master    将本地仓库更新的内容提交到远程仓库<br>git diff   查看修改的内容<br>git log   查看历史版本，显示从最近到最远的提交日志</p>
+
+    </div>
+  </article>
+  <div class="post-nav">
+    <div class="post-nav-next post-nav-item">
+      
+        <a href="/2018/10/02/命令行基础/" rel="next" title="命令行基础">
+          <i class="fa fa-chevron-left"></i> 命令行基础
+        </a>
+      
+    </div>
+
+    <span class="post-nav-divider"></span>
+
+    <div class="post-nav-prev post-nav-item">
+    
+        <a href="/2018/10/02/git命令使用/" rel="prev" title="Git命令使用">
+          Git命令使用 <i class="fa fa-chevron-right"></i>
+        </a>
+      
+    </div>
+  </div>
+
+
+
+      </div>
+        <div class="footer">
+  <div class="footer-wrapper">
+    <div class="copyright">
+      
+      <span>&copy;</span>
+      
+      <span>2017 - 2018</span>
+      
+      <span class="author"><i class="fa fa-user"></i>Wuer</span>
+    </div>
+    
+      <span>Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> </span>
+    
+    
+      <span>|</span> <span>Theme - <a href="https://github.com/littleee/corazon">Corazon</a></span>
+      
+        <span>v1.0.0</span>
+      
+    
+  </div>
+</div>
+
+    </main>
+  </body>
+</html>

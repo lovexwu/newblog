@@ -1,0 +1,193 @@
+<html>
+  <head><meta name="generator" content="Hexo 3.8.0">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  
+    <link rel="icon" href="/images/favicon.ico">
+  
+  <title>Wuer</title>
+  <link rel="stylesheet" href="/css/styles.css">
+  <script src="/lib/jquery.js"></script>
+  <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css">
+  <script src="/js/common.js"></script>
+  <script src="/lib/bootstrap/js/bootstrap.js"></script>
+  <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+</head>
+
+  <body>
+    <header class="header">
+  <div class="color-bar">
+    <ul>
+      <li class="bar1"></li>
+      <li class="bar2"></li>
+      <li class="bar3"></li>
+      <li class="bar4"></li>
+      <li class="bar5"></li>
+      <li class="bar6"></li>
+    </ul>
+  </div>
+  <div class="header-wrapper">
+    <div class="blog-title">
+      
+        <img class="logo" src="/images/logo.png" alt="logo">
+      
+      <a href="/" class="title">Wuer</a>
+    </div>
+    <nav class="navbar navbar-menu">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" id="nav-btn" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+      </div>
+        <ul class="menu menu-pc">
+          
+            <li class="menu-item">
+              <a href="/" class="menu-item-link"><i class="fa fa-home"></i><span>首页</span></a>
+            </li>
+          
+            <li class="menu-item">
+              <a href="/tags/" class="menu-item-link"><i class="fa fa-tags"></i><span>Tags</span></a>
+            </li>
+          
+            <li class="menu-item">
+              <a href="/archives/" class="menu-item-link"><i class="fa fa-file"></i><span>归档</span></a>
+            </li>
+          
+            <li class="menu-item">
+              <a href="https://github.com/littleee/" class="menu-item-link"><i class="fa fa-github"></i><span>github</span></a>
+            </li>
+          
+        </ul>
+    </nav>
+  </div>
+</header>
+<div class="collapse nav-collapse" style="position:fixed;top:59px;" id="bs-example-navbar-collapse-1">
+  <ul class="menu menu-mobile" style="list-style:none">
+    
+      <li class="menu-item">
+        <a href="/" class="menu-item-link"><i class="fa fa-home"></i><span>首页</span></a>
+      </li>
+    
+      <li class="menu-item">
+        <a href="/tags/" class="menu-item-link"><i class="fa fa-tags"></i><span>Tags</span></a>
+      </li>
+    
+      <li class="menu-item">
+        <a href="/archives/" class="menu-item-link"><i class="fa fa-file"></i><span>归档</span></a>
+      </li>
+    
+      <li class="menu-item">
+        <a href="https://github.com/littleee/" class="menu-item-link"><i class="fa fa-github"></i><span>github</span></a>
+      </li>
+    
+  </ul>
+</div>
+
+    <main class="main">
+      <div class="content">
+        
+  <article class="post">
+    <div class="post-title">
+      <h2 class="title">命令行基础</h2>
+       
+    </div>
+     <div class="post-meta">
+      <span class="post-time">2018-10-02</span>
+    </div>
+    <div class="post-content">
+      <h2 id="一些名词"><a href="#一些名词" class="headerlink" title="一些名词"></a>一些名词</h2><ul>
+<li>「图形界面」</li>
+<li>「命令行」</li>
+<li>「终端」</li>
+<li>「shell」</li>
+<li>「bash」</li>
+</ul>
+<h2 id="安装使用"><a href="#安装使用" class="headerlink" title="安装使用"></a>安装使用</h2><ul>
+<li>Windws: 安装git, 打开 gitbash</li>
+<li>Linux 打开终端</li>
+<li>Mac 打开终端</li>
+</ul>
+<h2 id="基本命令"><a href="#基本命令" class="headerlink" title="基本命令"></a>基本命令</h2><h3 id="查看当前完整路径"><a href="#查看当前完整路径" class="headerlink" title="查看当前完整路径"></a>查看当前完整路径</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pwd</span><br></pre></td></tr></table></figure>
+<h3 id="查看当前目录下文件"><a href="#查看当前目录下文件" class="headerlink" title="查看当前目录下文件"></a>查看当前目录下文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># 不包括隐藏文件</span><br><span class="line">ls</span><br><span class="line"></span><br><span class="line"># 查看当前目录下所有文件(包括隐藏文件)</span><br><span class="line">ls -a</span><br><span class="line"></span><br><span class="line"># 查看当前目录下所有文件(包括隐藏文件)的详细信息</span><br><span class="line">ls -al</span><br></pre></td></tr></table></figure>
+<h3 id="切换目录"><a href="#切换目录" class="headerlink" title="切换目录"></a>切换目录</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cd /c/project</span><br><span class="line">cd code</span><br><span class="line">cd ../css</span><br><span class="line">cd ~/Desktop</span><br></pre></td></tr></table></figure>
+<h3 id="创建文件"><a href="#创建文件" class="headerlink" title="创建文件"></a>创建文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">touch readme.md</span><br></pre></td></tr></table></figure>
+<h3 id="删除文件"><a href="#删除文件" class="headerlink" title="删除文件"></a>删除文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#创建readme.md</span><br><span class="line">rm readme.md </span><br><span class="line"></span><br><span class="line">#删除node_modules文件夹，不提示</span><br><span class="line">rm -rf node_modules</span><br></pre></td></tr></table></figure>
+<h3 id="重命名文件"><a href="#重命名文件" class="headerlink" title="重命名文件"></a>重命名文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mv readme.md README.md</span><br></pre></td></tr></table></figure>
+<h3 id="创建文件夹"><a href="#创建文件夹" class="headerlink" title="创建文件夹"></a>创建文件夹</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir projects</span><br></pre></td></tr></table></figure>
+<h2 id="文件路径"><a href="#文件路径" class="headerlink" title="文件路径"></a>文件路径</h2><h3 id="根目录"><a href="#根目录" class="headerlink" title="根目录"></a>根目录</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd /</span><br></pre></td></tr></table></figure>
+<h3 id="家目录"><a href="#家目录" class="headerlink" title="家目录"></a>家目录</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd ~</span><br><span class="line">pwd</span><br></pre></td></tr></table></figure>
+<h3 id="当前目录"><a href="#当前目录" class="headerlink" title="当前目录"></a>当前目录</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd books</span><br><span class="line">cd ./books</span><br></pre></td></tr></table></figure>
+<h3 id="上级目录"><a href="#上级目录" class="headerlink" title="上级目录"></a>上级目录</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd ..</span><br><span class="line">cd ../css</span><br></pre></td></tr></table></figure>
+<h2 id="编辑器vim"><a href="#编辑器vim" class="headerlink" title="编辑器vim"></a>编辑器vim</h2><p>编辑模式<br>命令模式</p>
+<ol>
+<li><code>vim a.md</code> 初始进入编辑器命令模式</li>
+<li><code>i</code> 进入编辑模式</li>
+<li>键盘左上角<code>esc</code> 进入命令命令模式</li>
+<li><code>:wq</code> 保存退出</li>
+<li><code>:q!</code> 不保存强制退出</li>
+</ol>
+<h2 id="安装服务器"><a href="#安装服务器" class="headerlink" title="安装服务器"></a>安装服务器</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install -g http-server</span><br><span class="line">http-server</span><br></pre></td></tr></table></figure>
+<h2 id="登录开发机"><a href="#登录开发机" class="headerlink" title="登录开发机"></a>登录开发机</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ssh jirengu@47.91.156.35</span><br><span class="line"><span class="comment">#passwd: woaixueqianduan</span></span><br></pre></td></tr></table></figure>
+<h2 id="文件权限"><a href="#文件权限" class="headerlink" title="文件权限"></a>文件权限</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">chmod 777 index.html</span><br><span class="line">chown -R git:git ruoyu</span><br></pre></td></tr></table></figure>
+<h2 id="新手最大的问题"><a href="#新手最大的问题" class="headerlink" title="新手最大的问题"></a>新手最大的问题</h2><ol>
+<li>大小写看错</li>
+<li>空格写漏</li>
+<li>把多个命令当成一个命令</li>
+</ol>
+<h2 id="推荐资料"><a href="#推荐资料" class="headerlink" title="推荐资料"></a>推荐资料</h2><p><a href="http://www.cnblogs.com/peida/tag/linux%E5%91%BD%E4%BB%A4/default.html?page=4" target="_blank" rel="noopener">http://www.cnblogs.com/peida/tag/linux%E5%91%BD%E4%BB%A4/default.html?page=4</a></p>
+
+    </div>
+  </article>
+  <div class="post-nav">
+    <div class="post-nav-next post-nav-item">
+      
+        <a href="/2018/10/01/白屏和FOUC现象/" rel="next" title="白屏和FOUC现象">
+          <i class="fa fa-chevron-left"></i> 白屏和FOUC现象
+        </a>
+      
+    </div>
+
+    <span class="post-nav-divider"></span>
+
+    <div class="post-nav-prev post-nav-item">
+    
+        <a href="/2018/10/02/Git-使用方法/" rel="prev" title="Git-使用方法">
+          Git-使用方法 <i class="fa fa-chevron-right"></i>
+        </a>
+      
+    </div>
+  </div>
+
+
+
+      </div>
+        <div class="footer">
+  <div class="footer-wrapper">
+    <div class="copyright">
+      
+      <span>&copy;</span>
+      
+      <span>2017 - 2018</span>
+      
+      <span class="author"><i class="fa fa-user"></i>Wuer</span>
+    </div>
+    
+      <span>Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> </span>
+    
+    
+      <span>|</span> <span>Theme - <a href="https://github.com/littleee/corazon">Corazon</a></span>
+      
+        <span>v1.0.0</span>
+      
+    
+  </div>
+</div>
+
+    </main>
+  </body>
+</html>

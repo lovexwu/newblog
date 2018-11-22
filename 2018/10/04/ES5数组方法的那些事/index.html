@@ -1,0 +1,171 @@
+<html>
+  <head><meta name="generator" content="Hexo 3.8.0">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  
+    <link rel="icon" href="/images/favicon.ico">
+  
+  <title>Wuer</title>
+  <link rel="stylesheet" href="/css/styles.css">
+  <script src="/lib/jquery.js"></script>
+  <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css">
+  <script src="/js/common.js"></script>
+  <script src="/lib/bootstrap/js/bootstrap.js"></script>
+  <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+</head>
+
+  <body>
+    <header class="header">
+  <div class="color-bar">
+    <ul>
+      <li class="bar1"></li>
+      <li class="bar2"></li>
+      <li class="bar3"></li>
+      <li class="bar4"></li>
+      <li class="bar5"></li>
+      <li class="bar6"></li>
+    </ul>
+  </div>
+  <div class="header-wrapper">
+    <div class="blog-title">
+      
+        <img class="logo" src="/images/logo.png" alt="logo">
+      
+      <a href="/" class="title">Wuer</a>
+    </div>
+    <nav class="navbar navbar-menu">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" id="nav-btn" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+      </div>
+        <ul class="menu menu-pc">
+          
+            <li class="menu-item">
+              <a href="/" class="menu-item-link"><i class="fa fa-home"></i><span>首页</span></a>
+            </li>
+          
+            <li class="menu-item">
+              <a href="/tags/" class="menu-item-link"><i class="fa fa-tags"></i><span>Tags</span></a>
+            </li>
+          
+            <li class="menu-item">
+              <a href="/archives/" class="menu-item-link"><i class="fa fa-file"></i><span>归档</span></a>
+            </li>
+          
+            <li class="menu-item">
+              <a href="https://github.com/littleee/" class="menu-item-link"><i class="fa fa-github"></i><span>github</span></a>
+            </li>
+          
+        </ul>
+    </nav>
+  </div>
+</header>
+<div class="collapse nav-collapse" style="position:fixed;top:59px;" id="bs-example-navbar-collapse-1">
+  <ul class="menu menu-mobile" style="list-style:none">
+    
+      <li class="menu-item">
+        <a href="/" class="menu-item-link"><i class="fa fa-home"></i><span>首页</span></a>
+      </li>
+    
+      <li class="menu-item">
+        <a href="/tags/" class="menu-item-link"><i class="fa fa-tags"></i><span>Tags</span></a>
+      </li>
+    
+      <li class="menu-item">
+        <a href="/archives/" class="menu-item-link"><i class="fa fa-file"></i><span>归档</span></a>
+      </li>
+    
+      <li class="menu-item">
+        <a href="https://github.com/littleee/" class="menu-item-link"><i class="fa fa-github"></i><span>github</span></a>
+      </li>
+    
+  </ul>
+</div>
+
+    <main class="main">
+      <div class="content">
+        
+  <article class="post">
+    <div class="post-title">
+      <h2 class="title">ES5数组方法的那些事</h2>
+       
+    </div>
+     <div class="post-meta">
+      <span class="post-time">2018-10-04</span>
+    </div>
+    <div class="post-content">
+      <p># </p>
+<p>indexOf、forEach、map、every、some、filter、reduce的用法</p>
+<p>###indexOf(element)<br>查找数组内指定元素的位置，查找到第一个返回其索引，没有返回-1</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</span><br><span class="line"><span class="built_in">console</span>.log(arr.indexOf(<span class="number">3</span>)) <span class="comment">//2</span></span><br><span class="line"><span class="built_in">console</span>.log(arr.indexOf(<span class="number">9</span>)) <span class="comment">//-1</span></span><br></pre></td></tr></table></figure>
+<h3 id="forEach-element-index-array"><a href="#forEach-element-index-array" class="headerlink" title="forEach(element,index,array)"></a>forEach(element,index,array)</h3><p> 遍历数组，参数为一个回调函数，回调函数有三个参数：</p>
+<p>1、当前元素<br>2、当前元素索引<br>3、整个数组</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</span><br><span class="line">arr.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">e,index</span>)</span>&#123;</span><br><span class="line">   arr[index] = e + <span class="number">1</span>      </span><br><span class="line">&#125;)</span><br><span class="line"><span class="built_in">console</span>.log(arr) <span class="comment">//[2, 3, 4, 5, 6]</span></span><br></pre></td></tr></table></figure>
+<p>###map (function(element))<br>与forEach类似，遍历数组，回调函数返回值组成一个新数组返回，新数组索引结构和原数组一致，原数组不变</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</span><br><span class="line"><span class="built_in">console</span>.log(arr.map(<span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;</span><br><span class="line">   <span class="keyword">return</span> e*e <span class="comment">// [1, 4, 9, 16, 25]</span></span><br><span class="line">&#125;))</span><br><span class="line"><span class="built_in">console</span>.log(arr) <span class="comment">//[1, 2, 3, 4, 5]</span></span><br></pre></td></tr></table></figure>
+<p><strong>注：在空数组上调用,every返回true,some 返回false</strong></p>
+<h3 id="every-function-element-index-array"><a href="#every-function-element-index-array" class="headerlink" title="every (function(element,index,array))"></a>every (function(element,index,array))</h3><p>所有函数的每个回调函数都返回true时才会返回true,当遇到false时终止执行，返回false</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</span><br><span class="line">arr.every(<span class="function"><span class="keyword">function</span>(<span class="params">val</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> val&gt;<span class="number">0</span>?<span class="literal">true</span>:<span class="literal">false</span></span><br><span class="line">&#125;)<span class="comment">//true</span></span><br></pre></td></tr></table></figure>
+<p>###some (function(element,index,array))<br>只要有一个回调函数返回true时终止执行并返回true,否则返回false </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</span><br><span class="line">arr.some(<span class="function"><span class="keyword">function</span>(<span class="params">val</span>)</span>&#123;</span><br><span class="line">   <span class="keyword">return</span> val&gt;<span class="number">0</span>?<span class="literal">true</span>:<span class="literal">false</span></span><br><span class="line">&#125;)<span class="comment">//true</span></span><br></pre></td></tr></table></figure>
+<h3 id="filter-function-element"><a href="#filter-function-element" class="headerlink" title="filter(function(element))"></a>filter(function(element))</h3><p>返回一个子集，回调函数用于逻辑判断是否返回，返回true则把当前元素加入到返回数组中，false则不加<br>数组只包含返回true的值，索引缺失的不包括，原数组保持不变</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]</span><br><span class="line"><span class="built_in">console</span>.log(arr.filter(<span class="function"><span class="keyword">function</span>(<span class="params">val</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> val &gt; <span class="number">3</span></span><br><span class="line">&#125;)) <span class="comment">// [4, 5, 6]</span></span><br><span class="line"><span class="built_in">console</span>.log(arr) <span class="comment">// [1,2,3,4,5,6]</span></span><br></pre></td></tr></table></figure>
+<h3 id="reduce-function-v1-v2-value"><a href="#reduce-function-v1-v2-value" class="headerlink" title="reduce(function(v1,v2),value)"></a>reduce(function(v1,v2),value)</h3><p>遍历数组，调用回调函数，将数组元素组合成一个值，从索引最小值开始，方法有两个参数</p>
+<p>1、回调函数：把两个值合为一个，返回结果<br>2、value : 一个初始值，可选</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]</span><br><span class="line">arr.reduce(<span class="function"><span class="keyword">function</span>(<span class="params">v1,v2</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> v1 + v2</span><br><span class="line">&#125;) <span class="comment">//21</span></span><br></pre></td></tr></table></figure>
+    </div>
+  </article>
+  <div class="post-nav">
+    <div class="post-nav-next post-nav-item">
+      
+        <a href="/2018/10/03/域名配置/" rel="next" title="域名配置">
+          <i class="fa fa-chevron-left"></i> 域名配置
+        </a>
+      
+    </div>
+
+    <span class="post-nav-divider"></span>
+
+    <div class="post-nav-prev post-nav-item">
+    
+        <a href="/2018/10/04/JS运算符/" rel="prev" title="JS运算符">
+          JS运算符 <i class="fa fa-chevron-right"></i>
+        </a>
+      
+    </div>
+  </div>
+
+
+
+      </div>
+        <div class="footer">
+  <div class="footer-wrapper">
+    <div class="copyright">
+      
+      <span>&copy;</span>
+      
+      <span>2017 - 2018</span>
+      
+      <span class="author"><i class="fa fa-user"></i>Wuer</span>
+    </div>
+    
+      <span>Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> </span>
+    
+    
+      <span>|</span> <span>Theme - <a href="https://github.com/littleee/corazon">Corazon</a></span>
+      
+        <span>v1.0.0</span>
+      
+    
+  </div>
+</div>
+
+    </main>
+  </body>
+</html>

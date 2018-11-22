@@ -1,0 +1,164 @@
+<html>
+  <head><meta name="generator" content="Hexo 3.8.0">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  
+    <link rel="icon" href="/images/favicon.ico">
+  
+  <title>Wuer</title>
+  <link rel="stylesheet" href="/css/styles.css">
+  <script src="/lib/jquery.js"></script>
+  <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css">
+  <script src="/js/common.js"></script>
+  <script src="/lib/bootstrap/js/bootstrap.js"></script>
+  <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+</head>
+
+  <body>
+    <header class="header">
+  <div class="color-bar">
+    <ul>
+      <li class="bar1"></li>
+      <li class="bar2"></li>
+      <li class="bar3"></li>
+      <li class="bar4"></li>
+      <li class="bar5"></li>
+      <li class="bar6"></li>
+    </ul>
+  </div>
+  <div class="header-wrapper">
+    <div class="blog-title">
+      
+        <img class="logo" src="/images/logo.png" alt="logo">
+      
+      <a href="/" class="title">Wuer</a>
+    </div>
+    <nav class="navbar navbar-menu">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" id="nav-btn" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+      </div>
+        <ul class="menu menu-pc">
+          
+            <li class="menu-item">
+              <a href="/" class="menu-item-link"><i class="fa fa-home"></i><span>首页</span></a>
+            </li>
+          
+            <li class="menu-item">
+              <a href="/tags/" class="menu-item-link"><i class="fa fa-tags"></i><span>Tags</span></a>
+            </li>
+          
+            <li class="menu-item">
+              <a href="/archives/" class="menu-item-link"><i class="fa fa-file"></i><span>归档</span></a>
+            </li>
+          
+            <li class="menu-item">
+              <a href="https://github.com/littleee/" class="menu-item-link"><i class="fa fa-github"></i><span>github</span></a>
+            </li>
+          
+        </ul>
+    </nav>
+  </div>
+</header>
+<div class="collapse nav-collapse" style="position:fixed;top:59px;" id="bs-example-navbar-collapse-1">
+  <ul class="menu menu-mobile" style="list-style:none">
+    
+      <li class="menu-item">
+        <a href="/" class="menu-item-link"><i class="fa fa-home"></i><span>首页</span></a>
+      </li>
+    
+      <li class="menu-item">
+        <a href="/tags/" class="menu-item-link"><i class="fa fa-tags"></i><span>Tags</span></a>
+      </li>
+    
+      <li class="menu-item">
+        <a href="/archives/" class="menu-item-link"><i class="fa fa-file"></i><span>归档</span></a>
+      </li>
+    
+      <li class="menu-item">
+        <a href="https://github.com/littleee/" class="menu-item-link"><i class="fa fa-github"></i><span>github</span></a>
+      </li>
+    
+  </ul>
+</div>
+
+    <main class="main">
+      <div class="content">
+        
+  <article class="post">
+    <div class="post-title">
+      <h2 class="title">任务队列异步函数节流</h2>
+       
+    </div>
+     <div class="post-meta">
+      <span class="post-time">2018-11-07</span>
+    </div>
+    <div class="post-content">
+      <p>首先我们来了解下单线程和任务队列</p>
+<h5 id="单线程："><a href="#单线程：" class="headerlink" title="单线程："></a>单线程：</h5><p>只有一条线，一步一步走，即所有任务都需要排队，前一个任务完成，才会执行后一个任务, 如果前一个任务时间耗时长，后一个任务就不得不一直等着</p>
+<h5 id="任务队列："><a href="#任务队列：" class="headerlink" title="任务队列："></a>任务队列：</h5><p>在JavaScript中任务有两种，一种是同步任务，一种是异步任务。</p>
+<p>同步任务：各个任务按照文档定义的顺序一一推入”执行栈”中，当前一个任务执行完毕，才会开始执行下一个任务。</p>
+<p>异步任务：各个任务推入”任务队列”中，只有在当前的所有同步任务执行完毕，才会将队列中的任务”出队”执行。</p>
+<p>当线程中没有执行任何同步代码的前提下才会执行异步代码</p>
+<p>如下实例：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">1</span>;</span><br><span class="line">setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    a = <span class="number">2</span>;</span><br><span class="line">    <span class="built_in">console</span>.log(a);</span><br><span class="line">&#125;, <span class="number">0</span>);</span><br><span class="line"><span class="keyword">var</span> a ;</span><br><span class="line"><span class="built_in">console</span>.log(a);</span><br><span class="line">a = <span class="number">3</span>;</span><br><span class="line"><span class="built_in">console</span>.log(a);</span><br><span class="line"></span><br><span class="line">输出结果是</span><br><span class="line"><span class="number">1</span></span><br><span class="line"><span class="number">3</span></span><br><span class="line"><span class="number">2</span></span><br><span class="line">分析：</span><br><span class="line">setTimeout异步执行，从上到下执行完之后再执行setTimeout内的语句</span><br><span class="line"><span class="keyword">var</span> a = <span class="number">1</span>；声明并将<span class="number">1</span>赋值给a</span><br><span class="line">setTimeout方法加入任务队列不执行</span><br><span class="line"><span class="keyword">var</span> a ；声明a a的值不变</span><br><span class="line"><span class="built_in">console</span>.log(a) ；输出为 <span class="number">1</span></span><br><span class="line">a = <span class="number">3</span> ；将<span class="number">3</span>赋值给a</span><br><span class="line"><span class="built_in">console</span>.log(a) ；输出为<span class="number">3</span></span><br><span class="line">执行setTimeout，a被赋值为<span class="number">2</span>并即时输出</span><br></pre></td></tr></table></figure>
+<h6 id="再来一个实例"><a href="#再来一个实例" class="headerlink" title="再来一个实例"></a>再来一个实例</h6><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> flag = <span class="literal">true</span>;</span><br><span class="line">setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    flag = <span class="literal">false</span>;</span><br><span class="line">&#125;,<span class="number">0</span>)</span><br><span class="line"><span class="keyword">while</span>(flag)&#123;&#125;</span><br><span class="line"><span class="built_in">console</span>.log(flag);</span><br><span class="line"></span><br><span class="line">不输出任何东西，且控制台/浏览器卡死</span><br><span class="line">分析：</span><br><span class="line"><span class="keyword">var</span> flag = <span class="literal">true</span>，给flag赋值</span><br><span class="line">遇到setTimeout，加入任务队列，跳过</span><br><span class="line"> <span class="keyword">while</span>语句，这里的flag是<span class="literal">true</span>，执行&#123;&#125;内循环体，循环体没有内容，一直死循环</span><br></pre></td></tr></table></figure>
+<h5 id="函数节流原理"><a href="#函数节流原理" class="headerlink" title="函数节流原理"></a>函数节流原理</h5><p>我们设置一个定时器，一开始判断定时器是不是有了，如果没有的话，再去设置一个定时器，如果有了话，把上一次的清除掉，然后我们再重新设置</p>
+<h6 id="如下实例："><a href="#如下实例：" class="headerlink" title="如下实例："></a>如下实例：</h6><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> timer</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(timer)&#123;</span><br><span class="line">        clearTimeout(timer)</span><br><span class="line">    &#125;</span><br><span class="line">    timer = setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'hello'</span>)</span><br><span class="line">    &#125;,<span class="number">1000</span>)</span><br><span class="line">&#125;</span><br><span class="line">test()</span><br></pre></td></tr></table></figure>
+
+    </div>
+  </article>
+  <div class="post-nav">
+    <div class="post-nav-next post-nav-item">
+      
+        <a href="/2018/11/06/setTimeout用法/" rel="next" title="setTimeout用法">
+          <i class="fa fa-chevron-left"></i> setTimeout用法
+        </a>
+      
+    </div>
+
+    <span class="post-nav-divider"></span>
+
+    <div class="post-nav-prev post-nav-item">
+    
+        <a href="/2018/11/14/onclick与addEventListener区别/" rel="prev" title="onclick与addEventListener区别">
+          onclick与addEventListener区别 <i class="fa fa-chevron-right"></i>
+        </a>
+      
+    </div>
+  </div>
+
+
+
+      </div>
+        <div class="footer">
+  <div class="footer-wrapper">
+    <div class="copyright">
+      
+      <span>&copy;</span>
+      
+      <span>2017 - 2018</span>
+      
+      <span class="author"><i class="fa fa-user"></i>Wuer</span>
+    </div>
+    
+      <span>Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> </span>
+    
+    
+      <span>|</span> <span>Theme - <a href="https://github.com/littleee/corazon">Corazon</a></span>
+      
+        <span>v1.0.0</span>
+      
+    
+  </div>
+</div>
+
+    </main>
+  </body>
+</html>

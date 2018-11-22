@@ -1,0 +1,208 @@
+<html>
+  <head><meta name="generator" content="Hexo 3.8.0">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  
+    <link rel="icon" href="/images/favicon.ico">
+  
+  <title>Wuer</title>
+  <link rel="stylesheet" href="/css/styles.css">
+  <script src="/lib/jquery.js"></script>
+  <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css">
+  <script src="/js/common.js"></script>
+  <script src="/lib/bootstrap/js/bootstrap.js"></script>
+  <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+</head>
+
+  <body>
+    <header class="header">
+  <div class="color-bar">
+    <ul>
+      <li class="bar1"></li>
+      <li class="bar2"></li>
+      <li class="bar3"></li>
+      <li class="bar4"></li>
+      <li class="bar5"></li>
+      <li class="bar6"></li>
+    </ul>
+  </div>
+  <div class="header-wrapper">
+    <div class="blog-title">
+      
+        <img class="logo" src="/images/logo.png" alt="logo">
+      
+      <a href="/" class="title">Wuer</a>
+    </div>
+    <nav class="navbar navbar-menu">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" id="nav-btn" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+      </div>
+        <ul class="menu menu-pc">
+          
+            <li class="menu-item">
+              <a href="/" class="menu-item-link"><i class="fa fa-home"></i><span>首页</span></a>
+            </li>
+          
+            <li class="menu-item">
+              <a href="/tags/" class="menu-item-link"><i class="fa fa-tags"></i><span>Tags</span></a>
+            </li>
+          
+            <li class="menu-item">
+              <a href="/archives/" class="menu-item-link"><i class="fa fa-file"></i><span>归档</span></a>
+            </li>
+          
+            <li class="menu-item">
+              <a href="https://github.com/littleee/" class="menu-item-link"><i class="fa fa-github"></i><span>github</span></a>
+            </li>
+          
+        </ul>
+    </nav>
+  </div>
+</header>
+<div class="collapse nav-collapse" style="position:fixed;top:59px;" id="bs-example-navbar-collapse-1">
+  <ul class="menu menu-mobile" style="list-style:none">
+    
+      <li class="menu-item">
+        <a href="/" class="menu-item-link"><i class="fa fa-home"></i><span>首页</span></a>
+      </li>
+    
+      <li class="menu-item">
+        <a href="/tags/" class="menu-item-link"><i class="fa fa-tags"></i><span>Tags</span></a>
+      </li>
+    
+      <li class="menu-item">
+        <a href="/archives/" class="menu-item-link"><i class="fa fa-file"></i><span>归档</span></a>
+      </li>
+    
+      <li class="menu-item">
+        <a href="https://github.com/littleee/" class="menu-item-link"><i class="fa fa-github"></i><span>github</span></a>
+      </li>
+    
+  </ul>
+</div>
+
+    <main class="main">
+      <div class="content">
+        
+  <article class="post">
+    <div class="post-title">
+      <h2 class="title">正则表达式</h2>
+       
+    </div>
+     <div class="post-meta">
+      <span class="post-time">2018-11-06</span>
+    </div>
+    <div class="post-content">
+      <p>正则表达式用于匹配字符串字符组合的模式,在JavaScript中，正则表达式也是对象。</p>
+<h4 id="匹配将依照下列规则："><a href="#匹配将依照下列规则：" class="headerlink" title="匹配将依照下列规则："></a>匹配将依照下列规则：</h4><h6 id="在非特殊字符之前的反斜杠表示下一个字符是特殊的，不能从字面上解释。"><a href="#在非特殊字符之前的反斜杠表示下一个字符是特殊的，不能从字面上解释。" class="headerlink" title="\  :    在非特殊字符之前的反斜杠表示下一个字符是特殊的，不能从字面上解释。"></a>\  :    在非特殊字符之前的反斜杠表示下一个字符是特殊的，不能从字面上解释。</h6><p>例如，没有前面’\’的’b’通常匹配小写’b’，无论它们出现在哪里。如果加了’\’,这个字符变成了一个特殊意义的字符，意思是匹配一个字符边界。</p>
+<p>反斜杠也可以将其后的特殊字符，转义为字面量。例如，模式 /a<em>/ 代表会匹配 0 个或者多个 a。相反，模式 /a\</em>/ 将 ‘<em>‘ 的特殊性移除，从而可以匹配像 “a</em>“ 这样的字符串。</p>
+<p>使用 new RegExp(“pattern”) 的时候不要忘记将 \ 进行转义，因为 \ 在字符串里面也是一个转义字符。</p>
+<h6 id="匹配输入的开始。如果多行标志被设置为true，那么也匹配换行符后紧跟的位置。"><a href="#匹配输入的开始。如果多行标志被设置为true，那么也匹配换行符后紧跟的位置。" class="headerlink" title="^  :   匹配输入的开始。如果多行标志被设置为true，那么也匹配换行符后紧跟的位置。"></a>^  :   匹配输入的开始。如果多行标志被设置为true，那么也匹配换行符后紧跟的位置。</h6><p>例如，/^A/ 并不会匹配 “an A” 中的 ‘A’，但是会匹配 “An E” 中的 ‘A’。<br>当 ‘^’ 作为第一个字符出现在一个字符集合模式时，它将会有不同的含义</p>
+<h6 id="匹配输入的结束。如果多行标示被设置为true，那么也匹配换行符前的位置。"><a href="#匹配输入的结束。如果多行标示被设置为true，那么也匹配换行符前的位置。" class="headerlink" title="$ :  匹配输入的结束。如果多行标示被设置为true，那么也匹配换行符前的位置。"></a>$ :  匹配输入的结束。如果多行标示被设置为true，那么也匹配换行符前的位置。</h6><p>   例如，/t$/ 并不会匹配 “eater” 中的 ‘t’，但是会匹配 “eat” 中的 ‘t’。</p>
+<h6 id="匹配前一个表达式0次或多次。等价于-0-。"><a href="#匹配前一个表达式0次或多次。等价于-0-。" class="headerlink" title="* :  匹配前一个表达式0次或多次。等价于 {0,}。"></a>* :  匹配前一个表达式0次或多次。等价于 {0,}。</h6><p>例如，/bo*/会匹配 “A ghost boooooed” 中的 ‘booooo’ 和 “A bird warbled” 中的 ‘b’，但是在 “A goat grunted” 中将不会匹配任何东西。</p>
+<h6 id="匹配前面一个表达式1次或者多次。等价于-1-。"><a href="#匹配前面一个表达式1次或者多次。等价于-1-。" class="headerlink" title="+ :  匹配前面一个表达式1次或者多次。等价于 {1,}。"></a>+ :  匹配前面一个表达式1次或者多次。等价于 {1,}。</h6><p>例如，/a+/匹配了在 “candy” 中的 ‘a’，和在 “caaaaaaandy” 中所有的 ‘a’。</p>
+<h6 id="匹配前面一个表达式0次或者1次。等价于-0-1-。"><a href="#匹配前面一个表达式0次或者1次。等价于-0-1-。" class="headerlink" title="?  : 匹配前面一个表达式0次或者1次。等价于 {0,1}。"></a>?  : 匹配前面一个表达式0次或者1次。等价于 {0,1}。</h6><p>例如，/e?le?/ 匹配 “angel” 中的 ‘el’，和 “angle” 中的 ‘le’ 以及”oslo’ 中的’l’。<br>如果紧跟在任何量词 *、 +、? 或 {} 的后面，将会使量词变为非贪婪的（匹配尽量少的字符），和缺省使用的贪婪模式（匹配尽可能多的字符）正好相反。</p>
+<p>例如，对 “123abc” 应用 /\d+/ 将会返回 “123”，如果使用 /\d+?/,那么就只会匹配到 “1”。<br>还可以运用于先行断言，如本表的 x(?=y) 和 x(?!y) 条目中所述。</p>
+<h6 id="（小数点）匹配除换行符之外的任何单个字符。"><a href="#（小数点）匹配除换行符之外的任何单个字符。" class="headerlink" title=".  :（小数点）匹配除换行符之外的任何单个字符。"></a>.  :（小数点）匹配除换行符之外的任何单个字符。</h6><p>例如，/.n/将会匹配 “nay, an apple is on the tree” 中的 ‘an’ 和 ‘on’，但是不会匹配 ‘nay’。</p>
+<h6 id="d-匹配一个数字。等价于-0-9-。"><a href="#d-匹配一个数字。等价于-0-9-。" class="headerlink" title="\d : 匹配一个数字。等价于[0-9]。"></a>\d : 匹配一个数字。等价于[0-9]。</h6><p>例如， /\d/ 或者 /[0-9]/ 匹配”B2 is the suite number.”中的’2’。</p>
+<h6 id="s-匹配一个空白字符，包括空格、制表符、换页符和换行符。"><a href="#s-匹配一个空白字符，包括空格、制表符、换页符和换行符。" class="headerlink" title="\s :匹配一个空白字符，包括空格、制表符、换页符和换行符。"></a>\s :匹配一个空白字符，包括空格、制表符、换页符和换行符。</h6><p>等价于[ \f\n\r\t\v\u00a0\u1680\u180e\u2000\u200a\u2028\u2029\u202f\u205f\u3000\ufeff]。<br>例如, /\s\w*/ 匹配”foo bar.”中的’ bar’。</p>
+<h6 id="w-匹配一个单字字符（字母、数字或者下划线）。等价于-A-Za-z0-9-。"><a href="#w-匹配一个单字字符（字母、数字或者下划线）。等价于-A-Za-z0-9-。" class="headerlink" title="\w : 匹配一个单字字符（字母、数字或者下划线）。等价于[A-Za-z0-9_]。"></a>\w : 匹配一个单字字符（字母、数字或者下划线）。等价于[A-Za-z0-9_]。</h6><p>例如, /\w/ 匹配 “apple,” 中的 ‘a’，”$5.28,”中的 ‘5’ 和 “3D.” 中的 ‘3’。</p>
+<h4 id="使用正则表达式"><a href="#使用正则表达式" class="headerlink" title="使用正则表达式"></a>使用正则表达式</h4><p>正则表达式可以被用于<code>RegExp</code>的<a href="https://developer.mozilla.org/zh-CN/docs/JavaScript/Reference/Global_Objects/RegExp/exec" target="_blank" rel="noopener"><code>exec</code></a>和<a href="https://developer.mozilla.org/zh-CN/docs/JavaScript/Reference/Global_Objects/RegExp/test" target="_blank" rel="noopener"><code>test</code></a>方法以及 <a href="https://developer.mozilla.org/zh-CN/docs/JavaScript/Reference/Global_Objects/String" target="_blank" rel="noopener"><code>String</code></a>的<a href="https://developer.mozilla.org/zh-CN/docs/JavaScript/Reference/Global_Objects/String/match" target="_blank" rel="noopener"><code>match</code></a>、<a href="https://developer.mozilla.org/zh-CN/docs/JavaScript/Reference/Global_Objects/String/replace" target="_blank" rel="noopener"><code>replace</code></a>、<a href="https://developer.mozilla.org/zh-CN/docs/JavaScript/Reference/Global_Objects/String/search" target="_blank" rel="noopener"><code>search</code></a>和<a href="https://developer.mozilla.org/zh-CN/docs/JavaScript/Reference/Global_Objects/String/split" target="_blank" rel="noopener"><code>split</code></a>方法</p>
+<table>
+<thead>
+<tr>
+<th><code>exec</code></th>
+<th>一个在字符串中执行查找匹配的RegExp方法，它返回一个数组（未匹配到则返回null）。</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>test</code></td>
+<td>一个在字符串中测试是否匹配的RegExp方法，它返回true或false。</td>
+</tr>
+<tr>
+<td><code>match</code></td>
+<td>一个在字符串中执行查找匹配的String方法，它返回一个数组或者在未匹配到时返回null。</td>
+</tr>
+<tr>
+<td><code>search</code></td>
+<td>一个在字符串中测试匹配的String方法，它返回匹配到的位置索引，或者在失败时返回-1。</td>
+</tr>
+<tr>
+<td><code>replace</code></td>
+<td>一个在字符串中执行查找匹配的String方法，并且使用替换字符串替换掉匹配到的子字符串。</td>
+</tr>
+<tr>
+<td><code>split</code></td>
+<td>一个使用正则表达式或者一个固定字符串分隔一个字符串，并将分隔后的子字符串存储到数组中的String方法。</td>
+</tr>
+</tbody>
+</table>
+<p>当你想要知道在一个字符串中的一个匹配是否被找到，你可以使用test或search方法；</p>
+<p>想得到更多的信息（但是比较慢）则可以使用exec或match方法。</p>
+<p>如果你使用exec或match方法并且匹配成功了，那么这些方法将返回一个数组并且更新相关的正则表达式对象的属性和预定义的正则表达式对象。如果匹配失败，那么exec方法返回null（也就是false）</p>
+<h4 id="来做做如下实例"><a href="#来做做如下实例" class="headerlink" title="来做做如下实例"></a>来做做如下实例</h4><p>一个函数<code>isValidUsername(str)</code>，判断用户输入的是不是合法的用户名（长度6-20个字符，只能包括字母、数字、下划线）</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">isValidUsername</span>(<span class="params">str</span>)</span>&#123;</span><br><span class="line">    reg = <span class="regexp">/^\w&#123;6,20&#125;$/</span></span><br><span class="line">    <span class="keyword">return</span> reg.test(str)</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(isValidUsername(<span class="string">'x_wu_ya'</span>))</span><br></pre></td></tr></table></figure>
+<p>一个函数<code>isPhoneNum(str)</code>，判断用户输入的是不是手机号</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">isPhoneNum</span>(<span class="params">str</span>)</span>&#123;</span><br><span class="line">    reg = <span class="regexp">/^1[3578]\d&#123;9&#125;$/</span></span><br><span class="line">    <span class="keyword">return</span> reg.test(str)</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(isPhoneNum(<span class="string">'131203456112'</span>))</span><br></pre></td></tr></table></figure>
+<p>写一个函数<code>isEmail(str)</code>，判断用户输入的是不是邮箱</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">isEmail</span>(<span class="params">str</span>)</span>&#123;</span><br><span class="line">    reg = <span class="regexp">/^\w+@.+(.com)$/</span></span><br><span class="line">    <span class="keyword">return</span> reg.test(str)</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(isEmail(<span class="string">'xwu@qq.com'</span>))</span><br></pre></td></tr></table></figure>
+<p>参考： <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Regular_Expressions#note" target="_blank" rel="noopener">https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Regular_Expressions#note</a></p>
+
+    </div>
+  </article>
+  <div class="post-nav">
+    <div class="post-nav-next post-nav-item">
+      
+        <a href="/2018/10/11/JS作用域和Js引用类型/" rel="next" title="JS作用域和Js引用类型">
+          <i class="fa fa-chevron-left"></i> JS作用域和Js引用类型
+        </a>
+      
+    </div>
+
+    <span class="post-nav-divider"></span>
+
+    <div class="post-nav-prev post-nav-item">
+    
+        <a href="/2018/11/06/setTimeout用法/" rel="prev" title="setTimeout用法">
+          setTimeout用法 <i class="fa fa-chevron-right"></i>
+        </a>
+      
+    </div>
+  </div>
+
+
+
+      </div>
+        <div class="footer">
+  <div class="footer-wrapper">
+    <div class="copyright">
+      
+      <span>&copy;</span>
+      
+      <span>2017 - 2018</span>
+      
+      <span class="author"><i class="fa fa-user"></i>Wuer</span>
+    </div>
+    
+      <span>Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> </span>
+    
+    
+      <span>|</span> <span>Theme - <a href="https://github.com/littleee/corazon">Corazon</a></span>
+      
+        <span>v1.0.0</span>
+      
+    
+  </div>
+</div>
+
+    </main>
+  </body>
+</html>
