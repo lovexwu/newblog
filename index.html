@@ -1,131 +1,306 @@
-<html>
-  <head><meta name="generator" content="Hexo 3.8.0">
-  <meta http-equiv="content-type" content="text/html; charset=utf-8">
-  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+<!DOCTYPE html>
+
+
+
   
-    <link rel="icon" href="/images/favicon.ico">
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta property="og:type" content="website">
+<meta property="og:title" content="Wuer">
+<meta property="og:url" content="http://yoursite.com/index.html">
+<meta property="og:site_name" content="Wuer">
+<meta property="og:locale" content="zh-Hans">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Wuer">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/">
+
+
+
+
+
   <title>Wuer</title>
-  <link rel="stylesheet" href="/css/styles.css">
-  <script src="/lib/jquery.js"></script>
-  <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css">
-  <script src="/js/common.js"></script>
-  <script src="/lib/bootstrap/js/bootstrap.js"></script>
-  <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+  
+
+
+
+
+
+
+
+
 </head>
 
-  <body>
-    <header class="header">
-  <div class="color-bar">
-    <ul>
-      <li class="bar1"></li>
-      <li class="bar2"></li>
-      <li class="bar3"></li>
-      <li class="bar4"></li>
-      <li class="bar5"></li>
-      <li class="bar6"></li>
-    </ul>
-  </div>
-  <div class="header-wrapper">
-    <div class="blog-title">
-      
-        <img class="logo" src="/images/logo.png" alt="logo">
-      
-      <a href="/" class="title">Wuer</a>
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left 
+  page-home">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Wuer</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
     </div>
-    <nav class="navbar navbar-menu">
-      <div class="container-fluid">
-        <div class="navbar-header">
-          <button type="button" id="nav-btn" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-        </div>
-      </div>
-        <ul class="menu menu-pc">
-          
-            <li class="menu-item">
-              <a href="/" class="menu-item-link"><i class="fa fa-home"></i><span>首页</span></a>
-            </li>
-          
-            <li class="menu-item">
-              <a href="/tags/" class="menu-item-link"><i class="fa fa-tags"></i><span>Tags</span></a>
-            </li>
-          
-            <li class="menu-item">
-              <a href="/archives/" class="menu-item-link"><i class="fa fa-file"></i><span>归档</span></a>
-            </li>
-          
-            <li class="menu-item">
-              <a href="https://github.com/littleee/" class="menu-item-link"><i class="fa fa-github"></i><span>github</span></a>
-            </li>
-          
-        </ul>
-    </nav>
+      
+        <p class="site-subtitle"></p>
+      
   </div>
-</header>
-<div class="collapse nav-collapse" style="position:fixed;top:59px;" id="bs-example-navbar-collapse-1">
-  <ul class="menu menu-mobile" style="list-style:none">
-    
-      <li class="menu-item">
-        <a href="/" class="menu-item-link"><i class="fa fa-home"></i><span>首页</span></a>
-      </li>
-    
-      <li class="menu-item">
-        <a href="/tags/" class="menu-item-link"><i class="fa fa-tags"></i><span>Tags</span></a>
-      </li>
-    
-      <li class="menu-item">
-        <a href="/archives/" class="menu-item-link"><i class="fa fa-file"></i><span>归档</span></a>
-      </li>
-    
-      <li class="menu-item">
-        <a href="https://github.com/littleee/" class="menu-item-link"><i class="fa fa-github"></i><span>github</span></a>
-      </li>
-    
-  </ul>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
 </div>
 
-    <main class="main">
-      <div class="content">
-        
-
-<section class="banner">
-  <div class="headintro">
-    <p class="title">HELLO, IM CORA</p>
-    <p class="subtitle">三流代码 &amp; 一流Bug</p>
-  </div>
-</section>
-
-
-
-<section class="posts">
+<nav class="site-nav">
   
-    <article class="post">
-      <div class="post-meta">
-        <span class="post-time">2018-11-25</span>
-      </div>
-      <div class="post-title">
+
+  
+    <ul id="menu" class="menu">
+      
         
-          <a class="post-title-link" href="/2018/11/25/nodejs实现静态服务器/">
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
             
-              nodejs实现静态服务器
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
             
+            首页
           </a>
-          
+        </li>
+      
         
-        <div class="post-tags">
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+  <section id="posts" class="posts-expand">
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/25/nodejs实现静态服务器/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Wuer">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Wuer">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/25/nodejs实现静态服务器/" itemprop="url">nodejs实现静态服务器</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-25T22:30:00+08:00">
+                2018-11-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
           
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
         </div>
-      </div>
-      <div class="post-content">
+      </header>
+    
 
-        
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
+      
+      
+
+      
         
-        <p>看了一天的nodejs 实现静态服务器 ,还是晕乎乎，费话不说了，直接上代码，记笔记吧！</p>
+          
+            <p>看了一天的nodejs 实现静态服务器 ,还是晕乎乎，费话不说了，直接上代码，记笔记吧！</p>
 <p>首先是页面index.js代码如下：</p>
 <h5 id="实例1"><a href="#实例1" class="headerlink" title="实例1"></a>实例1</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"># require-----nodejs通过它来加载模块</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> http = <span class="built_in">require</span>(<span class="string">'http'</span>) </span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">http是nodejs的内置模块,它是一个对象，然后这个对象提供了一些方法，实现我们所需要的一些功能</span></span><br><span class="line"><span class="comment">整个服务器底层都是由nodejs的http模块实现的</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">函数createServer内部是一个异步的过程,内部会创建一个服务器，创建服务器时里面有一个回调function(req,res),把函数function(req,res)作为对应的参数，来处理我们的请求</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">换句话说，创建服务器后，当浏览器访问这个服务器时,那请求呢，底层会封装成一个对象，这个对象就是第一个参数，是req,可以随便起名</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">req 用户请求的信息都在这里，用户的(ip ,访问的域名,浏览器的一些信息)</span></span><br><span class="line"><span class="comment">res 需要返回给用户哪些东西的这个对象</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"># res.write是把数据放到响应体Response里面</span><br><span class="line"># 响应体 是 页面的查看源代码，</span><br><span class="line"># 响应头 是 Response Header</span><br><span class="line"></span><br><span class="line"><span class="comment">//setHeader 设置响应头 </span></span><br><span class="line"></span><br><span class="line"> <span class="keyword">var</span> server = http.createServer(<span class="function"><span class="keyword">function</span>(<span class="params">req, res</span>)</span>&#123;</span><br><span class="line">     <span class="built_in">console</span>.log(<span class="string">'hello world'</span>)</span><br><span class="line">     res.setHeader(<span class="string">"Content-Type"</span>,<span class="string">"text/paint; charset=utf-8"</span>)</span><br><span class="line">     res.write(<span class="string">'&lt;h1&gt; 你好&lt;/h1&gt;'</span>) </span><br><span class="line">     res.end()</span><br><span class="line"> &#125;)</span><br><span class="line"> server.listen(<span class="number">9000</span>) <span class="comment">// listen方法 启动服务器 ,使这个服务器监听 9000端口</span></span><br></pre></td></tr></table></figure>
 <h5 id="实例2"><a href="#实例2" class="headerlink" title="实例2"></a>实例2</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">var</span> server = http.createServer(<span class="function"><span class="keyword">function</span>(<span class="params">request, response</span>)</span>&#123;</span><br><span class="line">  setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="comment">/*text/plain 告诉浏览器，你接收到的字符串，你把它当成字符去渲染.  </span></span><br><span class="line"><span class="comment">      text/html 告诉浏览器，你接收到的字符串，你把它当成html去渲染</span></span><br><span class="line"><span class="comment">      charset=utf-8 告诉浏览器，用 utf-8解码</span></span><br><span class="line"><span class="comment">      charset=bgk 告诉浏览器，用 bgk 解码</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">    response.setHeader(<span class="string">'Content-Type'</span>,<span class="string">'text/html; charset=utf-8'</span>)</span><br><span class="line">    <span class="comment">//response.writeHead(404, 'Not Found')</span></span><br><span class="line">    response.writeHead(<span class="number">200</span>,<span class="string">'haha'</span>) <span class="comment">// 相当于 状态码 status code</span></span><br><span class="line">    response.write(<span class="string">'&lt;html&gt;&lt;head&gt;&lt;meta charset="gbk" /&gt;&lt;/head&gt;'</span>)</span><br><span class="line">    response.write(<span class="string">'&lt;body&gt;'</span>)</span><br><span class="line">    response.write(<span class="string">'&lt;h1&gt;你好&lt;/h1&gt;'</span>)</span><br><span class="line">    response.write(<span class="string">'&lt;/body&gt;'</span>)</span><br><span class="line">    response.write(<span class="string">'&lt;/html&gt;'</span>)</span><br><span class="line">    </span><br><span class="line">    response.end()</span><br><span class="line">  &#125;,<span class="number">2000</span>);</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'open http://localhost:8080'</span>)</span><br><span class="line">server.listen(<span class="number">8080</span>)</span><br></pre></td></tr></table></figure>
@@ -140,61 +315,245 @@
 <p>总结如下简图</p>
 <p><img src="https://upload-images.jianshu.io/upload_images/9375265-3999c2e18dac389d.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="pic.jpg"></p>
 
+          
         
-      </div>
-    </article>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
   
-    <article class="post">
-      <div class="post-meta">
-        <span class="post-time">2018-11-19</span>
-      </div>
-      <div class="post-title">
-        
-          <a class="post-title-link" href="/2018/11/19/ajax/">
-            
-              ajax
-            
-          </a>
-          
-        
-        <div class="post-tags">
-          
-        </div>
-      </div>
-      <div class="post-content">
-
-        
-
-        
-        <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> xhr = <span class="keyword">new</span> XMLHttpRequest()</span><br><span class="line">xhr.open(<span class="string">'GET'</span>,<span class="string">'/hello2.json'</span>,<span class="literal">true</span>)</span><br><span class="line">xhr.send()</span><br><span class="line">xhr.addEventListener(<span class="string">'load'</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(xhr.status)</span><br><span class="line">    <span class="keyword">if</span>(xhr.status &gt;= <span class="number">200</span> &amp;&amp; xhr.status &lt; <span class="number">300</span> || xhr.status === <span class="number">304</span>)&#123;</span><br><span class="line">       <span class="keyword">var</span> data = xhr.responseText</span><br><span class="line">       <span class="built_in">console</span>.log(data)</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'error'</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-
-        
-      </div>
-    </article>
   
-    <article class="post">
-      <div class="post-meta">
-        <span class="post-time">2018-11-18</span>
-      </div>
-      <div class="post-title">
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/19/ajax/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Wuer">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Wuer">
+    </span>
+
+    
+      <header class="post-header">
+
         
-          <a class="post-title-link" href="/2018/11/18/cookie、session、localStorage/">
-            
-              cookie、session、localStorage
-            
-          </a>
-          
         
-        <div class="post-tags">
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/19/ajax/" itemprop="url">ajax</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-19T17:25:20+08:00">
+                2018-11-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
           
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
         </div>
-      </div>
-      <div class="post-content">
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> xhr = <span class="keyword">new</span> XMLHttpRequest()</span><br><span class="line">xhr.open(<span class="string">'GET'</span>,<span class="string">'/hello2.json'</span>,<span class="literal">true</span>)</span><br><span class="line">xhr.send()</span><br><span class="line">xhr.addEventListener(<span class="string">'load'</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(xhr.status)</span><br><span class="line">    <span class="keyword">if</span>(xhr.status &gt;= <span class="number">200</span> &amp;&amp; xhr.status &lt; <span class="number">300</span> || xhr.status === <span class="number">304</span>)&#123;</span><br><span class="line">       <span class="keyword">var</span> data = xhr.responseText</span><br><span class="line">       <span class="built_in">console</span>.log(data)</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'error'</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/18/cookie、session、localStorage/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Wuer">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Wuer">
+    </span>
+
+    
+      <header class="post-header">
 
         
-
         
-        <h4 id="一、cookie-："><a href="#一、cookie-：" class="headerlink" title="一、cookie ："></a>一、cookie ：</h4><p>1、存储在浏览器上的一小段数据，用来记录某些当页面关闭或刷新后仍然需要记录的信息。在控制台用 document.cookie 查看你当前正在浏览的网站的cookie</p>
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/18/cookie、session、localStorage/" itemprop="url">cookie、session、localStorage</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-18T16:35:39+08:00">
+                2018-11-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="一、cookie-："><a href="#一、cookie-：" class="headerlink" title="一、cookie ："></a>一、cookie ：</h4><p>1、存储在浏览器上的一小段数据，用来记录某些当页面关闭或刷新后仍然需要记录的信息。在控制台用 document.cookie 查看你当前正在浏览的网站的cookie</p>
 <p>2、可以使用js 在浏览器直接设置（用于记录不敏感信息，如用户名),也可 以在服务端使用HTTP协议规定的set-cookie来让浏览器种下cookie,这是最常见的做法。（打开一个网站，清除全部cookie, 然后刷新页面，在network的Response headers 试试找一找set-cookie吧）</p>
 <p>3、每次网络请求Request headers中都会带上cookie. 所以如果cookie 太多太大对传输效率会有影响。</p>
 <p>4、一般浏览器存储cookie 最大容量为4k,所以大量数据不要存到cookie。</p>
@@ -224,33 +583,125 @@
 <p>2､单个域名的存储容量大(一般为5M)  </p>
 <p>3､总体数量无限制</p>
 
+          
         
-      </div>
-    </article>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
   
-    <article class="post">
-      <div class="post-meta">
-        <span class="post-time">2018-11-15</span>
-      </div>
-      <div class="post-title">
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/15/事件传播机制、阻止传播、取消默认事件、事件代理/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Wuer">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Wuer">
+    </span>
+
+    
+      <header class="post-header">
+
         
-          <a class="post-title-link" href="/2018/11/15/事件传播机制、阻止传播、取消默认事件、事件代理/">
-            
-              事件传 播机制、阻止传播、取消默认事件、事件代理
-            
-          </a>
-          
         
-        <div class="post-tags">
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/15/事件传播机制、阻止传播、取消默认事件、事件代理/" itemprop="url">事件传 播机制、阻止传播、取消默认事件、事件代理</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-15T18:07:57+08:00">
+                2018-11-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
           
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
         </div>
-      </div>
-      <div class="post-content">
+      </header>
+    
 
-        
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
+      
+      
+
+      
         
-        <h3 id="事件是某个行为或者触发，比如点击、鼠标移动："><a href="#事件是某个行为或者触发，比如点击、鼠标移动：" class="headerlink" title="事件是某个行为或者触发，比如点击、鼠标移动："></a>事件是某个行为或者触发，比如点击、鼠标移动：</h3><ul>
+          
+            <h3 id="事件是某个行为或者触发，比如点击、鼠标移动："><a href="#事件是某个行为或者触发，比如点击、鼠标移动：" class="headerlink" title="事件是某个行为或者触发，比如点击、鼠标移动："></a>事件是某个行为或者触发，比如点击、鼠标移动：</h3><ul>
 <li>当用户点击鼠标时</li>
 <li>当网页已加载时</li>
 <li>当图像已加载时</li>
@@ -296,33 +747,125 @@
 <h3 id="优点："><a href="#优点：" class="headerlink" title="优点："></a>优点：</h3><p>1.定义一个监听函数，就能处理多个子节点的事件。比如ul上代理所有li的click事件就很不错。<br> 2.可以实现当新增子对象时，无需再对其进行事件绑定，监听函数依然有效，对于动态内容部分尤为合适</p>
 <h3 id="缺点："><a href="#缺点：" class="headerlink" title="缺点："></a>缺点：</h3><p>事件代理的常用应用应该仅限于上述需求，如果把所有事件都用事件代理，可能会出现事件误判。即本不该被触发的事件被绑定上了事件。</p>
 
+          
         
-      </div>
-    </article>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
   
-    <article class="post">
-      <div class="post-meta">
-        <span class="post-time">2018-11-14</span>
-      </div>
-      <div class="post-title">
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/14/onclick与addEventListener区别/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Wuer">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Wuer">
+    </span>
+
+    
+      <header class="post-header">
+
         
-          <a class="post-title-link" href="/2018/11/14/onclick与addEventListener区别/">
-            
-              onclick与addEventListener区别
-            
-          </a>
-          
         
-        <div class="post-tags">
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/14/onclick与addEventListener区别/" itemprop="url">onclick与addEventListener区别</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-14T15:04:18+08:00">
+                2018-11-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
           
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
         </div>
-      </div>
-      <div class="post-content">
+      </header>
+    
 
-        
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
+      
+      
+
+      
         
-        <p>addEventListener和onclick有什么不一样？于是Google查了下，稍微整理了下：</p>
+          
+            <p>addEventListener和onclick有什么不一样？于是Google查了下，稍微整理了下：</p>
 <ul>
 <li><p>onclick 只能绑定一个事件，绑定多个会产生覆盖；不能设置参数，使用默认的事件冒泡阶段。</p>
 </li>
@@ -369,33 +912,125 @@
 <p>可参考: <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/GlobalEventHandlers/onclick" target="_blank" rel="noopener">https://developer.mozilla.org/zh-CN/docs/Web/API/GlobalEventHandlers/onclick</a></p>
 <p>​             <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/EventTarget/addEventListener" target="_blank" rel="noopener">https://developer.mozilla.org/zh-CN/docs/Web/API/EventTarget/addEventListener</a></p>
 
+          
         
-      </div>
-    </article>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
   
-    <article class="post">
-      <div class="post-meta">
-        <span class="post-time">2018-11-07</span>
-      </div>
-      <div class="post-title">
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/07/任务队列异步函数节流/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Wuer">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Wuer">
+    </span>
+
+    
+      <header class="post-header">
+
         
-          <a class="post-title-link" href="/2018/11/07/任务队列异步函数节流/">
-            
-              任务队列异步函数节流
-            
-          </a>
-          
         
-        <div class="post-tags">
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/07/任务队列异步函数节流/" itemprop="url">任务队列异步函数节流</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-07T17:17:57+08:00">
+                2018-11-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
           
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
         </div>
-      </div>
-      <div class="post-content">
+      </header>
+    
 
-        
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
+      
+      
+
+      
         
-        <p>首先我们来了解下单线程和任务队列</p>
+          
+            <p>首先我们来了解下单线程和任务队列</p>
 <h5 id="单线程："><a href="#单线程：" class="headerlink" title="单线程："></a>单线程：</h5><p>只有一条线，一步一步走，即所有任务都需要排队，前一个任务完成，才会执行后一个任务, 如果前一个任务时间耗时长，后一个任务就不得不一直等着</p>
 <h5 id="任务队列："><a href="#任务队列：" class="headerlink" title="任务队列："></a>任务队列：</h5><p>在JavaScript中任务有两种，一种是同步任务，一种是异步任务。</p>
 <p>同步任务：各个任务按照文档定义的顺序一一推入”执行栈”中，当前一个任务执行完毕，才会开始执行下一个任务。</p>
@@ -407,33 +1042,125 @@
 <h5 id="函数节流原理"><a href="#函数节流原理" class="headerlink" title="函数节流原理"></a>函数节流原理</h5><p>我们设置一个定时器，一开始判断定时器是不是有了，如果没有的话，再去设置一个定时器，如果有了话，把上一次的清除掉，然后我们再重新设置</p>
 <h6 id="如下实例："><a href="#如下实例：" class="headerlink" title="如下实例："></a>如下实例：</h6><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> timer</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(timer)&#123;</span><br><span class="line">        clearTimeout(timer)</span><br><span class="line">    &#125;</span><br><span class="line">    timer = setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'hello'</span>)</span><br><span class="line">    &#125;,<span class="number">1000</span>)</span><br><span class="line">&#125;</span><br><span class="line">test()</span><br></pre></td></tr></table></figure>
 
+          
         
-      </div>
-    </article>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
   
-    <article class="post">
-      <div class="post-meta">
-        <span class="post-time">2018-11-06</span>
-      </div>
-      <div class="post-title">
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/06/setTimeout用法/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Wuer">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Wuer">
+    </span>
+
+    
+      <header class="post-header">
+
         
-          <a class="post-title-link" href="/2018/11/06/setTimeout用法/">
-            
-              setTimeout用法
-            
-          </a>
-          
         
-        <div class="post-tags">
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/06/setTimeout用法/" itemprop="url">setTimeout用法</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-06T23:24:21+08:00">
+                2018-11-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
           
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
         </div>
-      </div>
-      <div class="post-content">
+      </header>
+    
 
-        
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
+      
+      
+
+      
         
-        <h3 id="定时器"><a href="#定时器" class="headerlink" title="定时器"></a>定时器</h3><p>JS 提供定时执行代码的功能，叫做定时器（timer），主要是由setTimeout() 和 setInterval()两个函数来完成</p>
+          
+            <h3 id="定时器"><a href="#定时器" class="headerlink" title="定时器"></a>定时器</h3><p>JS 提供定时执行代码的功能，叫做定时器（timer），主要是由setTimeout() 和 setInterval()两个函数来完成</p>
 <h5 id="setTimeout"><a href="#setTimeout" class="headerlink" title="setTimeout()"></a>setTimeout()</h5><p>用来指定某个函数或某段代码，在多少毫秒之后执行。它返回一个整数，表不定时器的编号，以后可以用来取消这个定时器</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> timerId = setTimeout(func|code,delay)</span><br></pre></td></tr></table></figure>
 <p>上面代码中，setTimeout函数接受两个参数，第一个参数func|code是将要推迟执行的函数名或一段代码，第二个参数delay是推迟执行的毫秒数</p>
@@ -443,33 +1170,125 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> i = <span class="number">1</span></span><br><span class="line"><span class="keyword">var</span> timer = setInterval(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(i++)</span><br><span class="line">&#125;,<span class="number">1000</span>)</span><br></pre></td></tr></table></figure>
 <p>上面代码表示每隔1000豪秒就输出一个i,直到用户点击了停止按钮</p>
 <h5 id="clearTimeout-、clearInterval-可以取消对应的定时器"><a href="#clearTimeout-、clearInterval-可以取消对应的定时器" class="headerlink" title="clearTimeout()、clearInterval() 可以取消对应的定时器"></a>clearTimeout()、clearInterval() 可以取消对应的定时器</h5>
+          
         
-      </div>
-    </article>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
   
-    <article class="post">
-      <div class="post-meta">
-        <span class="post-time">2018-11-06</span>
-      </div>
-      <div class="post-title">
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/06/正则表达式/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Wuer">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Wuer">
+    </span>
+
+    
+      <header class="post-header">
+
         
-          <a class="post-title-link" href="/2018/11/06/正则表达式/">
-            
-              正则表达式
-            
-          </a>
-          
         
-        <div class="post-tags">
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/06/正则表达式/" itemprop="url">正则表达式</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-06T12:28:45+08:00">
+                2018-11-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
           
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
         </div>
-      </div>
-      <div class="post-content">
+      </header>
+    
 
-        
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
+      
+      
+
+      
         
-        <p>正则表达式用于匹配字符串字符组合的模式,在JavaScript中，正则表达式也是对象。</p>
+          
+            <p>正则表达式用于匹配字符串字符组合的模式,在JavaScript中，正则表达式也是对象。</p>
 <h4 id="匹配将依照下列规则："><a href="#匹配将依照下列规则：" class="headerlink" title="匹配将依照下列规则："></a>匹配将依照下列规则：</h4><h6 id="在非特殊字符之前的反斜杠表示下一个字符是特殊的，不能从字面上解释。"><a href="#在非特殊字符之前的反斜杠表示下一个字符是特殊的，不能从字面上解释。" class="headerlink" title="\  :    在非特殊字符之前的反斜杠表示下一个字符是特殊的，不能从字面上解释。"></a>\  :    在非特殊字符之前的反斜杠表示下一个字符是特殊的，不能从字面上解释。</h6><p>例如，没有前面’\’的’b’通常匹配小写’b’，无论它们出现在哪里。如果加了’\’,这个字符变成了一个特殊意义的字符，意思是匹配一个字符边界。</p>
 <p>反斜杠也可以将其后的特殊字符，转义为字面量。例如，模式 /a<em>/ 代表会匹配 0 个或者多个 a。相反，模式 /a\</em>/ 将 ‘<em>‘ 的特殊性移除，从而可以匹配像 “a</em>“ 这样的字符串。</p>
 <p>使用 new RegExp(“pattern”) 的时候不要忘记将 \ 进行转义，因为 \ 在字符串里面也是一个转义字符。</p>
@@ -525,33 +1344,125 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">isEmail</span>(<span class="params">str</span>)</span>&#123;</span><br><span class="line">    reg = <span class="regexp">/^\w+@.+(.com)$/</span></span><br><span class="line">    <span class="keyword">return</span> reg.test(str)</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(isEmail(<span class="string">'xwu@qq.com'</span>))</span><br></pre></td></tr></table></figure>
 <p>参考： <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Regular_Expressions#note" target="_blank" rel="noopener">https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Guide/Regular_Expressions#note</a></p>
 
+          
         
-      </div>
-    </article>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
   
-    <article class="post">
-      <div class="post-meta">
-        <span class="post-time">2018-10-11</span>
-      </div>
-      <div class="post-title">
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/11/JS作用域和Js引用类型/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Wuer">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Wuer">
+    </span>
+
+    
+      <header class="post-header">
+
         
-          <a class="post-title-link" href="/2018/10/11/JS作用域和Js引用类型/">
-            
-              JS作用域和Js引用类型
-            
-          </a>
-          
         
-        <div class="post-tags">
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/10/11/JS作用域和Js引用类型/" itemprop="url">JS作用域和Js引用类型</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-11T21:45:40+08:00">
+                2018-10-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
           
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
         </div>
-      </div>
-      <div class="post-content">
+      </header>
+    
 
-        
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
+      
+      
+
+      
         
-        <h4 id="JS作用域链"><a href="#JS作用域链" class="headerlink" title="JS作用域链"></a>JS作用域链</h4><p><strong>题1</strong></p>
+          
+            <h4 id="JS作用域链"><a href="#JS作用域链" class="headerlink" title="JS作用域链"></a>JS作用域链</h4><p><strong>题1</strong></p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">1</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn1</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">fn2</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(a)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">fn3</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">var</span> a = <span class="number">4</span></span><br><span class="line">        fn2()</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">var</span> a = <span class="number">2</span></span><br><span class="line">    <span class="keyword">return</span> fn3</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> fn = fn1()</span><br><span class="line">fn() <span class="comment">// 2</span></span><br><span class="line"></span><br><span class="line">分析：</span><br><span class="line">调用fn1()后，返回fn3，而fn3中又调用了fn2()，而fn2输出a，但是fn2中没有定义a，所以在上级作用域找a，即fn1的作用域，所以输出<span class="number">2</span></span><br></pre></td></tr></table></figure>
 <p><strong>题2</strong></p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">1</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn1</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">fn3</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">var</span> a = <span class="number">4</span></span><br><span class="line">        fn2()</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">var</span> a = <span class="number">2</span></span><br><span class="line">    <span class="keyword">return</span> fn3</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn2</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(a)</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> fn = fn1()</span><br><span class="line">fn() <span class="comment">// 1</span></span><br><span class="line"></span><br><span class="line">分析：</span><br><span class="line">调用fn1之后，<span class="keyword">return</span> fn3，而fn3调用了fn2，fn2输出a，而fn2中没有a，所以在fn2的上级作用域中找a，所以输出全局作用域的a，即<span class="number">1</span></span><br></pre></td></tr></table></figure>
@@ -580,73 +1491,435 @@
 <p>//深拷贝 （）</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">deepCopy</span>(<span class="params">oldObj</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> newObj = &#123;&#125;;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> key <span class="keyword">in</span> oldObj)&#123;</span><br><span class="line">        <span class="keyword">if</span>(<span class="keyword">typeof</span> oldObj[key] === <span class="string">'object'</span>)&#123;</span><br><span class="line">            newObj[key] = deepCopy(oldObj[key]);</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            newObj[key] = oldObj[key];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> newObj;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
+          
         
-      </div>
-    </article>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
   
-    <article class="post">
-      <div class="post-meta">
-        <span class="post-time">2018-10-07</span>
-      </div>
-      <div class="post-title">
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/07/谈谈JavaScript的作用域链/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Wuer">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Wuer">
+    </span>
+
+    
+      <header class="post-header">
+
         
-          <a class="post-title-link" href="/2018/10/07/谈谈JavaScript的作用域链/">
-            
-              谈谈JavaScript的作用域链
-            
-          </a>
-          
         
-        <div class="post-tags">
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/10/07/谈谈JavaScript的作用域链/" itemprop="url">谈谈JavaScript的作用域链</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-07T18:03:06+08:00">
+                2018-10-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
           
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
         </div>
-      </div>
-      <div class="post-content">
+      </header>
+    
 
-        
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
+      
+      
+
+      
         
-        <h2 id="作用域链"><a href="#作用域链" class="headerlink" title="作用域链"></a><strong>作用域链</strong></h2><p>每当声明一个函数的时候会有一个独立的的作用域，遇到函数执行需要调用某一个变量的时候，需要先在当前函数的作用域下寻找。如果当前函数的作用域下找不到该值变量，就需要进入到创建该函数所在的作用域下寻找，以此往上直至找到为止。这样就形成了一条作用域链。</p>
+          
+            <h2 id="作用域链"><a href="#作用域链" class="headerlink" title="作用域链"></a><strong>作用域链</strong></h2><p>每当声明一个函数的时候会有一个独立的的作用域，遇到函数执行需要调用某一个变量的时候，需要先在当前函数的作用域下寻找。如果当前函数的作用域下找不到该值变量，就需要进入到创建该函数所在的作用域下寻找，以此往上直至找到为止。这样就形成了一条作用域链。</p>
 <p><strong>来看一个实例</strong></p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">1</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn1</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">fn2</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(a)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">fn3</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> a = <span class="number">4</span></span><br><span class="line">    fn2()</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">var</span> a = <span class="number">2</span></span><br><span class="line">  <span class="keyword">return</span> fn3</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> fn = fn1()</span><br><span class="line">fn()</span><br></pre></td></tr></table></figure>
 <p><strong>分析上面实例：</strong><br>在function fn1内是一个独立的作用域，在function fn2和function fn3中又是两个独立的作用域。当输出fn1的时候，需要先找到fn1下返回fn3的值。对应到fn3中需要找到fn2输出的a。而在fn2的作用域中，找不到变量a，需要返回到创建function fn2的作用域下寻找，即fn1的作用域中，得到var a = 2，因此代码输出结果为2</p>
 <h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>1、函数在执行的过程中，先从自己内部找变量<br>2、如果找不到，再从创建当前函数所在的作用域去找, 以此往上<br>3、注意找的是变量的当前的状态</p>
 
+          
         
-      </div>
-    </article>
-  
-</section>
+      
+    </div>
+    
+    
+    
 
-  <nav class="page-nav">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next</a>
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+  </section>
+
+  
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
 
-      </div>
-        <div class="footer">
-  <div class="footer-wrapper">
-    <div class="copyright">
-      
-      <span>&copy;</span>
-      
-      <span>2017 - 2018</span>
-      
-      <span class="author"><i class="fa fa-user"></i>Wuer</span>
+          </div>
+          
+
+
+          
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
     </div>
-    
-      <span>Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> </span>
-    
-    
-      <span>|</span> <span>Theme - <a href="https://github.com/littleee/corazon">yilia</a></span>
-      
-        <span>v1.0.0</span>
-      
-    
   </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Wuer</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">23</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Wuer</span>
+
+  
 </div>
 
-    </main>
-  </body>
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
 </html>
