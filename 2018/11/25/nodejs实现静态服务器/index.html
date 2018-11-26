@@ -1,0 +1,163 @@
+<html>
+  <head><meta name="generator" content="Hexo 3.8.0">
+  <meta http-equiv="content-type" content="text/html; charset=utf-8">
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0" name="viewport">
+  
+    <link rel="icon" href="/images/favicon.ico">
+  
+  <title>Wuer</title>
+  <link rel="stylesheet" href="/css/styles.css">
+  <script src="/lib/jquery.js"></script>
+  <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.min.css">
+  <script src="/js/common.js"></script>
+  <script src="/lib/bootstrap/js/bootstrap.js"></script>
+  <link rel="stylesheet" href="/lib/font-awesome/css/font-awesome.min.css">
+</head>
+
+  <body>
+    <header class="header">
+  <div class="color-bar">
+    <ul>
+      <li class="bar1"></li>
+      <li class="bar2"></li>
+      <li class="bar3"></li>
+      <li class="bar4"></li>
+      <li class="bar5"></li>
+      <li class="bar6"></li>
+    </ul>
+  </div>
+  <div class="header-wrapper">
+    <div class="blog-title">
+      
+        <img class="logo" src="/images/logo.png" alt="logo">
+      
+      <a href="/" class="title">Wuer</a>
+    </div>
+    <nav class="navbar navbar-menu">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" id="nav-btn" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+        </div>
+      </div>
+        <ul class="menu menu-pc">
+          
+            <li class="menu-item">
+              <a href="/" class="menu-item-link"><i class="fa fa-home"></i><span>首页</span></a>
+            </li>
+          
+            <li class="menu-item">
+              <a href="/tags/" class="menu-item-link"><i class="fa fa-tags"></i><span>Tags</span></a>
+            </li>
+          
+            <li class="menu-item">
+              <a href="/archives/" class="menu-item-link"><i class="fa fa-file"></i><span>归档</span></a>
+            </li>
+          
+            <li class="menu-item">
+              <a href="https://github.com/littleee/" class="menu-item-link"><i class="fa fa-github"></i><span>github</span></a>
+            </li>
+          
+        </ul>
+    </nav>
+  </div>
+</header>
+<div class="collapse nav-collapse" style="position:fixed;top:59px;" id="bs-example-navbar-collapse-1">
+  <ul class="menu menu-mobile" style="list-style:none">
+    
+      <li class="menu-item">
+        <a href="/" class="menu-item-link"><i class="fa fa-home"></i><span>首页</span></a>
+      </li>
+    
+      <li class="menu-item">
+        <a href="/tags/" class="menu-item-link"><i class="fa fa-tags"></i><span>Tags</span></a>
+      </li>
+    
+      <li class="menu-item">
+        <a href="/archives/" class="menu-item-link"><i class="fa fa-file"></i><span>归档</span></a>
+      </li>
+    
+      <li class="menu-item">
+        <a href="https://github.com/littleee/" class="menu-item-link"><i class="fa fa-github"></i><span>github</span></a>
+      </li>
+    
+  </ul>
+</div>
+
+    <main class="main">
+      <div class="content">
+        
+  <article class="post">
+    <div class="post-title">
+      <h2 class="title">nodejs实现静态服务器</h2>
+       
+    </div>
+     <div class="post-meta">
+      <span class="post-time">2018-11-25</span>
+    </div>
+    <div class="post-content">
+      <p>看了一天的nodejs 实现静态服务器 ,还是晕乎乎，费话不说了，直接上代码，记笔记吧！</p>
+<p>首先是页面index.js代码如下：</p>
+<h5 id="实例1"><a href="#实例1" class="headerlink" title="实例1"></a>实例1</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"># require-----nodejs通过它来加载模块</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> http = <span class="built_in">require</span>(<span class="string">'http'</span>) </span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">http是nodejs的内置模块,它是一个对象，然后这个对象提供了一些方法，实现我们所需要的一些功能</span></span><br><span class="line"><span class="comment">整个服务器底层都是由nodejs的http模块实现的</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">函数createServer内部是一个异步的过程,内部会创建一个服务器，创建服务器时里面有一个回调function(req,res),把函数function(req,res)作为对应的参数，来处理我们的请求</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">换句话说，创建服务器后，当浏览器访问这个服务器时,那请求呢，底层会封装成一个对象，这个对象就是第一个参数，是req,可以随便起名</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">req 用户请求的信息都在这里，用户的(ip ,访问的域名,浏览器的一些信息)</span></span><br><span class="line"><span class="comment">res 需要返回给用户哪些东西的这个对象</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"># res.write是把数据放到响应体Response里面</span><br><span class="line"># 响应体 是 页面的查看源代码，</span><br><span class="line"># 响应头 是 Response Header</span><br><span class="line"></span><br><span class="line"><span class="comment">//setHeader 设置响应头 </span></span><br><span class="line"></span><br><span class="line"> <span class="keyword">var</span> server = http.createServer(<span class="function"><span class="keyword">function</span>(<span class="params">req, res</span>)</span>&#123;</span><br><span class="line">     <span class="built_in">console</span>.log(<span class="string">'hello world'</span>)</span><br><span class="line">     res.setHeader(<span class="string">"Content-Type"</span>,<span class="string">"text/paint; charset=utf-8"</span>)</span><br><span class="line">     res.write(<span class="string">'&lt;h1&gt; 你好&lt;/h1&gt;'</span>) </span><br><span class="line">     res.end()</span><br><span class="line"> &#125;)</span><br><span class="line"> server.listen(<span class="number">9000</span>) <span class="comment">// listen方法 启动服务器 ,使这个服务器监听 9000端口</span></span><br></pre></td></tr></table></figure>
+<h5 id="实例2"><a href="#实例2" class="headerlink" title="实例2"></a>实例2</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">var</span> server = http.createServer(<span class="function"><span class="keyword">function</span>(<span class="params">request, response</span>)</span>&#123;</span><br><span class="line">  setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="comment">/*text/plain 告诉浏览器，你接收到的字符串，你把它当成字符去渲染.  </span></span><br><span class="line"><span class="comment">      text/html 告诉浏览器，你接收到的字符串，你把它当成html去渲染</span></span><br><span class="line"><span class="comment">      charset=utf-8 告诉浏览器，用 utf-8解码</span></span><br><span class="line"><span class="comment">      charset=bgk 告诉浏览器，用 bgk 解码</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">    response.setHeader(<span class="string">'Content-Type'</span>,<span class="string">'text/html; charset=utf-8'</span>)</span><br><span class="line">    <span class="comment">//response.writeHead(404, 'Not Found')</span></span><br><span class="line">    response.writeHead(<span class="number">200</span>,<span class="string">'haha'</span>) <span class="comment">// 相当于 状态码 status code</span></span><br><span class="line">    response.write(<span class="string">'&lt;html&gt;&lt;head&gt;&lt;meta charset="gbk" /&gt;&lt;/head&gt;'</span>)</span><br><span class="line">    response.write(<span class="string">'&lt;body&gt;'</span>)</span><br><span class="line">    response.write(<span class="string">'&lt;h1&gt;你好&lt;/h1&gt;'</span>)</span><br><span class="line">    response.write(<span class="string">'&lt;/body&gt;'</span>)</span><br><span class="line">    response.write(<span class="string">'&lt;/html&gt;'</span>)</span><br><span class="line">    </span><br><span class="line">    response.end()</span><br><span class="line">  &#125;,<span class="number">2000</span>);</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'open http://localhost:8080'</span>)</span><br><span class="line">server.listen(<span class="number">8080</span>)</span><br></pre></td></tr></table></figure>
+<h5 id="接下来是终端"><a href="#接下来是终端" class="headerlink" title="接下来是终端"></a>接下来是终端</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">➜  ~ cd node-server </span><br><span class="line">➜  node-server git:(master) ✗ cd step0</span><br><span class="line">➜  step0 git:(master) ✗ node index.js <span class="comment">//通过node 加上文件名, 启动服务器</span></span><br><span class="line"></span><br><span class="line">如果页面有更改需关闭服务器重新启动，终端操作 ctrl + c 关闭，然后重新启动 node index.js即可!</span><br></pre></td></tr></table></figure>
+<p>然后浏览器地址输入如下地址 浏览即可！其中9000是对应的端口</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">localhost: <span class="number">9000</span></span><br></pre></td></tr></table></figure>
+<h5 id="实例3-实现一个静态服务器"><a href="#实例3-实现一个静态服务器" class="headerlink" title="实例3  实现一个静态服务器"></a>实例3  实现一个静态服务器</h5><p>1､把我们的代码放到static文件夹下,</p>
+<p>2､把我们的网站放到远程的机器在上</p>
+<p>3､然后通过执行<strong>node server.js</strong> 去运行服务器</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/9375265-a85157201549beb2.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="list.jpg"></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> http = <span class="built_in">require</span>(<span class="string">'http'</span>) <span class="comment">//创建服务器的模块</span></span><br><span class="line"><span class="keyword">var</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>) <span class="comment">//处理文件路径的模块,自动识别url类型</span></span><br><span class="line"><span class="keyword">var</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>) <span class="comment">// 读写文件的 ，读到数据，也可以往文件里写东西</span></span><br><span class="line"><span class="keyword">var</span> url = <span class="built_in">require</span>(<span class="string">'url'</span>) <span class="comment">// 自动解析url 得到一些信息 </span></span><br><span class="line"><span class="comment">/*相当于location, url 作为参数，然后进行解析，得到一个对象,然后我们可以使用里面的某些部分了</span></span><br><span class="line"><span class="comment">不用使用正则去提取啦*/</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">staticRoot</span>(<span class="params">staticPath,req,res</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(staticPath)</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">console</span>.log(req.url)</span><br><span class="line">    <span class="keyword">var</span> pathObj = url.parse(req.url,<span class="literal">true</span>)</span><br><span class="line">    <span class="built_in">console</span>.log(pathObj)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">if(pathObj.pathname === '/')&#123;</span></span><br><span class="line"><span class="comment">    pathObj.pathname += 'index.html'</span></span><br><span class="line"><span class="comment">&#125;</span></span><br><span class="line"><span class="comment">index.html 作为默认的</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> filePath = path.join(staticPath,pathObj.pathname)</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 同步读文件</span></span><br><span class="line"><span class="comment">var fileContent = fs.readFileSync(filePath,'binary')</span></span><br><span class="line"><span class="comment">res.write(fileContent,'binary')</span></span><br><span class="line"><span class="comment">res.end()</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//异步读文件</span></span><br><span class="line">fs.readFile(filePath,<span class="string">'binary'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">err,fileContent</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(err)&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'404'</span>)</span><br><span class="line">        res.writeHead(<span class="number">404</span>,<span class="string">'not find'</span>)</span><br><span class="line">        res.end(<span class="string">'&lt;h1&gt; 404 Not Found'</span>)</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">       <span class="built_in">console</span>.log(<span class="string">'ok'</span>)</span><br><span class="line">       res.writeHead(<span class="number">200</span>,<span class="string">'ok'</span>)</span><br><span class="line">       res.write(fileContent,<span class="string">'binary'</span>)</span><br><span class="line">       res.end()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(path.join(__dirname,<span class="string">'static'</span>))</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> server = http.createServer(<span class="function"><span class="keyword">function</span>(<span class="params">req,res</span>)</span>&#123;</span><br><span class="line">    staticRoot(path.join(__dirname,<span class="string">'static'</span>),req,res)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">server.listen(<span class="number">8080</span>)</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'visit http://localhost:8080'</span>)</span><br></pre></td></tr></table></figure>
+<p>总结如下简图</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/9375265-3999c2e18dac389d.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="pic.jpg"></p>
+
+    </div>
+  </article>
+  <div class="post-nav">
+    <div class="post-nav-next post-nav-item">
+      
+        <a href="/2018/11/19/ajax/" rel="next" title="ajax">
+          <i class="fa fa-chevron-left"></i> ajax
+        </a>
+      
+    </div>
+
+    <span class="post-nav-divider"></span>
+
+    <div class="post-nav-prev post-nav-item">
+    
+    </div>
+  </div>
+
+
+
+      </div>
+        <div class="footer">
+  <div class="footer-wrapper">
+    <div class="copyright">
+      
+      <span>&copy;</span>
+      
+      <span>2017 - 2018</span>
+      
+      <span class="author"><i class="fa fa-user"></i>Wuer</span>
+    </div>
+    
+      <span>Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> </span>
+    
+    
+      <span>|</span> <span>Theme - <a href="https://github.com/littleee/corazon">Corazon</a></span>
+      
+        <span>v1.0.0</span>
+      
+    
+  </div>
+</div>
+
+    </main>
+  </body>
+</html>
