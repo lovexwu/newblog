@@ -229,6 +229,199 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/26/HEXO教程/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Wuer">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Wuer">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/26/HEXO教程/" itemprop="url">HEXO教程</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-26T16:18:30+08:00">
+                2018-11-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="注意：如果你使用的是-Windows-系统，Hexo-很容易安装不成功"><a href="#注意：如果你使用的是-Windows-系统，Hexo-很容易安装不成功" class="headerlink" title="注意：如果你使用的是 Windows 系统，Hexo 很容易安装不成功"></a>注意：如果你使用的是 Windows 系统，Hexo 很容易安装不成功</h4><p>如果不成功，二选一：</p>
+<ol>
+<li>你就放弃 Hexo，使用简书、知乎、segmentfault、掘金等工具写博客。</li>
+<li>你就放弃 Windows，改用 Linux，<a href="https://xiedaimala.com/tasks/11ad5683-7e18-4883-879d-8425e6a6ceb7" target="_blank" rel="noopener">教程</a></li>
+</ol>
+<h4 id="使用-Hexo-GitHub-可以轻松搞出一个好看的博客"><a href="#使用-Hexo-GitHub-可以轻松搞出一个好看的博客" class="headerlink" title="使用 Hexo + GitHub 可以轻松搞出一个好看的博客"></a>使用 Hexo + GitHub 可以轻松搞出一个好看的博客</h4><h5 id="以下是步骤"><a href="#以下是步骤" class="headerlink" title="以下是步骤"></a>以下是步骤</h5><ol>
+<li><p>进入一个安全的目录，比如 <code>cd ~/Desktop</code> 或者 <code>cd ~/Documents</code>，别在根目录 / 瞎搞。以后所有的教程第一步都是「进入一个安全的目录，别在根目录瞎搞」，只有 ~ 里面的目录是你能碰的！</p>
+</li>
+<li><p>在 GitHub 上新建一个空 repo，repo 名称是「你的用户名.github.io」（注意个用户名是你的GitHub用户名，不是你的电脑用户名）</p>
+</li>
+<li><p><code>npm install -g hexo-cli</code>，安装 Hexo</p>
+</li>
+<li><p><code>hexo init myBlog</code></p>
+</li>
+<li><p><code>cd myBlog</code></p>
+</li>
+<li><p><code>npm i</code></p>
+</li>
+<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new 开博大吉</span><br></pre></td></tr></table></figure>
+<p>，你会看到一个 md 文件的路径</p>
+<p><img src="https://video.jirengu.com/FqHIo4pU6kbk3R66KdlMwYJaAbQn" alt="Windows 的路径中的 \ 需要变成 / 才行哦">Windows 的路径中的 \ 需要变成 / 才行哦</p>
+<p>Windows 的路径中的 \ 需要变成 / 才行哦</p>
+<p>Windows 的路径中的 \ 需要变成 / 才行哦</p>
+<p>Windows 的路径中的 \ 需要变成 / 才行哦</p>
+</li>
+<li><p><code>start xxxxxxxxxxxxxxxxxxx.md</code>，编辑这个 md 文件，内容自己想（Ubuntu 系统用 <code>xdg-open xxxxxxxxxxxxxxxxxxx.md</code> 命令）</p>
+</li>
+<li><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">start _config.yml</span><br></pre></td></tr></table></figure>
+<p>，编辑网站配置</p>
+<ol>
+<li>把第 6 行的 title 改成你想要的名字</li>
+<li>把第 9 行的 author 改成你的大名</li>
+<li>把最后一行的 type 改成 <code>type: git</code></li>
+<li>在最后一行后面新增一行，左边与 type 平齐，加上一行 <code>repo: 仓库地址</code> （请将仓库地址改为「你的用户名.github.io」对应的仓库地址，仓库地址以 <a href="mailto:git@github.com" target="_blank" rel="noopener">git@github.com</a>: 开头你知道吧？不知道？不知道的话现在你知道了）</li>
+<li>第 4 步的 repo: 后面有个空格，不要眼瞎。</li>
+</ol>
+</li>
+<li><p><code>npm install hexo-deployer-git --save</code>，安装 git 部署插件</p>
+</li>
+<li><p><code>hexo deploy</code></p>
+</li>
+<li><p>进入「你的用户名.github.io」对应的 repo，打开 GitHub Pages 功能，如果已经打开了，你应该会看到一个预览链接</p>
+</li>
+<li><p>用浏览器访问「预览链接/index.html」就应该看到了你的博客！（GitHub Pages 存在延迟，如果没看到，过三分钟再刷新看看）</p>
+</li>
+</ol>
+<h5 id="第二篇博客"><a href="#第二篇博客" class="headerlink" title="第二篇博客"></a>第二篇博客</h5><ol>
+<li><code>hexo new 第二篇博客</code></li>
+<li>复制显示的路径，使用 <code>start 路径</code> 来编辑它</li>
+<li><code>hexo generate</code></li>
+<li><code>hexo deploy</code></li>
+</ol>
+<h5 id="换主题"><a href="#换主题" class="headerlink" title="换主题"></a>换主题</h5><ol>
+<li><a href="https://github.com/hexojs/hexo/wiki/Themes" target="_blank" rel="noopener">https://github.com/hexojs/hexo/wiki/Themes</a> 上面有主题合集</li>
+<li>随便找一个主题，进入主题的 GitHub 首页，比如我找的是 <a href="https://github.com/iissnan/hexo-theme-next" target="_blank" rel="noopener">https://github.com/iissnan/hexo-theme-next</a></li>
+<li>复制它的 SSH 地址或 HTTPS 地址，假设地址为 <a href="mailto:git@github.com" target="_blank" rel="noopener">git@github.com</a>:iissnan/hexo-theme-next.git</li>
+<li><code>cd themes</code></li>
+<li><code>git clone git@github.com:iissnan/hexo-theme-next.git</code></li>
+<li><code>cd ..</code></li>
+<li>将 _config.yml 的第 75 行改为 <code>theme: hexo-theme-next</code>，保存</li>
+<li><code>hexo generate</code></li>
+<li><code>hexo deploy</code></li>
+<li>等一分钟，然后刷新你的博客页面，你会看到一个新的外观。如果不喜欢这个主题，就回到第 1 步，重选一个主题。</li>
+</ol>
+<h5 id="上传源代码"><a href="#上传源代码" class="headerlink" title="上传源代码"></a>上传源代码</h5><p>注意「你的用户名.github.io」上保存的只是你的博客，并没有保存「生成博客的程序代码」，你需要再创建一个名为 blog-generator 的空仓库，用来保存 myBlog 里面的「生成博客的程序代码」。</p>
+<ol>
+<li><p>在 GitHub 创建 blog-generator 空仓库</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/9375265-41320af865b4e459.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="res.jpg"></p>
+<p>2.按照截图中的命令执行即可，记住，别用 HTTPS 地址。</p>
+</li>
+</ol>
+<p>这样一来，你的博客发布在了「你的用户名.github.io」而你的「生成博客的程序代码」发布在了 blog-generator。所有数据万无一失，你就不会因为误删 myBlog 目录而痛哭了。</p>
+<p>以后每次 hexo deploy 完之后，博客就会更新；然后你还要要 add / commit /push 一下「生成博客的程序代码」，以防万一。</p>
+<p>这个 blog-generator 就是用来生成博客的程序，而「你的用户名.github.io」仓库就是你的博客页面。</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/25/nodejs实现静态服务器/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -1490,130 +1683,6 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">shallowCopy</span>(<span class="params">oldObj</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> newObj = &#123;&#125;;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i <span class="keyword">in</span> oldObj)&#123;</span><br><span class="line">        <span class="keyword">if</span>(oldObj.hasOwnProperty(i))&#123;</span><br><span class="line">            newObj[i] = oldObj[i];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> newObj;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>//深拷贝 （）</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">deepCopy</span>(<span class="params">oldObj</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> newObj = &#123;&#125;;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> key <span class="keyword">in</span> oldObj)&#123;</span><br><span class="line">        <span class="keyword">if</span>(<span class="keyword">typeof</span> oldObj[key] === <span class="string">'object'</span>)&#123;</span><br><span class="line">            newObj[key] = deepCopy(oldObj[key]);</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            newObj[key] = oldObj[key];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> newObj;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/07/谈谈JavaScript的作用域链/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Wuer">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Wuer">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/10/07/谈谈JavaScript的作用域链/" itemprop="url">谈谈JavaScript的作用域链</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-07T18:03:06+08:00">
-                2018-10-07
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="作用域链"><a href="#作用域链" class="headerlink" title="作用域链"></a><strong>作用域链</strong></h2><p>每当声明一个函数的时候会有一个独立的的作用域，遇到函数执行需要调用某一个变量的时候，需要先在当前函数的作用域下寻找。如果当前函数的作用域下找不到该值变量，就需要进入到创建该函数所在的作用域下寻找，以此往上直至找到为止。这样就形成了一条作用域链。</p>
-<p><strong>来看一个实例</strong></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">1</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn1</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">fn2</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(a)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">fn3</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> a = <span class="number">4</span></span><br><span class="line">    fn2()</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">var</span> a = <span class="number">2</span></span><br><span class="line">  <span class="keyword">return</span> fn3</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> fn = fn1()</span><br><span class="line">fn()</span><br></pre></td></tr></table></figure>
-<p><strong>分析上面实例：</strong><br>在function fn1内是一个独立的作用域，在function fn2和function fn3中又是两个独立的作用域。当输出fn1的时候，需要先找到fn1下返回fn3的值。对应到fn3中需要找到fn2输出的a。而在fn2的作用域中，找不到变量a，需要返回到创建function fn2的作用域下寻找，即fn1的作用域中，得到var a = 2，因此代码输出结果为2</p>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>1、函数在执行的过程中，先从自己内部找变量<br>2、如果找不到，再从创建当前函数所在的作用域去找, 以此往上<br>3、注意找的是变量的当前的状态</p>
 
           
         

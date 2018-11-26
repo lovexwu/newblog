@@ -229,6 +229,130 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/07/谈谈JavaScript的作用域链/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Wuer">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Wuer">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/10/07/谈谈JavaScript的作用域链/" itemprop="url">谈谈JavaScript的作用域链</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-07T18:03:06+08:00">
+                2018-10-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="作用域链"><a href="#作用域链" class="headerlink" title="作用域链"></a><strong>作用域链</strong></h2><p>每当声明一个函数的时候会有一个独立的的作用域，遇到函数执行需要调用某一个变量的时候，需要先在当前函数的作用域下寻找。如果当前函数的作用域下找不到该值变量，就需要进入到创建该函数所在的作用域下寻找，以此往上直至找到为止。这样就形成了一条作用域链。</p>
+<p><strong>来看一个实例</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">1</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn1</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">fn2</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(a)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">fn3</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> a = <span class="number">4</span></span><br><span class="line">    fn2()</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">var</span> a = <span class="number">2</span></span><br><span class="line">  <span class="keyword">return</span> fn3</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> fn = fn1()</span><br><span class="line">fn()</span><br></pre></td></tr></table></figure>
+<p><strong>分析上面实例：</strong><br>在function fn1内是一个独立的作用域，在function fn2和function fn3中又是两个独立的作用域。当输出fn1的时候，需要先找到fn1下返回fn3的值。对应到fn3中需要找到fn2输出的a。而在fn2的作用域中，找不到变量a，需要返回到创建function fn2的作用域下寻找，即fn1的作用域中，得到var a = 2，因此代码输出结果为2</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p>1、函数在执行的过程中，先从自己内部找变量<br>2、如果找不到，再从创建当前函数所在的作用域去找, 以此往上<br>3、注意找的是变量的当前的状态</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/06/JS对象/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -1598,165 +1722,6 @@
 <p>#克隆地址<br>终端输入<br><img src="https://upload-images.jianshu.io/upload_images/14260087-725d2a374013e595.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="9.png"></p>
 <p>这样子git 可以正常使用了</p>
 <p>#常用命令行如下<br>git status     查看本地git仓库的状态<br>git add -A    添加所有修改的内容<br>git commit -m “提交详情内容记录”      提交更新到本地仓库<br>git push -u origin master    将本地仓库更新的内容提交到远程仓库<br>git diff   查看修改的内容<br>git log   查看历史版本，显示从最近到最远的提交日志</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/02/命令行基础/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Wuer">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Wuer">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/10/02/命令行基础/" itemprop="url">命令行基础</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-02T15:13:38+08:00">
-                2018-10-02
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="一些名词"><a href="#一些名词" class="headerlink" title="一些名词"></a>一些名词</h2><ul>
-<li>「图形界面」</li>
-<li>「命令行」</li>
-<li>「终端」</li>
-<li>「shell」</li>
-<li>「bash」</li>
-</ul>
-<h2 id="安装使用"><a href="#安装使用" class="headerlink" title="安装使用"></a>安装使用</h2><ul>
-<li>Windws: 安装git, 打开 gitbash</li>
-<li>Linux 打开终端</li>
-<li>Mac 打开终端</li>
-</ul>
-<h2 id="基本命令"><a href="#基本命令" class="headerlink" title="基本命令"></a>基本命令</h2><h3 id="查看当前完整路径"><a href="#查看当前完整路径" class="headerlink" title="查看当前完整路径"></a>查看当前完整路径</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pwd</span><br></pre></td></tr></table></figure>
-<h3 id="查看当前目录下文件"><a href="#查看当前目录下文件" class="headerlink" title="查看当前目录下文件"></a>查看当前目录下文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># 不包括隐藏文件</span><br><span class="line">ls</span><br><span class="line"></span><br><span class="line"># 查看当前目录下所有文件(包括隐藏文件)</span><br><span class="line">ls -a</span><br><span class="line"></span><br><span class="line"># 查看当前目录下所有文件(包括隐藏文件)的详细信息</span><br><span class="line">ls -al</span><br></pre></td></tr></table></figure>
-<h3 id="切换目录"><a href="#切换目录" class="headerlink" title="切换目录"></a>切换目录</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cd /c/project</span><br><span class="line">cd code</span><br><span class="line">cd ../css</span><br><span class="line">cd ~/Desktop</span><br></pre></td></tr></table></figure>
-<h3 id="创建文件"><a href="#创建文件" class="headerlink" title="创建文件"></a>创建文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">touch readme.md</span><br></pre></td></tr></table></figure>
-<h3 id="删除文件"><a href="#删除文件" class="headerlink" title="删除文件"></a>删除文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#创建readme.md</span><br><span class="line">rm readme.md </span><br><span class="line"></span><br><span class="line">#删除node_modules文件夹，不提示</span><br><span class="line">rm -rf node_modules</span><br></pre></td></tr></table></figure>
-<h3 id="重命名文件"><a href="#重命名文件" class="headerlink" title="重命名文件"></a>重命名文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mv readme.md README.md</span><br></pre></td></tr></table></figure>
-<h3 id="创建文件夹"><a href="#创建文件夹" class="headerlink" title="创建文件夹"></a>创建文件夹</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir projects</span><br></pre></td></tr></table></figure>
-<h2 id="文件路径"><a href="#文件路径" class="headerlink" title="文件路径"></a>文件路径</h2><h3 id="根目录"><a href="#根目录" class="headerlink" title="根目录"></a>根目录</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd /</span><br></pre></td></tr></table></figure>
-<h3 id="家目录"><a href="#家目录" class="headerlink" title="家目录"></a>家目录</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd ~</span><br><span class="line">pwd</span><br></pre></td></tr></table></figure>
-<h3 id="当前目录"><a href="#当前目录" class="headerlink" title="当前目录"></a>当前目录</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd books</span><br><span class="line">cd ./books</span><br></pre></td></tr></table></figure>
-<h3 id="上级目录"><a href="#上级目录" class="headerlink" title="上级目录"></a>上级目录</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd ..</span><br><span class="line">cd ../css</span><br></pre></td></tr></table></figure>
-<h2 id="编辑器vim"><a href="#编辑器vim" class="headerlink" title="编辑器vim"></a>编辑器vim</h2><p>编辑模式<br>命令模式</p>
-<ol>
-<li><code>vim a.md</code> 初始进入编辑器命令模式</li>
-<li><code>i</code> 进入编辑模式</li>
-<li>键盘左上角<code>esc</code> 进入命令命令模式</li>
-<li><code>:wq</code> 保存退出</li>
-<li><code>:q!</code> 不保存强制退出</li>
-</ol>
-<h2 id="安装服务器"><a href="#安装服务器" class="headerlink" title="安装服务器"></a>安装服务器</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install -g http-server</span><br><span class="line">http-server</span><br></pre></td></tr></table></figure>
-<h2 id="登录开发机"><a href="#登录开发机" class="headerlink" title="登录开发机"></a>登录开发机</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ssh jirengu@47.91.156.35</span><br><span class="line"><span class="comment">#passwd: woaixueqianduan</span></span><br></pre></td></tr></table></figure>
-<h2 id="文件权限"><a href="#文件权限" class="headerlink" title="文件权限"></a>文件权限</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">chmod 777 index.html</span><br><span class="line">chown -R git:git ruoyu</span><br></pre></td></tr></table></figure>
-<h2 id="新手最大的问题"><a href="#新手最大的问题" class="headerlink" title="新手最大的问题"></a>新手最大的问题</h2><ol>
-<li>大小写看错</li>
-<li>空格写漏</li>
-<li>把多个命令当成一个命令</li>
-</ol>
-<h2 id="推荐资料"><a href="#推荐资料" class="headerlink" title="推荐资料"></a>推荐资料</h2><p><a href="http://www.cnblogs.com/peida/tag/linux%E5%91%BD%E4%BB%A4/default.html?page=4" target="_blank" rel="noopener">http://www.cnblogs.com/peida/tag/linux%E5%91%BD%E4%BB%A4/default.html?page=4</a></p>
 
           
         
