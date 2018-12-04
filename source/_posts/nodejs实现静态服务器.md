@@ -76,7 +76,7 @@ server.listen(8080)
 ##### 接下来是终端
 
 ```javascript
-➜  ~ cd node-server 
+➜  ~ cd node-server // 去到对应的目录
 ➜  node-server git:(master) ✗ cd step0
 ➜  step0 git:(master) ✗ node index.js //通过node 加上文件名, 启动服务器
 
@@ -147,6 +147,7 @@ fs.readFile(filePath,'binary',function(err,fileContent){
 })
 
 console.log(path.join(__dirname,'static'))
+//__dirname 当前模块的文件夹名称。
 
 var server = http.createServer(function(req,res){
     staticRoot(path.join(__dirname,'static'),req,res)
@@ -155,6 +156,8 @@ var server = http.createServer(function(req,res){
 server.listen(8080)
 console.log('visit http://localhost:8080')
 ```
+
+__dirname 请参照 http://nodejs.cn/api/modules.html#modules_dirname
 
 总结如下简图
 
