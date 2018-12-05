@@ -147,7 +147,7 @@ fs.readFile(filePath,'binary',function(err,fileContent){
 })
 
 console.log(path.join(__dirname,'static'))
-//__dirname 当前模块的文件夹名称。
+//__dirname：当前模块的文件夹名称，nodejs内置的变量，代表当前代码的server.js的文件夹路径。也就是step1的绝对路径,然后拼上static路径，最终static的绝对路径
 
 var server = http.createServer(function(req,res){
     staticRoot(path.join(__dirname,'static'),req,res)
@@ -165,6 +165,20 @@ __dirname 请参照 http://nodejs.cn/api/modules.html#modules_dirname
 
 
 
+用户的浏览器随便输入一个URL，http://localhost:8080/a/b/c 
+
+这时浏览器会把这个请求向这个域名http://localhost:8080对应的IP去发送
+
+发完之后这个请求从左边浏览器到了右边的远程机器上
+
+然后根据端口进行匹配,匹配上后，交给某个服务器
+
+这个服务器就拿到了这个请求,一个请求可以当成一个对象,对象里有关于这个请求的信息
+
+拿到之后，在服务器里进行处理,处理好之后，把结果再从服务器发回浏览器,就行了
+
+发回去分为两部分，一个是响应头，一个是响应体
+
 来一个简单版的静态服务器 server-simple.js
 
 ```javascript
@@ -172,9 +186,12 @@ var http = require('http')
 var fs = require('fs')
 
 var server = http.createServer(function(req,res){
+    console.log(__dirname + '/static' + req.url)
+    // 当一个请求到来时，通过当前的目录（__dirname）step1,加上'/static'，再加上'req.url',拼装成一个完整的路径
     try{
         var fileContent = fs.readFileSync(__dirname + '/static' + req.url)
-        res.write(fileContent)
+        // 然后去读这个文件,读完之后，得到结果
+        res.write(fileContent) // 得到结果之后，再把结果发出去 
     }catch(e){
         res.writeHead(404,'not found')
     }
@@ -184,7 +201,9 @@ server.listen(8080)
 console.log('visit http://localhost:8080')
 ```
 
-如需要nodejs 服务器 路由解析 上面代码改改为：
+如需要nodejs 服务器 路由解析 上面代码改为：
+
+// 其中路由是指域名后边的东西 如：localhost:8080/user/123 中的 '/user/123'
 
 ```javascript
 var http = require('http')
