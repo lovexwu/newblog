@@ -302,8 +302,7 @@
           
             <p>今天写代码测试play时（<code>audioObject.play()</code>）, Chrome浏览器预览时报错</p>
 <p><img src="https://upload-images.jianshu.io/upload_images/9375265-630f4a56b58e612a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-<p>网上查了资料才知道</p>
-<p>因为 chrome 的 autoplay 的政策原因 audio video 必须通过用户交互之后才可以播放</p>
+<p>网上查了资料才知道,是因为 chrome 的 autoplay 的政策原因 audio video 必须通过用户交互之后才可以播放</p>
 <p>但是可以通过将Chrome标记“自动播放策略”设置为“无需用户手势”来决定完全禁用自动播放策略<code>chrome://flags/#autoplay-policy</code>。这使您可以测试您的网站，就像用户与您的网站密切合作一样，并且始终允许播放自动播放</p>
 <p><img src="https://upload-images.jianshu.io/upload_images/9375265-5c62114e15094402.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
 <p>可参考 <a href="https://developers.google.com/web/updates/2017/09/autoplay-policy-changes" target="_blank" rel="noopener">https://developers.google.com/web/updates/2017/09/autoplay-policy-changes</a></p>
