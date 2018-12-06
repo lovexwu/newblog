@@ -79,19 +79,20 @@
 
 
 
-<meta name="description" content="今天写代码测试play时（audioObject.play()）, Chrome浏览器预览时报错  网上查了资料才知道,是chrome 的 autoplay 的政策原因造成的。 audio video 必须通过用户交互之后才可以播放。 但是可以通过将Chrome标记“自动播放策略”设置为“无需用户手势”来决定完全禁用自动播放策略chrome://flags/#autoplay-policy。这使您">
+<meta name="description" content="今天写音乐播放器时，遇到的bug一､ 代码测试play时（audioObject.play()）, Chrome浏览器预览时报错  网上查了资料才知道,是chrome 的 autoplay 的政策原因造成的。 audio video 必须通过用户交互之后才可以播放。 但是可以通过将Chrome标记“自动播放策略”设置为“无需用户手势”来决定完全禁用自动播放策略chrome://flags/#aut">
 <meta property="og:type" content="article">
 <meta property="og:title" content="音乐播放器">
 <meta property="og:url" content="http://yoursite.com/2018/12/05/音乐播放器/index.html">
 <meta property="og:site_name" content="Wuer">
-<meta property="og:description" content="今天写代码测试play时（audioObject.play()）, Chrome浏览器预览时报错  网上查了资料才知道,是chrome 的 autoplay 的政策原因造成的。 audio video 必须通过用户交互之后才可以播放。 但是可以通过将Chrome标记“自动播放策略”设置为“无需用户手势”来决定完全禁用自动播放策略chrome://flags/#autoplay-policy。这使您">
+<meta property="og:description" content="今天写音乐播放器时，遇到的bug一､ 代码测试play时（audioObject.play()）, Chrome浏览器预览时报错  网上查了资料才知道,是chrome 的 autoplay 的政策原因造成的。 audio video 必须通过用户交互之后才可以播放。 但是可以通过将Chrome标记“自动播放策略”设置为“无需用户手势”来决定完全禁用自动播放策略chrome://flags/#aut">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9375265-630f4a56b58e612a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9375265-5c62114e15094402.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2018-12-05T09:16:16.372Z">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9375265-4b21e3d21b7848e1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2018-12-06T04:30:08.085Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="音乐播放器">
-<meta name="twitter:description" content="今天写代码测试play时（audioObject.play()）, Chrome浏览器预览时报错  网上查了资料才知道,是chrome 的 autoplay 的政策原因造成的。 audio video 必须通过用户交互之后才可以播放。 但是可以通过将Chrome标记“自动播放策略”设置为“无需用户手势”来决定完全禁用自动播放策略chrome://flags/#autoplay-policy。这使您">
+<meta name="twitter:description" content="今天写音乐播放器时，遇到的bug一､ 代码测试play时（audioObject.play()）, Chrome浏览器预览时报错  网上查了资料才知道,是chrome 的 autoplay 的政策原因造成的。 audio video 必须通过用户交互之后才可以播放。 但是可以通过将Chrome标记“自动播放策略”设置为“无需用户手势”来决定完全禁用自动播放策略chrome://flags/#aut">
 <meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/9375265-630f4a56b58e612a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 
@@ -302,13 +303,15 @@
       
 
       
-        <p>今天写代码测试play时（<code>audioObject.play()</code>）, Chrome浏览器预览时报错</p>
+        <h5 id="今天写音乐播放器时，遇到的bug"><a href="#今天写音乐播放器时，遇到的bug" class="headerlink" title="今天写音乐播放器时，遇到的bug"></a>今天写音乐播放器时，遇到的bug</h5><p>一､ 代码测试play时（<code>audioObject.play()</code>）, Chrome浏览器预览时报错</p>
 <p><img src="https://upload-images.jianshu.io/upload_images/9375265-630f4a56b58e612a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
 <p>网上查了资料才知道,是chrome 的 autoplay 的政策原因造成的。 <strong>audio video 必须通过用户交互之后才可以播放</strong>。</p>
 <p>但是可以通过将Chrome标记“自动播放策略”设置为“无需用户手势”来决定完全禁用自动播放策略<code>chrome://flags/#autoplay-policy</code>。这使您可以测试您的网站，就像用户与您的网站密切合作一样，并且始终允许播放自动播放</p>
 <p><img src="https://upload-images.jianshu.io/upload_images/9375265-5c62114e15094402.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
 <p>如上图设置好后，刷新页面预览时，就可以啦。</p>
 <p>可参考 <a href="https://developers.google.com/web/updates/2017/09/autoplay-policy-changes" target="_blank" rel="noopener">https://developers.google.com/web/updates/2017/09/autoplay-policy-changes</a></p>
+<p>二、提交到github时，使用gitpages预览时，数据请求不到，代码这里要加上对应的仓库名才行，不然会报错</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/9375265-4b21e3d21b7848e1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
 
       
     </div>
@@ -393,8 +396,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -436,6 +448,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#今天写音乐播放器时，遇到的bug"><span class="nav-number">1.</span> <span class="nav-text">今天写音乐播放器时，遇到的bug</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
