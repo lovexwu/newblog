@@ -79,17 +79,19 @@
 
 
 
-<meta name="description" content="解密类型转换if的判断12if(xxx)&amp;#123;&amp;#125; js是如何处理的？做几道测试题看一看 题目 如下代码输出什么？12345678910111213141516171819if （&quot;hello&quot;)&amp;#123;	//true	console.log(&quot;hello&quot;)&amp;#125; //&quot;hell0&quot;if(&quot;&quot;)&amp;#123;//false	console.log(&apos;empty&apos;)&amp;#125">
+<meta name="description" content="一、定义一个特定代码块，可能包含多条语句，可以通过名字来供其它语句调用以执行函数包含的代码语句 二、实现方式比如我们有一个特定的功能需要三条语句实现 123statement1;statement2;statement3; 那么每次想实现这个功能的时候就需要写这三句话，很麻烦，我们可以把这三条语句打包为一个函数 12345function doSomething()&amp;#123;    statem">
 <meta property="og:type" content="article">
 <meta property="og:title" content="JS函数">
 <meta property="og:url" content="http://yoursite.com/2018/10/05/JS函数/index.html">
 <meta property="og:site_name" content="Wuer">
-<meta property="og:description" content="解密类型转换if的判断12if(xxx)&amp;#123;&amp;#125; js是如何处理的？做几道测试题看一看 题目 如下代码输出什么？12345678910111213141516171819if （&quot;hello&quot;)&amp;#123;	//true	console.log(&quot;hello&quot;)&amp;#125; //&quot;hell0&quot;if(&quot;&quot;)&amp;#123;//false	console.log(&apos;empty&apos;)&amp;#125">
+<meta property="og:description" content="一、定义一个特定代码块，可能包含多条语句，可以通过名字来供其它语句调用以执行函数包含的代码语句 二、实现方式比如我们有一个特定的功能需要三条语句实现 123statement1;statement2;statement3; 那么每次想实现这个功能的时候就需要写这三句话，很麻烦，我们可以把这三条语句打包为一个函数 12345function doSomething()&amp;#123;    statem">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-03T08:14:46.919Z">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14339384-83476bdfbc0caaf1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2018-12-13T12:33:18.038Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="JS函数">
-<meta name="twitter:description" content="解密类型转换if的判断12if(xxx)&amp;#123;&amp;#125; js是如何处理的？做几道测试题看一看 题目 如下代码输出什么？12345678910111213141516171819if （&quot;hello&quot;)&amp;#123;	//true	console.log(&quot;hello&quot;)&amp;#125; //&quot;hell0&quot;if(&quot;&quot;)&amp;#123;//false	console.log(&apos;empty&apos;)&amp;#125">
+<meta name="twitter:description" content="一、定义一个特定代码块，可能包含多条语句，可以通过名字来供其它语句调用以执行函数包含的代码语句 二、实现方式比如我们有一个特定的功能需要三条语句实现 123statement1;statement2;statement3; 那么每次想实现这个功能的时候就需要写这三句话，很麻烦，我们可以把这三条语句打包为一个函数 12345function doSomething()&amp;#123;    statem">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/14339384-83476bdfbc0caaf1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 
 
@@ -299,119 +301,47 @@
       
 
       
-        <h3 id="解密类型转换"><a href="#解密类型转换" class="headerlink" title="解密类型转换"></a>解密类型转换</h3><h4 id="if的判断"><a href="#if的判断" class="headerlink" title="if的判断"></a>if的判断</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span>(xxx)&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>js是如何处理的？做几道测试题看一看</p>
-<h6 id="题目-如下代码输出什么？"><a href="#题目-如下代码输出什么？" class="headerlink" title="题目 如下代码输出什么？"></a>题目 如下代码输出什么？</h6><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> （<span class="string">"hello"</span>)&#123;	<span class="comment">//true</span></span><br><span class="line">	<span class="built_in">console</span>.log(<span class="string">"hello"</span>)</span><br><span class="line">&#125; <span class="comment">//"hell0"</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(<span class="string">""</span>)&#123;<span class="comment">//false</span></span><br><span class="line">	<span class="built_in">console</span>.log(<span class="string">'empty'</span>)</span><br><span class="line">&#125; <span class="comment">//不输出</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(<span class="string">" "</span>)&#123;<span class="comment">//true</span></span><br><span class="line">	<span class="built_in">console</span>.log(<span class="string">'blank'</span>)</span><br><span class="line">&#125;<span class="comment">//'blank</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>([<span class="number">0</span>])&#123;<span class="comment">//true</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'array'</span>)</span><br><span class="line">&#125;<span class="comment">//'array'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span>(<span class="string">'0.00'</span>)&#123;<span class="comment">//true</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'0.00'</span>)</span><br><span class="line">&#125;<span class="comment">//0.00</span></span><br></pre></td></tr></table></figure>
-<h4 id="解密"><a href="#解密" class="headerlink" title="解密"></a>解密</h4><p>对括号里的表达式，会被强制转换为布尔类型</p>
-<h4 id="原理"><a href="#原理" class="headerlink" title="原理"></a>原理</h4><table>
-<thead>
-<tr>
-<th style="text-align:left">类型</th>
-<th style="text-align:center">结果</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">Undefined</td>
-<td style="text-align:center">false</td>
-</tr>
-<tr>
-<td style="text-align:left">Null</td>
-<td style="text-align:center">false</td>
-</tr>
-<tr>
-<td style="text-align:left">Boolean</td>
-<td style="text-align:center">直接判断</td>
-</tr>
-<tr>
-<td style="text-align:left">Number</td>
-<td style="text-align:center">+0,-0,或NaN为false,其他为true</td>
-</tr>
-<tr>
-<td style="text-align:left">String</td>
-<td style="text-align:center">空字符串为false,其他都为true</td>
-</tr>
-<tr>
-<td style="text-align:left">Object</td>
-<td style="text-align:center">true</td>
-</tr>
-</tbody>
-</table>
-<h4 id="的判断"><a href="#的判断" class="headerlink" title="==的判断"></a>==的判断</h4><p>对于==的判断，js是怎么处理的？做几道题看看</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">""</span> == <span class="number">0</span> <span class="comment">//true ""转数字是0</span></span><br><span class="line"><span class="string">" "</span> == <span class="number">0</span> <span class="comment">//true " "转数字也是0 </span></span><br><span class="line"><span class="string">""</span> == <span class="literal">true</span> <span class="comment">//false</span></span><br><span class="line"><span class="string">""</span> == <span class="literal">false</span><span class="comment">//true</span></span><br><span class="line"><span class="string">" "</span> == <span class="literal">true</span><span class="comment">//false</span></span><br><span class="line"></span><br><span class="line">!<span class="string">" "</span> == <span class="literal">true</span>  <span class="comment">//false " "转布尔是true 取反就是false</span></span><br><span class="line">!<span class="string">" "</span> == <span class="literal">false</span> <span class="comment">//true " "转布尔是true 取反就是false</span></span><br><span class="line"><span class="string">"hello"</span> == <span class="literal">true</span> <span class="comment">//false "hello"转数字是NaN </span></span><br><span class="line"><span class="string">"hello"</span> == <span class="literal">false</span> <span class="comment">//false</span></span><br><span class="line"><span class="string">"0"</span> == <span class="literal">true</span> <span class="comment">//false</span></span><br><span class="line"><span class="string">"00"</span> == <span class="literal">true</span> <span class="comment">//false</span></span><br><span class="line"><span class="string">"0.00"</span> == <span class="literal">false</span> <span class="comment">//true</span></span><br><span class="line"></span><br><span class="line"><span class="literal">undefined</span> == <span class="literal">null</span> <span class="comment">//true</span></span><br><span class="line">&#123;&#125; == <span class="literal">true</span> <span class="comment">// false &#123;&#125;转数字为[object object],ture转数字是1</span></span><br><span class="line">[] == <span class="literal">true</span> <span class="comment">// false</span></span><br><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">    a: <span class="number">0</span>,</span><br><span class="line">    valueOf:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;<span class="keyword">return</span> <span class="number">1</span>&#125;</span><br><span class="line">&#125;</span><br><span class="line">obj == <span class="string">"[object object]"</span> <span class="comment">//false 因为obj返回的是1</span></span><br><span class="line">obj == <span class="number">1</span> <span class="comment">//true</span></span><br><span class="line">obj == <span class="literal">true</span> <span class="comment">//true</span></span><br></pre></td></tr></table></figure>
-<p><u><strong>只有空白字符串（“ ”）转布尔值是true,其他都是false</strong></u></p>
-<h4 id="解密-1"><a href="#解密-1" class="headerlink" title="解密"></a>解密</h4><table>
-<thead>
-<tr>
-<th style="text-align:left">x</th>
-<th style="text-align:center">y</th>
-<th style="text-align:left">结果</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">null</td>
-<td style="text-align:center">undefined</td>
-<td style="text-align:left">ture</td>
-</tr>
-<tr>
-<td style="text-align:left">Number</td>
-<td style="text-align:center">String</td>
-<td style="text-align:left">x == toNumber(y)</td>
-</tr>
-<tr>
-<td style="text-align:left">Boolean</td>
-<td style="text-align:center">(any)</td>
-<td style="text-align:left">toNumber(x) == y</td>
-</tr>
-<tr>
-<td style="text-align:left">Object</td>
-<td style="text-align:center">String or Number</td>
-<td style="text-align:left">toPrimitive(x) == y</td>
-</tr>
-<tr>
-<td style="text-align:left">otherwise</td>
-<td style="text-align:center">otherwise</td>
-<td style="text-align:left">false</td>
-</tr>
-</tbody>
-</table>
-<h4 id="toNumber"><a href="#toNumber" class="headerlink" title="toNumber"></a>toNumber</h4><table>
-<thead>
-<tr>
-<th style="text-align:left">type</th>
-<th style="text-align:center">result</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td style="text-align:left">Undefined</td>
-<td style="text-align:center">NaN</td>
-</tr>
-<tr>
-<td style="text-align:left">Null</td>
-<td style="text-align:center">0</td>
-</tr>
-<tr>
-<td style="text-align:left">Boolean</td>
-<td style="text-align:center">true -&gt;1,false -&gt;0</td>
-</tr>
-<tr>
-<td style="text-align:left">String</td>
-<td style="text-align:center">“abc” -&gt; NaN, “123” -&gt; 123</td>
-</tr>
-</tbody>
-</table>
-<h4 id="toPrimitive"><a href="#toPrimitive" class="headerlink" title="toPrimitive"></a>toPrimitive</h4><p>对于Object 类型，先尝试调用.valueOf方法获取结果。如果没有定义，再尝试调用.toString方法获取结果</p>
-<h4 id="arguments"><a href="#arguments" class="headerlink" title="arguments"></a>arguments</h4><p>在函数内部，你可以使用arguments对象获取到该函数的所有传入参数</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">pop</span>(<span class="params">name,age,sex</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(name)</span><br><span class="line">    <span class="built_in">console</span>.log(age)</span><br><span class="line">    <span class="built_in">console</span>.log(sex)</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="built_in">arguments</span>)</span><br><span class="line">&#125;</span><br><span class="line">pop(<span class="string">'xiaowu'</span>,<span class="number">19</span>,<span class="string">'boy'</span>)</span><br><span class="line"><span class="comment">// xiaowu</span></span><br><span class="line"><span class="comment">//19</span></span><br><span class="line"><span class="comment">//boy</span></span><br><span class="line"><span class="comment">//Arguments(3) ["xiaowu", 19, "boy", callee: ƒ, Symbol(Symbol.iterator): ƒ]</span></span><br></pre></td></tr></table></figure>
-<p>命名冲突</p>
-<p>当在同一个作用域内定义了名字相同的变量和方法的话，无论其顺序如何，变量的赋值会覆盖方法的赋值</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> fn = <span class="number">3</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>)</span>&#123;&#125;</span><br><span class="line"><span class="built_in">console</span>.log(fn) <span class="comment">//3</span></span><br><span class="line"></span><br><span class="line">相当于</span><br><span class="line"><span class="keyword">var</span> fn</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>)</span>&#123;&#125; <span class="comment">//覆盖上面的</span></span><br><span class="line">fn = <span class="number">3</span> <span class="comment">// 重新赋值</span></span><br><span class="line"><span class="built_in">console</span>.log(fn)</span><br></pre></td></tr></table></figure>
-<p>当函数执行有命令冲突时，可以认为在还是内部一开始有隐藏的声明变量这个操作</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params">fn</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(fn)</span><br><span class="line">    <span class="keyword">var</span> fn = <span class="number">3</span>;</span><br><span class="line">    <span class="built_in">console</span>.log(fn);</span><br><span class="line">&#125;</span><br><span class="line">fn(<span class="number">10</span>)</span><br><span class="line"></span><br><span class="line">相当于</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> fn = <span class="built_in">arguments</span>[<span class="number">0</span>]</span><br><span class="line">    <span class="built_in">console</span>.log(fn)</span><br><span class="line">    <span class="keyword">var</span> fn = <span class="number">3</span>;</span><br><span class="line">    <span class="built_in">console</span>.log(fn)</span><br><span class="line">&#125;</span><br><span class="line">fn(<span class="number">10</span>) <span class="comment">//10 3</span></span><br></pre></td></tr></table></figure>
-<h4 id="递归"><a href="#递归" class="headerlink" title="递归"></a>递归</h4><p>简单来说自已调用自已</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fact</span>(<span class="params">n</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(n === <span class="number">1</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> n = <span class="number">1</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> n*fact(n<span class="number">-1</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(fact(<span class="number">3</span>)) <span class="comment">//6</span></span><br></pre></td></tr></table></figure>
+        <h2 id="一、定义"><a href="#一、定义" class="headerlink" title="一、定义"></a>一、定义</h2><p>一个特定代码块，可能包含多条语句，可以通过名字来供其它语句调用以执行函数包含的代码语句</p>
+<h2 id="二、实现方式"><a href="#二、实现方式" class="headerlink" title="二、实现方式"></a>二、实现方式</h2><p>比如我们有一个特定的功能需要三条语句实现</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">statement1;</span><br><span class="line">statement2;</span><br><span class="line">statement3;</span><br></pre></td></tr></table></figure>
+<p>那么每次想实现这个功能的时候就需要写这三句话，很麻烦，我们可以把这三条语句打包为一个函数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">function doSomething()&#123;</span><br><span class="line">    statement1;</span><br><span class="line">    statement2;</span><br><span class="line">    statement3;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>这样每次想实现功能的时候我们就<strong>调用</strong>一下函数就可以了，调用函数通过<code>函数名称()</code>的形式调用</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">doSomething();</span><br></pre></td></tr></table></figure>
+<h2 id="三、声明函数方式"><a href="#三、声明函数方式" class="headerlink" title="三、声明函数方式"></a><strong>三、声明函数方式</strong></h2><h4 id="A、函数声明"><a href="#A、函数声明" class="headerlink" title="A、函数声明"></a>A、函数声明</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">printName</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'hello world'</span>)</span><br><span class="line">&#125;</span><br><span class="line">printName()</span><br></pre></td></tr></table></figure>
+<h4 id="B、函数表达式"><a href="#B、函数表达式" class="headerlink" title="B、函数表达式"></a>B、函数表达式</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> printName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'hello world'</span>)</span><br><span class="line">&#125;</span><br><span class="line">printName()</span><br></pre></td></tr></table></figure>
+<h4 id="C、参数"><a href="#C、参数" class="headerlink" title="C、参数"></a>C、参数</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">printName</span>(<span class="params">name</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(name)</span><br><span class="line">&#125;</span><br><span class="line">printName(<span class="string">'hunger'</span>)</span><br><span class="line">printName(<span class="string">'valley)</span></span><br></pre></td></tr></table></figure>
+<h4 id="D、函数在定义的时候可以写多个参数"><a href="#D、函数在定义的时候可以写多个参数" class="headerlink" title="D、函数在定义的时候可以写多个参数"></a>D、函数在定义的时候可以写多个参数</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">printPersonInfo</span>(<span class="params">name, age, sex</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(name)</span><br><span class="line">    <span class="built_in">console</span>.log(age)</span><br><span class="line">    <span class="built_in">console</span>.log(sex)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="E、-arguments"><a href="#E、-arguments" class="headerlink" title="E、 arguments"></a>E、 arguments</h4><p>在函数内部,你可以使用arguments对象获取到该函数的所有传入参数</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">printPersonInfo</span>(<span class="params">name, age, sex</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(name) <span class="comment">// hunger</span></span><br><span class="line">    <span class="built_in">console</span>.log(age)  <span class="comment">// 3</span></span><br><span class="line">    <span class="built_in">console</span>.log(sex)  <span class="comment">// male</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="built_in">arguments</span>)</span><br><span class="line">    <span class="comment">//Arguments(3) ["hunger", 3, "male", callee: ƒ, Symbol(Symbol.iterator): ƒ]</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">arguments</span>[<span class="number">0</span>]) <span class="comment">// hunger</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">arguments</span>.length) <span class="comment">// 3</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">arguments</span>[<span class="number">1</span>] === age) <span class="comment">// true</span></span><br><span class="line">&#125;</span><br><span class="line">printPersonInfo(<span class="string">'hunger'</span>, <span class="number">3</span>, <span class="string">'male'</span>)</span><br></pre></td></tr></table></figure>
+<p>注：arguments对象包含了函数运行时的所有参数，arguments[0]就是第一个参数，arguments[1]就是第二个参数，以此类推。<strong>这个对象只有在函数体内部，才可以使用</strong></p>
+<h2 id="四、重载"><a href="#四、重载" class="headerlink" title="四、重载"></a>四、重载</h2><p>是很多面向对象语言实现多态的手段之一，在静态语言中确定一个函数的手段是靠方法签名——函数名+参数列表，也就是说相同名字的函数参数个数不同或者顺序不同都被认为是不同的函数，称为函数重载</p>
+<p>在JavaScript中没有函数重载的概念，函数通过名字确定唯一性，参数不同也被认为是相同的函数，后面的覆盖前面的，这是不是意味着JavaScript不能通过重载功能实现一个函数，参数不同功能不同呢？</p>
+<p>在JavaScript中，函数调用没必要把所有参数都传入，只要你函数体内做好处理就行，但前提是传的参数永远被当做前几个</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">printPeopleInfo</span>(<span class="params">name, age, sex</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(name)&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(name);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(age)&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(age);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(sex)&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(sex);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">printPeopleInfo(<span class="string">'hunger'</span>, <span class="number">3</span>);</span><br><span class="line">printPeopleInfo(<span class="string">'hunger'</span>, <span class="number">3</span>, <span class="string">'male'</span>);</span><br></pre></td></tr></table></figure>
+<h2 id="五、返回值"><a href="#五、返回值" class="headerlink" title="五、返回值"></a>五、返回值</h2><p>有时候我们希望在函数执行后给我们一个反馈，就像表达式一样，给我们个结果，我们可以通过<strong>return</strong>来实现</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params">a, b</span>)</span>&#123;</span><br><span class="line">    a++;</span><br><span class="line">    b++;</span><br><span class="line">    <span class="keyword">return</span> a + b;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> result = fn(<span class="number">2</span>, <span class="number">3</span>);</span><br><span class="line"><span class="built_in">console</span>.log(result);</span><br></pre></td></tr></table></figure>
+<p>这样就能拿到函数希望给我的反馈了，调用return后，函数立即中断并返回结果，即使后面还有语句也不再执行<br>其实我们不写return语句，函数也会默认给我们返回undefined</p>
+<h2 id="六、递归"><a href="#六、递归" class="headerlink" title="六、递归"></a>六、递归</h2><p>简单来说就是自己调用自己，递归需要设置结束条件</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">factorial</span>(<span class="params">n</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(n === <span class="number">1</span>)&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">1</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> n * factorial(n<span class="number">-1</span>)</span><br><span class="line">&#125;</span><br><span class="line">factorial(<span class="number">3</span>)  <span class="comment">//6</span></span><br></pre></td></tr></table></figure>
+<h2 id="七、声明提前"><a href="#七、声明提前" class="headerlink" title="七、声明提前"></a>七、声明提前</h2><p>和变量的声明会前置一样，函数声明同样会前置</p>
+<p>(1)  <strong>函数表达式</strong>方式声明    <strong>注：规则和变量一样</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sum2(<span class="number">3</span>,<span class="number">4</span>);</span><br><span class="line"><span class="keyword">var</span> sum2 =<span class="function"><span class="keyword">function</span> (<span class="params">a,b</span>)</span>&#123;</span><br><span class="line"><span class="keyword">return</span> a+b ;&#125;</span><br></pre></td></tr></table></figure>
+<p>其中，函数表达式声明不会把整个函数提升，所以报错啦</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14339384-83476bdfbc0caaf1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>只会把定义的变量提升到头部，相当于</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> sum2;</span><br><span class="line">sum2(<span class="number">3</span>,<span class="number">4</span>);</span><br><span class="line"><span class="keyword">var</span> sum2 =<span class="function"><span class="keyword">function</span> (<span class="params">a,b</span>)</span>&#123;</span><br><span class="line">	<span class="keyword">return</span> a+b;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>其实sum2 就是一个未赋值的变量，也就是undefined, 是不能作为函数执行的啦</p>
+<p>(2)  <strong>函数声明</strong>方式声明    <strong>注：即使函数写在最后也可以在前面语句调用</strong>，这都是OK的啦</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sum2(<span class="number">3</span>,<span class="number">4</span>);</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sum2</span>(<span class="params">a,b</span>)</span>&#123;</span><br><span class="line">	<span class="keyword">return</span> a+b;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="八、命名冲突"><a href="#八、命名冲突" class="headerlink" title="八、命名冲突"></a>八、命名冲突</h2><p>当在同一个作用域内定义了名字相同的变量和方法的话，会根据前置顺序产生覆盖</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> fn = <span class="number">3</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>)</span>&#123;&#125;</span><br><span class="line"><span class="built_in">console</span>.log(fn); <span class="comment">// 3</span></span><br></pre></td></tr></table></figure>
+<p>相当于</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> fn</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>)</span>&#123;&#125;  <span class="comment">//覆盖上面的</span></span><br><span class="line">fn = <span class="number">3</span>  <span class="comment">//重新赋值</span></span><br><span class="line"><span class="built_in">console</span>.log(fn)</span><br></pre></td></tr></table></figure>
+<p>当函数执行有命名冲突的时候，可以认为在还是内部一开始有隐藏的声明变量这个操作</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params">fn</span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(fn);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">var</span> fn = <span class="number">3</span>;</span><br><span class="line">  <span class="built_in">console</span>.log(fn);</span><br><span class="line">&#125;</span><br><span class="line">fn(<span class="number">10</span>) <span class="comment">//10 3</span></span><br></pre></td></tr></table></figure>
+<p>相当于</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">var</span> fn = <span class="built_in">arguments</span>[<span class="number">0</span>] <span class="comment">//临时变量</span></span><br><span class="line">  <span class="built_in">console</span>.log(fn);</span><br><span class="line"></span><br><span class="line">  <span class="keyword">var</span> fn = <span class="number">3</span>;</span><br><span class="line">  <span class="built_in">console</span>.log(fn);</span><br><span class="line">&#125;</span><br><span class="line">fn(<span class="number">10</span>) <span class="comment">//10 3</span></span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -436,8 +366,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/10/04/JS运算符/" rel="next" title="JS运算符">
-                <i class="fa fa-chevron-left"></i> JS运算符
+              <a href="/2018/10/04/数据类型/" rel="next" title="数据类型">
+                <i class="fa fa-chevron-left"></i> 数据类型
               </a>
             
           </div>
@@ -562,7 +492,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#解密类型转换"><span class="nav-number">1.</span> <span class="nav-text">解密类型转换</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#if的判断"><span class="nav-number">1.1.</span> <span class="nav-text">if的判断</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#题目-如下代码输出什么？"><span class="nav-number">1.1.0.1.</span> <span class="nav-text">题目 如下代码输出什么？</span></a></li></ol></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#解密"><span class="nav-number">1.2.</span> <span class="nav-text">解密</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#原理"><span class="nav-number">1.3.</span> <span class="nav-text">原理</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#的判断"><span class="nav-number">1.4.</span> <span class="nav-text">==的判断</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#解密-1"><span class="nav-number">1.5.</span> <span class="nav-text">解密</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#toNumber"><span class="nav-number">1.6.</span> <span class="nav-text">toNumber</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#toPrimitive"><span class="nav-number">1.7.</span> <span class="nav-text">toPrimitive</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#arguments"><span class="nav-number">1.8.</span> <span class="nav-text">arguments</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#递归"><span class="nav-number">1.9.</span> <span class="nav-text">递归</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、定义"><span class="nav-number">1.</span> <span class="nav-text">一、定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、实现方式"><span class="nav-number">2.</span> <span class="nav-text">二、实现方式</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、声明函数方式"><span class="nav-number">3.</span> <span class="nav-text">三、声明函数方式</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#A、函数声明"><span class="nav-number">3.0.1.</span> <span class="nav-text">A、函数声明</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#B、函数表达式"><span class="nav-number">3.0.2.</span> <span class="nav-text">B、函数表达式</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#C、参数"><span class="nav-number">3.0.3.</span> <span class="nav-text">C、参数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#D、函数在定义的时候可以写多个参数"><span class="nav-number">3.0.4.</span> <span class="nav-text">D、函数在定义的时候可以写多个参数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#E、-arguments"><span class="nav-number">3.0.5.</span> <span class="nav-text">E、 arguments</span></a></li></ol></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#四、重载"><span class="nav-number">4.</span> <span class="nav-text">四、重载</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#五、返回值"><span class="nav-number">5.</span> <span class="nav-text">五、返回值</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#六、递归"><span class="nav-number">6.</span> <span class="nav-text">六、递归</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#七、声明提前"><span class="nav-number">7.</span> <span class="nav-text">七、声明提前</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#八、命名冲突"><span class="nav-number">8.</span> <span class="nav-text">八、命名冲突</span></a></li></div>
             
 
           </div>
