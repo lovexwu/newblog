@@ -87,7 +87,7 @@
 <meta property="og:description" content="作用域、作用域链、闭包一、作用域A、定义代码在运行时，各个变量、函数和对象的可访问性。换句话说，作用域决定了你的代码里的变量和其他资源在各个区域中的可见性 B、分类1､ 全局作用域  （在函数之外的变量）当你在文档中（document）编写 JavaScript 时，你就已经在全局作用域中了。JavaScript 文档中（document）只有一个全局作用域。定义在函数之外的变量会被保存在全局作用">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14339384-f42162b2f302a9b0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2018-12-13T04:56:23.454Z">
+<meta property="og:updated_time" content="2018-12-13T05:00:45.882Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="作用域、作用域链、闭包">
 <meta name="twitter:description" content="作用域、作用域链、闭包一、作用域A、定义代码在运行时，各个变量、函数和对象的可访问性。换句话说，作用域决定了你的代码里的变量和其他资源在各个区域中的可见性 B、分类1､ 全局作用域  （在函数之外的变量）当你在文档中（document）编写 JavaScript 时，你就已经在全局作用域中了。JavaScript 文档中（document）只有一个全局作用域。定义在函数之外的变量会被保存在全局作用">
@@ -328,8 +328,8 @@
 <p>(2)  如果找不到，再从<strong>创建当前函数所在的作用域(词法作用域)</strong>去找, 以此往上</p>
 <p>(3)  注意找的是变量的当前的状态</p>
 <h2 id="三、闭包"><a href="#三、闭包" class="headerlink" title="三、闭包"></a>三、闭包</h2><h4 id="A、定义-2"><a href="#A、定义-2" class="headerlink" title="A、定义"></a>A、定义</h4><p>一个函数连同它的词法作用域所在的，使用的这个变量的集合</p>
-<h4 id="B、作用"><a href="#B、作用" class="headerlink" title="B、作用"></a>B、作用</h4><p>（1）封装数据</p>
-<p>（2）暂存数据</p>
+<h4 id="B、作用"><a href="#B、作用" class="headerlink" title="B、作用"></a>B、作用</h4><p>(1)  封装数据</p>
+<p>(2)  暂存数据</p>
 <h4 id="C、经典的闭包实例"><a href="#C、经典的闭包实例" class="headerlink" title="C、经典的闭包实例"></a>C、经典的闭包实例</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">car</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">var</span> speed = <span class="number">0</span> </span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    speed++</span><br><span class="line">    <span class="built_in">console</span>.log(speed)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> fn</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> speedUp = car() </span><br><span class="line">speedUp()   <span class="comment">//1</span></span><br><span class="line">speedUp()   <span class="comment">//2</span></span><br></pre></td></tr></table></figure>
 <p><strong>分析：</strong></p>
 <p>从上图有看到闭包就是有一个<strong>函数car</strong> ,函数里有<strong>一个变量speed</strong>,函数内部又声明了<strong>一个函数fn</strong>，然后<strong>return fn</strong> </p>
