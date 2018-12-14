@@ -1,18 +1,22 @@
 ---
-title: onclick与addEventListener区别
+title: onclick、addEventListener
 date: 2018-11-14 15:04:18
 tags:
 ---
 
-addEventListener和onclick有什么不一样？于是Google查了下，稍微整理了下：
+addEventListener和onclick有什么不一样？于是Google查了下，稍微整理了下
 
--  onclick 只能绑定一个事件，绑定多个会产生覆盖；不能设置参数，使用默认的事件冒泡阶段。
+## 区别
 
-- addEventListener中有第3个参数，attachEvent没有。第3个参数传递的是false或true。这个参数可选，默认是false。
-   false--表示事件处理将在冒泡阶段执行。
-   true--表示事件处理将在捕获阶段执行。
+(1)  onclick 只能绑定一个事件，绑定多个会产生覆盖；不能设置参数，使用默认的事件冒泡阶段。
 
-- 理论上，Event Listeners (addEventListener、attachEvent（IE使用 ）)可以无限增加事件监听给某个一元素。实际应用的约束就是客户端内存的限制，这一点因每个浏览器而异。
+(2)  addEventListener中有第3个参数，attachEvent没有。
+
+第3个参数传递的是false或true。这个参数可选，默认是false。
+false--表示事件处理将在冒泡阶段执行。
+true--表示事件处理将在捕获阶段执行。
+
+(3)  理论上，Event Listeners (addEventListener、attachEvent（IE使用 ）)可以无限增加事件监听给某个一元素。实际应用的约束就是客户端内存的限制，这一点因每个浏览器而异。
 
 **onclick** 属性返回当前元素的 `click` 事件处理器代码
 

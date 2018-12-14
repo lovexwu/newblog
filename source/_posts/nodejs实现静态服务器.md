@@ -6,9 +6,11 @@ tags:
 
 看了一天的nodejs 实现静态服务器 ,还是晕乎乎，费话不说了，直接上代码，记笔记吧！
 
-首先是页面index.js代码如下：
+### 一、案例
 
-##### 实例1
+(1)  首先是页面index.js代码如下：
+
+例1
 
 ```javascript
 # require-----nodejs通过它来加载模块
@@ -39,11 +41,11 @@ res 需要返回给用户哪些东西的这个对象
      res.end()
  })
  server.listen(9000) // listen方法 启动服务器 ,使这个服务器监听 9000端口
-
-
 ```
 
-##### 实例2
+
+
+例2
 
 ```javascript
 
@@ -73,7 +75,7 @@ server.listen(8080)
 
 
 
-##### 接下来是终端
+(2)  接下来是终端
 
 ```javascript
 ➜  ~ cd node-server // 去到对应的目录
@@ -83,7 +85,9 @@ server.listen(8080)
 如果页面有更改需关闭服务器重新启动，终端操作 ctrl + c 关闭，然后重新启动 node index.js即可!
 ```
 
-然后浏览器地址输入如下地址 浏览即可！其中9000是对应的端口
+
+
+(3)  然后浏览器地址输入如下地址 浏览即可！其中9000是对应的端口
 
 ```javascript
 localhost: 9000
@@ -91,13 +95,15 @@ localhost: 9000
 
 
 
-##### 实例3  实现一个静态服务器
 
-1､把我们的代码放到static文件夹下,
 
-2､把我们的网站放到远程的机器在上
+例3 实现一个静态服务器
 
-3､然后通过执行**node server.js** 去运行服务器
+(1)  把我们的代码放到static文件夹下,
+
+(2)  把我们的网站放到远程的机器在上
+
+(3)  然后通过执行**node server.js** 去运行服务器
 
 ![list.jpg](https://upload-images.jianshu.io/upload_images/9375265-a85157201549beb2.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
@@ -159,27 +165,33 @@ console.log('visit http://localhost:8080')
 
 __dirname 请参照 http://nodejs.cn/api/modules.html#modules_dirname
 
-总结如下简图
+
+
+## 二、总结
+
+**A、看图说话吧**
 
 ![pic.jpg](https://upload-images.jianshu.io/upload_images/9375265-3999c2e18dac389d.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 
 
-用户的浏览器随便输入一个URL，http://localhost:8080/a/b/c 
+(1)  用户的浏览器随便输入一个URL，http://localhost:8080/a/b/c 
 
-这时浏览器会把这个请求向这个域名http://localhost:8080对应的IP去发送
+(2)  这时浏览器会把这个请求向这个域名http://localhost:8080对应的IP去发送
 
-发完之后这个请求从左边浏览器到了右边的远程机器上
+(3)  发完之后这个请求从左边浏览器到了右边的远程机器上
 
-然后根据端口进行匹配,匹配上后，交给某个服务器
+(4)  然后根据端口进行匹配,匹配上后，交给某个服务器
 
-这个服务器就拿到了这个请求,一个请求可以当成一个对象,对象里有关于这个请求的信息
+(5)  这个服务器就拿到了这个请求,一个请求可以当成一个对象,对象里有关于这个请求的信息
 
-拿到之后，在服务器里进行处理,处理好之后，把结果再从服务器发回浏览器,就行了
+(6)  拿到之后，在服务器里进行处理,处理好之后，把结果再从服务器发回浏览器,就行了
 
-发回去分为两部分，一个是响应头，一个是响应体
+注：发回去分为两部分，一个是**响应头**，一个是**响应体**
 
-来一个简单版的静态服务器 server-simple.js
+
+
+**B、来一个简单版的静态服务器 server-simple.js**
 
 ```javascript
 var http = require('http')
@@ -201,9 +213,11 @@ server.listen(8080)
 console.log('visit http://localhost:8080')
 ```
 
+
+
 如需要nodejs 服务器 路由解析 上面代码改为：
 
-// 其中路由是指域名后边的东西 如：localhost:8080/user/123 中的 '/user/123'
+**其中路由是指域名后边的东西 如：localhost:8080/user/123 中的 '/user/123'**
 
 ```javascript
 var http = require('http')
