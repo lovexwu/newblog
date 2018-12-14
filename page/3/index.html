@@ -229,7 +229,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/03/javascript入门/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/02/Git使用1/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Wuer">
@@ -248,477 +248,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/10/03/javascript入门/" itemprop="url">javascript入门</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-03T18:07:46+08:00">
-                2018-10-03
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="JS-基本概念"><a href="#JS-基本概念" class="headerlink" title="JS 基本概念:"></a>JS 基本概念:</h3><h4 id="基本语法"><a href="#基本语法" class="headerlink" title="基本语法"></a>基本语法</h4><h5 id="调试"><a href="#调试" class="headerlink" title="调试"></a>调试</h5><p>打开chrome开发工具</p>
-<ul>
-<li>win     F12</li>
-<li>Mac    Command + Option + l</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> str = <span class="string">'xwu'</span></span><br><span class="line"><span class="built_in">console</span>.log(str)</span><br></pre></td></tr></table></figure>
-<h5 id="语句"><a href="#语句" class="headerlink" title="语句"></a>语句</h5><p> Javascript 程序的执行单位为行，也就是一行一行地执行。</p>
-<p>语句是为了完成某种任务而进行的操作，比如下面是一行赋值语句：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var a = 1 + 3</span><br></pre></td></tr></table></figure>
-<p>这条语句先用var 命令，声明了变量a，然后将1 + 3 的运算结果赋值给a</p>
-<h5 id="表达式"><a href="#表达式" class="headerlink" title="表达式"></a>表达式</h5><p>指一个为了得到返回值的计算式。上面的1+3叫做表达式</p>
-<p><u>语句，表达式区别：前者主要是为了进行某种操作，一般情况下不需要返回值，后者是为了得到返回值，一定会返回一个值。</u></p>
-<h5 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h5><p>是对值的引用，使用变量等同于引用一个值。每一个变量都有一个变量名</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">1</span></span><br></pre></td></tr></table></figure>
-<h5 id="变量提升"><a href="#变量提升" class="headerlink" title="变量提升"></a>变量提升</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">var a = 1 等同于 var a,a = 3 右边就是先声明这个变量，再去赋值</span><br></pre></td></tr></table></figure>
-<h5 id="标识符"><a href="#标识符" class="headerlink" title="标识符"></a>标识符</h5><p>用来识别具体对象的一个名称。最常见的标识符是变量，及后面提到的函数。js的标识符对大小写敏感，所以a 和A 是两个不同的标识符</p>
-<p>简单地说，标识符命名规则如下：</p>
-<ul>
-<li><p>第一个字符，可以是任意Unicode字母（包括英文字母和其他语言的字母),及美元符号（$）和下划线（_）</p>
-</li>
-<li><p>第二个字符及后面的字符，除了Unicode字母、美元符号和下划线，还可以用数字0-9</p>
-</li>
-</ul>
-<h5 id="注释"><a href="#注释" class="headerlink" title="注释"></a>注释</h5><p>JS提供两种注释:</p>
-<p>一种是单行注释，另一种是多行注释,如下</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 这是单行注释</span></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">这是</span></span><br><span class="line"><span class="comment">多行</span></span><br><span class="line"><span class="comment">注释</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line">由于JS兼容HTML代码的注释，所以&lt;!-- 和--&gt; 也被视为单行注释</span><br></pre></td></tr></table></figure>
-<h5 id="区块"><a href="#区块" class="headerlink" title="区块"></a>区块</h5><p>JS用大括号，将多个相关的语句组合在一起，称为区块（block）</p>
-<p>与大多数编程语言不一样，JS的区块不构成单独的作用域，也就是说，区块中的变量与区块外的变量，属于同一个作用域</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    <span class="keyword">var</span> a = <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line">a <span class="comment">//1</span></span><br></pre></td></tr></table></figure>
-<p>上面代码在区块内部，声明并赋值变量a，然后在区块外部，变量a依然有效，说明区块不构成单独的作用域</p>
-<h3 id="JS数据类型"><a href="#JS数据类型" class="headerlink" title="JS数据类型"></a>JS数据类型</h3><p>JS的数据类型，共有六种(ES6 又新增了第七种Symbol类型的值)</p>
-<ul>
-<li><p>数值(number)：整数和小数（如1和3.14）</p>
-</li>
-<li><p>字符串(string)：字符组成的文本（如“hello”）</p>
-</li>
-<li><p>布尔值(boolean)：true和false</p>
-</li>
-<li><p>Undefined：表示未定义或不存在，即由于目前没有定义，所以暂时没有任何值</p>
-</li>
-<li><p>Null：表示无值，即此处的值就是无的状态</p>
-</li>
-<li><p>对象(object)：各种值组成的集合</p>
-</li>
-</ul>
-<p>通常我们将数值、字符串、布尔值称为原始类型，而将对象称为合成类型(引用类型)的值，</p>
-<p>至于null 和 undefined 是两个特殊的值</p>
-<p>对象可以分成三个子类型</p>
-<ul>
-<li><p>狭义的对象(object)</p>
-</li>
-<li><p>数组(array)</p>
-</li>
-<li>函数(function)</li>
-</ul>
-<h5 id="typeof-运算符"><a href="#typeof-运算符" class="headerlink" title="typeof 运算符"></a>typeof 运算符</h5><p>JS有三种方法，可以确定一个值到底是什么类型</p>
-<ul>
-<li><p>typeof 运算符</p>
-</li>
-<li><p>instanceof 运算符</p>
-</li>
-<li><p>Object.prototype.toString 运算符</p>
-</li>
-</ul>
-<p><u><strong>null返回 Object 、undefined返回undefined</strong></u></p>
-<h5 id="布尔值"><a href="#布尔值" class="headerlink" title="布尔值"></a>布尔值</h5><p>转换规则除了下面六个值被转为false,其他都是true</p>
-<ul>
-<li><p>undefined</p>
-</li>
-<li><p>null</p>
-</li>
-<li><p>false</p>
-</li>
-<li><p>0</p>
-</li>
-<li><p>NaN</p>
-</li>
-<li><p>‘’’’ 或‘ ‘ （空字符串）</p>
-</li>
-</ul>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/02/git命令讲解/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Wuer">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Wuer">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/10/02/git命令讲解/" itemprop="url">git命令讲解</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-02T18:28:37+08:00">
-                2018-10-02
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="起步"><a href="#起步" class="headerlink" title="起步"></a>起步</h3><p>初次使用需要设置姓名和邮箱</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name <span class="string">"你的姓名"</span></span><br><span class="line">git config --global user.email 邮箱地址（如<span class="number">123</span>@<span class="number">163.</span>com）</span><br></pre></td></tr></table></figure>
-<h3 id="clone项目"><a href="#clone项目" class="headerlink" title="clone项目"></a>clone项目</h3><p>用于把一个GitHub上的项目clone（下载）到本地，变为本地仓库</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git clone git@github.com:jirengu/blog.git</span><br><span class="line">cd blog</span><br></pre></td></tr></table></figure>
-<h3 id="添加文件并提交"><a href="#添加文件并提交" class="headerlink" title="添加文件并提交"></a>添加文件并提交</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">#创建文件</span><br><span class="line">touch a.md</span><br><span class="line"></span><br><span class="line">#在文件里写入一个字符串</span><br><span class="line">echo <span class="string">"hello"</span> &gt; a.md</span><br><span class="line">git status</span><br></pre></td></tr></table></figure>
-<p><img src="https://upload-images.jianshu.io/upload_images/14339384-81b25ac7b0cd1e77.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="添加文件并提交1.jpg"></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#在当前目录下的新增和修改的文件添加到暂存区</span><br><span class="line">git add .</span><br><span class="line">git status</span><br></pre></td></tr></table></figure>
-<p><img src="https://upload-images.jianshu.io/upload_images/14339384-1252dd98333c031a.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="添加文件并提交2.jpg"></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">#把暂存区的更新提交到本地库</span><br><span class="line">git commit -am <span class="string">"add file"</span></span><br><span class="line">git status</span><br></pre></td></tr></table></figure>
-<p><img src="https://upload-images.jianshu.io/upload_images/14339384-8d7658adef991691.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="添加文件并提交3.jpg"></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#把当前本地库里的改动推送到远程库（origin) 的master分支</span><br><span class="line">git push origin master <span class="comment">//如果之前提交过，以后只需要git push即可</span></span><br></pre></td></tr></table></figure>
-<p><img src="https://upload-images.jianshu.io/upload_images/14339384-ceb545cf25896176.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="添加文件并提交4.jpg"></p>
-<h3 id="修改删除文件"><a href="#修改删除文件" class="headerlink" title="修改删除文件"></a>修改删除文件</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">#把远程仓库的变动更新合并到本地仓库</span><br><span class="line">git pull</span><br><span class="line"><span class="comment">//如果远程仓库有修改，切记一定要git pull，这样子远程的修改才可以更新到本地仓库,不然会报错！</span></span><br><span class="line"></span><br><span class="line">#修改文件</span><br><span class="line">vim a.md</span><br><span class="line">git add .</span><br><span class="line"></span><br><span class="line"><span class="comment">// 这里需注意：</span></span><br><span class="line"><span class="comment">// 如果提交消息包含大量字符串，提交参数不用加m</span></span><br><span class="line"><span class="comment">// 此时会进入vim 界面，按下i 进入编辑状态，进行编辑</span></span><br><span class="line"><span class="comment">// 编辑完成后按下esc 进入命令状态，输入 :wq 保存退出 vim</span></span><br><span class="line"></span><br><span class="line">git commit -a</span><br><span class="line">git push origin master</span><br><span class="line"></span><br><span class="line">rm -rf a.md</span><br><span class="line">git add .</span><br></pre></td></tr></table></figure>
-<h3 id="本地创建一个git项目推送到远程空仓库"><a href="#本地创建一个git项目推送到远程空仓库" class="headerlink" title="本地创建一个git项目推送到远程空仓库"></a>本地创建一个git项目推送到远程空仓库</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line">mkdir newProject</span><br><span class="line">cd newProject</span><br><span class="line"></span><br><span class="line"># 把一个文件夹初始化成一个本地 git仓库</span><br><span class="line"># 注意 仓库和文件夹的区别在于仓库下有一个隐藏的.git文件夹，里面有一些信息</span><br><span class="line"># 对于一个仓库，删除.git 文件夹，就变成一个普通的文件夹了</span><br><span class="line"></span><br><span class="line"><span class="comment">//如何把本地空文件夹变成仓库呢？我们用git init 初始化</span></span><br><span class="line">git init <span class="comment">//初始化，把本地的空文件夹变成仓库，才执行，</span></span><br><span class="line">#注意别克隆一个项目，再用git init，因为克隆的项目里，本身是一个仓库，它已经有了.git,</span><br><span class="line">#完全不需要你去操作，如果再去执行.git init的话，会把它的.git全给覆盖掉，把以前仓库的记录的信息全给抹掉 </span><br><span class="line"></span><br><span class="line">touch index.html</span><br><span class="line">echo <span class="string">"hello"</span> &gt; index.html</span><br><span class="line"></span><br><span class="line">git add .</span><br><span class="line">git commit -am <span class="string">"init"</span></span><br><span class="line"></span><br><span class="line"># 查看本地库里记录的远程库地址</span><br><span class="line">git remote -v</span><br><span class="line"></span><br><span class="line"># 这里把远程库的地址添加个标签origin</span><br><span class="line">git remote add origin git@github.com:jirengu/blog2.git</span><br><span class="line"></span><br><span class="line"># 推送到远程库地址</span><br><span class="line">git push origin master</span><br><span class="line"></span><br><span class="line"># 慎用，这样会强制推送，会覆盖别人的代码</span><br><span class="line">git push -f origin master</span><br><span class="line"></span><br><span class="line"># 在添加一个远程库的标签</span><br><span class="line">git remote add gitlab git@gitlab.com:abc/blog.git</span><br><span class="line"></span><br><span class="line"># 推送到gitlab标签的地址上</span><br><span class="line">git push gitlab master</span><br><span class="line"></span><br><span class="line"># 删除gitlab 标签</span><br><span class="line">git remote remove gitlab</span><br><span class="line"></span><br><span class="line"># 修改origin标签对应的地址</span><br><span class="line">git remote set-url origin git@github.com:jirengu/blog3.git</span><br><span class="line"></span><br><span class="line"># 把gitlab标签改名为coding</span><br><span class="line">git remote rename gitlab coding</span><br></pre></td></tr></table></figure>
-<h3 id="分支操作-很重要的一部分"><a href="#分支操作-很重要的一部分" class="headerlink" title="分支操作(很重要的一部分)"></a>分支操作(很重要的一部分)</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"># 创建本地库dev 分支</span><br><span class="line">git branch dev</span><br><span class="line"></span><br><span class="line"># 切换到dev 分支</span><br><span class="line">git checkout dev</span><br><span class="line"></span><br><span class="line">touch b.md</span><br><span class="line">git add .</span><br><span class="line">git commit -am <span class="string">"add b.md"</span></span><br><span class="line"></span><br><span class="line"># 推送到origin 地址的 dev 分支上</span><br><span class="line">git push origin dev</span><br></pre></td></tr></table></figure>
-<h3 id="分支合并"><a href="#分支合并" class="headerlink" title="分支合并"></a>分支合并</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">git checkout master</span><br><span class="line"></span><br><span class="line"># 把dev 分支上的内容合并到当前分支（master）上</span><br><span class="line">git merge dev</span><br></pre></td></tr></table></figure>
-<h3 id="冲突"><a href="#冲突" class="headerlink" title="冲突"></a>冲突</h3><h6 id="当自已和别人改同一个文件的同一个地方，在执行git-pull-时更新本地合并时会出现冲突"><a href="#当自已和别人改同一个文件的同一个地方，在执行git-pull-时更新本地合并时会出现冲突" class="headerlink" title="当自已和别人改同一个文件的同一个地方，在执行git pull 时更新本地合并时会出现冲突"></a>当自已和别人改同一个文件的同一个地方，在执行<u>git pull</u> 时更新本地合并时会出现冲突</h6><p>1､ 修改冲突文件</p>
-<p>2､ 重新提交</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/02/git命令使用/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Wuer">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Wuer">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/10/02/git命令使用/" itemprop="url">Git命令使用</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-02T17:59:22+08:00">
-                2018-10-02
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>大家在使用git提交代码的过程中，难免会因为各种原因执行一些错误的commit / push，想要修复这些错误，reset和revert就能很好的帮到我们。</p>
-<p>首先我们到区分几个概念，工作区，暂存区，版本库。</p>
-<p><strong>工作区</strong><br>所谓工作区，即我们电脑中所看到的目录。</p>
-<p><strong>版本库</strong><br>在工作区有一个隐藏目录.git，这是Git的版本库。</p>
-<p><strong>暂存区</strong><br>Git的版本库里存了很多东西，其中最重要的就是称为stage（或者叫index）的暂存区，还有Git为我们自动创建的第一个分支master，以及指向master的一个指针叫HEAD</p>
-<p>#小小实例了解下</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/14339384-b42621a6dd3db2d3.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="1.jpg"></p>
-<p><strong>开始做几次提交</strong><br><img src="https://upload-images.jianshu.io/upload_images/14339384-8d7e52440fcb334f.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="2.jpg"></p>
-<p><strong>看下提交log</strong><br><img src="https://upload-images.jianshu.io/upload_images/14339384-e4d7a68891094b51.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="3.jpg"></p>
-<p><strong>当前提交的readme</strong><br><img src="https://upload-images.jianshu.io/upload_images/14339384-25e76b753234941f.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="4.jpg"></p>
-<p><strong>一种方式，soft模式</strong><br><img src="https://upload-images.jianshu.io/upload_images/14339384-6419fb2ce901c22a.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="6.jpg"><br>采用这种模式，git不回清除你的stage区，因此，git status时就显示了stage区相对于second commit的变化。此时工作区是clean 的，而stage区则有变化</p>
-<p><strong>另一种方式，hard模式</strong><br><img src="https://upload-images.jianshu.io/upload_images/14339384-4ad49e7c87bc5a24.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="7.jpg"><br>采用这种模式，git回用first commit 的内容覆盖stage区和工作区，因此所有的内容都回到了first commit的状态。</p>
-<p>#区别（重点）</p>
-<p><strong>reset</strong><br>是起到了撤销commit的作用，但实质上它是将HEAD的指向移动了位置<br><img src="https://upload-images.jianshu.io/upload_images/14339384-efe2bb12e2043bb6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="12.png"></p>
-<p><strong>revert</strong><br>是一次新的commit，HEAD会继续向前执行<br><img src="https://upload-images.jianshu.io/upload_images/14339384-d66f6700cbe7a215.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="13.png"></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/02/Git-使用方法/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Wuer">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Wuer">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/10/02/Git-使用方法/" itemprop="url">Git-使用方法</a></h1>
+                <a class="post-title-link" href="/2018/10/02/Git使用1/" itemprop="url">Git使用1</a></h1>
         
 
         <div class="post-meta">
@@ -770,20 +300,24 @@
       
         
           
-            <p>首先我们打开mac终端输入<br><img src="https://upload-images.jianshu.io/upload_images/14260087-7ae4d51cbdd5ba28.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="1.png"></p>
-<p>如果终端告诉你<br><img src="https://upload-images.jianshu.io/upload_images/14260087-16999227ad4fc005.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="2.png"></p>
+            <h1 id="一、测试有没安装"><a href="#一、测试有没安装" class="headerlink" title="一、测试有没安装"></a>一、测试有没安装</h1><p>(1)  首先我们打开mac终端输入<br><img src="https://upload-images.jianshu.io/upload_images/14260087-7ae4d51cbdd5ba28.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="1.png"></p>
+<p>(2)  如果终端告诉你<br><img src="https://upload-images.jianshu.io/upload_images/14260087-16999227ad4fc005.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="2.png"></p>
 <p>那么说明你已经有git了，不需下载安装</p>
-<p>#本地仓库创建<br><img src="https://upload-images.jianshu.io/upload_images/14339384-fb2d559ba2b3d088.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="3.png"></p>
-<p>再输入命令<br><img src="https://upload-images.jianshu.io/upload_images/14260087-02bb43d7f21a3ccd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="4.png"></p>
+<p>#二、本地仓库创建</p>
+<p>(1)  新建文件夹，并指定到新建文件夹目录下</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14339384-fb2d559ba2b3d088.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="3.png"></p>
+<p>(2)  再输入命令<br><img src="https://upload-images.jianshu.io/upload_images/14260087-02bb43d7f21a3ccd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="4.png"></p>
 <p>这样子 ，本地仓库就建好了</p>
-<p>#创建远程仓库<br>首页登陆Github，并选择创建<br><img src="https://upload-images.jianshu.io/upload_images/14260087-e90d9b087fce4015.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="5.png"></p>
-<p>填写仓库名称，这里注意仓库名称不要写中文，中文显示不出来<br><img src="https://upload-images.jianshu.io/upload_images/14339384-2f8260b4006c805a.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="6.jpg"></p>
+<p>#三、创建远程仓库</p>
+<p>(1)  首页登陆Github，并选择创建<br><img src="https://upload-images.jianshu.io/upload_images/14260087-e90d9b087fce4015.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="5.png"></p>
+<p>(2)  填写仓库名称，这里<strong>注意仓库名称不要写中文，中文显示不出来</strong><br><img src="https://upload-images.jianshu.io/upload_images/14339384-2f8260b4006c805a.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="6.jpg"></p>
 <p>这样远程仓库也创建好了</p>
-<p>#将本地仓库与远程仓库进行关联<br>在终端中输入<br><img src="https://upload-images.jianshu.io/upload_images/14260087-c93fc4f2200df010.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="7.png"><br>git remote add origin后的网址是你的远程仓库的地址，如下图<br><img src="https://upload-images.jianshu.io/upload_images/14339384-6e1a5c5e8128f6b8.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="8.jpg"></p>
+<p>#四、将本地仓库与远程仓库进行关联 </p>
+<p>(1)  终端输入<br><img src="https://upload-images.jianshu.io/upload_images/14260087-c93fc4f2200df010.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="7.png"></p>
+<p>(2)  git remote add origin后的网址是你的<strong>远程仓库的地址</strong><br><img src="https://upload-images.jianshu.io/upload_images/14339384-6e1a5c5e8128f6b8.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="8.jpg"></p>
 <p>OK现在已经关联成功了</p>
-<p>#克隆地址<br>终端输入<br><img src="https://upload-images.jianshu.io/upload_images/14260087-725d2a374013e595.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="9.png"></p>
+<p>#五、克隆地址<br>终端输入<br><img src="https://upload-images.jianshu.io/upload_images/14260087-725d2a374013e595.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="9.png"></p>
 <p>这样子git 可以正常使用了</p>
-<p>#常用命令行如下<br>git status     查看本地git仓库的状态<br>git add -A    添加所有修改的内容<br>git commit -m “提交详情内容记录”      提交更新到本地仓库<br>git push -u origin master    将本地仓库更新的内容提交到远程仓库<br>git diff   查看修改的内容<br>git log   查看历史版本，显示从最近到最远的提交日志</p>
 
           
         
@@ -903,46 +437,52 @@
       
         
           
-            <h2 id="一些名词"><a href="#一些名词" class="headerlink" title="一些名词"></a>一些名词</h2><ul>
-<li>「图形界面」</li>
-<li>「命令行」</li>
-<li>「终端」</li>
-<li>「shell」</li>
-<li>「bash」</li>
+            <h2 id="一、一些名词"><a href="#一、一些名词" class="headerlink" title="一、一些名词"></a>一、一些名词</h2><ul>
+<li><p>「图形界面」</p>
+</li>
+<li><p>「命令行」</p>
+</li>
+<li><p>「终端」</p>
+</li>
+<li><p>「shell」</p>
+</li>
+<li><p>「bash」</p>
+</li>
 </ul>
-<h2 id="安装使用"><a href="#安装使用" class="headerlink" title="安装使用"></a>安装使用</h2><ul>
+<h2 id="二、安装使用"><a href="#二、安装使用" class="headerlink" title="二、安装使用"></a>二、安装使用</h2><ul>
 <li>Windws: 安装git, 打开 gitbash</li>
 <li>Linux 打开终端</li>
 <li>Mac 打开终端</li>
 </ul>
-<h2 id="基本命令"><a href="#基本命令" class="headerlink" title="基本命令"></a>基本命令</h2><h3 id="查看当前完整路径"><a href="#查看当前完整路径" class="headerlink" title="查看当前完整路径"></a>查看当前完整路径</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pwd</span><br></pre></td></tr></table></figure>
-<h3 id="查看当前目录下文件"><a href="#查看当前目录下文件" class="headerlink" title="查看当前目录下文件"></a>查看当前目录下文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># 不包括隐藏文件</span><br><span class="line">ls</span><br><span class="line"></span><br><span class="line"># 查看当前目录下所有文件(包括隐藏文件)</span><br><span class="line">ls -a</span><br><span class="line"></span><br><span class="line"># 查看当前目录下所有文件(包括隐藏文件)的详细信息</span><br><span class="line">ls -al</span><br></pre></td></tr></table></figure>
-<h3 id="切换目录"><a href="#切换目录" class="headerlink" title="切换目录"></a>切换目录</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cd /c/project</span><br><span class="line">cd code</span><br><span class="line">cd ../css</span><br><span class="line">cd ~/Desktop</span><br></pre></td></tr></table></figure>
-<h3 id="创建文件"><a href="#创建文件" class="headerlink" title="创建文件"></a>创建文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">touch readme.md</span><br></pre></td></tr></table></figure>
-<h3 id="删除文件"><a href="#删除文件" class="headerlink" title="删除文件"></a>删除文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#创建readme.md</span><br><span class="line">rm readme.md </span><br><span class="line"></span><br><span class="line">#删除node_modules文件夹，不提示</span><br><span class="line">rm -rf node_modules</span><br></pre></td></tr></table></figure>
-<h3 id="重命名文件"><a href="#重命名文件" class="headerlink" title="重命名文件"></a>重命名文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mv readme.md README.md</span><br></pre></td></tr></table></figure>
-<h3 id="创建文件夹"><a href="#创建文件夹" class="headerlink" title="创建文件夹"></a>创建文件夹</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir projects</span><br></pre></td></tr></table></figure>
-<h2 id="文件路径"><a href="#文件路径" class="headerlink" title="文件路径"></a>文件路径</h2><h3 id="根目录"><a href="#根目录" class="headerlink" title="根目录"></a>根目录</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd /</span><br></pre></td></tr></table></figure>
-<h3 id="家目录"><a href="#家目录" class="headerlink" title="家目录"></a>家目录</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd ~</span><br><span class="line">pwd</span><br></pre></td></tr></table></figure>
-<h3 id="当前目录"><a href="#当前目录" class="headerlink" title="当前目录"></a>当前目录</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd books</span><br><span class="line">cd ./books</span><br></pre></td></tr></table></figure>
-<h3 id="上级目录"><a href="#上级目录" class="headerlink" title="上级目录"></a>上级目录</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd ..</span><br><span class="line">cd ../css</span><br></pre></td></tr></table></figure>
-<h2 id="编辑器vim"><a href="#编辑器vim" class="headerlink" title="编辑器vim"></a>编辑器vim</h2><p>编辑模式<br>命令模式</p>
-<ol>
-<li><code>vim a.md</code> 初始进入编辑器命令模式</li>
-<li><code>i</code> 进入编辑模式</li>
-<li>键盘左上角<code>esc</code> 进入命令命令模式</li>
-<li><code>:wq</code> 保存退出</li>
-<li><code>:q!</code> 不保存强制退出</li>
-</ol>
-<h2 id="安装服务器"><a href="#安装服务器" class="headerlink" title="安装服务器"></a>安装服务器</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install -g http-server</span><br><span class="line">http-server</span><br></pre></td></tr></table></figure>
-<h2 id="登录开发机"><a href="#登录开发机" class="headerlink" title="登录开发机"></a>登录开发机</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ssh jirengu@47.91.156.35</span><br><span class="line"><span class="comment">#passwd: woaixueqianduan</span></span><br></pre></td></tr></table></figure>
-<h2 id="文件权限"><a href="#文件权限" class="headerlink" title="文件权限"></a>文件权限</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">chmod 777 index.html</span><br><span class="line">chown -R git:git ruoyu</span><br></pre></td></tr></table></figure>
-<h2 id="新手最大的问题"><a href="#新手最大的问题" class="headerlink" title="新手最大的问题"></a>新手最大的问题</h2><ol>
-<li>大小写看错</li>
-<li>空格写漏</li>
-<li>把多个命令当成一个命令</li>
-</ol>
-<h2 id="推荐资料"><a href="#推荐资料" class="headerlink" title="推荐资料"></a>推荐资料</h2><p><a href="http://www.cnblogs.com/peida/tag/linux%E5%91%BD%E4%BB%A4/default.html?page=4" target="_blank" rel="noopener">http://www.cnblogs.com/peida/tag/linux%E5%91%BD%E4%BB%A4/default.html?page=4</a></p>
+<h2 id="三、基本命令"><a href="#三、基本命令" class="headerlink" title="三、基本命令"></a>三、基本命令</h2><h3 id="1-查看当前完整路径"><a href="#1-查看当前完整路径" class="headerlink" title="(1)  查看当前完整路径"></a>(1)  查看当前完整路径</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pwd</span><br></pre></td></tr></table></figure>
+<h3 id="2-查看当前目录下文件"><a href="#2-查看当前目录下文件" class="headerlink" title="(2)  查看当前目录下文件"></a>(2)  查看当前目录下文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># 不包括隐藏文件</span><br><span class="line">ls</span><br><span class="line"></span><br><span class="line"># 查看当前目录下所有文件(包括隐藏文件)</span><br><span class="line">ls -a</span><br><span class="line"></span><br><span class="line"># 查看当前目录下所有文件(包括隐藏文件)的详细信息</span><br><span class="line">ls -al</span><br></pre></td></tr></table></figure>
+<h3 id="3-切换目录"><a href="#3-切换目录" class="headerlink" title="(3)  切换目录"></a>(3)  切换目录</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cd /c/project</span><br><span class="line">cd code</span><br><span class="line">cd ../css</span><br><span class="line">cd ~/Desktop</span><br></pre></td></tr></table></figure>
+<h3 id="4-创建文件"><a href="#4-创建文件" class="headerlink" title="(4)  创建文件"></a>(4)  创建文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">touch readme.md</span><br></pre></td></tr></table></figure>
+<h3 id="5-删除文件"><a href="#5-删除文件" class="headerlink" title="(5)  删除文件"></a>(5)  删除文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">#创建readme.md</span><br><span class="line">rm readme.md </span><br><span class="line"></span><br><span class="line">#删除node_modules文件夹，不提示</span><br><span class="line">rm -rf node_modules</span><br></pre></td></tr></table></figure>
+<h3 id="6-重命名文件"><a href="#6-重命名文件" class="headerlink" title="(6)  重命名文件"></a>(6)  重命名文件</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mv readme.md README.md</span><br></pre></td></tr></table></figure>
+<h3 id="7-创建文件夹"><a href="#7-创建文件夹" class="headerlink" title="(7)  创建文件夹"></a>(7)  创建文件夹</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir projects</span><br></pre></td></tr></table></figure>
+<h2 id="四、文件路径"><a href="#四、文件路径" class="headerlink" title="四、文件路径"></a>四、文件路径</h2><h3 id="1-根目录"><a href="#1-根目录" class="headerlink" title="(1)  根目录"></a>(1)  根目录</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd /</span><br></pre></td></tr></table></figure>
+<h3 id="2-家目录"><a href="#2-家目录" class="headerlink" title="(2)  家目录"></a>(2)  家目录</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd ~</span><br><span class="line">pwd</span><br></pre></td></tr></table></figure>
+<h3 id="3-当前目录"><a href="#3-当前目录" class="headerlink" title="(3)  当前目录"></a>(3)  当前目录</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd books</span><br><span class="line">cd ./books</span><br></pre></td></tr></table></figure>
+<h3 id="4-上级目录"><a href="#4-上级目录" class="headerlink" title="(4)  上级目录"></a>(4)  上级目录</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd ..</span><br><span class="line">cd ../css</span><br></pre></td></tr></table></figure>
+<h2 id="五、编辑器vim"><a href="#五、编辑器vim" class="headerlink" title="五、编辑器vim"></a>五、编辑器vim</h2><p>编辑模式、命令模式</p>
+<ul>
+<li><p>vim a.md 初始进入编辑器命令模式</p>
+</li>
+<li><p>i进入编辑模式</p>
+</li>
+<li><p>键盘左上角esc进入命令命令模式</p>
+</li>
+<li><p>:wq保存退出</p>
+</li>
+<li><p>:q!不保存强制退出</p>
+</li>
+</ul>
+<h2 id="六、安装服务器"><a href="#六、安装服务器" class="headerlink" title="六、安装服务器"></a>六、安装服务器</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm install -g http-server</span><br><span class="line">http-server</span><br></pre></td></tr></table></figure>
+<h2 id="七、登录开发机"><a href="#七、登录开发机" class="headerlink" title="七、登录开发机"></a>七、登录开发机</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ssh jirengu@47.91.156.35</span><br><span class="line"><span class="comment">#passwd: woaixueqianduan</span></span><br></pre></td></tr></table></figure>
+<h2 id="八、文件权限"><a href="#八、文件权限" class="headerlink" title="八、文件权限"></a>八、文件权限</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">chmod 777 index.html</span><br><span class="line">chown -R git:git ruoyu</span><br></pre></td></tr></table></figure>
+<p>参考</p>
+<p><a href="http://www.cnblogs.com/peida/tag/linux%E5%91%BD%E4%BB%A4/default.html?page=4&gt;" target="_blank" rel="noopener">http://www.cnblogs.com/peida/tag/linux%E5%91%BD%E4%BB%A4/default.html?page=4&gt;</a></p>
 
           
         
@@ -1062,14 +602,18 @@
       
         
           
-            <p>通过以下语句将CSS文件的加载时间拉长，来演示白屏和FOUC现象<br><img src="https://upload-images.jianshu.io/upload_images/14339384-fcb99d394be45e4c.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="p1.jpg"></p>
-<p>#白屏效果</p>
-<p>Chrome浏览器的加载机制会出现白屏的现象当我们访问服务器时，css在加载过程中，页面是这样的：<br><img src="https://upload-images.jianshu.io/upload_images/14339384-816e95cceee328f4.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="p2.jpg"></p>
-<p>当有一个css文件加载完成时，页面依然白屏：<br><img src="https://upload-images.jianshu.io/upload_images/14339384-dfce2b6069e4ee24.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="p3.jpg"></p>
-<p>当所有css文件加载完成时，浏览布局渲染，页面显示出来应有的效果：<br><img src="https://upload-images.jianshu.io/upload_images/14339384-16f43d75920527b3.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="p4.jpg"></p>
-<p>#FOUC效果<br>Firefox浏览器的加载机制会出现FOUC的现象当我们访问服务器时，在任何一个css文件未加载完成时，页面已经有显示文本显示了：<br><img src="https://upload-images.jianshu.io/upload_images/14339384-802f547fe7896b1d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="p5.png"></p>
-<p>当有一个css文件加载完成时，浏览器就会通过已经加载完成的css文件渲染页面，没有加载完成的继续加载：<br><img src="https://upload-images.jianshu.io/upload_images/14339384-4ca7c061954e6490.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="p6.png"></p>
-<p>当全部css文件加载完成后，页面的最终呈现最终的效果，在每一个css文件加载完成后，页面的样式会发生变化：<br><img src="https://upload-images.jianshu.io/upload_images/14339384-f45228727bc00c4b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="p7.png"></p>
+            <p>通过以下语句将CSS文件的加载时间拉长，来演示白屏和FOUC现象</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;link rel = "stylesheet" href = "b.css?t=10"&gt;</span><br><span class="line">&lt;link rel = "stylesheet" href = "a.css?t=3"&gt;</span><br></pre></td></tr></table></figure>
+<p>##一、白屏效果</p>
+<p>Chrome浏览器的加载机制会出现白屏的现象</p>
+<p>(1)  当我们访问服务器时，css在加载过程中，页面是这样的：<br><img src="https://upload-images.jianshu.io/upload_images/14339384-816e95cceee328f4.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="p2.jpg"></p>
+<p>(2)  当有一个css文件加载完成时，页面依然白屏：<br><img src="https://upload-images.jianshu.io/upload_images/14339384-dfce2b6069e4ee24.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="p3.jpg"></p>
+<p>(3)  当所有css文件加载完成时，浏览布局渲染，页面显示出来应有的效果：<br><img src="https://upload-images.jianshu.io/upload_images/14339384-16f43d75920527b3.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="p4.jpg"></p>
+<p>##二、FOUC效果</p>
+<p>Firefox浏览器的加载机制会出现FOUC的现象</p>
+<p>(1)  当我们访问服务器时，在任何一个css文件未加载完成时，页面已经有显示文本显示了：<br><img src="https://upload-images.jianshu.io/upload_images/14339384-802f547fe7896b1d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="p5.png"></p>
+<p>(2)  当有一个css文件加载完成时，浏览器就会通过已经加载完成的css文件渲染页面，没有加载完成的继续加载：<br><img src="https://upload-images.jianshu.io/upload_images/14339384-4ca7c061954e6490.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="p6.png"></p>
+<p>(3)  当全部css文件加载完成后，页面的最终呈现最终的效果，在每一个css文件加载完成后，页面的样式会发生变化：<br><img src="https://upload-images.jianshu.io/upload_images/14339384-f45228727bc00c4b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="p7.png"></p>
 
           
         
@@ -1189,29 +733,23 @@
       
         
           
-            <p><a href="http://md2ppt.jscode.me/md2ppt?url=https%3A%2F%2Fraw.githubusercontent.com%2Fjirengu%2Ffrontend-knowledge-ppt%2Fmaster%2F%25E5%2589%258D%25E7%25AB%25AF%25E5%2585%25A5%25E9%2597%25A8-%25E5%25B7%25A5%25E5%2585%25B7%25E5%25AE%2589%25E8%25A3%2585.md%3Ftoken%3DAKZzb3sU30DMxhI1FgM-E0Gn_jrtsD3Aks5bj46RwA%253D%253D&amp;theme=blood&amp;trans=convex#/" target="_blank" rel="noopener">查看 ppt</a></p>
-<p>浏览器、编辑器、Git、NodeJS、翻墙软件(<a href="https://shadowsocks.to" target="_blank" rel="noopener">https://shadowsocks.to</a>  进入后点Order now按钮，进入<a href="https://portal.shadowsocks.nu/cart.php" target="_blank" rel="noopener">https://portal.shadowsocks.nu/cart.php</a> 进行购买即可 )的安装</p>
-<h2 id="科学上网"><a href="#科学上网" class="headerlink" title="科学上网"></a>科学上网</h2><p>科学上网是学习前端的第一步</p>
-<ul>
-<li><a href="https://portal.shadowsocks.se/" target="_blank" rel="noopener">购买地址</a> (地址后缀经常变，保持关注)</li>
-</ul>
-<h2 id="浏览器"><a href="#浏览器" class="headerlink" title="浏览器"></a>浏览器</h2><ul>
+            <h2 id="一、浏览器"><a href="#一、浏览器" class="headerlink" title="一、浏览器"></a>一、浏览器</h2><ul>
 <li><a href="http://www.google.cn/intl/zh-CN/chrome/browser/desktop/index.html" target="_blank" rel="noopener">Chrome下载</a></li>
 <li>也可bing搜索chrome安装</li>
 </ul>
-<h2 id="编辑器"><a href="#编辑器" class="headerlink" title="编辑器"></a>编辑器</h2><ul>
+<h2 id="二、编辑器"><a href="#二、编辑器" class="headerlink" title="二、编辑器"></a>二、编辑器</h2><ul>
 <li><a href="https://www.jetbrains.com/webstorm/" target="_blank" rel="noopener">webstrom</a> (操作复杂、收费、功能强大，启动有点慢)</li>
 <li><a href="http://code.visualstudio.com/" target="_blank" rel="noopener">vscode</a> (操作普通，免费，用起来方便)</li>
 <li><a href="https://atom.io/" target="_blank" rel="noopener">atom</a> (操作普通，免费，windows 略卡)</li>
 <li><a href="https://www.sublimetext.com/" target="_blank" rel="noopener">sublime</a> (操作简单，启动运行速度快，功能弱，插件库烂)</li>
 </ul>
-<h2 id="Git"><a href="#Git" class="headerlink" title="Git"></a>Git</h2><ul>
+<h2 id="三、Git"><a href="#三、Git" class="headerlink" title="三、Git"></a>三、Git</h2><ul>
 <li><a href="https://git-scm.com/downloads" target="_blank" rel="noopener">下载地址</a></li>
 </ul>
-<h2 id="NodeJS"><a href="#NodeJS" class="headerlink" title="NodeJS"></a>NodeJS</h2><ul>
+<h2 id="四、NodeJS"><a href="#四、NodeJS" class="headerlink" title="四、NodeJS"></a>四、NodeJS</h2><ul>
 <li><a href="https://nodejs.org/zh-cn/" target="_blank" rel="noopener">下载地址</a></li>
 </ul>
-<h2 id="搜索引擎"><a href="#搜索引擎" class="headerlink" title="搜索引擎"></a>搜索引擎</h2><ul>
+<h2 id="五、搜索引擎"><a href="#五、搜索引擎" class="headerlink" title="五、搜索引擎"></a>五、搜索引擎</h2><ul>
 <li><a href="https://www.google.com/" target="_blank" rel="noopener">Google</a> 最优</li>
 <li><a href="http://www.bing.com/" target="_blank" rel="noopener">bing</a> 懒得翻墙的时候用</li>
 <li><a href="http://baidu.com/" target="_blank" rel="noopener">百度</a> 少用</li>
@@ -1301,7 +839,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">27</span>
+                  <span class="site-state-item-count">24</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

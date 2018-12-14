@@ -79,17 +79,17 @@
 
 
 
-<meta name="description" content="首先我们来了解下单线程和任务队列 单线程：只有一条线，一步一步走，即所有任务都需要排队，前一个任务完成，才会执行后一个任务, 如果前一个任务时间耗时长，后一个任务就不得不一直等着 任务队列：在JavaScript中任务有两种，一种是同步任务，一种是异步任务。 同步任务：各个任务按照文档定义的顺序一一推入”执行栈”中，当前一个任务执行完毕，才会开始执行下一个任务。 异步任务：各个任务推入”任务队列”">
+<meta name="description" content="一、单线程只有一条线，一步一步走，即所有任务都需要排队，前一个任务完成，才会执行后一个任务, 如果前一个任务时间耗时长，后一个任务就不得不一直等着 二、任务队列A、分类(1)  同步任务 (2)  异步任务 B、定义同步任务：各个任务按照文档定义的顺序一一推入”执行栈”中，当前一个任务执行完毕，才会开始执行下一个任务。 异步任务：各个任务推入”任务队列”中，只有在当前的所有同步任务执行完毕，才会将">
 <meta property="og:type" content="article">
 <meta property="og:title" content="任务队列异步函数节流">
 <meta property="og:url" content="http://yoursite.com/2018/11/07/任务队列异步函数节流/index.html">
 <meta property="og:site_name" content="Wuer">
-<meta property="og:description" content="首先我们来了解下单线程和任务队列 单线程：只有一条线，一步一步走，即所有任务都需要排队，前一个任务完成，才会执行后一个任务, 如果前一个任务时间耗时长，后一个任务就不得不一直等着 任务队列：在JavaScript中任务有两种，一种是同步任务，一种是异步任务。 同步任务：各个任务按照文档定义的顺序一一推入”执行栈”中，当前一个任务执行完毕，才会开始执行下一个任务。 异步任务：各个任务推入”任务队列”">
+<meta property="og:description" content="一、单线程只有一条线，一步一步走，即所有任务都需要排队，前一个任务完成，才会执行后一个任务, 如果前一个任务时间耗时长，后一个任务就不得不一直等着 二、任务队列A、分类(1)  同步任务 (2)  异步任务 B、定义同步任务：各个任务按照文档定义的顺序一一推入”执行栈”中，当前一个任务执行完毕，才会开始执行下一个任务。 异步任务：各个任务推入”任务队列”中，只有在当前的所有同步任务执行完毕，才会将">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-11-07T10:34:56.912Z">
+<meta property="og:updated_time" content="2018-12-14T09:23:03.455Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="任务队列异步函数节流">
-<meta name="twitter:description" content="首先我们来了解下单线程和任务队列 单线程：只有一条线，一步一步走，即所有任务都需要排队，前一个任务完成，才会执行后一个任务, 如果前一个任务时间耗时长，后一个任务就不得不一直等着 任务队列：在JavaScript中任务有两种，一种是同步任务，一种是异步任务。 同步任务：各个任务按照文档定义的顺序一一推入”执行栈”中，当前一个任务执行完毕，才会开始执行下一个任务。 异步任务：各个任务推入”任务队列”">
+<meta name="twitter:description" content="一、单线程只有一条线，一步一步走，即所有任务都需要排队，前一个任务完成，才会执行后一个任务, 如果前一个任务时间耗时长，后一个任务就不得不一直等着 二、任务队列A、分类(1)  同步任务 (2)  异步任务 B、定义同步任务：各个任务按照文档定义的顺序一一推入”执行栈”中，当前一个任务执行完毕，才会开始执行下一个任务。 异步任务：各个任务推入”任务队列”中，只有在当前的所有同步任务执行完毕，才会将">
 
 
 
@@ -299,17 +299,32 @@
       
 
       
-        <p>首先我们来了解下单线程和任务队列</p>
-<h5 id="单线程："><a href="#单线程：" class="headerlink" title="单线程："></a>单线程：</h5><p>只有一条线，一步一步走，即所有任务都需要排队，前一个任务完成，才会执行后一个任务, 如果前一个任务时间耗时长，后一个任务就不得不一直等着</p>
-<h5 id="任务队列："><a href="#任务队列：" class="headerlink" title="任务队列："></a>任务队列：</h5><p>在JavaScript中任务有两种，一种是同步任务，一种是异步任务。</p>
-<p>同步任务：各个任务按照文档定义的顺序一一推入”执行栈”中，当前一个任务执行完毕，才会开始执行下一个任务。</p>
+        <h2 id="一、单线程"><a href="#一、单线程" class="headerlink" title="一、单线程"></a>一、单线程</h2><p>只有一条线，一步一步走，即所有任务都需要排队，前一个任务完成，才会执行后一个任务, 如果前一个任务时间耗时长，后一个任务就不得不一直等着</p>
+<h2 id="二、任务队列"><a href="#二、任务队列" class="headerlink" title="二、任务队列"></a>二、任务队列</h2><h3 id="A、分类"><a href="#A、分类" class="headerlink" title="A、分类"></a>A、分类</h3><p>(1)  同步任务</p>
+<p>(2)  异步任务</p>
+<h3 id="B、定义"><a href="#B、定义" class="headerlink" title="B、定义"></a>B、定义</h3><p>同步任务：各个任务按照文档定义的顺序一一推入”执行栈”中，当前一个任务执行完毕，才会开始执行下一个任务。</p>
 <p>异步任务：各个任务推入”任务队列”中，只有在当前的所有同步任务执行完毕，才会将队列中的任务”出队”执行。</p>
 <p>当线程中没有执行任何同步代码的前提下才会执行异步代码</p>
-<p>如下实例：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">1</span>;</span><br><span class="line">setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    a = <span class="number">2</span>;</span><br><span class="line">    <span class="built_in">console</span>.log(a);</span><br><span class="line">&#125;, <span class="number">0</span>);</span><br><span class="line"><span class="keyword">var</span> a ;</span><br><span class="line"><span class="built_in">console</span>.log(a);</span><br><span class="line">a = <span class="number">3</span>;</span><br><span class="line"><span class="built_in">console</span>.log(a);</span><br><span class="line"></span><br><span class="line">输出结果是</span><br><span class="line"><span class="number">1</span></span><br><span class="line"><span class="number">3</span></span><br><span class="line"><span class="number">2</span></span><br><span class="line">分析：</span><br><span class="line">setTimeout异步执行，从上到下执行完之后再执行setTimeout内的语句</span><br><span class="line"><span class="keyword">var</span> a = <span class="number">1</span>；声明并将<span class="number">1</span>赋值给a</span><br><span class="line">setTimeout方法加入任务队列不执行</span><br><span class="line"><span class="keyword">var</span> a ；声明a a的值不变</span><br><span class="line"><span class="built_in">console</span>.log(a) ；输出为 <span class="number">1</span></span><br><span class="line">a = <span class="number">3</span> ；将<span class="number">3</span>赋值给a</span><br><span class="line"><span class="built_in">console</span>.log(a) ；输出为<span class="number">3</span></span><br><span class="line">执行setTimeout，a被赋值为<span class="number">2</span>并即时输出</span><br></pre></td></tr></table></figure>
-<h6 id="再来一个实例"><a href="#再来一个实例" class="headerlink" title="再来一个实例"></a>再来一个实例</h6><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> flag = <span class="literal">true</span>;</span><br><span class="line">setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    flag = <span class="literal">false</span>;</span><br><span class="line">&#125;,<span class="number">0</span>)</span><br><span class="line"><span class="keyword">while</span>(flag)&#123;&#125;</span><br><span class="line"><span class="built_in">console</span>.log(flag);</span><br><span class="line"></span><br><span class="line">不输出任何东西，且控制台/浏览器卡死</span><br><span class="line">分析：</span><br><span class="line"><span class="keyword">var</span> flag = <span class="literal">true</span>，给flag赋值</span><br><span class="line">遇到setTimeout，加入任务队列，跳过</span><br><span class="line"> <span class="keyword">while</span>语句，这里的flag是<span class="literal">true</span>，执行&#123;&#125;内循环体，循环体没有内容，一直死循环</span><br></pre></td></tr></table></figure>
-<h5 id="函数节流原理"><a href="#函数节流原理" class="headerlink" title="函数节流原理"></a>函数节流原理</h5><p>我们设置一个定时器，一开始判断定时器是不是有了，如果没有的话，再去设置一个定时器，如果有了话，把上一次的清除掉，然后我们再重新设置</p>
-<h6 id="如下实例："><a href="#如下实例：" class="headerlink" title="如下实例："></a>如下实例：</h6><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> timer</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(timer)&#123;</span><br><span class="line">        clearTimeout(timer)</span><br><span class="line">    &#125;</span><br><span class="line">    timer = setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'hello'</span>)</span><br><span class="line">    &#125;,<span class="number">1000</span>)</span><br><span class="line">&#125;</span><br><span class="line">test()</span><br></pre></td></tr></table></figure>
+<h3 id="C、案例"><a href="#C、案例" class="headerlink" title="C、案例"></a>C、案例</h3><p>(1)  例1</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">1</span>;</span><br><span class="line">setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    a = <span class="number">2</span>;</span><br><span class="line">    <span class="built_in">console</span>.log(a);</span><br><span class="line">&#125;, <span class="number">0</span>);</span><br><span class="line"><span class="keyword">var</span> a ;</span><br><span class="line"><span class="built_in">console</span>.log(a);</span><br><span class="line">a = <span class="number">3</span>;</span><br><span class="line"><span class="built_in">console</span>.log(a);</span><br><span class="line"></span><br><span class="line"><span class="comment">//1</span></span><br><span class="line"><span class="comment">//3</span></span><br><span class="line"><span class="comment">//2</span></span><br></pre></td></tr></table></figure>
+<p><strong>分析：</strong></p>
+<ul>
+<li>setTimeout异步执行，从上到下执行完之后再执行setTimeout内的语句<br>var a = 1；声明并将1赋值给a</li>
+<li>setTimeout方法加入任务队列不执行<br>var a ；声明a a的值不变<br>console.log(a) ；输出为 1</li>
+<li>a = 3 ；将3赋值给a<br>console.log(a) ；输出为3</li>
+<li>执行setTimeout，a被赋值为2并即时输出</li>
+</ul>
+<p>(2)  例2</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> flag = <span class="literal">true</span>;</span><br><span class="line">setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    flag = <span class="literal">false</span>;</span><br><span class="line">&#125;,<span class="number">0</span>)</span><br><span class="line"><span class="keyword">while</span>(flag)&#123;&#125;</span><br><span class="line"><span class="built_in">console</span>.log(flag);</span><br><span class="line"><span class="comment">//不输出任何东西，且控制台/浏览器卡死</span></span><br></pre></td></tr></table></figure>
+<p><strong>分析</strong></p>
+<ul>
+<li>var flag = true，给flag赋值</li>
+<li>遇到setTimeout，加入任务队列，跳过</li>
+<li>while语句，这里的flag是true，执行{}内循环体，循环体没有内容，一直死循环</li>
+</ul>
+<h2 id="三、函数节流原理"><a href="#三、函数节流原理" class="headerlink" title="三、函数节流原理"></a>三、函数节流原理</h2><p>我们设置一个定时器，一开始判断定时器是不是有了，如果没有的话，再去设置一个定时器，如果有了话，把上一次的清除掉，然后我们再重新设置</p>
+<p>例子</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> timer</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(timer)&#123;</span><br><span class="line">        clearTimeout(timer)</span><br><span class="line">    &#125;</span><br><span class="line">    timer = setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'hello'</span>)</span><br><span class="line">    &#125;,<span class="number">1000</span>)</span><br><span class="line">&#125;</span><br><span class="line">test()</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -344,8 +359,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/11/14/onclick与addEventListener区别/" rel="prev" title="onclick与addEventListener区别">
-                onclick与addEventListener区别 <i class="fa fa-chevron-right"></i>
+              <a href="/2018/11/14/onclick、addEventListener/" rel="prev" title="onclick、addEventListener">
+                onclick、addEventListener <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -423,7 +438,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">27</span>
+                  <span class="site-state-item-count">24</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
@@ -460,7 +475,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#单线程："><span class="nav-number">1.</span> <span class="nav-text">单线程：</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#任务队列："><span class="nav-number">2.</span> <span class="nav-text">任务队列：</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#再来一个实例"><span class="nav-number">2.1.</span> <span class="nav-text">再来一个实例</span></a></li></ol></li><li class="nav-item nav-level-5"><a class="nav-link" href="#函数节流原理"><span class="nav-number">3.</span> <span class="nav-text">函数节流原理</span></a><ol class="nav-child"><li class="nav-item nav-level-6"><a class="nav-link" href="#如下实例："><span class="nav-number">3.1.</span> <span class="nav-text">如下实例：</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、单线程"><span class="nav-number">1.</span> <span class="nav-text">一、单线程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、任务队列"><span class="nav-number">2.</span> <span class="nav-text">二、任务队列</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#A、分类"><span class="nav-number">2.1.</span> <span class="nav-text">A、分类</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#B、定义"><span class="nav-number">2.2.</span> <span class="nav-text">B、定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#C、案例"><span class="nav-number">2.3.</span> <span class="nav-text">C、案例</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、函数节流原理"><span class="nav-number">3.</span> <span class="nav-text">三、函数节流原理</span></a></li></ol></div>
             
 
           </div>
