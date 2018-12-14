@@ -364,9 +364,10 @@
 <p>(2)  JavaScript 对象中很多类型(函数、正则、Date) ，JSON 格式的规范并不支持</p>
 <p>(3)  JavaScript 对象的字面量写法更宽松。</p>
 <h2 id="五、深拷贝例子"><a href="#五、深拷贝例子" class="headerlink" title="五、深拷贝例子"></a>五、深拷贝例子</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">    name: <span class="string">'hunger'</span>,</span><br><span class="line">    age: <span class="number">3</span>,</span><br><span class="line">    friends: [<span class="string">'aa'</span>, <span class="string">'bb'</span>, <span class="string">'cc'</span>]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> obj2 = <span class="built_in">JSON</span>.parse(<span class="built_in">JSON</span>.stringify(obj))</span><br><span class="line">obj.age = <span class="number">4</span></span><br><span class="line"><span class="built_in">console</span>.log(obj2.age)</span><br></pre></td></tr></table></figure>
-<p>参考  <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify" target="_blank" rel="noopener">https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify</a></p>
-<p>​     <a href="http://javascript.ruanyifeng.com/stdlib/json.html" target="_blank" rel="noopener">http://javascript.ruanyifeng.com/stdlib/json.html</a></p>
-<p>​    <a href="https://blog.jirengu.com/?p=378" target="_blank" rel="noopener">https://blog.jirengu.com/?p=378</a></p>
+<p>参考 </p>
+<p> <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify" target="_blank" rel="noopener">https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify</a></p>
+<p><a href="http://javascript.ruanyifeng.com/stdlib/json.html" target="_blank" rel="noopener">http://javascript.ruanyifeng.com/stdlib/json.html</a></p>
+<p><a href="https://blog.jirengu.com/?p=378" target="_blank" rel="noopener">https://blog.jirengu.com/?p=378</a></p>
 
           
         
