@@ -127,3 +127,6 @@ prevAll与之相反，获取元素前面的同辈元素
 
 ![image.png](https://upload-images.jianshu.io/upload_images/14339384-13eb3233c305f46b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
+
+
+更多可参考 http://jquery.com
