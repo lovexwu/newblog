@@ -119,6 +119,8 @@ prevAll与之相反，获取元素前面的同辈元素
 
 筛选匹配元素集合中的那些有**相匹配的选择器**或**DOM元素的后代元素**
 
+![image.png](https://upload-images.jianshu.io/upload_images/14339384-170cfbece22bd765.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
 
 
 (10)  .is(selector) ， is(function(index)) ，is(dom/jqObj)
