@@ -103,9 +103,9 @@ prevAll与之相反，获取元素前面的同辈元素
 
 (9)  .filter(selector) ，.filter(function(index))
 
-筛选当前结果集中**符合条件的对象**，参数可以是一个**选择器****
+筛选当前结果集中**符合条件的对象**，参数可以是一个**选择器**
 
-![image-20181216173007185](/Users/laoda/Library/Application Support/typora-user-images/image-20181216173007185.png)
+![image.png](https://upload-images.jianshu.io/upload_images/14339384-06dcf3f04a6d23c5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 
 
