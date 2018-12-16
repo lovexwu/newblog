@@ -229,6 +229,167 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/14/onclick、addEventListener/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Wuer">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Wuer">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/14/onclick、addEventListener/" itemprop="url">onclick、addEventListener</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-14T15:04:18+08:00">
+                2018-11-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>addEventListener和onclick有什么不一样？于是Google查了下，稍微整理了下</p>
+<h2 id="区别"><a href="#区别" class="headerlink" title="区别"></a>区别</h2><p>(1)  onclick 只能绑定一个事件，绑定多个会产生覆盖；不能设置参数，使用默认的事件冒泡阶段。</p>
+<p>(2)  addEventListener中有第3个参数，attachEvent没有。</p>
+<p>第3个参数传递的是false或true。这个参数可选，默认是false。<br>false–表示事件处理将在冒泡阶段执行。<br>true–表示事件处理将在捕获阶段执行。</p>
+<p>(3)  理论上，Event Listeners (addEventListener、attachEvent（IE使用 ）)可以无限增加事件监听给某个一元素。实际应用的约束就是客户端内存的限制，这一点因每个浏览器而异。</p>
+<p><strong>onclick</strong> 属性返回当前元素的 <code>click</code> 事件处理器代码</p>
+<p>语法</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">element.onclick = functionRef;</span><br></pre></td></tr></table></figure>
+<p><em>functionRef</em> 是一个函数：通常是在别处声明的函数名或者是一个函数表达式（<em>function expression</em>）</p>
+<p><strong>来个实例：</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;ul id = <span class="string">"list"</span>&gt;</span><br><span class="line"> &lt;li id = <span class="string">"add_event"</span>&gt;white&lt;<span class="regexp">/li&gt;</span></span><br><span class="line"><span class="regexp"> &lt;li id = "on_click"&gt;black&lt;/</span>li&gt;</span><br><span class="line">&lt;<span class="regexp">/ul&gt;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">&lt;script&gt;</span></span><br><span class="line"><span class="regexp">var on_click = document.getElementById('on_click');</span></span><br><span class="line"><span class="regexp">on_click.onclick = function()&#123;</span></span><br><span class="line"><span class="regexp">    alert('我是click1');</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br><span class="line"><span class="regexp">on_click.onclick = function()&#123;</span></span><br><span class="line"><span class="regexp">    alert('我是click2');</span></span><br><span class="line"><span class="regexp">&#125; </span></span><br><span class="line"><span class="regexp">&lt;/</span>script&gt;</span><br></pre></td></tr></table></figure>
+<p><strong>运行结果：</strong></p>
+<p>可想而知，只会弹出一个弹出框(我是 click2)，虽然绑定了两次</p>
+<p>一个click处理器在同一时间只能指向唯一的对象。因此就算对于一个对象绑定了多次，但是仍然只会出现最后的一次绑定</p>
+<p><strong>addEventListener绑定click事件</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">currentTarget.addEventListener(type,listener,option)</span><br></pre></td></tr></table></figure>
+<p><strong>来个实例：</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">&lt;ul id = <span class="string">"list"</span>&gt;</span><br><span class="line"> &lt;li id = <span class="string">"add_event"</span>&gt;white&lt;<span class="regexp">/li&gt;</span></span><br><span class="line"><span class="regexp"> &lt;li id = "on_click"&gt;black&lt;/</span>li&gt;</span><br><span class="line">&lt;<span class="regexp">/ul&gt;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">&lt;script&gt;</span></span><br><span class="line"><span class="regexp">var addEvent = document.getElementById('add_event');</span></span><br><span class="line"><span class="regexp">addEvent.onclick = function()&#123;</span></span><br><span class="line"><span class="regexp">    alert('我是addEvent1');</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br><span class="line"><span class="regexp">addEvent.onclick = function()&#123;</span></span><br><span class="line"><span class="regexp">    alert('我是addEvent2');</span></span><br><span class="line"><span class="regexp">&#125; </span></span><br><span class="line"><span class="regexp">&lt;/</span>script&gt;</span><br></pre></td></tr></table></figure>
+<p><strong>运行结果：</strong></p>
+<p>两次绑定的事件，都能够成功运行，也就是前后弹出’我是addEvent1’ ‘我是addEvent2’</p>
+<p><strong>由此可见，对于一个可以绑定的事件对象，想多次绑定事件都能运行，选用addEventListener</strong></p>
+<p>通过addEventListener添加的事件必须通过相对应的为removeListener注销事件。但是如果像上面的用匿名函数的方式注册的事件，不能使用removeListener注销，因为没用对应事件的引用。</p>
+<p>所以注册事件如果需要取消，最好使用一个引用，即:</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var eventName = function () &#123;</span><br><span class="line">    //something</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>也正是这种方式，对于一个对象多次绑定同样的eventName，那么不会重复执行，只会执行一次。对于上面的匿名函数，就算内容一样，也会依次执行，<strong>因为并不能算是相同事件处理器</strong>。</p>
+<p>里面的this引用，不是window对象，而是触发事件的元素的引用。</p>
+<p>对于IE9之前，相对应的是attachEvent和detachEvent</p>
+<p><strong>最后总结：</strong></p>
+<ol>
+<li><p>onclick事件在同一时间只能指向唯一对象</p>
+</li>
+<li><p>addEventListener给一个事件注册多个listener</p>
+</li>
+<li><p>addEventListener对任何DOM都是有效的，而onclick仅限于HTML</p>
+</li>
+<li><p>addEventListener可以控制listener的触发阶段，（捕获/冒泡）。对于多个相同的事件处理器，不会重复触发，不需要手动使用removeEventListener清除</p>
+</li>
+<li><p>IE9使用attachEvent和detachEvent</p>
+</li>
+</ol>
+<p>可参考: <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/GlobalEventHandlers/onclick" target="_blank" rel="noopener">https://developer.mozilla.org/zh-CN/docs/Web/API/GlobalEventHandlers/onclick</a></p>
+<p>​             <a href="https://developer.mozilla.org/zh-CN/docs/Web/API/EventTarget/addEventListener" target="_blank" rel="noopener">https://developer.mozilla.org/zh-CN/docs/Web/API/EventTarget/addEventListener</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/10/DOM/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -1872,147 +2033,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/03/域名配置/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Wuer">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Wuer">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/10/03/域名配置/" itemprop="url">域名配置</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-03T19:13:24+08:00">
-                2018-10-03
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="一、第一步"><a href="#一、第一步" class="headerlink" title="一、第一步"></a>一、第一步</h3><ol>
-<li><p>域名解析：<a href="http://www.misswuer.cn" target="_blank" rel="noopener">www.misswuer.cn</a> CNAME 到 <a href="http://lovexwu.github.io" target="_blank" rel="noopener">lovexwu.github.io</a> 上</p>
-</li>
-<li><p>github pages 里面自定义域名到 <a href="http://www.misswuer.cn" target="_blank" rel="noopener">www.misswuer.cn</a></p>
-</li>
-<li>hexo 里面的 _config.yml 的 public_dir 改为 github 仓库名 即 newblog</li>
-<li>hexo 里面的 _config.yml 配置下 deploy 的仓库 为 newblog 的仓库路径 git://<a href="http://github.com/lovexwu/newblog.git" target="_blank" rel="noopener">github.com/lovexwu/newblog.git</a>，branch 设置为 master</li>
-<li>npm install hexo-deployer-git –save</li>
-<li>hexo d</li>
-</ol>
-<p>完成</p>
-<h3 id="二、第二步"><a href="#二、第二步" class="headerlink" title="二、第二步"></a>二、第二步</h3><p>配置好后，接下来就可以愉快地工作啦</p>
-<ol>
-<li><p>hexo new xxx</p>
-</li>
-<li><p>typora 编辑 xxx</p>
-</li>
-<li><p>hexo g 生成 html 文件，hexo s 预览下，如果之前开过 hexo s，之后就不用开了</p>
-</li>
-<li><p>hexo d 发布到网站上</p>
-</li>
-</ol>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2063,7 +2083,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-count">27</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
