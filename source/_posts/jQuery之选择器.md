@@ -131,4 +131,37 @@ prevAll与之相反，获取元素前面的同辈元素
 
 
 
+使用 jQuery 实现 多个Tab 切换效果
+
+```javascript
+var change = function(){
+  var t=$('.slider').find('.item');
+  t.click(function(){
+    console.log(this);
+    $(this).parents('.slider').find('.item').removeClass('active');
+    $(this).addClass('active');
+    $(this).parents('.slider').find('.box').removeClass('active');
+    $(this).parents('.slider').find('.box').eq($(this).index()).addClass('active');
+  });
+}
+change();
+```
+
+
+
+遇到的坑 ，页面多个tab切换时，一定要找到相应的容器，即其**父元素($(this).parents('.slider'))** ，再去找到其对应的元素，进行操作
+
+![image.png](https://upload-images.jianshu.io/upload_images/14339384-1188414fc89ee450.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+
+
+如果直接元素进行操作，就会出现两个tab切换相互影响
+
+![image.png](https://upload-images.jianshu.io/upload_images/14339384-801f3debcf588a0a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
+
+
+
 更多可参考 http://jquery.com
+
+
+
