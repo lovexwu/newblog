@@ -131,7 +131,7 @@ prevAll与之相反，获取元素前面的同辈元素
 
 
 
-使用 jQuery 实现 多个Tab 切换效果
+## 三、使用 jQuery 实现 多个Tab 切换效果
 
 ```javascript
 var change = function(){
@@ -155,7 +155,7 @@ change();
 
 
 
-如果直接元素进行操作，就会出现两个tab切换相互影响
+如果**直接元素**进行操作，就会出现两个tab切换相互影响
 
 ![image.png](https://upload-images.jianshu.io/upload_images/14339384-801f3debcf588a0a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
