@@ -229,7 +229,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/18/jQuery之事件/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/18/jQuery之事件、动画/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Wuer">
@@ -248,7 +248,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/12/18/jQuery之事件/" itemprop="url">jQuery之事件</a></h1>
+                <a class="post-title-link" href="/2018/12/18/jQuery之事件、动画/" itemprop="url">jQuery之事件</a></h1>
         
 
         <div class="post-meta">
@@ -300,7 +300,20 @@
       
         
           
-            
+            <h1 id="一、事件"><a href="#一、事件" class="headerlink" title="一、事件"></a>一、事件</h1><p>在1.7之前的版本中jQuery处理事件有多个方法， (google 搜索: jquery live bind degelate)作用各不相同，后来统一的使用 <strong>on / off</strong>  方法</p>
+<p>(1)  .on( events [,selector ] [,data ], handler(eventObject) )</p>
+<p>参数及其复杂，我们看一下各个参数的意思</p>
+<ul>
+<li><p>events：一个或多个<strong>空格分隔</strong>的<strong>事件类型</strong>和可选的<strong>命名空间</strong>，或仅仅是<strong>命名空间</strong>，比如”click”, “keydown.myPlugin”, 或者 “.myPlugin”</p>
+</li>
+<li><p>selector：一个选择器字符串，用于过滤出被选中的元素中能触发事件的后代元素。如果选择器是 null 或者忽略了该选择器，那么被选中的元素总是能触发事件</p>
+</li>
+<li><p>data：当一个事件被触发时，要传递给事件处理函数的event.data</p>
+</li>
+<li><p>handler(eventObject)：事件被触发时，执行的函数。若该函数只是要执行return false的话，那么该参数位置可以直接简写成 false</p>
+</li>
+</ul>
+
           
         
       
