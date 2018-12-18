@@ -168,7 +168,7 @@ var obj = $('<div class="test"><p><span>Done</span></p></div>');
 
 移除元素单个/多个/所有class
 
-![image-20181217163026276](/Users/laoda/Library/Application Support/typora-user-images/image-20181217163026276.png)
+![image.png](https://upload-images.jianshu.io/upload_images/14339384-e3c61ec617f0fac9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240)
 
 
 
