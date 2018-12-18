@@ -229,6 +229,385 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/17/jQuery对象和原生Dom对象区别及相互转换/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Wuer">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Wuer">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/12/17/jQuery对象和原生Dom对象区别及相互转换/" itemprop="url">未命名</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-17T23:51:07+08:00">
+                2018-12-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="一、区别"><a href="#一、区别" class="headerlink" title="一、区别"></a>一、区别</h1><ul>
+<li><strong>jQuery 对象：</strong>通过jQuery包装DOM对象后产生的对象</li>
+</ul>
+<p>假设获取header元素内的文本内容,其中<strong>text()是jQuery里的方法</strong><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">'.header'</span>).text()</span><br></pre></td></tr></table></figure></p>
+<p>等同于<strong>DOM对象实现</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.querySelector(<span class="string">'.header'</span>).innerText</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>DOM对象：</strong>w3c标准用于操作文档的API</li>
+</ul>
+<p>#二、DOM对象转jQuery对象</p>
+<p>把DOM对象包装起来【$(DOM对象)】，就可以获得一个jQuery对象了</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> header = <span class="built_in">document</span>.querySelector(<span class="string">'.header'</span>)  <span class="comment">//Dom 对象</span></span><br><span class="line">$header = $(header) <span class="comment">//jQuery对象</span></span><br></pre></td></tr></table></figure>
+<p>#三、jQuery对象转DOM对象</p>
+<p>jQuery对象是类数组对象，通过数组下标方式获取jQuery中的DOM对象<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$p[<span class="number">0</span>]   <span class="comment">//选中了第一个dom对象</span></span><br></pre></td></tr></table></figure></p>
+<p>#总结</p>
+<p>可以任意的相互转换jQuery对象和DOM对象。<br><strong>但，jQuery对象是jQuery独有的，只能使用jQuery里的方法，不能使用DOM的方法，反之一样</strong><br>像类似下面的写法是不可以的，这样子会报错</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">'.header'</span>).innerText</span><br><span class="line"><span class="built_in">document</span>.querySelector(<span class="string">'.header'</span>).text()</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/17/jQuery之DOM操作、属性、函数/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Wuer">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Wuer">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/12/17/jQuery之DOM操作、属性、函数/" itemprop="url">jQuery之DOM操作、属性、函数</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-17T13:26:37+08:00">
+                2018-12-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="一、DOM操作"><a href="#一、DOM操作" class="headerlink" title="一、DOM操作"></a>一、DOM操作</h1><h3 id="A、创建元素"><a href="#A、创建元素" class="headerlink" title="A、创建元素"></a>A、创建元素</h3><p>只需要把DOM字符串传入 $ 方法即可返回一个jQuery对象</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = $(<span class="string">'&lt;div class="test"&gt;&lt;p&gt;&lt;span&gt;Done&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;'</span>);</span><br></pre></td></tr></table></figure>
+<p><img src="https://upload-images.jianshu.io/upload_images/9375265-d352524426d7770c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<h3 id="B、添加元素"><a href="#B、添加元素" class="headerlink" title="B、添加元素"></a>B、添加元素</h3><p>(1)  .append(content[,content]) / .append(function(index,html))</p>
+<ul>
+<li>可以一次添加多个内容，内容可以是DOM对象、HTML string、 jQuery对象</li>
+<li>如果参数是function，function可以返回DOM对象、HTML string、 jQuery对象，参数是集合中的元素位置与原来的html值</li>
+</ul>
+<p><img src="https://upload-images.jianshu.io/upload_images/9375265-e479978f4956892f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>(2)  .prepend(content[,content]) / .prepend(function(index,html))</p>
+<p>向<strong>对象头部</strong>追加内容，用法和append类似，内容<strong>添加到最开始</strong></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/9375265-ba189a1015d84a37.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>(3) .before([content][,content]) / .before(function)</p>
+<p>在对象前面(<strong>不是头部，而是外面，和对象并列同级</strong>)插入内容，参数和append类似</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/9375265-ae94968ffc102f32.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>(4) .after([content][,content]) / .after(function（index）)</p>
+<p>和before相反，在对象后面(<strong>不是尾部，而是外面，和对象并列同级</strong>)插入内容，参数和append类似</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/9375265-fc4f9f67af1cb0da.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<h3 id="C、删除元素"><a href="#C、删除元素" class="headerlink" title="C、删除元素"></a>C、删除元素</h3><p>(1)  .remove([selector])</p>
+<p>删除被选元素（及其子元素）,也可以添加一个<strong>可选的选择器参数</strong>来过滤匹配的元素</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/9375265-c3181833189d95b0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>(2)  empty()</p>
+<p>清空被选择元素内所有子元素</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/9375265-1630eb6bd974fc49.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<h3 id="D、包裹元素"><a href="#D、包裹元素" class="headerlink" title="D、包裹元素"></a>D、包裹元素</h3><p>(1)  .html([string])<br>这是一个<strong>读写两用</strong>的方法，用于<strong>获取/修改</strong>元素的<strong>innerHTML</strong></p>
+<ul>
+<li>当没有传递参数的时候，返回元素的innerHTML</li>
+<li>当传递了一个string参数的时候，修改元素的innerHTML为参数</li>
+</ul>
+<p><img src="https://upload-images.jianshu.io/upload_images/9375265-ecdbc9b6ebabc2b8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>其中，特别注意：读写两用的方法很多，原理都类似</p>
+<ul>
+<li><p>如果<strong>结果是多个进行赋</strong>值操作的时候会给<strong>每个结果都赋值</strong></p>
+</li>
+<li><p>如果<strong>结果多个，获取值</strong>的时候，返回结果集中的<strong>第一个对象</strong>的相应值</p>
+</li>
+</ul>
+<p><img src="https://upload-images.jianshu.io/upload_images/9375265-b65f74e09094a294.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>(2) .text()<br>和html方法类似，操作的是<strong>DOM的innerText</strong>值</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/9375265-ce4dff1fd7d144ca.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<h1 id="二、属性及css操作"><a href="#二、属性及css操作" class="headerlink" title="二、属性及css操作"></a>二、属性及css操作</h1><h3 id="A、属性"><a href="#A、属性" class="headerlink" title="A、属性"></a>A、属性</h3><p>(1)  .val([value])</p>
+<p>这是一个读写双用的方法，用来处理input的value，当方法没有参数的时候返回input的value值，当传递了一个参数的时候，方法修改input的value值为参数值</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14339384-7610f39f79333fd2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>(2)  .attr() / .attr(attributeName)</p>
+<p>获取元素特定属性的值</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14339384-714717eb82771581.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><br><img src="https://upload-images.jianshu.io/upload_images/14339384-bf7c43c4adc6d000.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>(3)  .removeAttr()</p>
+<p>为匹配的元素集合中的每个元素中移除一个属性（attribute）</p>
+<p>.removeAttr() 方法使用原生的 JavaScript removeAttribute() 函数,但是它的优点是可以直接在一个 jQuery 对象上调用该方法，并且它解决了跨浏览器的属性名不同的问题。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14339384-99d2aaa5af1686b7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>(4)  .prop()/.removeProp()<br>这两个方法是用来操作元素的property的，property和attibute是非常相似的概念</p>
+<p>可参考  <a href="https://blog.jirengu.com/?p=222" target="_blank" rel="noopener">https://blog.jirengu.com/?p=222</a></p>
+<h3 id="B、css操作"><a href="#B、css操作" class="headerlink" title="B、css操作"></a>B、css操作</h3><p>(1)  .css()</p>
+<p>和 attr 非常相似的方法，用来处理元素的css</p>
+<p>.css(propertyName) / .css(propertyNames)</p>
+<p>获取元素style特定property的值</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14339384-b5fa52f785444582.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>(2)  .addClass(className) / .removeClass(className)</p>
+<p>.addClass(className) / .addClass(function(index,currentClass))</p>
+<p>为元素添加class，不是覆盖原class，是追加，也不会检查重复</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14339384-051026893a23afdf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>(3)  removeClass([className]) / ,removeClass(function(index,class))</p>
+<p>移除元素单个/多个/所有class</p>
+<p><img src="/Users/laoda/Library/Application Support/typora-user-images/image-20181217163026276.png" alt="image-20181217163026276"></p>
+<p>(4)  .hasClass(className)</p>
+<p>检查元素是否包含某个class，返回true/false</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14339384-5bd990d600152a85.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>(5)  .toggleClass(className)</p>
+<p>toggle是切换的意思，方法用于切换</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14339384-86ccdbf19df1deb9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<h1 id="三、常用方法"><a href="#三、常用方法" class="headerlink" title="三、常用方法"></a>三、常用方法</h1><p>(1)  .each( function(index, Element) )</p>
+<p>遍历一个jQuery对象，为每个匹配元素执行一个函数</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">'li'</span>).each(<span class="function"><span class="keyword">function</span>(<span class="params"> index </span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log( index + <span class="string">":"</span> + $(<span class="keyword">this</span>).text() );</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p><img src="https://upload-images.jianshu.io/upload_images/14339384-a709afc2c5fe34ed.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>(2)  jQuery.extend([deep,] target [, object1 ][, objectN ] )</p>
+<ul>
+<li><p>当我们提供<strong>两个或多个对象</strong>给 $.extend()，对象的<strong>所有属性都添加到目标对象</strong>（target参数）。</p>
+</li>
+<li><p>如果<strong>只有一个参数</strong>提供给 $.extend()，这意味着目标参数被省略。在这种情况下，jQuery<strong>对象本身被默认为目标对象</strong>。这样，我们可以在jQuery的命名空间下添加新的功能。这对于插件开发者希望向 jQuery 中添加新函数时是很有用的</p>
+</li>
+</ul>
+<p><strong>目标对象（第一个参数）</strong>将被修改，并且将通过$.extend()返回。然而，如果我们想<strong>保留原对象</strong>，我们可以通过传递一个<strong>空对象</strong>作为目标对象：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> object = $.extend(&#123;&#125;, object1, object2);</span><br></pre></td></tr></table></figure>
+<p><strong>在默认情况下，通过 $.extend() 合并操作不是递归的</strong></p>
+<p>如果第一个对象的属性本身是一个对象或数组，那么它将完全用第二个对象相同的key重写一个属性。这些值不会被合并。如果将  true 作为该函数的第一个参数，那么会在对象上进行递归的合并。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> object1 = &#123;</span><br><span class="line">  apple: <span class="number">0</span>,</span><br><span class="line">  banana: &#123; <span class="attr">weight</span>: <span class="number">52</span>, <span class="attr">price</span>: <span class="number">100</span> &#125;,</span><br><span class="line">  cherry: <span class="number">97</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">var</span> object2 = &#123;</span><br><span class="line">  banana: &#123; <span class="attr">price</span>: <span class="number">200</span> &#125;,</span><br><span class="line">  durian: <span class="number">100</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Merge object2 into object1</span></span><br><span class="line">$.extend( object1, object2 );</span><br></pre></td></tr></table></figure>
+<p>执行结果</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14339384-a764c94dbbf3113b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>(3)  clone( [withDataAndEvents ] )</p>
+<p>深度复制<strong>所有匹配的元素集合</strong>，包括所有<strong>匹配元素</strong>、<strong>匹配元素的下级元素</strong>、<strong>文字节点</strong></p>
+<ul>
+<li>类似剪切的效果</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">"container"</span>&gt;</span><br><span class="line">  &lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">"hello"</span>&gt;Hello&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">  &lt;div class="goodbye"&gt;</span></span><br><span class="line"><span class="regexp">    Goodbye</span></span><br><span class="line"><span class="regexp">  &lt;/</span>div&gt;</span><br><span class="line">&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">$('.hello').appendTO('.goodbye')</span></span><br></pre></td></tr></table></figure>
+<p>执行结果<br><img src="https://upload-images.jianshu.io/upload_images/14339384-d0f08cea21361e58.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<ul>
+<li>如果需要的是复制而不是剪切，可以像下面这样写代码：</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">'.hello'</span>).clone().appendTo(<span class="string">'.goodbye'</span>);</span><br></pre></td></tr></table></figure>
+<p>执行结果</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14339384-d85e2f594fd7dc1f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>(4)  .index() / .index(selector)/ .index(element)</p>
+<p>从给定集合中查找特定元素index，即获取的它所在的邻居的下标</p>
+<ul>
+<li><p>没参数返回第一个元素index</p>
+</li>
+<li><p>如果参数是DOM对象或者jQuery对象，则返回参数在集合中的index</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14339384-5cfb35aabe288a27.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+</li>
+<li><p>如果参数是选择器，返回第一个匹配元素index，没有找到返回-1</p>
+</li>
+</ul>
+<p><img src="https://upload-images.jianshu.io/upload_images/14339384-7b3badbf1fb450e1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>(5)  .ready( handler )</p>
+<p>当DOM准备就绪时，指定一个函数来执行。</p>
+<p>虽然JavaScript提供了load事件，当页面呈现时用来执行这个事件，直到所有的东西，如图像已被完全接收前，此事件不会被触发。</p>
+<p>在大多数情况下，只要DOM结构已完全加载时，脚本就可以运行。传递处理函数给.ready()方法，能保证DOM准备好后就执行这个函数，因此，这里是进行所有其它事件绑定及运行其它 jQuery 代码的最佳地方。</p>
+<p>如果执行的代码需要在元素被加载之后才能使用时，（例如，取得图片的大小需要在图片被加载完后才能知道），就需要将这样的代码放到 load 事件中。</p>
+<p>下面两种语法全部是等价的：</p>
+<ul>
+<li>$(document).ready(handler)</li>
+<li>$(handler)</li>
+</ul>
+<p>我们经常这么使用</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'ready'</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/16/jQuery之选择器/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -1679,331 +2058,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/18/BOM/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Wuer">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Wuer">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/11/18/BOM/" itemprop="url">BOM</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-18T13:35:58+08:00">
-                2018-11-18
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="一、定义"><a href="#一、定义" class="headerlink" title="一、定义"></a>一、定义</h2><p>浏览器对象模型，全称Browser Object Model</p>
-<h2 id="二、作用"><a href="#二、作用" class="headerlink" title="二、作用"></a>二、作用</h2><p>(1)  描述这种对象与对象之间层次关系的模型</p>
-<p>(2)  提供了独立于内容的、可以与浏览器窗口进行互动的对象结构</p>
-<p>BOM由多个对象组成，其中代表浏览器窗口的Window对象是BOM的顶层对象，其他对象都是该对象的子对象。</p>
-<h2 id="三、window-对象"><a href="#三、window-对象" class="headerlink" title="三、window 对象"></a>三、window 对象</h2><p><strong>A、  定义</strong></p>
-<p>(1)  BOM 的核心是window对象，它表示浏览器的一个实例。</p>
-<p>(2)   在浏览器中，即是javascript访问浏览器窗口的一个接口，又是ECMAScript规定的Global对象</p>
-<p>在网页中定义的任意变量、函数、对象都是以window作为Global对象，比如</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> age = <span class="number">24</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">printName</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(age);</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">window</span>.age);</span><br><span class="line"><span class="built_in">window</span>.printName();</span><br></pre></td></tr></table></figure>
-<p><strong>所有在全局作用域中声明的变量、函数、对象都会作为window的属性和方法</strong></p>
-<p><strong>B、属性</strong></p>
-<p>(1)  window.innerHeight，window.innerWidth</p>
-<p>返回网页的CSS布局占据的浏览器窗口的高度和宽度，单位为像素 ，但是当用户放大网页的时候（比如将网页从100%的大小放大为200%），这两个属性会变小</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/14339384-77533106158e4837.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-<p>注意，这两个属性值包括滚动条的高度和宽度**</p>
-<p>(2)  scrollX、scrollY</p>
-<ul>
-<li><p>scrollX：滚动条横向偏移</p>
-</li>
-<li><p>scrollY：滚动条纵向偏移</p>
-</li>
-</ul>
-<p>这两个值随着滚动位置变化而变化</p>
-<p>(3)  scrollTo、scrollBy、scroll</p>
-<p>通过方法scrollTo或者scroll方法改变滚动条位置到指定坐标</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.scrollTo(<span class="number">0</span>, <span class="number">300</span>); <span class="comment">// 滚动条移动到300px处</span></span><br></pre></td></tr></table></figure>
-<p>两个参数分别是水平、垂直方向偏移</p>
-<p>scrollBy可以相对当前位置移动滚动条，而不是移动到绝对位置</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">scrollBy(<span class="number">0</span>, <span class="number">100</span>); <span class="comment">// 滚动条下移100px</span></span><br></pre></td></tr></table></figure>
-<p>(4)  navigator <strong>(重点)</strong></p>
-<p>Window对象的navigator属性，指向一个包含浏览器相关信息的对象。</p>
-<p>navigator.userAgent属性返回浏览器的<code>User-Agent</code>字符串，用来标示浏览器的种类。下面是Chrome浏览器的User-Agent。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">navigator.userAgent <span class="comment">// "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_3) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2272.118 Safari/537.36"</span></span><br></pre></td></tr></table></figure>
-<p>判断用户的浏览器类型</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/14339384-122ad196a6e60343.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-<p>(5)  screen</p>
-<p>screen对象包含了显示设备的信息。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 显示设备的高度，单位为像素</span></span><br><span class="line">screen.height</span><br><span class="line"><span class="comment">// 1920</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 显示设备的宽度，单位为像素</span></span><br><span class="line">screen.width</span><br><span class="line"><span class="comment">// 1080</span></span><br></pre></td></tr></table></figure>
-<p>一般使用以上两个属性，了解设备的分辨率。上面代码显示，某设备的分辨率是1920x1080。除非调整显示器的分辨率，否则这两个值可以看作常量，不会发生变化。显示器的分辨率与浏览器设置无关，缩放网页并不会改变分辨率</p>
-<p>(6)  window.getComputedStyle</p>
-<p>getComputedStyle是一个可以获取当前元素所有最终使用的CSS属性值。返回的是一个CSS样式声明对象([object CSSStyleDeclaration])</p>
-<p>一看这个函数的名字我们就知道问题解决了</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> style = <span class="built_in">window</span>.getComputedStyle(<span class="string">"元素"</span>, <span class="string">"伪类"</span>);</span><br></pre></td></tr></table></figure>
-<p>第二个参数没有伪类则不设置</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> div = <span class="built_in">document</span>.getElementById(<span class="string">'test'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(getComputedStyle(div).width);</span><br></pre></td></tr></table></figure>
-<p>(7)  currentStyle</p>
-<p>这个是低版本IE的实现方案，我们可以写个兼容的方式</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">element.currentStyle ?</span><br><span class="line">    element.currentStyle : <span class="built_in">window</span>.getComputedStyle(element, <span class="literal">null</span>)</span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/15/事件传播机制、阻止传播、取消默认事件、事件代理/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Wuer">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Wuer">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/11/15/事件传播机制、阻止传播、取消默认事件、事件代理/" itemprop="url">事件传播机制、阻止传播、取消默认事件、事件代理</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-15T18:07:57+08:00">
-                2018-11-15
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="一、事件"><a href="#一、事件" class="headerlink" title="一、事件"></a>一、事件</h2><h3 id="A、定义"><a href="#A、定义" class="headerlink" title="A、定义"></a>A、定义</h3><p>某个行为或者触发</p>
-<h3 id="B、表现形式"><a href="#B、表现形式" class="headerlink" title="B、表现形式"></a>B、表现形式</h3><p>(1)  当用户点击鼠标时</p>
-<p>(2)  当网页已加载时</p>
-<p>(3)  当图像已加载时</p>
-<p>(4)  当鼠标移动到元素上时</p>
-<p>(5)  当用户触发按键时</p>
-<h2 id="二、事件流"><a href="#二、事件流" class="headerlink" title="二、事件流"></a>二、事件流</h2><p>(1)  事件冒泡</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/9375265-8c25303fd6a8ae6c.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="事件冒泡.jpg"></p>
-<p>事件开始时由最具体的元素接受，然后逐级向上传播到较为不具体的元素</p>
-<p>(2)  事件捕获</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/9375265-932479cb12a7d34f.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="事件捕获.jpg"></p>
-<p>不太具体的节点更早接受事件，而最具体的元素最后接受事件，和事件冒泡相反</p>
-<p>(3)  DOM事件流</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/9375265-c22e82b87f4f98dd.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="DOM事件流.jpg"></p>
-<p>DOM2级事件规定事件流包括三个阶段，事件捕获阶段，处于目标阶段，时间冒泡阶段，首先发生的是事件捕获，为截取事件提供机会，然后是实际目标接受事件，最后是冒泡阶段</p>
-<p><em>注</em>：Opera、Firefox、Sarfari都支持DOM事件流，IE不支持事件流，只支持时间冒泡</p>
-<h2 id="三、阻止传播"><a href="#三、阻止传播" class="headerlink" title="三、阻止传播"></a>三、阻止传播</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">stopPropagation()</span><br></pre></td></tr></table></figure>
-<h3 id="A、定义和用法"><a href="#A、定义和用法" class="headerlink" title="A、定义和用法"></a>A、定义和用法</h3><p>不再派发事件。<br> 终止事件在传播过程的捕获、目标处理或起泡阶段进一步传播。调用该方法后，该节点上处理该事件的处理程序将被调用，事件不再被分派到其他节点。</p>
-<h3 id="B、说明"><a href="#B、说明" class="headerlink" title="B、说明"></a>B、说明</h3><p>该方法将停止事件的传播，阻止它被分派到其他 Document 节点。在事件传播的任何阶段都可以调用它。注意，虽然该方法不能阻止同一个 Document 节点上的其他事件句柄被调用，但是它可以阻止把事件分派到其他节点。</p>
-<h3 id="C、语法"><a href="#C、语法" class="headerlink" title="C、语法"></a>C、语法</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">event.stopPropagation()</span><br></pre></td></tr></table></figure>
-<p>注意： IE浏览器的后面几个版本都 支持了W3C标准，之前有个别版本不支持<br> event在IE不支持的版本中，是无法接收到事件的，并且没有<code>stopProgapation</code>方法<br> 火狐、google及最新的IE版本的结束事件都支持<code>stopPropagation()</code>方法来结束默认行为<br> 老版本的IE如想结束默认行为，须要使用<code>window.event.cancelBubble = true;</code>方法</p>
-<h2 id="四、取消默认事件"><a href="#四、取消默认事件" class="headerlink" title="四、取消默认事件"></a>四、取消默认事件</h2><h3 id="A、事件默认行为定义"><a href="#A、事件默认行为定义" class="headerlink" title="A、事件默认行为定义"></a>A、事件默认行为定义</h3><p>(1)  a链接默认跳转</p>
-<p>(2)  type =submit默认提交表单</p>
-<p>(3)  其他浏览器默认行为…</p>
-<h3 id="B、preventDefault定义"><a href="#B、preventDefault定义" class="headerlink" title="B、preventDefault定义"></a>B、preventDefault定义</h3><p>阻止元素发生默认的行为（例如，当点击提交按钮时阻止对表单的提交）</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">preventDefault()</span><br></pre></td></tr></table></figure>
-<p>示例: 阻止a链接进行跳转，并输出a链接</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">  &lt;meta charset=<span class="string">"utf-8"</span>&gt;</span><br><span class="line">  &lt;title&gt;JS Bin&lt;<span class="regexp">/title&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">   &lt;a href=<span class="string">"http://baidu.com"</span>&gt;百度&lt;<span class="regexp">/a&gt;</span></span><br><span class="line"><span class="regexp">&lt;script type="text/</span>javascript<span class="string">"&gt;</span></span><br><span class="line"><span class="string">   document.querySelector('a').onclick = function(e) &#123;</span></span><br><span class="line"><span class="string">     e.preventDefault()</span></span><br><span class="line"><span class="string">     console.log(this.href)</span></span><br><span class="line"><span class="string">   &#125;</span></span><br><span class="line"><span class="string">&lt;/script&gt;</span></span><br><span class="line"><span class="string">&lt;/html&gt;</span></span><br></pre></td></tr></table></figure>
-<h2 id="五、事件代理"><a href="#五、事件代理" class="headerlink" title="五、事件代理"></a>五、事件代理</h2><h3 id="A、定义-1"><a href="#A、定义-1" class="headerlink" title="A、定义"></a>A、定义</h3><p>事件代理就是利用事件冒泡，只指定一个事件处理程序，就可以管理某一类型的所有事件</p>
-<p>由于事件会在冒泡阶段向上传播到父节点，因此可以把子节点的监听函数统一处理多个子元素的事件，这种方法叫做事件的代理。</p>
-<h3 id="B、案例"><a href="#B、案例" class="headerlink" title="B、案例"></a>B、案例</h3><p>试想一下:假设公司里每次收快递的时候员工都跑到公司门口去收自己的快递,如果同时多个人也同样去收自己快递这样公司就秩序混轮了!如果委托给前台妹子去收快递然后由妹子去派发快递这个过程就叫委托事件!(备注:冒泡思想也有点相仿只不过是由父节点往子节点传递信息)。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> ul = <span class="built_in">document</span>.querySelector(<span class="string">'ul'</span>);</span><br><span class="line">ul.addEventListener(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span>(<span class="params">event</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(event.target.tagName.toLowerCase() === <span class="string">'li'</span>)&#123;</span><br><span class="line">        <span class="comment">//...</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<p>上面代码的<code>click</code>事件的监听函数定义在<code>&lt;ul&gt;</code>节点，但是实际上，它处理的是子节点<code>&lt;li&gt;</code>的<code>click</code>事件。</p>
-<h3 id="C、优点、缺点"><a href="#C、优点、缺点" class="headerlink" title="C、优点、缺点"></a>C、优点、缺点</h3><p>(1)  优点</p>
-<ul>
-<li>定义一个监听函数，就能处理多个子节点的事件。比如ul上代理所有li的click事件就很不错。 </li>
-<li>可以实现当新增子对象时，无需再对其进行事件绑定，监听函数依然有效，对于动态内容部分尤为合适</li>
-</ul>
-<p>(2)  缺点</p>
-<p>事件代理的常用应用应该仅限于上述需求，如果把所有事件都用事件代理，可能会出现事件误判。即本不该被触发的事件被绑定上了事件。</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2054,7 +2108,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">27</span>
+                  <span class="site-state-item-count">29</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

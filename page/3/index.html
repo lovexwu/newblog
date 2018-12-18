@@ -229,6 +229,365 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/04/数据类型/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Wuer">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Wuer">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/10/04/数据类型/" itemprop="url">数据类型</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-04T23:23:25+08:00">
+                2018-10-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="一、分类"><a href="#一、分类" class="headerlink" title="一、分类"></a>一、分类</h2><h3 id="A、七种类型"><a href="#A、七种类型" class="headerlink" title="A、七种类型"></a>A、七种类型</h3><p>(1)  共有六种。（ES6 又新增了第七种 Symbol 类型的值）</p>
+<ul>
+<li>数值（number）：整数和小数（比如1和3.14）</li>
+<li>字符串（string）：字符组成的文本（比如”Hello World”）</li>
+<li>布尔值（boolean）：<code>true</code>（真）和<code>false</code>（假）两个特定值</li>
+<li><code>undefined</code>：表示“未定义”或不存在，即由于目前没有定义，所以此处暂时没有任何值</li>
+<li><code>null</code>：表示无值，即此处的值就是“无”的状态。</li>
+<li>对象（object）：各种值组成的集合</li>
+</ul>
+<p>(2)  通常也可以分成两大类</p>
+<p><strong>原始类型</strong>：数值、字符串、布尔值</p>
+<p><strong>合成类型</strong>：对象</p>
+<p>对象又可以分成三个子类型。</p>
+<ul>
+<li>狭义的对象（object）</li>
+<li>数组（array）</li>
+<li>函数（function）</li>
+</ul>
+<p><strong>注：undefined<code>和</code>null，看成两个特殊值</strong>。</p>
+<h3 id="B、typeof运算符"><a href="#B、typeof运算符" class="headerlink" title="B、typeof运算符"></a>B、typeof运算符</h3><p>返回一个值的数据类型</p>
+<p><strong>(1)  原始类型</strong></p>
+<p>数值、字符串、布尔值分别返回<code>number</code>、<code>string</code>、<code>boolean</code>。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typeof</span> <span class="number">123</span> <span class="comment">// "number"</span></span><br><span class="line"><span class="keyword">typeof</span> <span class="string">'123'</span> <span class="comment">// "string"</span></span><br><span class="line"><span class="keyword">typeof</span> <span class="literal">false</span> <span class="comment">// "boolean"</span></span><br></pre></td></tr></table></figure>
+<p><strong>(2)  函数</strong></p>
+<p>函数返回<code>function</code>。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line"><span class="keyword">typeof</span> f</span><br><span class="line"><span class="comment">// "function"</span></span><br></pre></td></tr></table></figure>
+<p><strong>(3)  undefined</strong></p>
+<p><code>undefined</code>返回<code>undefined</code>。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typeof</span> <span class="literal">undefined</span></span><br><span class="line"><span class="comment">// "undefined"</span></span><br></pre></td></tr></table></figure>
+<p>利用这一点，typeof可以用来检查一个没有声明的变量，而不报错。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">v</span><br><span class="line"><span class="comment">// ReferenceError: v is not defined</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">typeof</span> v</span><br><span class="line"><span class="comment">// "undefined"</span></span><br></pre></td></tr></table></figure>
+<p>上面代码中，变量<code>v</code>没有用<code>var</code>命令声明，直接使用就会报错。但是，放在<code>typeof</code>后面，就不报错了，而是返回<code>undefined</code>。</p>
+<p>实际编程中，这个特点通常用在判断语句。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 错误的写法</span></span><br><span class="line"><span class="keyword">if</span> (v) &#123;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// ReferenceError: v is not defined</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 正确的写法</span></span><br><span class="line"><span class="keyword">if</span> (<span class="keyword">typeof</span> v === <span class="string">"undefined"</span>) &#123;</span><br><span class="line">  <span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>(4)  其他</strong></p>
+<p>除此以外，其他情况都返回<code>object</code>。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typeof</span> <span class="built_in">window</span> <span class="comment">// "object"</span></span><br><span class="line"><span class="keyword">typeof</span> &#123;&#125; <span class="comment">// "object"</span></span><br><span class="line"><span class="keyword">typeof</span> [] <span class="comment">// "object"</span></span><br><span class="line"><span class="keyword">typeof</span> <span class="literal">null</span> <span class="comment">// "object"</span></span><br></pre></td></tr></table></figure>
+<p>从上面代码可以看到，空数组（<code>[]</code>）的类型也是<code>object</code>，这表示在JavaScript内部，数组本质上只是一种特殊的对象。</p>
+<p>既然<code>typeof</code>对数组（array）和对象（object）的显示结果都是<code>object</code>，那么怎么区分它们呢？<code>instanceof</code>运算符可以做到。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> o = &#123;&#125;;</span><br><span class="line"><span class="keyword">var</span> a = [];</span><br><span class="line"></span><br><span class="line">o <span class="keyword">instanceof</span> <span class="built_in">Array</span> <span class="comment">// false</span></span><br><span class="line">a <span class="keyword">instanceof</span> <span class="built_in">Array</span> <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+<h2 id="二、布尔值、null、undefined"><a href="#二、布尔值、null、undefined" class="headerlink" title="二、布尔值、null、undefined"></a>二、布尔值、null、undefined</h2><h3 id="A、布尔值"><a href="#A、布尔值" class="headerlink" title="A、布尔值"></a>A、布尔值</h3><h5 id="1-状态"><a href="#1-状态" class="headerlink" title="(1)  状态"></a>(1)  状态</h5><p>真： true</p>
+<p>假： false</p>
+<p><strong>(2)  下列运算符会返回布尔值</strong></p>
+<ul>
+<li>两元逻辑运算符： <code>&amp;&amp;</code> (And)，<code>||</code> (Or)</li>
+<li>前置逻辑运算符： <code>!</code> (Not)</li>
+<li>相等运算符：<code>===</code>，<code>!==</code>，<code>==</code>，<code>!=</code></li>
+<li>比较运算符：<code>&gt;</code>，<code>&gt;=</code>，<code>&lt;</code>，<code>&lt;=</code></li>
+</ul>
+<p><strong>(3)  转换规则</strong></p>
+<p>除了下面六个值被转为<code>false</code>，其他值都视为<code>true</code>。</p>
+<ul>
+<li><code>undefined</code></li>
+<li><code>null</code></li>
+<li><code>false</code></li>
+<li><code>0</code></li>
+<li><code>NaN</code></li>
+<li><code>&quot;&quot;</code>或<code>&#39;&#39;</code>（空字符串）</li>
+</ul>
+<p>布尔值往往用于程序流程的控制，比如</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (<span class="string">''</span>) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="literal">true</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 没有任何输出</span></span><br></pre></td></tr></table></figure>
+<h5 id="分析："><a href="#分析：" class="headerlink" title="分析："></a>分析：</h5><p>if 命令后面的判断条件，预期应该是一个布尔值，所以JavaScript自动将空字符串，转为布尔值<code>false</code>，导致程序不会进入代码块，所以没有任何输出。</p>
+<p><strong>需要特别注意的是，空数组（<code>[]</code>）和空对象（<code>{}</code>）对应的布尔值，都是`true</strong>`。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> ([]) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="literal">true</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// true</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">if</span> (&#123;&#125;) &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="literal">true</span>);</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// true</span></span><br></pre></td></tr></table></figure>
+<h3 id="B、null、undefined场景使用"><a href="#B、null、undefined场景使用" class="headerlink" title="B、null、undefined场景使用"></a>B、null、undefined场景使用</h3><p>null——–空值。<br>undefined———-“未定义”，其中有4个场景</p>
+<p>(1)  变量声明了，但没有赋值</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> i;</span><br><span class="line">i <span class="comment">// undefined</span></span><br></pre></td></tr></table></figure>
+<p>(2)  调用函数时，应该提供的参数没有提供，该参数等于 undefined</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params">x</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> x;</span><br><span class="line">&#125;</span><br><span class="line">f() <span class="comment">// undefined</span></span><br></pre></td></tr></table></figure>
+<p>(3)  对象没有赋值的属性</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span>  o = <span class="keyword">new</span> <span class="built_in">Object</span>();</span><br><span class="line">o.p <span class="comment">// undefined</span></span><br></pre></td></tr></table></figure>
+<p>(4)  函数没有返回值时，默认返回 undefined</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params"></span>) </span>&#123;&#125;</span><br><span class="line">f() <span class="comment">// undefined</span></span><br></pre></td></tr></table></figure>
+<p>更多请参考</p>
+<p><a href="http://javascript.ruanyifeng.com/grammar/types.html" target="_blank" rel="noopener">http://javascript.ruanyifeng.com/grammar/types.html</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/04/数组、ES5数组方法/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Wuer">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Wuer">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/10/04/数组、ES5数组方法/" itemprop="url">数组、ES5数组方法</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-04T18:05:14+08:00">
+                2018-10-04
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="一、数组"><a href="#一、数组" class="headerlink" title="一、数组"></a>一、数组</h1><h3 id="A、创建数组"><a href="#A、创建数组" class="headerlink" title="A、创建数组"></a>A、创建数组</h3><h4 id="1-构造函数"><a href="#1-构造函数" class="headerlink" title="(1)  构造函数"></a>(1)  构造函数</h4><p>传入一个<strong>数字</strong>参数，则会创建一个长度为参数的数组，如果传入多个，则创建一个数组，参数作为初始化数据加到数组中</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a1 = <span class="keyword">new</span> <span class="built_in">Array</span>(<span class="number">5</span>);</span><br><span class="line"><span class="built_in">console</span>.log(a1.length);<span class="comment">//5</span></span><br><span class="line"><span class="built_in">console</span>.log(a1); <span class="comment">//[] ,数组是空的</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> a2 = <span class="keyword">new</span> <span class="built_in">Array</span>(<span class="number">5</span>,<span class="number">6</span>);</span><br><span class="line"><span class="built_in">console</span>.log(a2.length);<span class="comment">//2</span></span><br><span class="line"><span class="built_in">console</span>.log(a2); <span class="comment">//[5,6]</span></span><br></pre></td></tr></table></figure>
+<h4 id="2-字面量"><a href="#2-字面量" class="headerlink" title="(2)  字面量"></a><strong>(2)  字面量</strong></h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> b = [<span class="number">1</span>, <span class="number">2</span>, <span class="string">'hello'</span>];</span><br></pre></td></tr></table></figure>
+<p>但是使用字面量方式，无论传入几个参数，都会把参数当作初始化内容</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a1 = [<span class="number">5</span>];</span><br><span class="line"><span class="built_in">console</span>.log(a1.length);<span class="comment">//1</span></span><br><span class="line"><span class="built_in">console</span>.log(a1); <span class="comment">//[5]</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> a2 = [<span class="number">5</span>,<span class="number">6</span>];</span><br><span class="line"><span class="built_in">console</span>.log(a2.length);<span class="comment">//2</span></span><br><span class="line"><span class="built_in">console</span>.log(a2); <span class="comment">//[5,6]</span></span><br></pre></td></tr></table></figure>
+<p>使用带初始化参数的方式创建数组的时候，最好最后不要带多余的”,”，在不同的浏览器下对此处理方式不一样</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a1 = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,]</span><br><span class="line"><span class="built_in">console</span>.log(a1.length)</span><br><span class="line"><span class="built_in">console</span>.log(a1)</span><br></pre></td></tr></table></figure>
+<p>这段脚本在现代浏览器上运行结果和我们设想一样，长度是3，但是在低版本IE下确实长度为4的数组，最后一条数据是<code>undefined</code></p>
+<h3 id="B、元素添加、删除"><a href="#B、元素添加、删除" class="headerlink" title="B、元素添加、删除"></a>B、元素添加、删除</h3><h4 id="1-基本方法"><a href="#1-基本方法" class="headerlink" title="(1)  基本方法"></a>(1)  基本方法</h4><p>向数组内添加元素方法，直接使用索引就可以（index没必要连续）</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a=[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>];</span><br><span class="line">a[<span class="number">3</span>]=<span class="number">4</span>;</span><br><span class="line"><span class="built_in">console</span>.log(a);<span class="comment">//[1, 2, 3, 4]</span></span><br></pre></td></tr></table></figure>
+<p>数组也是对象，索引只是特殊的属性，所以我们可以使用删除对象属性的方法,使用delete 删除数组元素</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">delete</span> a[<span class="number">2</span>];</span><br><span class="line"><span class="built_in">console</span>.log(a[<span class="number">2</span>]); <span class="comment">//undefined</span></span><br></pre></td></tr></table></figure>
+<p>这样和直接把a[2]赋值为undefined类似，不会改变数组长度，也不会改变其他数据的index和value对应关系</p>
+<h4 id="2-栈方法"><a href="#2-栈方法" class="headerlink" title="(2)  栈方法"></a>(2)  栈方法</h4><p>上面例子发现了，尤其是其删除方法，并不是我们希望的表现形式，我们很多时候希望删除中间一个元素后，后面元素的index都自动减一，数组length同时减一，就好像在一个堆栈中拿去的一个，数组已经帮我们做好了这种操作方式，<code>pop</code>和<code>push</code>能够让我们使用堆栈那样先入后出使用数组</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];</span><br><span class="line">a.push(<span class="number">4</span>);</span><br><span class="line"><span class="built_in">console</span>.log(a);<span class="comment">//[1, 2, 3, 4]</span></span><br><span class="line"><span class="built_in">console</span>.log(a.length);<span class="comment">//4</span></span><br><span class="line"><span class="built_in">console</span>.log(a.pop());<span class="comment">//4</span></span><br><span class="line"><span class="built_in">console</span>.log(a); <span class="comment">//[1, 2, 3]</span></span><br><span class="line"><span class="built_in">console</span>.log(a.length);<span class="comment">//3</span></span><br></pre></td></tr></table></figure>
+<h4 id="3-队列方法"><a href="#3-队列方法" class="headerlink" title="(3)  队列方法"></a>(3)  队列方法</h4><p>既然栈方法都实现了，先入先出的队列怎么能少，<code>shift</code>方法可以删除数组index最小元素，并使后面元素index都减一，length也减一，这样使用shift/push就可以模拟队列了，当然与shift方法对应的有一个<code>unshift</code>方法，用于向数组头部添加一个元素</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a=[<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];</span><br><span class="line">a.unshift(<span class="number">4</span>);</span><br><span class="line"><span class="built_in">console</span>.log(a);<span class="comment">//[4, 1, 2, 3]</span></span><br><span class="line"><span class="built_in">console</span>.log(a.length);<span class="comment">//4</span></span><br><span class="line"><span class="built_in">console</span>.log(a.shift());<span class="comment">//4</span></span><br><span class="line"><span class="built_in">console</span>.log(a); <span class="comment">//[1, 2, 3]</span></span><br><span class="line"><span class="built_in">console</span>.log(a.length);<span class="comment">//3</span></span><br></pre></td></tr></table></figure>
+<h3 id="C、常用命令"><a href="#C、常用命令" class="headerlink" title="C、常用命令"></a>C、常用命令</h3><h4 id="1-push———–数组最后添加一个元素"><a href="#1-push———–数组最后添加一个元素" class="headerlink" title="(1)  push———–数组最后添加一个元素"></a>(1)  push———–数组最后添加一个元素</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]</span><br><span class="line">arr.push(<span class="string">'ok'</span>)   <span class="comment">//给数组最后添加一个元素</span></span><br><span class="line"><span class="comment">//[1, 2, 3, "ok"]</span></span><br></pre></td></tr></table></figure>
+<h4 id="2-pop————数组最后一位踢出来"><a href="#2-pop————数组最后一位踢出来" class="headerlink" title="(2)  pop————数组最后一位踢出来"></a>(2)  pop————数组最后一位踢出来</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">arr.pop() <span class="comment">//把数组最后一位踢出来</span></span><br><span class="line"><span class="comment">//[1, 2, 3]</span></span><br></pre></td></tr></table></figure>
+<h4 id="3-pop————数组最后一位踢出来"><a href="#3-pop————数组最后一位踢出来" class="headerlink" title="(3)  pop————数组最后一位踢出来"></a>(3)  pop————数组最后一位踢出来</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">arr.shift() <span class="comment">//把数组第一位踢出来</span></span><br><span class="line"><span class="comment">//[2, 3]</span></span><br></pre></td></tr></table></figure>
+<h4 id="4-unshift————在数组第一位添加一个元素"><a href="#4-unshift————在数组第一位添加一个元素" class="headerlink" title="(4)  unshift————在数组第一位添加一个元素"></a>(4)  unshift————在数组第一位添加一个元素</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">arr.unshift(<span class="string">'haha'</span>) <span class="comment">//在数组第一位添加一个元素</span></span><br><span class="line"><span class="comment">//["haha", 2, 3]</span></span><br></pre></td></tr></table></figure>
+<h4 id="5-join————用某个符号连接数组所有的值，生成字符串"><a href="#5-join————用某个符号连接数组所有的值，生成字符串" class="headerlink" title="(5)  join————用某个符号连接数组所有的值，生成字符串"></a>(5)  join————用某个符号连接数组所有的值，生成字符串</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">arr.join(<span class="string">'-'</span>) <span class="comment">//连接</span></span><br><span class="line"><span class="comment">//"2-3"</span></span><br></pre></td></tr></table></figure>
+<h4 id="6-splice————从数组的第一位开始，替换掉一位"><a href="#6-splice————从数组的第一位开始，替换掉一位" class="headerlink" title="(6)  splice————从数组的第一位开始，替换掉一位"></a>(6)  splice————从数组的第一位开始，替换掉一位</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">arr.splice(<span class="number">1</span>,<span class="number">1</span>,<span class="string">'hello'</span>,<span class="string">'one'</span>,<span class="string">'two'</span>) <span class="comment">//从数组的第一位开始，替换掉一位</span></span><br><span class="line"><span class="comment">//[2, "hello", "one", "two"]</span></span><br></pre></td></tr></table></figure>
+<h4 id="7-sort————排序"><a href="#7-sort————排序" class="headerlink" title="(7)  sort————排序"></a>(7)  sort————排序</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">arr.sort()  <span class="comment">//排序</span></span><br><span class="line"><span class="comment">//[2, "hello", "one", "two"]</span></span><br></pre></td></tr></table></figure>
+<h4 id="8-reverse————逆序即倒序"><a href="#8-reverse————逆序即倒序" class="headerlink" title="(8)  reverse————逆序即倒序"></a>(8)  reverse————逆序即倒序</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">arr.reverse() <span class="comment">//逆序即倒序</span></span><br><span class="line"><span class="comment">//["two", "one", "hello", 2]</span></span><br></pre></td></tr></table></figure>
+<h4 id="9-concat————拼接数组"><a href="#9-concat————拼接数组" class="headerlink" title="(9)  concat————拼接数组"></a>(9)  concat————拼接数组</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">arr.concat(<span class="string">'super'</span>) <span class="comment">//拼接</span></span><br><span class="line"><span class="comment">//["two", "one", "hello", 2, "super"]</span></span><br></pre></td></tr></table></figure>
+<h3 id="D、ES5-数组拓展"><a href="#D、ES5-数组拓展" class="headerlink" title="D、ES5 数组拓展"></a>D、ES5 数组拓展</h3><h4 id="1-Array-isArray-obj"><a href="#1-Array-isArray-obj" class="headerlink" title="(1)  Array.isArray(obj)"></a>(1)  Array.isArray(obj)</h4><p>Array对象的一个静态函数，用来判断一个对象是不是数组</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">var a = [];</span><br><span class="line">var b = new Date();</span><br><span class="line">console.log(Array.isArray(a)); //true</span><br><span class="line">console.log(Array.isArray(b)); //false</span><br></pre></td></tr></table></figure>
+<p>####(2)  indexOf(element)<br>查找数组内指定元素的位置，查找到第一个返回其索引，没有返回-1</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</span><br><span class="line"><span class="built_in">console</span>.log(arr.indexOf(<span class="number">3</span>)) <span class="comment">//2</span></span><br><span class="line"><span class="built_in">console</span>.log(arr.indexOf(<span class="number">9</span>)) <span class="comment">//-1</span></span><br></pre></td></tr></table></figure>
+<h4 id="3-forEach-element-index-array"><a href="#3-forEach-element-index-array" class="headerlink" title="(3)  forEach(element,index,array)"></a>(3)  forEach(element,index,array)</h4><p> 遍历数组，参数为一个回调函数，回调函数有三个参数：</p>
+<p>1、当前元素<br>2、当前元素索引<br>3、整个数组</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</span><br><span class="line">arr.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">e,index</span>)</span>&#123;</span><br><span class="line">   arr[index] = e + <span class="number">1</span>      </span><br><span class="line">&#125;)</span><br><span class="line"><span class="built_in">console</span>.log(arr) <span class="comment">//[2, 3, 4, 5, 6]</span></span><br></pre></td></tr></table></figure>
+<p>####(4)  map (function(element))</p>
+<p>与forEach类似，遍历数组，回调函数返回值组成一个新数组返回，新数组索引结构和原数组一致，原数组不变</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</span><br><span class="line"><span class="built_in">console</span>.log(arr.map(<span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;</span><br><span class="line">   <span class="keyword">return</span> e*e <span class="comment">// [1, 4, 9, 16, 25]</span></span><br><span class="line">&#125;))</span><br><span class="line"><span class="built_in">console</span>.log(arr) <span class="comment">//[1, 2, 3, 4, 5]</span></span><br></pre></td></tr></table></figure>
+<p><strong>注：在空数组上调用,every返回true,some 返回false</strong></p>
+<h4 id="5-every-function-element-index-array"><a href="#5-every-function-element-index-array" class="headerlink" title="(5)  every (function(element,index,array))"></a>(5)  every (function(element,index,array))</h4><p>所有函数的每个回调函数都返回true时才会返回true,当遇到false时终止执行，返回false</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</span><br><span class="line">arr.every(<span class="function"><span class="keyword">function</span>(<span class="params">val</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> val&gt;<span class="number">0</span>?<span class="literal">true</span>:<span class="literal">false</span></span><br><span class="line">&#125;)<span class="comment">//true</span></span><br></pre></td></tr></table></figure>
+<p>####(6)  some (function(element,index,array))</p>
+<p>只要有一个回调函数返回true时终止执行并返回true,否则返回false </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>]</span><br><span class="line">arr.some(<span class="function"><span class="keyword">function</span>(<span class="params">val</span>)</span>&#123;</span><br><span class="line">   <span class="keyword">return</span> val&gt;<span class="number">0</span>?<span class="literal">true</span>:<span class="literal">false</span></span><br><span class="line">&#125;)<span class="comment">//true</span></span><br></pre></td></tr></table></figure>
+<h4 id="7-filter-function-element"><a href="#7-filter-function-element" class="headerlink" title="(7)  filter(function(element))"></a>(7)  filter(function(element))</h4><p>返回一个子集，回调函数用于逻辑判断是否返回，返回true则把当前元素加入到返回数组中，false则不加<br>数组只包含返回true的值，索引缺失的不包括，原数组保持不变</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]</span><br><span class="line"><span class="built_in">console</span>.log(arr.filter(<span class="function"><span class="keyword">function</span>(<span class="params">val</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> val &gt; <span class="number">3</span></span><br><span class="line">&#125;)) <span class="comment">// [4, 5, 6]</span></span><br><span class="line"><span class="built_in">console</span>.log(arr) <span class="comment">// [1,2,3,4,5,6]</span></span><br></pre></td></tr></table></figure>
+<h4 id="8-reduce-function-v1-v2-value"><a href="#8-reduce-function-v1-v2-value" class="headerlink" title="(8)  reduce(function(v1,v2),value)"></a>(8)  reduce(function(v1,v2),value)</h4><p>遍历数组，调用回调函数，将数组元素组合成一个值，从索引最小值开始，方法有两个参数</p>
+<p>1、回调函数：把两个值合为一个，返回结果<br>2、value : 一个初始值，可选</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> arr = [<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>]</span><br><span class="line">arr.reduce(<span class="function"><span class="keyword">function</span>(<span class="params">v1,v2</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> v1 + v2</span><br><span class="line">&#125;) <span class="comment">//21</span></span><br></pre></td></tr></table></figure>
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/03/域名配置/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -1295,7 +1654,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">27</span>
+                  <span class="site-state-item-count">29</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
