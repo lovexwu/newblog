@@ -300,15 +300,11 @@
       
         
           
-            <h1 id="一、区别"><a href="#一、区别" class="headerlink" title="一、区别"></a>一、区别</h1><ul>
-<li><strong>jQuery 对象：</strong>通过jQuery包装DOM对象后产生的对象</li>
-</ul>
+            <h1 id="一、区别"><a href="#一、区别" class="headerlink" title="一、区别"></a>一、区别</h1><p>(1)  <strong>jQuery 对象：</strong>通过jQuery包装DOM对象后产生的对象</p>
 <p>假设获取header元素内的文本内容,其中<strong>text()是jQuery里的方法</strong><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">'.header'</span>).text()</span><br></pre></td></tr></table></figure></p>
 <p>等同于<strong>DOM对象实现</strong></p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.querySelector(<span class="string">'.header'</span>).innerText</span><br></pre></td></tr></table></figure>
-<ul>
-<li><strong>DOM对象：</strong>w3c标准用于操作文档的API</li>
-</ul>
+<p>(2)  <strong>DOM对象：</strong>w3c标准用于操作文档的API</p>
 <p>#二、DOM对象转jQuery对象</p>
 <p>把DOM对象包装起来【$(DOM对象)】，就可以获得一个jQuery对象了</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> header = <span class="built_in">document</span>.querySelector(<span class="string">'.header'</span>)  <span class="comment">//Dom 对象</span></span><br><span class="line">$header = $(header) <span class="comment">//jQuery对象</span></span><br></pre></td></tr></table></figure>
@@ -317,7 +313,6 @@
 <p>#总结</p>
 <p>可以任意的相互转换jQuery对象和DOM对象。<br><strong>但，jQuery对象是jQuery独有的，只能使用jQuery里的方法，不能使用DOM的方法，反之一样</strong><br>像类似下面的写法是不可以的，这样子会报错</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">'.header'</span>).innerText</span><br><span class="line"><span class="built_in">document</span>.querySelector(<span class="string">'.header'</span>).text()</span><br></pre></td></tr></table></figure>
-
           
         
       
