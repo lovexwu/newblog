@@ -4,7 +4,7 @@ date: 2018-12-19 11:48:42
 tags:
 ---
 
-##一、jQuery.Ajax()
+## 一、jQuery.Ajax()
 
 #### A、设置方式
 
