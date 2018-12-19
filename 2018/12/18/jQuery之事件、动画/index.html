@@ -79,17 +79,23 @@
 
 
 
-<meta name="description" content="一、事件在1.7之前的版本中jQuery处理事件有多个方法， (google 搜索: jquery live bind degelate)作用各不相同，后来统一的使用 on / off  方法 (1)  .on( events [,selector ] [,data ], handler(eventObject) ) 参数及其复杂，我们看一下各个参数的意思  events：一个或多个空格分隔的事件">
+<meta name="description" content="一、事件在1.7之前的版本中jQuery处理事件有多个方法， (google 搜索: jquery live bind degelate)作用各不相同，后来统一的使用 on / off  方法 (1)  .on( events [,selector ][,data ], handler(eventObject) ) A、参数 events：事件类型和可选的命名空间，比如”click”, “keyd">
 <meta property="og:type" content="article">
 <meta property="og:title" content="jQuery之事件">
 <meta property="og:url" content="http://yoursite.com/2018/12/18/jQuery之事件、动画/index.html">
 <meta property="og:site_name" content="Wuer">
-<meta property="og:description" content="一、事件在1.7之前的版本中jQuery处理事件有多个方法， (google 搜索: jquery live bind degelate)作用各不相同，后来统一的使用 on / off  方法 (1)  .on( events [,selector ] [,data ], handler(eventObject) ) 参数及其复杂，我们看一下各个参数的意思  events：一个或多个空格分隔的事件">
+<meta property="og:description" content="一、事件在1.7之前的版本中jQuery处理事件有多个方法， (google 搜索: jquery live bind degelate)作用各不相同，后来统一的使用 on / off  方法 (1)  .on( events [,selector ][,data ], handler(eventObject) ) A、参数 events：事件类型和可选的命名空间，比如”click”, “keyd">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2018-12-18T10:42:40.250Z">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14339384-88684406823d4687.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14339384-40136199a7c14b9a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14339384-839dd3b257fedfbe.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14339384-25bbdc8b142ef135.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14339384-f70eee006f203447.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2018-12-19T03:28:05.487Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="jQuery之事件">
-<meta name="twitter:description" content="一、事件在1.7之前的版本中jQuery处理事件有多个方法， (google 搜索: jquery live bind degelate)作用各不相同，后来统一的使用 on / off  方法 (1)  .on( events [,selector ] [,data ], handler(eventObject) ) 参数及其复杂，我们看一下各个参数的意思  events：一个或多个空格分隔的事件">
+<meta name="twitter:description" content="一、事件在1.7之前的版本中jQuery处理事件有多个方法， (google 搜索: jquery live bind degelate)作用各不相同，后来统一的使用 on / off  方法 (1)  .on( events [,selector ][,data ], handler(eventObject) ) A、参数 events：事件类型和可选的命名空间，比如”click”, “keyd">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/14339384-88684406823d4687.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
 
 
 
@@ -300,18 +306,119 @@
 
       
         <h1 id="一、事件"><a href="#一、事件" class="headerlink" title="一、事件"></a>一、事件</h1><p>在1.7之前的版本中jQuery处理事件有多个方法， (google 搜索: jquery live bind degelate)作用各不相同，后来统一的使用 <strong>on / off</strong>  方法</p>
-<p>(1)  .on( events [,selector ] [,data ], handler(eventObject) )</p>
-<p>参数及其复杂，我们看一下各个参数的意思</p>
-<ul>
-<li><p>events：一个或多个<strong>空格分隔</strong>的<strong>事件类型</strong>和可选的<strong>命名空间</strong>，或仅仅是<strong>命名空间</strong>，比如”click”, “keydown.myPlugin”, 或者 “.myPlugin”</p>
+<p>(1)  .on( events [,selector ][,data ], handler(eventObject) )</p>
+<h5 id="A、参数"><a href="#A、参数" class="headerlink" title="A、参数"></a>A、参数</h5><ul>
+<li><p>events：<strong>事件类型</strong>和可选的<strong>命名空间</strong>，比如”click”, “keydown.myPlugin”</p>
+<p>注：如有<strong>多个</strong>事件类型，用<strong>空格</strong>分隔</p>
 </li>
-<li><p>selector：一个选择器字符串，用于过滤出被选中的元素中能触发事件的后代元素。如果选择器是 null 或者忽略了该选择器，那么被选中的元素总是能触发事件</p>
+<li><p>selector：一个选择器字符串，用于<strong>过滤</strong>出<strong>被选中的元素中</strong>能触发事件的<strong>后代元素</strong>。</p>
+<p>注：选择器是 <strong>null 或者忽略了该选择器</strong>，那么被选中的元素<strong>总是能触发事件</strong></p>
 </li>
-<li><p>data：当一个事件被触发时，要传递给事件处理函数的event.data</p>
+<li><p>data：当一个<strong>事件被触发</strong>时，要传递给事件处理函数的<strong>event.data</strong></p>
 </li>
-<li><p>handler(eventObject)：事件被触发时，执行的函数。若该函数只是要执行return false的话，那么该参数位置可以直接简写成 false</p>
+<li><p>handler(eventObject)：<strong>事件被触发时，执行的函数</strong>。</p>
+<p>注：若该函数只是执行<strong>return false</strong>，那么该参数位置可以直接<strong>简写成 false</strong></p>
 </li>
 </ul>
+<h5 id="B、实例"><a href="#B、实例" class="headerlink" title="B、实例"></a>B、实例</h5><p>html部分</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"box"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>1<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>2<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>3<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>4<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">id</span>=<span class="string">"ipt"</span> <span class="attr">type</span>=<span class="string">"text"</span>&gt;</span> <span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">"btn"</span>&gt;</span>添加<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"wrap"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>Js 部分</p>
+<ul>
+<li><strong>场景一、点击li，wrap里展示li里内容</strong></li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">'.box li'</span>).on(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">var</span> str = $(<span class="keyword">this</span>).text()<span class="comment">//所点击的元素的内容 即li元素里面的1,2,3,4</span></span><br><span class="line">  $(<span class="string">'#wrap'</span>).text(str)</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// .on事件 其实类似于原生js 的addEventListener</span></span><br></pre></td></tr></table></figure>
+<p>也可以简写为事件后边直接回调</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">'.box&gt;ul&gt;li'</span>).click(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">var</span> str = $(<span class="keyword">this</span>).text()</span><br><span class="line">  $(<span class="string">'#wrap'</span>).text(str)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>如果需要<strong>解绑对应的事件</strong>，此时需要给事件加一个<strong>命名空间</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">'.box li'</span>).on(<span class="string">'click.hello'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="number">3</span>)</span><br><span class="line">  <span class="keyword">var</span> str = $(<span class="keyword">this</span>).text()</span><br><span class="line">  $(<span class="string">'#wrap'</span>).text(str)</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">//命名空间没什么特别的作用，只不过在解绑事件时便于区分绑定的事件</span></span><br><span class="line">$(<span class="string">'.box li'</span>).off(<span class="string">'click.hello'</span>)</span><br></pre></td></tr></table></figure>
+<p>执行结果</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14339384-88684406823d4687.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p> 上图我们可以发现，click.hello 解绑事件了，但是没有影响到click.world事件</p>
+<p><strong>注：解绑事件只会解绑对应的事件，其他事件不受影响</strong></p>
+<ul>
+<li>场景二、点击button ,把 input 的值变成 li 添加到ul</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">'#btn'</span>).on(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">var</span> value = $(<span class="string">'#ipt'</span>).val()</span><br><span class="line">  $(<span class="string">'.box&gt;ul'</span>).append(<span class="string">'&lt;li&gt;'</span>+value+<span class="string">'&lt;/li&gt;'</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p><img src="https://upload-images.jianshu.io/upload_images/14339384-40136199a7c14b9a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>绑定事件只对页面已有元素的绑定，<strong>新增的元素没有绑定事件，可以用事件代理</strong>解决这个问题</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">'#btn'</span>).on(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">var</span> value = $(<span class="string">'#ipt'</span>).val()</span><br><span class="line">  $(<span class="string">'.box&gt;ul'</span>).append(<span class="string">'&lt;li&gt;'</span>+value+<span class="string">'&lt;/li&gt;'</span>)</span><br><span class="line">&#125;)<span class="comment">//这里的 this 是你所点击的元素</span></span><br><span class="line"></span><br><span class="line">$(<span class="string">'.box ul'</span>).on(<span class="string">'click'</span>, <span class="string">'li'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">var</span> str = $(<span class="keyword">this</span>).text()<span class="comment">//这里的this也是代表所点击的元素li</span></span><br><span class="line">  $(<span class="string">'#wrap'</span>).text(str)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p><img src="https://upload-images.jianshu.io/upload_images/14339384-839dd3b257fedfbe.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<ul>
+<li><strong>场景三  绑定事件时，给回调函数传递数据</strong></li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">'.box'</span>).on(<span class="string">'click'</span>, &#123;<span class="attr">name</span>: <span class="string">'hunger'</span>&#125;, <span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(e.data)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p><img src="https://upload-images.jianshu.io/upload_images/14339384-25bbdc8b142ef135.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>(2)  .one( events [, selector ][, data ], handler(eventObject) )</p>
+<p>同 on，绑定事件，但<strong>只执行一次</strong></p>
+<p>(3)  .off( events [, selector ][, handler ] )</p>
+<p>移除(解绑)一个事件处理函数</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">'.box li'</span>).off(<span class="string">'click'</span>)</span><br></pre></td></tr></table></figure>
+<p>(4)  .trigger( eventType [, extraParameters ] )</p>
+<p>根据绑定到匹配元素的给定的事件类型执行所有的处理程序和行为</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">'.box li'</span>).on(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log($(<span class="keyword">this</span>).text())</span><br><span class="line">&#125;);</span><br><span class="line">$(<span class="string">'.box li'</span>).trigger(<span class="string">'click'</span>)</span><br></pre></td></tr></table></figure>
+<p>其实就是<strong>不需要手动操作</strong>，代码自已去触发事件</p>
+<p>(5)  其他常见事件</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14339384-f70eee006f203447.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<h1 id="二、动画"><a href="#二、动画" class="headerlink" title="二、动画"></a>二、动画</h1><h3 id="A、常用动画"><a href="#A、常用动画" class="headerlink" title="A、常用动画"></a>A、常用动画</h3><p>(1)  .hide([duration ][,easing ] [,complete ])</p>
+<p>用于隐藏元素，没有参数的时候等同于直接设置 display 属性为 none</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">'.box'</span>).hide()</span><br></pre></td></tr></table></figure>
+<p>等同于</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">'.box'</span>).css(<span class="string">'display'</span>,<span class="string">'none'</span>)</span><br></pre></td></tr></table></figure>
+<p>(2)  .show( [duration ][, easing ] [, complete ] )</p>
+<p>用于显示元素，用法和 hide 类似</p>
+<p>(3)  .fadeIn( [duration ][, easing ] [, complete ] )</p>
+<p>通过淡入的方式显示匹配元素，参数含义和上面相同</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">'#book'</span>).fadeIn(<span class="string">'slow'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"><span class="comment">// Animation complete</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>(4)  .fadeOut( [duration ][, easing ] [, complete ] )</p>
+<p>通过淡出的方式隐藏匹配元素</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">'#book'</span>).fadeOut(<span class="string">'slow'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"><span class="comment">// Animation complete.</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>(5)  .slideDown( [duration ][, easing ] [, complete ] )</p>
+<p>用滑动动画显示一个匹配元素，方法将给匹配元素的高度的动画，这会导致页面的下面部分滑下去，弥补了显示的方式</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">'#book'</span>).slideDown(<span class="string">'slow'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">// Animation complete.</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>(6)  .slideUp( [duration ][, easing ] [, complete ] )</p>
+<p>用滑动动画隐藏一个匹配元素，方法将给匹配元素的高度的动画，这会导致页面的下面部分滑上去，当一个隐藏动画后，高度值达到0的时候，display 样式属性被设置为none，以确保该元素不再影响页面布局。 display 样式属性将被设置为none，以确保该元素不再影响页面布局。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">'#book'</span>).slideUp(<span class="string">'slow'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">// Animation complete.</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>(7)  .slideToggle( [duration ][, easing ] [, complete ] )</p>
+<p>用滑动动画<strong>显示或隐藏</strong>一个匹配元素，方法将给匹配元素的高度的动画，这会导致页面中，在这个元素下面的内容往下或往上滑。display属性值保存在jQuery的数据缓存中，所以display可以方便以后可以恢复到其初始值。</p>
+<p>如果一个元素的display属性值为inline，然后是隐藏和显示，这个元素将再次显示inline。当一个隐藏动画后，高度值达到0的时候，display 样式属性被设置为none，以确保该元素不再影响页面布局。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">'#clickme'</span>).click(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"> $(<span class="string">'#book'</span>).slideToggle(<span class="string">'slow'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"> <span class="comment">// Animation complete.</span></span><br><span class="line"> &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>demo 地址参考   <a href="http://js.jirengu.com/sogiy/embed?html,console,output" target="_blank" rel="noopener">http://js.jirengu.com/sogiy/embed?html,console,output</a></p>
+<h3 id="B、自定义动画"><a href="#B、自定义动画" class="headerlink" title="B、自定义动画"></a>B、自定义动画</h3><p>简单的动画不能满足需求时，jquery提供了自定义动画行为的方法</p>
+<p>.animate( properties [, duration ][, easing ] [, complete ] )</p>
+<p>可参考官网API <a href="https://api.jquery.com/animate/" target="_blank" rel="noopener">https://api.jquery.com/animate/</a></p>
+<p><strong>注：properties是一个CSS属性和值的对象,动画将根据这组对象移动</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">'#clickme'</span>).click(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  $(<span class="string">'#book'</span>).animate(&#123;</span><br><span class="line">    opacity: <span class="number">0.25</span>,</span><br><span class="line">    left: <span class="string">'+=50'</span>,</span><br><span class="line">    height: <span class="string">'toggle'</span></span><br><span class="line">  &#125;, <span class="number">5000</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">// Animation complete.</span></span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>demo 地址参考  <a href="http://js.jirengu.com/viqiv/1/edit?html,css,output" target="_blank" rel="noopener">http://js.jirengu.com/viqiv/1/edit?html,css,output</a></p>
+<h3 id="C、动画队列"><a href="#C、动画队列" class="headerlink" title="C、动画队列"></a>C、动画队列</h3><h5 id="1-写法方式"><a href="#1-写法方式" class="headerlink" title="(1)  写法方式"></a>(1)  写法方式</h5><ul>
+<li><strong>方式一：将动画连续的写就会形成一个动画队列，按顺序从上至下依次执行</strong></li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">'#btn4'</span>).click(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">      $(<span class="string">'.box'</span>).animate(&#123;</span><br><span class="line">        left: <span class="string">'100px'</span></span><br><span class="line">      &#125;, <span class="number">1000</span>)  <span class="comment">// 执行第一帧动画</span></span><br><span class="line">      $(<span class="string">'.box'</span>).animate(&#123;</span><br><span class="line">        left: <span class="string">'100px'</span>,</span><br><span class="line">        top: <span class="string">'100px'</span></span><br><span class="line">      &#125;, <span class="number">1000</span>) <span class="comment">// 执行第二帧动画</span></span><br><span class="line">      $(<span class="string">'.box'</span>).animate(&#123;</span><br><span class="line">        left: <span class="string">'0'</span>,</span><br><span class="line">        top: <span class="string">'100px'</span></span><br><span class="line">      &#125;, <span class="number">1000</span>) <span class="comment">// 执行第三帧动画</span></span><br><span class="line">      $(<span class="string">'.box'</span>).animate(&#123;</span><br><span class="line">        left: <span class="string">'0'</span>,</span><br><span class="line">        top: <span class="string">'0'</span></span><br><span class="line">      &#125;, <span class="number">1000</span>) <span class="comment">// 执行第四帧动画</span></span><br><span class="line">    &#125;)</span><br></pre></td></tr></table></figure>
+<ul>
+<li><strong>方式二：将后续动画写入第一个动画的回调函数里</strong></li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">$box.hide(<span class="number">1000</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">   $box.show(<span class="number">1000</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">     $box.fadeOut(<span class="string">'slow'</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">       $box.fadeIn(<span class="string">'slow'</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">         $box.slideUp(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">           $box.slideDown(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">             <span class="built_in">console</span>.log(<span class="string">'动画执行完毕'</span>)</span><br><span class="line">           &#125;)</span><br><span class="line">         &#125;)</span><br><span class="line">       &#125;)</span><br><span class="line">     &#125;)</span><br><span class="line">   &#125;)</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">//等价于</span></span><br><span class="line">$box.hide(<span class="number">1000</span>)</span><br><span class="line">    .show(<span class="number">1000</span>)</span><br><span class="line">    .fadeOut()</span><br><span class="line">    .fadeIn()</span><br><span class="line">    .slideUp()</span><br><span class="line">    .slideDown(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">'真的完毕了'</span>)</span><br><span class="line">    &#125;)</span><br></pre></td></tr></table></figure>
+<p><strong>特别注意：</strong>队列运行在元素上<strong>异步地</strong>调用动作序列的。例如下面代码，执行顺序是 <strong>马上显示字符showla</strong>，再执行<strong>show动画</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">'#btn-box1'</span>).on(<span class="string">'click'</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    $(<span class="string">'.box'</span>).show(<span class="number">400</span>) <span class="comment">// 第二次执行</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'showla'</span>) <span class="comment">// 第一次执行</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>可以把<strong>显示showla 代码</strong>放到show动画回调函数里</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">'#btn-box1'</span>).on(<span class="string">'click'</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    $(<span class="string">'.box'</span>).show(<span class="number">400</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123; <span class="comment">// 第一次执行</span></span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'showla'</span>) <span class="comment">// 第二次执行</span></span><br><span class="line">    &#125;)  </span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>(2)  清除和停止</p>
+<ul>
+<li>.clearQueue</li>
+</ul>
+<p>清除动画队列中未执行的动画</p>
+<ul>
+<li>.finish</li>
+</ul>
+<p><strong>停止当前动画</strong>，并清除动画队列中所有未完成的动画,最终<strong>展示动画队列最后一帧的最终状态</strong></p>
+<ul>
+<li>.stop( [clearQueue ][, jumpToEnd ] )</li>
+</ul>
+<p>stop()：停止当前正在运行的动画 ，立刻去执行后面的动画</p>
+<p>.stop(true, false) ：停止当前动画，并清除未执行的动画队列</p>
+<p>.stop(true, true)：停止当前动画，并清除未执行的动画队列，并且当前动画展示最终状态</p>
+<p>clearQueue(default: false)</p>
+<p>jumpToEnd(default: false)</p>
+<p>demo 地址参考 <a href="http://js.jirengu.com/viqiv/1/edit?html,css,output" target="_blank" rel="noopener">http://js.jirengu.com/viqiv/1/edit?html,css,output</a></p>
 
       
     </div>
@@ -458,7 +565,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一、事件"><span class="nav-number">1.</span> <span class="nav-text">一、事件</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一、事件"><span class="nav-number">1.</span> <span class="nav-text">一、事件</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#A、参数"><span class="nav-number">1.0.0.0.1.</span> <span class="nav-text">A、参数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#B、实例"><span class="nav-number">1.0.0.0.2.</span> <span class="nav-text">B、实例</span></a></li></ol></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#二、动画"><span class="nav-number">2.</span> <span class="nav-text">二、动画</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#A、常用动画"><span class="nav-number">2.0.1.</span> <span class="nav-text">A、常用动画</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#B、自定义动画"><span class="nav-number">2.0.2.</span> <span class="nav-text">B、自定义动画</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#C、动画队列"><span class="nav-number">2.0.3.</span> <span class="nav-text">C、动画队列</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-写法方式"><span class="nav-number">2.0.3.0.1.</span> <span class="nav-text">(1)  写法方式</span></a></li></ol></li></ol></li></div>
             
 
           </div>
