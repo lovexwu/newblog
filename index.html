@@ -229,6 +229,169 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/24/移动端项目手机预览操作方式/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Wuer">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Wuer">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/12/24/移动端项目手机预览操作方式/" itemprop="url">移动端项目手机预览操作方式</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-24T12:39:44+08:00">
+                2018-12-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h4 id="一、方式一"><a href="#一、方式一" class="headerlink" title="一、方式一"></a>一、方式一</h4><p>pc 开发 ，检查元素 ，进入手机模式，选择相应的机型进行调试，就能看到对应的页面效果</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14339384-552825b5a80c5a09.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<h4 id="二、方式二"><a href="#二、方式二" class="headerlink" title="二、方式二"></a>二、方式二</h4><p>页面在<strong>服务器中</strong>运行，启用 <strong>http-server</strong></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14339384-a1405e18dd22ce68.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>好啦，pc上我们打开地址 <a href="http://127.0.0.1:8080" target="_blank" rel="noopener">http://127.0.0.1:8080</a><br>那手机上打开地址 <a href="http://192.168.1.102:8080" target="_blank" rel="noopener">http://192.168.1.102:8080</a>  其实它是一个局域网的 ip 地址 (也就是电脑ip地址) </p>
+<p><strong>注：手机和电脑必须是同一个wife的情况下，才能看到页面效果</strong></p>
+<h4 id="三、方式三"><a href="#三、方式三" class="headerlink" title="三、方式三"></a>三、方式三</h4><p>(1)、把局域网地址  <a href="http://192.168.1.102:8080" target="_blank" rel="noopener">http://192.168.1.102:8080</a> 发到手机qq上，贴到浏览器打开预览</p>
+<p>(2)、用二维码扫码，打开一个二维码生成器，把局域网地址  <a href="http://192.168.1.102:8080" target="_blank" rel="noopener">http://192.168.1.102:8080</a> 生成二维码，手机扫码预览</p>
+<h4 id="四、方式四"><a href="#四、方式四" class="headerlink" title="四、方式四"></a>四、方式四</h4><p>打开jsbin.com ，直接在这里面写页面，然后在手机上打开生成的jsbin 地址，而且你pc上更改样式保存，手机上也会自动刷新</p>
+<h4 id="五、方式五"><a href="#五、方式五" class="headerlink" title="五、方式五"></a>五、方式五</h4><h5 id="A、browser-sync-工具安装"><a href="#A、browser-sync-工具安装" class="headerlink" title="A、browser-sync 工具安装"></a>A、browser-sync 工具安装</h5><p><strong>1､ 终端运行代码</strong> </p>
+<blockquote>
+<p> npm install -g browser-sync  </p>
+</blockquote>
+<p><img src="https://upload-images.jianshu.io/upload_images/14339384-2d9fab74508c6daa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>切记：<strong>/g 在全局下安装它们</strong>，可以在所有项目(任何目录)中使用</p>
+<p><strong>2､检查安装是否成功</strong></p>
+<blockquote>
+<p>browser-sync –version</p>
+</blockquote>
+<p><img src="https://upload-images.jianshu.io/upload_images/14339384-b768bf881e71ffe5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>如上图表示已安装成功</p>
+<h5 id="B、测试页面"><a href="#B、测试页面" class="headerlink" title="B、测试页面"></a>B、测试页面</h5><p><strong>1､终端cd 到 测试页面的目录 ，创建一个本地服务器</strong></p>
+<blockquote>
+<p>cd desktop</p>
+<p>browser-sync start –server</p>
+</blockquote>
+<p><img src="https://upload-images.jianshu.io/upload_images/14339384-ae474c5e61b1bd0c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>并自动打开你的浏览器后访问<a href="http://localhost:3000地址" target="_blank" rel="noopener">http://localhost:3000地址</a></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14339384-1d1699c144254f00.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>此时发现打开的一个报错的页面，但是呢，如果上面的地址我加上测试页面，就是ok的</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14339384-b1bcf8b45b7b69a2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p><strong>2､出现 Cannot GET/ 的原因</strong></p>
+<p>因为只<strong>默认 index.html</strong> 有效，所以将 <strong>html文件名改为 index</strong>即可</p>
+<p>改前：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14339384-4e3ff97b49717837.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>改后：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14339384-921cbb87dab68b96.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>最后浏览器访问ok的啦</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14339384-911d2ea11a6e596f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>3、启动browser-sync后，手机无法访问 该地址  (<a href="http://192.168.1.103:3000" target="_blank" rel="noopener">http://192.168.1.103:3000</a>)</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14339384-1f4aff25ea334001.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>后面跟着网上google 查询，发现是因为开了防火墙的原因，设置关闭就好啦</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14339384-f87880819e065c12.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>详见：<br><a href="https://stackoverflow.com/questions/28962528/browsersync-cannot-get" target="_blank" rel="noopener">https://stackoverflow.com/questions/28962528/browsersync-cannot-get</a><br><a href="https://www.browsersync.io/docs/command-line/#proxy-example" target="_blank" rel="noopener">https://www.browsersync.io/docs/command-line/#proxy-example</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/24/ohmyzsh安装/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -445,161 +608,6 @@
 <p><img src="https://upload-images.jianshu.io/upload_images/14339384-20ee3bc15b115302.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
 <h3 id="五、第五步"><a href="#五、第五步" class="headerlink" title="五、第五步"></a>五、第五步</h3><p>重启VSCode软件之后就会看到我们熟悉的中文语言环境界面了</p>
 <p><img src="https://upload-images.jianshu.io/upload_images/14339384-91c622c79bf69fa3.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/22/前端测试工具browser-sync/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Wuer">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Wuer">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/12/22/前端测试工具browser-sync/" itemprop="url">前端测试工具browser-sync</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-22T21:11:30+08:00">
-                2018-12-22
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="一、第一步-安装"><a href="#一、第一步-安装" class="headerlink" title="一、第一步  安装"></a>一、第一步  安装</h2><p><strong>1､ 终端运行代码</strong> </p>
-<blockquote>
-<p> npm install -g browser-sync  </p>
-</blockquote>
-<p><img src="https://upload-images.jianshu.io/upload_images/14339384-2d9fab74508c6daa.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-<p>切记：<strong>/g 在全局下安装它们</strong>，可以在所有项目(任何目录)中使用</p>
-<p><strong>2､检查安装是否成功</strong></p>
-<blockquote>
-<p>browser-sync –version</p>
-</blockquote>
-<p><img src="https://upload-images.jianshu.io/upload_images/14339384-b768bf881e71ffe5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-<p>如上图表示已安装成功</p>
-<h2 id="二、测试页面"><a href="#二、测试页面" class="headerlink" title="二、测试页面"></a>二、测试页面</h2><p><strong>1､终端cd 到 测试页面的目录 ，创建一个本地服务器</strong></p>
-<blockquote>
-<p>cd desktop</p>
-<p>browser-sync start –server</p>
-</blockquote>
-<p><img src="https://upload-images.jianshu.io/upload_images/14339384-ae474c5e61b1bd0c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-<p>并自动打开你的浏览器后访问<a href="http://localhost:3000地址" target="_blank" rel="noopener">http://localhost:3000地址</a></p>
-<p><img src="https://upload-images.jianshu.io/upload_images/14339384-1d1699c144254f00.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-<p>此时发现打开的一个报错的页面，但是呢，如果上面的地址我加上测试页面，就是ok的</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/14339384-b1bcf8b45b7b69a2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-<p><strong>2､出现 Cannot GET/ 的原因</strong></p>
-<p>因为只<strong>默认 index.html</strong> 有效，所以将 <strong>html文件名改为 index</strong>即可</p>
-<p>改前：</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/14339384-4e3ff97b49717837.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-<p>改后：</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/14339384-921cbb87dab68b96.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-<p>最后浏览器访问ok的啦</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/14339384-911d2ea11a6e596f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-<p>3、启动browser-sync后，手机无法访问 该地址  (<a href="http://192.168.1.103:3000" target="_blank" rel="noopener">http://192.168.1.103:3000</a>)</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/14339384-1f4aff25ea334001.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-<p>后面跟着网上google 查询，发现是因为开了防火墙的原因，设置关闭就好啦</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/14339384-f87880819e065c12.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-<p>详见： <a href="https://stackoverflow.com/questions/28962528/browsersync-cannot-get" target="_blank" rel="noopener">https://stackoverflow.com/questions/28962528/browsersync-cannot-get</a></p>
-<p>​            <a href="https://www.browsersync.io/docs/command-line/#proxy-example" target="_blank" rel="noopener">https://www.browsersync.io/docs/command-line/#proxy-example</a></p>
 
           
         
