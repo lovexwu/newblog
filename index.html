@@ -229,7 +229,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/24/移动端项目手机预览操作方式/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/24/懒加载和瀑布流/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Wuer">
@@ -248,7 +248,271 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/12/24/移动端项目手机预览操作方式/" itemprop="url">移动端项目手机预览操作方式</a></h1>
+                <a class="post-title-link" href="/2018/12/24/懒加载和瀑布流/" itemprop="url">懒加载和瀑布流</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-24T21:55:05+08:00">
+                2018-12-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="一、懒加载"><a href="#一、懒加载" class="headerlink" title="一、懒加载"></a>一、懒加载</h1><p>###A、定义</p>
+<p>当打开一个有很多图片的页面时，先只加载页面上看到的图片，等滚动到页面下面时，再加载所需的图片。这就是图片懒加载。</p>
+<p>###B、作用<br>减少或延迟请求数，缓解浏览器的压力，增强用户体验。</p>
+<p>###C、实现方式</p>
+<p>(1) 设置图片src属性为同一张图片<br>(2) 自定义一个data-src属性来存储图片的真实地址<br>(3) 当图片在视野中时，自动改变该区域的图片的src属性为真实地址</p>
+<h3 id="D、判断元素在视野中"><a href="#D、判断元素在视野中" class="headerlink" title="D、判断元素在视野中"></a>D、判断元素在视野中</h3><p><strong>如果元素距离页面内容的高度小于窗口滚动距离+窗口高度，元素就会在我们视野中啦！</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$(node).offset().top&lt;=$(<span class="built_in">window</span>).height() + $(<span class="built_in">window</span>).scrollTop()</span><br></pre></td></tr></table></figure>
+<p><img src="https://upload-images.jianshu.io/upload_images/14339384-1b8e47337e086520.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>###E、代码部分</p>
+<p>#####(1) html 部分<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"container"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"http://smashinghub.com/wp-content/uploads/2014/08/cool-loading-animated-gif-3.gif"</span> <span class="attr">alt</span>=<span class="string">"1"</span> <span class="attr">data-src</span>=<span class="string">"http://cdn.jirengu.com/book.jirengu.com/img/1.jpg"</span>&gt;</span></span><br><span class="line">   .</span><br><span class="line">   .</span><br><span class="line">   .</span><br><span class="line">    <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"http://smashinghub.com/wp-content/uploads/2014/08/cool-loading-animated-gif-3.gif"</span> <span class="attr">alt</span>=<span class="string">"20"</span> <span class="attr">data-src</span>=<span class="string">"http://cdn.jirengu.com/book.jirengu.com/img/20.jpg"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="css"><span class="selector-class">.container</span> &#123;</span></span><br><span class="line"><span class="undefined">      max-width: 800px;</span></span><br><span class="line"><span class="undefined">      margin: 0 auto;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="css">    <span class="selector-class">.container</span><span class="selector-pseudo">:after</span>&#123;</span></span><br><span class="line"><span class="undefined">      content: '';</span></span><br><span class="line"><span class="undefined">      display: block;</span></span><br><span class="line"><span class="undefined">      clear: both;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="css">    <span class="selector-class">.container</span> <span class="selector-tag">img</span> &#123;</span></span><br><span class="line"><span class="undefined">      float: left;</span></span><br><span class="line"><span class="undefined">      width: 50%;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined">    h1&#123;</span></span><br><span class="line"><span class="undefined">      clear: both;</span></span><br><span class="line"><span class="undefined">    &#125; </span></span><br><span class="line"><span class="css"><span class="comment">/*注：img都是浮动，如果不清除浮动，h1的值高度就相当于container里面最高的，不是实际的数值*/</span></span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>#####(2) js 部分<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">  &lt;script&gt;</span><br><span class="line">    start() <span class="comment">// 一开始没有滚动，也需要触发一次 </span></span><br><span class="line"></span><br><span class="line">    $(<span class="built_in">window</span>).on(<span class="string">'scroll'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;<span class="comment">// 滚动时，显示对应图片</span></span><br><span class="line">      start()</span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">start</span>(<span class="params"></span>)</span>&#123;<span class="comment">//对container里的所有图片需要一个个去判断，所以用 each</span></span><br><span class="line">      $(<span class="string">'.container img'</span>).not(<span class="string">'[data-isLoaded]'</span>).each(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">var</span> $node = $(<span class="keyword">this</span>) <span class="comment">//not('[data-isLoaded]') 没有加载的图片</span></span><br><span class="line">        <span class="keyword">if</span>( isShow($node) )&#123;<span class="comment">// 如果出现在眼前了</span></span><br><span class="line">          loadImg($node)<span class="comment">// 就去加载它</span></span><br><span class="line">        &#125;</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">   </span><br><span class="line"><span class="comment">//因为是判断一个元素，那元素我们给它一个参数，也就是参数对应的是一个元素</span></span><br><span class="line"><span class="comment">//因为我们用到的是jquery,所以参数是jquery对象,所以取名$node</span></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">isShow</span>(<span class="params">$node</span>)</span>&#123; <span class="comment">// 判断元素是否在视野中</span></span><br><span class="line">      <span class="keyword">return</span> $node.offset().top &lt;= $(<span class="built_in">window</span>).height() + $(<span class="built_in">window</span>).scrollTop()</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">loadImg</span>(<span class="params">$img</span>)</span>&#123; <span class="comment">//加载图片</span></span><br><span class="line">      $img.attr(<span class="string">'src'</span>, $img.attr(<span class="string">'data-src'</span>))<span class="comment">//attr 写一个参数是设置值，两个是取值</span></span><br><span class="line">      $img.attr(<span class="string">'data-isLoaded'</span>, <span class="number">1</span>) <span class="comment">// 区别图片是否被加载过，防止重新加载</span></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure></p>
+<p>demo 地址 <a href="http://js.jirengu.com/setezusife/1/edit?html,output" target="_blank" rel="noopener">http://js.jirengu.com/setezusife/1/edit?html,output</a></p>
+<h1 id="二、瀑布流"><a href="#二、瀑布流" class="headerlink" title="二、瀑布流"></a>二、瀑布流</h1><h3 id="A、定义"><a href="#A、定义" class="headerlink" title="A、定义"></a>A、定义</h3><p>宽度相同，而高度是随机的布局</p>
+<h3 id="B、实现方式"><a href="#B、实现方式" class="headerlink" title="B、实现方式"></a>B、实现方式</h3><p>(1) 需要一个数组，存储每一列的高度<br>(2) 先计算一排里面可以容纳多少列元素（容器宽度/元素宽度）。<br>(3) 判断哪一列元素的高度最短，就将下一个元素放到该列。<br>(4) 再判断放入该元素之后所形成的新的整排元素内，哪一列元素最短，再把下一个元素放置该列，以此类推。</p>
+<h3 id="C、代码部分"><a href="#C、代码部分" class="headerlink" title="C、代码部分"></a>C、代码部分</h3><h5 id="1-html-部分"><a href="#1-html-部分" class="headerlink" title="(1) html 部分"></a>(1) html 部分</h5><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"waterfall"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"http://via.placeholder.com/100x100"</span> <span class="attr">alt</span>=<span class="string">""</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"http://via.placeholder.com/100x70"</span> <span class="attr">alt</span>=<span class="string">""</span>&gt;</span>   </span><br><span class="line">    <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"http://via.placeholder.com/100x200"</span> <span class="attr">alt</span>=<span class="string">""</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"http://via.placeholder.com/100x130"</span> <span class="attr">alt</span>=<span class="string">""</span>&gt;</span>   </span><br><span class="line">    <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"http://via.placeholder.com/100x400"</span> <span class="attr">alt</span>=<span class="string">""</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"http://via.placeholder.com/100x110"</span> <span class="attr">alt</span>=<span class="string">""</span>&gt;</span>   </span><br><span class="line">   </span><br><span class="line">    <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"http://via.placeholder.com/100x60"</span> <span class="attr">alt</span>=<span class="string">""</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"http://via.placeholder.com/100x180"</span> <span class="attr">alt</span>=<span class="string">""</span>&gt;</span>      </span><br><span class="line">    <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"http://via.placeholder.com/100x100"</span> <span class="attr">alt</span>=<span class="string">""</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"http://via.placeholder.com/100x200"</span> <span class="attr">alt</span>=<span class="string">""</span>&gt;</span>      </span><br><span class="line">    <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"http://via.placeholder.com/100x80"</span> <span class="attr">alt</span>=<span class="string">""</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"http://via.placeholder.com/100x100"</span> <span class="attr">alt</span>=<span class="string">""</span>&gt;</span>      </span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="css"><span class="selector-class">.waterfall</span>&#123;</span></span><br><span class="line"><span class="undefined">	max-width: 800px;</span></span><br><span class="line"><span class="undefined">	margin: 0 auto;</span></span><br><span class="line"><span class="undefined">&#125;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="css"><span class="selector-class">.waterfall</span> <span class="selector-tag">img</span>&#123;</span></span><br><span class="line"><span class="css">  	<span class="selector-tag">position</span>: <span class="selector-tag">absolute</span>; <span class="comment">/*必须absolute，因为后面要js控制它的位置*/</span></span></span><br><span class="line"><span class="undefined">  	width : 100px;</span></span><br><span class="line"><span class="undefined">  	margin: 10px;</span></span><br><span class="line"><span class="undefined">&#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>(2) js部分</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 定义变量、初始化</span></span><br><span class="line"><span class="keyword">var</span> colCount <span class="comment">//列的数量</span></span><br><span class="line"><span class="keyword">var</span> colHeightArr = [] <span class="comment">//存放列的高度数组</span></span><br><span class="line"><span class="keyword">var</span> imgWidth = $(<span class="string">'.waterfall img'</span>).outerWidth(<span class="literal">true</span>)<span class="comment">//outerWidth表示元素宽度 包括外边距</span></span><br><span class="line">        </span><br><span class="line">colCount = <span class="built_in">Math</span>.floor($(<span class="string">'.waterfall'</span>).width()/ imgWidth) <span class="comment">//获取列数  </span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i&lt;colCount; i++)&#123;</span><br><span class="line">  colHeightArr[i] = <span class="number">0</span> <span class="comment">// 一开始 初始化为0</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//console.log($('.waterfall img').eq(2).height())</span></span><br><span class="line"><span class="comment">//测试第三张图的高度，有时显示的是图片的真实高度200,有时显示0，也就是说要在图片加载完了，才能读到图片的真实高度</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//[0,0,0] </span></span><br><span class="line">$(<span class="string">'.waterfall img'</span>).on(<span class="string">'load'</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;<span class="comment">// 加载之后去处理</span></span><br><span class="line">   <span class="comment">//console.log(this) 加载的元素打印出来  </span></span><br><span class="line">  </span><br><span class="line">   <span class="keyword">var</span> minValue = colHeightArr[<span class="number">0</span>]</span><br><span class="line">   <span class="keyword">var</span> minIndex = <span class="number">0</span></span><br><span class="line">   </span><br><span class="line">   <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i&lt; colCount; i++)&#123; <span class="comment">//从数组找到最小值及下标，可以遍历</span></span><br><span class="line">     <span class="keyword">if</span>(colHeightArr[i] &lt; minValue)&#123;</span><br><span class="line">        minValue = colHeightArr[i] <span class="comment">// 真正的最小值</span></span><br><span class="line">        minIndex = i <span class="comment">//真正的最小下标</span></span><br><span class="line">     &#125;</span><br><span class="line">   &#125;</span><br><span class="line">    </span><br><span class="line"> <span class="comment">//摆放图片</span></span><br><span class="line">  $(<span class="keyword">this</span>).css(&#123;<span class="comment">//图片的位置</span></span><br><span class="line">    top: minValue,</span><br><span class="line">    left: minIndex*imgWidth</span><br><span class="line">  &#125;)</span><br><span class="line">  </span><br><span class="line">  colHeightArr[minIndex] += $(<span class="keyword">this</span>).outerHeight(<span class="literal">true</span>)<span class="comment">//整列的值 </span></span><br><span class="line">  <span class="comment">//整列的值=  它自已 + 当前元素的高度</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/24/移动端项目之注意事项/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Wuer">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Wuer">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/12/24/移动端项目之注意事项/" itemprop="url">移动端项目之注意事项</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-24T14:19:37+08:00">
+                2018-12-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>一、html页面部分</p>
+<p>页面head 那加上这句</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"&gt;</span><br></pre></td></tr></table></figure>
+<p>二、css 部分</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">-webkit-overflow-scrolling</span>: <span class="selector-tag">touch</span>; <span class="comment">/*ios 上增加弹性*/</span></span><br></pre></td></tr></table></figure>
+<p>手机上滚动时会有一个弹性的效果</p>
+<p>demo地址：</p>
+<p>（优化前）<a href="http://js.jirengu.com/betam" target="_blank" rel="noopener">http://js.jirengu.com/betam</a></p>
+<p>（优化后）<a href="http://js.jirengu.com/cewoj/20/edit" target="_blank" rel="noopener">http://js.jirengu.com/cewoj/20/edit</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/24/移动端项目之手机预览操作方式/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Wuer">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Wuer">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/12/24/移动端项目之手机预览操作方式/" itemprop="url">移动端项目之手机预览操作方式</a></h1>
         
 
         <div class="post-meta">
@@ -1430,424 +1694,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/17/jQuery之DOM操作、属性、函数/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Wuer">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Wuer">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/12/17/jQuery之DOM操作、属性、函数/" itemprop="url">jQuery之DOM操作、属性、函数</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-17T13:26:37+08:00">
-                2018-12-17
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="一、DOM操作"><a href="#一、DOM操作" class="headerlink" title="一、DOM操作"></a>一、DOM操作</h1><h3 id="A、创建元素"><a href="#A、创建元素" class="headerlink" title="A、创建元素"></a>A、创建元素</h3><p>只需要把DOM字符串传入 $ 方法即可返回一个jQuery对象</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = $(<span class="string">'&lt;div class="test"&gt;&lt;p&gt;&lt;span&gt;Done&lt;/span&gt;&lt;/p&gt;&lt;/div&gt;'</span>);</span><br></pre></td></tr></table></figure>
-<p><img src="https://upload-images.jianshu.io/upload_images/9375265-d352524426d7770c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-<h3 id="B、添加元素"><a href="#B、添加元素" class="headerlink" title="B、添加元素"></a>B、添加元素</h3><p>(1)  .append(content[,content]) / .append(function(index,html))</p>
-<ul>
-<li>可以一次添加多个内容，内容可以是DOM对象、HTML string、 jQuery对象</li>
-<li>如果参数是function，function可以返回DOM对象、HTML string、 jQuery对象，参数是集合中的元素位置与原来的html值</li>
-</ul>
-<p><img src="https://upload-images.jianshu.io/upload_images/9375265-e479978f4956892f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-<p>(2)  .prepend(content[,content]) / .prepend(function(index,html))</p>
-<p>向<strong>对象头部</strong>追加内容，用法和append类似，内容<strong>添加到最开始</strong></p>
-<p><img src="https://upload-images.jianshu.io/upload_images/9375265-ba189a1015d84a37.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-<p>(3) .before([content][,content]) / .before(function)</p>
-<p>在对象前面(<strong>不是头部，而是外面，和对象并列同级</strong>)插入内容，参数和append类似</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/9375265-ae94968ffc102f32.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-<p>(4) .after([content][,content]) / .after(function（index）)</p>
-<p>和before相反，在对象后面(<strong>不是尾部，而是外面，和对象并列同级</strong>)插入内容，参数和append类似</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/9375265-fc4f9f67af1cb0da.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-<h3 id="C、删除元素"><a href="#C、删除元素" class="headerlink" title="C、删除元素"></a>C、删除元素</h3><p>(1)  .remove([selector])</p>
-<p>删除被选元素（及其子元素）,也可以添加一个<strong>可选的选择器参数</strong>来过滤匹配的元素</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/9375265-c3181833189d95b0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-<p>(2)  empty()</p>
-<p>清空被选择元素内所有子元素</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/9375265-1630eb6bd974fc49.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-<h3 id="D、包裹元素"><a href="#D、包裹元素" class="headerlink" title="D、包裹元素"></a>D、包裹元素</h3><p>(1)  .html([string])<br>这是一个<strong>读写两用</strong>的方法，用于<strong>获取/修改</strong>元素的<strong>innerHTML</strong></p>
-<ul>
-<li>当没有传递参数的时候，返回元素的innerHTML</li>
-<li>当传递了一个string参数的时候，修改元素的innerHTML为参数</li>
-</ul>
-<p><img src="https://upload-images.jianshu.io/upload_images/9375265-ecdbc9b6ebabc2b8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-<p>其中，特别注意：读写两用的方法很多，原理都类似</p>
-<ul>
-<li><p>如果<strong>结果是多个进行赋</strong>值操作的时候会给<strong>每个结果都赋值</strong></p>
-</li>
-<li><p>如果<strong>结果多个，获取值</strong>的时候，返回结果集中的<strong>第一个对象</strong>的相应值</p>
-</li>
-</ul>
-<p><img src="https://upload-images.jianshu.io/upload_images/9375265-b65f74e09094a294.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-<p>(2) .text()<br>和html方法类似，操作的是<strong>DOM的innerText</strong>值</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/9375265-ce4dff1fd7d144ca.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-<h1 id="二、属性及css操作"><a href="#二、属性及css操作" class="headerlink" title="二、属性及css操作"></a>二、属性及css操作</h1><h3 id="A、属性"><a href="#A、属性" class="headerlink" title="A、属性"></a>A、属性</h3><p>(1)  .val([value])</p>
-<p>这是一个读写双用的方法，用来处理input的value，当方法没有参数的时候返回input的value值，当传递了一个参数的时候，方法修改input的value值为参数值</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/14339384-7610f39f79333fd2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-<p>(2)  .attr() / .attr(attributeName)</p>
-<p>获取元素特定属性的值</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/14339384-714717eb82771581.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><br><img src="https://upload-images.jianshu.io/upload_images/14339384-bf7c43c4adc6d000.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-<p>(3)  .removeAttr()</p>
-<p>为匹配的元素集合中的每个元素中移除一个属性（attribute）</p>
-<p>.removeAttr() 方法使用原生的 JavaScript removeAttribute() 函数,但是它的优点是可以直接在一个 jQuery 对象上调用该方法，并且它解决了跨浏览器的属性名不同的问题。</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/14339384-99d2aaa5af1686b7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-<p>(4)  .prop()/.removeProp()<br>这两个方法是用来操作元素的property的，property和attibute是非常相似的概念</p>
-<p>可参考  <a href="https://blog.jirengu.com/?p=222" target="_blank" rel="noopener">https://blog.jirengu.com/?p=222</a></p>
-<h3 id="B、css操作"><a href="#B、css操作" class="headerlink" title="B、css操作"></a>B、css操作</h3><p>(1)  .css()</p>
-<p>和 attr 非常相似的方法，用来处理元素的css</p>
-<p>.css(propertyName) / .css(propertyNames)</p>
-<p>获取元素style特定property的值</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/14339384-b5fa52f785444582.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-<p>(2)  .addClass(className) / .removeClass(className)</p>
-<p>.addClass(className) / .addClass(function(index,currentClass))</p>
-<p>为元素添加class，不是覆盖原class，是追加，也不会检查重复</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/14339384-051026893a23afdf.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-<p>(3)  removeClass([className]) / ,removeClass(function(index,class))</p>
-<p>移除元素单个/多个/所有class</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/14339384-e3c61ec617f0fac9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-<p>(4)  .hasClass(className)</p>
-<p>检查元素是否包含某个class，返回true/false</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/14339384-5bd990d600152a85.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-<p>(5)  .toggleClass(className)</p>
-<p>toggle是切换的意思，方法用于切换</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/14339384-86ccdbf19df1deb9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-<h1 id="三、常用方法"><a href="#三、常用方法" class="headerlink" title="三、常用方法"></a>三、常用方法</h1><p>(1)  .each( function(index, Element) )</p>
-<p>遍历一个jQuery对象，为每个匹配元素执行一个函数</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">'li'</span>).each(<span class="function"><span class="keyword">function</span>(<span class="params"> index </span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log( index + <span class="string">":"</span> + $(<span class="keyword">this</span>).text() );</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<p><img src="https://upload-images.jianshu.io/upload_images/14339384-a709afc2c5fe34ed.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-<p>(2)  jQuery.extend([deep,] target [, object1 ][, objectN ] )</p>
-<ul>
-<li><p>当我们提供<strong>两个或多个对象</strong>给 $.extend()，对象的<strong>所有属性都添加到目标对象</strong>（target参数）。</p>
-</li>
-<li><p>如果<strong>只有一个参数</strong>提供给 $.extend()，这意味着目标参数被省略。在这种情况下，jQuery<strong>对象本身被默认为目标对象</strong>。这样，我们可以在jQuery的命名空间下添加新的功能。这对于插件开发者希望向 jQuery 中添加新函数时是很有用的</p>
-</li>
-</ul>
-<p><strong>目标对象（第一个参数）</strong>将被修改，并且将通过$.extend()返回。然而，如果我们想<strong>保留原对象</strong>，我们可以通过传递一个<strong>空对象</strong>作为目标对象：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> object = $.extend(&#123;&#125;, object1, object2);</span><br></pre></td></tr></table></figure>
-<p><strong>在默认情况下，通过 $.extend() 合并操作不是递归的</strong></p>
-<p>如果第一个对象的属性本身是一个对象或数组，那么它将完全用第二个对象相同的key重写一个属性。这些值不会被合并。如果将  true 作为该函数的第一个参数，那么会在对象上进行递归的合并。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> object1 = &#123;</span><br><span class="line">  apple: <span class="number">0</span>,</span><br><span class="line">  banana: &#123; <span class="attr">weight</span>: <span class="number">52</span>, <span class="attr">price</span>: <span class="number">100</span> &#125;,</span><br><span class="line">  cherry: <span class="number">97</span></span><br><span class="line">&#125;;</span><br><span class="line"><span class="keyword">var</span> object2 = &#123;</span><br><span class="line">  banana: &#123; <span class="attr">price</span>: <span class="number">200</span> &#125;,</span><br><span class="line">  durian: <span class="number">100</span></span><br><span class="line">&#125;;</span><br><span class="line"></span><br><span class="line"><span class="comment">// Merge object2 into object1</span></span><br><span class="line">$.extend( object1, object2 );</span><br></pre></td></tr></table></figure>
-<p>执行结果</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/14339384-a764c94dbbf3113b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-<p>(3)  clone( [withDataAndEvents ] )</p>
-<p>深度复制<strong>所有匹配的元素集合</strong>，包括所有<strong>匹配元素</strong>、<strong>匹配元素的下级元素</strong>、<strong>文字节点</strong></p>
-<ul>
-<li>类似剪切的效果</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">"container"</span>&gt;</span><br><span class="line">  &lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">"hello"</span>&gt;Hello&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">  &lt;div class="goodbye"&gt;</span></span><br><span class="line"><span class="regexp">    Goodbye</span></span><br><span class="line"><span class="regexp">  &lt;/</span>div&gt;</span><br><span class="line">&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">$('.hello').appendTO('.goodbye')</span></span><br></pre></td></tr></table></figure>
-<p>执行结果<br><img src="https://upload-images.jianshu.io/upload_images/14339384-d0f08cea21361e58.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-<ul>
-<li>如果需要的是复制而不是剪切，可以像下面这样写代码：</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">'.hello'</span>).clone().appendTo(<span class="string">'.goodbye'</span>);</span><br></pre></td></tr></table></figure>
-<p>执行结果</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/14339384-d85e2f594fd7dc1f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-<p>(4)  .index() / .index(selector)/ .index(element)</p>
-<p>从给定集合中查找特定元素index，即获取的它所在的邻居的下标</p>
-<ul>
-<li><p>没参数返回第一个元素index</p>
-</li>
-<li><p>如果参数是DOM对象或者jQuery对象，则返回参数在集合中的index</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/14339384-5cfb35aabe288a27.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-</li>
-<li><p>如果参数是选择器，返回第一个匹配元素index，没有找到返回-1</p>
-</li>
-</ul>
-<p><img src="https://upload-images.jianshu.io/upload_images/14339384-7b3badbf1fb450e1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-<p>(5)  .ready( handler )</p>
-<p>当DOM准备就绪时，指定一个函数来执行。</p>
-<p>虽然JavaScript提供了load事件，当页面呈现时用来执行这个事件，直到所有的东西，如图像已被完全接收前，此事件不会被触发。</p>
-<p>在大多数情况下，只要DOM结构已完全加载时，脚本就可以运行。传递处理函数给.ready()方法，能保证DOM准备好后就执行这个函数，因此，这里是进行所有其它事件绑定及运行其它 jQuery 代码的最佳地方。</p>
-<p>如果执行的代码需要在元素被加载之后才能使用时，（例如，取得图片的大小需要在图片被加载完后才能知道），就需要将这样的代码放到 load 事件中。</p>
-<p>下面两种语法全部是等价的：</p>
-<ul>
-<li>$(document).ready(handler)</li>
-<li>$(handler)</li>
-</ul>
-<p>我们经常这么使用</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'ready'</span>);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/16/jQuery之选择器/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Wuer">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Wuer">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/12/16/jQuery之选择器/" itemprop="url">jQuery之选择器</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-16T16:07:19+08:00">
-                2018-12-16
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="一、选择器"><a href="#一、选择器" class="headerlink" title="一、选择器"></a>一、选择器</h2><p>看图就会发现，jQuery选择器相当于复习CSS选择器哦，所以呀，开发者在众多js库中迅速青睐于jQuery。</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/14339384-2b841af1c0fb82be.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-<p><img src="https://upload-images.jianshu.io/upload_images/14339384-322dad93b88a9d72.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-<p><img src="https://upload-images.jianshu.io/upload_images/14339384-af9e22827ca94926.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-<h2 id="二、常用方法"><a href="#二、常用方法" class="headerlink" title="二、常用方法"></a>二、常用方法</h2><p>(1)  .eq(index)， .get([index])</p>
-<ul>
-<li>获取到指定index的jQuery对象，可以用eq 方法</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">'div'</span>).eq(<span class="number">3</span>); <span class="comment">// 获取到第四个div</span></span><br></pre></td></tr></table></figure>
-<ul>
-<li><p>通过类数组下标的获取方式或者get方法获取指定index的DOM对象，也就是我们说的jQuery对象转DOM对象</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">'div'</span>)[<span class="number">3</span>];</span><br><span class="line">$(<span class="string">'div'</span>).get(<span class="number">3</span>);</span><br><span class="line"><span class="comment">// 都是获取到第四个div</span></span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>注：<strong>get() 不写参数把所有对象转为DOM对象返回</strong></p>
-<p><img src="https://upload-images.jianshu.io/upload_images/14339384-8666bcb3a1eea64d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-<p>(2)  .next([selector])，.prev([selector])</p>
-<p>next 取得匹配的元素集合中<strong>每一个元素紧邻</strong>的后面<strong>同辈元素</strong>的元素集合。如果提供一个选择器，那么只有紧跟着的兄弟元素满足选择器时，才会返回此元素。</p>
-<p>prev正好相反，获取元素<strong>之前</strong>的同辈元素</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/14339384-64983fc7e076b542.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-<p>(3)  .nextAll([selector])， .prevAll([selector])</p>
-<p>nextAll获得每个匹配元素集合中每个元素<strong>所有后面的同辈元素</strong>，选择性筛选的选择器</p>
-<p>prevAll与之相反，获取元素前面的同辈元素</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/14339384-6d39aa09435a2e50.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-<p>(4)  .siblings([selectors])</p>
-<p>获得匹配元素集合中<strong>每个元素的兄弟元</strong>素,可以提供一个可选的选择器</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/14339384-6258c253b1991080.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-<p>(5)  .parent([selector])</p>
-<p>取得匹配元素集合中，<strong>每个元素的父元素</strong>，可以提供一个可选的选择器</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/14339384-273b7d8b67359c96.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-<p>(6)  .parents([selector])</p>
-<p>获得集合中<strong>每个匹配元素的祖先元素</strong>，可以提供一个可选的选择器作为参数</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/14339384-3bbe677759f45cd5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-<p>(7)  .children([selector])</p>
-<p>获得匹配元素集合中<strong>每个元素的子元素</strong>，选择器选择性筛选</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/14339384-f22b025c28499844.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-<p>(8)  .find([selector])</p>
-<p>查找符合选择器的后代元素</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/14339384-ae87bc1a22fc5d50.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-<p>(9)  .filter(selector) ，.filter(function(index))</p>
-<p>筛选当前结果集中<strong>符合条件的对象</strong>，参数可以是一个<strong>选择器</strong></p>
-<p><img src="https://upload-images.jianshu.io/upload_images/14339384-06dcf3f04a6d23c5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-<p>参数也可以是一个<strong>函数</strong></p>
-<p><img src="https://upload-images.jianshu.io/upload_images/14339384-a0af0ed388d14b9b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-<p>(10)  .has(selector) ，.has(dom)</p>
-<p>筛选匹配元素集合中的那些有<strong>相匹配的选择器</strong>或<strong>DOM元素的后代元素</strong></p>
-<p><img src="https://upload-images.jianshu.io/upload_images/14339384-170cfbece22bd765.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-<p>(10)  .is(selector) ， is(function(index)) ，is(dom/jqObj)</p>
-<p>判断当前匹配的元素集合中的元素，是否为一个选择器，DOM元素，或者jQuery对象，如果这些元素<strong>至少一个匹配给定的参数</strong>，那么返回true</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/14339384-13eb3233c305f46b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-<h2 id="三、使用-jQuery-实现-多个Tab-切换效果"><a href="#三、使用-jQuery-实现-多个Tab-切换效果" class="headerlink" title="三、使用 jQuery 实现 多个Tab 切换效果"></a>三、使用 jQuery 实现 多个Tab 切换效果</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> change = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">var</span> t=$(<span class="string">'.slider'</span>).find(<span class="string">'.item'</span>);</span><br><span class="line">  t.click(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>);</span><br><span class="line">    $(<span class="keyword">this</span>).parents(<span class="string">'.slider'</span>).find(<span class="string">'.item'</span>).removeClass(<span class="string">'active'</span>);</span><br><span class="line">    $(<span class="keyword">this</span>).addClass(<span class="string">'active'</span>);</span><br><span class="line">    $(<span class="keyword">this</span>).parents(<span class="string">'.slider'</span>).find(<span class="string">'.box'</span>).removeClass(<span class="string">'active'</span>);</span><br><span class="line">    $(<span class="keyword">this</span>).parents(<span class="string">'.slider'</span>).find(<span class="string">'.box'</span>).eq($(<span class="keyword">this</span>).index()).addClass(<span class="string">'active'</span>);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br><span class="line">change();</span><br></pre></td></tr></table></figure>
-<p>遇到的坑 ，页面多个tab切换时，一定要找到相应的容器，即其<strong>父元素($(this).parents(‘.slider’))</strong> ，再去找到其对应的元素，进行操作</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/14339384-1188414fc89ee450.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-<p>如果<strong>直接元素</strong>进行操作，就会出现两个tab切换相互影响</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/14339384-801f3debcf588a0a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-<p>更多可参考 <a href="http://jquery.com" target="_blank" rel="noopener">http://jquery.com</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1898,7 +1744,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">36</span>
+                  <span class="site-state-item-count">38</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
