@@ -229,6 +229,163 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/02/DOM元素及操作之习题/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Wuer">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Wuer">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/01/02/DOM元素及操作之习题/" itemprop="url">DOM元素及操作之习题</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-02T16:50:00+08:00">
+                2019-01-02
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>1､要求：当鼠标放置在<code>li</code>元素上，会在<code>img-preview</code>里展示当前<code>li</code>元素的<code>data-img</code>对应的图片。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;ul class=&quot;ct&quot;&gt;</span><br><span class="line">    &lt;li data-img=&quot;1.png&quot;&gt;鼠标放置查看图片1&lt;/li&gt;</span><br><span class="line">    &lt;li data-img=&quot;2.png&quot;&gt;鼠标放置查看图片2&lt;/li&gt;</span><br><span class="line">    &lt;li data-img=&quot;3.png&quot;&gt;鼠标放置查看图片3&lt;/li&gt;</span><br><span class="line">&lt;/ul&gt;</span><br><span class="line">&lt;div class=&quot;img-preview&quot;&gt;&lt;/div&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">//你的代码</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+<p>预览地址：<br><a href="http://js.jirengu.com/tefom/5/edit?html,output" target="_blank" rel="noopener">http://js.jirengu.com/tefom/5/edit?html,output</a></p>
+<p>2､要求：</p>
+<ul>
+<li><p>当点击按钮<code>开头添加时</code>在<code>&lt;li&gt;这里是&lt;/li&gt;</code>元素前添加一个新元素，内容为用户输入的非空字符串；当点击<code>结尾添加</code>时在最后一个 li 元素后添加用户输入的非空字符串.</p>
+</li>
+<li><p>当点击每一个元素 li时，控制台展示该元素的文本内容。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">"ct"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>这里是<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>饥人谷<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>任务班<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">class</span>=<span class="string">"ipt-add-content"</span> <span class="attr">placeholder</span>=<span class="string">"添加内容"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">"btn-add-start"</span>&gt;</span>开头添加<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">"btn-add-end"</span>&gt;</span>结尾添加<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript"><span class="comment">//你的代码</span></span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>预览地址：<a href="http://js.jirengu.com/qonup/1/edit?html,output" target="_blank" rel="noopener">http://js.jirengu.com/qonup/1/edit?html,output</a></p>
+<p>3､要求当点击每一个元素<code>li</code>时控制台展示该元素的文本内容。不考虑兼容。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">"ct"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>这里是<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>饥人谷<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>前端14班<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript"><span class="comment">//todo ...</span></span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>预览地址：<a href="http://js.jirengu.com/wabub/1/edit?html,console,output&gt;" target="_blank" rel="noopener">http://js.jirengu.com/wabub/1/edit?html,console,output&gt;</a></p>
+<p>4､解释DOM2事件传播机制。</p>
+<p>1、DOM2的事件传播包含三个阶段:<br>捕捉阶段（capturing），事件从顶级文档树节点一级一级向下遍历，直到到达该事件的目标节点。<br>到达事件的目标节点，执行目标节点的时间处理程序。<br>事件起泡（bubbling），事件从目标节点一级一级向上上溯，直到顶级文档树节点。</p>
+<p>2、相应的，2级DOM通过下面的两个函数给节点对象添加和删除事件处理函数。<br>addEventListener(eventType, handler, propagate);<br>removeEventListener(eventType, handler, propagate);</p>
+<p>三个参数意思分别如下:<br>eventType: 即事件类型（不加on）。比如：”click”。<br>handler: 事件处理函数。传入参数即为事件对象event。<br>propagate: 是否只执行捕获和目标节点两个阶段。true的话，只执行1，2两个阶段；false的话，只指向2，3两个阶段。</p>
+<p>3、IE的事件传播只包含上边的2和3两个阶段<br>相应的，IE通过下面两个函数给节点对象添加和删除事件处理函数。<br>attachEvent(eventType, handler);<br>detachEvent(eventType, handler);<br>参数意思同2级DOM对应的函数参数</p>
+<p>5､<code>onlick</code>与<code>addEventListener</code>的区别</p>
+<p>1、onclick 只能绑定一个事件，绑定多个会产生覆盖；不能设置参数，使用默认的事件冒泡阶段。</p>
+<p>2、addEventListener中有第3个参数，attachEvent没有。第3个参数传递的是false或true。这个参数可选，默认是false。<br>false–表示事件处理将在冒泡阶段执行。<br>true–表示事件处理将在捕获阶段执行。</p>
+<p>3、理论上，Event Listeners (addEventListener、attachEvent（IE使用 ）)可以无限增加事件监听给某个一元素。实际应用的约束就是客户端内存的限制，这一点因每个浏览器而异。</p>
+<p>参考链接：<a href="https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener</a></p>
+<p>6､实现<a href="http://js.jirengu.com/nupom" target="_blank" rel="noopener">此效果</a>。</p>
+<p>预览地址：<br><a href="http://js.jirengu.com/cidag/13/edit" target="_blank" rel="noopener">http://js.jirengu.com/cidag/13/edit</a></p>
+<p>7､如何获取 DOM 计算后的样式？</p>
+<p>使用getComputedStyle获取元素计算后的样式，不要通过 node.style.属性 获取</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> node = <span class="built_in">document</span>.querySelector(<span class="string">'p'</span>)</span><br><span class="line"><span class="keyword">var</span> color = <span class="built_in">window</span>.getComputedStyle(node).color</span><br><span class="line"><span class="built_in">console</span>.log(color)</span><br></pre></td></tr></table></figure>
+<p>8､写一个函数，批量操作 css。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">css</span>(<span class="params">node, styleObj</span>)</span>&#123;</span><br><span class="line"><span class="comment">//todo ..</span></span><br><span class="line">&#125;</span><br><span class="line">css(<span class="built_in">document</span>.body, &#123;</span><br><span class="line">  <span class="string">'color'</span>: <span class="string">'red'</span>,</span><br><span class="line">  <span class="string">'background-color'</span>: <span class="string">'#ccc'</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>预览地址：<br><a href="http://js.jirengu.com/nixac/2/edit?html,js" target="_blank" rel="noopener">http://js.jirengu.com/nixac/2/edit?html,js</a></p>
+<p>9､列出DOM 元素选取的 API。</p>
+<p>getElementById() //获取id<br>getElementsByClassName() //获取class类名<br>getElementsByTagName() //获取标签名<br>getElementsByName() //获取有name属性的html元素<br>querySelector() //选择器<br>querySelectorAll() //选择所有选择器</p>
+<p>10､如何创建元素？如何添加元素？</p>
+<p>创建元素：<br>createElement() //元素节点<br>createTextNode() //文本节点<br>createDocumentFragment()</p>
+<p>添加元素:<br>appendChild() //添加元素<br>insertBefore() //某个元素之前插入元素<br>replaceChild() //要插入的元素和要替换的元素</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/28/判断元素在视野中和最底部/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -1142,10 +1299,14 @@
       
         
           
-            <p>1､ console.log 和 return</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 情况一、a的值是 undefined</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params">a,b</span>)</span>&#123;</span><br><span class="line">   <span class="built_in">console</span>.log(a+b); </span><br><span class="line">    <span class="comment">//console.log 相当于画画，把a+b画出来，然后在控制台下可以看见出来，但是它并没有放在变量a里面</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">undefined</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> a = fn()</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">fn()看成一个整体，看成一个值，也就是函数的值，是 return 出来的值</span></span><br><span class="line"><span class="comment">a的值并不是console.log(a+b)的值，是 return 出来的值，也就是 undefined</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">// 情况二、a的值是 undefined</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params">a,b</span>)</span>&#123;</span><br><span class="line">   <span class="keyword">return</span> <span class="built_in">console</span>.log(a+b)   </span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> a = fn(<span class="number">1</span>,<span class="number">3</span>) </span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">控制台是看到值了，但是a 还是undefined, 为什么呢</span></span><br><span class="line"><span class="comment">因为a 是 函数fn，return 出来的值，也就是console.log执行的结果，但是console.log也是函数，那console.log(a+b)的值是多少呢，它的返回值是undefined,它本身的值是没有的</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//情况三、正确这么写才对</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params">a,b</span>)</span>&#123;</span><br><span class="line">   <span class="built_in">console</span>.log(a+b); </span><br><span class="line">    <span class="keyword">return</span> a+b;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> a = fn(<span class="number">1</span>,<span class="number">3</span>)</span><br></pre></td></tr></table></figure>
-<p>html文件</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="css"><span class="selector-class">.tab-header</span>&#123;<span class="attribute">display</span>: flex;&#125;</span></span><br><span class="line"><span class="css"><span class="selector-class">.tab-header</span> <span class="selector-tag">div</span>&#123;<span class="attribute">padding</span>:<span class="number">5px</span> <span class="number">15px</span> <span class="number">0</span>;<span class="attribute">background</span>:<span class="number">#ccc</span>;<span class="attribute">margin-right</span>:<span class="number">5px</span>;&#125;	</span></span><br><span class="line"><span class="css"><span class="selector-class">.tab-header</span> <span class="selector-tag">div</span><span class="selector-class">.active</span>&#123;<span class="attribute">color</span>:red;&#125;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="css"><span class="selector-class">.tab-panels</span> <span class="selector-tag">div</span>&#123;<span class="attribute">display</span>: none;<span class="attribute">background</span>:pink;&#125;</span></span><br><span class="line"><span class="css"><span class="selector-class">.tab-panels</span> <span class="selector-tag">div</span><span class="selector-class">.active</span>&#123;<span class="attribute">display</span>: block;&#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"tab-container"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"tab-header"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>= <span class="string">"active"</span>&gt;</span>1<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">div</span>&gt;</span>2<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">div</span>&gt;</span>3<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"tab-panels"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"active"</span>&gt;</span>box1<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">div</span>&gt;</span>box2<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">div</span>&gt;</span>box3<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+            <h3 id="一､-console-log-和-return"><a href="#一､-console-log-和-return" class="headerlink" title="一､ console.log 和 return"></a>一､ console.log 和 return</h3><p> 1､情况一、a的值是 undefined</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params">a,b</span>)</span>&#123;</span><br><span class="line">   <span class="built_in">console</span>.log(a+b); </span><br><span class="line">    <span class="comment">//console.log 相当于画画，把a+b画出来，然后在控制台下可以看见出来，但是它并没有放在变量a里面</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">undefined</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> a = fn()</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">fn()看成一个整体，看成一个值，也就是函数的值，是 return 出来的值</span></span><br><span class="line"><span class="comment">a的值并不是console.log(a+b)的值，是 return 出来的值，也就是 undefined</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+<p>2､情况二、a的值是 undefined</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params">a,b</span>)</span>&#123;</span><br><span class="line">   <span class="keyword">return</span> <span class="built_in">console</span>.log(a+b)   </span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> a = fn(<span class="number">1</span>,<span class="number">3</span>) </span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">控制台是看到值了，但是a 还是undefined, 为什么呢</span></span><br><span class="line"><span class="comment">因为a 是 函数fn，return 出来的值，也就是console.log执行的结果，但是console.log也是函数，那console.log(a+b)的值是多少呢，它的返回值是undefined,它本身的值是没有的</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+<p>3､情况三、正确这么写才对</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params">a,b</span>)</span>&#123;</span><br><span class="line">   <span class="built_in">console</span>.log(a+b); </span><br><span class="line">   <span class="keyword">return</span> a+b;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> a = fn(<span class="number">1</span>,<span class="number">3</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="二、切换效果需注意事项"><a href="#二、切换效果需注意事项" class="headerlink" title="二、切换效果需注意事项"></a>二、切换效果需注意事项</h3><p>html文件</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">.tab-header&#123;display: flex;&#125;</span></span><br><span class="line"><span class="undefined">.tab-header div&#123;padding:5px 15px 0;background:#ccc;margin-right:5px;&#125;	</span></span><br><span class="line"><span class="undefined">.tab-header div.active&#123;color:red;&#125;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">.tab-panels div&#123;display: none;background:pink;&#125;</span></span><br><span class="line"><span class="undefined">.tab-panels div.active&#123;display: block;&#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"tab-container"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"tab-header"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>= <span class="string">"active"</span>&gt;</span>1<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">div</span>&gt;</span>2<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">div</span>&gt;</span>3<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"tab-panels"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"active"</span>&gt;</span>box1<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">div</span>&gt;</span>box2<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">div</span>&gt;</span>box3<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>js文件</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 选择好之后 去绑定事件 因为它是列数组对象,不能用 .on('click',function()&#123;&#125;)事件，可以用forEach</span></span><br><span class="line"><span class="keyword">var</span> tabs = <span class="built_in">document</span>.querySelectorAll(<span class="string">'.tab-header div'</span>);</span><br><span class="line"><span class="keyword">var</span> panels = <span class="built_in">document</span>.querySelectorAll(<span class="string">'.tab-panel div'</span>);</span><br><span class="line">tabs.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">node</span>)</span>&#123;</span><br><span class="line">    node.onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">var</span> index = <span class="number">0</span>;</span><br><span class="line">        tabs.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">tab,idx</span>)</span>&#123;</span><br><span class="line">           <span class="built_in">console</span>.log(tab);        </span><br><span class="line">           tab.classList.remove(<span class="string">'active'</span>);   </span><br><span class="line">           <span class="keyword">if</span>(node === tab)&#123;</span><br><span class="line">            index = idx;</span><br><span class="line">        	&#125;</span><br><span class="line">        &#125;);</span><br><span class="line">        <span class="keyword">this</span>.classList.add(<span class="string">'active'</span>);  </span><br><span class="line">        </span><br><span class="line">        panels.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">panel</span>)</span>&#123;</span><br><span class="line">            panel.classList.remove(<span class="string">'active'</span>);</span><br><span class="line">            panels[index].classList.add(<span class="string">'active'</span>);</span><br><span class="line">        &#125;)    </span><br><span class="line">    &#125;;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
 <p>实现了一个切换效果</p>
@@ -1160,6 +1321,10 @@
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Tab</span>(<span class="params">container</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.container = container;</span><br><span class="line">    <span class="keyword">this</span>.init();</span><br><span class="line">    <span class="keyword">this</span>.bind();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Tab.prototype.init = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.tabs = <span class="keyword">this</span>.container.querySelectorAll(<span class="string">'.tab-header div'</span>);</span><br><span class="line">    <span class="keyword">this</span>.panels = <span class="keyword">this</span>.container.querySelectorAll(<span class="string">'.tab-panel div'</span>);</span><br><span class="line">    <span class="keyword">this</span>.bind();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Tab.prototype.bind = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line"> 	<span class="keyword">var</span> self = <span class="keyword">this</span>;</span><br><span class="line">    self.tabs.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">node</span>)</span>&#123;</span><br><span class="line">        node.onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            <span class="keyword">var</span> index = <span class="number">0</span>;</span><br><span class="line">            self.tabs.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">tab,idx</span>)</span>&#123;</span><br><span class="line">                <span class="built_in">console</span>.log(tab);        </span><br><span class="line">                tab.classList.remove(<span class="string">'active'</span>);   </span><br><span class="line">                <span class="keyword">if</span>(node === tab)&#123;</span><br><span class="line">                        index = idx;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;);</span><br><span class="line">            <span class="keyword">this</span>.classList.add(<span class="string">'active'</span>);  </span><br><span class="line"></span><br><span class="line">            self.panels.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">panel</span>)</span>&#123;</span><br><span class="line">                panel.classList.remove(<span class="string">'active'</span>);</span><br><span class="line">                self.panels[index].classList.add(<span class="string">'active'</span>);</span><br><span class="line">            &#125;)    </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)  </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//var tab1 = new Tab(document.querySelectorAll('.tab-container')[0])</span></span><br><span class="line"><span class="comment">//var tab2 = new Tab(document.querySelectorAll('.tab-container')[1])</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">document</span>.querySelectorAll(<span class="string">'.tab-container'</span>).forEach(<span class="function"><span class="keyword">function</span>(<span class="params">container</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">new</span> Tab(container)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
 <p>Demo 地址：<a href="http://js.jirengu.com/qutaz/6/edit" target="_blank" rel="noopener">http://js.jirengu.com/qutaz/6/edit</a></p>
 <p>老师地址：<a href="http://js.jirengu.com/setod/1/edit?html,output" target="_blank" rel="noopener">http://js.jirengu.com/setod/1/edit?html,output</a></p>
+<h3 id="三、写js-的三步曲"><a href="#三、写js-的三步曲" class="headerlink" title="三、写js 的三步曲"></a>三、写js 的三步曲</h3><p>1､ 初始化 init</p>
+<p>2､绑定事件 bind</p>
+<p>3､渲染数据 render</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> App=&#123;</span><br><span class="line">    init: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;,</span><br><span class="line">    bind: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;,</span><br><span class="line">    render: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line">App.init() <span class="comment">// 切记别忘记了这一句，不然代码没法执行，老掉的坑就是没加这一句，请求的数据，拿不到</span></span><br></pre></td></tr></table></figure>
 
           
         
@@ -1486,239 +1651,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/18/jQuery之事件、动画/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Wuer">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Wuer">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/12/18/jQuery之事件、动画/" itemprop="url">jQuery之事件、动画</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-18T11:17:35+08:00">
-                2018-12-18
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="一、事件"><a href="#一、事件" class="headerlink" title="一、事件"></a>一、事件</h1><p>在1.7之前的版本中jQuery处理事件有多个方法， (google 搜索: jquery live bind degelate)作用各不相同，后来统一的使用 <strong>on / off</strong>  方法</p>
-<p>(1)  .on( events [,selector ][,data ], handler(eventObject) )</p>
-<h5 id="A、参数"><a href="#A、参数" class="headerlink" title="A、参数"></a>A、参数</h5><ul>
-<li><p>events：<strong>事件类型</strong>和可选的<strong>命名空间</strong>，比如”click”, “keydown.myPlugin”</p>
-<p>注：如有<strong>多个</strong>事件类型，用<strong>空格</strong>分隔</p>
-</li>
-<li><p>selector：一个选择器字符串，用于<strong>过滤</strong>出<strong>被选中的元素中</strong>能触发事件的<strong>后代元素</strong>。</p>
-<p>注：选择器是 <strong>null 或者忽略了该选择器</strong>，那么被选中的元素<strong>总是能触发事件</strong></p>
-</li>
-<li><p>data：当一个<strong>事件被触发</strong>时，要传递给事件处理函数的<strong>event.data</strong></p>
-</li>
-<li><p>handler(eventObject)：<strong>事件被触发时，执行的函数</strong>。</p>
-<p>注：若该函数只是执行<strong>return false</strong>，那么该参数位置可以直接<strong>简写成 false</strong></p>
-</li>
-</ul>
-<h5 id="B、实例"><a href="#B、实例" class="headerlink" title="B、实例"></a>B、实例</h5><p>html部分</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"box"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">ul</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>1<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>2<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>3<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>4<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">id</span>=<span class="string">"ipt"</span> <span class="attr">type</span>=<span class="string">"text"</span>&gt;</span> <span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">"btn"</span>&gt;</span>添加<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"wrap"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>Js 部分</p>
-<ul>
-<li><strong>场景一、点击li，wrap里展示li里内容</strong></li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">'.box li'</span>).on(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">var</span> str = $(<span class="keyword">this</span>).text()<span class="comment">//所点击的元素的内容 即li元素里面的1,2,3,4</span></span><br><span class="line">  $(<span class="string">'#wrap'</span>).text(str)</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">// .on事件 其实类似于原生js 的addEventListener</span></span><br></pre></td></tr></table></figure>
-<p>也可以简写为事件后边直接回调</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">'.box&gt;ul&gt;li'</span>).click(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">var</span> str = $(<span class="keyword">this</span>).text()</span><br><span class="line">  $(<span class="string">'#wrap'</span>).text(str)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<p>如果需要<strong>解绑对应的事件</strong>，此时需要给事件加一个<strong>命名空间</strong></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">'.box li'</span>).on(<span class="string">'click.hello'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="number">3</span>)</span><br><span class="line">  <span class="keyword">var</span> str = $(<span class="keyword">this</span>).text()</span><br><span class="line">  $(<span class="string">'#wrap'</span>).text(str)</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">//命名空间没什么特别的作用，只不过在解绑事件时便于区分绑定的事件</span></span><br><span class="line">$(<span class="string">'.box li'</span>).off(<span class="string">'click.hello'</span>)</span><br></pre></td></tr></table></figure>
-<p>执行结果</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/14339384-88684406823d4687.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-<p> 上图我们可以发现，click.hello 解绑事件了，但是没有影响到click.world事件</p>
-<p><strong>注：解绑事件只会解绑对应的事件，其他事件不受影响</strong></p>
-<ul>
-<li>场景二、点击button ,把 input 的值变成 li 添加到ul</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">'#btn'</span>).on(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">var</span> value = $(<span class="string">'#ipt'</span>).val()</span><br><span class="line">  $(<span class="string">'.box&gt;ul'</span>).append(<span class="string">'&lt;li&gt;'</span>+value+<span class="string">'&lt;/li&gt;'</span>)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<p><img src="https://upload-images.jianshu.io/upload_images/14339384-40136199a7c14b9a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-<p>绑定事件只对页面已有元素的绑定，<strong>新增的元素没有绑定事件，可以用事件代理</strong>解决这个问题</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">'#btn'</span>).on(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">var</span> value = $(<span class="string">'#ipt'</span>).val()</span><br><span class="line">  $(<span class="string">'.box&gt;ul'</span>).append(<span class="string">'&lt;li&gt;'</span>+value+<span class="string">'&lt;/li&gt;'</span>)</span><br><span class="line">&#125;)<span class="comment">//这里的 this 是你所点击的元素</span></span><br><span class="line"></span><br><span class="line">$(<span class="string">'.box ul'</span>).on(<span class="string">'click'</span>, <span class="string">'li'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">var</span> str = $(<span class="keyword">this</span>).text()<span class="comment">//这里的this也是代表所点击的元素li</span></span><br><span class="line">  $(<span class="string">'#wrap'</span>).text(str)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<p><img src="https://upload-images.jianshu.io/upload_images/14339384-839dd3b257fedfbe.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-<ul>
-<li><strong>场景三  绑定事件时，给回调函数传递数据</strong></li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">'.box'</span>).on(<span class="string">'click'</span>, &#123;<span class="attr">name</span>: <span class="string">'hunger'</span>&#125;, <span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(e.data)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<p><img src="https://upload-images.jianshu.io/upload_images/14339384-25bbdc8b142ef135.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-<p>(2)  .one( events [, selector ][, data ], handler(eventObject) )</p>
-<p>同 on，绑定事件，但<strong>只执行一次</strong></p>
-<p>(3)  .off( events [, selector ][, handler ] )</p>
-<p>移除(解绑)一个事件处理函数</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">'.box li'</span>).off(<span class="string">'click'</span>)</span><br></pre></td></tr></table></figure>
-<p>(4)  .trigger( eventType [, extraParameters ] )</p>
-<p>根据绑定到匹配元素的给定的事件类型执行所有的处理程序和行为</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">'.box li'</span>).on(<span class="string">'click'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log($(<span class="keyword">this</span>).text())</span><br><span class="line">&#125;);</span><br><span class="line">$(<span class="string">'.box li'</span>).trigger(<span class="string">'click'</span>)</span><br></pre></td></tr></table></figure>
-<p>其实就是<strong>不需要手动操作</strong>，代码自已去触发事件</p>
-<p>(5)  其他常见事件</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/14339384-f70eee006f203447.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-<h1 id="二、动画"><a href="#二、动画" class="headerlink" title="二、动画"></a>二、动画</h1><h3 id="A、常用动画"><a href="#A、常用动画" class="headerlink" title="A、常用动画"></a>A、常用动画</h3><p>(1)  .hide([duration ][,easing ] [,complete ])</p>
-<p>用于隐藏元素，没有参数的时候等同于直接设置 display 属性为 none</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">'.box'</span>).hide()</span><br></pre></td></tr></table></figure>
-<p>等同于</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">'.box'</span>).css(<span class="string">'display'</span>,<span class="string">'none'</span>)</span><br></pre></td></tr></table></figure>
-<p>(2)  .show( [duration ][, easing ] [, complete ] )</p>
-<p>用于显示元素，用法和 hide 类似</p>
-<p>(3)  .fadeIn( [duration ][, easing ] [, complete ] )</p>
-<p>通过淡入的方式显示匹配元素，参数含义和上面相同</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">'#book'</span>).fadeIn(<span class="string">'slow'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"><span class="comment">// Animation complete</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<p>(4)  .fadeOut( [duration ][, easing ] [, complete ] )</p>
-<p>通过淡出的方式隐藏匹配元素</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">'#book'</span>).fadeOut(<span class="string">'slow'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"><span class="comment">// Animation complete.</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<p>(5)  .slideDown( [duration ][, easing ] [, complete ] )</p>
-<p>用滑动动画显示一个匹配元素，方法将给匹配元素的高度的动画，这会导致页面的下面部分滑下去，弥补了显示的方式</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">'#book'</span>).slideDown(<span class="string">'slow'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">// Animation complete.</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<p>(6)  .slideUp( [duration ][, easing ] [, complete ] )</p>
-<p>用滑动动画隐藏一个匹配元素，方法将给匹配元素的高度的动画，这会导致页面的下面部分滑上去，当一个隐藏动画后，高度值达到0的时候，display 样式属性被设置为none，以确保该元素不再影响页面布局。 display 样式属性将被设置为none，以确保该元素不再影响页面布局。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">'#book'</span>).slideUp(<span class="string">'slow'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">// Animation complete.</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<p>(7)  .slideToggle( [duration ][, easing ] [, complete ] )</p>
-<p>用滑动动画<strong>显示或隐藏</strong>一个匹配元素，方法将给匹配元素的高度的动画，这会导致页面中，在这个元素下面的内容往下或往上滑。display属性值保存在jQuery的数据缓存中，所以display可以方便以后可以恢复到其初始值。</p>
-<p>如果一个元素的display属性值为inline，然后是隐藏和显示，这个元素将再次显示inline。当一个隐藏动画后，高度值达到0的时候，display 样式属性被设置为none，以确保该元素不再影响页面布局。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">'#clickme'</span>).click(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"> $(<span class="string">'#book'</span>).slideToggle(<span class="string">'slow'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"> <span class="comment">// Animation complete.</span></span><br><span class="line"> &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<p>demo 地址参考   <a href="http://js.jirengu.com/sogiy/embed?html,console,output" target="_blank" rel="noopener">http://js.jirengu.com/sogiy/embed?html,console,output</a></p>
-<h3 id="B、自定义动画"><a href="#B、自定义动画" class="headerlink" title="B、自定义动画"></a>B、自定义动画</h3><p>简单的动画不能满足需求时，jquery提供了自定义动画行为的方法</p>
-<p>.animate( properties [, duration ][, easing ] [, complete ] )</p>
-<p>可参考官网API <a href="https://api.jquery.com/animate/" target="_blank" rel="noopener">https://api.jquery.com/animate/</a></p>
-<p><strong>注：properties是一个CSS属性和值的对象,动画将根据这组对象移动</strong></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">'#clickme'</span>).click(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  $(<span class="string">'#book'</span>).animate(&#123;</span><br><span class="line">    opacity: <span class="number">0.25</span>,</span><br><span class="line">    left: <span class="string">'+=50'</span>,</span><br><span class="line">    height: <span class="string">'toggle'</span></span><br><span class="line">  &#125;, <span class="number">5000</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">// Animation complete.</span></span><br><span class="line">  &#125;);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<p>demo 地址参考  <a href="http://js.jirengu.com/viqiv/1/edit?html,css,output" target="_blank" rel="noopener">http://js.jirengu.com/viqiv/1/edit?html,css,output</a></p>
-<h3 id="C、动画队列"><a href="#C、动画队列" class="headerlink" title="C、动画队列"></a>C、动画队列</h3><h5 id="1-写法方式"><a href="#1-写法方式" class="headerlink" title="(1)  写法方式"></a>(1)  写法方式</h5><ul>
-<li><strong>方式一：将动画连续的写就会形成一个动画队列，按顺序从上至下依次执行</strong></li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">'#btn4'</span>).click(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">      $(<span class="string">'.box'</span>).animate(&#123;</span><br><span class="line">        left: <span class="string">'100px'</span></span><br><span class="line">      &#125;, <span class="number">1000</span>)  <span class="comment">// 执行第一帧动画</span></span><br><span class="line">      $(<span class="string">'.box'</span>).animate(&#123;</span><br><span class="line">        left: <span class="string">'100px'</span>,</span><br><span class="line">        top: <span class="string">'100px'</span></span><br><span class="line">      &#125;, <span class="number">1000</span>) <span class="comment">// 执行第二帧动画</span></span><br><span class="line">      $(<span class="string">'.box'</span>).animate(&#123;</span><br><span class="line">        left: <span class="string">'0'</span>,</span><br><span class="line">        top: <span class="string">'100px'</span></span><br><span class="line">      &#125;, <span class="number">1000</span>) <span class="comment">// 执行第三帧动画</span></span><br><span class="line">      $(<span class="string">'.box'</span>).animate(&#123;</span><br><span class="line">        left: <span class="string">'0'</span>,</span><br><span class="line">        top: <span class="string">'0'</span></span><br><span class="line">      &#125;, <span class="number">1000</span>) <span class="comment">// 执行第四帧动画</span></span><br><span class="line">    &#125;)</span><br></pre></td></tr></table></figure>
-<ul>
-<li><strong>方式二：将后续动画写入第一个动画的回调函数里</strong></li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">$box.hide(<span class="number">1000</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">   $box.show(<span class="number">1000</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">     $box.fadeOut(<span class="string">'slow'</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">       $box.fadeIn(<span class="string">'slow'</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">         $box.slideUp(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">           $box.slideDown(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">             <span class="built_in">console</span>.log(<span class="string">'动画执行完毕'</span>)</span><br><span class="line">           &#125;)</span><br><span class="line">         &#125;)</span><br><span class="line">       &#125;)</span><br><span class="line">     &#125;)</span><br><span class="line">   &#125;)</span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">//等价于</span></span><br><span class="line">$box.hide(<span class="number">1000</span>)</span><br><span class="line">    .show(<span class="number">1000</span>)</span><br><span class="line">    .fadeOut()</span><br><span class="line">    .fadeIn()</span><br><span class="line">    .slideUp()</span><br><span class="line">    .slideDown(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">'真的完毕了'</span>)</span><br><span class="line">    &#125;)</span><br></pre></td></tr></table></figure>
-<p><strong>特别注意：</strong>队列运行在元素上<strong>异步地</strong>调用动作序列的。例如下面代码，执行顺序是 <strong>马上显示字符showla</strong>，再执行<strong>show动画</strong></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">'#btn-box1'</span>).on(<span class="string">'click'</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    $(<span class="string">'.box'</span>).show(<span class="number">400</span>) <span class="comment">// 第二次执行</span></span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'showla'</span>) <span class="comment">// 第一次执行</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<p>可以把<strong>显示showla 代码</strong>放到show动画回调函数里</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="string">'#btn-box1'</span>).on(<span class="string">'click'</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    $(<span class="string">'.box'</span>).show(<span class="number">400</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123; <span class="comment">// 第一次执行</span></span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'showla'</span>) <span class="comment">// 第二次执行</span></span><br><span class="line">    &#125;)  </span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<p>(2)  清除和停止</p>
-<ul>
-<li>.clearQueue</li>
-</ul>
-<p>清除动画队列中未执行的动画</p>
-<ul>
-<li>.finish</li>
-</ul>
-<p><strong>停止当前动画</strong>，并清除动画队列中所有未完成的动画,最终<strong>展示动画队列最后一帧的最终状态</strong></p>
-<ul>
-<li>.stop( [clearQueue ][, jumpToEnd ] )</li>
-</ul>
-<p>stop()：停止当前正在运行的动画 ，立刻去执行后面的动画</p>
-<p>.stop(true, false) ：停止当前动画，并清除未执行的动画队列</p>
-<p>.stop(true, true)：停止当前动画，并清除未执行的动画队列，并且当前动画展示最终状态</p>
-<p>clearQueue(default: false)</p>
-<p>jumpToEnd(default: false)</p>
-<p>demo 地址参考 <a href="http://js.jirengu.com/viqiv/1/edit?html,css,output" target="_blank" rel="noopener">http://js.jirengu.com/viqiv/1/edit?html,css,output</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1769,7 +1701,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">39</span>
+                  <span class="site-state-item-count">40</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
