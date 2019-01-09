@@ -229,6 +229,159 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/19/jQuery之ajax/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Wuer">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Wuer">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/12/19/jQuery之ajax/" itemprop="url">jQuery之ajax</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-19T11:48:42+08:00">
+                2018-12-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="一、jQuery-Ajax"><a href="#一、jQuery-Ajax" class="headerlink" title="一、jQuery.Ajax()"></a>一、jQuery.Ajax()</h2><h4 id="A、设置方式"><a href="#A、设置方式" class="headerlink" title="A、设置方式"></a>A、设置方式</h4><p>(1)  $.ajax( url[,settings])</p>
+<p>(2)  $ajax([settings])</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line">$.ajax(&#123;</span><br><span class="line">    url: <span class="string">'xxx.php'</span>, <span class="comment">//请求的接口</span></span><br><span class="line">    type: <span class="string">'GET'</span>, <span class="comment">// 类型</span></span><br><span class="line">    data: &#123;<span class="comment">// json格式的传递参数</span></span><br><span class="line">        name: <span class="string">'Byron'</span>,</span><br><span class="line">        age: <span class="number">24</span>,</span><br><span class="line">        sex: <span class="string">'Male'</span></span><br><span class="line">    &#125;,</span><br><span class="line">    dataType: <span class="string">'json'</span> <span class="comment">//会自动解析json格式</span></span><br><span class="line">&#125;).done(<span class="function"><span class="keyword">function</span>(<span class="params">result</span>)</span>&#123;</span><br><span class="line"><span class="comment">//.done 请求成功</span></span><br><span class="line">    <span class="built_in">console</span>.log(result);</span><br><span class="line"></span><br><span class="line">&#125;).fail(<span class="function"><span class="keyword">function</span>(<span class="params">jqXHR, textStatus</span>)</span>&#123;</span><br><span class="line"><span class="comment">//.fail 请求失败</span></span><br><span class="line">    consloe.log(textStatus);</span><br><span class="line"></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>这样子，发送了一个get 请求</p>
+<h4 id="B、常用参数"><a href="#B、常用参数" class="headerlink" title="B、常用参数"></a>B、常用参数</h4><p>(1) async：默认设置下，所有请求均为<strong>异步请求</strong>（也就是说这是<strong>默认设置为 true</strong> ）。如果需要发送同步请求，请将此选项设置为 false</p>
+<p>(1) beforeSend：请求发送前的回调函数，用来<strong>修改请求发送前jqXHR对象</strong>，此功能用来设置<strong>自定义 HTTP 头</strong>信息，等等。该jqXHR和设置对象作为参数传递</p>
+<p>(2) cache：如果设置为 <strong>false</strong> ，浏览器将<strong>不缓存此页面</strong>。注意: 设置cache为 false将在 HEAD和GET请求中正常工作。它的工作原理是在GET请求参数中附加”_={timestamp}”</p>
+<p>(3) context：这个对象用于设置Ajax <strong>相关回调函数的上下文</strong>。 默认情况下，这个上下文是一个ajax请求使用的参数设置对象</p>
+<p>(4) data：<strong>发送到服务器的数据</strong>。将自动转换为请求字符串格式。<strong>GET 请求</strong>中将附加<strong>在 URL 后面</strong>，<strong>POST请求作为表单数据</strong></p>
+<p>(5) headers：一个额外的 {键:值} 对映射到请求一起发送。此设置会<strong>在beforeSend 函数调用之前</strong>被设置 ;因此，请求头中的设置值，会被beforeSend 函数内的设置覆盖</p>
+<p>(6) method：<strong>HTTP 请求方法</strong> (比如：”POST”, “GET “, “PUT”，1.9之前使用“type”)</p>
+<p>使用jQuery处理ajax请求，其实挺简单，比如</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$.ajax(&#123;</span><br><span class="line">  method: <span class="string">"POST"</span>,</span><br><span class="line">  url: <span class="string">"some.php"</span>,</span><br><span class="line">  data: &#123; <span class="attr">name</span>: <span class="string">"John"</span>, <span class="attr">location</span>: <span class="string">"Boston"</span> &#125;</span><br><span class="line">&#125;).done(<span class="function"><span class="keyword">function</span>(<span class="params"> msg </span>) </span>&#123;</span><br><span class="line">  alert( <span class="string">"Data Saved: "</span> + msg );</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h2 id="二、jQuery-get-jQuery-post"><a href="#二、jQuery-get-jQuery-post" class="headerlink" title="二、jQuery.get() | jQuery.post()"></a>二、jQuery.get() | jQuery.post()</h2><h4 id="A、设置方式-1"><a href="#A、设置方式-1" class="headerlink" title="A、设置方式"></a>A、设置方式</h4><p>(1) $.get（url [，data][，success] [，dataType]）</p>
+<p>(2)$.get（[settings]）</p>
+<p>在默认是GET，dataType是 Json， 且没有data情况下，发送一个简单请求，得到数据</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$.get(<span class="string">'http://api.jirengu.com/fm/getChannels.php'</span>)</span><br><span class="line">  .done(<span class="function"><span class="keyword">function</span>(<span class="params">channelInfo</span>)</span>&#123;</span><br><span class="line">   <span class="built_in">console</span>.log(channelInfo)</span><br><span class="line"> &#125;);</span><br></pre></td></tr></table></figure>
+<p><img src="https://upload-images.jianshu.io/upload_images/14339384-702f94d07f443c0a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<h4 id="B、实例"><a href="#B、实例" class="headerlink" title="B、实例"></a>B、实例</h4><p>(1) 请求test.php页面，但忽略返回结果。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">`$.get( "test.php" );`</span></span><br></pre></td></tr></table></figure>
+<p>(2) 请求test.php页面并发送一些其他数据（同时仍然忽略返回结果）。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">`$.get( "test.php", &#123; name: "John", time: "2pm" &#125; );`</span></span><br></pre></td></tr></table></figure>
+<p>(3) 将数据数组传递给服务器（同时仍然忽略返回结果）。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">`$.get( "test.php", &#123; "choices[]": ["Jon", "Susan"] &#125; );`</span></span><br></pre></td></tr></table></figure>
+<p>(4) 请求test.php（HTML或XML，具体取决于返回的内容）的结果。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">`$.get( "test.php", function( data ) &#123;  alert( "Data Loaded: " + data );&#125;);`</span></span><br></pre></td></tr></table></figure>
+<p>(5) 通过额外的数据有效负载（HTML或XML，取决于返回的内容）来请求test.cgi的结果。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">`$.get( "test.cgi", &#123; name: "John", time: "2pm" &#125; )  .done(function( data ) &#123;    alert( "Data Loaded: " + data );  &#125;);`</span></span><br></pre></td></tr></table></figure>
+<p>(6) 获取以json格式返回的test.php页面内容（&lt;？php echo json_encode（array（“name”=&gt;“John”，“time”=&gt;“2pm”））;？&gt;），并添加它到页面。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">`$.get( "test.php", function( data ) &#123;  $( "body" )    .append( "Name: " + data.name ) // John    .append( "Time: " + data.time ); //  2pm&#125;, "json" );`</span></span><br></pre></td></tr></table></figure>
+<h4 id="C、处理-get-和-post-请求的方法"><a href="#C、处理-get-和-post-请求的方法" class="headerlink" title="C、处理 get 和 post 请求的方法"></a>C、处理 get 和 post 请求的方法</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">$.ajax(&#123;</span><br><span class="line">  url: url,</span><br><span class="line">  data: data,</span><br><span class="line">  success: success,</span><br><span class="line">  dataType: dataType</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">$.ajax(&#123;</span><br><span class="line">  type: <span class="string">"POST"</span>,</span><br><span class="line">  url: url,</span><br><span class="line">  data: data,</span><br><span class="line">  success: success,</span><br><span class="line">  dataType: dataType</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line"><span class="comment">//dataType：从服务器返回的预期的数据类型。默认：智能猜测（xml, json, script, 或 html）</span></span><br></pre></td></tr></table></figure>
+<h2 id="三、jQuery-getJSON-url-data-success-data-textStatus-jqXHR"><a href="#三、jQuery-getJSON-url-data-success-data-textStatus-jqXHR" class="headerlink" title="三、jQuery.getJSON( url [, data ][, success(data, textStatus, jqXHR) ] )"></a>三、jQuery.getJSON( url [, data ][, success(data, textStatus, jqXHR) ] )</h2><p>使用一个HTTP GET请求从<strong>服务器加载JSON编码</strong>的数据，这是一个Ajax函数的缩写，这相当于:</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">$.ajax(&#123;</span><br><span class="line">  dataType: <span class="string">"json"</span>,</span><br><span class="line">  url: url,</span><br><span class="line">  data: data,</span><br><span class="line">  success: success</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>可参考 <a href="http://api.jquery.com" target="_blank" rel="noopener">http://api.jquery.com</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/18/jQuery之事件、动画/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -1967,167 +2120,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/19/ajax/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Wuer">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Wuer">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/11/19/ajax/" itemprop="url">ajax</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-19T17:25:20+08:00">
-                2018-11-19
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="一、定义"><a href="#一、定义" class="headerlink" title="一、定义"></a>一、定义</h2><p>全称是异步的Javascript and XML)</p>
-<p>Ajax 是一种技术方案，但并不是一种新技术。它依赖的是现有的CSS/HTML/Javascript,而其中最核心的依赖是浏览器提供的XMLHttpRequest对象，是这个对象使得浏览器可以发出HTTP请求与接收HTTP响应。实现在页面不刷新的情况下和服务端进行数据交互。</p>
-<p>一句话总结：我们使用<code>XMLHttpRequest</code>对象来发送一个<code>Ajax</code>请求</p>
-<p>来一个简易版实例（写一个ajax）</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> xhr = <span class="keyword">new</span> XMLHttpRequest()<span class="comment">//建立对象</span></span><br><span class="line">xhr.open(<span class="string">'GET'</span>,<span class="string">'/hello.json'</span>,<span class="literal">true</span>)</span><br><span class="line"><span class="comment">//创建一个GET请求，采用异步,true表示异步，异步代表需要绑定一个事件</span></span><br><span class="line"><span class="comment">// "/hello.json"表示域名+/hello.json,如果http-server打开静态服务器，127.0.0.1:8080/hello.json</span></span><br><span class="line">xhr.send()<span class="comment">//发送请求</span></span><br><span class="line">xhr.addEventListener(<span class="string">'load'</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">   <span class="keyword">var</span> data = xhr.responseText</span><br><span class="line">       <span class="built_in">console</span>.log(data)    </span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<p>如果是同步请求的话，代码是这样子的</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> xhr = <span class="keyword">new</span> XMLHttpRequest()</span><br><span class="line">xhr.open(<span class="string">'GET'</span>,<span class="string">'/hello.json'</span>,<span class="literal">false</span>) <span class="comment">//设置参数，false表示同步</span></span><br><span class="line">xhr.send()</span><br><span class="line"><span class="keyword">var</span> data = xhr.responseText</span><br><span class="line"><span class="built_in">console</span>.log(data)</span><br></pre></td></tr></table></figure>
-<h2 id="二、同步、异步"><a href="#二、同步、异步" class="headerlink" title="二、同步、异步"></a>二、同步、异步</h2><p><strong>A、同步</strong></p>
-<p>我发了一个请求，然后属于等待中，就卡死啦,这个时候只有后端给我响应之后，我才可以继续操作,代码才能继续往下执行</p>
-<p>就相当于我在算一个很复杂的数据，花了5分钟一样，在5分钟内一直属于算的状态，所以后面的js 是不执行的,是卡死状态</p>
-<p><strong>B、异步：</strong> </p>
-<p>我发了一个请求，我就不管了，然后我会去监听我的某一个状态,当状态发生改变时，也就是说达到我的一个需求时或是满足我的条件时,那我再去做一个事情</p>
-<p><strong>C、下面这些事件都算异步</strong></p>
-<p><strong>(1)  点击事件</strong></p>
-<p>绑定一个事件后，我就不管了,就不去执行它,什么时侯去执行呢</p>
-<p>当达到某一个条件（用户去点击，或是用户去点击去触发那个事件时）</p>
-<p>那我才去执行它</p>
-<p><strong>(2)  setTimeout</strong></p>
-<p>绑定一个函数后，它不执行,什么时侯去执行呢</p>
-<p>当这个时间点到了之后，浏览器内部会发出一个事件（时间到了的这个事件），去执行它</p>
-<p><strong>(3)  ajax </strong></p>
-<p>也是一样的，我的请求发出去之后，就先不去管了，什么时候去执行呢</p>
-<p>当我这里面内部状态发生改变的时侯，我监听到了，我觉得该去处理了，我就去处理它</p>
-<h2 id="三、完善上面的代码"><a href="#三、完善上面的代码" class="headerlink" title="三、完善上面的代码"></a>三、完善上面的代码</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> xhr = <span class="keyword">new</span> XMLHttpRequest()</span><br><span class="line">xhr.open(<span class="string">'GET'</span>,<span class="string">'/hello.json'</span>,<span class="literal">true</span>)</span><br><span class="line">xhr.send()</span><br><span class="line"></span><br><span class="line"><span class="comment">//readystate的change事件</span></span><br><span class="line">xhr.onreadystatechange = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(xhr.readystate === <span class="number">4</span> &amp;&amp; xhr.status === <span class="number">200</span>)&#123;</span><br><span class="line">       <span class="built_in">console</span>.log(xhr.responsText)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// xhr.readystate 它的交互流程是否完毕，有没结束</span></span><br><span class="line"><span class="comment">// xhr.status 服务器的状态 表示数据是否ok,是否正常</span></span><br><span class="line"></span><br><span class="line">xhr.addEventListener(<span class="string">'readystatechange'</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'readystate:'</span>,xhr.readyState)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">//load是 readyState变为4时，会自动触发load,所以我们不用管readyState ，直接写onload, 表示 readyState是4啦</span></span><br><span class="line">xhr.addEventListener(<span class="string">'load'</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(xhr.status)</span><br><span class="line">    <span class="keyword">if</span>(xhr.status &gt;= <span class="number">200</span> &amp;&amp; xhr.status &lt; <span class="number">300</span> || xhr.status === <span class="number">304</span>)&#123;</span><br><span class="line">       <span class="keyword">var</span> data = xhr.responseText</span><br><span class="line">       <span class="built_in">console</span>.log(data)</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'error'</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<p>最后完善：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> xhr = <span class="keyword">new</span> XMLHttpRequest()</span><br><span class="line">xhr.open(<span class="string">'GET'</span>, <span class="string">'/hello.json'</span>, <span class="literal">true</span>)</span><br><span class="line">xhr.onreadystatechange = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(xhr.readyState === <span class="number">4</span>) &#123;</span><br><span class="line">        <span class="keyword">if</span>((xhr.status &gt;= <span class="number">200</span> &amp;&amp; xhr.status &lt; <span class="number">300</span>) || xhr.status == <span class="number">304</span>)&#123;</span><br><span class="line">            <span class="comment">//成功了</span></span><br><span class="line">            <span class="built_in">console</span>.log(xhr.responseText)</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="built_in">console</span>.log(<span class="string">'服务器异常'</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">xhr.onerror = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'服务器异常'</span>)</span><br><span class="line">&#125;</span><br><span class="line">xhr.send()</span><br></pre></td></tr></table></figure>
-<p>换种写法</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> xhr = <span class="keyword">new</span> XMLHttpRequest()</span><br><span class="line">xhr.open(<span class="string">'GET'</span>, <span class="string">'hello.json'</span>, <span class="literal">true</span>)</span><br><span class="line">xhr.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>((xhr.status &gt;= <span class="number">200</span> &amp;&amp; xhr.status &lt; <span class="number">300</span>) || xhr.status == <span class="number">304</span>)&#123;</span><br><span class="line">        <span class="comment">//成功了</span></span><br><span class="line">        <span class="built_in">console</span>.log(xhr.responseText)</span><br><span class="line">    &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'服务器异常'</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">xhr.onerror = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'服务器异常'</span>)</span><br><span class="line">&#125;</span><br><span class="line">xhr.send()</span><br></pre></td></tr></table></figure>
-<h2 id="四、GET、POST形式案例"><a href="#四、GET、POST形式案例" class="headerlink" title="四、GET、POST形式案例"></a>四、GET、POST形式案例</h2><p>(1)  GET形式的数据请求 (<strong>数据拼装成url形式</strong>)</p>
-<p>准确地说是传递参数(username、password)  把数据拼装成url形式,放到?后面】</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> xhr = <span class="keyword">new</span> XMLHttpRequest()</span><br><span class="line">xhr.open(<span class="string">'GET'</span>,<span class="string">'/login?username=xwu&amp;password=123'</span>,<span class="literal">true</span>)</span><br><span class="line">xhr.send()</span><br><span class="line"></span><br><span class="line"><span class="comment">//readystate的change事件</span></span><br><span class="line">xhr.onreadystatechange = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(xhr.readystate === <span class="number">4</span> &amp;&amp; xhr.status === <span class="number">200</span>)&#123;</span><br><span class="line">       <span class="built_in">console</span>.log(xhr.responsText)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// xhr.readystate 它的交互流程是否完毕，有没结束</span></span><br><span class="line"><span class="comment">// xhr.status 服务器的状态 表示数据是否ok,是否正常</span></span><br><span class="line"></span><br><span class="line">xhr.addEventListener(<span class="string">'readystatechange'</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'readystate:'</span>,xhr.readyState)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">//load是 readyState变为4时，会自动触发load,所以我们不用管readyState ，直接写onload, 表示 readyState是4啦</span></span><br><span class="line">xhr.addEventListener(<span class="string">'load'</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(xhr.status)</span><br><span class="line">    <span class="keyword">if</span>(xhr.status &gt;= <span class="number">200</span> &amp;&amp; xhr.status &lt; <span class="number">300</span> || xhr.status === <span class="number">304</span>)&#123;</span><br><span class="line">       <span class="keyword">var</span> data = xhr.responseText</span><br><span class="line">       <span class="built_in">console</span>.log(data)</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'error'</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<p>(2)  POST形式数据请求 (<strong>直接发送数据</strong>)</p>
-<p>准确地说是不会把数据拼装成url形式,而是把数据拼好了放到send里面。当然数据拼接的过程可以写一个函数</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> xhr = <span class="keyword">new</span> XMLHttpRequest()</span><br><span class="line">xhr.open(<span class="string">'POST'</span>,<span class="string">'/login'</span>,<span class="literal">true</span>)</span><br><span class="line"><span class="comment">//xml.send('username=xwupassword=123')</span></span><br><span class="line">xhr.send(makeUrl(&#123;</span><br><span class="line">	username: <span class="string">'xwu'</span>,</span><br><span class="line">	age: <span class="number">2</span></span><br><span class="line">&#125;))</span><br><span class="line"></span><br><span class="line">xhr.addEventListener(<span class="string">'load'</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(xhr.status)</span><br><span class="line">	<span class="keyword">if</span>((xhr.status &gt;= <span class="number">200</span> &amp;&amp; xhr.status &lt; <span class="number">300</span>) || xhr.status === <span class="number">304</span>)&#123;</span><br><span class="line">	<span class="keyword">var</span> data = xhr.responseText</span><br><span class="line">		<span class="built_in">console</span>.log(data)</span><br><span class="line">	&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">		<span class="built_in">console</span>.log(<span class="string">'error'</span>)			</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">xhr.onerror = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(<span class="string">'error'</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">makeUrl(&#123;</span><br><span class="line">	username: <span class="string">'xwu'</span>,</span><br><span class="line">	age: <span class="number">2</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">makeUrl</span>(<span class="params">obj</span>)</span>&#123;</span><br><span class="line">	<span class="keyword">var</span> arr = []</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">var</span> key <span class="keyword">in</span> obj)&#123;</span><br><span class="line">		arr.push(key + <span class="string">'='</span> + obj[key])</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> arr.join(<span class="string">'&amp;'</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>(3)  封装一个ajax</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">ajax</span>(<span class="params">opts</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> url = opts.url</span><br><span class="line">    <span class="keyword">var</span> type = opts.type || <span class="string">'GET'</span></span><br><span class="line">    <span class="keyword">var</span> dataType = opts.dataType || <span class="string">'json'</span></span><br><span class="line">    <span class="keyword">var</span> onsuccess = opts.onsuccess || <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;</span><br><span class="line">    <span class="keyword">var</span> onerror = opts.onerror || <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;</span><br><span class="line">    <span class="keyword">var</span> data = opts.data || &#123;&#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> dataStr = []</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> key <span class="keyword">in</span> data)&#123;</span><br><span class="line">        dataStr.push(key + <span class="string">'='</span> + data[key])</span><br><span class="line">    &#125;</span><br><span class="line">    dataStr = dataStr.join(<span class="string">'&amp;'</span>)</span><br><span class="line"></span><br><span class="line">    <span class="keyword">if</span>(type === <span class="string">'GET'</span>)&#123;</span><br><span class="line">        url += <span class="string">'?'</span> + dataStr</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> xhr = <span class="keyword">new</span> XMLHttpRequest()</span><br><span class="line">    xhr.open(type, url, <span class="literal">true</span>)</span><br><span class="line">    xhr.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">if</span>((xhr.status &gt;= <span class="number">200</span> &amp;&amp; xhr.status &lt; <span class="number">300</span>) || xhr.status == <span class="number">304</span>)&#123;</span><br><span class="line">            <span class="comment">//成功了</span></span><br><span class="line">            <span class="keyword">if</span>(dataType === <span class="string">'json'</span>)&#123;</span><br><span class="line">                onsuccess( <span class="built_in">JSON</span>.parse(xhr.responseText))</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                onsuccess( xhr.responseText)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            onerror()</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    xhr.onerror = onerror</span><br><span class="line">    <span class="keyword">if</span>(type === <span class="string">'POST'</span>)&#123;</span><br><span class="line">        xhr.send(dataStr)</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        xhr.send()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">ajax(&#123;</span><br><span class="line">    url: <span class="string">'http://api.jirengu.com/weather.php'</span>,</span><br><span class="line">    data: &#123;</span><br><span class="line">        city: <span class="string">'北京'</span></span><br><span class="line">    &#125;,</span><br><span class="line">    onsuccess: <span class="function"><span class="keyword">function</span>(<span class="params">ret</span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(ret)</span><br><span class="line">    &#125;,</span><br><span class="line">    onerror: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'服务器异常'</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<p>参考  <a href="https://segmentfault.com/a/1190000004322487" target="_blank" rel="noopener">https://segmentfault.com/a/1190000004322487</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -2173,7 +2170,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">40</span>
+                  <span class="site-state-item-count">41</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
