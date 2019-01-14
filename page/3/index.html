@@ -229,6 +229,156 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/25/nodejs实现静态服务器/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Wuer">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Wuer">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/11/25/nodejs实现静态服务器/" itemprop="url">nodejs实现静态服务器</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-25T22:30:00+08:00">
+                2018-11-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>看了一天的nodejs 实现静态服务器 ,还是晕乎乎，费话不说了，直接上代码，记笔记吧！</p>
+<h3 id="一、案例"><a href="#一、案例" class="headerlink" title="一、案例"></a>一、案例</h3><p>(1)  首先是页面index.js代码如下：</p>
+<p>例1</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"># require-----nodejs通过它来加载模块</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> http = <span class="built_in">require</span>(<span class="string">'http'</span>) </span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">http是nodejs的内置模块,它是一个对象，然后这个对象提供了一些方法，实现我们所需要的一些功能</span></span><br><span class="line"><span class="comment">整个服务器底层都是由nodejs的http模块实现的</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">函数createServer内部是一个异步的过程,内部会创建一个服务器，创建服务器时里面有一个回调function(req,res),把函数function(req,res)作为对应的参数，来处理我们的请求</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">换句话说，创建服务器后，当浏览器访问这个服务器时,那请求呢，底层会封装成一个对象，这个对象就是第一个参数，是req,可以随便起名</span></span><br><span class="line"><span class="comment"></span></span><br><span class="line"><span class="comment">req 用户请求的信息都在这里，用户的(ip ,访问的域名,浏览器的一些信息)</span></span><br><span class="line"><span class="comment">res 需要返回给用户哪些东西的这个对象</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"># res.write是把数据放到响应体Response里面</span><br><span class="line"># 响应体 是 页面的查看源代码，</span><br><span class="line"># 响应头 是 Response Header</span><br><span class="line"></span><br><span class="line"><span class="comment">//setHeader 设置响应头 </span></span><br><span class="line"></span><br><span class="line"> <span class="keyword">var</span> server = http.createServer(<span class="function"><span class="keyword">function</span>(<span class="params">req, res</span>)</span>&#123;</span><br><span class="line">     <span class="built_in">console</span>.log(<span class="string">'hello world'</span>)</span><br><span class="line">     res.setHeader(<span class="string">"Content-Type"</span>,<span class="string">"text/paint; charset=utf-8"</span>)</span><br><span class="line">     res.write(<span class="string">'&lt;h1&gt; 你好&lt;/h1&gt;'</span>) </span><br><span class="line">     res.end()</span><br><span class="line"> &#125;)</span><br><span class="line"> server.listen(<span class="number">9000</span>) <span class="comment">// listen方法 启动服务器 ,使这个服务器监听 9000端口</span></span><br></pre></td></tr></table></figure>
+<p>例2</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="keyword">var</span> server = http.createServer(<span class="function"><span class="keyword">function</span>(<span class="params">request, response</span>)</span>&#123;</span><br><span class="line">  setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="comment">/*text/plain 告诉浏览器，你接收到的字符串，你把它当成字符去渲染.  </span></span><br><span class="line"><span class="comment">      text/html 告诉浏览器，你接收到的字符串，你把它当成html去渲染</span></span><br><span class="line"><span class="comment">      charset=utf-8 告诉浏览器，用 utf-8解码</span></span><br><span class="line"><span class="comment">      charset=bgk 告诉浏览器，用 bgk 解码</span></span><br><span class="line"><span class="comment">    */</span></span><br><span class="line">    response.setHeader(<span class="string">'Content-Type'</span>,<span class="string">'text/html; charset=utf-8'</span>)</span><br><span class="line">    <span class="comment">//response.writeHead(404, 'Not Found')</span></span><br><span class="line">    response.writeHead(<span class="number">200</span>,<span class="string">'haha'</span>) <span class="comment">// 相当于 状态码 status code</span></span><br><span class="line">    response.write(<span class="string">'&lt;html&gt;&lt;head&gt;&lt;meta charset="gbk" /&gt;&lt;/head&gt;'</span>)</span><br><span class="line">    response.write(<span class="string">'&lt;body&gt;'</span>)</span><br><span class="line">    response.write(<span class="string">'&lt;h1&gt;你好&lt;/h1&gt;'</span>)</span><br><span class="line">    response.write(<span class="string">'&lt;/body&gt;'</span>)</span><br><span class="line">    response.write(<span class="string">'&lt;/html&gt;'</span>)</span><br><span class="line">    </span><br><span class="line">    response.end()</span><br><span class="line">  &#125;,<span class="number">2000</span>);</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'open http://localhost:8080'</span>)</span><br><span class="line">server.listen(<span class="number">8080</span>)</span><br></pre></td></tr></table></figure>
+<p>(2)  接下来是终端</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">➜  ~ cd node-server <span class="comment">// 去到对应的目录</span></span><br><span class="line">➜  node-server git:(master) ✗ cd step0</span><br><span class="line">➜  step0 git:(master) ✗ node index.js <span class="comment">//通过node 加上文件名, 启动服务器</span></span><br><span class="line"></span><br><span class="line">如果页面有更改需关闭服务器重新启动，终端操作 ctrl + c 关闭，然后重新启动 node index.js即可!</span><br></pre></td></tr></table></figure>
+<p>(3)  然后浏览器地址输入如下地址 浏览即可！其中9000是对应的端口</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">localhost: <span class="number">9000</span></span><br></pre></td></tr></table></figure>
+<p>例3 实现一个静态服务器</p>
+<p>(1)  把我们的代码放到static文件夹下,</p>
+<p>(2)  把我们的网站放到远程的机器在上</p>
+<p>(3)  然后通过执行<strong>node server.js</strong> 去运行服务器</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/9375265-a85157201549beb2.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="list.jpg"></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> http = <span class="built_in">require</span>(<span class="string">'http'</span>) <span class="comment">//创建服务器的模块</span></span><br><span class="line"><span class="keyword">var</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>) <span class="comment">//处理文件路径的模块,自动识别url类型</span></span><br><span class="line"><span class="keyword">var</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>) <span class="comment">// 读写文件的 ，读到数据，也可以往文件里写东西</span></span><br><span class="line"><span class="keyword">var</span> url = <span class="built_in">require</span>(<span class="string">'url'</span>) <span class="comment">// 自动解析url 得到一些信息 </span></span><br><span class="line"><span class="comment">/*相当于location, url 作为参数，然后进行解析，得到一个对象,然后我们可以使用里面的某些部分了</span></span><br><span class="line"><span class="comment">不用使用正则去提取啦*/</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">staticRoot</span>(<span class="params">staticPath,req,res</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(staticPath)</span><br><span class="line">    </span><br><span class="line">    <span class="built_in">console</span>.log(req.url)</span><br><span class="line">    <span class="keyword">var</span> pathObj = url.parse(req.url,<span class="literal">true</span>)</span><br><span class="line">    <span class="built_in">console</span>.log(pathObj)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">if(pathObj.pathname === '/')&#123;</span></span><br><span class="line"><span class="comment">    pathObj.pathname += 'index.html'</span></span><br><span class="line"><span class="comment">&#125;</span></span><br><span class="line"><span class="comment">index.html 作为默认的</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> filePath = path.join(staticPath,pathObj.pathname)</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 同步读文件</span></span><br><span class="line"><span class="comment">var fileContent = fs.readFileSync(filePath,'binary')</span></span><br><span class="line"><span class="comment">res.write(fileContent,'binary')</span></span><br><span class="line"><span class="comment">res.end()</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//异步读文件</span></span><br><span class="line">fs.readFile(filePath,<span class="string">'binary'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">err,fileContent</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(err)&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'404'</span>)</span><br><span class="line">        res.writeHead(<span class="number">404</span>,<span class="string">'not find'</span>)</span><br><span class="line">        res.end(<span class="string">'&lt;h1&gt; 404 Not Found'</span>)</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">       <span class="built_in">console</span>.log(<span class="string">'ok'</span>)</span><br><span class="line">       res.writeHead(<span class="number">200</span>,<span class="string">'ok'</span>)</span><br><span class="line">       res.write(fileContent,<span class="string">'binary'</span>)</span><br><span class="line">       res.end()</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(path.join(__dirname,<span class="string">'static'</span>))</span><br><span class="line"><span class="comment">//__dirname：当前模块的文件夹名称，nodejs内置的变量，代表当前代码的server.js的文件夹路径。也就是step1的绝对路径,然后拼上static路径，最终static的绝对路径</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> server = http.createServer(<span class="function"><span class="keyword">function</span>(<span class="params">req,res</span>)</span>&#123;</span><br><span class="line">    staticRoot(path.join(__dirname,<span class="string">'static'</span>),req,res)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">server.listen(<span class="number">8080</span>)</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'visit http://localhost:8080'</span>)</span><br></pre></td></tr></table></figure>
+<p>__dirname 请参照 <a href="http://nodejs.cn/api/modules.html#modules_dirname" target="_blank" rel="noopener">http://nodejs.cn/api/modules.html#modules_dirname</a></p>
+<h2 id="二、总结"><a href="#二、总结" class="headerlink" title="二、总结"></a>二、总结</h2><p><strong>A、看图说话吧</strong></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/9375265-3999c2e18dac389d.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="pic.jpg"></p>
+<p>(1)  用户的浏览器随便输入一个URL，<a href="http://localhost:8080/a/b/c" target="_blank" rel="noopener">http://localhost:8080/a/b/c</a> </p>
+<p>(2)  这时浏览器会把这个请求向这个域名<a href="http://localhost:8080对应的IP去发送" target="_blank" rel="noopener">http://localhost:8080对应的IP去发送</a></p>
+<p>(3)  发完之后这个请求从左边浏览器到了右边的远程机器上</p>
+<p>(4)  然后根据端口进行匹配,匹配上后，交给某个服务器</p>
+<p>(5)  这个服务器就拿到了这个请求,一个请求可以当成一个对象,对象里有关于这个请求的信息</p>
+<p>(6)  拿到之后，在服务器里进行处理,处理好之后，把结果再从服务器发回浏览器,就行了</p>
+<p>注：发回去分为两部分，一个是<strong>响应头</strong>，一个是<strong>响应体</strong></p>
+<p><strong>B、来一个简单版的静态服务器 server-simple.js</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> http = <span class="built_in">require</span>(<span class="string">'http'</span>)</span><br><span class="line"><span class="keyword">var</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> server = http.createServer(<span class="function"><span class="keyword">function</span>(<span class="params">req,res</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(__dirname + <span class="string">'/static'</span> + req.url)</span><br><span class="line">    <span class="comment">// 当一个请求到来时，通过当前的目录（__dirname）step1,加上'/static'，再加上'req.url',拼装成一个完整的路径</span></span><br><span class="line">    <span class="keyword">try</span>&#123;</span><br><span class="line">        <span class="keyword">var</span> fileContent = fs.readFileSync(__dirname + <span class="string">'/static'</span> + req.url)</span><br><span class="line">        <span class="comment">// 然后去读这个文件,读完之后，得到结果</span></span><br><span class="line">        res.write(fileContent) <span class="comment">// 得到结果之后，再把结果发出去 </span></span><br><span class="line">    &#125;<span class="keyword">catch</span>(e)&#123;</span><br><span class="line">        res.writeHead(<span class="number">404</span>,<span class="string">'not found'</span>)</span><br><span class="line">    &#125;</span><br><span class="line">    res.end()</span><br><span class="line">&#125;)</span><br><span class="line">server.listen(<span class="number">8080</span>)</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'visit http://localhost:8080'</span>)</span><br></pre></td></tr></table></figure>
+<p>如需要nodejs 服务器 路由解析 上面代码改为：</p>
+<p><strong>其中路由是指域名后边的东西 如：localhost:8080/user/123 中的 ‘/user/123’</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> http = <span class="built_in">require</span>(<span class="string">'http'</span>)</span><br><span class="line"><span class="keyword">var</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>)</span><br><span class="line"></span><br><span class="line">http.createServer(<span class="function"><span class="keyword">function</span>(<span class="params">req,res</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">switch</span>(req.url)&#123;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">'getWeather'</span>:</span><br><span class="line">        	res.end(<span class="built_in">JSON</span>.stringify(&#123;<span class="attr">a</span>:<span class="number">1</span>,<span class="attr">b</span>:<span class="number">2</span>&#125;))</span><br><span class="line">        	<span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">'user/123'</span>:</span><br><span class="line">        	res.end(fs.readFileSync(__dirname + <span class="string">'/static/user.tpl'</span>))</span><br><span class="line">        	<span class="keyword">break</span>;</span><br><span class="line">        <span class="keyword">default</span>:</span><br><span class="line">        	res.end(fs.readFileSync(__dirname + <span class="string">'/static'</span> + req.url))</span><br><span class="line">    &#125;</span><br><span class="line">&#125;).listen(<span class="number">8080</span>)</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/19/ajax/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -1797,158 +1947,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/11/基本类型、引用类型/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Wuer">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Wuer">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/10/11/基本类型、引用类型/" itemprop="url">基本类型、引用类型</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-11T21:45:40+08:00">
-                2018-10-11
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="一、基本类型"><a href="#一、基本类型" class="headerlink" title="一、基本类型"></a>一、基本类型</h1><h3 id="A、定义"><a href="#A、定义" class="headerlink" title="A、定义"></a>A、定义</h3><p>保存在栈内存中的简单数据段</p>
-<h3 id="B、分类"><a href="#B、分类" class="headerlink" title="B、分类"></a>B、分类</h3><p>(1)  数值</p>
-<p>(2)  字符串</p>
-<p>(3)  布尔值</p>
-<p>(4)  null和undefine</p>
-<h1 id="二、引用类型"><a href="#二、引用类型" class="headerlink" title="二、引用类型"></a>二、引用类型</h1><h3 id="A、定义-1"><a href="#A、定义-1" class="headerlink" title="A、定义"></a>A、定义</h3><p>那些保存在堆内存中的对象，变量中保存的实际上只是一个指针，这个指针执行内存中的另一个位置，由该位置保存对象</p>
-<h3 id="B、分类-1"><a href="#B、分类-1" class="headerlink" title="B、分类"></a>B、分类</h3><p>(1)  对象</p>
-<p>(2)  数组</p>
-<p>(3)  函数</p>
-<p>(4)  正则</p>
-<h3 id="C、实例解析"><a href="#C、实例解析" class="headerlink" title="C、实例解析"></a>C、实例解析</h3><p>(1)  例1</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a;</span><br><span class="line"><span class="keyword">var</span> b;</span><br><span class="line"><span class="keyword">var</span> obj;</span><br><span class="line"><span class="keyword">var</span> obj2;</span><br><span class="line"></span><br><span class="line">a = <span class="number">1</span>;</span><br><span class="line">b = <span class="number">2</span>;</span><br><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">    name: <span class="string">'xwu'</span>,</span><br><span class="line">    sex: <span class="string">'girl'</span>,</span><br><span class="line">    age: <span class="number">18</span>,</span><br><span class="line">    friend :&#123;</span><br><span class="line">        name: <span class="string">'hello'</span>,</span><br><span class="line">        age: <span class="number">100</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> newObj = &#123;&#125;;</span><br><span class="line"></span><br><span class="line">b = a;</span><br><span class="line"><span class="built_in">console</span>.log(b); <span class="comment">//1</span></span><br><span class="line"><span class="keyword">var</span> obj2 = obj;</span><br><span class="line">obj <span class="comment">//&#123;name: "xwu", sex: "girl", age: 18, friend: &#123;…&#125;&#125;</span></span><br><span class="line">obj2 <span class="comment">//&#123;name: "xwu", sex: "girl", age: 18, friend: &#123;…&#125;&#125;</span></span><br><span class="line"></span><br><span class="line">obj.name = <span class="string">'xxwu'</span> <span class="comment">//"xxwu"</span></span><br><span class="line">obj2.name  <span class="comment">//"xxwu"</span></span><br><span class="line"><span class="comment">// 只有一个东西，取了不同名字，这就是引用类型</span></span><br></pre></td></tr></table></figure>
-<p>例2</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj3 = &#123;<span class="attr">name</span>: <span class="string">'hello'</span>&#125;;</span><br><span class="line"><span class="keyword">var</span> obj4 = &#123;<span class="attr">name</span>: <span class="string">'hello'</span>&#125;;</span><br><span class="line">obj3 === obj4 <span class="comment">//false</span></span><br></pre></td></tr></table></figure>
-<p><strong>分析：</strong>如下图见分晓<br><img src="https://upload-images.jianshu.io/upload_images/9375265-61edb0c547ce4ef6.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="p1.jpg"></p>
-<p>例3</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params">m</span>)</span>&#123;<span class="comment">//定义都是形参，m是形参</span></span><br><span class="line">	m.k = <span class="number">5</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> m = &#123;</span><br><span class="line">	k: <span class="number">30</span></span><br><span class="line">&#125;</span><br><span class="line">test(m);<span class="comment">//调用都是实参调用，m是实参</span></span><br><span class="line"><span class="built_in">console</span>.log(m);</span><br><span class="line"><span class="comment">// &#123;k: 5&#125;</span></span><br></pre></td></tr></table></figure>
-<p><strong>分析：</strong>对象属于引用类型, 传进去的 m 实际是 m 的地址~ 所以 test 还是对 m 进行操作的</p>
-<p>例4</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sum</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line"> <span class="built_in">console</span>.log(<span class="string">'sum.....'</span>)   </span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> sum2 = sum</span><br><span class="line">sum2() <span class="comment">// sum.....</span></span><br><span class="line">sum2 === sum <span class="comment">//true</span></span><br></pre></td></tr></table></figure>
-<p><strong>分析</strong>：如下图，sum和sum2指向的是同一个地址code，即同一个东西，取了不同名字sum、sum2,这就是引用类型</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/9375265-51635ec7cc5406df.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="p2.jpg"></p>
-<p>例5</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">inc</span>(<span class="params">n</span>)</span>&#123;</span><br><span class="line">    n++;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> a = <span class="number">10</span>;</span><br><span class="line">inc(a);</span><br><span class="line"><span class="built_in">console</span>.log(a);<span class="comment">//10</span></span><br><span class="line"></span><br><span class="line">相当于</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">inc</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> n = <span class="built_in">arguments</span>[<span class="number">0</span>]</span><br><span class="line">    n++ <span class="comment">//可以使用arguments对象在函数中引用函数的参数,此对象包含传递给函数的每个参数,第一个参数在索引0处</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> a = <span class="number">10</span></span><br><span class="line">inc(a)</span><br><span class="line"><span class="built_in">console</span>.log(a) <span class="comment">//10</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">incObj</span>(<span class="params">obj</span>)</span>&#123;</span><br><span class="line">    <span class="comment">//var obj = o // 0x0001</span></span><br><span class="line">    obj.n++;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> o = &#123;<span class="attr">n</span>: <span class="number">10</span>&#125;; <span class="comment">//o = 0x0001</span></span><br><span class="line">incObj(o);</span><br><span class="line"><span class="built_in">console</span>.log(o);</span><br></pre></td></tr></table></figure>
-<p><strong>分析：</strong>如下图，引用类型存的对象地址</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/9375265-43b27d969403eae3.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="p3.jpg"></p>
-<p>例6</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">squireArr</span>(<span class="params">arr</span>)</span>&#123;</span><br><span class="line">    <span class="comment">//var arr = 0x0011</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i&lt;arr.length; i++)&#123;</span><br><span class="line">        arr[i] = arr[i]*arr[i]</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">squireArr2</span>(<span class="params">arr</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> newArr = []</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i&lt; arr.length; i++)&#123;</span><br><span class="line">        newArr = arr[i]*arr[i]</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> newArr</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> arr = [<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>] <span class="comment">// arr 0x0011</span></span><br><span class="line">squireArr(arr)</span><br><span class="line"><span class="built_in">console</span>.log(arr) <span class="comment">// [4,9,16,25] </span></span><br><span class="line"><span class="comment">//在原数组操作</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> arr2 = squireArr2(arr)</span><br><span class="line"><span class="built_in">console</span>.log(arr2) <span class="comment">// [4,9,16,25]</span></span><br><span class="line"><span class="comment">//得到一个新数组，原数组没变</span></span><br></pre></td></tr></table></figure>
-<h1 id="三、对象深拷贝和浅拷贝"><a href="#三、对象深拷贝和浅拷贝" class="headerlink" title="三、对象深拷贝和浅拷贝"></a>三、对象深拷贝和浅拷贝</h1><h3 id="A、浅拷贝-（即拷贝一层）"><a href="#A、浅拷贝-（即拷贝一层）" class="headerlink" title="A、浅拷贝 （即拷贝一层）"></a>A、浅拷贝 （即拷贝一层）</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">shallowCopy</span>(<span class="params">oldObj</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> newObj = &#123;&#125;;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i <span class="keyword">in</span> oldObj)&#123;</span><br><span class="line">        <span class="keyword">if</span>(oldObj.hasOwnProperty(i))&#123;</span><br><span class="line">            newObj[i] = oldObj[i];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> newObj;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="B、深拷贝-（）"><a href="#B、深拷贝-（）" class="headerlink" title="B、深拷贝 （）"></a>B、深拷贝 （）</h3><p>(1)  方法1</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">deepCopy</span>(<span class="params">oldObj</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> newObj = &#123;&#125;;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> key <span class="keyword">in</span> oldObj)&#123;</span><br><span class="line">        <span class="keyword">if</span>(<span class="keyword">typeof</span> oldObj[key] === <span class="string">'object'</span>)&#123;</span><br><span class="line">            newObj[key] = deepCopy(oldObj[key]);</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            newObj[key] = oldObj[key];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> newObj;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>(2)  方法2</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">    name: <span class="string">'hunger'</span>,</span><br><span class="line">    age: <span class="number">3</span>,</span><br><span class="line">    friends: [<span class="string">'aa'</span>, <span class="string">'bb'</span>, <span class="string">'cc'</span>]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> obj2 = <span class="built_in">JSON</span>.parse(<span class="built_in">JSON</span>.stringify(obj))</span><br><span class="line">obj.age = <span class="number">4</span></span><br><span class="line"><span class="built_in">console</span>.log(obj2.age)</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1999,7 +1997,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">41</span>
+                  <span class="site-state-item-count">42</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
