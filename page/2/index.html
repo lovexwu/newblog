@@ -229,6 +229,151 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/20/js犯的小通病/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Wuer">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Wuer">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/12/20/js犯的小通病/" itemprop="url">js犯的小通病</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-20T16:39:09+08:00">
+                2018-12-20
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="一､-console-log-和-return"><a href="#一､-console-log-和-return" class="headerlink" title="一､ console.log 和 return"></a>一､ console.log 和 return</h3><p> 1､情况一、a的值是 undefined</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params">a,b</span>)</span>&#123;</span><br><span class="line">   <span class="built_in">console</span>.log(a+b); </span><br><span class="line">    <span class="comment">//console.log 相当于画画，把a+b画出来，然后在控制台下可以看见出来，但是它并没有放在变量a里面</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">undefined</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> a = fn()</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">fn()看成一个整体，看成一个值，也就是函数的值，是 return 出来的值</span></span><br><span class="line"><span class="comment">a的值并不是console.log(a+b)的值，是 return 出来的值，也就是 undefined</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+<p>2､情况二、a的值是 undefined</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params">a,b</span>)</span>&#123;</span><br><span class="line">   <span class="keyword">return</span> <span class="built_in">console</span>.log(a+b)   </span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> a = fn(<span class="number">1</span>,<span class="number">3</span>) </span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">控制台是看到值了，但是a 还是undefined, 为什么呢</span></span><br><span class="line"><span class="comment">因为a 是 函数fn，return 出来的值，也就是console.log执行的结果，但是console.log也是函数，那console.log(a+b)的值是多少呢，它的返回值是undefined,它本身的值是没有的</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+<p>3､情况三、正确这么写才对</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params">a,b</span>)</span>&#123;</span><br><span class="line">   <span class="built_in">console</span>.log(a+b); </span><br><span class="line">   <span class="keyword">return</span> a+b;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> a = fn(<span class="number">1</span>,<span class="number">3</span>)</span><br></pre></td></tr></table></figure>
+<h3 id="二、切换效果需注意事项"><a href="#二、切换效果需注意事项" class="headerlink" title="二、切换效果需注意事项"></a>二、切换效果需注意事项</h3><p>html文件</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">.tab-header&#123;display: flex;&#125;</span></span><br><span class="line"><span class="undefined">.tab-header div&#123;padding:5px 15px 0;background:#ccc;margin-right:5px;&#125;	</span></span><br><span class="line"><span class="undefined">.tab-header div.active&#123;color:red;&#125;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">.tab-panels div&#123;display: none;background:pink;&#125;</span></span><br><span class="line"><span class="undefined">.tab-panels div.active&#123;display: block;&#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"tab-container"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"tab-header"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>= <span class="string">"active"</span>&gt;</span>1<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">div</span>&gt;</span>2<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">div</span>&gt;</span>3<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"tab-panels"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"active"</span>&gt;</span>box1<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">div</span>&gt;</span>box2<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">div</span>&gt;</span>box3<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>js文件</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 选择好之后 去绑定事件 因为它是列数组对象,不能用 .on('click',function()&#123;&#125;)事件，可以用forEach</span></span><br><span class="line"><span class="keyword">var</span> tabs = <span class="built_in">document</span>.querySelectorAll(<span class="string">'.tab-header div'</span>);</span><br><span class="line"><span class="keyword">var</span> panels = <span class="built_in">document</span>.querySelectorAll(<span class="string">'.tab-panel div'</span>);</span><br><span class="line">tabs.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">node</span>)</span>&#123;</span><br><span class="line">    node.onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">var</span> index = <span class="number">0</span>;</span><br><span class="line">        tabs.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">tab,idx</span>)</span>&#123;</span><br><span class="line">           <span class="built_in">console</span>.log(tab);        </span><br><span class="line">           tab.classList.remove(<span class="string">'active'</span>);   </span><br><span class="line">           <span class="keyword">if</span>(node === tab)&#123;</span><br><span class="line">            index = idx;</span><br><span class="line">        	&#125;</span><br><span class="line">        &#125;);</span><br><span class="line">        <span class="keyword">this</span>.classList.add(<span class="string">'active'</span>);  </span><br><span class="line">        </span><br><span class="line">        panels.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">panel</span>)</span>&#123;</span><br><span class="line">            panel.classList.remove(<span class="string">'active'</span>);</span><br><span class="line">            panels[index].classList.add(<span class="string">'active'</span>);</span><br><span class="line">        &#125;)    </span><br><span class="line">    &#125;;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<p>实现了一个切换效果</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14339384-82e5ade1267e519c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>假设页面有多个切换，上面这写法不行了，所以呢，我们要优化代码</p>
+<p>第一次优化：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> Tab = &#123;</span><br><span class="line">    init:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.tabs = <span class="built_in">document</span>.querySelectorAll(<span class="string">'.tab-header div'</span>);</span><br><span class="line">        <span class="keyword">this</span>.panels = <span class="built_in">document</span>.querySelectorAll(<span class="string">'.tab-panel div'</span>);</span><br><span class="line">    &#125;,</span><br><span class="line">    bind:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">var</span> self = <span class="keyword">this</span>;</span><br><span class="line">        self.tabs.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">node</span>)</span>&#123;</span><br><span class="line">            node.onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">                <span class="keyword">var</span> index = <span class="number">0</span>;</span><br><span class="line">                self.tabs.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">tab,idx</span>)</span>&#123;</span><br><span class="line">                   <span class="built_in">console</span>.log(tab);        </span><br><span class="line">                   tab.classList.remove(<span class="string">'active'</span>);   </span><br><span class="line">                   <span class="keyword">if</span>(node === tab)&#123;</span><br><span class="line">                    index = idx;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;);</span><br><span class="line">                <span class="keyword">this</span>.classList.add(<span class="string">'active'</span>);  </span><br><span class="line"></span><br><span class="line">                self.panels.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">panel</span>)</span>&#123;</span><br><span class="line">                    panel.classList.remove(<span class="string">'active'</span>);</span><br><span class="line">                    self.panels[index].classList.add(<span class="string">'active'</span>);</span><br><span class="line">                &#125;)    </span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">Tab.init()</span><br></pre></td></tr></table></figure>
+<p>执行结果发现 ：</p>
+<p>1､只能<strong>实现一个切换</strong>，要<strong>多个切换的实现</strong>，代码部分还得继续优化呀</p>
+<p>2､但是代码部分简洁了，页面只有一个全局变量Tab</p>
+<p>好吧，<strong>继续更改优化吧</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Tab</span>(<span class="params">container</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.container = container;</span><br><span class="line">    <span class="keyword">this</span>.init();</span><br><span class="line">    <span class="keyword">this</span>.bind();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Tab.prototype.init = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.tabs = <span class="keyword">this</span>.container.querySelectorAll(<span class="string">'.tab-header div'</span>);</span><br><span class="line">    <span class="keyword">this</span>.panels = <span class="keyword">this</span>.container.querySelectorAll(<span class="string">'.tab-panel div'</span>);</span><br><span class="line">    <span class="keyword">this</span>.bind();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Tab.prototype.bind = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line"> 	<span class="keyword">var</span> self = <span class="keyword">this</span>;</span><br><span class="line">    self.tabs.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">node</span>)</span>&#123;</span><br><span class="line">        node.onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            <span class="keyword">var</span> index = <span class="number">0</span>;</span><br><span class="line">            self.tabs.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">tab,idx</span>)</span>&#123;</span><br><span class="line">                <span class="built_in">console</span>.log(tab);        </span><br><span class="line">                tab.classList.remove(<span class="string">'active'</span>);   </span><br><span class="line">                <span class="keyword">if</span>(node === tab)&#123;</span><br><span class="line">                        index = idx;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;);</span><br><span class="line">            <span class="keyword">this</span>.classList.add(<span class="string">'active'</span>);  </span><br><span class="line"></span><br><span class="line">            self.panels.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">panel</span>)</span>&#123;</span><br><span class="line">                panel.classList.remove(<span class="string">'active'</span>);</span><br><span class="line">                self.panels[index].classList.add(<span class="string">'active'</span>);</span><br><span class="line">            &#125;)    </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)  </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//var tab1 = new Tab(document.querySelectorAll('.tab-container')[0])</span></span><br><span class="line"><span class="comment">//var tab2 = new Tab(document.querySelectorAll('.tab-container')[1])</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">document</span>.querySelectorAll(<span class="string">'.tab-container'</span>).forEach(<span class="function"><span class="keyword">function</span>(<span class="params">container</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">new</span> Tab(container)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>Demo 地址：<a href="http://js.jirengu.com/qutaz/6/edit" target="_blank" rel="noopener">http://js.jirengu.com/qutaz/6/edit</a></p>
+<p>老师地址：<a href="http://js.jirengu.com/setod/1/edit?html,output" target="_blank" rel="noopener">http://js.jirengu.com/setod/1/edit?html,output</a></p>
+<h3 id="三、写js-的三步曲"><a href="#三、写js-的三步曲" class="headerlink" title="三、写js 的三步曲"></a>三、写js 的三步曲</h3><p>1､ 初始化 init</p>
+<p>2､绑定事件 bind</p>
+<p>3､渲染数据 render</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> App=&#123;</span><br><span class="line">    init: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;,</span><br><span class="line">    bind: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;,</span><br><span class="line">    render: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line">App.init() <span class="comment">// 切记别忘记了这一句，不然代码没法执行，老掉的坑就是没加这一句，请求的数据，拿不到</span></span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/19/其他小笔记/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -1929,185 +2074,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/04/搭建服务器/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Wuer">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Wuer">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/12/04/搭建服务器/" itemprop="url">搭建服务器</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-04T09:32:34+08:00">
-                2018-12-04
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="一、http-server"><a href="#一、http-server" class="headerlink" title="一、http-server"></a>一、http-server</h2><p>使用 http-server node工具启动一个静态服务器</p>
-<p>(1)  在终端输入 http-server, 就可以启动一个静态服务器</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/9375265-6eb68a207ed910b5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-<p>(2)  接下来就可以用<a href="http://127.0.0.1:8081" target="_blank" rel="noopener">http://127.0.0.1:8081</a> 查看对应的页面了</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/9375265-90e8637502a4390b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-<p>假设简单页面开发，需要测试时，接口可以做成一个文件，叫’/login.json’。</p>
-<p>相当于向文件发送请求，然后会返回文件的内容，您把数据的响应内容放到文件里面就可以了，这样的话可以做一个数据的模拟,整个流程就可以跑通</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xhr.open(<span class="string">'GET'</span>,<span class="string">'/login.json'</span>,<span class="literal">true</span>)</span><br></pre></td></tr></table></figure>
-<p>(3)  假设要做一个网易云音乐</p>
-<ul>
-<li>首先第一个需要做的，就是要获取它的分类 ‘/catelog.json’</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">xhr.open(<span class="string">'GET'</span>,<span class="string">'/catelog.json'</span>,<span class="literal">true</span>)</span><br></pre></td></tr></table></figure>
-<ul>
-<li>然后接下来在当前的html对应的目录下新建catelog.json文件,里面的内容是就是我们的分类的数据，是json格式的数据。把当前html文件和catelog.json文件放同一级目录,这时把代码上传到githubpages或其他静态服务器后，这功能就有了，当向’/catelog.json’接口发请求，就能得到数据，不需要任何的后台或平台就可以得到数据了</li>
-</ul>
-<h2 id="二、GitHubPages-mock数据"><a href="#二、GitHubPages-mock数据" class="headerlink" title="二、GitHubPages mock数据"></a>二、GitHubPages mock数据</h2><p>(1)  首先需要在同一级目录下新建html和json文件，即song.html和song.json文件，如下图</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/9375265-6ddd6296ae6cecc2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-<p>song.html页面代码</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">&lt;title&gt;<span class="xml"><span class="tag">&lt;/<span class="name">title</span>&gt;</span></span></span><br><span class="line">&lt;<span class="regexp">/head&gt;</span></span><br><span class="line"><span class="regexp">&lt;body&gt;</span></span><br><span class="line"><span class="regexp">&lt;script&gt;</span></span><br><span class="line"><span class="regexp">var xhr = new XMLHttpRequest()</span></span><br><span class="line"><span class="regexp">xhr.open('GET','/</span>testmusic/song.json<span class="string">',true)</span></span><br><span class="line"><span class="string">//song.json前一定要加'</span>/testmusic<span class="string">'，因为域名是github.com</span></span><br><span class="line"><span class="string">xhr.send()</span></span><br><span class="line"><span class="string">xhr.onload = function()&#123;</span></span><br><span class="line"><span class="string">    console.log(JSON.parse(xhr.responseText))</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string">&lt;/script&gt;</span></span><br><span class="line"><span class="string">&lt;/body&gt;</span></span><br></pre></td></tr></table></figure>
-<p>song.json页面代码</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[&quot;90后&quot;,&quot;80后&quot;,&quot;哈哈&quot;]</span><br></pre></td></tr></table></figure>
-<p>(2)  设置下，使用githubpages ,做一个预览</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/9375265-adb68a2c5dc9e969.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-<p>(3).  打开这个页面song.html</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/9375265-d8668c9c73d22044.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-<p>(4)  就获取到数据啦<br><img src="https://upload-images.jianshu.io/upload_images/9375265-6514b129b355b5d1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-<h2 id="三、server-mock"><a href="#三、server-mock" class="headerlink" title="三、server-mock"></a>三、server-mock</h2><p>使用 server-mock node工具启动一个能处理静态文件和动态路由的服务器</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> http = <span class="built_in">require</span>(<span class="string">'http'</span>)</span><br><span class="line"><span class="keyword">var</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>)</span><br><span class="line">http.createServer(<span class="function"><span class="keyword">function</span>(<span class="params">req,res</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">switch</span>()&#123;</span><br><span class="line">        <span class="keyword">case</span> <span class="string">'getWeather'</span>:</span><br><span class="line">        	res.end(<span class="built_in">JSON</span>.stringify(&#123;<span class="attr">a</span>:<span class="number">1</span>,<span class="attr">b</span>:<span class="number">2</span>&#125;))</span><br><span class="line">    		<span class="keyword">break</span></span><br><span class="line">        <span class="keyword">case</span> <span class="string">'/user/123'</span>:</span><br><span class="line">        	res.end(fs.readFileSync(__dirname + <span class="string">'/static/user.tpl'</span>))</span><br><span class="line">    		<span class="keyword">break</span>;</span><br><span class="line">    	<span class="keyword">default</span>:</span><br><span class="line">    		res.end(fs.readFileSync(__dirname + <span class="string">'/static'</span> + req.url))</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<h2 id="四、手写一个服务器"><a href="#四、手写一个服务器" class="headerlink" title="四、手写一个服务器"></a>四、手写一个服务器</h2><p>可参照    <a href="https://github.com/jirengu/node-server&gt;" target="_blank" rel="noopener">https://github.com/jirengu/node-server&gt;</a></p>
-<h2 id="五、线上mock-数据"><a href="#五、线上mock-数据" class="headerlink" title="五、线上mock 数据"></a>五、线上mock 数据</h2><p>(1)  使用 <a href="http://easy-mock.com/" target="_blank" rel="noopener">http://easy-mock.com/</a></p>
-<p>(2)  使用 <a href="http://rapapi.org/org/index.do" target="_blank" rel="noopener">http://rapapi.org/org/index.do</a></p>
-<p>(3)  使用 server-mock</p>
-<h2 id="六、简单来说说easymock"><a href="#六、简单来说说easymock" class="headerlink" title="六、简单来说说easymock"></a>六、简单来说说easymock</h2><p>(1)  首先进去网页，第一次进来是没有注册的， 直接用户名和密码登录就好</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/9375265-78d009374f69f80f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-<p>(2)  登录后，开始建立项目</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/9375265-62dbea526fe12bad.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-<p><img src="https://upload-images.jianshu.io/upload_images/9375265-aea63812e30e43d0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-<p>(3)  点创建钮后，就建立了一个项目</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/9375265-f304db7c6a9441f2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-<p>(4)  接下来，点击红框处</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/9375265-565fe2d5b3800058.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-<p>(5)  开始建立接口啦</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/9375265-3e71f3de6a47e939.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-<p>(6)  填写相关信息</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/9375265-401e59f2b71fa887.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-<p>(7)  接口创建好</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/9375265-d06052f578ab903e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-<p>现在来编辑，点上图操作下方的第二个小标，进入编辑页面,编辑好并预览</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/9375265-55f6f7113317b4e8.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-<p>(8)  点预览,显示结果是</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/9375265-8e68c5a52d1dc95c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-<p>(9)  我们可以复制接口地址在终端，用命令curl查看结果</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/9375265-5385b986fe213471.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-<p><img src="https://upload-images.jianshu.io/upload_images/9375265-23e8ef9ad7276688.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-<p>(10)  我们也可以在本地测试这个接口</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> xhr = <span class="keyword">new</span> XMLHttpRequest()</span><br><span class="line">xhr.open(<span class="string">'GET'</span>,<span class="string">'https://easy-mock.com/mock/5c0614d154d29d7973e87912/getType'</span>,<span class="literal">true</span>)</span><br><span class="line">xhr.send()</span><br><span class="line"></span><br><span class="line">xhr.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(xhr.status &gt;=<span class="number">200</span> &amp;&amp; xhr.status &lt;<span class="number">300</span> || xhr.status === <span class="number">304</span>)&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(xhr.responseText)</span><br><span class="line">    &#125;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>(11)  打开静态服务器，终端输入http-server,然后浏览器预览，结果为</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/9375265-2683acdc53ca1627.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-<p>换句话说，我们发了请求的接口，可以是我们之前线上easymock定义的接口，可以定义好接口人，名字,数据，这样子，不管在服务器上还是在本地，都可以做一个演示</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2158,7 +2124,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">42</span>
+                  <span class="site-state-item-count">43</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

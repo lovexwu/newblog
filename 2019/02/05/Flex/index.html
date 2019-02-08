@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="一、场景一个容器设置了 display: flex；属性就定义了一个flex容器，它的直接子元素会接受这个flex环境 二、属性1､flex-direction设置或检索伸缩盒对象的子元素在父容器中的位置 .container {  flex-direction: row | row-reverse | column | column-reverse;}row 默认值，水平从左到右row-reve">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Flex">
+<meta property="og:url" content="http://yoursite.com/2019/02/05/Flex/index.html">
+<meta property="og:site_name" content="Wuer">
+<meta property="og:description" content="一、场景一个容器设置了 display: flex；属性就定义了一个flex容器，它的直接子元素会接受这个flex环境 二、属性1､flex-direction设置或检索伸缩盒对象的子元素在父容器中的位置 .container {  flex-direction: row | row-reverse | column | column-reverse;}row 默认值，水平从左到右row-reve">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14339384-69b33e699be54f66.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14339384-dab53ba492f1746a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14339384-0a39a2d1f2659645.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2019-02-05T13:49:19.174Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Flex">
+<meta name="twitter:description" content="一、场景一个容器设置了 display: flex；属性就定义了一个flex容器，它的直接子元素会接受这个flex环境 二、属性1､flex-direction设置或检索伸缩盒对象的子元素在父容器中的位置 .container {  flex-direction: row | row-reverse | column | column-reverse;}row 默认值，水平从左到右row-reve">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/14339384-69b33e699be54f66.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/02/05/Flex/">
+
+
+
+
+
+  <title>Flex | Wuer</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Wuer</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/05/Flex/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Wuer">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Wuer">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Flex</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-02-05T20:25:04+08:00">
+                2019-02-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="一、场景"><a href="#一、场景" class="headerlink" title="一、场景"></a>一、场景</h2><p>一个容器设置了 <strong>display: flex</strong>；属性就定义了一个<strong>flex容器</strong>，它的直接子元素会接受这个flex环境</p>
+<h2 id="二、属性"><a href="#二、属性" class="headerlink" title="二、属性"></a>二、属性</h2><h4 id="1､flex-direction"><a href="#1､flex-direction" class="headerlink" title="1､flex-direction"></a>1､flex-direction</h4><p>设置或检索伸缩盒对象的子元素在父容器中的位置</p>
+<p>.container {<br>  flex-direction: row | row-reverse | column | column-reverse;<br>}<br>row 默认值，水平从左到右<br>row-reverse 水平从右到左<br>column 垂直从上到下<br>column-reverse 垂直从下到上</p>
+<h4 id="2､flex-wrap"><a href="#2､flex-wrap" class="headerlink" title="2､flex-wrap"></a>2､flex-wrap</h4><p>设置或检索弹性盒模型对象的子元素超出父容器时是否换行</p>
+<p>默认所有的flex item会尝试放在一行中，可以通过设置flex-wrap设置新行的方向</p>
+<p>.container{<br>  flex-wrap: nowrap | wrap | wrap-reverse;<br>}<br>nowrap 默认值，不换行<br>wrap 换行<br>wrap-reverse 换行，并且颠倒行顺序</p>
+<h4 id="3､flex-flow"><a href="#3､flex-flow" class="headerlink" title="3､flex-flow"></a>3､flex-flow</h4><p>flex-direction 和 flex-wrap 的缩写，默认值row nowrap</p>
+<p>flex-flow: &lt;‘flex-direction’&gt; || &lt;‘flex-wrap’&gt;<br>设置或检索弹性盒子元素在主轴（横轴）方向上的对齐方式，当弹性盒里一行上的所有子元素都不能伸缩或已经达到其最大值时，这一属性可协助对多余的空间进行分配。当元素溢出某行时，这一属性同样会在对齐上进行控制</p>
+<p>.container {<br>  justify-content: flex-start | flex-end | center | space-between | space-around;<br>}<br>flex-start 默认值、弹性盒子元素将向行起始位置对齐</p>
+<p>flex-end 弹性盒子元素将向行结束位置对齐</p>
+<p>center弹性盒子元素将向行中间位置对齐。该行的子元素将相互对齐并在行中居中对齐</p>
+<p>space-between 弹性盒子元素会平均地分布在行里</p>
+<p>space-around 弹性盒子元素会平均地分布在行里，两端保留子元素与子元素之间间距大小的一半</p>
+<h4 id="4､align-items"><a href="#4､align-items" class="headerlink" title="4､align-items"></a>4､align-items</h4><p>设置或检索弹性盒子元素在侧轴（纵轴）方向上的对齐方式</p>
+<p>.container {<br>  align-items: flex-start | flex-end | center | baseline | stretch;<br>}<br>flex-start 弹性盒子元素的侧轴（纵轴）起始位置的边界紧靠住该行的侧轴起始边界。</p>
+<p>flex-end 弹性盒子元素的侧轴（纵轴）起始位置的边界紧靠住该行的侧轴结束边界。</p>
+<p>center 弹性盒子元素在该行的侧轴（纵轴）上居中放置。（如果该行的尺寸小于弹性盒子元素的尺寸，则会向两个方向溢出相同的长度）。</p>
+<p>baseline 如弹性盒子元素的行内轴与侧轴为同一条，则该值与flex-start等效。其它情况下，该值将参与基线对齐。</p>
+<p>stretch 如果指定侧轴大小的属性值为’auto’，则其值会使项目的边距盒的尺寸尽可能接近所在行的尺寸，但同时会遵照’min/max-width/height’属性的限制。</p>
+<h4 id="5､align-content"><a href="#5､align-content" class="headerlink" title="5､align-content"></a>5､align-content</h4><p>设置或检索弹性盒堆叠伸缩行的对齐方式</p>
+<p>.container {<br>  align-content: flex-start | flex-end | center | space-between | space-around | stretch;<br>}<br>flex-start 各行向弹性盒容器的起始位置堆叠。弹性盒容器中第一行的侧轴起始边界紧靠住该弹性盒容器的侧轴起始边界，之后的每一行都紧靠住前面一行。</p>
+<p>flex-end 各行向弹性盒容器的结束位置堆叠。弹性盒容器中最后一行的侧轴起结束界紧靠住该弹性盒容器的侧轴结束边界，之后的每一行都紧靠住前面一行。</p>
+<p>center 各行向弹性盒容器的中间位置堆叠。各行两两紧靠住同时在弹性盒容器中居中对齐，保持弹性盒容器的侧轴起始内容边界和第一行之间的距离与该容器的侧轴结束内容边界与第最后一行之间的距离相等。</p>
+<p>space-between 各行在弹性盒容器中平均分布。第一行的侧轴起始边界紧靠住弹性盒容器的侧轴起始内容边界，最后一行的侧轴结束边界紧靠住弹性盒容器的侧轴结束内容边界，剩余的行则按一定方式在弹性盒窗口中排列，以保持两两之间的空间相等。</p>
+<p>space-around 各行在弹性盒容器中平均分布，两端保留子元素与子元素之间间距大小的一半。各行会按一定方式在弹性盒容器中排列，以保持两两之间的空间相等，同时第一行前面及最后一行后面的空间是其他空间的一半。</p>
+<p>stretch 各行将会伸展以占用剩余的空间。剩余空间被所有行平分，以扩大它们的侧轴尺寸。</p>
+<p>然后是用在子元素上的属性</p>
+<h4 id="6､order"><a href="#6､order" class="headerlink" title="6､order"></a>6､order</h4><p>在默认情况下flex order会按照书写顺训呈现，可以通过order属性改变，数值小的在前面，还可以是负数</p>
+<p>.item {<br>  order: <integer>;<br>}</integer></p>
+<h4 id="8､flex-shrink"><a href="#8､flex-shrink" class="headerlink" title="8､flex-shrink"></a>8､flex-shrink</h4><p>设置或检索弹性盒的收缩比率,根据弹性盒子元素所设置的收缩因子作为比率来收缩空间</p>
+<p>.item {<br>  flex-shrink: <number>; /<em> default 1 </em>/<br>}</number></p>
+<h4 id="10､flex"><a href="#10､flex" class="headerlink" title="10､flex"></a>10､flex</h4><p>flex-grow, flex-shrink,flex-basis 的缩写</p>
+<p>.item {<br>  flex: none | [ &lt;’flex-grow’&gt; &lt;’flex-shrink’&gt;? || &lt;’flex-basis’&gt; ]<br>}</p>
+<h4 id="11､align-self"><a href="#11､align-self" class="headerlink" title="11､align-self"></a>11､align-self</h4><p>设置或检索弹性盒子元素在侧轴（纵轴）方向上的对齐方式，可以覆盖父容器align-items的设置</p>
+<p>.item {<br>  align-self: auto | flex-start | flex-end | center | baseline | stretch;<br>}</p>
+<h2 id="三、实例"><a href="#三、实例" class="headerlink" title="三、实例"></a>三、实例</h2><h4 id="1､flex-basis"><a href="#1､flex-basis" class="headerlink" title="1､flex-basis"></a>1､flex-basis</h4><p>用于设置子项的占用空间。如果设置了值，则子项占用的空间为设置的值；如果没设置或者为 auto，那子项的空间为width/height 的值</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14339384-69b33e699be54f66.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>解析：</p>
+<p>(1)、对于子项1，flex-basis 如果设置默认是auto，子项占用的宽度使用width 的宽度，width没设置也为 auto，所以子项占用空间由内容决定</p>
+<p>(2)、对于子项2，flex-basis 为auto，子项占用宽度使用width 的宽度，width 为70px，所以子项子项占用空间是70px</p>
+<p>(3)、对于子项3，flex-basis 为100px，覆盖width 的宽度，所以子项占用空间是100px</p>
+<p>demo地址 <a href="http://js.jirengu.com/weqoc/5/edit?html,output" target="_blank" rel="noopener">http://js.jirengu.com/weqoc/5/edit?html,output</a></p>
+<h4 id="2､flex-grow"><a href="#2､flex-grow" class="headerlink" title="2､flex-grow"></a>2､flex-grow</h4><p>用来“瓜分”父项的“剩余空间”</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14339384-dab53ba492f1746a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>解析：</p>
+<p>(1)、容器的宽度为400px, 子项1的占用的基础空间(flex-basis)为50px，子项2占用的基础空间是70px，子项3占用基础空间是100px，剩余空间为 400-50-70-100 = 180px</p>
+<p>(2)、其中子项1的flex-grow: 0(未设置默认为0)， 子项2flex-grow: 2，子项3flex-grow: 1，剩余空间分成3份，子项2占2份(120px)，子项3占1份(60px)。</p>
+<p>(3)、所以 子项1真实的占用空间为: 50+0 = 50px， 子项2真实的占用空间为: 70+120 = 190px， 子项3真实的占用空间为: 100+60 = 160px</p>
+<p>demo地址：<a href="http://js.jirengu.com/sivoy/1/edit?html,css,js,output" target="_blank" rel="noopener">http://js.jirengu.com/sivoy/1/edit?html,css,js,output</a></p>
+<h4 id="3､flex-shrink"><a href="#3､flex-shrink" class="headerlink" title="3､flex-shrink"></a>3､flex-shrink</h4><p>用来“吸收”超出的空间</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14339384-0a39a2d1f2659645.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>解析：</p>
+<p>(1)、容器的宽度为400px, 子项1的占用的基准空间(flex-basis)为250px，子项2占用的基准空间是150px，子项3占用基准空间是100px，总基准空间为 250+150+100=500px。</p>
+<p>(2)、容器放不下，多出来的空间需要被每个子项根据自己设置的flex-shrink 进行吸收。 子项1的flex-shrink: 1(未设置默认为1)， 子项2 flex-shrink: 2，子项3 flex-shrink: 2</p>
+<p>子项1需要吸收的的空间为 <code>(250*1)/(250*1+150*2+100*2) * 100 = 33.33px</code>，子项1真实的空间为 250-33.33 = 216.67px。同理子项2吸收的空间为<code>(150*2)/(250*1+150*2+100*2) * 100=40px</code>，子项2真实空间为 <code>150-40 = 110px</code>。子项3吸收的空间为<code>(100*2)/(250*1+150*2+100*2) * 100 = 26.67px</code>，真实的空间为<code>100-26.67=73.33px</code></p>
+<p>demo地址：<a href="http://jsbin.com/pozebetibu/edit?html,output" target="_blank" rel="noopener">http://jsbin.com/pozebetibu/edit?html,output</a></p>
+<h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h4><p><a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/" target="_blank" rel="noopener">A Complete Guide to Flexbox</a><br><a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_Flexible_Box_Layout/Basic_Concepts_of_Flexbox" target="_blank" rel="noopener">MDN</a><br><a href="http://js.jirengu.com/jur/2" target="_blank" rel="noopener">demo代码</a></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/01/13/Promise对象/" rel="next" title="Promise对象">
+                <i class="fa fa-chevron-left"></i> Promise对象
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Wuer</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">43</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、场景"><span class="nav-number">1.</span> <span class="nav-text">一、场景</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、属性"><span class="nav-number">2.</span> <span class="nav-text">二、属性</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1､flex-direction"><span class="nav-number">2.0.1.</span> <span class="nav-text">1､flex-direction</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2､flex-wrap"><span class="nav-number">2.0.2.</span> <span class="nav-text">2､flex-wrap</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3､flex-flow"><span class="nav-number">2.0.3.</span> <span class="nav-text">3､flex-flow</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4､align-items"><span class="nav-number">2.0.4.</span> <span class="nav-text">4､align-items</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5､align-content"><span class="nav-number">2.0.5.</span> <span class="nav-text">5､align-content</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6､order"><span class="nav-number">2.0.6.</span> <span class="nav-text">6､order</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#8､flex-shrink"><span class="nav-number">2.0.7.</span> <span class="nav-text">8､flex-shrink</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#10､flex"><span class="nav-number">2.0.8.</span> <span class="nav-text">10､flex</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#11､align-self"><span class="nav-number">2.0.9.</span> <span class="nav-text">11､align-self</span></a></li></ol></li></ol><li class="nav-item nav-level-2"><a class="nav-link" href="#三、实例"><span class="nav-number">3.</span> <span class="nav-text">三、实例</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1､flex-basis"><span class="nav-number">3.0.1.</span> <span class="nav-text">1､flex-basis</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2､flex-grow"><span class="nav-number">3.0.2.</span> <span class="nav-text">2､flex-grow</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3､flex-shrink"><span class="nav-number">3.0.3.</span> <span class="nav-text">3､flex-shrink</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#参考"><span class="nav-number">3.0.4.</span> <span class="nav-text">参考</span></a></li></ol></li></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Wuer</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
