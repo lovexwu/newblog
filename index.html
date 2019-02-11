@@ -229,6 +229,201 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/08/Grid/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Wuer">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Wuer">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/02/08/Grid/" itemprop="url">Grid</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-02-08T22:27:57+08:00">
+                2019-02-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="一、场景"><a href="#一、场景" class="headerlink" title="一、场景"></a>一、场景</h2><p>1､ 一个容器设置了 <strong>display: grid</strong>属性，就把容器元素定义了一个网格</p>
+<p>2､ 设置列/行的大小：<strong>grid-template-columns / grid-template-rows</strong></p>
+<p>3､使用<strong>grid-column</strong>和 <strong>grid-row</strong>把它的子元素放入网格</p>
+<h2 id="二、重要术语"><a href="#二、重要术语" class="headerlink" title="二、重要术语"></a>二、重要术语</h2><h4 id="1､Grid-Container（父容器）"><a href="#1､Grid-Container（父容器）" class="headerlink" title="1､Grid Container（父容器）"></a>1､Grid Container（父容器）</h4><p>设置了 <strong>display: grid</strong> 的元素， 这是所有 grid item 的<strong>直接父项</strong>。 下面的.container 就是 grid container</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"container"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"item item-1"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"item item-2"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"item item-3"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h4 id="2､Grid-Item（Grid-容器的孩子）"><a href="#2､Grid-Item（Grid-容器的孩子）" class="headerlink" title="2､Grid Item（Grid 容器的孩子）"></a>2､Grid Item（Grid 容器的孩子）</h4><p>即<strong>直接子元素</strong>，下面的 .item 元素就是 grid item，但 <strong>.sub-item不是</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"container"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"item"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span> </span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"item"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">"sub-item"</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"item"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h4 id="3､Grid-Line（分界线）"><a href="#3､Grid-Line（分界线）" class="headerlink" title="3､Grid Line（分界线）"></a>3､Grid Line（分界线）</h4><p>这个分界线组成网格结构。 它们既可以是<strong>垂直的（“column grid lines”）</strong>，也可以是<strong>水平的（“row grid lines”）</strong>，并位于行或列的任一侧。 下面的黄线就是一个列网格线。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14339384-efd9b54927a4b259.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<h4 id="4､Grid-Track（两个相邻网格线之间的空间）"><a href="#4､Grid-Track（两个相邻网格线之间的空间）" class="headerlink" title="4､Grid Track（两个相邻网格线之间的空间）"></a>4､Grid Track（两个相邻网格线之间的空间）</h4><p>可以把它们想象成网格的列或行。 下面是第二行和第三行网格线之间的网格轨道</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14339384-727620e3957041c6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<h4 id="5､Grid-Cell（两个相邻的行和两个相邻的列网格线之间的空间）"><a href="#5､Grid-Cell（两个相邻的行和两个相邻的列网格线之间的空间）" class="headerlink" title="5､Grid Cell（两个相邻的行和两个相邻的列网格线之间的空间）"></a>5､Grid Cell（两个相邻的行和两个相邻的列网格线之间的空间）</h4><p>它是网格的一个“单元”。 下面是行网格线1和2之间以及列网格线2和3的网格单元</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14339384-c95a216ad75a3b67.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<h4 id="6､Grid-Area（四个网格线包围的总空间）"><a href="#6､Grid-Area（四个网格线包围的总空间）" class="headerlink" title="6､Grid Area（四个网格线包围的总空间）"></a>6､Grid Area（四个网格线包围的总空间）</h4><p>网格区域可以由任意数量的网格单元组成。 下面是行网格线1和3以及列网格线1和3之间的网格区域</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14339384-06841c75d365ba46.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<h2 id="三、Grid-Container-的部分属性"><a href="#三、Grid-Container-的部分属性" class="headerlink" title="三、Grid Container 的部分属性"></a>三、Grid Container 的部分属性</h2><h4 id="1､-display"><a href="#1､-display" class="headerlink" title="1､ display"></a>1､ display</h4><h5 id="1-1-作用"><a href="#1-1-作用" class="headerlink" title="1.1 作用"></a>1.1 作用</h5><p>将元素定义为 grid contaienr，并为其内容建立新的网格格式化上下文(grid formatting context)</p>
+<h5 id="1-2-用法"><a href="#1-2-用法" class="headerlink" title="1.2 用法"></a>1.2 用法</h5><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: grid | inline-grid | subgrid;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>a). grid ——— 生成一个块级(block-level)网格<br>b). inline-grid ——— 生成一个行级(inline-level)网格<br>c). subgrid ——— 如果你的 grid container 本身就是一个 grid item（即,嵌套网格），可以使用这个属性来表示你想从它的父节点获取它的行/列的大小，而不是指定它自己的大小</p>
+<p><strong>注：column, float, clear, 以及 vertical-align 对一个 grid container 没有影响</strong></p>
+<h4 id="2､-grid-template"><a href="#2､-grid-template" class="headerlink" title="2､ grid-template"></a>2､ grid-template</h4><h5 id="2-1-作用"><a href="#2-1-作用" class="headerlink" title="2.1 作用"></a>2.1 作用</h5><p>在单个声明中定义 grid-template-rows、grid-template-columns、grid-template-areas 的简写</p>
+<h5 id="2-2-实例"><a href="#2-2-实例" class="headerlink" title="2.2 实例"></a>2.2 实例</h5><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">  <span class="attribute">grid-template</span>:</span><br><span class="line">    [row1-start] <span class="string">"header header header"</span> <span class="number">25px</span> [row1-end]</span><br><span class="line">    [row2-start] <span class="string">"footer footer footer"</span> <span class="number">25px</span> [row2-end]</span><br><span class="line">    / auto <span class="number">50px</span> auto;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>等价于</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">  <span class="attribute">grid-template-rows</span>: [row1-start] <span class="number">25px</span> [row1-end row2-start] <span class="number">25px</span> [row2-end];</span><br><span class="line">  <span class="attribute">grid-template-columns</span>: auto <span class="number">50px</span> auto;</span><br><span class="line">  <span class="attribute">grid-template-areas</span>: </span><br><span class="line">    <span class="string">"header header header"</span> </span><br><span class="line">    <span class="string">"footer footer footer"</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="3､grid-gap"><a href="#3､grid-gap" class="headerlink" title="3､grid-gap"></a>3､grid-gap</h4><h5 id="3-1-作用"><a href="#3-1-作用" class="headerlink" title="3.1 作用"></a>3.1 作用</h5><p>grid-row-gap 和 grid-column-gap 的缩写</p>
+<h5 id="3-2-用法"><a href="#3-2-用法" class="headerlink" title="3.2 用法"></a>3.2 用法</h5><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">  <span class="attribute">grid-gap</span>: &lt;grid-row-gap&gt; &lt;grid-column-gap&gt;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="3-3-实例"><a href="#3-3-实例" class="headerlink" title="3.3 实例"></a>3.3 实例</h5><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">  <span class="attribute">grid-template-columns</span>: <span class="number">100px</span> <span class="number">50px</span> <span class="number">100px</span>;</span><br><span class="line">  <span class="attribute">grid-template-rows</span>: <span class="number">80px</span> auto <span class="number">80px</span>; </span><br><span class="line">  <span class="attribute">grid-gap</span>: <span class="number">10px</span> <span class="number">15px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="4､justify-items"><a href="#4､justify-items" class="headerlink" title="4､justify-items"></a>4､justify-items</h4><h5 id="4-1-作用"><a href="#4-1-作用" class="headerlink" title="4.1 作用"></a>4.1 作用</h5><p>a). 沿着行轴对齐网格内的内容（与之对应的是 align-items, 即沿着列轴对齐）</p>
+<p>b). 该值适用于容器内的所有的 grid items</p>
+<h5 id="4-2-用法"><a href="#4-2-用法" class="headerlink" title="4.2 用法"></a>4.2 用法</h5><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">  <span class="attribute">justify-items</span>: start | end | center | stretch;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>a). start ——— 内容与网格区域的左端对齐</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14339384-ed82572142db676d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>b). end ——— 内容与网格区域的右端对齐</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14339384-8765e1169356dece.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>c). center ——— 内容位于网格区域的中间位置</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14339384-7174643083a92570.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>d). stretch ——— 内容宽度占据整个网格区域空间(这是默认值)</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14339384-98aeed32990c2a4d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<h4 id="5､align-items"><a href="#5､align-items" class="headerlink" title="5､align-items"></a>5､align-items</h4><h5 id="5-1-作用"><a href="#5-1-作用" class="headerlink" title="5.1 作用"></a>5.1 作用</h5><p>a). 沿着列轴对齐grid item 里的内容（与之对应的是使用 justify-items 设置沿着行轴对齐）</p>
+<p>b). 该值适用于容器内的所有 grid item</p>
+<h5 id="5-2-用法"><a href="#5-2-用法" class="headerlink" title="5.2 用法"></a>5.2 用法</h5><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">  <span class="attribute">align-items</span>: start | end | center | stretch;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>a). start ——— 内容与网格区域的左端对齐</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14339384-b16d1fa66a315d0f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>b). end ——— 内容与网格区域的底部对齐</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14339384-cc8d01542c71e44c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>c). center ——— 内容位于网格区域的垂直中心位置</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14339384-2a681576266a5680.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>d). stretch ——— 内容高度占据整个网格区域空间(这是默认值)</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14339384-bfce968a5623f44d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<h2 id="四、Grid-Items-的部分属性"><a href="#四、Grid-Items-的部分属性" class="headerlink" title="四、Grid Items 的部分属性"></a>四、Grid Items 的部分属性</h2><h4 id="1､grid-column-start-grid-column-end-grid-row-start-grid-row-end"><a href="#1､grid-column-start-grid-column-end-grid-row-start-grid-row-end" class="headerlink" title="1､grid-column-start / grid-column-end / grid-row-start /grid-row-end"></a>1､grid-column-start / grid-column-end / grid-row-start /grid-row-end</h4><h5 id="1-1-作用-1"><a href="#1-1-作用-1" class="headerlink" title="1.1 作用"></a>1.1 作用</h5><p>a). 使用特定的网格线确定 grid item 在网格内的位置。</p>
+<p>b). grid-column-start/grid-row-start 属性表示grid item的网格线的起始位置</p>
+<p>c). grid-column-end/grid-row-end属性表示网格项的网格线的终止位置</p>
+<h5 id="1-2-用法-1"><a href="#1-2-用法-1" class="headerlink" title="1.2 用法"></a>1.2 用法</h5><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.item</span> &#123;</span><br><span class="line">  <span class="attribute">grid-column-start</span>: &lt;number&gt; | &lt;name&gt; | span &lt;number&gt; | span &lt;name&gt; | auto</span><br><span class="line">  grid-column-end: &lt;number&gt; | &lt;name&gt; | span &lt;number&gt; | span &lt;name&gt; | auto</span><br><span class="line">  grid-row-start: &lt;number&gt; | &lt;name&gt; | span &lt;number&gt; | span &lt;name&gt; | auto</span><br><span class="line">  grid-row-end: &lt;number&gt; | &lt;name&gt; | span &lt;number&gt; | span &lt;name&gt; | auto</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>a). <line> ——— 可以是一个数字来指代相应编号的网格线，也可使用名称指代相应命名的网格线<br>b). span <number> ——— 网格项将跨越指定数量的网格轨道<br>c). span <name> ——— 网格项将跨越一些轨道，直到碰到指定命名的网格线<br>d). auto ——— 自动布局， 或者自动跨越， 或者跨越一个默认的轨道</name></number></line></p>
+<h5 id="1-3-实例"><a href="#1-3-实例" class="headerlink" title="1.3 实例"></a>1.3 实例</h5><p>实例一</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.item-a</span> &#123;</span><br><span class="line">  <span class="attribute">grid-column-start</span>: <span class="number">2</span>;</span><br><span class="line">  <span class="attribute">grid-column-end</span>: five;</span><br><span class="line">  <span class="attribute">grid-row-start</span>: row1-start</span><br><span class="line">  grid-row-end: <span class="number">3</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="https://upload-images.jianshu.io/upload_images/14339384-78e4a28bc0773421.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>实例二</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.item-b</span> &#123;</span><br><span class="line">  <span class="attribute">grid-column-start</span>: <span class="number">1</span>;</span><br><span class="line">  <span class="attribute">grid-column-end</span>: span col4-start;</span><br><span class="line">  <span class="attribute">grid-row-start</span>: <span class="number">2</span></span><br><span class="line">  grid-row-end: span <span class="number">2</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="https://upload-images.jianshu.io/upload_images/14339384-b3731a1a1fe1576f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p><strong>特别注意：</strong> </p>
+<p>1)､如果没有声明 grid-column-end / grid-row-end，<strong>默认情况下，该网格项将跨越1个轨道</strong></p>
+<p>2)､网格项可以相互重叠。 您可以<strong>使用z-index来控制它们的堆叠顺序</strong></p>
+<h4 id="2､grid-column-grid-row"><a href="#2､grid-column-grid-row" class="headerlink" title="2､grid-column / grid-row"></a>2､grid-column / grid-row</h4><h5 id="2-1-作用-1"><a href="#2-1-作用-1" class="headerlink" title="2.1 作用"></a>2.1 作用</h5><p>grid-column-start + grid-column-end, 和 grid-row-start + grid-row-end 的简写形式</p>
+<h5 id="2-2-用法"><a href="#2-2-用法" class="headerlink" title="2.2 用法"></a>2.2 用法</h5><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.item</span> &#123;</span><br><span class="line">  <span class="attribute">grid-column</span>: &lt;start-line&gt; / &lt;end-line&gt; | &lt;start-line&gt; / span &lt;value&gt;;</span><br><span class="line">  <span class="attribute">grid-row</span>: &lt;start-line&gt; / &lt;end-line&gt; | &lt;start-line&gt; / span &lt;value&gt;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="2-3-实例"><a href="#2-3-实例" class="headerlink" title="2.3 实例"></a>2.3 实例</h5><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.item-c</span> &#123;</span><br><span class="line">  <span class="attribute">grid-column</span>: <span class="number">3</span> / span <span class="number">2</span>;</span><br><span class="line">  <span class="attribute">grid-row</span>: third-line / <span class="number">4</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="https://upload-images.jianshu.io/upload_images/14339384-026a9f40f77462f6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p><strong>特别注意：如果没有指定结束行值，则该网格项默认跨越1个轨道</strong></p>
+<h4 id="3､grid-area"><a href="#3､grid-area" class="headerlink" title="3､grid-area"></a>3､grid-area</h4><h5 id="3-1-作用-1"><a href="#3-1-作用-1" class="headerlink" title="3.1 作用"></a>3.1 作用</h5><p>a). 给 grid item 进行命名以便于使用 grid-template-areas 属性创建模板时来进行引用。</p>
+<p>b). 可以做为 grid-row-start + grid-column-start + grid-row-end + grid-column-end 的简写形式</p>
+<h5 id="3-2-用法-1"><a href="#3-2-用法-1" class="headerlink" title="3.2 用法"></a>3.2 用法</h5><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.item</span> &#123;</span><br><span class="line">  <span class="attribute">grid-area</span>: &lt;name&gt; | &lt;row-start&gt; / &lt;column-start&gt; / &lt;row-end&gt; / &lt;column-end&gt;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>a). <name> - 你的命名<br>b). <row-start> / <column-start> / <row-end> / <column-end> - 可以是数字，也可以是网格线的名字</column-end></row-end></column-start></row-start></name></p>
+<h5 id="3-3-实例-1"><a href="#3-3-实例-1" class="headerlink" title="3.3 实例"></a>3.3 实例</h5><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.item-d</span> &#123;</span><br><span class="line">  <span class="attribute">grid-area</span>: header</span><br><span class="line">&#125;<span class="comment">/*给一个网格项命名*/</span></span><br></pre></td></tr></table></figure>
+<p>作为 grid-row-start + grid-column-start + grid-row-end + grid-column-end 的简写:</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.item-d</span> &#123;</span><br><span class="line">  <span class="attribute">grid-area</span>: <span class="number">1</span> / col4-start / last-line / <span class="number">6</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="https://upload-images.jianshu.io/upload_images/14339384-2ff00b0b270e7a4e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h4><p><a href="http://chris.house/blog/a-complete-guide-css-grid-layout/" target="_blank" rel="noopener">http://chris.house/blog/a-complete-guide-css-grid-layout/</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/05/Flex/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -1132,7 +1327,7 @@
 <h3 id="D、判断元素在视野中"><a href="#D、判断元素在视野中" class="headerlink" title="D、判断元素在视野中"></a>D、判断元素在视野中</h3><p><strong>如果元素距离页面内容的高度小于窗口滚动距离+窗口高度，元素就会在我们视野中啦！</strong></p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$(node).offset().top&lt;=$(<span class="built_in">window</span>).height() + $(<span class="built_in">window</span>).scrollTop()</span><br></pre></td></tr></table></figure>
 <p><img src="https://upload-images.jianshu.io/upload_images/14339384-1b8e47337e086520.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-<h3 id="E、代码部分"><a href="#E、代码部分" class="headerlink" title="E、代码部分"></a>E、代码部分</h3><h5 id="1-html-部分"><a href="#1-html-部分" class="headerlink" title="(1) html 部分"></a>(1) html 部分</h5><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"container"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"http://smashinghub.com/wp-content/uploads/2014/08/cool-loading-animated-gif-3.gif"</span> <span class="attr">alt</span>=<span class="string">"1"</span> <span class="attr">data-src</span>=<span class="string">"http://cdn.jirengu.com/book.jirengu.com/img/1.jpg"</span>&gt;</span></span><br><span class="line">   .</span><br><span class="line">   .</span><br><span class="line">   .</span><br><span class="line">    <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"http://smashinghub.com/wp-content/uploads/2014/08/cool-loading-animated-gif-3.gif"</span> <span class="attr">alt</span>=<span class="string">"20"</span> <span class="attr">data-src</span>=<span class="string">"http://cdn.jirengu.com/book.jirengu.com/img/20.jpg"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">.container &#123;</span></span><br><span class="line"><span class="undefined">      max-width: 800px;</span></span><br><span class="line"><span class="undefined">      margin: 0 auto;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined">    .container:after&#123;</span></span><br><span class="line"><span class="undefined">      content: '';</span></span><br><span class="line"><span class="undefined">      display: block;</span></span><br><span class="line"><span class="undefined">      clear: both;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined">    .container img &#123;</span></span><br><span class="line"><span class="undefined">      float: left;</span></span><br><span class="line"><span class="undefined">      width: 50%;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined">    h1&#123;</span></span><br><span class="line"><span class="undefined">      clear: both;</span></span><br><span class="line"><span class="undefined">    &#125; </span></span><br><span class="line"><span class="undefined">/*注：img都是浮动，如果不清除浮动，h1的值高度就相当于container里面最高的，不是实际的数值*/</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="E、代码部分"><a href="#E、代码部分" class="headerlink" title="E、代码部分"></a>E、代码部分</h3><h5 id="1-html-部分"><a href="#1-html-部分" class="headerlink" title="(1) html 部分"></a>(1) html 部分</h5><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"container"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"http://smashinghub.com/wp-content/uploads/2014/08/cool-loading-animated-gif-3.gif"</span> <span class="attr">alt</span>=<span class="string">"1"</span> <span class="attr">data-src</span>=<span class="string">"http://cdn.jirengu.com/book.jirengu.com/img/1.jpg"</span>&gt;</span></span><br><span class="line">   .</span><br><span class="line">   .</span><br><span class="line">   .</span><br><span class="line">    <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"http://smashinghub.com/wp-content/uploads/2014/08/cool-loading-animated-gif-3.gif"</span> <span class="attr">alt</span>=<span class="string">"20"</span> <span class="attr">data-src</span>=<span class="string">"http://cdn.jirengu.com/book.jirengu.com/img/20.jpg"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="css"><span class="selector-class">.container</span> &#123;</span></span><br><span class="line"><span class="undefined">      max-width: 800px;</span></span><br><span class="line"><span class="undefined">      margin: 0 auto;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="css">    <span class="selector-class">.container</span><span class="selector-pseudo">:after</span>&#123;</span></span><br><span class="line"><span class="undefined">      content: '';</span></span><br><span class="line"><span class="undefined">      display: block;</span></span><br><span class="line"><span class="undefined">      clear: both;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="css">    <span class="selector-class">.container</span> <span class="selector-tag">img</span> &#123;</span></span><br><span class="line"><span class="undefined">      float: left;</span></span><br><span class="line"><span class="undefined">      width: 50%;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined">    h1&#123;</span></span><br><span class="line"><span class="undefined">      clear: both;</span></span><br><span class="line"><span class="undefined">    &#125; </span></span><br><span class="line"><span class="css"><span class="comment">/*注：img都是浮动，如果不清除浮动，h1的值高度就相当于container里面最高的，不是实际的数值*/</span></span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <h5 id="2-js-部分"><a href="#2-js-部分" class="headerlink" title="(2) js 部分"></a>(2) js 部分</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">  &lt;script&gt;</span><br><span class="line">    start() <span class="comment">// 一开始没有滚动，也需要触发一次 </span></span><br><span class="line"></span><br><span class="line">    $(<span class="built_in">window</span>).on(<span class="string">'scroll'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;<span class="comment">// 滚动时，显示对应图片</span></span><br><span class="line">      start()</span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">start</span>(<span class="params"></span>)</span>&#123;<span class="comment">//对container里的所有图片需要一个个去判断，所以用 each</span></span><br><span class="line">      $(<span class="string">'.container img'</span>).not(<span class="string">'[data-isLoaded]'</span>).each(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">var</span> $node = $(<span class="keyword">this</span>) <span class="comment">//not('[data-isLoaded]') 没有加载的图片</span></span><br><span class="line">        <span class="keyword">if</span>( isShow($node) )&#123;<span class="comment">// 如果出现在眼前了</span></span><br><span class="line">          loadImg($node)<span class="comment">// 就去加载它</span></span><br><span class="line">        &#125;</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">   </span><br><span class="line"><span class="comment">//因为是判断一个元素，那元素我们给它一个参数，也就是参数对应的是一个元素</span></span><br><span class="line"><span class="comment">//因为我们用到的是jquery,所以参数是jquery对象,所以取名$node</span></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">isShow</span>(<span class="params">$node</span>)</span>&#123; <span class="comment">// 判断元素是否在视野中</span></span><br><span class="line">      <span class="keyword">return</span> $node.offset().top &lt;= $(<span class="built_in">window</span>).height() + $(<span class="built_in">window</span>).scrollTop()</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">loadImg</span>(<span class="params">$img</span>)</span>&#123; <span class="comment">//加载图片</span></span><br><span class="line">      $img.attr(<span class="string">'src'</span>, $img.attr(<span class="string">'data-src'</span>))<span class="comment">//attr 写一个参数是设置值，两个是取值</span></span><br><span class="line">      $img.attr(<span class="string">'data-isLoaded'</span>, <span class="number">1</span>) <span class="comment">// 区别图片是否被加载过，防止重新加载</span></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
 <p>demo 地址 <a href="http://js.jirengu.com/setezusife/1/edit?html,output" target="_blank" rel="noopener">http://js.jirengu.com/setezusife/1/edit?html,output</a></p>
 <h1 id="二、瀑布流"><a href="#二、瀑布流" class="headerlink" title="二、瀑布流"></a>二、瀑布流</h1><h3 id="A、定义-1"><a href="#A、定义-1" class="headerlink" title="A、定义"></a>A、定义</h3><p>宽度相同，而高度是随机的布局</p>
@@ -1142,7 +1337,7 @@
 <p>(4) 循环每个元素, 循环的内部再循环列数组，判断哪一列元素的高度最小，就将下一个元素放到该列</p>
 <p>(5) 再判断放入该元素之后所形成的新的整排元素内，哪一列元素最短，再把下一个元素放置该列，以此类推</p>
 <p>(6) 最后当图片加载完成，所有图片依次放置在最小的列数下面</p>
-<h3 id="C、代码部分"><a href="#C、代码部分" class="headerlink" title="C、代码部分"></a>C、代码部分</h3><h5 id="1-html-部分-1"><a href="#1-html-部分-1" class="headerlink" title="(1) html 部分"></a>(1) html 部分</h5><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"waterfall"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"http://via.placeholder.com/100x100"</span> <span class="attr">alt</span>=<span class="string">""</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"http://via.placeholder.com/100x70"</span> <span class="attr">alt</span>=<span class="string">""</span>&gt;</span>   </span><br><span class="line">    <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"http://via.placeholder.com/100x200"</span> <span class="attr">alt</span>=<span class="string">""</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"http://via.placeholder.com/100x130"</span> <span class="attr">alt</span>=<span class="string">""</span>&gt;</span>   </span><br><span class="line">    <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"http://via.placeholder.com/100x400"</span> <span class="attr">alt</span>=<span class="string">""</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"http://via.placeholder.com/100x110"</span> <span class="attr">alt</span>=<span class="string">""</span>&gt;</span>   </span><br><span class="line">   </span><br><span class="line">    <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"http://via.placeholder.com/100x60"</span> <span class="attr">alt</span>=<span class="string">""</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"http://via.placeholder.com/100x180"</span> <span class="attr">alt</span>=<span class="string">""</span>&gt;</span>      </span><br><span class="line">    <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"http://via.placeholder.com/100x100"</span> <span class="attr">alt</span>=<span class="string">""</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"http://via.placeholder.com/100x200"</span> <span class="attr">alt</span>=<span class="string">""</span>&gt;</span>      </span><br><span class="line">    <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"http://via.placeholder.com/100x80"</span> <span class="attr">alt</span>=<span class="string">""</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"http://via.placeholder.com/100x100"</span> <span class="attr">alt</span>=<span class="string">""</span>&gt;</span>      </span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">/* 因为要响应式效果，所以须隐藏宽</span></span><br><span class="line"><span class="undefined">.waterfall&#123;</span></span><br><span class="line"><span class="undefined">	max-width: 800px;</span></span><br><span class="line"><span class="undefined">	margin: 0 auto;</span></span><br><span class="line"><span class="undefined">&#125;</span></span><br><span class="line"><span class="undefined">*/</span></span><br><span class="line"><span class="undefined">.waterfall img&#123;</span></span><br><span class="line"><span class="undefined">  	position: absolute; /*必须absolute，因为后面要js控制它的位置*/</span></span><br><span class="line"><span class="undefined">  	width : 100px;</span></span><br><span class="line"><span class="undefined">  	margin: 10px;</span></span><br><span class="line"><span class="undefined">&#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="C、代码部分"><a href="#C、代码部分" class="headerlink" title="C、代码部分"></a>C、代码部分</h3><h5 id="1-html-部分-1"><a href="#1-html-部分-1" class="headerlink" title="(1) html 部分"></a>(1) html 部分</h5><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"waterfall"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"http://via.placeholder.com/100x100"</span> <span class="attr">alt</span>=<span class="string">""</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"http://via.placeholder.com/100x70"</span> <span class="attr">alt</span>=<span class="string">""</span>&gt;</span>   </span><br><span class="line">    <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"http://via.placeholder.com/100x200"</span> <span class="attr">alt</span>=<span class="string">""</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"http://via.placeholder.com/100x130"</span> <span class="attr">alt</span>=<span class="string">""</span>&gt;</span>   </span><br><span class="line">    <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"http://via.placeholder.com/100x400"</span> <span class="attr">alt</span>=<span class="string">""</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"http://via.placeholder.com/100x110"</span> <span class="attr">alt</span>=<span class="string">""</span>&gt;</span>   </span><br><span class="line">   </span><br><span class="line">    <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"http://via.placeholder.com/100x60"</span> <span class="attr">alt</span>=<span class="string">""</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"http://via.placeholder.com/100x180"</span> <span class="attr">alt</span>=<span class="string">""</span>&gt;</span>      </span><br><span class="line">    <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"http://via.placeholder.com/100x100"</span> <span class="attr">alt</span>=<span class="string">""</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"http://via.placeholder.com/100x200"</span> <span class="attr">alt</span>=<span class="string">""</span>&gt;</span>      </span><br><span class="line">    <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"http://via.placeholder.com/100x80"</span> <span class="attr">alt</span>=<span class="string">""</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"http://via.placeholder.com/100x100"</span> <span class="attr">alt</span>=<span class="string">""</span>&gt;</span>      </span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">/* 因为要响应式效果，所以须隐藏宽</span></span><br><span class="line"><span class="css"><span class="selector-class">.waterfall</span>&#123;</span></span><br><span class="line"><span class="undefined">	max-width: 800px;</span></span><br><span class="line"><span class="undefined">	margin: 0 auto;</span></span><br><span class="line"><span class="undefined">&#125;</span></span><br><span class="line"><span class="undefined">*/</span></span><br><span class="line"><span class="css"><span class="selector-class">.waterfall</span> <span class="selector-tag">img</span>&#123;</span></span><br><span class="line"><span class="css">  	<span class="selector-tag">position</span>: <span class="selector-tag">absolute</span>; <span class="comment">/*必须absolute，因为后面要js控制它的位置*/</span></span></span><br><span class="line"><span class="undefined">  	width : 100px;</span></span><br><span class="line"><span class="undefined">  	margin: 10px;</span></span><br><span class="line"><span class="undefined">&#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
 <p>(2) js部分</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> colCount <span class="comment">//定义列数</span></span><br><span class="line"><span class="keyword">var</span> colHeightArr = [] <span class="comment">//存放每一列高度的数组，该数组的长度为 colCount</span></span><br><span class="line"><span class="keyword">var</span> imgWidth = $(<span class="string">'.waterfall img'</span>).outerWidth(<span class="literal">true</span>) <span class="comment">//单张图片的宽度</span></span><br><span class="line"></span><br><span class="line">colCount = <span class="built_in">Math</span>.floor($(<span class="string">'.waterfall'</span>).width()/ imgWidth) <span class="comment">//计算列数  </span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i&lt;colCount; i++)&#123;</span><br><span class="line">  colHeightArr[i] = <span class="number">0</span> <span class="comment">// 一开始 初始化为0</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//假设colCount是3,那数组有三个元素，都赋值为0就是[0,0,0]</span></span><br><span class="line"><span class="comment">//colHeightArr[0] = 0、colHeightArr[1] = 0、colHeightArr[2] = 0</span></span><br><span class="line"><span class="comment">// 也就是colHeightArr = [0,0,0]</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//console.log($('.waterfall img').eq(2).height())</span></span><br><span class="line"><span class="comment">//测试第三张图的高度，有时显示的是图片的真实高度200,有时显示0，也就是说要在图片加载完了，才能读到图片的真实高度</span></span><br><span class="line"></span><br><span class="line">$(<span class="string">'.waterfall img'</span>).on(<span class="string">'load'</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;<span class="comment">// 加载之后去处理</span></span><br><span class="line">   <span class="comment">//console.log(this) 加载的元素打印出来  </span></span><br><span class="line">  </span><br><span class="line">   <span class="keyword">var</span> minValue = colHeightArr[<span class="number">0</span>] <span class="comment">//定义最小高度</span></span><br><span class="line">   <span class="keyword">var</span> minIndex = <span class="number">0</span> <span class="comment">//定义最小高度的下标</span></span><br><span class="line">   </span><br><span class="line">   <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i&lt; colCount; i++)&#123; </span><br><span class="line">     <span class="keyword">if</span>(colHeightArr[i] &lt; minValue)&#123;<span class="comment">//如果最小高度数组中的值小于最小值</span></span><br><span class="line">        minValue = colHeightArr[i] <span class="comment">// 那么最小高度数组中的值是真正的最小值</span></span><br><span class="line">        minIndex = i <span class="comment">//最小下标是当前小标，是真正的最小下标（也就是最小高度所列）</span></span><br><span class="line">     &#125;</span><br><span class="line">   &#125;</span><br><span class="line">    </span><br><span class="line"> <span class="comment">//摆放图片</span></span><br><span class="line">  $(<span class="keyword">this</span>).css(&#123;<span class="comment">//图片的位置</span></span><br><span class="line">    top: minValue,</span><br><span class="line">    left: minIndex*imgWidth</span><br><span class="line">  &#125;)</span><br><span class="line">  </span><br><span class="line">  colHeightArr[minIndex] += $(<span class="keyword">this</span>).outerHeight(<span class="literal">true</span>)<span class="comment">//整列的值 </span></span><br><span class="line">  <span class="comment">//整列的值=  它自已 + 当前元素的高度</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">//当窗口大小重置之后，重新执行</span></span><br><span class="line">  $(<span class="built_in">window</span>).on(<span class="string">'resize'</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    reset()</span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line">  <span class="comment">//当窗口加载完毕，执行瀑布流</span></span><br><span class="line">  $(<span class="built_in">window</span>).on(<span class="string">'load'</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    reset()</span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line">  <span class="comment">//定义reset函数</span></span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">reset</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> colHeightArr= []</span><br><span class="line">    colCount = <span class="built_in">Math</span>.floor($(<span class="string">'.waterfall'</span>).width()/imgWidth)</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span> ; i &lt; colCount; i++)&#123;</span><br><span class="line">      colHeightArr[i] = <span class="number">0</span></span><br><span class="line">    &#125;</span><br><span class="line">    $(<span class="string">'.waterfall img'</span>).each(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">      <span class="keyword">var</span> minValue = colHeightArr[<span class="number">0</span>]</span><br><span class="line">      <span class="keyword">var</span> minIndex = <span class="number">0</span></span><br><span class="line">      <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span> ; i &lt; colCount; i ++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(colHeightArr[i] &lt; minValue)&#123;</span><br><span class="line">          minValue = colHeightArr[i]</span><br><span class="line">          minIndex = i</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      $(<span class="keyword">this</span>).css(&#123;<span class="comment">//图片的位置</span></span><br><span class="line">         top: minValue,</span><br><span class="line">         left: minIndex*imgWidth</span><br><span class="line">      &#125;)</span><br><span class="line">      colHeightArr[minIndex] += $(<span class="keyword">this</span>).outerHeight(<span class="literal">true</span>)</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
 <p><strong>注意:</strong></p>
@@ -1608,125 +1803,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/24/vscode转中文/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Wuer">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Wuer">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/12/24/vscode转中文/" itemprop="url">未命名</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-24T11:44:06+08:00">
-                2018-12-24
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1777,7 +1853,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">43</span>
+                  <span class="site-state-item-count">44</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
