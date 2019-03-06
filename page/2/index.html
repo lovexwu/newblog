@@ -229,7 +229,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/24/vscode转中文/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/24/ohmyzsh安装/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Wuer">
@@ -248,7 +248,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2018/12/24/vscode转中文/" itemprop="url">未命名</a></h1>
+                <a class="post-title-link" href="/2018/12/24/ohmyzsh安装/" itemprop="url">ohmyzsh</a></h1>
         
 
         <div class="post-meta">
@@ -260,7 +260,7 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-24T11:44:06+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-24T12:09:44+08:00">
                 2018-12-24
               </time>
             
@@ -300,7 +300,18 @@
       
         
           
-            
+            <h3 id="一、终端输入命令，安装-oh-my-zsh"><a href="#一、终端输入命令，安装-oh-my-zsh" class="headerlink" title="一、终端输入命令，安装 oh-my-zsh"></a>一、终端输入命令，安装 oh-my-zsh</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sh -c <span class="string">"$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"</span></span><br></pre></td></tr></table></figure>
+<p>执行过程中会要求输入用户密码（过程中密码并不会显示，输入完成后直接敲回车就可以）<br>安装成功之后，终端显示如下：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14339384-20500f47d3a7e5cc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>终端的上面就已经显示，已经从默认的 bash 切换到了 zsh 。<br>如果不想用了可以随时直接切换回原本的 bash ，输入命令：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chsh -s /bin/bash</span><br></pre></td></tr></table></figure>
+<p>同理，切换回zsh，只要把 bash 改成 zsh 执行命令即可</p>
+<h3 id="二、安装前-后"><a href="#二、安装前-后" class="headerlink" title="二、安装前/后"></a>二、安装前/后</h3><p>安装前：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14339384-27932858a7085ad2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>安装后：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14339384-bf302f4f731dade2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>参考 <a href="https://www.jianshu.com/p/300827734b69" target="_blank" rel="noopener">https://www.jianshu.com/p/300827734b69</a></p>
+
           
         
       

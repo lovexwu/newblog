@@ -229,6 +229,149 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/05/vue-blog/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Wuer">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Wuer">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/03/05/vue-blog/" itemprop="url">vue-blog</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-05T16:15:03+08:00">
+                2019-03-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Vue-js之多人共享博客"><a href="#Vue-js之多人共享博客" class="headerlink" title="Vue.js之多人共享博客"></a>Vue.js之多人共享博客</h2><p><strong>预览地址：</strong><a href="https://lovexwu.github.io/vue-blogclient/#/" target="_blank" rel="noopener">https://lovexwu.github.io/vue-blogclient/#/</a></p>
+<h3 id="项目功能"><a href="#项目功能" class="headerlink" title="项目功能"></a>项目功能</h3><p>一、前、后端分离的<strong>多个页面</strong>的<strong>单页</strong>应用</p>
+<p>二、页面包括 首页、博客详情、创建、编辑、用户、我的、登录、注册 8个页面</p>
+<p> <strong>A、首页：</strong> 展示所有人设置到首页的博客列表<br> <strong>B、博客详情：</strong>展示博客详情<br> <strong>C、登录、注册：</strong> 用户登录注册<br> <strong>D、用户页面：</strong> 展示某个用户的所有博客列表<br> <strong>E、我的：</strong> 展示个人主页<br> <strong>F、编辑、删除、创建博客</strong></p>
+<p>注：</p>
+<p><strong>1､详情页面</strong>的博客内容是用 <strong>markdown 写 , html 方式 做一个展现</strong></p>
+<p>2､ <strong>创建页面 + 编辑页面 </strong>可以设置是否显示到首页（atIndex），如不设置，那首页就不会显示其内容</p>
+<h3 id="Get-到的点"><a href="#Get-到的点" class="headerlink" title="Get 到的点"></a>Get 到的点</h3><p>一、<strong>上传dist 文件内容 GitHub 四步曲</strong>   (考虑上传整个项目文件太大，可以上传编译后的dist文件内容即可)</p>
+<p>1､ GitHub 新建远程库</p>
+<p>2､ 终端 cd 到 项目文件夹 并 执行 npm run build 进行编译<br><img src="https://upload-images.jianshu.io/upload_images/14339384-1c7b52aca910751d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>3､编译完后，dist 文件夹下 会有新的东西啦</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14339384-9c1e49e63379181e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>4、终端切换到dist下，推送到 GitHub 上就行啦</p>
+<h4 id="工程化上面四步曲"><a href="#工程化上面四步曲" class="headerlink" title="工程化上面四步曲"></a>工程化上面四步曲</h4><p>1､加上这一连串代码在package.json里</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14339384-27b4a5b06088e1f9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>分析： git push -f origin master  其中/f 是因为上传的不是源码，会覆盖也是应该的, 切记上传源码是不用 /f </p>
+<p><img src="/Users/laoda/Library/Application Support/typora-user-images/image-20190306122914148.png" alt="image-20190306122914148"></p>
+<p>2､终端就可以直接操作 npm run upload</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14339384-0d2ee3934dcd056a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><br><img src="https://upload-images.jianshu.io/upload_images/14339384-f991ecf697e35a3a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>也就是说，下次修改没问题，执行 npm run upload 就会依次执行那些命令操作啦</p>
+<h3 id="遇到的坑"><a href="#遇到的坑" class="headerlink" title="遇到的坑"></a>遇到的坑</h3><p>1､ Github pages预览，GitHub不支持http协议，将接口 <strong>http 改为 https</strong> 即可</p>
+<p>2、assetsPublicPath <strong>‘/‘改为‘./‘</strong> 即可<img src="https://upload-images.jianshu.io/upload_images/14339384-2247ad058106ad3b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>Vue项目上传github在线预览 参考<br><a href="https://zhuanlan.zhihu.com/p/48631279" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/48631279</a><br><a href="https://www.jb51.net/article/142307.htm" target="_blank" rel="noopener">https://www.jb51.net/article/142307.htm</a><br><a href="https://zhuanlan.zhihu.com/p/35764920" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/35764920</a></p>
+<h3 id="技术栈"><a href="#技术栈" class="headerlink" title="技术栈"></a>技术栈</h3><p>vue-cli、vue2､axios、vue-router、vuex、es6､npm、elementUI</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/08/Grid/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -1638,136 +1781,6 @@
 <p>后面跟着网上google 查询，发现是因为开了防火墙的原因，设置关闭就好啦</p>
 <p><img src="https://upload-images.jianshu.io/upload_images/14339384-f87880819e065c12.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
 <p>详见：<br><a href="https://stackoverflow.com/questions/28962528/browsersync-cannot-get" target="_blank" rel="noopener">https://stackoverflow.com/questions/28962528/browsersync-cannot-get</a><br><a href="https://www.browsersync.io/docs/command-line/#proxy-example" target="_blank" rel="noopener">https://www.browsersync.io/docs/command-line/#proxy-example</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/24/ohmyzsh安装/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Wuer">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Wuer">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/12/24/ohmyzsh安装/" itemprop="url">ohmyzsh</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-24T12:09:44+08:00">
-                2018-12-24
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="一、终端输入命令，安装-oh-my-zsh"><a href="#一、终端输入命令，安装-oh-my-zsh" class="headerlink" title="一、终端输入命令，安装 oh-my-zsh"></a>一、终端输入命令，安装 oh-my-zsh</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sh -c <span class="string">"$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"</span></span><br></pre></td></tr></table></figure>
-<p>执行过程中会要求输入用户密码（过程中密码并不会显示，输入完成后直接敲回车就可以）<br>安装成功之后，终端显示如下：</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/14339384-20500f47d3a7e5cc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-<p>终端的上面就已经显示，已经从默认的 bash 切换到了 zsh 。<br>如果不想用了可以随时直接切换回原本的 bash ，输入命令：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chsh -s /bin/bash</span><br></pre></td></tr></table></figure>
-<p>同理，切换回zsh，只要把 bash 改成 zsh 执行命令即可</p>
-<h3 id="二、安装前-后"><a href="#二、安装前-后" class="headerlink" title="二、安装前/后"></a>二、安装前/后</h3><p>安装前：</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/14339384-27932858a7085ad2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-<p>安装后：</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/14339384-bf302f4f731dade2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-<p>参考 <a href="https://www.jianshu.com/p/300827734b69" target="_blank" rel="noopener">https://www.jianshu.com/p/300827734b69</a></p>
 
           
         
