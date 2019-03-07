@@ -316,7 +316,12 @@
 <p>看个实例</p>
 <p><img src="https://upload-images.jianshu.io/upload_images/14339384-b1c0b965b33534db.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
 <h3 id="五、文本插值和表达式"><a href="#五、文本插值和表达式" class="headerlink" title="五、文本插值和表达式"></a>五、文本插值和表达式</h3><p>1､ 语法</p>
-<p>使用双大括号 ，会自动将我们双向绑定的数据实时显示</p>
+<p>使用双大括号   ，会自动将我们双向绑定的数据实时显示</p>
+<p>2､ 用法</p>
+<p>在 大括号 中，除了<strong>简单的绑定属性值</strong>外，也可以是 <strong>JavaScript 表达式进行简单的运算</strong> 、 <strong>三元运算</strong>等</p>
+<p><strong>特别注意：Vue .js 只支持单个表达式，不支持语句和流控制</strong></p>
+<p>3､实例</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#123; <span class="number">6</span>+<span class="number">6</span> *<span class="number">3</span>&#125;&#125; <span class="comment">// 支持 简单的运算 </span></span><br><span class="line">&#123;&#123; <span class="number">6</span>&lt;<span class="number">3</span> ? msg :a&#125;&#125;  <span class="comment">// 支持 三元运算符 </span></span><br><span class="line">&#123;&#123;<span class="keyword">if</span>(<span class="number">6</span>&gt;<span class="number">3</span>)&#123;&#125;&#125; <span class="comment">// 不支持 书写表达式</span></span><br><span class="line">&#123;&#123;<span class="keyword">var</span> a = <span class="number">6</span>&#125;&#125; <span class="comment">// 不支持 多行表达式 var a=6 相当于 var a;a = 6;</span></span><br><span class="line">&#123;&#123; <span class="keyword">var</span> book = ’ Vue . js 实战 ’&#125;&#125; <span class="comment">// 不支持 语句</span></span><br><span class="line">&#123;&#123; <span class="keyword">if</span> (ok) <span class="keyword">return</span> msg &#125;&#125; <span class="comment">// 不支持 流控制</span></span><br></pre></td></tr></table></figure>
 
           
         
