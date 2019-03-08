@@ -229,6 +229,134 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/24/移动端项目之注意事项/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Wuer">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Wuer">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/12/24/移动端项目之注意事项/" itemprop="url">移动端项目之注意事项</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-24T14:19:37+08:00">
+                2018-12-24
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>一、html页面部分</p>
+<p>页面head 那加上这句</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"&gt;</span><br></pre></td></tr></table></figure>
+<p>二、css 部分</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">-webkit-overflow-scrolling</span>: <span class="selector-tag">touch</span>; <span class="comment">/*ios 上增加弹性*/</span></span><br></pre></td></tr></table></figure>
+<p>手机上滚动时会有一个弹性的效果</p>
+<p>demo地址：</p>
+<p>（优化前）<a href="http://js.jirengu.com/betam" target="_blank" rel="noopener">http://js.jirengu.com/betam</a></p>
+<p>（优化后）<a href="http://js.jirengu.com/cewoj/20/edit" target="_blank" rel="noopener">http://js.jirengu.com/cewoj/20/edit</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/24/移动端项目之手机预览操作方式/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -1724,275 +1852,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/08/作用域、作用域链、闭包/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Wuer">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Wuer">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/12/08/作用域、作用域链、闭包/" itemprop="url">作用域、作用域链、闭包</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-08T23:11:14+08:00">
-                2018-12-08
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="一、作用域"><a href="#一、作用域" class="headerlink" title="一、作用域"></a>一、作用域</h1><h3 id="A、定义"><a href="#A、定义" class="headerlink" title="A、定义"></a>A、定义</h3><p>代码在运行时，各个变量、函数和对象的可访问性。换句话说，作用域决定了你的代码里的<strong>变量和其他资源</strong>在<strong>各个区域中</strong>的可见性</p>
-<h3 id="B、分类"><a href="#B、分类" class="headerlink" title="B、分类"></a>B、分类</h3><h4 id="1､-全局作用域-（在函数之外的变量）"><a href="#1､-全局作用域-（在函数之外的变量）" class="headerlink" title="1､ 全局作用域  （在函数之外的变量）"></a>1､ 全局作用域  （在函数之外的变量）</h4><p>当你在文档中（document）编写 JavaScript 时，你就已经在全局作用域中了。JavaScript 文档中（document）只有一个全局作用域。定义在函数之外的变量会被保存在全局作用域中</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> name = <span class="string">'hello world'</span>; </span><br><span class="line"><span class="comment">//默认是全局的</span></span><br></pre></td></tr></table></figure>
-<p>全局作用域里的变量能够在其他作用域中被访问和修改。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> name = <span class="string">'hello world'</span>;</span><br><span class="line"><span class="built_in">console</span>.log(name); <span class="comment">// 'hello world'</span></span><br><span class="line"> </span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(name); <span class="comment">// name 可以在这里和其他地方访问</span></span><br><span class="line">&#125; </span><br><span class="line">fn(); <span class="comment">// 'hello world'</span></span><br></pre></td></tr></table></figure>
-<h4 id="2､-局部作用域-（在一个函数中的变量）"><a href="#2､-局部作用域-（在一个函数中的变量）" class="headerlink" title="2､ 局部作用域  （在一个函数中的变量）"></a>2､ 局部作用域  （在一个函数中的变量）</h4><p>在函数中的变量就在局部作用域中。并且函数在每次调用时都有一个不同的作用域。这意味着同名变量可以用在不同的函数中。因为这些变量绑定在不同的函数中，拥有不同作用域，彼此之间不能访问。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//全局作用域</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">someFunction</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 局部作用域</span></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">someOtherFunction</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="comment">// 局部作用域</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="comment">//全局作用域</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">anotherFunction</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="comment">// 局部作用域</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//全局作用域</span></span><br></pre></td></tr></table></figure>
-<p>注：<strong>每个函数在调用的时候会创建一个新的作用域。</strong></p>
-<h3 id="C、块语句"><a href="#C、块语句" class="headerlink" title="C、块语句"></a>C、块语句</h3><p>块级声明包括<strong>if和switch，以及for和while</strong>循环，和函数不同，它们<strong>不会创建新的作用域</strong>。在<strong>块级声明中</strong>定义的变量从属于<strong>该块所在的作用域</strong>。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (<span class="literal">true</span>) &#123;<span class="comment">// 这个 if 条件块不创建新的作用域</span></span><br><span class="line">    <span class="keyword">var</span> name = <span class="string">'hello world'</span>; <span class="comment">// name 仍在全局范围中</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(name); <span class="comment">// 'hello world'</span></span><br></pre></td></tr></table></figure>
-<p>ECMAScript 6 引入了let和const关键字。这些关键字可以代替var</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> name = <span class="string">'hello world'</span>;</span><br><span class="line"><span class="keyword">let</span> likes = <span class="string">'Coding'</span>;</span><br><span class="line"><span class="keyword">const</span> skills = <span class="string">'Javascript and PHP'</span>;</span><br></pre></td></tr></table></figure>
-<p>和var关键字不同，<strong>let</strong>和<strong>const</strong>关键字支持在块级声明中创建使用<strong>局部作用域</strong>。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (<span class="literal">true</span>) &#123;<span class="comment">// 这个 if 条件块不创建新的作用域</span></span><br><span class="line">    <span class="keyword">var</span> name = <span class="string">'hello world'</span>;<span class="comment">// 因为 var 关键字，name 位于全局范围中</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">let</span> likes = <span class="string">'Coding'</span>; </span><br><span class="line">    <span class="comment">// 因为 let 关键字，likes在本地范围中,相当于是局部变量</span></span><br><span class="line">   </span><br><span class="line">    <span class="keyword">const</span> skills = <span class="string">'JavaScript and PHP'</span>; </span><br><span class="line">    <span class="comment">// 因为 const 关键字，skills 在本地范围中，相当于是局部变量</span></span><br><span class="line">&#125;</span><br><span class="line"> </span><br><span class="line"><span class="built_in">console</span>.log(name); <span class="comment">// 'hello world'</span></span><br><span class="line"><span class="built_in">console</span>.log(likes); </span><br><span class="line"><span class="comment">// 报错了，显示 Uncaught ReferenceError: likes is not defined</span></span><br><span class="line"><span class="comment">// 因为是likes 是局部变量，没法读取到</span></span><br><span class="line"><span class="built_in">console</span>.log(skills); </span><br><span class="line"><span class="comment">// 报错了，显示 Uncaught ReferenceError: skills is not defined</span></span><br><span class="line"><span class="comment">// 因为是skills 是局部变量，没法读取到</span></span><br></pre></td></tr></table></figure>
-<h3 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h3><p>(1)  一个应用中，全局作用域的生存周期与该应用相同。</p>
-<p>(2)  局部作用域只在该函数调用执行期间存在。</p>
-<h1 id="二、作用域链"><a href="#二、作用域链" class="headerlink" title="二、作用域链"></a>二、<strong>作用域链</strong></h1><h3 id="A、定义-1"><a href="#A、定义-1" class="headerlink" title="A、定义"></a>A、定义</h3><p>每当声明一个函数的时候会有一个独立的的作用域，遇到函数执行需要调用某一个变量的时候，需要先在当前函数的作用域下寻找。如果当前函数的作用域下找不到该值变量，就需要进入到创建该函数所在的作用域下寻找，以此往上直至找到为止。这样就形成了一条作用域链。</p>
-<h3 id="B、实例"><a href="#B、实例" class="headerlink" title="B、实例"></a>B、实例</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">1</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn1</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">fn2</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(a)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">fn3</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">var</span> a = <span class="number">4</span></span><br><span class="line">        fn2()</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">var</span> a = <span class="number">2</span></span><br><span class="line">    <span class="keyword">return</span> fn3</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> fn = fn1()</span><br><span class="line">fn() <span class="comment">// 2</span></span><br></pre></td></tr></table></figure>
-<h5 id="分析："><a href="#分析：" class="headerlink" title="分析："></a>分析：</h5><p>调用fn1()后，返回fn3，而fn3中又调用了fn2()，而fn2输出a，但是fn2中没有定义a，所以在上级作用域找a，即fn1的作用域，所以输出2</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">1</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn1</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">fn3</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">var</span> a = <span class="number">4</span></span><br><span class="line">        fn2()</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">var</span> a = <span class="number">2</span></span><br><span class="line">    <span class="keyword">return</span> fn3</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn2</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(a)</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> fn = fn1()</span><br><span class="line">fn() <span class="comment">// 1</span></span><br></pre></td></tr></table></figure>
-<h5 id="分析：-1"><a href="#分析：-1" class="headerlink" title="分析："></a>分析：</h5><p>调用fn1之后，return fn3，而fn3调用了fn2，fn2输出a，而fn2中没有a，所以在fn2的上级作用域中找a，所以输出全局作用域的a，即1</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">1</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn1</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">fn3</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">fn2</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">      <span class="built_in">console</span>.log(a)</span><br><span class="line">    &#125;</span><br><span class="line">    fn2()</span><br><span class="line">    <span class="keyword">var</span> a = <span class="number">4</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">var</span> a = <span class="number">2</span></span><br><span class="line">  <span class="keyword">return</span> fn3</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> fn = fn1()</span><br><span class="line">fn() </span><br><span class="line"><span class="comment">//undefined</span></span><br></pre></td></tr></table></figure>
-<h5 id="分析：-2"><a href="#分析：-2" class="headerlink" title="分析："></a>分析：</h5><p>因为变量提升,调用fn2时，在fn3的作用域下，a被声明了,但是先console.log(a),但没来得急赋值</p>
-<h3 id="总结-1"><a href="#总结-1" class="headerlink" title="总结"></a>总结</h3><p>(1)  函数在执行的过程中，先从自己内部找变量</p>
-<p>(2)  如果找不到，再从<strong>创建当前函数所在的作用域(词法作用域)</strong>去找, 以此往上</p>
-<p>(3)  注意找的是变量的当前的状态</p>
-<h1 id="三、闭包"><a href="#三、闭包" class="headerlink" title="三、闭包"></a>三、闭包</h1><h3 id="A、定义-2"><a href="#A、定义-2" class="headerlink" title="A、定义"></a>A、定义</h3><p>一个函数连同它的词法作用域所在的，使用的这个变量的集合</p>
-<h3 id="B、作用"><a href="#B、作用" class="headerlink" title="B、作用"></a>B、作用</h3><p>(1)  封装数据</p>
-<p>(2)  暂存数据</p>
-<h3 id="C、经典的闭包实例"><a href="#C、经典的闭包实例" class="headerlink" title="C、经典的闭包实例"></a>C、经典的闭包实例</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">car</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">var</span> speed = <span class="number">0</span> </span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    speed++</span><br><span class="line">    <span class="built_in">console</span>.log(speed)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> fn</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> speedUp = car() </span><br><span class="line">speedUp()   <span class="comment">//1</span></span><br><span class="line">speedUp()   <span class="comment">//2</span></span><br></pre></td></tr></table></figure>
-<p><strong>分析：</strong></p>
-<p>从上图有看到闭包就是有一个<strong>函数car</strong> ,函数里有<strong>一个变量speed</strong>,函数内部又声明了<strong>一个函数fn</strong>，然后<strong>return fn</strong> </p>
-<p><strong>Why?</strong></p>
-<p>(1)  假设函数car 里面没有fn 函数这一堆东西，当我执行 var speedUp = car(),执行完成之后，那函数car内部的局部变量就会消毁掉，那么speed 就没了，就不存在了</p>
-<p>(2)  现在我们在函数car 内部声明了fn 函数，把这个函数返回出来return fn，赋值给speedUP,这个时候，因为我们的全局作用域是一直存在的，除非把当前页面给关掉，它才被消毁，所以的话，它一直存在的话，这个speedUp 就是一直存在的</p>
-<p>(3)  这个speedUP是指什么呢，就是指这个fn，也就是car函数内部声明的这个fn函数</p>
-<p>那这个fn函数就是一直存在,换句话说，这个car 函数作用域内的东西就无法被销毁，也就是变量speed和fn函数无法销毁,因为它里面有东西被人用，其实是和浏览器的垃圾回收机制是相关的</p>
-<p>(4)  当我们去执行speedUp（）时，实际上就是去执行fn函数,然后fn函数内部是没有声明这个speed变量的，它会从上一级的词法作用域去找，也就是这个函数fn,声明时所在的作用域，也就是car函数内部,  最后找到这个speed,然后把这个值speed++ ,即这个speed 值加1,然后再次调用这个函数，所以又在之前的值基础上，再加1</p>
-<p>换句话说，正常情况下，car 执行完后，speed变量就消失了，就没有了，我们也无法去获取，但是现在在函数car内部，又返回出一个函数fn,然后函数fn内部又使用这个speed, 就导致创建了一个闭包</p>
-<p><strong>那什么是个闭包呢</strong>？</p>
-<p>就是这个函数fn连同它词法作用域下所在的使用的这个变量speed的集合。也就是变量speed 和 函数fn 加在一起，就是一个闭包</p>
-<p><strong>闭包有什么用呢？我们直观的看一看</strong></p>
-<p>(1)  当我调用speedUp()时，fn函数内的speed 的值会加1,换句话说这个变量是不是就暂存下来了，我们无法去直接访问这个变量speed,但是我们可以去操作它，而且呢，它会暂存起来，不会被销毁掉</p>
-<p>(2)  第二个就是封装数据，就是把speed 给封装起来</p>
-<p>注：如果<strong>不执行return fn</strong>的话，那car函数 执行完之后，fn函数内的所有的局部变量都会销毁掉,销毁掉就什么都没有了，什么都没有了就不存在<strong>有没有闭包了</strong></p>
-<h3 id="D、其他实例"><a href="#D、其他实例" class="headerlink" title="D、其他实例"></a>D、其他实例</h3><p>理解了下面几个实例，你就能熟练理解运用闭包了</p>
-<h4 id="例1-如下代码输出多少"><a href="#例1-如下代码输出多少" class="headerlink" title="例1 如下代码输出多少"></a>例1 如下代码输出多少</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> fnArr = [];</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i++) &#123;</span><br><span class="line">  fnArr[i] =  <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> i</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(fnArr[<span class="number">3</span>]()) <span class="comment">// 10</span></span><br></pre></td></tr></table></figure>
-<p><strong>分析：</strong></p>
-<p>有一个<strong>空数组 fnArr,</strong>然后我们去<strong>遍历这个数组</strong>,遍历时侯给这个数组<strong>去赋值</strong>,数组的每一个值是对应<strong>匿名函数</strong>，然后里面有一个 <strong>return i</strong>，最后是console.log( fnArr[3] () ) ，其中 fnArr[3] () 是立即执行表达式, 相当于会立即执行这个函数， 得到最终的值</p>
-<p><strong>是3吗，不是，为什么呢？</strong></p>
-<p>(1)   因为我们在做遍历的时侯，就只有去赋值了，没有去执行return i 的，那这就是一个函数，相当于fnArr里面对应的这么几个函数名</p>
-<p>(2)  当去执行 fnArr[3] () 的时候，就会去执行对应的函数，然后return i，此时i 是多少呢？</p>
-<p><strong>那这个函数内部没有i ,那从哪去找呢？</strong></p>
-<p>从这个函数创建它的词法作用域去找, 它的词法作用域，说白了，不就是我们的全局作用域吗</p>
-<p>因为 <strong>for 循环</strong>，并不是一个函数，所以这里面<strong>没有作用域</strong>，自然for 下面的function 词法作用域是全局作用域</p>
-<p><strong>那全局作用域里面的 i 是多少呢</strong>？</p>
-<p>此时这里面因为已经执行完了，for循环完成之后  ，这个 i 变成 10 啦</p>
-<p>所以最终找到的 i 就是 10 ,输出结果是 10</p>
-<h5 id="从控制台这里，也能看出源由啦"><a href="#从控制台这里，也能看出源由啦" class="headerlink" title="从控制台这里，也能看出源由啦"></a>从控制台这里，也能看出源由啦</h5><p>​<img src="https://upload-images.jianshu.io/upload_images/14339384-f42162b2f302a9b0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-<p>图中可以看出 fnArr ，对应是<strong>一个数组</strong>,数组里面都是函数,函数里面有一个Scopes , 对应的是什么呢？<br>对应的是Global全局作用域，为什么呢?  前面我们说了<strong>作用域链</strong></p>
-<p>(1) 当我们去使用一个变量时侯，会从函数内部去找，也就是它的函数内部的一个活动对象</p>
-<p>(2) 如果找不到的话，再从它的词法作用域去找。它的词法作用域是什么呢？<br>就是这个函数所创建它的所得的作用域 </p>
-<h3 id="总结："><a href="#总结：" class="headerlink" title="总结："></a>总结：</h3><p>(1) 打开fnArr函数，会看到Scopes<br>其实这个函数在执行过程中，先从自已里面找，找不到的话，再从Scopes里面找，<br>它的Scopes 是谁呢，Scopes就是Global</p>
-<p>(2) 如果嵌套几层的话，它的Scopes下面 还有一个，那其实这就是它的一个作用域链</p>
-<p>所以当我们执行fnArr[3] 的时侯，从内部找 i , 找不到的话，再从Scopes里面找, 从 window里找 ,对不对，执行它 fnArr[3] ，得到是10，因为i 最终是 10</p>
-<h5 id="如果要输出3-的话，可以这么改"><a href="#如果要输出3-的话，可以这么改" class="headerlink" title="如果要输出3 的话，可以这么改"></a>如果要输出3 的话，可以这么改</h5><p>方法1</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> fnArr = []</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i ++) &#123;</span><br><span class="line">  fnArr[i] =  (<span class="function"><span class="keyword">function</span>(<span class="params">j</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">      <span class="keyword">return</span> j</span><br><span class="line">    &#125; </span><br><span class="line">  &#125;)(i)</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log( fnArr[<span class="number">3</span>]() ) <span class="comment">// 3</span></span><br></pre></td></tr></table></figure>
-<h5 id="分析：-3"><a href="#分析：-3" class="headerlink" title="分析："></a>分析：</h5><p>(1) 首先 fnArr[3] () 输出什么，哎呀，我有点看不懂。那我们来变装下吧！<br>那假设这个for 循环没有10层，只有2层, 代码变成了</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> fnArr = []</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">2</span>; i ++) &#123;</span><br><span class="line">  fnArr[i] =  (<span class="function"><span class="keyword">function</span>(<span class="params">j</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">      <span class="keyword">return</span> j</span><br><span class="line">    &#125; </span><br><span class="line">  &#125;)(i)</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(fnArr[<span class="number">3</span>]())</span><br></pre></td></tr></table></figure>
-<p>这样子的话，只有2层，我们的for 循环也可以去掉了，相当于执行2次，代码变成了</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">fnArr = []</span><br><span class="line">fnArr[0] =  (function(j)&#123;</span><br><span class="line">    return function()&#123;</span><br><span class="line">      return j</span><br><span class="line">    &#125; </span><br><span class="line">  &#125;)(0)</span><br><span class="line">fnArr[1] =  (function(j)&#123;</span><br><span class="line">    return function()&#123;</span><br><span class="line">      return j</span><br><span class="line">    &#125; </span><br><span class="line">  &#125;)(1)</span><br><span class="line">fnArr[1]()</span><br></pre></td></tr></table></figure>
-<p>一个数组里面有2个值，那我还不如直接写2个值，代码变成了</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a =  (<span class="function"><span class="keyword">function</span>(<span class="params">j</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">      <span class="keyword">return</span> j</span><br><span class="line">    &#125; </span><br><span class="line">  &#125;)(<span class="number">0</span>)</span><br><span class="line"><span class="keyword">var</span> b =  (<span class="function"><span class="keyword">function</span>(<span class="params">j</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">      <span class="keyword">return</span> j</span><br><span class="line">    &#125; </span><br><span class="line">  &#125;)(<span class="number">1</span>) </span><br><span class="line">b()</span><br></pre></td></tr></table></figure>
-<p>这个时候我问你，b执行的结果是多少？<br>从上面代码看，b 等于 一个立即执行函数表达式，哈哈，它又相当于什么呢，</p>
-<p>那即然它是匿名函数，我可以给它加一个函数名fn2, 然后给a也加一个函数名fn1 ,这下代码变成了</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a =  (<span class="function"><span class="keyword">function</span> <span class="title">fn1</span>(<span class="params">j</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">      <span class="keyword">return</span> j</span><br><span class="line">    &#125; </span><br><span class="line">  &#125;)(<span class="number">0</span>)</span><br><span class="line"><span class="keyword">var</span> b =  (<span class="function"><span class="keyword">function</span> <span class="title">fn2</span>(<span class="params">j</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">      <span class="keyword">return</span> j</span><br><span class="line">    &#125; </span><br><span class="line">  &#125;)(<span class="number">1</span>) <span class="comment">//声明了一个函数，然后去执行它</span></span><br><span class="line">b()</span><br></pre></td></tr></table></figure>
-<p>如果这样子的话，我还不如这样子改</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn1</span>(<span class="params">j</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">      <span class="keyword">return</span> j</span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn2</span>(<span class="params">j</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">      <span class="keyword">return</span> j</span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> a = fn1(<span class="number">0</span>)</span><br><span class="line"><span class="keyword">var</span> b = fn2(<span class="number">1</span>) <span class="comment">// 相当于j 等于1</span></span><br><span class="line">a()</span><br><span class="line">b()</span><br></pre></td></tr></table></figure>
-<p>fn2(1)去执行这个函数的结果，相当于j 等于1 ，也就是说执行这个函数的结果,就是return了一个函数，换句话说 b 的值，就是这里面的函数</p>
-<p>当去执行b的时侯，也就是当去执行这个函数的时候 ，return j ,j 是多少呢？<br>那j 在哪里呢?是不是在函数内部 b 里面 ，函数内部没有j ,没有j的话，就从哪里找呢<br>就从这个函数<br>function (){<br>​    return j<br>}<br>所在的词法作用域去找，也就是它声明的地方(fn2函数内部),那代码可以变成</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn1</span>(<span class="params">j</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">      <span class="keyword">return</span> j</span><br><span class="line">    &#125; </span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn2</span>(<span class="params">j</span>)</span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">      <span class="keyword">return</span> j</span><br><span class="line">    &#125; </span><br><span class="line">    <span class="keyword">return</span> f</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> a = fn1(<span class="number">0</span>)</span><br><span class="line"><span class="keyword">var</span> b = fn2(<span class="number">1</span>)</span><br><span class="line">a()</span><br><span class="line">b()</span><br></pre></td></tr></table></figure>
-<p>这个时侯, b 就等于 f ,那执行b的时候， <code>return j</code>，j 在哪里呢，函数f里面没有，那它会去它的词法作用域去找，即fn2这个函数内部去找,这个内部有没j 呢，有，因为在调用fn2时，传递了一个j ,相当于<br><code>var j = arguments[0]</code>, 也就是1 , 所以输出了1</p>
-<p>上面部分代码变成了，其他没变</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn2</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">var</span> j = <span class="built_in">arguments</span>[<span class="number">0</span>]  </span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">      <span class="keyword">return</span> j</span><br><span class="line">    &#125; </span><br><span class="line">    <span class="keyword">return</span> f</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> b = fn2(<span class="number">1</span>)</span><br><span class="line">b()</span><br></pre></td></tr></table></figure>
-<p>方法2</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> fnArr = []</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i ++) &#123;</span><br><span class="line">  (<span class="function"><span class="keyword">function</span>(<span class="params">i</span>)</span>&#123;</span><br><span class="line">    fnArr[i] =  <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">      <span class="keyword">return</span> i</span><br><span class="line">    &#125; </span><br><span class="line">  &#125;)(i)</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log( fnArr[<span class="number">3</span>]() ) <span class="comment">// 3</span></span><br></pre></td></tr></table></figure>
-<p>还记得那个经典闭包实例吧，我们可以演变一下</p>
-<p><strong>//改前</strong></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">car</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">var</span> speed = <span class="number">0</span> </span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    speed++</span><br><span class="line">    <span class="built_in">console</span>.log(speed)</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> fn</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> speedUp = car()</span><br></pre></td></tr></table></figure>
-<p><strong>//改后</strong></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">car</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">var</span> speed = <span class="number">0</span> </span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;</span><br><span class="line">    speed++</span><br><span class="line">    <span class="built_in">console</span>.log(speed)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> speedUp = car()</span><br></pre></td></tr></table></figure>
-<h5 id="分析：-4"><a href="#分析：-4" class="headerlink" title="分析："></a>分析：</h5><p>假设car 有一个形参 speed ,那是不是代码变成了</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">car</span>(<span class="params"></span>)</span>&#123;<span class="comment">//arguments 对象可以在函数体内部读取所有参数</span></span><br><span class="line">  <span class="keyword">var</span> speed = <span class="built_in">arguments</span>[<span class="number">0</span>] <span class="comment">//arguments[0]就是第一个参数speed</span></span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;</span><br><span class="line">    speed++</span><br><span class="line">    <span class="built_in">console</span>.log(speed)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> speedUp = car(<span class="number">3</span>)</span><br></pre></td></tr></table></figure>
-<p>那现在是声明了一个函数car，去执行它car(3)<br>那这样子，我可以把一个函数写过来，代码变成了</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> speedUp = (<span class="function"><span class="keyword">function</span> <span class="title">car</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">var</span> speed = <span class="built_in">arguments</span>[<span class="number">0</span>] </span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;</span><br><span class="line">    speed++</span><br><span class="line">    <span class="built_in">console</span>.log(speed)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)(<span class="number">3</span>)</span><br></pre></td></tr></table></figure>
-<p>即然这样子写的话，那个函数名car 也可以去掉，那代码变成了</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> speedUp = (<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">var</span> speed = <span class="built_in">arguments</span>[<span class="number">0</span>] </span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span> (<span class="params"></span>)</span>&#123;</span><br><span class="line">    speed++</span><br><span class="line">    <span class="built_in">console</span>.log(speed)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)(<span class="number">3</span>)</span><br></pre></td></tr></table></figure>
-<p>现在不就变成了一个立即执行函数表达式了<br>所以说<strong>立即执行表达式</strong>里面如果有<strong>return</strong>的话，那就是生成了<strong>闭包</strong></p>
-<p>和刚刚最原始的闭包，经过一个个的演化，替换，得到的效果是一模一样的</p>
-<p>和上面的这个</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> b =  (<span class="function"><span class="keyword">function</span> <span class="title">fn2</span>(<span class="params">j</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">      <span class="keyword">return</span> j</span><br><span class="line">    &#125; </span><br><span class="line"> &#125;)(<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
-<p>是不是一样的</p>
-<p>哎呀，累死我啦！还没完！</p>
-<p>回到最上面的这段代码</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> fnArr = []</span><br><span class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">10</span>; i ++) &#123;</span><br><span class="line">  fnArr[i] =  (<span class="function"><span class="keyword">function</span>(<span class="params">j</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">      <span class="keyword">return</span> j</span><br><span class="line">    &#125; </span><br><span class="line">  &#125;)(i)</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(fnArr[<span class="number">3</span>]())</span><br></pre></td></tr></table></figure>
-<p>按照这种方式去演变，这里</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">fnArr[i] =  (<span class="function"><span class="keyword">function</span>(<span class="params">j</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">      <span class="keyword">return</span> j</span><br><span class="line">    &#125; </span><br><span class="line">  &#125;)</span><br></pre></td></tr></table></figure>
-<p>就生成了10个闭包,这里面有10个函数,然后每个闭包里暂存了一个变量,代码变成了</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">fnArr[i] =  (<span class="function"><span class="keyword">function</span>(<span class="params">j</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> j = <span class="built_in">arguments</span>[<span class="number">0</span>] <span class="comment">//暂存的变量就在这里</span></span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">      <span class="keyword">return</span> j</span><br><span class="line">    &#125; </span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<p>也就是说在一开始的时侯，传递的 0,1,2,…9，然后这里面有10 个闭包，存了10个不一样的值，所以你下次去执行这个函数的时侯, 执行对应的函数的时候，它会从上面去找 j ，也就找到自已对应的词法作用域下面的这个值 ，也就是这里面的一个临时变量 var j = arguments[0]</p>
-<h4 id="例2-封装一个-Car-对象"><a href="#例2-封装一个-Car-对象" class="headerlink" title="例2 封装一个 Car 对象"></a>例2 封装一个 Car 对象</h4><p>通过接口去操作一些数据，不能直接访问这些数据，为了数据有一定的安全性</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> car = (<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">   <span class="keyword">var</span> speed = <span class="number">0</span>;</span><br><span class="line">   <span class="function"><span class="keyword">function</span> <span class="title">set</span>(<span class="params">s</span>)</span>&#123;</span><br><span class="line">       speed = s</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="function"><span class="keyword">function</span> <span class="title">get</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">      <span class="keyword">return</span> speed</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="function"><span class="keyword">function</span> <span class="title">speedUp</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">      speed++</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="function"><span class="keyword">function</span> <span class="title">speedDown</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">      speed--</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="keyword">return</span> &#123;</span><br><span class="line">      set: set,</span><br><span class="line">      get: get,</span><br><span class="line">      speedUp: speedUp,</span><br><span class="line">      speedDown: speedDown</span><br><span class="line">   &#125;</span><br><span class="line">&#125;)()</span><br><span class="line">car.set(<span class="number">30</span>)</span><br><span class="line">car.get() <span class="comment">//30</span></span><br><span class="line">car.speedUp()</span><br><span class="line">car.get() <span class="comment">//31</span></span><br><span class="line">car.speedDown()</span><br><span class="line">car.get()  <span class="comment">//30</span></span><br></pre></td></tr></table></figure>
-<h5 id="分析：-5"><a href="#分析：-5" class="headerlink" title="分析："></a>分析：</h5><p>car是一个立刻执行的函数表达式中return出来的结果。</p>
-<p>(1) return出来是一个对象，有四个属性 <strong>set、get、speedUp、speedDown</strong>，四个属性对应的是一个值，即四个函数<strong>set、get、speedUp、speedDown</strong>。这四个函数就用于操作speed的值。</p>
-<p>(2) 为什么得不到释放呢？</p>
-<p>a、这导致了car永远得不到释放，因为它是我们的全局变量</p>
-<p>b、car 得不到释放，那return对象也得不到释放，因为这个对象是引用类型,它们本质上是同一个东西</p>
-<p>c、return对象得不到释放，那里面的属性值也没法释放</p>
-<p>d、属性值得不到释放，对应的函数也无法释放，那speed变量自然也释放不了，就生成了一个闭包</p>
-<h5 id="例3-如下代码输出多少？如何连续输出-0-1-2-3-4"><a href="#例3-如下代码输出多少？如何连续输出-0-1-2-3-4" class="headerlink" title="例3 如下代码输出多少？如何连续输出 0,1,2,3,4"></a>例3 如下代码输出多少？如何连续输出 0,1,2,3,4</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>; i&lt;<span class="number">5</span>; i++)&#123;</span><br><span class="line">  setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'delayer:'</span> + i )</span><br><span class="line">  &#125;, <span class="number">0</span>)</span><br><span class="line">&#125;<span class="comment">// 连续输出5个 delayer:5</span></span><br></pre></td></tr></table></figure>
-<h5 id="分析：-6"><a href="#分析：-6" class="headerlink" title="分析："></a>分析：</h5><p>setTimeout 会把当前的执行（也就是函数的代码）添加到任务队列里面，相当于设置了5个计时器，并没有开始,当5个设置完成之后,这个时侯 i 已经变成 5 啦</p>
-<p>此刻才去执行任务队列里面的代码，然后一个个去执行setTimeout 里面的函数 ，当执行它的时候，开始找 i 的值，for循环已经执行完了，i 已经变成5 啦，所以连续输出5个5</p>
-<p><strong>改后:</strong></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>; i&lt;<span class="number">5</span>; i++)&#123;</span><br><span class="line">  (<span class="function"><span class="keyword">function</span>(<span class="params">j</span>)</span>&#123;</span><br><span class="line">    setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">'delayer:'</span> + j )</span><br><span class="line">    &#125;, <span class="number">0</span>)    </span><br><span class="line">  &#125;)(i)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>我们可以简化下代码，for 循环 变成 2 时，代码变成了</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn1</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> j = <span class="built_in">arguments</span>[<span class="number">0</span>]</span><br><span class="line">    setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">'delayer:'</span> + j )</span><br><span class="line">    &#125;, <span class="number">0</span>) </span><br><span class="line">&#125;</span><br><span class="line">fn1(<span class="number">0</span>)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn2</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> j = <span class="built_in">arguments</span>[<span class="number">0</span>]</span><br><span class="line">    setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">'delayer:'</span> + j )</span><br><span class="line">    &#125;, <span class="number">0</span>) </span><br><span class="line">&#125;</span><br><span class="line">fn2(<span class="number">1</span>)</span><br></pre></td></tr></table></figure>
-<p>通过一个<strong>立刻执行的函数表达式</strong>，生成一个闭包。因为for循环不会产生一个作用域，所以可以不用return。当然用return也可以</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>; i&lt;<span class="number">5</span>; i++)&#123;</span><br><span class="line">  setTimeout((<span class="function"><span class="keyword">function</span>(<span class="params">j</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">'delayer:'</span> + j )</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;(i)), <span class="number">0</span>)    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>相当于 setTimeout 第一层带参数 j 函数会立即去执行，并没有延时,执行过程中，传递了 i , 其实得到了return 出来的函数结果, setTimeout 能用这个函数，用的过程中，如果用到这个变量 j，就相当于那个中间夹了一个临时变量<code>var j = arguments[0]</code>,存进去了，那下次要用过这个变量j ，它就会从这里面找。</p>
-<p>也就是说把 i = 0 ,变成 j 放到那里, i = 1,变成 j 放到那里 ,依次类推，到4</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>; i&lt;<span class="number">5</span>; i++)&#123;</span><br><span class="line">  setTimeout((<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> j = <span class="built_in">arguments</span>[<span class="number">0</span>]</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">'delayer:'</span> + j )</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;(i)), <span class="number">0</span>)    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="例4"><a href="#例4" class="headerlink" title="例4"></a>例4</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">makeCounter</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">  <span class="keyword">var</span> count = <span class="number">0</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> count++</span><br><span class="line">  &#125;;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> counter = makeCounter()</span><br><span class="line"><span class="comment">// 相当于 return 函数 返回的值 赋值给 counter</span></span><br><span class="line"><span class="keyword">var</span> counter2 = makeCounter();</span><br><span class="line"><span class="comment">// 相当于把第二次执行 return 函数 返回的值给 counter 也就是把第一次执行的结果 count +1</span></span><br><span class="line"><span class="built_in">console</span>.log( counter() ) <span class="comment">// 0</span></span><br><span class="line"><span class="built_in">console</span>.log( counter() ) <span class="comment">// 1</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log( counter2() ) <span class="comment">// 0</span></span><br><span class="line"><span class="built_in">console</span>.log( counter2() ) <span class="comment">// 1</span></span><br></pre></td></tr></table></figure>
-<p><strong>分析：</strong> </p>
-<p>当我们第一次执行 makeCounter()时，相当于有了作用域 ，有了一个活动对象count,再次执行makeCounter，又有了一个新的作用域，有一个新的活动对象count, 所以呀，它们是独立的。切记！</p>
-<h4 id="例5-补全代码，实现数组按姓名、年纪、任意字段排序"><a href="#例5-补全代码，实现数组按姓名、年纪、任意字段排序" class="headerlink" title="例5 补全代码，实现数组按姓名、年纪、任意字段排序"></a>例5 补全代码，实现数组按姓名、年纪、任意字段排序</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> users = [</span><br><span class="line">  &#123; <span class="attr">name</span>: <span class="string">"John"</span>, <span class="attr">age</span>: <span class="number">20</span>, <span class="attr">company</span>: <span class="string">"Baidu"</span> &#125;,</span><br><span class="line">  &#123; <span class="attr">name</span>: <span class="string">"Pete"</span>, <span class="attr">age</span>: <span class="number">18</span>, <span class="attr">company</span>: <span class="string">"Alibaba"</span> &#125;,</span><br><span class="line">  &#123; <span class="attr">name</span>: <span class="string">"Ann"</span>, <span class="attr">age</span>: <span class="number">19</span>, <span class="attr">company</span>: <span class="string">"Tecent"</span> &#125;</span><br><span class="line">]</span><br><span class="line"></span><br><span class="line">users.sort(byName) </span><br><span class="line">users.sort(byAge)</span><br><span class="line">users.sort(byField(<span class="string">'company'</span>))</span><br></pre></td></tr></table></figure>
-<p><strong>补全后代码变成</strong></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">byName</span>(<span class="params">user1, user2</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> user1.name &gt; user2.name</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">byAge</span> (<span class="params">user1, user2</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> user1.age &gt; user2.age</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">byFeild</span>(<span class="params">field</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params">user1, user2</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> user1[field] &gt; user2[field]</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line">users.sort(byField(<span class="string">'company'</span>))</span><br></pre></td></tr></table></figure>
-<p>注：sort 排序 后面必须是<strong>一个函数</strong>，所以需要返回一个参数。</p>
-<h4 id="例6-写一个-sum-函数，实现如下调用方式"><a href="#例6-写一个-sum-函数，实现如下调用方式" class="headerlink" title="例6 写一个 sum 函数，实现如下调用方式"></a><strong>例6 写一个 sum 函数，实现如下调用方式</strong></h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log( sum(<span class="number">1</span>)(<span class="number">2</span>) ) <span class="comment">// 3</span></span><br><span class="line"><span class="built_in">console</span>.log( sum(<span class="number">5</span>)(<span class="number">-1</span>) ) <span class="comment">// 4</span></span><br></pre></td></tr></table></figure>
-<p><strong>分析：</strong></p>
-<p>(1)  sum(1) 后面跟着一个() ,表示一个没有执行的函数，其中sum(1) 是一个函数名,相当于</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sum</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>(2)  sum(1) (2) 表示sum(1) 传递了一个参数2 ,返回一个东西,也就是相当于</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sum</span>(<span class="params">a</span>)</span>&#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params">b</span>)</span>&#123;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">sum(<span class="number">1</span>)(<span class="number">2</span>)</span><br></pre></td></tr></table></figure>
-<p>(3) 最后我们得到a+b的值</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sum</span>(<span class="params">a</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params">b</span>) </span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a + b</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h3 id="总结：-1"><a href="#总结：-1" class="headerlink" title="总结："></a>总结：</h3><blockquote>
-<p>函数柯里化-只传递给函数一部分参数来调用它，让它返回一个函数去处理剩下的参数</p>
-</blockquote>
-<p>可看看方方老师的文章 <a href="https://zhuanlan.zhihu.com/p/22486908" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/22486908</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -2043,7 +1902,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">45</span>
+                  <span class="site-state-item-count">46</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

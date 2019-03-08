@@ -79,21 +79,17 @@
 
 
 
-<meta name="description" content="哎呀呀，最近在做一个音乐播放器，做的过程中遇到了一些小问题，记载下，防止下次再犯 一、play 失效(1) 代码测试play时（audioObject.play()）,播放不了， Chrome浏览器预览时报错  (2)设置autoplay-policy 网上查了资料才知道,是chrome 的 autoplay 的政策原因造成的。 audio video 必须通过用户交互之后才可以播放。 但是可以通">
+<meta name="description" content="一、定义在模板中,对于任何复杂逻辑，应当使用计算属性 二、用法1､所有计算属性都以函数形式写在 Vue 实例内的 computed 选项内，返回计算后的结果 2､可以依赖多个Vue实例数据，只要其中任一个数据变化，计算属性会重新执行，视图也更新 【Demo实例地址 https://jsbin.com/hajucur/edit?html,console,output】 三、setter|getter">
 <meta property="og:type" content="article">
-<meta property="og:title" content="音乐播放器">
-<meta property="og:url" content="http://yoursite.com/2018/12/05/音乐播放器/index.html">
+<meta property="og:title" content="vue笔记2之计算属性">
+<meta property="og:url" content="http://yoursite.com/2019/03/07/vue笔记2之计算属性/index.html">
 <meta property="og:site_name" content="Wuer">
-<meta property="og:description" content="哎呀呀，最近在做一个音乐播放器，做的过程中遇到了一些小问题，记载下，防止下次再犯 一、play 失效(1) 代码测试play时（audioObject.play()）,播放不了， Chrome浏览器预览时报错  (2)设置autoplay-policy 网上查了资料才知道,是chrome 的 autoplay 的政策原因造成的。 audio video 必须通过用户交互之后才可以播放。 但是可以通">
+<meta property="og:description" content="一、定义在模板中,对于任何复杂逻辑，应当使用计算属性 二、用法1､所有计算属性都以函数形式写在 Vue 实例内的 computed 选项内，返回计算后的结果 2､可以依赖多个Vue实例数据，只要其中任一个数据变化，计算属性会重新执行，视图也更新 【Demo实例地址 https://jsbin.com/hajucur/edit?html,console,output】 三、setter|getter">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9375265-630f4a56b58e612a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9375265-5c62114e15094402.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/9375265-4b21e3d21b7848e1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2018-12-14T10:14:27.806Z">
+<meta property="og:updated_time" content="2019-03-08T09:05:27.410Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="音乐播放器">
-<meta name="twitter:description" content="哎呀呀，最近在做一个音乐播放器，做的过程中遇到了一些小问题，记载下，防止下次再犯 一、play 失效(1) 代码测试play时（audioObject.play()）,播放不了， Chrome浏览器预览时报错  (2)设置autoplay-policy 网上查了资料才知道,是chrome 的 autoplay 的政策原因造成的。 audio video 必须通过用户交互之后才可以播放。 但是可以通">
-<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/9375265-630f4a56b58e612a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta name="twitter:title" content="vue笔记2之计算属性">
+<meta name="twitter:description" content="一、定义在模板中,对于任何复杂逻辑，应当使用计算属性 二、用法1､所有计算属性都以函数形式写在 Vue 实例内的 computed 选项内，返回计算后的结果 2､可以依赖多个Vue实例数据，只要其中任一个数据变化，计算属性会重新执行，视图也更新 【Demo实例地址 https://jsbin.com/hajucur/edit?html,console,output】 三、setter|getter">
 
 
 
@@ -123,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/12/05/音乐播放器/">
+  <link rel="canonical" href="http://yoursite.com/2019/03/07/vue笔记2之计算属性/">
 
 
 
 
 
-  <title>音乐播放器 | Wuer</title>
+  <title>vue笔记2之计算属性 | Wuer</title>
   
 
 
@@ -236,7 +232,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/05/音乐播放器/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/07/vue笔记2之计算属性/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Wuer">
@@ -253,7 +249,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">音乐播放器</h1>
+          <h1 class="post-title" itemprop="name headline">vue笔记2之计算属性</h1>
         
 
         <div class="post-meta">
@@ -265,8 +261,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-05T16:38:11+08:00">
-                2018-12-05
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-07T23:53:05+08:00">
+                2019-03-07
               </time>
             
 
@@ -303,17 +299,16 @@
       
 
       
-        <p>哎呀呀，最近在做一个音乐播放器，做的过程中遇到了一些小问题，记载下，防止下次再犯</p>
-<h2 id="一、play-失效"><a href="#一、play-失效" class="headerlink" title="一、play 失效"></a>一、play 失效</h2><p>(1) 代码测试play时（<code>audioObject.play()</code>）,播放不了， Chrome浏览器预览时报错</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/9375265-630f4a56b58e612a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-<p>(2)设置autoplay-policy</p>
-<p>网上查了资料才知道,是chrome 的 autoplay 的政策原因造成的。 <strong>audio video 必须通过用户交互之后才可以播放</strong>。</p>
-<p>但是可以通过将Chrome标记“自动播放策略”设置为“无需用户手势”来决定完全禁用自动播放策略<code>chrome://flags/#autoplay-policy</code>。这使您可以测试您的网站，就像用户与您的网站密切合作一样，并且始终允许播放自动播放</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/9375265-5c62114e15094402.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-<p>如上图设置好后，刷新页面预览时，就可以啦。</p>
-<p>可参考 <a href="https://developers.google.com/web/updates/2017/09/autoplay-policy-changes" target="_blank" rel="noopener">https://developers.google.com/web/updates/2017/09/autoplay-policy-changes</a></p>
-<h3 id="二、gitpages预览报错"><a href="#二、gitpages预览报错" class="headerlink" title="二、gitpages预览报错"></a>二、gitpages预览报错</h3><p>提交到github时，使用gitpages预览时，数据请求不到，原因是域名是github.com，所以代码这里要加上对应的仓库名才行，不然会报错</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/9375265-4b21e3d21b7848e1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+        <h3 id="一、定义"><a href="#一、定义" class="headerlink" title="一、定义"></a>一、定义</h3><p>在模板中,对于任何复杂逻辑，应当使用<strong>计算属性</strong></p>
+<h3 id="二、用法"><a href="#二、用法" class="headerlink" title="二、用法"></a>二、用法</h3><p>1､所有计算属性都以<strong>函数形式</strong>写在 <strong>Vue 实例内的 computed</strong> 选项内，返回计算后的结果</p>
+<p>2､可以依赖多个Vue实例数据，只要其中任一个数据变化，计算属性会重新执行，视图也更新</p>
+<p>【Demo实例地址 <a href="https://jsbin.com/hajucur/edit?html,console,output】" target="_blank" rel="noopener">https://jsbin.com/hajucur/edit?html,console,output】</a></p>
+<h3 id="三、setter-getter"><a href="#三、setter-getter" class="headerlink" title="三、setter|getter"></a>三、setter|getter</h3><p>计算属性<strong>默认只有 getter</strong> ，不过在需要时可以提供一个 setter </p>
+<p>当手动修改计算属性的值就像修改一个普通数据那样时，就会触发 setter函数，执行一些自定义的操作</p>
+<p>【Demo实例地址 <a href="https://jsbin.com/qoduboh/1/edit?html,output】" target="_blank" rel="noopener">https://jsbin.com/qoduboh/1/edit?html,output】</a></p>
+<h3 id="四、计算属性缓存"><a href="#四、计算属性缓存" class="headerlink" title="四、计算属性缓存"></a>四、计算属性缓存</h3><p>调用 <strong>methods 里的方法</strong>与<strong>计算属性</strong>起到同样的作用</p>
+<p><strong>页面中的方法：</strong> 如果是调用方法，只要页面重新渲染。方法就会重新执行，不需要渲染，则不需要重新执行<br><strong>计算属性：</strong>不管是否渲染，只要计算属性依赖的数据未发生变化，就永远不变</p>
+<p>当遍历大数组和做大量计算时，应当使用计算属性，除非你不希望得到缓存</p>
 
       
     </div>
@@ -338,8 +333,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/12/04/搭建服务器/" rel="next" title="搭建服务器">
-                <i class="fa fa-chevron-left"></i> 搭建服务器
+              <a href="/2019/03/07/vue笔记1之数据绑定-指令-事件/" rel="next" title="vue笔记1之数据绑定+指令+事件">
+                <i class="fa fa-chevron-left"></i> vue笔记1之数据绑定+指令+事件
               </a>
             
           </div>
@@ -347,10 +342,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2018/12/06/跨域(JSONP)/" rel="prev" title="跨域">
-                跨域 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -464,7 +455,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、play-失效"><span class="nav-number">1.</span> <span class="nav-text">一、play 失效</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#二、gitpages预览报错"><span class="nav-number">1.1.</span> <span class="nav-text">二、gitpages预览报错</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、定义"><span class="nav-number">1.</span> <span class="nav-text">一、定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、用法"><span class="nav-number">2.</span> <span class="nav-text">二、用法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三、setter-getter"><span class="nav-number">3.</span> <span class="nav-text">三、setter|getter</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#四、计算属性缓存"><span class="nav-number">4.</span> <span class="nav-text">四、计算属性缓存</span></a></li></ol></div>
             
 
           </div>
