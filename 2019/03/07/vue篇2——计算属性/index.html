@@ -79,27 +79,17 @@
 
 
 
-<meta name="description" content="一、测试有没安装(1)  首先我们打开mac终端输入 (2)  如果终端告诉你 那么说明你已经有git了，不需下载安装 #二、本地仓库创建 (1)  新建文件夹，并指定到新建文件夹目录下  (2)  再输入命令 这样子 ，本地仓库就建好了 #三、创建远程仓库 (1)  首页登陆Github，并选择创建 (2)  填写仓库名称，这里注意仓库名称不要写中文，中文显示不出来 这样远程仓库也创建好了 #四">
+<meta name="description" content="一、定义在模板中,对于任何复杂逻辑，应当使用计算属性 二、用法1､所有计算属性都以函数形式写在 Vue 实例内的 computed 选项内，返回计算后的结果 2､可以依赖多个Vue实例数据，只要其中任一个数据变化，计算属性会重新执行，视图也更新 【Demo实例地址 https://jsbin.com/hajucur/edit?html,console,output】 三、setter|getter">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Git使用1">
-<meta property="og:url" content="http://yoursite.com/2018/10/02/Git使用1/index.html">
+<meta property="og:title" content="vue笔记2之计算属性">
+<meta property="og:url" content="http://yoursite.com/2019/03/07/vue篇2——计算属性/index.html">
 <meta property="og:site_name" content="Wuer">
-<meta property="og:description" content="一、测试有没安装(1)  首先我们打开mac终端输入 (2)  如果终端告诉你 那么说明你已经有git了，不需下载安装 #二、本地仓库创建 (1)  新建文件夹，并指定到新建文件夹目录下  (2)  再输入命令 这样子 ，本地仓库就建好了 #三、创建远程仓库 (1)  首页登陆Github，并选择创建 (2)  填写仓库名称，这里注意仓库名称不要写中文，中文显示不出来 这样远程仓库也创建好了 #四">
+<meta property="og:description" content="一、定义在模板中,对于任何复杂逻辑，应当使用计算属性 二、用法1､所有计算属性都以函数形式写在 Vue 实例内的 computed 选项内，返回计算后的结果 2､可以依赖多个Vue实例数据，只要其中任一个数据变化，计算属性会重新执行，视图也更新 【Demo实例地址 https://jsbin.com/hajucur/edit?html,console,output】 三、setter|getter">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14260087-7ae4d51cbdd5ba28.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14260087-16999227ad4fc005.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14339384-fb2d559ba2b3d088.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14260087-02bb43d7f21a3ccd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14260087-e90d9b087fce4015.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14339384-2f8260b4006c805a.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14260087-c93fc4f2200df010.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14339384-6e1a5c5e8128f6b8.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14260087-725d2a374013e595.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
-<meta property="og:updated_time" content="2018-12-14T08:58:51.516Z">
+<meta property="og:updated_time" content="2019-03-08T10:19:12.703Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Git使用1">
-<meta name="twitter:description" content="一、测试有没安装(1)  首先我们打开mac终端输入 (2)  如果终端告诉你 那么说明你已经有git了，不需下载安装 #二、本地仓库创建 (1)  新建文件夹，并指定到新建文件夹目录下  (2)  再输入命令 这样子 ，本地仓库就建好了 #三、创建远程仓库 (1)  首页登陆Github，并选择创建 (2)  填写仓库名称，这里注意仓库名称不要写中文，中文显示不出来 这样远程仓库也创建好了 #四">
-<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/14260087-7ae4d51cbdd5ba28.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta name="twitter:title" content="vue笔记2之计算属性">
+<meta name="twitter:description" content="一、定义在模板中,对于任何复杂逻辑，应当使用计算属性 二、用法1､所有计算属性都以函数形式写在 Vue 实例内的 computed 选项内，返回计算后的结果 2､可以依赖多个Vue实例数据，只要其中任一个数据变化，计算属性会重新执行，视图也更新 【Demo实例地址 https://jsbin.com/hajucur/edit?html,console,output】 三、setter|getter">
 
 
 
@@ -129,13 +119,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2018/10/02/Git使用1/">
+  <link rel="canonical" href="http://yoursite.com/2019/03/07/vue篇2——计算属性/">
 
 
 
 
 
-  <title>Git使用1 | Wuer</title>
+  <title>vue笔记2之计算属性 | Wuer</title>
   
 
 
@@ -242,7 +232,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/02/Git使用1/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/07/vue篇2——计算属性/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Wuer">
@@ -259,7 +249,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Git使用1</h1>
+          <h1 class="post-title" itemprop="name headline">vue笔记2之计算属性</h1>
         
 
         <div class="post-meta">
@@ -271,8 +261,8 @@
               
                 <span class="post-meta-item-text">发表于</span>
               
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-02T17:13:09+08:00">
-                2018-10-02
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-07T23:53:05+08:00">
+                2019-03-07
               </time>
             
 
@@ -309,24 +299,16 @@
       
 
       
-        <h1 id="一、测试有没安装"><a href="#一、测试有没安装" class="headerlink" title="一、测试有没安装"></a>一、测试有没安装</h1><p>(1)  首先我们打开mac终端输入<br><img src="https://upload-images.jianshu.io/upload_images/14260087-7ae4d51cbdd5ba28.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="1.png"></p>
-<p>(2)  如果终端告诉你<br><img src="https://upload-images.jianshu.io/upload_images/14260087-16999227ad4fc005.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="2.png"></p>
-<p>那么说明你已经有git了，不需下载安装</p>
-<p>#二、本地仓库创建</p>
-<p>(1)  新建文件夹，并指定到新建文件夹目录下</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/14339384-fb2d559ba2b3d088.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="3.png"></p>
-<p>(2)  再输入命令<br><img src="https://upload-images.jianshu.io/upload_images/14260087-02bb43d7f21a3ccd.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="4.png"></p>
-<p>这样子 ，本地仓库就建好了</p>
-<p>#三、创建远程仓库</p>
-<p>(1)  首页登陆Github，并选择创建<br><img src="https://upload-images.jianshu.io/upload_images/14260087-e90d9b087fce4015.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="5.png"></p>
-<p>(2)  填写仓库名称，这里<strong>注意仓库名称不要写中文，中文显示不出来</strong><br><img src="https://upload-images.jianshu.io/upload_images/14339384-2f8260b4006c805a.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="6.jpg"></p>
-<p>这样远程仓库也创建好了</p>
-<p>#四、将本地仓库与远程仓库进行关联 </p>
-<p>(1)  终端输入<br><img src="https://upload-images.jianshu.io/upload_images/14260087-c93fc4f2200df010.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="7.png"></p>
-<p>(2)  git remote add origin后的网址是你的<strong>远程仓库的地址</strong><br><img src="https://upload-images.jianshu.io/upload_images/14339384-6e1a5c5e8128f6b8.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="8.jpg"></p>
-<p>OK现在已经关联成功了</p>
-<p>#五、克隆地址<br>终端输入<br><img src="https://upload-images.jianshu.io/upload_images/14260087-725d2a374013e595.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="9.png"></p>
-<p>这样子git 可以正常使用了</p>
+        <h3 id="一、定义"><a href="#一、定义" class="headerlink" title="一、定义"></a>一、定义</h3><p>在模板中,对于任何复杂逻辑，应当使用<strong>计算属性</strong></p>
+<h3 id="二、用法"><a href="#二、用法" class="headerlink" title="二、用法"></a>二、用法</h3><p>1､所有计算属性都以<strong>函数形式</strong>写在 <strong>Vue 实例内的 computed</strong> 选项内，返回计算后的结果</p>
+<p>2､可以依赖多个Vue实例数据，只要其中任一个数据变化，计算属性会重新执行，视图也更新</p>
+<p>【Demo实例地址 <a href="https://jsbin.com/hajucur/edit?html,console,output】" target="_blank" rel="noopener">https://jsbin.com/hajucur/edit?html,console,output】</a></p>
+<h3 id="三、setter-getter"><a href="#三、setter-getter" class="headerlink" title="三、setter|getter"></a>三、setter|getter</h3><p>计算属性<strong>默认只有 getter</strong> ，不过在需要时可以提供一个 setter </p>
+<p>当手动修改计算属性的值就像修改一个普通数据那样时，就会触发 setter函数，执行一些自定义的操作</p>
+<p>【Demo实例地址 <a href="https://jsbin.com/qoduboh/1/edit?html,output】" target="_blank" rel="noopener">https://jsbin.com/qoduboh/1/edit?html,output】</a></p>
+<h3 id="四、计算属性缓存"><a href="#四、计算属性缓存" class="headerlink" title="四、计算属性缓存"></a>四、计算属性缓存</h3><p>调用 <strong>methods 里的方法</strong>与<strong>计算属性</strong>起到同样的作用</p>
+<p><strong>页面中的方法：</strong> 如果是调用方法，只要页面重新渲染。方法就会重新执行，不需要渲染，则不需要重新执行<br><strong>计算属性：</strong>不管是否渲染，只要计算属性依赖的数据未发生变化，就永远不变</p>
+<p>当遍历大数组和做大量计算时，应当使用计算属性，除非你不希望得到缓存</p>
 
       
     </div>
@@ -351,8 +333,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2018/10/02/命令行基础/" rel="next" title="命令行基础">
-                <i class="fa fa-chevron-left"></i> 命令行基础
+              <a href="/2019/03/07/vue篇1——数据绑定-指令-事件/" rel="next" title="vue笔记1之数据绑定+指令+事件">
+                <i class="fa fa-chevron-left"></i> vue笔记1之数据绑定+指令+事件
               </a>
             
           </div>
@@ -361,8 +343,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/10/02/Git使用2/" rel="prev" title="git使用2">
-                git使用2 <i class="fa fa-chevron-right"></i>
+              <a href="/2019/03/08/vue篇3——v-bind+class+style的绑定/" rel="prev" title="vue笔记3之v-bind+class+style的绑定">
+                vue笔记3之v-bind+class+style的绑定 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -477,7 +459,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一、测试有没安装"><span class="nav-number">1.</span> <span class="nav-text">一、测试有没安装</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、定义"><span class="nav-number">1.</span> <span class="nav-text">一、定义</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、用法"><span class="nav-number">2.</span> <span class="nav-text">二、用法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三、setter-getter"><span class="nav-number">3.</span> <span class="nav-text">三、setter|getter</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#四、计算属性缓存"><span class="nav-number">4.</span> <span class="nav-text">四、计算属性缓存</span></a></li></ol></div>
             
 
           </div>
