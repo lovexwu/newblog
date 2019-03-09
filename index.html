@@ -229,7 +229,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/08/vue篇3——v-bind+class+style的绑定/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/08/vue篇3——v-bind 的 class+style的绑定/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Wuer">
@@ -248,7 +248,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2019/03/08/vue篇3——v-bind+class+style的绑定/" itemprop="url">vue篇3——v-bind+class+style的绑定</a></h1>
+                <a class="post-title-link" href="/2019/03/08/vue篇3——v-bind 的 class+style的绑定/" itemprop="url">vue篇3——v-bind 的class+style的绑定</a></h1>
         
 
         <div class="post-meta">
@@ -300,7 +300,28 @@
       
         
           
-            
+            <h3 id="一、绑定-Class"><a href="#一、绑定-Class" class="headerlink" title="一、绑定 Class"></a>一、绑定 Class</h3><h5 id="1､对象语法"><a href="#1､对象语法" class="headerlink" title="1､对象语法"></a>1､对象语法</h5><p>给<strong>v-bind:class</strong> 设置为一个对象，动态地切换 class，其中<strong>对象的键名是类名，值为布尔值 true 或 false</strong></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;div v-bind:class="&#123; active: isActive &#125;"&gt;&lt;/div&gt; // active存在取决isActive的值</span><br></pre></td></tr></table></figure>
+<p>1.1､ 绑定数据对象不必定义在模板内</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//html</span></span><br><span class="line">&lt;div v-bind:<span class="class"><span class="keyword">class</span></span>=<span class="string">"classObject"</span>&gt;&lt;/div&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">//js</span></span><br><span class="line">data: &#123;</span><br><span class="line">  classObject: &#123;</span><br><span class="line">    active: <span class="literal">true</span>,</span><br><span class="line">    <span class="string">'text-danger'</span>: <span class="literal">false</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>1.2､ 绑定一个<strong>计算属</strong>性，可以使用 <strong>data</strong> 或 <strong>computed</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">data: &#123;</span><br><span class="line">  isActive: <span class="keyword">true</span>,</span><br><span class="line">  error: <span class="keyword">null</span></span><br><span class="line">&#125;,</span><br><span class="line">computed: &#123;</span><br><span class="line">  classObject: function () &#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">      active: <span class="keyword">this</span>.isActive &amp;&amp; !<span class="keyword">this</span>.error,</span><br><span class="line">      <span class="string">'text-danger'</span>: <span class="keyword">this</span>.error &amp;&amp; <span class="keyword">this</span>.error.type === <span class="string">'fatal'</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="2､数组语法"><a href="#2､数组语法" class="headerlink" title="2､数组语法"></a>2､数组语法</h5><p>把一个数组传给 <strong>v-bind:class</strong>，以应用一个 class 列表，<strong>数组成员直接对应className类名</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//html</span></span><br><span class="line">&lt;div v-bind:class="[activeClass, errorClass]"&gt;&lt;/div&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">//js</span></span><br><span class="line">data: &#123;</span><br><span class="line">  activeClass: <span class="string">'active'</span>,</span><br><span class="line">  errorClass: <span class="string">'text-danger'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>【Demo 实例 <a href="https://jsbin.com/honegiv/edit?html,output" target="_blank" rel="noopener">https://jsbin.com/honegiv/edit?html,output</a> 】</p>
+<h5 id="3､数组和对象混用"><a href="#3､数组和对象混用" class="headerlink" title="3､数组和对象混用"></a>3､数组和对象混用</h5><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;div v-bind:class="[&#123; active: isActive &#125;, errorClass]"&gt;&lt;/div&gt; // 这样写始终添加 errorClass</span><br></pre></td></tr></table></figure>
+<p>【Demo 实例 <a href="https://jsbin.com/desibet/edit?html,output" target="_blank" rel="noopener">https://jsbin.com/desibet/edit?html,output</a> 】</p>
+<h3 id="二、绑定-内联-Style"><a href="#二、绑定-内联-Style" class="headerlink" title="二、绑定 内联 Style"></a>二、绑定 内联 Style</h3><p>用 <strong>v­-bind:style （即：style</strong> ） 给元素绑定内联样式</p>
+<p>注：CSS 属性名可以用<strong>驼峰式 (camelCase)</strong> 或<strong>短横线</strong>分隔 (kebab-case，记得用<strong>单引号</strong>括起来) 来命名</p>
+<h5 id="1､对象语法-1"><a href="#1､对象语法-1" class="headerlink" title="1､对象语法"></a>1､对象语法</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//html</span></span><br><span class="line">&lt;div v-bind:style="&#123; color: activeColor, fontSize: fontSize + 'px' &#125;"&gt;&lt;/div&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">//js</span></span><br><span class="line">data: &#123;</span><br><span class="line">  activeColor: <span class="string">'red'</span>,</span><br><span class="line">  fontSize: <span class="number">30</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="2､数组语法-1"><a href="#2､数组语法-1" class="headerlink" title="2､数组语法"></a>2､数组语法</h5><p>使用<strong>v-bind:style</strong> 将多个样式对象应用到同一个元素上</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;div v-bind:style="[baseStyles, overridingStyles]"&gt;&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<p><strong>使用 :style 时， Vue .js 会自动给特殊的 css 属性名称增加前缀， 比如 transform</strong> </p>
+<p>【demo 实例 <a href="https://jsbin.com/qapozop/6/edit?html,output" target="_blank" rel="noopener">https://jsbin.com/qapozop/6/edit?html,output</a> 】</p>
+<p>切记： <strong>vue中只要是大写字母都会转换成 - 加 小写</strong> ，比如：</p>
+<p>​        fontSize 转化成 font-size</p>
+<p>​        dsfASDghG 转化成 dsf-a-s-dgh-g</p>
+
           
         
       
