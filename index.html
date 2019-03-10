@@ -229,6 +229,161 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/09/vue篇4——内置指令/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Wuer">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Wuer">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/03/09/vue篇4——内置指令/" itemprop="url">vue篇4——内置指令</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-09T19:33:10+08:00">
+                2019-03-09
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="一、基本指令"><a href="#一、基本指令" class="headerlink" title="一、基本指令"></a>一、基本指令</h3><p><strong>1､v-cloak</strong></p>
+<p> 解决初始化慢，页面闪动，一般与<strong>display: none</strong> 进行结合使用 </p>
+<p><strong>2､v-once</strong></p>
+<p>只渲染一次，后续都不会重新渲染</p>
+<p>【Demo 实例 <a href="https://jsbin.com/hirage/edit?html,output】" target="_blank" rel="noopener">https://jsbin.com/hirage/edit?html,output】</a></p>
+<h3 id="二、条件渲染指令"><a href="#二、条件渲染指令" class="headerlink" title="二、条件渲染指令"></a>二、条件渲染指令</h3><p><strong>1､v-if | v-else-if | v-else </strong></p>
+<p><strong>v-if 的 弊端</strong>：</p>
+<p>vue 在渲染元素时 ，<strong>复用已有的元素而非重新渲染</strong>， 只会渲染变化的元素</p>
+<p><strong>解决方法：</strong></p>
+<p><strong>加key</strong>（唯一的key ），提供key值可以来决定是否复用该元素</p>
+<p><strong>2､v-show</strong></p>
+<p>只改变了css 属性 display</p>
+<p><strong>3､v-if 和 v-show 区别</strong></p>
+<p>​    v-if:  实时渲染，页面显示就渲染，不显示，我就给你移除</p>
+<p>​    v-show: 永远存在 html 文档中，只是改变了 css 的 display 属性 </p>
+<p>【Demo 实例 <a href="https://jsbin.com/kazokob/edit?html】" target="_blank" rel="noopener">https://jsbin.com/kazokob/edit?html】</a></p>
+<h3 id="三、列表渲染指令-v-for"><a href="#三、列表渲染指令-v-for" class="headerlink" title="三、列表渲染指令 v-for"></a>三、列表渲染指令 v-for</h3><p><strong>1､场景</strong></p>
+<p>遍历<strong>多个对象</strong>（一定是遍历的数组）  or  遍历<strong>一个对象的多个属性</strong></p>
+<p><strong>2､用法</strong></p>
+<p>当要将一个数组遍历或枚举一个对象属性的时候循环显示时，就会用到v­-for</p>
+<p><strong>其中v-for 一定是写在要遍历的元素上，类似于 item in items</strong></p>
+<p>【Demo 实例 <a href="https://jsbin.com/kazokob/3/edit?html,console,output" target="_blank" rel="noopener">https://jsbin.com/kazokob/3/edit?html,console,output</a> 】</p>
+<h3 id="四、数组更新、过滤与排序"><a href="#四、数组更新、过滤与排序" class="headerlink" title="四、数组更新、过滤与排序"></a>四、数组更新、过滤与排序</h3><p><strong>1､push()</strong>      在末尾添加元素<br><strong>2､pop()</strong>        将数组的最后一个元素移除<br><strong>3､shift()</strong>        删除数组的第一个元素<br><strong>4､unshift() </strong>  在数组的第一个元素位置添加一个元素<br><strong>5､splice()</strong>      可以添加或者删除函数—返回删除的元素<br><strong>6､sort()</strong>         排序<br><strong>7､reverse()</strong>  倒序<br><strong>8､filter()</strong>       过滤</p>
+<p>其中 2个 数组变动 ，vue 检测不到</p>
+<p>1､改变数组的指定项<br>2､改变数组长度</p>
+<p><strong>解决</strong></p>
+<p>1､ set 可以 改变指定项，如： Vue.set(app.arr,1,”car”)</p>
+<p>2､ splice 可以 改变数组长度 ，如：app.arr.splice(1)</p>
+<p>附：Vue.set(app.arr,1,”car”) </p>
+<p>// 第一个参数 app.arr 是 要拿到的元素<br>// 第二个参数 1 是对其操作的 index<br>// 第三个参数 car 是插入的内容,即赋的值</p>
+<p>【Demo 实例 <a href="https://jsbin.com/wahocif/1/edit?html,output】" target="_blank" rel="noopener">https://jsbin.com/wahocif/1/edit?html,output】</a></p>
+<h3 id="五、方法与事件"><a href="#五、方法与事件" class="headerlink" title="五、方法与事件"></a>五、方法与事件</h3><p>【Demo 实例 <a href="https://jsbin.com/becebic/1/edit?html,output】" target="_blank" rel="noopener">https://jsbin.com/becebic/1/edit?html,output】</a></p>
+<h3 id="六、修饰符"><a href="#六、修饰符" class="headerlink" title="六、修饰符"></a>六、修饰符</h3><p>在vue中传入event对象用 <strong>$event</strong></p>
+<p><strong>A、向上冒泡</strong><br><strong>1､stop</strong>          阻止单击事件向上冒泡<br><strong>2､prevent</strong>   提交事件并且不重载页面<br><strong>3､self</strong>           只是作用在元素本身而非子元素的时候调用<br><strong>4､once</strong>         只执行一次的方法</p>
+<p><strong>B、监听键盘事件</strong>  （指定的keyCode）<br>vueJS为我们提供了：.enter | .tab |.delete</p>
+<p>【Demo 实例 <a href="https://jsbin.com/bamusoh/1/edit?html,output】" target="_blank" rel="noopener">https://jsbin.com/bamusoh/1/edit?html,output】</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/08/vue篇3——v-bind 的 class+style的绑定/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -303,7 +458,7 @@
             <h3 id="一、绑定-Class"><a href="#一、绑定-Class" class="headerlink" title="一、绑定 Class"></a>一、绑定 Class</h3><h5 id="1､对象语法"><a href="#1､对象语法" class="headerlink" title="1､对象语法"></a>1､对象语法</h5><p>给<strong>v-bind:class</strong> 设置为一个对象，动态地切换 class，其中<strong>对象的键名是类名，值为布尔值 true 或 false</strong></p>
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;div v-bind:class="&#123; active: isActive &#125;"&gt;&lt;/div&gt; // active存在取决isActive的值</span><br></pre></td></tr></table></figure>
 <p>1.1､ 绑定数据对象不必定义在模板内</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//html</span></span><br><span class="line">&lt;div v-bind:<span class="class"><span class="keyword">class</span></span>=<span class="string">"classObject"</span>&gt;&lt;/div&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">//js</span></span><br><span class="line">data: &#123;</span><br><span class="line">  classObject: &#123;</span><br><span class="line">    active: <span class="literal">true</span>,</span><br><span class="line">    <span class="string">'text-danger'</span>: <span class="literal">false</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//html</span></span><br><span class="line">&lt;div v-bind:<span class="class"><span class="keyword">class</span></span>=<span class="string">"classObject"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">//js</span></span><br><span class="line">data: &#123;</span><br><span class="line">  classObject: &#123;</span><br><span class="line">    active: <span class="literal">true</span>,</span><br><span class="line">    <span class="string">'text-danger'</span>: <span class="literal">false</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>1.2､ 绑定一个<strong>计算属</strong>性，可以使用 <strong>data</strong> 或 <strong>computed</strong></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">data: &#123;</span><br><span class="line">  isActive: <span class="keyword">true</span>,</span><br><span class="line">  error: <span class="keyword">null</span></span><br><span class="line">&#125;,</span><br><span class="line">computed: &#123;</span><br><span class="line">  classObject: function () &#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">      active: <span class="keyword">this</span>.isActive &amp;&amp; !<span class="keyword">this</span>.error,</span><br><span class="line">      <span class="string">'text-danger'</span>: <span class="keyword">this</span>.error &amp;&amp; <span class="keyword">this</span>.error.type === <span class="string">'fatal'</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h5 id="2､数组语法"><a href="#2､数组语法" class="headerlink" title="2､数组语法"></a>2､数组语法</h5><p>把一个数组传给 <strong>v-bind:class</strong>，以应用一个 class 列表，<strong>数组成员直接对应className类名</strong></p>
@@ -1674,148 +1829,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/28/判断元素在视野中和最底部/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Wuer">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Wuer">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/12/28/判断元素在视野中和最底部/" itemprop="url">判断元素在视野中和最底部</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-28T16:34:52+08:00">
-                2018-12-28
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="一、元素在视野中"><a href="#一、元素在视野中" class="headerlink" title="一、元素在视野中"></a>一、元素在视野中</h1><p><strong>判断元素出现在用户视野中，主要是看下面三个属性值</strong></p>
-<p>(1) 窗口顶端到整个页面顶端的滚动距离<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="built_in">window</span>).scrollTop();</span><br></pre></td></tr></table></figure></p>
-<p>(2) 元素距离页面内容的高度</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$(node).offset().top;</span><br></pre></td></tr></table></figure>
-<p>(3) 窗口的高度</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$(<span class="built_in">window</span>).height()</span><br></pre></td></tr></table></figure>
-<p><strong>如果元素距离页面内容的高度小于窗口滚动距离+窗口高度，元素就会在我们视野中啦！</strong></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$(node).offset().top&lt;=$(<span class="built_in">window</span>).height() + $(<span class="built_in">window</span>).scrollTop()</span><br></pre></td></tr></table></figure>
-<p>如下图所示<br><img src="https://upload-images.jianshu.io/upload_images/14339384-1b8e47337e086520.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-<h1 id="二、元素滚到底部"><a href="#二、元素滚到底部" class="headerlink" title="二、元素滚到底部"></a>二、元素滚到底部</h1><h3 id="A、属性值"><a href="#A、属性值" class="headerlink" title="A、属性值"></a>A、属性值</h3><p>####(1) scrollTop<br>滚动条滚动的垂直距离<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$(window).scrollTop()</span><br></pre></td></tr></table></figure></p>
-<p><img src="https://upload-images.jianshu.io/upload_images/14339384-093d286102c53f99.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-<h4 id="2-clientHeight"><a href="#2-clientHeight" class="headerlink" title="(2) clientHeight"></a>(2) clientHeight</h4><p>可视区的内容+内边距(<strong>不包括x轴的滚动条高度、边框、外边距</strong>）的高度<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">document.documentElement.clientHeight</span><br></pre></td></tr></table></figure></p>
-<p><img src="https://upload-images.jianshu.io/upload_images/14339384-136bc553fcce63c1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-<p><strong>clientHeight 对应的jquery写法</strong><br><img src="https://upload-images.jianshu.io/upload_images/14339384-25ee3c88f5822977.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-<h4 id="3-scrollHeight"><a href="#3-scrollHeight" class="headerlink" title="(3) scrollHeight"></a>(3) scrollHeight</h4><p>可所有内容  (<strong>包括肉眼看不见、溢出、被窗口遮挡的部分</strong>)的高度</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">document.documentElement.scrollHeight</span><br></pre></td></tr></table></figure>
-<p><strong>scrollHeight对应的jquery写法</strong><br><img src="https://upload-images.jianshu.io/upload_images/14339384-bd349a6f61c98c04.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-<p><img src="https://upload-images.jianshu.io/upload_images/14339384-cfda7d798f258345.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-<h3 id="B、代码实现"><a href="#B、代码实现" class="headerlink" title="B、代码实现"></a>B、代码实现</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">$(&apos;#wrap&apos;).scroll(function()&#123;</span><br><span class="line">  var viewH =$(this).height();//可见高度</span><br><span class="line">  var contentH =$(this).get(0).scrollHeight;//内容高度</span><br><span class="line">  var scrollTop =$(this).scrollTop();//滚动高度</span><br><span class="line">  //console.log(&apos;viewH&apos;,viewH)</span><br><span class="line">  //console.log(&apos;contentH&apos;,contentH)</span><br><span class="line">  //console.log(&apos;scrollTop&apos;,scrollTop)</span><br><span class="line">  if(scrollTop + viewH &gt;= contentH) &#123; </span><br><span class="line">        console.log(&apos;haha,bottom&apos;)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<p><img src="https://upload-images.jianshu.io/upload_images/14339384-497591f92af63849.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-<p>demo 地址 <a href="http://js.jirengu.com/xerof" target="_blank" rel="noopener">http://js.jirengu.com/xerof</a></p>
-<p><strong>最后结论：判断滚动到底部的条件是</strong></p>
-<h4 id="scrollTop-clientHeight-gt-scrollHeight"><a href="#scrollTop-clientHeight-gt-scrollHeight" class="headerlink" title="scrollTop + clientHeight &gt;= scrollHeight"></a>scrollTop + clientHeight &gt;= scrollHeight</h4><p>参考 <a href="https://javascript.info/size-and-scroll" target="_blank" rel="noopener">https://javascript.info/size-and-scroll</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1866,7 +1879,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">47</span>
+                  <span class="site-state-item-count">48</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
