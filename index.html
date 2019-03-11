@@ -305,7 +305,7 @@
 <p><strong>2､v-once</strong></p>
 <p>只渲染一次，后续都不会重新渲染</p>
 <p>【Demo 实例 <a href="https://jsbin.com/hirage/edit?html,output】" target="_blank" rel="noopener">https://jsbin.com/hirage/edit?html,output】</a></p>
-<h3 id="二、条件渲染指令"><a href="#二、条件渲染指令" class="headerlink" title="二、条件渲染指令"></a>二、条件渲染指令</h3><p><strong>1､v-if | v-else-if | v-else </strong></p>
+<h3 id="二、条件渲染指令"><a href="#二、条件渲染指令" class="headerlink" title="二、条件渲染指令"></a>二、条件渲染指令</h3><p><strong>1､v-if | v-else-if | v-else</strong></p>
 <p><strong>v-if 的 弊端</strong>：</p>
 <p>vue 在渲染元素时 ，<strong>复用已有的元素而非重新渲染</strong>， 只会渲染变化的元素</p>
 <p><strong>解决方法：</strong></p>
@@ -321,8 +321,12 @@
 <p><strong>2､用法</strong></p>
 <p>当要将一个数组遍历或枚举一个对象属性的时候循环显示时，就会用到v­-for</p>
 <p><strong>其中v-for 一定是写在要遍历的元素上，类似于 item in items</strong></p>
+<p><strong>2.1､ 遍历多个对象</strong> (一定是数组)</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">&lt;ul&gt; <span class="comment">// item:自已定义的变量, items: data中定义的数组，对应了3个对象</span></span><br><span class="line">    &lt;li v-for="item in items"&gt;&#123;&#123; item.name &#125;&#125;&lt;/li&gt;</span><br><span class="line">&lt;/ul&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">//带索引的写法: 括号的第一个变量，代表item，第二个代表 index</span></span><br><span class="line">&lt;ul&gt;</span><br><span class="line">    &lt;li v-for="(item, index) in items"&gt;&#123;&#123;index&#125;&#125;--&#123;&#123; item.name&#125;&#125;&lt;/li&gt;</span><br><span class="line">&lt;/ul&gt;</span><br></pre></td></tr></table></figure>
+<p><strong>2.2､ 遍历一个对象的多个属性</strong></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;span v-for="value in items"&gt; &#123;&#123; value &#125;&#125;&lt;/span&gt;</span><br><span class="line">&lt;br&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">//拿到value ，key, index 的写法  v-k-i--外开</span></span><br><span class="line">&lt;div v-for="(value,key,index) in items"&gt; 第&#123;&#123;index&#125;&#125;个女神: -是：&#123;&#123;key&#125;&#125;-&#123;&#123;value&#125;&#125;&lt;/div&gt;</span><br></pre></td></tr></table></figure>
 <p>【Demo 实例 <a href="https://jsbin.com/kazokob/3/edit?html,console,output" target="_blank" rel="noopener">https://jsbin.com/kazokob/3/edit?html,console,output</a> 】</p>
-<h3 id="四、数组更新、过滤与排序"><a href="#四、数组更新、过滤与排序" class="headerlink" title="四、数组更新、过滤与排序"></a>四、数组更新、过滤与排序</h3><p><strong>1､push()</strong>      在末尾添加元素<br><strong>2､pop()</strong>        将数组的最后一个元素移除<br><strong>3､shift()</strong>        删除数组的第一个元素<br><strong>4､unshift() </strong>  在数组的第一个元素位置添加一个元素<br><strong>5､splice()</strong>      可以添加或者删除函数—返回删除的元素<br><strong>6､sort()</strong>         排序<br><strong>7､reverse()</strong>  倒序<br><strong>8､filter()</strong>       过滤</p>
+<h3 id="四、数组更新、过滤与排序"><a href="#四、数组更新、过滤与排序" class="headerlink" title="四、数组更新、过滤与排序"></a>四、数组更新、过滤与排序</h3><p><strong>1､push()</strong>      在末尾添加元素<br><strong>2､pop()</strong>        将数组的最后一个元素移除<br><strong>3､shift()</strong>        删除数组的第一个元素<br><strong>4､unshift()</strong>  在数组的第一个元素位置添加一个元素<br><strong>5､splice()</strong>      可以添加或者删除函数—返回删除的元素<br><strong>6､sort()</strong>         排序<br><strong>7､reverse()</strong>  倒序<br><strong>8､filter()</strong>       过滤</p>
 <p>其中 2个 数组变动 ，vue 检测不到</p>
 <p>1､改变数组的指定项<br>2､改变数组长度</p>
 <p><strong>解决</strong></p>
@@ -331,7 +335,10 @@
 <p>附：Vue.set(app.arr,1,”car”) </p>
 <p>// 第一个参数 app.arr 是 要拿到的元素<br>// 第二个参数 1 是对其操作的 index<br>// 第三个参数 car 是插入的内容,即赋的值</p>
 <p>【Demo 实例 <a href="https://jsbin.com/wahocif/1/edit?html,output】" target="_blank" rel="noopener">https://jsbin.com/wahocif/1/edit?html,output】</a></p>
-<h3 id="五、方法与事件"><a href="#五、方法与事件" class="headerlink" title="五、方法与事件"></a>五、方法与事件</h3><p>【Demo 实例 <a href="https://jsbin.com/becebic/1/edit?html,output】" target="_blank" rel="noopener">https://jsbin.com/becebic/1/edit?html,output】</a></p>
+<h3 id="五、方法与事件"><a href="#五、方法与事件" class="headerlink" title="五、方法与事件"></a>五、方法与事件</h3><p>v­-on绑定的事件类似于原生 的onclick等写法</p>
+<p>如果方法中带有参数，调用它时没有加括号，默认传原生事件对象event</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//html</span></span><br><span class="line">&lt;button @click="handle"&gt;点我加1&lt;/button&gt;  // 没加的话，结果是[object MouseEvent]</span><br><span class="line">&lt;button @click="handle()"&gt;点我加1&lt;/button&gt; // 调用handle时，handle后面的括号一定要加</span><br><span class="line"><span class="comment">//js</span></span><br><span class="line">....</span><br><span class="line">methods:&#123;</span><br><span class="line">	handle:function (count) &#123;</span><br><span class="line">	count = count || <span class="number">1</span>;</span><br><span class="line">	<span class="keyword">this</span>.count += count;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>【Demo 实例 <a href="https://jsbin.com/becebic/1/edit?html,output】" target="_blank" rel="noopener">https://jsbin.com/becebic/1/edit?html,output】</a></p>
 <h3 id="六、修饰符"><a href="#六、修饰符" class="headerlink" title="六、修饰符"></a>六、修饰符</h3><p>在vue中传入event对象用 <strong>$event</strong></p>
 <p><strong>A、向上冒泡</strong><br><strong>1､stop</strong>          阻止单击事件向上冒泡<br><strong>2､prevent</strong>   提交事件并且不重载页面<br><strong>3､self</strong>           只是作用在元素本身而非子元素的时候调用<br><strong>4､once</strong>         只执行一次的方法</p>
 <p><strong>B、监听键盘事件</strong>  （指定的keyCode）<br>vueJS为我们提供了：.enter | .tab |.delete</p>
