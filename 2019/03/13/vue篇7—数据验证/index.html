@@ -79,14 +79,17 @@
 
 
 
+<meta name="description" content="一、Vue 组件中命名 camelCase（骆峰式）命名 |  kebab-case (短横线) 命名 1､在组件中的html ，不能用骆峰式，必须用kebab-case（短横线）命名，因为myMessage===mymessage 123456789101112//html&amp;lt;div id=&quot;app&quot;&amp;gt;    //报错：[Vue warn]: Unknown custom elemen">
 <meta property="og:type" content="article">
 <meta property="og:title" content="vue篇7—数据验证">
 <meta property="og:url" content="http://yoursite.com/2019/03/13/vue篇7—数据验证/index.html">
 <meta property="og:site_name" content="Wuer">
+<meta property="og:description" content="一、Vue 组件中命名 camelCase（骆峰式）命名 |  kebab-case (短横线) 命名 1､在组件中的html ，不能用骆峰式，必须用kebab-case（短横线）命名，因为myMessage===mymessage 123456789101112//html&amp;lt;div id=&quot;app&quot;&amp;gt;    //报错：[Vue warn]: Unknown custom elemen">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2019-03-13T10:48:49.545Z">
+<meta property="og:updated_time" content="2019-03-13T16:37:47.791Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="vue篇7—数据验证">
+<meta name="twitter:description" content="一、Vue 组件中命名 camelCase（骆峰式）命名 |  kebab-case (短横线) 命名 1､在组件中的html ，不能用骆峰式，必须用kebab-case（短横线）命名，因为myMessage===mymessage 123456789101112//html&amp;lt;div id=&quot;app&quot;&amp;gt;    //报错：[Vue warn]: Unknown custom elemen">
 
 
 
@@ -296,7 +299,19 @@
       
 
       
-        
+        <h2 id="一、Vue-组件中命名"><a href="#一、Vue-组件中命名" class="headerlink" title="一、Vue 组件中命名"></a>一、Vue 组件中命名</h2><p> camelCase（骆峰式）命名 |  kebab-case (短横线) 命名</p>
+<p>1､在组件中的<strong>html</strong> ，不能用骆峰式，必须用kebab-case<strong>（短横线）</strong>命名，因为<strong>myMessage===mymessage</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//html</span></span><br><span class="line">&lt;div id=<span class="string">"app"</span>&gt;</span><br><span class="line">    <span class="comment">//报错：[Vue warn]: Unknown custom element: &lt;mycomponent&gt; </span></span><br><span class="line">    &lt;myComponent&gt;&lt;/myComponent&gt; </span><br><span class="line">    <span class="comment">// 因为html 中 是不区分大小写的 也就是 myComponent === mycomponent--</span></span><br><span class="line">&lt;/div&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">//js</span></span><br><span class="line">Vue.component(<span class="string">'myComponent'</span>,&#123;<span class="comment">//js中是区分大小写的</span></span><br><span class="line">    template: <span class="string">'&lt;div&gt;我是一个组件&lt;/div&gt;'</span></span><br><span class="line">&#125;)</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p>2､在组件中，<strong>父组件给子组件传递数据</strong>必须用<strong>短横线</strong></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//html</span></span><br><span class="line">&lt;div id=<span class="string">"app"</span>&gt; <span class="comment">//父组件给子组件传递数据,必须用短横线</span></span><br><span class="line">	&lt;my-component my-msg="hello"&gt;&lt;/my-component&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<p>3､在组件的<strong>template</strong>中和<strong>data</strong>中用<strong>this.xxx引用</strong>时，只能是<strong>驼峰式</strong>，如果用短横线，会直接报错</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//js</span></span><br><span class="line"><span class="keyword">var</span> app=<span class="keyword">new</span> Vue(&#123;</span><br><span class="line">    el: <span class="string">'#app'</span>,</span><br><span class="line">    components:&#123;</span><br><span class="line">        <span class="string">'my-component'</span>:&#123;</span><br><span class="line">            props: [<span class="string">'myMsg'</span>],<span class="comment">//props随意，也就是 myMsg 或 my-msg 都可以的</span></span><br><span class="line">            template:<span class="string">'&lt;div&gt;&#123;&#123;myMsg&#125;&#125;&lt;/div&gt;'</span>,<span class="comment">//在template中，必须用骆峰式</span></span><br><span class="line">            data:function()&#123;</span><br><span class="line">              <span class="keyword">return</span>&#123;</span><br><span class="line">            	title:<span class="keyword">this</span>.myMsg <span class="comment">////在data中用this.xxx引用时，必须用骆峰式</span></span><br><span class="line">              &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>4､在组件的props中随意</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//html</span></span><br><span class="line">&lt;div id=<span class="string">"app"</span>&gt; <span class="comment">//父组件给子组件传递数据,必须用短横线</span></span><br><span class="line">	&lt;my-component my-msg="hello"&gt;&lt;/my-component&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">//js</span></span><br><span class="line"><span class="keyword">var</span> app=<span class="keyword">new</span> Vue(&#123;</span><br><span class="line">    el: <span class="string">'#app'</span>,</span><br><span class="line">    components:&#123;</span><br><span class="line">        <span class="string">'my-component'</span>:&#123;</span><br><span class="line">            props: [<span class="string">'myMsg'</span>],</span><br><span class="line">            template:<span class="string">'&lt;div&gt;&#123;&#123;title&#125;&#125;&lt;/div&gt;'</span>,<span class="comment">//在template中，必须用骆峰式</span></span><br><span class="line">            data:function()&#123;</span><br><span class="line">              <span class="keyword">return</span>&#123;</span><br><span class="line">            	title:<span class="keyword">this</span>.myMsg</span><br><span class="line">              &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h2 id="二、六种验证的type类型-可以有"><a href="#二、六种验证的type类型-可以有" class="headerlink" title="二、六种验证的type类型(可以有)"></a>二、六种验证的type类型(可以有)</h2><p>String |  Number | Boolean | Object | Array | Function</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">Vue <span class="title">component</span><span class="params">(my-component,&#123;</span></span></span><br><span class="line"><span class="function"><span class="params">    props: &#123;</span></span></span><br><span class="line"><span class="function"><span class="params">       propA: Number,//必须是数字</span></span></span><br><span class="line"><span class="function"><span class="params">       propB: [String,Number],//必须字符串或是数字</span></span></span><br><span class="line"><span class="function"><span class="params">       propC: &#123;//布尔值，如果没定义，默认值是 <span class="keyword">true</span></span></span></span><br><span class="line"><span class="function"><span class="params">           type: Boolean,</span></span></span><br><span class="line"><span class="function"><span class="params">           <span class="keyword">default</span>: <span class="keyword">true</span></span></span></span><br><span class="line"><span class="function"><span class="params">       &#125;,</span></span></span><br><span class="line"><span class="function"><span class="params">       propD: &#123;//数字而且必须传</span></span></span><br><span class="line"><span class="function"><span class="params">           type: Number,</span></span></span><br><span class="line"><span class="function"><span class="params">           required: <span class="keyword">true</span> // 必须传</span></span></span><br><span class="line"><span class="function"><span class="params">       &#125;,</span></span></span><br><span class="line"><span class="function"><span class="params">       propE: &#123;//如果是数组或对象，默认值必须是一个函数来返回</span></span></span><br><span class="line"><span class="function"><span class="params">           type: Array,</span></span></span><br><span class="line"><span class="function"><span class="params">           <span class="keyword">default</span>: function()</span></span>&#123;</span><br><span class="line">               <span class="keyword">return</span> []</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;,</span><br><span class="line">       propF: &#123;<span class="comment">//自定义一个验证函数</span></span><br><span class="line">           validator: function(value)&#123;</span><br><span class="line">               <span class="keyword">return</span> value &gt; <span class="number">10</span></span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>【Demo实例 <a href="https://jsbin.com/zonohokihe/edit?html,output】" target="_blank" rel="noopener">https://jsbin.com/zonohokihe/edit?html,output】</a></p>
+
       
     </div>
     
@@ -380,8 +395,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
             
@@ -423,6 +447,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、Vue-组件中命名"><span class="nav-number">1.</span> <span class="nav-text">一、Vue 组件中命名</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、六种验证的type类型-可以有"><span class="nav-number">2.</span> <span class="nav-text">二、六种验证的type类型(可以有)</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
