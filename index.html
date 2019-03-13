@@ -360,6 +360,158 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/11/vue篇6—组件/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Wuer">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Wuer">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/03/11/vue篇6—组件/" itemprop="url">vue篇6—组件</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-11T16:39:09+08:00">
+                2019-03-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="一、作用"><a href="#一、作用" class="headerlink" title="一、作用"></a>一、作用</h2><p>提高代码的复用性</p>
+<h2 id="二、注册"><a href="#二、注册" class="headerlink" title="二、注册"></a>二、注册</h2><p><strong>1､全局注册</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Vue.component(<span class="string">'my-component'</span>,&#123;</span><br><span class="line">    template: <span class="string">'&lt;div&gt;我是组件内容&lt;/div&gt;'</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>优点： 所有vue实例都可以使用</p>
+<p>缺点： 权取太大，容错率降低</p>
+<p><strong>2､局部注册</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> app = <span class="keyword">new</span> Vue(&#123;</span><br><span class="line">    el: <span class="string">'#app'</span>,</span><br><span class="line">    components:&#123;<span class="comment">//切记component后边要加s</span></span><br><span class="line">        <span class="string">'my-component'</span>:&#123;</span><br><span class="line">            template:<span class="string">'&lt;div&gt;我是局部注册的一个组件&lt;/div&gt;'</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>3､ vue 组件模板受html限制</strong></p>
+<p>在某些情况下会受到html标签的限制</p>
+<p>比如直接在table中使用组件是无效的，可以使用 is属性来挂载组件</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//html</span></span><br><span class="line">&lt;div id=<span class="string">"app"</span>&gt;</span><br><span class="line">  &lt;my-component&gt;我是组件内容&lt;/my-component&gt;</span><br><span class="line">  </span><br><span class="line">  &lt;table&gt;</span><br><span class="line">  	 &lt;my-component&gt;我是组件内容&lt;/my-component&gt;</span><br><span class="line">  &lt;/table&gt;</span><br><span class="line">  <span class="comment">// 无效是因为table 中 只能有 tr,td,tbody这些元素，改成用is属性即可</span></span><br><span class="line">  </span><br><span class="line">  &lt;table&gt;</span><br><span class="line">  	&lt;tbody is="my-component"&gt;&lt;/tbody&gt;</span><br><span class="line">  &lt;/table&gt;</span><br><span class="line">  </span><br><span class="line">&lt;/div&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">//js</span></span><br><span class="line">...</span><br><span class="line">Vue.component(<span class="string">'my-component'</span>,&#123;</span><br><span class="line">    template:<span class="string">'&lt;div&gt;我是组件内容&lt;/div&gt;'</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> app = <span class="keyword">new</span> Vue(&#123;</span><br><span class="line">    el: <span class="string">'#app'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="三、技巧"><a href="#三、技巧" class="headerlink" title="三、技巧"></a>三、技巧</h2><p>1､必须用<strong>小写字母</strong>命名（child、mycomponent 命名组件）</p>
+<p>2､<strong>template</strong> 中的内容<strong>必须</strong>是被<strong>一个DOM 元素</strong>包括，也可以嵌套</p>
+<p>3､在组件定义中，除了template外，其他选项也可以用（data、computed、methods）</p>
+<p>4､data 必须是一个方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// html</span></span><br><span class="line">&lt;div id=<span class="string">"app"</span>&gt;</span><br><span class="line"> &lt;btn-component&gt;&lt;/btn-component&gt;</span><br><span class="line">&lt;div&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">//js</span></span><br><span class="line">...</span><br><span class="line">components:&#123;</span><br><span class="line">  <span class="string">'btn-component'</span>:&#123;</span><br><span class="line">      template: <span class="string">'&lt;button @click="count++"&gt;&#123;&#123;count&#125;&#125;&lt;/button&gt;'</span>,</span><br><span class="line">      data:function()&#123; <span class="comment">//切记data必须是一个方法</span></span><br><span class="line">          <span class="keyword">return</span>&#123; <span class="comment">//每次return 返回的是不同的 data对象</span></span><br><span class="line">                  count:<span class="number">0</span></span><br><span class="line">          &#125;</span><br><span class="line">       &#125;</span><br><span class="line">    &#125;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<p>【Demo实例 <a href="https://jsbin.com/fucotab/edit?html,output】" target="_blank" rel="noopener">https://jsbin.com/fucotab/edit?html,output】</a></p>
+<h2 id="四、props传递数据-父传子"><a href="#四、props传递数据-父传子" class="headerlink" title="四、props传递数据 父传子"></a>四、props传递数据 父传子</h2><p>1､在组件中使用props 从父组件接收参数，<strong>注：在props中定义的属性，都可在组件中直接使用</strong></p>
+<p>2､props 来自 父级的数据 ，而组件中data return的数据是组件自已的数据，两种情况作用域就是组件本身，可在template、computed、methods中直接使用</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//html</span></span><br><span class="line">&lt;div id=<span class="string">"app"</span>&gt;</span><br><span class="line">	&lt;h5&gt;我是父组件&lt;/h5&gt;//1､父组件通过msg给子组件传递消息：在子组件subcomponent上写上msg 等于一个内容</span><br><span class="line">	&lt;subcomponent msg="我是父组件传递的内容"&gt;&lt;/subcomponent&gt;</span><br><span class="line">&lt;/div&gt; //2､子组件要用到父组件传过来的消息</span><br><span class="line"></span><br><span class="line"><span class="comment">//js</span></span><br><span class="line">...</span><br><span class="line">components:&#123;</span><br><span class="line">    subcomponent:&#123;</span><br><span class="line">        props: [<span class="string">'msg'</span>], <span class="comment">//数据来自父组件 2.1 props定义msg (以字符串数组形式)</span></span><br><span class="line">        template:<span class="string">'&lt;div&gt;&#123;&#123;msg&#125;&#125;&lt;/div&gt;'</span> <span class="comment">// 2.2 模板 template 就可以直接用了</span></span><br><span class="line">    &#125;     </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>3､props的值有两种： 一种是字符串数组（上述小例子就是)，另一种是对象</p>
+<p>4､可以用v-bind动态绑定父组件来的内容</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//html</span></span><br><span class="line">....</span><br><span class="line">&lt;subcomponent msg="我是来自父组件的内容"&gt;&lt;/subcomponent&gt;</span><br><span class="line">&lt;input type=<span class="string">"text"</span> v-model=<span class="string">"parentMsg"</span>&gt; <span class="comment">// 1､input v-model绑定的数据是父组件data 中的数据</span></span><br><span class="line">&#123;&#123; parentMsg&#125;&#125; </span><br><span class="line"><span class="comment">//2､把绑定的数据同时传递给子组件： 通过v-bind绑定属性msg,把属性msg用props进行接收</span></span><br><span class="line">&lt;bindcomponent v-bind:msg="parentMsg"&gt;&lt;/bindcomponent&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">//js</span></span><br><span class="line">...</span><br><span class="line">data:&#123;</span><br><span class="line">  parentMsg: <span class="string">'开始啦'</span>      </span><br><span class="line">&#125;</span><br><span class="line">components:&#123;</span><br><span class="line">    <span class="string">'bindcomponent'</span>:&#123;</span><br><span class="line">        props: [<span class="string">'msg'</span>],</span><br><span class="line">        template: <span class="string">'&lt;div&gt;&#123;&#123;msg&#125;&#125;&lt;/div&gt;'</span><span class="comment">//3､就可以在template中直接使用</span></span><br><span class="line">    &#125;     </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>【Demo实例 <a href="https://jsbin.com/jodaxer/1/edit?html,output】" target="_blank" rel="noopener">https://jsbin.com/jodaxer/1/edit?html,output】</a></p>
+<p>参考 <a href="https://cn.vuejs.org/v2/guide/components-props.html" target="_blank" rel="noopener">https://cn.vuejs.org/v2/guide/components-props.html</a></p>
+<h2 id="五、单向数据流props使用场景"><a href="#五、单向数据流props使用场景" class="headerlink" title="五、单向数据流props使用场景"></a>五、单向数据流props使用场景</h2><p><strong>1､ 第一种：</strong></p>
+<p>​     a、<strong>父组件</strong>：传递<strong>初始值</strong></p>
+<p>​     b、<strong>子组件</strong>：将它作为<strong>初始值保存</strong>起来，在自已的作用域下，可随意使用或修改    </p>
+<p>​     这种情况，<strong>可以在组件 data 内再声明一个数据</strong>，引用父组件的 props</p>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//html	</span></span><br><span class="line">&lt;div id=<span class="string">"app"</span>&gt; <span class="comment">//2.1 将父组件的数据传递进来</span></span><br><span class="line">	&lt;my-component msg="父组件传递的消息"&gt;&lt;/my-component&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">//js</span></span><br><span class="line"><span class="keyword">var</span> app = <span class="keyword">new</span> Vue(&#123;</span><br><span class="line">    el: <span class="string">'#app'</span>,</span><br><span class="line">    components:&#123; <span class="comment">// 1、注册组件</span></span><br><span class="line">        <span class="string">'my-component'</span>:&#123;</span><br><span class="line">            props: [<span class="string">'msg'</span>],<span class="comment">//2.2 在子组件中用props接收数据</span></span><br><span class="line">            template: <span class="string">'&lt;div&gt;&#123;&#123;count&#125;&#125;&lt;/div&gt;'</span>,</span><br><span class="line">            data:function()&#123;</span><br><span class="line">              <span class="keyword">return</span>&#123; <span class="comment">//将传递进来的数据用初始值保存起来</span></span><br><span class="line">            	count: <span class="keyword">this</span>.msg<span class="comment">//props中的值可以通过this.xxx直接来进行获取</span></span><br><span class="line">              &#125; </span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line">    </span><br><span class="line">分三步曲完成：</span><br><span class="line"><span class="number">1</span>､ 注册组件</span><br><span class="line"><span class="number">2</span>、将父组件的数据传递进来，并在子组件中用props接收</span><br><span class="line"><span class="number">3</span>、将传递进来的数据通过初始值保存起来</span><br></pre></td></tr></table></figure>
+<p><strong>2､ 第二种</strong></p>
+<p>  <strong>props</strong> 作为需要<strong>被转变的原始值</strong>传入，这种情况 用 <strong>计算属性</strong> 就可以</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//html</span></span><br><span class="line">&lt;div id=<span class="string">"app"</span>&gt;</span><br><span class="line"> &lt;input type=<span class="string">"text"</span> v-model=<span class="string">"width"</span>&gt;</span><br><span class="line"> &lt;my-component :width="width"&gt;&lt;/my-component&gt;//2.1 将父组件的数据传递进来</span><br><span class="line">&lt;/div&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">//js</span></span><br><span class="line"><span class="keyword">var</span> app = <span class="keyword">new</span> Vue(&#123;</span><br><span class="line">    el: <span class="string">'#app'</span>,</span><br><span class="line">    data:&#123;</span><br><span class="line">        width: <span class="number">0</span></span><br><span class="line">    &#125;,</span><br><span class="line">    components:&#123;<span class="comment">//1、注册组件</span></span><br><span class="line">        <span class="string">'my-component'</span>:&#123;</span><br><span class="line">            props: [<span class="string">'width'</span>],<span class="comment">//2.2 在子组件中用props接收数据</span></span><br><span class="line">            template:<span class="string">'&lt;div :style="style"&gt;&lt;/div&gt;'</span>,</span><br><span class="line">            computed:&#123;<span class="comment">//3､将传递进来的数据，通过计算属性重新计算工</span></span><br><span class="line">                style:function()&#123;</span><br><span class="line">                    <span class="keyword">return</span>&#123;</span><br><span class="line">                        width: <span class="keyword">this</span>.width+<span class="string">'px'</span>,</span><br><span class="line">                        background:<span class="string">'green'</span>,</span><br><span class="line">                        height:<span class="string">'20px'</span></span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">分三步曲完成：</span><br><span class="line"><span class="number">1</span>､注册组件</span><br><span class="line"><span class="number">2</span>､将父组件的数据传递进来，并在子组件中用props接收</span><br><span class="line"><span class="number">3</span>､将传递进来的数据，通过计算属性重新计算工</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/11/vue篇5—表单 + v-model/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -477,158 +629,6 @@
 <p>自动过滤输入过程中首尾输入的空格</p>
 <figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">v-model.trim</span>=<span class="string">'value'</span>&gt;</span>&#123;&#123;value.split('').length&#125;&#125;</span><br></pre></td></tr></table></figure>
 <p>【Demo 实例 <a href="https://jsbin.com/fabuqey/edit?html,output】" target="_blank" rel="noopener">https://jsbin.com/fabuqey/edit?html,output】</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/11/vue篇6--组件/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Wuer">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Wuer">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/03/11/vue篇6--组件/" itemprop="url">vue篇6--组件</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-11T13:39:09+08:00">
-                2019-03-11
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="一、作用"><a href="#一、作用" class="headerlink" title="一、作用"></a>一、作用</h2><p>提高代码的复用性</p>
-<h2 id="二、注册"><a href="#二、注册" class="headerlink" title="二、注册"></a>二、注册</h2><p><strong>1､全局注册</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Vue.component(<span class="string">'my-component'</span>,&#123;</span><br><span class="line">    template: <span class="string">'&lt;div&gt;我是组件内容&lt;/div&gt;'</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<p>优点： 所有vue实例都可以使用</p>
-<p>缺点： 权取太大，容错率降低</p>
-<p><strong>2､局部注册</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> app = <span class="keyword">new</span> Vue(&#123;</span><br><span class="line">    el: <span class="string">'#app'</span>,</span><br><span class="line">    components:&#123;<span class="comment">//切记component后边要加s</span></span><br><span class="line">        <span class="string">'my-component'</span>:&#123;</span><br><span class="line">            template:<span class="string">'&lt;div&gt;我是局部注册的一个组件&lt;/div&gt;'</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>3､ vue 组件模板受html限制</strong></p>
-<p>在某些情况下会受到html标签的限制</p>
-<p>比如直接在table中使用组件是无效的，可以使用 is属性来挂载组件</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//html</span></span><br><span class="line">&lt;div id=<span class="string">"app"</span>&gt;</span><br><span class="line">  &lt;my-component&gt;我是组件内容&lt;/my-component&gt;</span><br><span class="line">  </span><br><span class="line">  &lt;table&gt;</span><br><span class="line">  	 &lt;my-component&gt;我是组件内容&lt;/my-component&gt;</span><br><span class="line">  &lt;/table&gt;</span><br><span class="line">  <span class="comment">// 无效是因为table 中 只能有 tr,td,tbody这些元素，改成用is属性即可</span></span><br><span class="line">  </span><br><span class="line">  &lt;table&gt;</span><br><span class="line">  	&lt;tbody is="my-component"&gt;&lt;/tbody&gt;</span><br><span class="line">  &lt;/table&gt;</span><br><span class="line">  </span><br><span class="line">&lt;/div&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">//js</span></span><br><span class="line">...</span><br><span class="line">Vue.component(<span class="string">'my-component'</span>,&#123;</span><br><span class="line">    template:<span class="string">'&lt;div&gt;我是组件内容&lt;/div&gt;'</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> app = <span class="keyword">new</span> Vue(&#123;</span><br><span class="line">    el: <span class="string">'#app'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="三、技巧"><a href="#三、技巧" class="headerlink" title="三、技巧"></a>三、技巧</h2><p>1､必须用<strong>小写字母</strong>命名（child、mycomponent 命名组件）</p>
-<p>2､<strong>template</strong> 中的内容<strong>必须</strong>是被<strong>一个DOM 元素</strong>包括，也可以嵌套</p>
-<p>3､在组件定义中，除了template外，其他选项也可以用（data、computed、methods）</p>
-<p>4､data 必须是一个方法</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// html</span></span><br><span class="line">&lt;div id=<span class="string">"app"</span>&gt;</span><br><span class="line"> &lt;btn-component&gt;&lt;/btn-component&gt;</span><br><span class="line">&lt;div&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">//js</span></span><br><span class="line">...</span><br><span class="line">components:&#123;</span><br><span class="line">  <span class="string">'btn-component'</span>:&#123;</span><br><span class="line">      template: <span class="string">'&lt;button @click="count++"&gt;&#123;&#123;count&#125;&#125;&lt;/button&gt;'</span>,</span><br><span class="line">      data:function()&#123; <span class="comment">//切记data必须是一个方法</span></span><br><span class="line">          <span class="keyword">return</span>&#123; <span class="comment">//每次return 返回的是不同的 data对象</span></span><br><span class="line">                  count:<span class="number">0</span></span><br><span class="line">          &#125;</span><br><span class="line">       &#125;</span><br><span class="line">    &#125;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
-<p>【Demo实例 <a href="https://jsbin.com/fucotab/edit?html,output】" target="_blank" rel="noopener">https://jsbin.com/fucotab/edit?html,output】</a></p>
-<h2 id="四、props传递数据-父传子"><a href="#四、props传递数据-父传子" class="headerlink" title="四、props传递数据 父传子"></a>四、props传递数据 父传子</h2><p>1､在组件中使用props 从父组件接收参数，<strong>注：在props中定义的属性，都可在组件中直接使用</strong></p>
-<p>2､props 来自 父级的数据 ，而组件中data return的数据是组件自已的数据，两种情况作用域就是组件本身，可在template、computed、methods中直接使用</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//html</span></span><br><span class="line">&lt;div id=<span class="string">"app"</span>&gt;</span><br><span class="line">	&lt;h5&gt;我是父组件&lt;/h5&gt;//1､父组件通过msg给子组件传递消息：在子组件subcomponent上写上msg 等于一个内容</span><br><span class="line">	&lt;subcomponent msg="我是父组件传递的内容"&gt;&lt;/subcomponent&gt;</span><br><span class="line">&lt;/div&gt; //2､子组件要用到父组件传过来的消息</span><br><span class="line"></span><br><span class="line"><span class="comment">//js</span></span><br><span class="line">...</span><br><span class="line">components:&#123;</span><br><span class="line">    subcomponent:&#123;</span><br><span class="line">        props: [<span class="string">'msg'</span>], <span class="comment">//数据来自父组件 2.1 props定义msg (以字符串数组形式)</span></span><br><span class="line">        template:<span class="string">'&lt;div&gt;&#123;&#123;msg&#125;&#125;&lt;/div&gt;'</span> <span class="comment">// 2.2 模板 template 就可以直接用了</span></span><br><span class="line">    &#125;     </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>3､props的值有两种： 一种是字符串数组（上述小例子就是)，另一种是对象</p>
-<p>4､可以用v-bind动态绑定父组件来的内容</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//html</span></span><br><span class="line">....</span><br><span class="line">&lt;subcomponent msg="我是来自父组件的内容"&gt;&lt;/subcomponent&gt;</span><br><span class="line">&lt;input type=<span class="string">"text"</span> v-model=<span class="string">"parentMsg"</span>&gt; <span class="comment">// 1､input v-model绑定的数据是父组件data 中的数据</span></span><br><span class="line">&#123;&#123; parentMsg&#125;&#125; </span><br><span class="line"><span class="comment">//2､把绑定的数据同时传递给子组件： 通过v-bind绑定属性msg,把属性msg用props进行接收</span></span><br><span class="line">&lt;bindcomponent v-bind:msg="parentMsg"&gt;&lt;/bindcomponent&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">//js</span></span><br><span class="line">...</span><br><span class="line">data:&#123;</span><br><span class="line">  parentMsg: <span class="string">'开始啦'</span>      </span><br><span class="line">&#125;</span><br><span class="line">components:&#123;</span><br><span class="line">    <span class="string">'bindcomponent'</span>:&#123;</span><br><span class="line">        props: [<span class="string">'msg'</span>],</span><br><span class="line">        template: <span class="string">'&lt;div&gt;&#123;&#123;msg&#125;&#125;&lt;/div&gt;'</span><span class="comment">//3､就可以在template中直接使用</span></span><br><span class="line">    &#125;     </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>【Demo实例 <a href="https://jsbin.com/jodaxer/1/edit?html,output】" target="_blank" rel="noopener">https://jsbin.com/jodaxer/1/edit?html,output】</a></p>
-<p>参考 <a href="https://cn.vuejs.org/v2/guide/components-props.html" target="_blank" rel="noopener">https://cn.vuejs.org/v2/guide/components-props.html</a></p>
-<h2 id="五、单向数据流props使用场景"><a href="#五、单向数据流props使用场景" class="headerlink" title="五、单向数据流props使用场景"></a>五、单向数据流props使用场景</h2><p><strong>1､ 第一种：</strong></p>
-<p>​     a、<strong>父组件</strong>：传递<strong>初始值</strong></p>
-<p>​     b、<strong>子组件</strong>：将它作为<strong>初始值保存</strong>起来，在自已的作用域下，可随意使用或修改    </p>
-<p>​     这种情况，<strong>可以在组件 data 内再声明一个数据</strong>，引用父组件的 props</p>
- <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//html	</span></span><br><span class="line">&lt;div id=<span class="string">"app"</span>&gt; <span class="comment">//2.1 将父组件的数据传递进来</span></span><br><span class="line">	&lt;my-component msg="父组件传递的消息"&gt;&lt;/my-component&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">//js</span></span><br><span class="line"><span class="keyword">var</span> app = <span class="keyword">new</span> Vue(&#123;</span><br><span class="line">    el: <span class="string">'#app'</span>,</span><br><span class="line">    components:&#123; <span class="comment">// 1、注册组件</span></span><br><span class="line">        <span class="string">'my-component'</span>:&#123;</span><br><span class="line">            props: [<span class="string">'msg'</span>],<span class="comment">//2.2 在子组件中用props接收数据</span></span><br><span class="line">            template: <span class="string">'&lt;div&gt;&#123;&#123;count&#125;&#125;&lt;/div&gt;'</span>,</span><br><span class="line">            data:function()&#123;</span><br><span class="line">              <span class="keyword">return</span>&#123; <span class="comment">//将传递进来的数据用初始值保存起来</span></span><br><span class="line">            	count: <span class="keyword">this</span>.msg<span class="comment">//props中的值可以通过this.xxx直接来进行获取</span></span><br><span class="line">              &#125; </span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line">    </span><br><span class="line">分三步曲完成：</span><br><span class="line"><span class="number">1</span>､ 注册组件</span><br><span class="line"><span class="number">2</span>、将父组件的数据传递进来，并在子组件中用props接收</span><br><span class="line"><span class="number">3</span>、将传递进来的数据通过初始值保存起来</span><br></pre></td></tr></table></figure>
-<p><strong>2､ 第二种</strong></p>
-<p>  <strong>props</strong> 作为需要<strong>被转变的原始值</strong>传入，这种情况 用 <strong>计算属性</strong> 就可以</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//html</span></span><br><span class="line">&lt;div id=<span class="string">"app"</span>&gt;</span><br><span class="line"> &lt;input type=<span class="string">"text"</span> v-model=<span class="string">"width"</span>&gt;</span><br><span class="line"> &lt;my-component :width="width"&gt;&lt;/my-component&gt;//2.1 将父组件的数据传递进来</span><br><span class="line">&lt;/div&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">//js</span></span><br><span class="line"><span class="keyword">var</span> app = <span class="keyword">new</span> Vue(&#123;</span><br><span class="line">    el: <span class="string">'#app'</span>,</span><br><span class="line">    data:&#123;</span><br><span class="line">        width: <span class="number">0</span></span><br><span class="line">    &#125;,</span><br><span class="line">    components:&#123;<span class="comment">//1、注册组件</span></span><br><span class="line">        <span class="string">'my-component'</span>:&#123;</span><br><span class="line">            props: [<span class="string">'width'</span>],<span class="comment">//2.2 在子组件中用props接收数据</span></span><br><span class="line">            template:<span class="string">'&lt;div :style="style"&gt;&lt;/div&gt;'</span>,</span><br><span class="line">            computed:&#123;<span class="comment">//3､将传递进来的数据，通过计算属性重新计算工</span></span><br><span class="line">                style:function()&#123;</span><br><span class="line">                    <span class="keyword">return</span>&#123;</span><br><span class="line">                        width: <span class="keyword">this</span>.width+<span class="string">'px'</span>,</span><br><span class="line">                        background:<span class="string">'green'</span>,</span><br><span class="line">                        height:<span class="string">'20px'</span></span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">分三步曲完成：</span><br><span class="line"><span class="number">1</span>､注册组件</span><br><span class="line"><span class="number">2</span>､将父组件的数据传递进来，并在子组件中用props接收</span><br><span class="line"><span class="number">3</span>､将传递进来的数据，通过计算属性重新计算工</span><br></pre></td></tr></table></figure>
 
           
         
