@@ -229,6 +229,141 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/16/render函数/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Wuer">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Wuer">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/03/16/render函数/" itemprop="url">render函数</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-16T18:07:39+08:00">
+                2019-03-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="一、初步了解"><a href="#一、初步了解" class="headerlink" title="一、初步了解"></a>一、初步了解</h2><p>1､ 用template，但<strong>切记template下只允许有一个子节点</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//html</span></span><br><span class="line">...</span><br><span class="line">&lt;template id=<span class="string">"msg"</span>&gt;</span><br><span class="line">  &lt;div&gt;</span><br><span class="line">		&lt;h1 v-<span class="keyword">if</span>=<span class="string">"level==1"</span>&gt;</span><br><span class="line">			&lt;slot&gt;&lt;/slot&gt;</span><br><span class="line">		&lt;/h1&gt;</span><br><span class="line">		&lt;h2 v-<span class="keyword">if</span>=<span class="string">"level==2"</span>&gt;</span><br><span class="line">			&lt;slot&gt;&lt;/slot&gt;</span><br><span class="line">		&lt;/h2&gt;</span><br><span class="line">		&lt;h3 v-<span class="keyword">if</span>=<span class="string">"level==3"</span>&gt;</span><br><span class="line">			&lt;slot&gt;&lt;/slot&gt;</span><br><span class="line">		&lt;/h3&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">//js</span></span><br><span class="line">...</span><br><span class="line"><span class="comment">//用vue组件定义            </span></span><br><span class="line">Vue.component(<span class="string">'my-component'</span>,&#123;</span><br><span class="line"> props:[<span class="string">'level'</span>],</span><br><span class="line"> template:<span class="string">'#msg'</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>2､用render函数</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//js</span></span><br><span class="line">...</span><br><span class="line"><span class="comment">//用render函数定义组件</span></span><br><span class="line">Vue.component(<span class="string">'my-component'</span>,&#123;</span><br><span class="line">  render:function (createElement) &#123;</span><br><span class="line">    <span class="keyword">return</span> createElement(<span class="string">'h'</span>+<span class="keyword">this</span>.level,</span><br><span class="line">    <span class="keyword">this</span>.$slots.<span class="keyword">default</span>);</span><br><span class="line">  &#125;,</span><br><span class="line">  props:[<span class="string">'level'</span>]</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h2 id="二、参数"><a href="#二、参数" class="headerlink" title="二、参数"></a>二、参数</h2><p><strong>1､第一个参数</strong></p>
+<p>​     在render函数的方法中，<strong>参数必须是createElement</strong>,createElement的<strong>类型是function</strong><br>​     render函数的<strong>第一个参数</strong>是必选的，可以是 <strong>String | Object | Function</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> app = <span class="keyword">new</span> Vue(&#123;</span><br><span class="line">    el: <span class="string">'#app'</span>,</span><br><span class="line">    components:&#123;</span><br><span class="line">        <span class="string">'my-component'</span>:&#123;</span><br><span class="line">            <span class="comment">//render 第一个参数必选，</span></span><br><span class="line">            <span class="comment">//String--html标签</span></span><br><span class="line">            <span class="comment">//Object--一个含有数据选项的对象</span></span><br><span class="line">            <span class="comment">//Function--方法返回一个含有数据选项的对象</span></span><br><span class="line">            render:function(createElement)&#123;<span class="comment">//createElement 是一个方法</span></span><br><span class="line">                alert(typeof createElement)</span><br><span class="line">                <span class="comment">//return createElement('h1')</span></span><br><span class="line">                <span class="comment">// return createElement(&#123;</span></span><br><span class="line">                <span class="comment">//     template:'&lt;div&gt;hello world&lt;/div&gt;'</span></span><br><span class="line">                <span class="comment">// &#125;) </span></span><br><span class="line">                <span class="keyword">var</span> domFun = function()&#123;</span><br><span class="line">                    <span class="keyword">return</span> &#123;</span><br><span class="line">                        template:<span class="string">'&lt;div&gt;hello&lt;/div&gt;'</span></span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;  </span><br><span class="line">                <span class="keyword">return</span> createElement(domFun())             </span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>【Demo地址 <a href="https://jsbin.com/tiregac/edit?html,output】" target="_blank" rel="noopener">https://jsbin.com/tiregac/edit?html,output】</a></p>
+<p><strong>2､第二个参数</strong></p>
+<p>​    render函数的第二个参数是<strong>可选</strong>，第二个参数是<strong>数据对象（只能是Object）</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> app = <span class="keyword">new</span> Vue(&#123;</span><br><span class="line">    el: <span class="string">'#app'</span>,</span><br><span class="line">    components:&#123;</span><br><span class="line">        <span class="string">'my-component'</span>:&#123;</span><br><span class="line">           render:function(createElement)&#123;</span><br><span class="line">             <span class="keyword">return</span> createElement(&#123;</span><br><span class="line">                template:<span class="string">'&lt;div&gt;hello world&lt;/div&gt;'</span></span><br><span class="line">             &#125;,&#123;</span><br><span class="line">                <span class="string">'class'</span>:&#123;</span><br><span class="line">                    foo:<span class="keyword">true</span>,</span><br><span class="line">                    bar:<span class="keyword">false</span></span><br><span class="line">                &#125;,</span><br><span class="line">                style:&#123;</span><br><span class="line">                    color: <span class="string">'red'</span>,</span><br><span class="line">                    fontSize:<span class="string">'16px'</span></span><br><span class="line">                &#125;,</span><br><span class="line">                <span class="comment">//正常的html特性</span></span><br><span class="line">                attrs:&#123; <span class="comment">// 也就是除了class,style之外的属性可以写在这</span></span><br><span class="line">                    id:<span class="string">'foo'</span>,</span><br><span class="line">                    src:<span class="string">'http://baidu.com'</span></span><br><span class="line">                &#125;,</span><br><span class="line">                <span class="comment">//用来写原生的dom属性</span></span><br><span class="line">                domProps:&#123;</span><br><span class="line">                    innerHTML:<span class="string">'&lt;span style="color:pink;font-size:18px"&gt;好的&lt;/span&gt;'</span></span><br><span class="line">                &#125;</span><br><span class="line">             &#125;)</span><br><span class="line">           &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>【Demo地址 <a href="https://jsbin.com/jegezil/1/edit?html,output】" target="_blank" rel="noopener">https://jsbin.com/jegezil/1/edit?html,output】</a></p>
+<p><strong>3､第三个参数</strong></p>
+<p>​     第三个参数是<strong>可选</strong>，可以是<strong>String | Array</strong> （作为我们<strong>构建函数的子节点</strong>来使用的）</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> app = <span class="keyword">new</span> Vue(&#123;</span><br><span class="line">    el: <span class="string">'#app'</span>,</span><br><span class="line">    components:&#123;</span><br><span class="line">        <span class="string">'my-component'</span>:&#123;</span><br><span class="line">            render:function(createElement)&#123;</span><br><span class="line">                <span class="keyword">return</span> createElement(<span class="string">'div'</span>,[</span><br><span class="line">                    createElement(<span class="string">'h1'</span>,<span class="string">'我是h1标题'</span>),</span><br><span class="line">          <span class="comment">//创建一个h1标签，它下面有一个文本节点，它的内容是:我是h1标题,创建好之后，会做为div的子节点</span></span><br><span class="line">                    createElement(<span class="string">'h6'</span>,<span class="string">'我是h6标题'</span>)</span><br><span class="line">                ])</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>【Demo实例<a href="https://jsbin.com/robayuj/edit?html,output】" target="_blank" rel="noopener">https://jsbin.com/robayuj/edit?html,output】</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/16/自定义指令/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -1528,172 +1663,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/07/数据绑定-指令-事件/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Wuer">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Wuer">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/03/07/数据绑定-指令-事件/" itemprop="url">数据绑定+指令+事件</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-07T17:04:28+08:00">
-                2019-03-07
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="一、Vuejs-模式"><a href="#一、Vuejs-模式" class="headerlink" title="一、Vuejs 模式"></a>一、Vuejs 模式</h3><p>MVVM 模式：<strong>视图层和数据层的双向绑定</strong>，不用关心DOM 操作的事，更多精力放在数据和业务逻辑上</p>
-<h3 id="二、Vuejs-环境搭建"><a href="#二、Vuejs-环境搭建" class="headerlink" title="二、Vuejs 环境搭建"></a>二、Vuejs 环境搭建</h3><p>1､ 通过script 标签，引入vuejs</p>
-<p>2、vue 脚手架工具 vue-cli 搭建【<strong>基于nodejs npm 搭建的</strong>】</p>
-<h3 id="三、Vue实例和数据绑定"><a href="#三、Vue实例和数据绑定" class="headerlink" title="三、Vue实例和数据绑定"></a>三、Vue实例和数据绑定</h3><p>通过构造函数 Vue 就可以创建一个 Vue 的根实例，并启动 Vue 应用—入口</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> app ＝<span class="keyword">new</span> Vue(&#123;</span><br><span class="line">   <span class="comment">//element,用于指定页面中已存在的DOM元素，挂载到DOM中，也可以是css,是必不可少的选项</span></span><br><span class="line"></span><br><span class="line">	data:&#123; <span class="comment">//可以声明应用内需要双向绑定的数据,也可以指向一个已经有的变量</span></span><br><span class="line">		msg:<span class="string">'开始学习vue'</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<p>挂载成功后，访问属性</p>
-<p>1､访问vue实例的属性</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">app.$el  <span class="comment">// 访问vue实例的属性，都是以 $ 开头</span></span><br></pre></td></tr></table></figure>
-<p>2､访问data中的属性</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">app.msg <span class="comment">//直接app.属性名</span></span><br></pre></td></tr></table></figure>
-<h3 id="四、生命周期钩子"><a href="#四、生命周期钩子" class="headerlink" title="四、生命周期钩子"></a>四、生命周期钩子</h3><p>1､created （<strong>还未挂载</strong>）：实例创建完成后调用，此阶段完成了数据的观测等，但尚未挂载， $el 还不可用。需要初始化处理一些数据时会比较有用，</p>
-<p>2､mounted el （<strong>刚刚挂载</strong>）：挂载到实例上后调用，一般我们的<strong>第一个业务逻辑会在这里开始</strong>，也就是初始化要执行的业务逻辑代码，相当于 $(document).ready()</p>
-<p>3､beforeDestroy 实例销毁之前调用。主要解绑一些使用 addEventListener 监听的事件等</p>
-<p>看个实例</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/14339384-b1c0b965b33534db.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-<h3 id="五、文本插值和表达式"><a href="#五、文本插值和表达式" class="headerlink" title="五、文本插值和表达式"></a>五、文本插值和表达式</h3><p>1､ 语法</p>
-<p>使用双大括号，会自动将我们双向绑定的数据实时显示</p>
-<p>2､ 用法</p>
-<p>在 大括号 中，除了<strong>简单的绑定属性值</strong>外，也可以是 <strong>JavaScript 表达式进行简单的运算</strong> 、 <strong>三元运算</strong>等</p>
-<p><strong>特别注意：Vue .js 只支持单个表达式，不支持语句和流控制</strong></p>
-<p>3､实例</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#123; <span class="number">6</span>+<span class="number">6</span> *<span class="number">3</span>&#125;&#125; <span class="comment">// 支持 简单的运算 </span></span><br><span class="line">&#123;&#123; <span class="number">6</span>&lt;<span class="number">3</span> ? msg :a&#125;&#125;  <span class="comment">// 支持 三元运算符 </span></span><br><span class="line">&#123;&#123;<span class="keyword">if</span>(<span class="number">6</span>&gt;<span class="number">3</span>)&#123;&#125;&#125; <span class="comment">// 不支持 书写表达式</span></span><br><span class="line">&#123;&#123;<span class="keyword">var</span> a = <span class="number">6</span>&#125;&#125; <span class="comment">// 不支持 多行表达式 var a=6 相当于 var a;a = 6;</span></span><br><span class="line">&#123;&#123; <span class="keyword">var</span> book = ’ Vue . js 实战 ’&#125;&#125; <span class="comment">// 不支持 语句</span></span><br><span class="line">&#123;&#123; <span class="keyword">if</span> (ok) <span class="keyword">return</span> msg &#125;&#125; <span class="comment">// 不支持 流控制</span></span><br></pre></td></tr></table></figure>
-<h3 id="六、过滤器"><a href="#六、过滤器" class="headerlink" title="六、过滤器"></a>六、过滤器</h3><p>1､ 作用</p>
-<p>格式化文本【字母全大写、货币千位使用逗号分隔符】</p>
-<p>2､用法</p>
-<p>在 大括号 插值的尾部添加一小管道符 “ | ” 对数据进行过滤</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&#123;&#123;date | formatDate&#125;&#125; <span class="comment">// | 后面接的是 过滤器的名字</span></span><br><span class="line"></span><br><span class="line">&#123;&#123;date | filter1 | filter2 &#125;&#125; <span class="comment">// 过滤器的串联</span></span><br><span class="line"></span><br><span class="line">&#123;&#123;date | formatDate(<span class="string">'arg1'</span>, <span class="string">'arg2'</span>)&#125;&#125; <span class="comment">//过滤器的参数</span></span><br></pre></td></tr></table></figure>
-<p>3､ 规则</p>
-<p>自定义的， 通过<strong>给 Vue 实例添加选项 filters</strong> 来设置</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">注:&#123;&#123;date | formatDate(<span class="number">66</span>,<span class="number">99</span>) &#125;&#125; 中的第<span class="number">1</span>个和第<span class="number">2</span>个参数，分别对应script 标签内 过滤器 formatDate 的第<span class="number">2</span>个 a 和 第<span class="number">3</span>个参数 b ，而 script 标签内的过滤器 formatDate 第一个参数是 date</span><br></pre></td></tr></table></figure>
-<p><img src="https://upload-images.jianshu.io/upload_images/14339384-cadea4afa929d0ca.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-<h3 id="七、指令"><a href="#七、指令" class="headerlink" title="七、指令"></a>七、指令</h3><p>1､ 定义</p>
-<p>带有前缀 v- ，能帮我们快速完成 DOM 操作，循环渲染，显示和隐藏</p>
-<p>2､ 部分指令</p>
-<p>A、v-text ：解析文本</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">v-text 等同于 &#123;&#123;&#125;&#125; 文本插值</span><br><span class="line">&lt;span v-text="apple"&gt;&lt;/span&gt; === &#123;&#123;apple&#125;&#125; //true</span><br></pre></td></tr></table></figure>
-<p>B、v-html ：解析html</p>
-<p>C、v-bind ：动态更新html 元素上的 属性，如id,class等</p>
-<p>D、v-on ： 绑定事件监听器</p>
-<p>v-on 用法：</p>
-<p>1､在普通元素上，可以<strong>监听原生的 DOM 事件</strong>（ click、dblclick、 keyup, mousemove 等）</p>
-<p>2､<strong>表达式可以是一个方法名</strong>，这些方法都写在 <strong>Vue 实例的 methods 属性内</strong>，并且是函数的形式，</p>
-<p>3､函数内的 <strong>this 指向的是当前 Vue 实例本身</strong>，因此可以直接使用 <strong>this.xxx</strong> 的形式来访问或修改数据</p>
-<p><strong>注：vue中用 到的所有方法都定义在methods中</strong></p>
-<h3 id="八、语法糖"><a href="#八、语法糖" class="headerlink" title="八、语法糖"></a>八、语法糖</h3><p>在不影响功能的情况下，用简洁的方法实现同样的效果，从而更方便程序开发</p>
-<p>  v-bind 语法糖 ： 冒号（:）</p>
-<p>  v-on 语法糖：@</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1744,7 +1713,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">54</span>
+                  <span class="site-state-item-count">55</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

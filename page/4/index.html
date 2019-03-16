@@ -229,6 +229,250 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/06/跨域(JSONP)/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Wuer">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Wuer">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/12/06/跨域(JSONP)/" itemprop="url">跨域</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-06T14:32:10+08:00">
+                2018-12-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="一、同源策略-Same-origin-Policy"><a href="#一、同源策略-Same-origin-Policy" class="headerlink" title="一、同源策略(Same origin Policy)"></a>一、同源策略(Same origin Policy)</h2><p>浏览器出于安全方面的考虑，只允许与本域下的接口交互。不同源的客户端脚本在没有明确授权的情况下，不能读写对方的资源。</p>
+<h3 id="1、同源-本域"><a href="#1、同源-本域" class="headerlink" title="1、同源(本域)"></a>1、同源(本域)</h3><p>所谓“同源”指的是”三个相同“。相同的域名、端口和协议，这三个相同的话就视为同一个域，本域下的JS脚本只能读写本域下的数据资源，无法访问其它域的资源。</p>
+<ul>
+<li>协议相同 (都是http或者https)</li>
+<li>域名相同 (都是<a href="http://jirengu.com/a" target="_blank" rel="noopener">http://jirengu.com/a</a> 和<a href="http://jirengu.com/b" target="_blank" rel="noopener">http://jirengu.com/b</a>)</li>
+<li>端口相同（都是80端口，如果没有写端口，默认是80端口）</li>
+</ul>
+<p>举个例子</p>
+<ul>
+<li>同源情况：</li>
+</ul>
+<p><a href="http://jirengu.com/a/b.js" target="_blank" rel="noopener">http://jirengu.com/a/b.js</a> 和 <a href="http://jirengu.com/index.php" target="_blank" rel="noopener">http://jirengu.com/index.php</a></p>
+<ul>
+<li><p>不同源情况：</p>
+<p><a href="http://jirengu.com/main.js&gt;" target="_blank" rel="noopener">http://jirengu.com/main.js&gt;</a> 和 <a href="https://jirengu.com/a.php" target="_blank" rel="noopener">https://jirengu.com/a.php</a> (协议不同)</p>
+<p><a href="http://jirengu.com/main.js&gt;" target="_blank" rel="noopener">http://jirengu.com/main.js&gt;</a> 和 <a href="http://bbs.jirengu.com/a.php" target="_blank" rel="noopener">http://bbs.jirengu.com/a.php</a> (域名不同，域名必须完全相同才可以)</p>
+<p><a href="http://jiengu.com/main.js" target="_blank" rel="noopener">http://jiengu.com/main.js</a> 和 <a href="http://jirengu.com:8080/a.php" target="_blank" rel="noopener">http://jirengu.com:8080/a.php</a> (端口不同,第一个是80)</p>
+</li>
+</ul>
+<h3 id="2、Ajax-跨域报错实例"><a href="#2、Ajax-跨域报错实例" class="headerlink" title="2、Ajax 跨域报错实例"></a>2、Ajax 跨域报错实例</h3><p>（1）修改host文件：给host文件里添加两条记录，方便跨域操作</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/9375265-75febd5f566fec3d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>上图意思是访问 a.com 或是 b.com 相当于访问本机, 可以实现一个场景：浏览器是a.com，而接口是b.com,虽说最终对应的是本机，但是域名不一样</p>
+<p>（2）建一个index.html文件，获取数据</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;h1&gt;hello world&lt;<span class="regexp">/h1&gt;</span></span><br><span class="line"><span class="regexp">&lt;script&gt;</span></span><br><span class="line"><span class="regexp">  var xhr = new XMLHttpRequest()</span></span><br><span class="line"><span class="regexp">  xhr.open('GET','http:/</span><span class="regexp">/localhost:8080/g</span>etWeather<span class="string">', true)</span></span><br><span class="line"><span class="string">  xhr.send()</span></span><br><span class="line"><span class="string">  xhr.onload = function()&#123;</span></span><br><span class="line"><span class="string">    console.log(xhr.responseText)</span></span><br><span class="line"><span class="string">  &#125;</span></span><br><span class="line"><span class="string">&lt;/script&gt;</span></span><br></pre></td></tr></table></figure>
+<p>（3）建一个server.js文件，实现静态文件、动态路由功能</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> http = <span class="built_in">require</span>(<span class="string">'http'</span>)</span><br><span class="line"><span class="keyword">var</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>)</span><br><span class="line"><span class="keyword">var</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>)</span><br><span class="line"><span class="keyword">var</span> url = <span class="built_in">require</span>(<span class="string">'url'</span>)</span><br><span class="line"></span><br><span class="line">http.createServer(<span class="function"><span class="keyword">function</span>(<span class="params">req, res</span>)</span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="keyword">var</span> pathObj = url.parse(req.url, <span class="literal">true</span>)</span><br><span class="line"></span><br><span class="line">  <span class="keyword">switch</span> (pathObj.pathname) &#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">'/getWeather'</span>:</span><br><span class="line">      res.end(<span class="built_in">JSON</span>.stringify(&#123;<span class="attr">beijing</span>: <span class="string">'sunny'</span>&#125;))</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">default</span>:</span><br><span class="line">      fs.readFile(path.join(__dirname, pathObj.pathname), <span class="function"><span class="keyword">function</span>(<span class="params">e, data</span>)</span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(e)&#123;</span><br><span class="line">          res.writeHead(<span class="number">404</span>, <span class="string">'not found'</span>)</span><br><span class="line">          res.end(<span class="string">'&lt;h1&gt;404 Not Found&lt;/h1&gt;'</span>)</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">          res.end(data)</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;) </span><br><span class="line">  &#125;</span><br><span class="line">&#125;).listen(<span class="number">8080</span>)</span><br></pre></td></tr></table></figure>
+<p>（4）执行结果</p>
+<p>   打开终端，cd 到当前文件夹，然后输入node server.js，启动静态服务器</p>
+<p>   A、浏览器地址栏输入<code>localhost:8080/index.html</code> ,获取到了数据</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/9375265-df7c327bc97219d0.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>B、浏览器地址改为127.0.0.1:8080/index.html,就报错啦，因为当前域名和请求域名不一样</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/9375265-f6eba15f2a427fc1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>C、如果浏览器改成a.com或是b.com 也是会报错的，就算它们都是指向同一个本机</p>
+<p><strong>总结一下：</strong>只有在请求域名和当前域名相同的情况下，才能获取数据，才不会报错。</p>
+<p><strong>注：</strong>跨域的资源内嵌是被允许的，<strong>对于当前页面来说页面存放的 JS 文件的域不重要，重要的是加载该 JS 页面所在什么域</strong></p>
+<h2 id="二、跨域"><a href="#二、跨域" class="headerlink" title="二、跨域"></a>二、跨域</h2><p>解决同源策略带来的不便，突破同源策略的限制去获取不同源之间的数据信息或者进行不同源之间的信息传递。</p>
+<h3 id="解决办法"><a href="#解决办法" class="headerlink" title="解决办法"></a>解决办法</h3><h4 id="1､-JSONP"><a href="#1､-JSONP" class="headerlink" title="1､ JSONP"></a>1､ JSONP</h4><p>HTML 中 script 标签可以加载其他域下的js，比如我们经常引入一个其他域下线上cdn的jQuery。</p>
+<p>可以这样子实现从其他域下获取数据</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=<span class="string">"http://api.jirengu.com/weather.php"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+<p>这时候会向天气接口发送请求获取数据，获取数据后做为 js 来执行。 但这里有个问题， 数据是 JSON 格式的数据，直接作为 JS 运行的话,如何去得到这个数据来操作呢？</p>
+<p>此时需要后端的配合，因为后端的接口需要根据约定的参数获取回调函数名，然后跟返回数据进行拼接，最后进行响应</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src=<span class="string">"http://api.jirengu.com/weather.php?callback=showData"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+<p>这个请求到达后端后，后端会去解析callback这个参数获取到字符串showData，在发送数据做如下处理：</p>
+<p>之前后端返回数据： {“city”: “hangzhou”, “weather”: “晴天”} </p>
+<p>现在后端返回数据： showData({“city”: “hangzhou”, “weather”: “晴天”}) </p>
+<p>前端script标签在加载数据后会把 「showData({“city”: “hangzhou”, “weather”: “晴天”})」做为 js 来执行。</p>
+<p>这实际上就是调用showData这个函数，同时参数是 {“city”: “hangzhou”, “weather”: “晴天”}。</p>
+<p> 当然前端提前在页面定义好showData这个全局函数，在函数内部处理参数即可。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">showData</span>(<span class="params">ret</span>)</span>&#123;</span><br><span class="line"><span class="built_in">console</span>.log(ret);</span><br><span class="line">&#125;</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br><span class="line"><span class="regexp">&lt;script src="http:/</span><span class="regexp">/api.jirengu.com/</span>weather.php?callback=showData<span class="string">"&gt;&lt;/script&gt;</span></span><br></pre></td></tr></table></figure>
+<h5 id="总结一下："><a href="#总结一下：" class="headerlink" title="总结一下："></a>总结一下：</h5><p>（1）JSONP是通过 script 标签加载数据的方式去获取数据当做 JS 代码来执行 </p>
+<p>（2）提前在页面上声明一个函数，函数名通过接口传参的方式传给后台，后台解析到函数名后在原始数据上「包裹」这个函数名，发送给前端。</p>
+<p>换句话说，JSONP 需要对应接口的后端的配合才能实现</p>
+<p>举个例子</p>
+<p> server.js 文件</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> http = <span class="built_in">require</span>(<span class="string">'http'</span>)</span><br><span class="line"><span class="keyword">var</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>)</span><br><span class="line"><span class="keyword">var</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>)</span><br><span class="line"><span class="keyword">var</span> url = <span class="built_in">require</span>(<span class="string">'url'</span>)</span><br><span class="line"></span><br><span class="line">http.createServer(<span class="function"><span class="keyword">function</span>(<span class="params">req, res</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">var</span> pathObj = url.parse(req.url, <span class="literal">true</span>)</span><br><span class="line"></span><br><span class="line">  <span class="keyword">switch</span> (pathObj.pathname) &#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">'/getNews'</span>:</span><br><span class="line">      <span class="keyword">var</span> news = [</span><br><span class="line">        <span class="string">"第11日前瞻：中国冲击4金 博尔特再战200米羽球"</span>,</span><br><span class="line">        <span class="string">"正直播柴飚/洪炜出战 男双力争会师决赛"</span>,</span><br><span class="line">        <span class="string">"女排将死磕巴西！郎平安排男陪练模仿对方核心"</span></span><br><span class="line">        ]</span><br><span class="line">      res.setHeader(<span class="string">'Content-Type'</span>,<span class="string">'text/json; charset=utf-8'</span>)</span><br><span class="line">      <span class="keyword">if</span>(pathObj.query.callback)&#123;</span><br><span class="line">        res.end(pathObj.query.callback + <span class="string">'('</span> + <span class="built_in">JSON</span>.stringify(news) + <span class="string">')'</span>)</span><br><span class="line">      &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        res.end(<span class="built_in">JSON</span>.stringify(news))</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">default</span>:</span><br><span class="line">      fs.readFile(path.join(__dirname, pathObj.pathname), <span class="function"><span class="keyword">function</span>(<span class="params">e, data</span>)</span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(e)&#123;</span><br><span class="line">          res.writeHead(<span class="number">404</span>, <span class="string">'not found'</span>)</span><br><span class="line">          res.end(<span class="string">'&lt;h1&gt;404 Not Found&lt;/h1&gt;'</span>)</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">          res.end(data)</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;) </span><br><span class="line">  &#125;</span><br><span class="line">&#125;).listen(<span class="number">8080</span>)</span><br></pre></td></tr></table></figure>
+<p>html文件</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">  &lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">"container"</span>&gt;</span><br><span class="line">    &lt;ul <span class="class"><span class="keyword">class</span></span>=<span class="string">"news"</span>&gt;</span><br><span class="line">    &lt;<span class="regexp">/ul&gt;</span></span><br><span class="line"><span class="regexp">    &lt;button class="show"&gt;show news&lt;/</span>button&gt;</span><br><span class="line">  &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">&lt;script&gt;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">  $('.show').addEventListener('click', function()&#123;</span></span><br><span class="line"><span class="regexp">    var script = document.createElement('script');</span></span><br><span class="line"><span class="regexp">    script.src = 'http:/</span><span class="regexp">/127.0.0.1:8080/g</span>etNews?callback=appendHtml<span class="string">';</span></span><br><span class="line"><span class="string">    document.head.appendChild(script); </span></span><br><span class="line"><span class="string">   //script标签放到head上，并向http://127.0.0.1:8080/getNews?callback=appendHtml发请求,获取到		并执行</span></span><br><span class="line"><span class="string">    document.head.removeChild(script);// 为了显示好看，加上移除这句</span></span><br><span class="line"><span class="string">  &#125;)</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">  function appendHtml(news)&#123;</span></span><br><span class="line"><span class="string">    var html = '</span><span class="string">';</span></span><br><span class="line"><span class="string">    for( var i=0; i&lt;news.length; i++)&#123;</span></span><br><span class="line"><span class="string">      html += '</span>&lt;li&gt;<span class="string">' + news[i] + '</span>&lt;<span class="regexp">/li&gt;';</span></span><br><span class="line"><span class="regexp">    &#125;</span></span><br><span class="line"><span class="regexp">    console.log(html);</span></span><br><span class="line"><span class="regexp">    $('.news').innerHTML = html;</span></span><br><span class="line"><span class="regexp">  &#125;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">  function $(id)&#123;</span></span><br><span class="line"><span class="regexp">    return document.querySelector(id);</span></span><br><span class="line"><span class="regexp">  &#125;</span></span><br><span class="line"><span class="regexp">&lt;/</span>script&gt;</span><br><span class="line">&lt;<span class="regexp">/html&gt;</span></span><br></pre></td></tr></table></figure>
+<p>打开终端，cd 到当前文件夹，然后输入node server.js，启动静态服务器</p>
+<p>显示结果：</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/9375265-7bf1c56c799ad488.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>图中Request URL :<a href="http://127.0.0.1:8080/getNews?callback=appendHtml" target="_blank" rel="noopener">http://127.0.0.1:8080/getNews?callback=appendHtml</a> 会向浏览器发请求，得到数据,然后当成 js 去执行，因为页面上已经有了appendHtml函数,然后去执行这个函数，把appendHtml 括号里的内容作为参数传递进去</p>
+<p> <img src="https://upload-images.jianshu.io/upload_images/9375265-03cd499582ca046f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<h4 id="2、CORS"><a href="#2、CORS" class="headerlink" title="2、CORS"></a>2、CORS</h4><p>全称是跨域资源共享（Cross-Origin Resource Sharing），是一种 ajax 跨域请求资源的方式，支持现代浏览器，IE支持10以上。</p>
+<p>实现方式：</p>
+<p>当你使用 XMLHttpRequest 发送请求时，浏览器发现该请求不符合同源策略，会给该请求加一个请求头：Origin，后台进行一系列处理：</p>
+<p>（1）如果确定接受请求则在返回结果中加入一个响应头：Access-Control-Allow-Origin; 浏览器判断该相应头中是否包含 Origin 的值。</p>
+<p>（2）如果有则浏览器会处理响应，我们就可以拿到响应数据。</p>
+<p>（3）如果不包含浏览器直接驳回，这时我们无法拿到响应数据。</p>
+<p>所以 CORS 的表象是让你觉得它与同源的 ajax 请求没啥区别，代码完全一样。</p>
+<p>举个例子</p>
+<p>server.js文件</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> http = <span class="built_in">require</span>(<span class="string">'http'</span>)</span><br><span class="line"><span class="keyword">var</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>)</span><br><span class="line"><span class="keyword">var</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>)</span><br><span class="line"><span class="keyword">var</span> url = <span class="built_in">require</span>(<span class="string">'url'</span>)</span><br><span class="line"></span><br><span class="line">http.createServer(<span class="function"><span class="keyword">function</span>(<span class="params">req, res</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">var</span> pathObj = url.parse(req.url, <span class="literal">true</span>)</span><br><span class="line"></span><br><span class="line">  <span class="keyword">switch</span> (pathObj.pathname) &#123;</span><br><span class="line">    <span class="keyword">case</span> <span class="string">'/getNews'</span>:</span><br><span class="line">      <span class="keyword">var</span> news = [</span><br><span class="line">        <span class="string">"第11日前瞻：中国冲击4金 博尔特再战200米羽球"</span>,</span><br><span class="line">        <span class="string">"正直播柴飚/洪炜出战 男双力争会师决赛"</span>,</span><br><span class="line">        <span class="string">"女排将死磕巴西！郎平安排男陪练模仿对方核心"</span></span><br><span class="line">        ]</span><br><span class="line"></span><br><span class="line">      res.setHeader(<span class="string">'Access-Control-Allow-Origin'</span>,<span class="string">'http://localhost:8080'</span>)</span><br><span class="line">      <span class="comment">//访问控制允许的域 http://localhost:8080</span></span><br><span class="line">      <span class="comment">//res.setHeader('Access-Control-Allow-Origin','*')</span></span><br><span class="line">      res.end(<span class="built_in">JSON</span>.stringify(news))</span><br><span class="line">      <span class="keyword">break</span>;</span><br><span class="line">    <span class="keyword">default</span>:</span><br><span class="line">      fs.readFile(path.join(__dirname, pathObj.pathname), <span class="function"><span class="keyword">function</span>(<span class="params">e, data</span>)</span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(e)&#123;</span><br><span class="line">          res.writeHead(<span class="number">404</span>, <span class="string">'not found'</span>)</span><br><span class="line">          res.end(<span class="string">'&lt;h1&gt;404 Not Found&lt;/h1&gt;'</span>)</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">          res.end(data)</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;) </span><br><span class="line">  &#125;</span><br><span class="line">&#125;).listen(<span class="number">8080</span>)</span><br></pre></td></tr></table></figure>
+<p>index.html文件</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">  &lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">"container"</span>&gt;</span><br><span class="line">    &lt;ul <span class="class"><span class="keyword">class</span></span>=<span class="string">"news"</span>&gt;</span><br><span class="line"></span><br><span class="line">    &lt;<span class="regexp">/ul&gt;</span></span><br><span class="line"><span class="regexp">    &lt;button class="show"&gt;show news&lt;/</span>button&gt;</span><br><span class="line">  &lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">&lt;script&gt;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">  $('.show').addEventListener('click', function()&#123;</span></span><br><span class="line"><span class="regexp">    var xhr = new XMLHttpRequest()</span></span><br><span class="line"><span class="regexp">    xhr.open('GET', 'http:/</span><span class="regexp">/127.0.0.1:8080/g</span>etNews<span class="string">', true)</span></span><br><span class="line"><span class="string">    xhr.send()</span></span><br><span class="line"><span class="string">    xhr.onload = function()&#123;</span></span><br><span class="line"><span class="string">      appendHtml(JSON.parse(xhr.responseText))</span></span><br><span class="line"><span class="string">    &#125;</span></span><br><span class="line"><span class="string">  &#125;)</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">  function appendHtml(news)&#123;</span></span><br><span class="line"><span class="string">    var html = '</span><span class="string">'</span></span><br><span class="line"><span class="string">    for( var i=0; i&lt;news.length; i++)&#123;</span></span><br><span class="line"><span class="string">      html += '</span>&lt;li&gt;<span class="string">' + news[i] + '</span>&lt;<span class="regexp">/li&gt;'</span></span><br><span class="line"><span class="regexp">    &#125;</span></span><br><span class="line"><span class="regexp">    $('.news').innerHTML = html</span></span><br><span class="line"><span class="regexp">  &#125;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">  function $(selector)&#123;</span></span><br><span class="line"><span class="regexp">    return document.querySelector(selector)</span></span><br><span class="line"><span class="regexp">  &#125;</span></span><br><span class="line"><span class="regexp">&lt;/</span>script&gt;</span><br><span class="line">&lt;<span class="regexp">/html&gt;</span></span><br></pre></td></tr></table></figure>
+<p>显示结果</p>
+<p>（1）输入<a href="http://127.0.0.1:8080/index.html" target="_blank" rel="noopener">http://127.0.0.1:8080/index.html</a> 发送请求时，不需要跨域，请求头什么都没有</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/9375265-c3e9765beec2056d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>（2）输入<a href="http://localhost:8080/index.html，此时出现跨域" target="_blank" rel="noopener">http://localhost:8080/index.html，此时出现跨域</a></p>
+<p>​    响应头有Access-Control-Allow-Origin: <a href="http://localhost/" target="_blank" rel="noopener">http://localhost</a>:8080</p>
+<p>​    请求头有Origin: <a href="http://localhost/" target="_blank" rel="noopener">http://localhost</a>:8080</p>
+<p>​    表示两者相同，可以获取数据</p>
+<p><img src="/Users/laoda/Library/Application Support/typora-user-images/image-20181207232056296.png" alt="image-20181207232056296"></p>
+<p>（3）输入<a href="http://a.com:8080/index.html" target="_blank" rel="noopener">http://a.com:8080/index.html</a> 时，就报错啦</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/9375265-65546f9c31b61073.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>因为服务端不允许a.com 获取数据</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/9375265-9dd2bb48ed0daa28.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>响应头 Access-Control-Allow-Origin 设置为星号，表示同意任意跨源请求</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Access-Control-Allow-Origin: <span class="string">'*'</span></span><br></pre></td></tr></table></figure>
+<p>那么<a href="http://a.com:8080/index.html就能获取数据啦" target="_blank" rel="noopener">http://a.com:8080/index.html就能获取数据啦</a>!</p>
+<h4 id="3､降域"><a href="#3､降域" class="headerlink" title="3､降域"></a>3､降域</h4><h5 id="（1）iframe-不同源"><a href="#（1）iframe-不同源" class="headerlink" title="（1）iframe 不同源"></a>（1）iframe 不同源</h5><p>iframe里面加载的页面，它的域名,如果和我当前的是属于不同域，虽然iframe里面的东西可以加载，但外部的js无法去获取或操作的。<br>也就是说，只有在相同域名下的iframe，才可以去访问里面的东西</p>
+<p>举个例子</p>
+<p>a.html</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">	&lt;title&gt;<span class="xml"><span class="tag">&lt;/<span class="name">title</span>&gt;</span></span></span><br><span class="line">&lt;<span class="regexp">/head&gt;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">&lt;style&gt;</span></span><br><span class="line"><span class="regexp">	.ct&#123;</span></span><br><span class="line"><span class="regexp">		width: 910px;</span></span><br><span class="line"><span class="regexp">		margin: 0 auto;</span></span><br><span class="line"><span class="regexp">	&#125;</span></span><br><span class="line"><span class="regexp">	.main&#123;</span></span><br><span class="line"><span class="regexp">		float: left;</span></span><br><span class="line"><span class="regexp">		width: 450px;</span></span><br><span class="line"><span class="regexp">		height: 300px;</span></span><br><span class="line"><span class="regexp">		border: 1px solid #ccc;</span></span><br><span class="line"><span class="regexp">	&#125;</span></span><br><span class="line"><span class="regexp">	.main input&#123;</span></span><br><span class="line"><span class="regexp">		margin: 20px;</span></span><br><span class="line"><span class="regexp">		width: 200px;</span></span><br><span class="line"><span class="regexp">	&#125;</span></span><br><span class="line"><span class="regexp">	.iframe&#123;</span></span><br><span class="line"><span class="regexp">		float: right;</span></span><br><span class="line"><span class="regexp">	&#125;</span></span><br><span class="line"><span class="regexp">	iframe&#123;</span></span><br><span class="line"><span class="regexp">		width: 450px;</span></span><br><span class="line"><span class="regexp">		height: 300px;</span></span><br><span class="line"><span class="regexp">		border: 1px dashed #ccc;</span></span><br><span class="line"><span class="regexp">	&#125;</span></span><br><span class="line"><span class="regexp">&lt;/</span>style&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">"ct"</span>&gt;</span><br><span class="line">	&lt;h1&gt;使用降域实现跨域&lt;<span class="regexp">/h1&gt;</span></span><br><span class="line"><span class="regexp">	&lt;div class="main"&gt;</span></span><br><span class="line"><span class="regexp">		&lt;input type="text" placeholder="http:/</span><span class="regexp">/a.com:8080/</span>a.html<span class="string">"&gt;</span></span><br><span class="line"><span class="string">	&lt;/div&gt;</span></span><br><span class="line"><span class="string">	&lt;iframe src="</span>http:<span class="comment">//b.com:8080/b.html" frameborder="0"&gt;&lt;/iframe&gt;</span></span><br><span class="line">&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">&lt;script&gt;</span></span><br><span class="line"><span class="regexp">/</span><span class="regexp">/URL  http:/</span><span class="regexp">/a.jrg.com:8080/</span>a.html</span><br><span class="line"><span class="built_in">document</span>.querySelector(<span class="string">'.main input'</span>).addEventListener(<span class="string">'input'</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">		<span class="built_in">console</span>.log(<span class="keyword">this</span>.value);</span><br><span class="line">		<span class="built_in">window</span>.frames[<span class="number">0</span>].document.querySelector(<span class="string">'input'</span>).value = <span class="keyword">this</span>.value;</span><br><span class="line">&#125;)</span><br><span class="line"><span class="built_in">document</span>.domain = <span class="string">"jrg.com"</span></span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>body&gt;</span><br><span class="line">&lt;<span class="regexp">/html&gt;</span></span><br></pre></td></tr></table></figure>
+<p>b.html</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">	&lt;title&gt;<span class="xml"><span class="tag">&lt;/<span class="name">title</span>&gt;</span></span></span><br><span class="line">&lt;<span class="regexp">/head&gt;</span></span><br><span class="line"><span class="regexp">&lt;style&gt;</span></span><br><span class="line"><span class="regexp">	html,body&#123;</span></span><br><span class="line"><span class="regexp">		margin: 0;</span></span><br><span class="line"><span class="regexp">	&#125;</span></span><br><span class="line"><span class="regexp">	input&#123;</span></span><br><span class="line"><span class="regexp">		margin: 20px;</span></span><br><span class="line"><span class="regexp">		width: 200px;</span></span><br><span class="line"><span class="regexp">	&#125;</span></span><br><span class="line"><span class="regexp">&lt;/</span>style&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;input id = <span class="string">"input"</span> type=<span class="string">"text"</span> placeholder=<span class="string">"http://b.jrg.com:8080/b.html"</span>&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line"><span class="comment">// URL http://b.jrg.com:8080/b.html</span></span><br><span class="line"><span class="built_in">document</span>.querySelector(<span class="string">'#input'</span>).addEventListener(<span class="string">'input'</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="built_in">window</span>.parent.document.querySelector(<span class="string">'input'</span>).value = <span class="keyword">this</span>.value;</span><br><span class="line">&#125;)</span><br><span class="line"><span class="built_in">document</span>.domain = <span class="string">'jrg.com'</span>;</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>body&gt;</span><br><span class="line">&lt;<span class="regexp">/html&gt;</span></span><br></pre></td></tr></table></figure>
+<p>同样先是host 文件添加两条记录</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/9375265-1635c5a8acdb9d3e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>打开终端，cd 到当前文件夹，启动http-server</p>
+<p>用a.com 打开a.html, <a href="http://a.com:8080/a.html" target="_blank" rel="noopener">http://a.com:8080/a.html</a> , 其中页面iframe的地址是b.com，和网页不同源的。可以看到该frame可以正确加载，但我们不能用js操作它</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/9375265-7b6c2c22cc45104c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>用b.com 打开a.html, <a href="http://b.com:8080/a.html" target="_blank" rel="noopener">http://b.com:8080/a.html</a> , 其中frame 的地址是b.com，和网页同源的，现在我们就可以用 js 获取 iframe里面的内容</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/9375265-512536f64dfbb110.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<h5 id="（2）修改源-document-domain"><a href="#（2）修改源-document-domain" class="headerlink" title="（2）修改源 document.domain"></a>（2）修改源 document.domain</h5><p>当两个url的主域名不同，但子域名相同的情况下，我们可以通过<iframe>标签将目标url先嵌入html中，再设置页面的document.domain值为两个url共同的子域名，即可实现降域</iframe></p>
+<p><strong>注：两个url的子域名必须相同</strong></p>
+<p>举个例子</p>
+<p>a.jrg.com:8080/a.html 和 b.jrg.com:8080/b.html 页面代码都加上document.domain = “jrg.com”</p>
+<p>在a.html页面中建一个iframe，通过iframe，两个js文件即可交互数据</p>
+<p>a.html</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">&lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">"ct"</span>&gt;</span><br><span class="line">  &lt;h1&gt;使用降域实现跨域&lt;<span class="regexp">/h1&gt;</span></span><br><span class="line"><span class="regexp">  &lt;div class="main"&gt;</span></span><br><span class="line"><span class="regexp">    &lt;input type="text" placeholder="http:/</span><span class="regexp">/a.jrg.com:8080/</span>a.html<span class="string">"&gt;</span></span><br><span class="line"><span class="string">  &lt;/div&gt;</span></span><br><span class="line"><span class="string">  &lt;iframe src="</span>http:<span class="comment">//b.jrg.com:8080/b.html" frameborder="0" &gt;&lt;/iframe&gt;</span></span><br><span class="line">&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">&lt;script&gt;</span></span><br><span class="line"><span class="regexp">/</span><span class="regexp">/URL: http:/</span><span class="regexp">/a.jrg.com:8080/</span>a.html</span><br><span class="line"><span class="built_in">document</span>.querySelector(<span class="string">'.main input'</span>).addEventListener(<span class="string">'input'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="keyword">this</span>.value);</span><br><span class="line">  <span class="built_in">window</span>.frames[<span class="number">0</span>].document.querySelector(<span class="string">'input'</span>).value = <span class="keyword">this</span>.value;</span><br><span class="line">&#125;)</span><br><span class="line"><span class="built_in">document</span>.domain = <span class="string">"jrg.com"</span></span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
+<p>b.html</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line"><span class="comment">// URL: http://b.jrg.com:8080/b.html</span></span><br><span class="line"><span class="built_in">document</span>.querySelector(<span class="string">'#input'</span>).addEventListener(<span class="string">'input'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="built_in">window</span>.parent.document.querySelector(<span class="string">'input'</span>).value = <span class="keyword">this</span>.value;</span><br><span class="line">&#125;)</span><br><span class="line"><span class="built_in">document</span>.domain = <span class="string">'jrg.com'</span>;</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br></pre></td></tr></table></figure>
+<h4 id="4､PostMessage"><a href="#4､PostMessage" class="headerlink" title="4､PostMessage"></a>4､PostMessage</h4><p>允许来自不同源的脚本采用异步方式进行有限的通信，可以实现跨文本档、多窗口、跨域消息传递。</p>
+<p>举个例子 (实现iframe跨域通信)</p>
+<p>a.html</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">	&lt;title&gt;<span class="xml"><span class="tag">&lt;/<span class="name">title</span>&gt;</span></span></span><br><span class="line">&lt;<span class="regexp">/head&gt;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">&lt;style&gt;</span></span><br><span class="line"><span class="regexp">	.ct&#123;</span></span><br><span class="line"><span class="regexp">		width: 910px;</span></span><br><span class="line"><span class="regexp">		margin: 0 auto;</span></span><br><span class="line"><span class="regexp">	&#125;</span></span><br><span class="line"><span class="regexp">	.main&#123;</span></span><br><span class="line"><span class="regexp">		float: left;</span></span><br><span class="line"><span class="regexp">		width: 450px;</span></span><br><span class="line"><span class="regexp">		height: 300px;</span></span><br><span class="line"><span class="regexp">		border: 1px solid #ccc;</span></span><br><span class="line"><span class="regexp">	&#125;</span></span><br><span class="line"><span class="regexp">	.main input&#123;</span></span><br><span class="line"><span class="regexp">		margin: 20px;</span></span><br><span class="line"><span class="regexp">		width: 200px;</span></span><br><span class="line"><span class="regexp">	&#125;</span></span><br><span class="line"><span class="regexp">	.iframe&#123;</span></span><br><span class="line"><span class="regexp">		float: right;</span></span><br><span class="line"><span class="regexp">	&#125;</span></span><br><span class="line"><span class="regexp">	iframe&#123;</span></span><br><span class="line"><span class="regexp">		width: 450px;</span></span><br><span class="line"><span class="regexp">		height: 300px;</span></span><br><span class="line"><span class="regexp">		border: 1px dashed #ccc;</span></span><br><span class="line"><span class="regexp">	&#125;</span></span><br><span class="line"><span class="regexp">&lt;/</span>style&gt;</span><br><span class="line"></span><br><span class="line">&lt;body&gt;</span><br><span class="line">	&lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">"ct"</span>&gt;</span><br><span class="line">		&lt;h1&gt;使用postMessage实现跨域&lt;<span class="regexp">/h1&gt;</span></span><br><span class="line"><span class="regexp">	&lt;/</span>div&gt;</span><br><span class="line">	&lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">"main"</span>&gt;</span><br><span class="line">		&lt;input type=<span class="string">"text"</span> placeholder=<span class="string">"http://a.jrg.com:8080/a.html"</span>&gt;</span><br><span class="line">	&lt;<span class="regexp">/div&gt;</span></span><br><span class="line"><span class="regexp">	&lt;iframe src="http:/</span><span class="regexp">/localhost:8080/</span>b.html<span class="string">" frameborder="</span><span class="number">0</span><span class="string">"&gt;&lt;/iframe&gt;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">&lt;script&gt;</span></span><br><span class="line"><span class="string">//URL http://a.jrg.com:8080/a.html</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">$('.main input').addEventListener('input',function()&#123;</span></span><br><span class="line"><span class="string">	console.log(this.value);</span></span><br><span class="line"><span class="string">	window.frames[0].postMessage(this.value,'*');</span></span><br><span class="line"><span class="string">	// a.html向跨域的iframe页面http://localhost:8080/b.html传递数据</span></span><br><span class="line"><span class="string">&#125;)</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">//监听有没有数据发送过来</span></span><br><span class="line"><span class="string">window.addEventListener('message',function(e)&#123;</span></span><br><span class="line"><span class="string">	$('.main input').value = e.data</span></span><br><span class="line"><span class="string">	console.log(e.data)</span></span><br><span class="line"><span class="string">&#125;)</span></span><br><span class="line"><span class="string">function $(id)&#123;</span></span><br><span class="line"><span class="string">	return document.querySelector(id)</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string">&lt;/script&gt;</span></span><br><span class="line"><span class="string">&lt;/body&gt;</span></span><br><span class="line"><span class="string">&lt;/html&gt;</span></span><br></pre></td></tr></table></figure>
+<p>b.html</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">&lt;!DOCTYPE html&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;</span><br><span class="line">	&lt;title&gt;<span class="xml"><span class="tag">&lt;/<span class="name">title</span>&gt;</span></span></span><br><span class="line">&lt;<span class="regexp">/head&gt;</span></span><br><span class="line"><span class="regexp">&lt;style&gt;</span></span><br><span class="line"><span class="regexp">	html,body&#123;</span></span><br><span class="line"><span class="regexp">		margin: 0;</span></span><br><span class="line"><span class="regexp">	&#125;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">	input&#123;</span></span><br><span class="line"><span class="regexp">		margin: 20px;</span></span><br><span class="line"><span class="regexp">		width: 200px;</span></span><br><span class="line"><span class="regexp">	&#125;</span></span><br><span class="line"><span class="regexp">&lt;/</span>style&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">&lt;input id=<span class="string">"input"</span> type=<span class="string">"text"</span> placeholder=<span class="string">"http://b.jrg.com:8080/b.html"</span>&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line"><span class="comment">// URL http://b.jrg.com:8080/b.html</span></span><br><span class="line"></span><br><span class="line">$(<span class="string">'#input'</span>).addEventListener(<span class="string">'input'</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">	<span class="built_in">window</span>.parent.postMessage(<span class="keyword">this</span>.value,<span class="string">'*'</span>)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="built_in">window</span>.addEventListener(<span class="string">'message'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">e</span>)</span>&#123;</span><br><span class="line">	$(<span class="string">'#input'</span>).value = e.data</span><br><span class="line">	<span class="built_in">console</span>.log(e.data)</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">$</span>(<span class="params">id</span>)</span>&#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="built_in">document</span>.querySelector(id)</span><br><span class="line">&#125;</span><br><span class="line">&lt;<span class="regexp">/script&gt;</span></span><br><span class="line"><span class="regexp">&lt;/</span>body&gt;</span><br><span class="line">&lt;<span class="regexp">/html&gt;</span></span><br></pre></td></tr></table></figure>
+<p>启动http-server，查看执行结果</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/9375265-b6f0d1c6cde0e53c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/9375265-709d9265ccbb1d74.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>总结一下：</p>
+<p>A、a.html 通过 <code>window.postMessage()</code> 发送一个信息给b.html</p>
+<p>B、b.html 在 <code>window</code> 上添加一个事件监听绑定 <code>message</code> 事件，可以接收到来自任何不同域名通过 <code>postMessage</code> 方法发送过来的信息</p>
+<p>C、当 b.html 接收到 a.html 发送过来的信息时执行监听事件就 OK，在监听事件的 <code>event</code> 参数中包含了所有 <code>message</code> 事件接收到的相关数据。包括发送信息的内容 <code>event.data</code>，发送信息的域名 <code>event.origin</code> 等等</p>
+<p>同样的，在 a.html 内添加一个事件监听绑定 <code>message</code> 事件，在 b.html 内通过 <code>postMessage</code>方法发送信息给 a.html 一样可以进行跨域通信</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/05/音乐播放器/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -1771,151 +2015,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/11/07/任务队列异步函数节流/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Wuer">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Wuer">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/11/07/任务队列异步函数节流/" itemprop="url">任务队列异步函数节流</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-11-07T17:17:57+08:00">
-                2018-11-07
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="一、单线程"><a href="#一、单线程" class="headerlink" title="一、单线程"></a>一、单线程</h2><p>只有一条线，一步一步走，即所有任务都需要排队，前一个任务完成，才会执行后一个任务, 如果前一个任务时间耗时长，后一个任务就不得不一直等着</p>
-<h2 id="二、任务队列"><a href="#二、任务队列" class="headerlink" title="二、任务队列"></a>二、任务队列</h2><h3 id="A、分类"><a href="#A、分类" class="headerlink" title="A、分类"></a>A、分类</h3><p>(1)  同步任务</p>
-<p>(2)  异步任务</p>
-<h3 id="B、定义"><a href="#B、定义" class="headerlink" title="B、定义"></a>B、定义</h3><p>同步任务：各个任务按照文档定义的顺序一一推入”执行栈”中，当前一个任务执行完毕，才会开始执行下一个任务。</p>
-<p>异步任务：各个任务推入”任务队列”中，只有在当前的所有同步任务执行完毕，才会将队列中的任务”出队”执行。</p>
-<p>当线程中没有执行任何同步代码的前提下才会执行异步代码</p>
-<h3 id="C、案例"><a href="#C、案例" class="headerlink" title="C、案例"></a>C、案例</h3><p>(1)  例1</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a = <span class="number">1</span>;</span><br><span class="line">setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    a = <span class="number">2</span>;</span><br><span class="line">    <span class="built_in">console</span>.log(a);</span><br><span class="line">&#125;, <span class="number">0</span>);</span><br><span class="line"><span class="keyword">var</span> a ;</span><br><span class="line"><span class="built_in">console</span>.log(a);</span><br><span class="line">a = <span class="number">3</span>;</span><br><span class="line"><span class="built_in">console</span>.log(a);</span><br><span class="line"></span><br><span class="line"><span class="comment">//1</span></span><br><span class="line"><span class="comment">//3</span></span><br><span class="line"><span class="comment">//2</span></span><br></pre></td></tr></table></figure>
-<p><strong>分析：</strong></p>
-<ul>
-<li>setTimeout异步执行，从上到下执行完之后再执行setTimeout内的语句<br>var a = 1；声明并将1赋值给a</li>
-<li>setTimeout方法加入任务队列不执行<br>var a ；声明a a的值不变<br>console.log(a) ；输出为 1</li>
-<li>a = 3 ；将3赋值给a<br>console.log(a) ；输出为3</li>
-<li>执行setTimeout，a被赋值为2并即时输出</li>
-</ul>
-<p>(2)  例2</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> flag = <span class="literal">true</span>;</span><br><span class="line">setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    flag = <span class="literal">false</span>;</span><br><span class="line">&#125;,<span class="number">0</span>)</span><br><span class="line"><span class="keyword">while</span>(flag)&#123;&#125;</span><br><span class="line"><span class="built_in">console</span>.log(flag);</span><br><span class="line"><span class="comment">//不输出任何东西，且控制台/浏览器卡死</span></span><br></pre></td></tr></table></figure>
-<p><strong>分析</strong></p>
-<ul>
-<li>var flag = true，给flag赋值</li>
-<li>遇到setTimeout，加入任务队列，跳过</li>
-<li>while语句，这里的flag是true，执行{}内循环体，循环体没有内容，一直死循环</li>
-</ul>
-<h2 id="三、函数节流原理"><a href="#三、函数节流原理" class="headerlink" title="三、函数节流原理"></a>三、函数节流原理</h2><p>我们设置一个定时器，一开始判断定时器是不是有了，如果没有的话，再去设置一个定时器，如果有了话，把上一次的清除掉，然后我们再重新设置</p>
-<p>例子</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> timer</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(timer)&#123;</span><br><span class="line">        clearTimeout(timer)</span><br><span class="line">    &#125;</span><br><span class="line">    timer = setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'hello'</span>)</span><br><span class="line">    &#125;,<span class="number">1000</span>)</span><br><span class="line">&#125;</span><br><span class="line">test()</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1966,7 +2065,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">54</span>
+                  <span class="site-state-item-count">55</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
