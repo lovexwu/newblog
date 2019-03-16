@@ -229,6 +229,294 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/16/自定义指令/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Wuer">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Wuer">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/03/16/自定义指令/" itemprop="url">自定义指令</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-16T12:55:31+08:00">
+                2019-03-16
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="一、基本用法"><a href="#一、基本用法" class="headerlink" title="一、基本用法"></a>一、基本用法</h2><p>全局注册和局部注册，和组件类似，区别是把<strong>component 换成了 directive</strong></p>
+<h2 id="二、钩子函数"><a href="#二、钩子函数" class="headerlink" title="二、钩子函数"></a>二、钩子函数</h2><p>1､bind</p>
+<p><strong>只调用一次</strong> (和@click类似)，指定第一次绑定到元素时调用</p>
+<p>用这个钩子函数可以定义一个在绑定时执行一次的初始化动作</p>
+<p>2､inserted</p>
+<p>被绑定元素插入父节点时调用（父节点存在即可调用，不必存在document中）</p>
+<p>3､update</p>
+<p>被绑定元素所在模板更新时调用（不论绑定值是否变化）</p>
+<p>通过比较更新前后的绑定值，可以忽略不必要的模板更新</p>
+<p>4､componentUpdated</p>
+<p>被绑定元素所在模板完成一次更新周期时调用</p>
+<p>5､unbind</p>
+<p>只调用一次，指令与元素解绑时调用</p>
+<h2 id="三、钩子函数的参数"><a href="#三、钩子函数的参数" class="headerlink" title="三、钩子函数的参数"></a>三、钩子函数的参数</h2><p>1､el ：指令所绑定的元素，可以用来直接操作DOM</p>
+<p>2、binding：一个对象，包含属性有:</p>
+<p>   2.1､name：指令名，不包括v- 前缀</p>
+<p>   2.2､value：指令的绑定值，如： v-my-directive=”1+1”,value值是2</p>
+<p>   2.3､oldValue：指令绑定的前一个值，<strong>仅在update 和 componentUpdated中用</strong>，无论值是否改变都可用</p>
+<p>   2.4､expression：绑定值的<strong>字符串形式</strong>（绑定值的属性名，也叫值的表达式)</p>
+<p>​     如：v-my-directive=”1+1”，expression值是”1+1”</p>
+<p>   2.5､arg：传给指令的参数，如：v-my-directive:foo，arg的值是”foo”</p>
+<p>   2.6､modifiers：一个包含修饰符的对象</p>
+<p>​      如：v-my-directive.foo.bar，修饰符对象modifiers的值是 {foo: true, bar:true}</p>
+<p>3､vnode：Vue 编译生成的虚拟节点</p>
+<p>4､oldVnode：上一个虚拟节点<strong>，仅在update 和 componentUpdated中</strong></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;div v-test:xwu.e.f="word"&gt;&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<p>【Demo实例 <a href="https://jsbin.com/zovozoz/edit?html,output】" target="_blank" rel="noopener">https://jsbin.com/zovozoz/edit?html,output】</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/15/slot分发内容/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Wuer">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Wuer">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/03/15/slot分发内容/" itemprop="url">slot分发内容</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-15T11:17:44+08:00">
+                2019-03-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="一、slot定义"><a href="#一、slot定义" class="headerlink" title="一、slot定义"></a>一、slot定义</h2><p>中文<strong>插槽</strong>，<strong>混合父组件的内容与子组件自已模板的方式</strong></p>
+<p>其中 Vuejs 把 slot 元素作为原始内容的插槽</p>
+<h2 id="二、编译作用域"><a href="#二、编译作用域" class="headerlink" title="二、编译作用域"></a>二、编译作用域</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//父组件</span></span><br><span class="line">&lt;div id=<span class="string">"app"</span>&gt;</span><br><span class="line">&lt;my-component&gt;&#123;&#123;msg&#125;&#125;&lt;/my-component&gt;</span><br><span class="line">&lt;/div&gt; //msg绑定到是父组件的内容</span><br><span class="line"></span><br><span class="line"><span class="comment">//子组件</span></span><br><span class="line">...</span><br><span class="line">components:&#123;</span><br><span class="line">  <span class="string">'my-component'</span>:&#123;</span><br><span class="line">    template:<span class="string">'&lt;div&gt;&lt;/div&gt;'</span>    </span><br><span class="line">   &#125;    </span><br><span class="line">&#125;</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p>小总结：</p>
+<p>父组件模板内容在父组件作用域内编译</p>
+<p>子组件模板内容在子组件作用域内编译</p>
+<h2 id="三、slot用法"><a href="#三、slot用法" class="headerlink" title="三、slot用法"></a>三、slot用法</h2><p><strong>1､单个插槽</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//html</span></span><br><span class="line">...</span><br><span class="line">&lt;my-component&gt;我是父组件内容&lt;/my-component&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">//js</span></span><br><span class="line">...</span><br><span class="line">template:<span class="string">'&lt;div&gt;\</span></span><br><span class="line"><span class="string">    &lt;slot&gt;\</span></span><br><span class="line"><span class="string">    如果没有内容显示，默认是我\</span></span><br><span class="line"><span class="string">    &lt;/slot&gt;\</span></span><br><span class="line"><span class="string">&lt;/div&gt;'</span></span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p><strong>2､具名插槽</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//html</span></span><br><span class="line">...</span><br><span class="line">具名插槽（有具体名字的插槽）: 视图不变，数据变</span><br><span class="line">&lt;name-component&gt;</span><br><span class="line">  &lt;h3 slot="header"&gt;我是标题&lt;/h3&gt;</span><br><span class="line">  &lt;p&gt;我是正文内容&lt;/p&gt;</span><br><span class="line">  &lt;p&gt;正文内容有两段&lt;/p&gt;</span><br><span class="line">  &lt;p slot="footer"&gt;我是底部信息&lt;/p&gt;</span><br><span class="line">&lt;/name-component&gt;</span><br><span class="line"><span class="comment">//js</span></span><br><span class="line">...</span><br><span class="line"><span class="string">'name-component'</span>:&#123;</span><br><span class="line">  	template:<span class="string">'&lt;div&gt;\</span></span><br><span class="line"><span class="string">                &lt;div class="header"&gt;\n'</span> +</span><br><span class="line">                <span class="string">'        &lt;slot name="header"&gt;'</span> + <span class="comment">//取出name是 header 对应的内容</span></span><br><span class="line">                <span class="string">'&lt;/slot&gt;\n'</span> +</span><br><span class="line">                <span class="string">'    &lt;/div&gt;\n'</span> +</span><br><span class="line">                <span class="string">'    \n'</span> +</span><br><span class="line">                <span class="string">'    &lt;div class="container"&gt;\n'</span> +</span><br><span class="line">                <span class="string">'        &lt;slot&gt;'</span> + <span class="comment">// 没加 name 会把默认的取回来</span></span><br><span class="line">                <span class="string">'&lt;/slot&gt;\n'</span> +</span><br><span class="line">                <span class="string">'    &lt;/div&gt;\n'</span> +</span><br><span class="line">                <span class="string">'\n'</span> +</span><br><span class="line">                <span class="string">'    &lt;div class="footer"&gt;\n'</span> +</span><br><span class="line">                <span class="string">'        &lt;slot name="footer"&gt;'</span> + <span class="comment">//取出name是footer对应的内容</span></span><br><span class="line">                <span class="string">'&lt;/slot&gt;\n'</span> +</span><br><span class="line">                <span class="string">'    &lt;/div&gt;'</span> +</span><br><span class="line">                <span class="string">'&lt;/div&gt;'</span> </span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>【Demo实例<a href="https://jsbin.com/jijelop/edit?html,output】" target="_blank" rel="noopener">https://jsbin.com/jijelop/edit?html,output】</a></p>
+<h2 id="四､作用域插槽"><a href="#四､作用域插槽" class="headerlink" title="四､作用域插槽"></a>四､作用域插槽</h2><p>使用一个可以复用的模板来替换已经渲染的元素(<strong>从子组件中获取数据</strong>)</p>
+<p>注：template模板不会被渲染，渲染的是template标签内的内容 (v2.5.0版本之前)</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//html</span></span><br><span class="line">...</span><br><span class="line">&lt;my-component&gt;</span><br><span class="line">   &lt;template slot=<span class="string">"abc"</span> slot-scope=<span class="string">"prop"</span>&gt;</span><br><span class="line">     &#123;&#123; prop.text&#125;&#125;</span><br><span class="line">    &lt;/template&gt;   </span><br><span class="line"></span><br><span class="line">    <span class="comment">//v2.5.0版本后,可在别的标签(比如p,span,div等)上用 slot,slot-scope，并渲染标签</span></span><br><span class="line">    &lt;p slot=<span class="string">"abc"</span> slot-scope=<span class="string">"prop"</span>&gt; </span><br><span class="line">        &#123;&#123;prop.text&#125;&#125;</span><br><span class="line">    &lt;/p&gt;</span><br><span class="line"> &lt;/my-component&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">//js</span></span><br><span class="line">...</span><br><span class="line">components:&#123;</span><br><span class="line">   <span class="string">'my-component'</span>:&#123;</span><br><span class="line">      template:<span class="string">'&lt;div&gt;\</span></span><br><span class="line"><span class="string">            &lt;slot text="我是来自子组件" name="abc"&gt;\</span></span><br><span class="line"><span class="string">            &lt;/slot&gt;\</span></span><br><span class="line"><span class="string">      &lt;/div&gt;'</span><span class="comment">//在子组件定义一个slot，写上要传递的数据</span></span><br><span class="line">    &#125;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<p>【Demo实例<a href="https://jsbin.com/hawodox/edit?html,output】" target="_blank" rel="noopener">https://jsbin.com/hawodox/edit?html,output】</a></p>
+<h2 id="五、访问slot"><a href="#五、访问slot" class="headerlink" title="五、访问slot"></a>五、访问slot</h2><p>通过 this.$slots.name 访问</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//html</span></span><br><span class="line">...</span><br><span class="line">&lt;name-component&gt;</span><br><span class="line">	&lt;h3 slot="header"&gt;&lt;span&gt;我是标题&lt;/span&gt;&lt;/h3&gt;</span><br><span class="line">&lt;/name-component&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">//js</span></span><br><span class="line">...</span><br><span class="line">mounted:function()&#123;</span><br><span class="line"><span class="comment">// 访问插槽</span></span><br><span class="line"> <span class="keyword">var</span> header = <span class="keyword">this</span>.$slots.header </span><br><span class="line"> <span class="keyword">var</span> text = header[<span class="number">0</span>].elm.innerText</span><br><span class="line"> <span class="keyword">var</span> html = header[<span class="number">0</span>].elm.innerHTML</span><br><span class="line"> console.log(header)</span><br><span class="line"> console.log(text)</span><br><span class="line"> console.log(html)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>【Demo实例<a href="https://jsbin.com/zarewac/edit?html,console,output】" target="_blank" rel="noopener">https://jsbin.com/zarewac/edit?html,console,output】</a></p>
+<h2 id="六、组件高级用法-动态组件"><a href="#六、组件高级用法-动态组件" class="headerlink" title="六、组件高级用法-动态组件"></a>六、组件高级用法-动态组件</h2><p> component元素 （vue 提供）</p>
+<h5 id="1､作用"><a href="#1､作用" class="headerlink" title="1､作用"></a>1､作用</h5><p> 动态挂载不同组件</p>
+<h5 id="2､实现"><a href="#2､实现" class="headerlink" title="2､实现"></a>2､实现</h5><p>使用is属性实现</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//html</span></span><br><span class="line">...</span><br><span class="line">&lt;button @click="handleView('A')"&gt;第1句&lt;/button&gt;</span><br><span class="line">&lt;button @click="handleView('B')"&gt;第2句&lt;/button&gt;</span><br><span class="line">&lt;button @click="handleView('C')"&gt;第3句&lt;/button&gt;</span><br><span class="line">&lt;button @click="handleView('D')"&gt;第4句&lt;/button&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//js</span></span><br><span class="line">...</span><br><span class="line">components:&#123;</span><br><span class="line">        <span class="string">'compA'</span>:&#123;</span><br><span class="line">            template:<span class="string">'&lt;div&gt;离离原上草&lt;/div&gt;'</span></span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="string">'compB'</span>:&#123;</span><br><span class="line">            template:<span class="string">'&lt;div&gt;一岁一枯荣&lt;/div&gt;'</span></span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="string">'compC'</span>:&#123;</span><br><span class="line">            template:<span class="string">'&lt;div&gt;野火烧不尽&lt;/div&gt;'</span></span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="string">'compD'</span>:&#123;</span><br><span class="line">            template:<span class="string">'&lt;div&gt;春风吹又生&lt;/div&gt;'</span></span><br><span class="line">        &#125;</span><br><span class="line"> &#125;,</span><br><span class="line"> methods:&#123;</span><br><span class="line">        handleView:function(tag)&#123;</span><br><span class="line">            <span class="keyword">this</span>.thisView = <span class="string">'comp'</span> + tag</span><br><span class="line">        &#125;</span><br><span class="line"> &#125;</span><br><span class="line"> data:&#123;</span><br><span class="line">        thisView:<span class="string">'compA'</span></span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<p>【Demo实例 <a href="https://jsbin.com/gocarif/edit?html,output】" target="_blank" rel="noopener">https://jsbin.com/gocarif/edit?html,output】</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/14/组件通信/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -1057,7 +1345,7 @@
             <h3 id="一、绑定-Class"><a href="#一、绑定-Class" class="headerlink" title="一、绑定 Class"></a>一、绑定 Class</h3><h5 id="1､对象语法"><a href="#1､对象语法" class="headerlink" title="1､对象语法"></a>1､对象语法</h5><p>给<strong>v-bind:class</strong> 设置为一个对象，动态地切换 class，其中<strong>对象的键名是类名，值为布尔值 true 或 false</strong></p>
 <figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;div v-bind:class="&#123; active: isActive &#125;"&gt;&lt;/div&gt; // active存在取决isActive的值</span><br></pre></td></tr></table></figure>
 <p>1.1､ 绑定数据对象不必定义在模板内</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//html</span></span><br><span class="line">&lt;div v-bind:<span class="class"><span class="keyword">class</span></span>=<span class="string">"classObject"</span>&gt;&lt;/div&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">//js</span></span><br><span class="line">data: &#123;</span><br><span class="line">  classObject: &#123;</span><br><span class="line">    active: <span class="literal">true</span>,</span><br><span class="line">    <span class="string">'text-danger'</span>: <span class="literal">false</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//html</span></span><br><span class="line">&lt;div v-bind:<span class="class"><span class="keyword">class</span></span>=<span class="string">"classObject"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">//js</span></span><br><span class="line">data: &#123;</span><br><span class="line">  classObject: &#123;</span><br><span class="line">    active: <span class="literal">true</span>,</span><br><span class="line">    <span class="string">'text-danger'</span>: <span class="literal">false</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <p>1.2､ 绑定一个<strong>计算属</strong>性，可以使用 <strong>data</strong> 或 <strong>computed</strong></p>
 <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">data: &#123;</span><br><span class="line">  isActive: <span class="keyword">true</span>,</span><br><span class="line">  error: <span class="keyword">null</span></span><br><span class="line">&#125;,</span><br><span class="line">computed: &#123;</span><br><span class="line">  classObject: function () &#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">      active: <span class="keyword">this</span>.isActive &amp;&amp; !<span class="keyword">this</span>.error,</span><br><span class="line">      <span class="string">'text-danger'</span>: <span class="keyword">this</span>.error &amp;&amp; <span class="keyword">this</span>.error.type === <span class="string">'fatal'</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 <h5 id="2､数组语法"><a href="#2､数组语法" class="headerlink" title="2､数组语法"></a>2､数组语法</h5><p>把一个数组传给 <strong>v-bind:class</strong>，以应用一个 class 列表，<strong>数组成员直接对应className类名</strong></p>
@@ -1406,344 +1694,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/05/vue-blog/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Wuer">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Wuer">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/03/05/vue-blog/" itemprop="url">vue-blog</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-05T16:15:03+08:00">
-                2019-03-05
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="Vue-js之多人共享博客"><a href="#Vue-js之多人共享博客" class="headerlink" title="Vue.js之多人共享博客"></a>Vue.js之多人共享博客</h2><p><strong>预览地址：</strong><a href="https://lovexwu.github.io/vue-blogclient/#/" target="_blank" rel="noopener">https://lovexwu.github.io/vue-blogclient/#/</a></p>
-<h3 id="项目功能"><a href="#项目功能" class="headerlink" title="项目功能"></a>项目功能</h3><p>一、前、后端分离的<strong>多个页面</strong>的<strong>单页</strong>应用</p>
-<p>二、页面包括 首页、博客详情、创建、编辑、用户、我的、登录、注册 8个页面</p>
-<p> <strong>A、首页：</strong> 展示所有人设置到首页的博客列表<br> <strong>B、博客详情：</strong>展示博客详情<br> <strong>C、登录、注册：</strong> 用户登录注册<br> <strong>D、用户页面：</strong> 展示某个用户的所有博客列表<br> <strong>E、我的：</strong> 展示个人主页<br> <strong>F、编辑、删除、创建博客</strong></p>
-<p>注：</p>
-<p><strong>1､详情页面</strong>的博客内容是用 <strong>markdown 写 , html 方式 做一个展现</strong></p>
-<p>2､ <strong>创建页面 + 编辑页面 </strong>可以设置是否显示到首页（atIndex），如不设置，那首页就不会显示其内容</p>
-<h3 id="Get-到的点"><a href="#Get-到的点" class="headerlink" title="Get 到的点"></a>Get 到的点</h3><p>一、<strong>上传dist 文件内容 GitHub 四步曲</strong>   (考虑上传整个项目文件太大，可以上传编译后的dist文件内容即可)</p>
-<p>1､ GitHub 新建远程库</p>
-<p>2､ 终端 cd 到 项目文件夹 并 执行 npm run build 进行编译<br><img src="https://upload-images.jianshu.io/upload_images/14339384-1c7b52aca910751d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-<p>3､编译完后，dist 文件夹下 会有新的东西啦</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/14339384-9c1e49e63379181e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-<p>4、终端切换到dist下，推送到 GitHub 上就行啦</p>
-<h4 id="工程化上面四步曲"><a href="#工程化上面四步曲" class="headerlink" title="工程化上面四步曲"></a>工程化上面四步曲</h4><p>1､加上这一连串代码在package.json里</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/14339384-27b4a5b06088e1f9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-<p>分析： git push -f origin master  其中/f 是因为上传的不是源码，会覆盖也是应该的, 切记上传源码是不用 /f </p>
-<p><img src="/Users/laoda/Library/Application Support/typora-user-images/image-20190306122914148.png" alt="image-20190306122914148"></p>
-<p>2､终端就可以直接操作 npm run upload</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/14339384-0d2ee3934dcd056a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><br><img src="https://upload-images.jianshu.io/upload_images/14339384-f991ecf697e35a3a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-<p>也就是说，下次修改没问题，执行 npm run upload 就会依次执行那些命令操作啦</p>
-<h3 id="遇到的坑"><a href="#遇到的坑" class="headerlink" title="遇到的坑"></a>遇到的坑</h3><p>1､ Github pages预览，GitHub不支持http协议，将接口 <strong>http 改为 https</strong> 即可</p>
-<p>2、assetsPublicPath <strong>‘/‘改为‘./‘</strong> 即可<img src="https://upload-images.jianshu.io/upload_images/14339384-2247ad058106ad3b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-<p>Vue项目上传github在线预览 参考<br><a href="https://zhuanlan.zhihu.com/p/48631279" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/48631279</a><br><a href="https://www.jb51.net/article/142307.htm" target="_blank" rel="noopener">https://www.jb51.net/article/142307.htm</a><br><a href="https://zhuanlan.zhihu.com/p/35764920" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/35764920</a></p>
-<h3 id="技术栈"><a href="#技术栈" class="headerlink" title="技术栈"></a>技术栈</h3><p>vue-cli、vue2､axios、vue-router、vuex、es6､npm、elementUI</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/08/Grid/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Wuer">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Wuer">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/02/08/Grid/" itemprop="url">Grid</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-02-08T22:27:57+08:00">
-                2019-02-08
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="一、场景"><a href="#一、场景" class="headerlink" title="一、场景"></a>一、场景</h2><p>1､ 一个容器设置了 <strong>display: grid</strong>属性，就把容器元素定义了一个网格</p>
-<p>2､ 设置列/行的大小：<strong>grid-template-columns / grid-template-rows</strong></p>
-<p>3､使用<strong>grid-column</strong>和 <strong>grid-row</strong>把它的子元素放入网格</p>
-<h2 id="二、重要术语"><a href="#二、重要术语" class="headerlink" title="二、重要术语"></a>二、重要术语</h2><h4 id="1､Grid-Container（父容器）"><a href="#1､Grid-Container（父容器）" class="headerlink" title="1､Grid Container（父容器）"></a>1､Grid Container（父容器）</h4><p>设置了 <strong>display: grid</strong> 的元素， 这是所有 grid item 的<strong>直接父项</strong>。 下面的.container 就是 grid container</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"container"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"item item-1"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"item item-2"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"item item-3"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h4 id="2､Grid-Item（Grid-容器的孩子）"><a href="#2､Grid-Item（Grid-容器的孩子）" class="headerlink" title="2､Grid Item（Grid 容器的孩子）"></a>2､Grid Item（Grid 容器的孩子）</h4><p>即<strong>直接子元素</strong>，下面的 .item 元素就是 grid item，但 <strong>.sub-item不是</strong></p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"container"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"item"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span> </span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"item"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">"sub-item"</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"item"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h4 id="3､Grid-Line（分界线）"><a href="#3､Grid-Line（分界线）" class="headerlink" title="3､Grid Line（分界线）"></a>3､Grid Line（分界线）</h4><p>这个分界线组成网格结构。 它们既可以是<strong>垂直的（“column grid lines”）</strong>，也可以是<strong>水平的（“row grid lines”）</strong>，并位于行或列的任一侧。 下面的黄线就是一个列网格线。</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/14339384-efd9b54927a4b259.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-<h4 id="4､Grid-Track（两个相邻网格线之间的空间）"><a href="#4､Grid-Track（两个相邻网格线之间的空间）" class="headerlink" title="4､Grid Track（两个相邻网格线之间的空间）"></a>4､Grid Track（两个相邻网格线之间的空间）</h4><p>可以把它们想象成网格的列或行。 下面是第二行和第三行网格线之间的网格轨道</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/14339384-727620e3957041c6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-<h4 id="5､Grid-Cell（两个相邻的行和两个相邻的列网格线之间的空间）"><a href="#5､Grid-Cell（两个相邻的行和两个相邻的列网格线之间的空间）" class="headerlink" title="5､Grid Cell（两个相邻的行和两个相邻的列网格线之间的空间）"></a>5､Grid Cell（两个相邻的行和两个相邻的列网格线之间的空间）</h4><p>它是网格的一个“单元”。 下面是行网格线1和2之间以及列网格线2和3的网格单元</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/14339384-c95a216ad75a3b67.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-<h4 id="6､Grid-Area（四个网格线包围的总空间）"><a href="#6､Grid-Area（四个网格线包围的总空间）" class="headerlink" title="6､Grid Area（四个网格线包围的总空间）"></a>6､Grid Area（四个网格线包围的总空间）</h4><p>网格区域可以由任意数量的网格单元组成。 下面是行网格线1和3以及列网格线1和3之间的网格区域</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/14339384-06841c75d365ba46.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-<h2 id="三、Grid-Container-的部分属性"><a href="#三、Grid-Container-的部分属性" class="headerlink" title="三、Grid Container 的部分属性"></a>三、Grid Container 的部分属性</h2><h4 id="1､-display"><a href="#1､-display" class="headerlink" title="1､ display"></a>1､ display</h4><h5 id="1-1-作用"><a href="#1-1-作用" class="headerlink" title="1.1 作用"></a>1.1 作用</h5><p>将元素定义为 grid contaienr，并为其内容建立新的网格格式化上下文(grid formatting context)</p>
-<h5 id="1-2-用法"><a href="#1-2-用法" class="headerlink" title="1.2 用法"></a>1.2 用法</h5><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: grid | inline-grid | subgrid;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>a). grid ——— 生成一个块级(block-level)网格<br>b). inline-grid ——— 生成一个行级(inline-level)网格<br>c). subgrid ——— 如果你的 grid container 本身就是一个 grid item（即,嵌套网格），可以使用这个属性来表示你想从它的父节点获取它的行/列的大小，而不是指定它自己的大小</p>
-<p><strong>注：column, float, clear, 以及 vertical-align 对一个 grid container 没有影响</strong></p>
-<h4 id="2､-grid-template"><a href="#2､-grid-template" class="headerlink" title="2､ grid-template"></a>2､ grid-template</h4><h5 id="2-1-作用"><a href="#2-1-作用" class="headerlink" title="2.1 作用"></a>2.1 作用</h5><p>在单个声明中定义 grid-template-rows、grid-template-columns、grid-template-areas 的简写</p>
-<h5 id="2-2-实例"><a href="#2-2-实例" class="headerlink" title="2.2 实例"></a>2.2 实例</h5><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">  <span class="attribute">grid-template</span>:</span><br><span class="line">    [row1-start] <span class="string">"header header header"</span> <span class="number">25px</span> [row1-end]</span><br><span class="line">    [row2-start] <span class="string">"footer footer footer"</span> <span class="number">25px</span> [row2-end]</span><br><span class="line">    / auto <span class="number">50px</span> auto;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>等价于</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">  <span class="attribute">grid-template-rows</span>: [row1-start] <span class="number">25px</span> [row1-end row2-start] <span class="number">25px</span> [row2-end];</span><br><span class="line">  <span class="attribute">grid-template-columns</span>: auto <span class="number">50px</span> auto;</span><br><span class="line">  <span class="attribute">grid-template-areas</span>: </span><br><span class="line">    <span class="string">"header header header"</span> </span><br><span class="line">    <span class="string">"footer footer footer"</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="3､grid-gap"><a href="#3､grid-gap" class="headerlink" title="3､grid-gap"></a>3､grid-gap</h4><h5 id="3-1-作用"><a href="#3-1-作用" class="headerlink" title="3.1 作用"></a>3.1 作用</h5><p>grid-row-gap 和 grid-column-gap 的缩写</p>
-<h5 id="3-2-用法"><a href="#3-2-用法" class="headerlink" title="3.2 用法"></a>3.2 用法</h5><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">  <span class="attribute">grid-gap</span>: &lt;grid-row-gap&gt; &lt;grid-column-gap&gt;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h5 id="3-3-实例"><a href="#3-3-实例" class="headerlink" title="3.3 实例"></a>3.3 实例</h5><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">  <span class="attribute">grid-template-columns</span>: <span class="number">100px</span> <span class="number">50px</span> <span class="number">100px</span>;</span><br><span class="line">  <span class="attribute">grid-template-rows</span>: <span class="number">80px</span> auto <span class="number">80px</span>; </span><br><span class="line">  <span class="attribute">grid-gap</span>: <span class="number">10px</span> <span class="number">15px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="4､justify-items"><a href="#4､justify-items" class="headerlink" title="4､justify-items"></a>4､justify-items</h4><h5 id="4-1-作用"><a href="#4-1-作用" class="headerlink" title="4.1 作用"></a>4.1 作用</h5><p>a). 沿着行轴对齐网格内的内容（与之对应的是 align-items, 即沿着列轴对齐）</p>
-<p>b). 该值适用于容器内的所有的 grid items</p>
-<h5 id="4-2-用法"><a href="#4-2-用法" class="headerlink" title="4.2 用法"></a>4.2 用法</h5><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">  <span class="attribute">justify-items</span>: start | end | center | stretch;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>a). start ——— 内容与网格区域的左端对齐</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/14339384-ed82572142db676d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-<p>b). end ——— 内容与网格区域的右端对齐</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/14339384-8765e1169356dece.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-<p>c). center ——— 内容位于网格区域的中间位置</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/14339384-7174643083a92570.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-<p>d). stretch ——— 内容宽度占据整个网格区域空间(这是默认值)</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/14339384-98aeed32990c2a4d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-<h4 id="5､align-items"><a href="#5､align-items" class="headerlink" title="5､align-items"></a>5､align-items</h4><h5 id="5-1-作用"><a href="#5-1-作用" class="headerlink" title="5.1 作用"></a>5.1 作用</h5><p>a). 沿着列轴对齐grid item 里的内容（与之对应的是使用 justify-items 设置沿着行轴对齐）</p>
-<p>b). 该值适用于容器内的所有 grid item</p>
-<h5 id="5-2-用法"><a href="#5-2-用法" class="headerlink" title="5.2 用法"></a>5.2 用法</h5><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">  <span class="attribute">align-items</span>: start | end | center | stretch;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>a). start ——— 内容与网格区域的左端对齐</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/14339384-b16d1fa66a315d0f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-<p>b). end ——— 内容与网格区域的底部对齐</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/14339384-cc8d01542c71e44c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-<p>c). center ——— 内容位于网格区域的垂直中心位置</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/14339384-2a681576266a5680.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-<p>d). stretch ——— 内容高度占据整个网格区域空间(这是默认值)</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/14339384-bfce968a5623f44d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-<h2 id="四、Grid-Items-的部分属性"><a href="#四、Grid-Items-的部分属性" class="headerlink" title="四、Grid Items 的部分属性"></a>四、Grid Items 的部分属性</h2><h4 id="1､grid-column-start-grid-column-end-grid-row-start-grid-row-end"><a href="#1､grid-column-start-grid-column-end-grid-row-start-grid-row-end" class="headerlink" title="1､grid-column-start / grid-column-end / grid-row-start /grid-row-end"></a>1､grid-column-start / grid-column-end / grid-row-start /grid-row-end</h4><h5 id="1-1-作用-1"><a href="#1-1-作用-1" class="headerlink" title="1.1 作用"></a>1.1 作用</h5><p>a). 使用特定的网格线确定 grid item 在网格内的位置。</p>
-<p>b). grid-column-start/grid-row-start 属性表示grid item的网格线的起始位置</p>
-<p>c). grid-column-end/grid-row-end属性表示网格项的网格线的终止位置</p>
-<h5 id="1-2-用法-1"><a href="#1-2-用法-1" class="headerlink" title="1.2 用法"></a>1.2 用法</h5><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.item</span> &#123;</span><br><span class="line">  <span class="attribute">grid-column-start</span>: &lt;number&gt; | &lt;name&gt; | span &lt;number&gt; | span &lt;name&gt; | auto</span><br><span class="line">  grid-column-end: &lt;number&gt; | &lt;name&gt; | span &lt;number&gt; | span &lt;name&gt; | auto</span><br><span class="line">  grid-row-start: &lt;number&gt; | &lt;name&gt; | span &lt;number&gt; | span &lt;name&gt; | auto</span><br><span class="line">  grid-row-end: &lt;number&gt; | &lt;name&gt; | span &lt;number&gt; | span &lt;name&gt; | auto</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>a). <line> ——— 可以是一个数字来指代相应编号的网格线，也可使用名称指代相应命名的网格线<br>b). span <number> ——— 网格项将跨越指定数量的网格轨道<br>c). span <name> ——— 网格项将跨越一些轨道，直到碰到指定命名的网格线<br>d). auto ——— 自动布局， 或者自动跨越， 或者跨越一个默认的轨道</name></number></line></p>
-<h5 id="1-3-实例"><a href="#1-3-实例" class="headerlink" title="1.3 实例"></a>1.3 实例</h5><p>实例一</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.item-a</span> &#123;</span><br><span class="line">  <span class="attribute">grid-column-start</span>: <span class="number">2</span>;</span><br><span class="line">  <span class="attribute">grid-column-end</span>: five;</span><br><span class="line">  <span class="attribute">grid-row-start</span>: row1-start</span><br><span class="line">  grid-row-end: <span class="number">3</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><img src="https://upload-images.jianshu.io/upload_images/14339384-78e4a28bc0773421.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-<p>实例二</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.item-b</span> &#123;</span><br><span class="line">  <span class="attribute">grid-column-start</span>: <span class="number">1</span>;</span><br><span class="line">  <span class="attribute">grid-column-end</span>: span col4-start;</span><br><span class="line">  <span class="attribute">grid-row-start</span>: <span class="number">2</span></span><br><span class="line">  grid-row-end: span <span class="number">2</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><img src="https://upload-images.jianshu.io/upload_images/14339384-b3731a1a1fe1576f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-<p><strong>特别注意：</strong> </p>
-<p>1)､如果没有声明 grid-column-end / grid-row-end，<strong>默认情况下，该网格项将跨越1个轨道</strong></p>
-<p>2)､网格项可以相互重叠。 您可以<strong>使用z-index来控制它们的堆叠顺序</strong></p>
-<h4 id="2､grid-column-grid-row"><a href="#2､grid-column-grid-row" class="headerlink" title="2､grid-column / grid-row"></a>2､grid-column / grid-row</h4><h5 id="2-1-作用-1"><a href="#2-1-作用-1" class="headerlink" title="2.1 作用"></a>2.1 作用</h5><p>grid-column-start + grid-column-end, 和 grid-row-start + grid-row-end 的简写形式</p>
-<h5 id="2-2-用法"><a href="#2-2-用法" class="headerlink" title="2.2 用法"></a>2.2 用法</h5><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.item</span> &#123;</span><br><span class="line">  <span class="attribute">grid-column</span>: &lt;start-line&gt; / &lt;end-line&gt; | &lt;start-line&gt; / span &lt;value&gt;;</span><br><span class="line">  <span class="attribute">grid-row</span>: &lt;start-line&gt; / &lt;end-line&gt; | &lt;start-line&gt; / span &lt;value&gt;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h5 id="2-3-实例"><a href="#2-3-实例" class="headerlink" title="2.3 实例"></a>2.3 实例</h5><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.item-c</span> &#123;</span><br><span class="line">  <span class="attribute">grid-column</span>: <span class="number">3</span> / span <span class="number">2</span>;</span><br><span class="line">  <span class="attribute">grid-row</span>: third-line / <span class="number">4</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><img src="https://upload-images.jianshu.io/upload_images/14339384-026a9f40f77462f6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-<p><strong>特别注意：如果没有指定结束行值，则该网格项默认跨越1个轨道</strong></p>
-<h4 id="3､grid-area"><a href="#3､grid-area" class="headerlink" title="3､grid-area"></a>3､grid-area</h4><h5 id="3-1-作用-1"><a href="#3-1-作用-1" class="headerlink" title="3.1 作用"></a>3.1 作用</h5><p>a). 给 grid item 进行命名以便于使用 grid-template-areas 属性创建模板时来进行引用。</p>
-<p>b). 可以做为 grid-row-start + grid-column-start + grid-row-end + grid-column-end 的简写形式</p>
-<h5 id="3-2-用法-1"><a href="#3-2-用法-1" class="headerlink" title="3.2 用法"></a>3.2 用法</h5><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.item</span> &#123;</span><br><span class="line">  <span class="attribute">grid-area</span>: &lt;name&gt; | &lt;row-start&gt; / &lt;column-start&gt; / &lt;row-end&gt; / &lt;column-end&gt;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>a). <name> - 你的命名<br>b). <row-start> / <column-start> / <row-end> / <column-end> - 可以是数字，也可以是网格线的名字</column-end></row-end></column-start></row-start></name></p>
-<h5 id="3-3-实例-1"><a href="#3-3-实例-1" class="headerlink" title="3.3 实例"></a>3.3 实例</h5><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.item-d</span> &#123;</span><br><span class="line">  <span class="attribute">grid-area</span>: header</span><br><span class="line">&#125;<span class="comment">/*给一个网格项命名*/</span></span><br></pre></td></tr></table></figure>
-<p>作为 grid-row-start + grid-column-start + grid-row-end + grid-column-end 的简写:</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.item-d</span> &#123;</span><br><span class="line">  <span class="attribute">grid-area</span>: <span class="number">1</span> / col4-start / last-line / <span class="number">6</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><img src="https://upload-images.jianshu.io/upload_images/14339384-2ff00b0b270e7a4e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-<h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h4><p><a href="http://chris.house/blog/a-complete-guide-css-grid-layout/" target="_blank" rel="noopener">http://chris.house/blog/a-complete-guide-css-grid-layout/</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1794,7 +1744,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">52</span>
+                  <span class="site-state-item-count">54</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
