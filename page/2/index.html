@@ -229,6 +229,276 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/08/v-bind 的 class+style的绑定/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Wuer">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Wuer">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/03/08/v-bind 的 class+style的绑定/" itemprop="url">v-bind 的class+style的绑定</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-08T18:15:50+08:00">
+                2019-03-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="一、绑定-Class"><a href="#一、绑定-Class" class="headerlink" title="一、绑定 Class"></a>一、绑定 Class</h3><h5 id="1､对象语法"><a href="#1､对象语法" class="headerlink" title="1､对象语法"></a>1､对象语法</h5><p>给<strong>v-bind:class</strong> 设置为一个对象，动态地切换 class，其中<strong>对象的键名是类名，值为布尔值 true 或 false</strong></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;div v-bind:class="&#123; active: isActive &#125;"&gt;&lt;/div&gt; // active存在取决isActive的值</span><br></pre></td></tr></table></figure>
+<p>1.1､ 绑定数据对象不必定义在模板内</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//html</span></span><br><span class="line">&lt;div v-bind:<span class="class"><span class="keyword">class</span></span>=<span class="string">"classObject"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">//js</span></span><br><span class="line">data: &#123;</span><br><span class="line">  classObject: &#123;</span><br><span class="line">    active: <span class="literal">true</span>,</span><br><span class="line">    <span class="string">'text-danger'</span>: <span class="literal">false</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>1.2､ 绑定一个<strong>计算属</strong>性，可以使用 <strong>data</strong> 或 <strong>computed</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">data: &#123;</span><br><span class="line">  isActive: <span class="keyword">true</span>,</span><br><span class="line">  error: <span class="keyword">null</span></span><br><span class="line">&#125;,</span><br><span class="line">computed: &#123;</span><br><span class="line">  classObject: function () &#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">      active: <span class="keyword">this</span>.isActive &amp;&amp; !<span class="keyword">this</span>.error,</span><br><span class="line">      <span class="string">'text-danger'</span>: <span class="keyword">this</span>.error &amp;&amp; <span class="keyword">this</span>.error.type === <span class="string">'fatal'</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="2､数组语法"><a href="#2､数组语法" class="headerlink" title="2､数组语法"></a>2､数组语法</h5><p>把一个数组传给 <strong>v-bind:class</strong>，以应用一个 class 列表，<strong>数组成员直接对应className类名</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//html</span></span><br><span class="line">&lt;div v-bind:class="[activeClass, errorClass]"&gt;&lt;/div&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">//js</span></span><br><span class="line">data: &#123;</span><br><span class="line">  activeClass: <span class="string">'active'</span>,</span><br><span class="line">  errorClass: <span class="string">'text-danger'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>【Demo 实例 <a href="https://jsbin.com/honegiv/edit?html,output" target="_blank" rel="noopener">https://jsbin.com/honegiv/edit?html,output</a> 】</p>
+<h5 id="3､数组和对象混用"><a href="#3､数组和对象混用" class="headerlink" title="3､数组和对象混用"></a>3､数组和对象混用</h5><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;div v-bind:class="[&#123; active: isActive &#125;, errorClass]"&gt;&lt;/div&gt; // 这样写始终添加 errorClass</span><br></pre></td></tr></table></figure>
+<p>【Demo 实例 <a href="https://jsbin.com/desibet/edit?html,output" target="_blank" rel="noopener">https://jsbin.com/desibet/edit?html,output</a> 】</p>
+<h3 id="二、绑定-内联-Style"><a href="#二、绑定-内联-Style" class="headerlink" title="二、绑定 内联 Style"></a>二、绑定 内联 Style</h3><p>用 <strong>v­-bind:style （即：style</strong> ） 给元素绑定内联样式</p>
+<p>注：CSS 属性名可以用<strong>驼峰式 (camelCase)</strong> 或<strong>短横线</strong>分隔 (kebab-case，记得用<strong>单引号</strong>括起来) 来命名</p>
+<h5 id="1､对象语法-1"><a href="#1､对象语法-1" class="headerlink" title="1､对象语法"></a>1､对象语法</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//html</span></span><br><span class="line">&lt;div v-bind:style="&#123; color: activeColor, fontSize: fontSize + 'px' &#125;"&gt;&lt;/div&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">//js</span></span><br><span class="line">data: &#123;</span><br><span class="line">  activeColor: <span class="string">'red'</span>,</span><br><span class="line">  fontSize: <span class="number">30</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="2､数组语法-1"><a href="#2､数组语法-1" class="headerlink" title="2､数组语法"></a>2､数组语法</h5><p>使用<strong>v-bind:style</strong> 将多个样式对象应用到同一个元素上</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;div v-bind:style="[baseStyles, overridingStyles]"&gt;&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<p><strong>使用 :style 时， Vue .js 会自动给特殊的 css 属性名称增加前缀， 比如 transform</strong> </p>
+<p>【demo 实例 <a href="https://jsbin.com/qapozop/6/edit?html,output" target="_blank" rel="noopener">https://jsbin.com/qapozop/6/edit?html,output</a> 】</p>
+<p>切记： <strong>vue中只要是大写字母都会转换成 - 加 小写</strong> ，比如：</p>
+<p>​        fontSize 转化成 font-size</p>
+<p>​        dsfASDghG 转化成 dsf-a-s-dgh-g</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/07/计算属性/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Wuer">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Wuer">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/03/07/计算属性/" itemprop="url">计算属性</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-07T23:53:05+08:00">
+                2019-03-07
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="一、定义"><a href="#一、定义" class="headerlink" title="一、定义"></a>一、定义</h3><p>在模板中,对于任何复杂逻辑，应当使用<strong>计算属性</strong></p>
+<p>【Demo实例地址 <a href="https://jsbin.com/zehemop/2/edit?html,output" target="_blank" rel="noopener">https://jsbin.com/zehemop/2/edit?html,output</a> 】</p>
+<h3 id="二、用法"><a href="#二、用法" class="headerlink" title="二、用法"></a>二、用法</h3><p>1､所有计算属性都以<strong>函数形式</strong>写在 <strong>Vue 实例内的 computed</strong> 选项内，返回计算后的结果</p>
+<p>2､可以依赖多个Vue实例数据，只要其中任一个数据变化，计算属性会重新执行，视图也更新</p>
+<p>【Demo实例地址 <a href="https://jsbin.com/hajucur/edit?html,console,output" target="_blank" rel="noopener">https://jsbin.com/hajucur/edit?html,console,output</a> 】</p>
+<h3 id="三、setter-getter"><a href="#三、setter-getter" class="headerlink" title="三、setter|getter"></a>三、setter|getter</h3><p>计算属性<strong>默认只有 getter</strong> ，不过在需要时可以提供一个 setter </p>
+<p>当手动修改计算属性的值就像修改一个普通数据那样时，就会触发 setter函数，执行一些自定义的操作</p>
+<p>【Demo实例地址 <a href="https://jsbin.com/qoduboh/1/edit?html,output" target="_blank" rel="noopener">https://jsbin.com/qoduboh/1/edit?html,output</a> 】</p>
+<h3 id="四、计算属性缓存"><a href="#四、计算属性缓存" class="headerlink" title="四、计算属性缓存"></a>四、计算属性缓存</h3><p>调用 <strong>methods 里的方法</strong>与<strong>计算属性</strong>起到同样的作用</p>
+<p><strong>页面中的方法：</strong> 如果是调用方法，只要页面重新渲染。方法就会重新执行，不需要渲染，则不需要重新执行<br><strong>计算属性：</strong>不管是否渲染，只要计算属性依赖的数据未发生变化，就永远不变</p>
+<p>当遍历大数组和做大量计算时，应当使用计算属性，除非你不希望得到缓存</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/07/数据绑定-指令-事件/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -1546,279 +1816,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/24/懒加载、瀑布流和木桶布局/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Wuer">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Wuer">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/12/24/懒加载、瀑布流和木桶布局/" itemprop="url">懒加载、瀑布流和木桶布局</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-24T21:55:05+08:00">
-                2018-12-24
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="一、懒加载"><a href="#一、懒加载" class="headerlink" title="一、懒加载"></a>一、懒加载</h1><h3 id="A、定义"><a href="#A、定义" class="headerlink" title="A、定义"></a>A、定义</h3><p>当打开一个有很多图片的页面时，先只加载页面上看到的图片，等滚动到页面下面时，再加载所需的图片。这就是图片懒加载。</p>
-<h3 id="B、作用"><a href="#B、作用" class="headerlink" title="B、作用"></a>B、作用</h3><p>减少或延迟请求数，缓解浏览器的压力，增强用户体验。</p>
-<h3 id="C、实现方式"><a href="#C、实现方式" class="headerlink" title="C、实现方式"></a>C、实现方式</h3><p>(1) 设置图片src属性为同一张图片，并同时自定义一个data-src属性来存储图片的真实地址<br>(2) 页面初始化显示的时候或者浏览器发生滚动的时候判断图片是否在视野中<br>(3) 当图片在视野中时，通过js自动改变该区域的图片的src属性为真实地址</p>
-<h3 id="D、判断元素在视野中"><a href="#D、判断元素在视野中" class="headerlink" title="D、判断元素在视野中"></a>D、判断元素在视野中</h3><p><strong>如果元素距离页面内容的高度小于窗口滚动距离+窗口高度，元素就会在我们视野中啦！</strong></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$(node).offset().top&lt;=$(<span class="built_in">window</span>).height() + $(<span class="built_in">window</span>).scrollTop()</span><br></pre></td></tr></table></figure>
-<p><img src="https://upload-images.jianshu.io/upload_images/14339384-1b8e47337e086520.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-<h3 id="E、代码部分"><a href="#E、代码部分" class="headerlink" title="E、代码部分"></a>E、代码部分</h3><h5 id="1-html-部分"><a href="#1-html-部分" class="headerlink" title="(1) html 部分"></a>(1) html 部分</h5><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"container"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"http://smashinghub.com/wp-content/uploads/2014/08/cool-loading-animated-gif-3.gif"</span> <span class="attr">alt</span>=<span class="string">"1"</span> <span class="attr">data-src</span>=<span class="string">"http://cdn.jirengu.com/book.jirengu.com/img/1.jpg"</span>&gt;</span></span><br><span class="line">   .</span><br><span class="line">   .</span><br><span class="line">   .</span><br><span class="line">    <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"http://smashinghub.com/wp-content/uploads/2014/08/cool-loading-animated-gif-3.gif"</span> <span class="attr">alt</span>=<span class="string">"20"</span> <span class="attr">data-src</span>=<span class="string">"http://cdn.jirengu.com/book.jirengu.com/img/20.jpg"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="css"><span class="selector-class">.container</span> &#123;</span></span><br><span class="line"><span class="undefined">      max-width: 800px;</span></span><br><span class="line"><span class="undefined">      margin: 0 auto;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="css">    <span class="selector-class">.container</span><span class="selector-pseudo">:after</span>&#123;</span></span><br><span class="line"><span class="undefined">      content: '';</span></span><br><span class="line"><span class="undefined">      display: block;</span></span><br><span class="line"><span class="undefined">      clear: both;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="css">    <span class="selector-class">.container</span> <span class="selector-tag">img</span> &#123;</span></span><br><span class="line"><span class="undefined">      float: left;</span></span><br><span class="line"><span class="undefined">      width: 50%;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined">    h1&#123;</span></span><br><span class="line"><span class="undefined">      clear: both;</span></span><br><span class="line"><span class="undefined">    &#125; </span></span><br><span class="line"><span class="css"><span class="comment">/*注：img都是浮动，如果不清除浮动，h1的值高度就相当于container里面最高的，不是实际的数值*/</span></span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h5 id="2-js-部分"><a href="#2-js-部分" class="headerlink" title="(2) js 部分"></a>(2) js 部分</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">  &lt;script&gt;</span><br><span class="line">    start() <span class="comment">// 一开始没有滚动，也需要触发一次 </span></span><br><span class="line"></span><br><span class="line">    $(<span class="built_in">window</span>).on(<span class="string">'scroll'</span>, <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;<span class="comment">// 滚动时，显示对应图片</span></span><br><span class="line">      start()</span><br><span class="line">    &#125;)</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">start</span>(<span class="params"></span>)</span>&#123;<span class="comment">//对container里的所有图片需要一个个去判断，所以用 each</span></span><br><span class="line">      $(<span class="string">'.container img'</span>).not(<span class="string">'[data-isLoaded]'</span>).each(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">var</span> $node = $(<span class="keyword">this</span>) <span class="comment">//not('[data-isLoaded]') 没有加载的图片</span></span><br><span class="line">        <span class="keyword">if</span>( isShow($node) )&#123;<span class="comment">// 如果出现在眼前了</span></span><br><span class="line">          loadImg($node)<span class="comment">// 就去加载它</span></span><br><span class="line">        &#125;</span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">   </span><br><span class="line"><span class="comment">//因为是判断一个元素，那元素我们给它一个参数，也就是参数对应的是一个元素</span></span><br><span class="line"><span class="comment">//因为我们用到的是jquery,所以参数是jquery对象,所以取名$node</span></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">isShow</span>(<span class="params">$node</span>)</span>&#123; <span class="comment">// 判断元素是否在视野中</span></span><br><span class="line">      <span class="keyword">return</span> $node.offset().top &lt;= $(<span class="built_in">window</span>).height() + $(<span class="built_in">window</span>).scrollTop()</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">loadImg</span>(<span class="params">$img</span>)</span>&#123; <span class="comment">//加载图片</span></span><br><span class="line">      $img.attr(<span class="string">'src'</span>, $img.attr(<span class="string">'data-src'</span>))<span class="comment">//attr 写一个参数是设置值，两个是取值</span></span><br><span class="line">      $img.attr(<span class="string">'data-isLoaded'</span>, <span class="number">1</span>) <span class="comment">// 区别图片是否被加载过，防止重新加载</span></span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<p>demo 地址 <a href="http://js.jirengu.com/setezusife/1/edit?html,output" target="_blank" rel="noopener">http://js.jirengu.com/setezusife/1/edit?html,output</a></p>
-<h1 id="二、瀑布流"><a href="#二、瀑布流" class="headerlink" title="二、瀑布流"></a>二、瀑布流</h1><h3 id="A、定义-1"><a href="#A、定义-1" class="headerlink" title="A、定义"></a>A、定义</h3><p>宽度相同，而高度是随机的布局</p>
-<h3 id="B、实现方式"><a href="#B、实现方式" class="headerlink" title="B、实现方式"></a>B、实现方式</h3><p>(1) 设置图片宽度一致，高度可以不一致(<strong>注：图片样式必须得加上position:absolute，因为js 是靠定位来控制其位置</strong>)</p>
-<p>(2) 初始化一个数组，存储每一列的高度(数组的长度是布局的列数)，并且给每个下标赋值为0</p>
-<p>(3) 计算出一排的列表个数（容器宽度<strong>除以</strong>元素宽度）</p>
-<p>(4) 循环每个元素, 循环的内部再循环列数组，判断哪一列元素的高度最小，就将下一个元素放到该列</p>
-<p>(5) 再判断放入该元素之后所形成的新的整排元素内，哪一列元素最短，再把下一个元素放置该列，以此类推</p>
-<p>(6) 最后当图片加载完成，所有图片依次放置在最小的列数下面</p>
-<h3 id="C、代码部分"><a href="#C、代码部分" class="headerlink" title="C、代码部分"></a>C、代码部分</h3><h5 id="1-html-部分-1"><a href="#1-html-部分-1" class="headerlink" title="(1) html 部分"></a>(1) html 部分</h5><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"waterfall"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"http://via.placeholder.com/100x100"</span> <span class="attr">alt</span>=<span class="string">""</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"http://via.placeholder.com/100x70"</span> <span class="attr">alt</span>=<span class="string">""</span>&gt;</span>   </span><br><span class="line">    <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"http://via.placeholder.com/100x200"</span> <span class="attr">alt</span>=<span class="string">""</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"http://via.placeholder.com/100x130"</span> <span class="attr">alt</span>=<span class="string">""</span>&gt;</span>   </span><br><span class="line">    <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"http://via.placeholder.com/100x400"</span> <span class="attr">alt</span>=<span class="string">""</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"http://via.placeholder.com/100x110"</span> <span class="attr">alt</span>=<span class="string">""</span>&gt;</span>   </span><br><span class="line">   </span><br><span class="line">    <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"http://via.placeholder.com/100x60"</span> <span class="attr">alt</span>=<span class="string">""</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"http://via.placeholder.com/100x180"</span> <span class="attr">alt</span>=<span class="string">""</span>&gt;</span>      </span><br><span class="line">    <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"http://via.placeholder.com/100x100"</span> <span class="attr">alt</span>=<span class="string">""</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"http://via.placeholder.com/100x200"</span> <span class="attr">alt</span>=<span class="string">""</span>&gt;</span>      </span><br><span class="line">    <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"http://via.placeholder.com/100x80"</span> <span class="attr">alt</span>=<span class="string">""</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">"http://via.placeholder.com/100x100"</span> <span class="attr">alt</span>=<span class="string">""</span>&gt;</span>      </span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">/* 因为要响应式效果，所以须隐藏宽</span></span><br><span class="line"><span class="css"><span class="selector-class">.waterfall</span>&#123;</span></span><br><span class="line"><span class="undefined">	max-width: 800px;</span></span><br><span class="line"><span class="undefined">	margin: 0 auto;</span></span><br><span class="line"><span class="undefined">&#125;</span></span><br><span class="line"><span class="undefined">*/</span></span><br><span class="line"><span class="css"><span class="selector-class">.waterfall</span> <span class="selector-tag">img</span>&#123;</span></span><br><span class="line"><span class="css">  	<span class="selector-tag">position</span>: <span class="selector-tag">absolute</span>; <span class="comment">/*必须absolute，因为后面要js控制它的位置*/</span></span></span><br><span class="line"><span class="undefined">  	width : 100px;</span></span><br><span class="line"><span class="undefined">  	margin: 10px;</span></span><br><span class="line"><span class="undefined">&#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>(2) js部分</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> colCount <span class="comment">//定义列数</span></span><br><span class="line"><span class="keyword">var</span> colHeightArr = [] <span class="comment">//存放每一列高度的数组，该数组的长度为 colCount</span></span><br><span class="line"><span class="keyword">var</span> imgWidth = $(<span class="string">'.waterfall img'</span>).outerWidth(<span class="literal">true</span>) <span class="comment">//单张图片的宽度</span></span><br><span class="line"></span><br><span class="line">colCount = <span class="built_in">Math</span>.floor($(<span class="string">'.waterfall'</span>).width()/ imgWidth) <span class="comment">//计算列数  </span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i&lt;colCount; i++)&#123;</span><br><span class="line">  colHeightArr[i] = <span class="number">0</span> <span class="comment">// 一开始 初始化为0</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//假设colCount是3,那数组有三个元素，都赋值为0就是[0,0,0]</span></span><br><span class="line"><span class="comment">//colHeightArr[0] = 0、colHeightArr[1] = 0、colHeightArr[2] = 0</span></span><br><span class="line"><span class="comment">// 也就是colHeightArr = [0,0,0]</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//console.log($('.waterfall img').eq(2).height())</span></span><br><span class="line"><span class="comment">//测试第三张图的高度，有时显示的是图片的真实高度200,有时显示0，也就是说要在图片加载完了，才能读到图片的真实高度</span></span><br><span class="line"></span><br><span class="line">$(<span class="string">'.waterfall img'</span>).on(<span class="string">'load'</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;<span class="comment">// 加载之后去处理</span></span><br><span class="line">   <span class="comment">//console.log(this) 加载的元素打印出来  </span></span><br><span class="line">  </span><br><span class="line">   <span class="keyword">var</span> minValue = colHeightArr[<span class="number">0</span>] <span class="comment">//定义最小高度</span></span><br><span class="line">   <span class="keyword">var</span> minIndex = <span class="number">0</span> <span class="comment">//定义最小高度的下标</span></span><br><span class="line">   </span><br><span class="line">   <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i&lt; colCount; i++)&#123; </span><br><span class="line">     <span class="keyword">if</span>(colHeightArr[i] &lt; minValue)&#123;<span class="comment">//如果最小高度数组中的值小于最小值</span></span><br><span class="line">        minValue = colHeightArr[i] <span class="comment">// 那么最小高度数组中的值是真正的最小值</span></span><br><span class="line">        minIndex = i <span class="comment">//最小下标是当前小标，是真正的最小下标（也就是最小高度所列）</span></span><br><span class="line">     &#125;</span><br><span class="line">   &#125;</span><br><span class="line">    </span><br><span class="line"> <span class="comment">//摆放图片</span></span><br><span class="line">  $(<span class="keyword">this</span>).css(&#123;<span class="comment">//图片的位置</span></span><br><span class="line">    top: minValue,</span><br><span class="line">    left: minIndex*imgWidth</span><br><span class="line">  &#125;)</span><br><span class="line">  </span><br><span class="line">  colHeightArr[minIndex] += $(<span class="keyword">this</span>).outerHeight(<span class="literal">true</span>)<span class="comment">//整列的值 </span></span><br><span class="line">  <span class="comment">//整列的值=  它自已 + 当前元素的高度</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">//当窗口大小重置之后，重新执行</span></span><br><span class="line">  $(<span class="built_in">window</span>).on(<span class="string">'resize'</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    reset()</span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line">  <span class="comment">//当窗口加载完毕，执行瀑布流</span></span><br><span class="line">  $(<span class="built_in">window</span>).on(<span class="string">'load'</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    reset()</span><br><span class="line">  &#125;)</span><br><span class="line"></span><br><span class="line">  <span class="comment">//定义reset函数</span></span><br><span class="line">  <span class="function"><span class="keyword">function</span> <span class="title">reset</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> colHeightArr= []</span><br><span class="line">    colCount = <span class="built_in">Math</span>.floor($(<span class="string">'.waterfall'</span>).width()/imgWidth)</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span> ; i &lt; colCount; i++)&#123;</span><br><span class="line">      colHeightArr[i] = <span class="number">0</span></span><br><span class="line">    &#125;</span><br><span class="line">    $(<span class="string">'.waterfall img'</span>).each(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">      <span class="keyword">var</span> minValue = colHeightArr[<span class="number">0</span>]</span><br><span class="line">      <span class="keyword">var</span> minIndex = <span class="number">0</span></span><br><span class="line">      <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span> ; i &lt; colCount; i ++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(colHeightArr[i] &lt; minValue)&#123;</span><br><span class="line">          minValue = colHeightArr[i]</span><br><span class="line">          minIndex = i</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line"></span><br><span class="line">      $(<span class="keyword">this</span>).css(&#123;<span class="comment">//图片的位置</span></span><br><span class="line">         top: minValue,</span><br><span class="line">         left: minIndex*imgWidth</span><br><span class="line">      &#125;)</span><br><span class="line">      colHeightArr[minIndex] += $(<span class="keyword">this</span>).outerHeight(<span class="literal">true</span>)</span><br><span class="line">    &#125;)</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
-<p><strong>注意:</strong></p>
-<p>(1)  <strong>outerWidth参数为true</strong>时,会返回元素的大小（包括margin、padding、border）</p>
-<p>(2)  只有当页面中的图片资源<strong>全部加载完毕</strong>后，才能读到图片的<strong>真实高度</strong>，所以用到load</p>
-<p>demo 地址 <a href="http://js.jirengu.com/zuxeh" target="_blank" rel="noopener">http://js.jirengu.com/zuxeh</a></p>
-<h1 id="三、木桶布局"><a href="#三、木桶布局" class="headerlink" title="三、木桶布局"></a>三、木桶布局</h1><h3 id="A、定义-2"><a href="#A、定义-2" class="headerlink" title="A、定义"></a>A、定义</h3><p>高度一致，而宽度不一样的布局</p>
-<h3 id="B、实现原理"><a href="#B、实现原理" class="headerlink" title="B、实现原理"></a>B、实现原理</h3><p>(1)  首先设置一个基准的高度，将图片以一定的宽高比压缩至该高度内的第一行。<br>(2)  将图片水平依次放满第一行，当空间不够时，将前面的图片作为一个整体，拉伸至其宽度刚好可以撑满容器。<br>(3)  之后多余的图片，就放到第二行，重复上述步骤，以此类推<br><img src="https://upload-images.jianshu.io/upload_images/14339384-44491042afe447ef.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-<p>参考 <a href="https://zhuanlan.zhihu.com/p/28466291" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/28466291</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/24/移动端项目之注意事项/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Wuer">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Wuer">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/12/24/移动端项目之注意事项/" itemprop="url">移动端项目之注意事项</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-24T14:19:37+08:00">
-                2018-12-24
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>一、html页面部分</p>
-<p>页面head 那加上这句</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"&gt;</span><br></pre></td></tr></table></figure>
-<p>二、css 部分</p>
-<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">-webkit-overflow-scrolling</span>: <span class="selector-tag">touch</span>; <span class="comment">/*ios 上增加弹性*/</span></span><br></pre></td></tr></table></figure>
-<p>手机上滚动时会有一个弹性的效果</p>
-<p>demo地址：</p>
-<p>（优化前）<a href="http://js.jirengu.com/betam" target="_blank" rel="noopener">http://js.jirengu.com/betam</a></p>
-<p>（优化后）<a href="http://js.jirengu.com/cewoj/20/edit" target="_blank" rel="noopener">http://js.jirengu.com/cewoj/20/edit</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1869,7 +1866,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">55</span>
+                  <span class="site-state-item-count">57</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

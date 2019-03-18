@@ -229,6 +229,318 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/17/vue-router路由和前端状态管理/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Wuer">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Wuer">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/03/17/vue-router路由和前端状态管理/" itemprop="url">vue-router路由和前端状态管理</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-17T22:33:46+08:00">
+                2019-03-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="一、路由简单四步走"><a href="#一、路由简单四步走" class="headerlink" title="一、路由简单四步走"></a>一、路由简单四步走</h2><p>通俗地说：路由是输入不同网址打开，显示不同内容 （即不同网址就是不同的路由）</p>
+<p>专业地说：访问不同的路由，加载不同的组件</p>
+<p><strong>1､安装</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save vue-router <span class="comment">// 一定要在项目文件夹下安装</span></span><br></pre></td></tr></table></figure>
+<p><strong>2､引用</strong> </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> router from <span class="string">'vue-router'</span> <span class="comment">//在入口文件main.js中引入，也可以是哪个文件用到，哪个文件引入</span></span><br><span class="line">Vue.use(router)</span><br></pre></td></tr></table></figure>
+<p>此处一坑：router的引用，切记不能用npm 安装自带的 <strong>import router from ‘./router’</strong>，会报错</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14339384-52f71b72ceb4b2b5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>要换成 <strong>import router from ‘vue-router’</strong> 即可</p>
+<p><strong>3､配置路由文件，并在 vue 实例中注入</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> rt = <span class="keyword">new</span> router(&#123;<span class="comment">//配置路由</span></span><br><span class="line">    routes:[&#123;</span><br><span class="line">        path:<span class="string">'/'</span>, <span class="comment">//指定要跳转的路径</span></span><br><span class="line">        components:HelloWorld <span class="comment">//指定要跳转的组件</span></span><br><span class="line">    &#125;]</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> Vue(&#123;<span class="comment">//在 vue 实例中注入</span></span><br><span class="line">    el: <span class="string">'#app'</span>,</span><br><span class="line">    router:router,</span><br><span class="line">    components: &#123;App&#125;,</span><br><span class="line">    template: <span class="string">'&lt;App/&gt;'</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p><strong>4､确定视图要加载的位置</strong></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;router-view&gt;&lt;/router-view&gt; // 定义的是path对应的组件渲染的位置</span><br></pre></td></tr></table></figure>
+<h2 id="二、路由的跳转"><a href="#二、路由的跳转" class="headerlink" title="二、路由的跳转"></a>二、路由的跳转</h2><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;router-link to="/"&gt;&lt;/router-link&gt;</span><br><span class="line">&lt;template&gt;</span><br><span class="line">	&lt;ul&gt;</span><br><span class="line">		&lt;li&gt;</span><br><span class="line">			&lt;router-link to="/helloworld"&gt;HELLO WORLD&lt;/router-link&gt;</span><br><span class="line">		&lt;/li&gt;</span><br><span class="line">		&lt;li&gt;</span><br><span class="line">			&lt;router-link to="/helloearth"&gt;HELLO EARTH&lt;/router-link&gt;</span><br><span class="line">		&lt;/li&gt;</span><br><span class="line">	&lt;/ul&gt;</span><br><span class="line">&lt;/template&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="三、vue-router路由参数的传递"><a href="#三、vue-router路由参数的传递" class="headerlink" title="三、vue-router路由参数的传递"></a>三、vue-router路由参数的传递</h2><p>1､必须在路由内加入路由的name</p>
+<p>2､必须在path后加上  /: 和 传递的参数 </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">export <span class="keyword">default</span> new <span class="title">Router</span><span class="params">(&#123;</span></span></span><br><span class="line"><span class="function"><span class="params">  routes: [</span></span></span><br><span class="line"><span class="function"><span class="params">    &#123;</span></span></span><br><span class="line"><span class="function"><span class="params">      path: <span class="string">'/helloworld/:worldmsg'</span>, //在path后加上  /: 和 传递的参数</span></span></span><br><span class="line"><span class="function"><span class="params">      name: <span class="string">'helloworld'</span>, //加入路由的name</span></span></span><br><span class="line"><span class="function"><span class="params">      component: HelloWorld</span></span></span><br><span class="line"><span class="function"><span class="params">    &#125;,</span></span></span><br><span class="line"><span class="function"><span class="params">    &#123;</span></span></span><br><span class="line"><span class="function"><span class="params">      path: <span class="string">'/helloearth/:earthmsg'</span>,</span></span></span><br><span class="line"><span class="function"><span class="params">      name: <span class="string">'helloearth'</span>,</span></span></span><br><span class="line"><span class="function"><span class="params">      component: HelloEarth</span></span></span><br><span class="line"><span class="function"><span class="params">    &#125;</span></span></span><br><span class="line"><span class="function"><span class="params">  ]</span></span></span><br><span class="line"><span class="function"><span class="params">&#125;)</span></span></span><br></pre></td></tr></table></figure>
+<p>3､传递参数</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;router-link :to="&#123;name: helloearth,params:&#123;msg:'你我她'&#125;&#125;"&gt;Hello Earth&lt;/router-link&gt;// to前面 切记加冒号（:）</span><br></pre></td></tr></table></figure>
+<p>4､接收参数（往哪个组件跳转，就是哪个组件接收）</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">$route.params.msg <span class="comment">// msg是要传递的参数</span></span><br><span class="line"><span class="comment">//形式：..../helloworld/你好世界 </span></span><br><span class="line">    </span><br><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">"hello"</span>&gt;</span><br><span class="line">    &lt;h1&gt;Hello World&lt;/h1&gt;</span><br><span class="line">    &lt;h2&gt;Essential Links&lt;/h2&gt;</span><br><span class="line">    &lt;h3&gt;&#123;&#123;$route.params.msg&#125;&#125;&lt;/h3&gt;</span><br><span class="line">    &lt;hr&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="四、Axios中的get请求"><a href="#四、Axios中的get请求" class="headerlink" title="四、Axios中的get请求"></a>四、Axios中的get请求</h2><p><strong>1､axios定义</strong></p>
+<p>一个基于Promise 用于浏览器和nodejs 的 HTTP 客户端 ,它本身具有以下特征：</p>
+<p>a、从浏览器中创建 XMLHttpRequest</p>
+<p>b、从nodejs 发出 http 请求</p>
+<p>c、支持Promise API</p>
+<p>d、拦截请求和响应</p>
+<p>e、转换请求和响应数据</p>
+<p>f、取消请求</p>
+<p>g、自动转换JSON数据</p>
+<p>h、客户端支持防止 CSRF/ XSRF</p>
+<p><strong>2､axios 四步走</strong></p>
+<p>a、安装</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install axios</span><br></pre></td></tr></table></figure>
+<p>b、引入加载</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> axios from <span class="string">'axios'</span></span><br></pre></td></tr></table></figure>
+<p>c、将axios 全局挂载到 VUE 原型上</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Vue.prototype.$http= axios <span class="comment">//$http名字随意</span></span><br></pre></td></tr></table></figure>
+<p>d、发出请求，以cnode社区API 为例</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 为给定的id 的 user 创建请求</span></span><br><span class="line"></span><br><span class="line">getData()&#123;<span class="comment">//使用传统的function</span></span><br><span class="line">    <span class="keyword">var</span> self = <span class="keyword">this</span></span><br><span class="line">    <span class="keyword">this</span>.$http.get(<span class="string">'https://cnodejs.org/api/v1/topics'</span>)</span><br><span class="line">        .then(function(res)&#123;<span class="comment">//此处的this 指向的不是当前vue 实例</span></span><br><span class="line">            self.items = res.data.data</span><br><span class="line">            console.log(res.data.data)</span><br><span class="line">        &#125;)</span><br><span class="line">        .<span class="keyword">catch</span>(function(err)&#123;</span><br><span class="line">            console.log(err)</span><br><span class="line">        &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">getData()&#123;<span class="comment">//使用es6</span></span><br><span class="line">   <span class="keyword">this</span>.$http.get(<span class="string">'https://cnodejs.org/api/v1/topics'</span>) <span class="comment">//请求</span></span><br><span class="line">       .then(res =&gt;&#123;</span><br><span class="line">			self.items = res.data.data</span><br><span class="line">            console.log(res.data.data)           </span><br><span class="line">       &#125;)</span><br><span class="line">        .<span class="keyword">catch</span>(err =&gt;&#123;</span><br><span class="line">            console.log(err)</span><br><span class="line">        &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>小总结：Get 请求有三种方式：</strong></p>
+<p>a、没参数时，直接通过url</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">axios.get(<span class="string">'https://cnodejs.org/api/v1/topics'</span>)</span><br></pre></td></tr></table></figure>
+<p>b、有参数时，两种传递参数形式</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">axios.get(<span class="string">'https://cnodejs.org/api/v1/topics'</span>, &#123;</span><br><span class="line">	params: &#123;<span class="comment">//params 里面可以接多个对象</span></span><br><span class="line">	  id: <span class="number">12345</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;)</span><br><span class="line">                                 <span class="comment">//当前页码是第一页，且每页显示15</span></span><br><span class="line">axios.get(<span class="string">'https://cnodejs.org/api/v1/topics?page=1&amp;limit=15'</span>, &#123;</span><br><span class="line">   id: <span class="number">12345</span>  <span class="comment">//如果只有一个params,没有其他参数，可以这么简写</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h2 id="五、Axios中的post请求"><a href="#五、Axios中的post请求" class="headerlink" title="五、Axios中的post请求"></a>五、Axios中的post请求</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">postData()&#123; <span class="comment">//在axios中，post请求接收的参数必须是form.data</span></span><br><span class="line">   <span class="keyword">this</span>.$http.post(url,qs.stringify(&#123;<span class="comment">//所以这里用到 qs插件，用qs.stringify转换即可</span></span><br><span class="line">        page:<span class="number">1</span>,</span><br><span class="line">        limit:<span class="number">20</span></span><br><span class="line">   &#125;)).then(res =&gt;&#123;</span><br><span class="line">      <span class="keyword">this</span>.items = res.data.data <span class="comment">//此处this指向的不是当前vue实例</span></span><br><span class="line">      console.log(res)</span><br><span class="line">   &#125;)</span><br><span class="line">   .<span class="keyword">catch</span>(err =&gt;&#123;</span><br><span class="line">        console.log(err)</span><br><span class="line">   &#125;)</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<p><strong>小总结：POST传递数据有两种格式：</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a、form.data ?page=<span class="number">1</span>&amp;limit=<span class="number">48</span></span><br><span class="line">b、x.www.form.urlencoded &#123; page: <span class="number">1</span>,limit: <span class="number">10</span> &#125;</span><br></pre></td></tr></table></figure>
+<p><strong>特别注意</strong>：在axios中，<strong>post请求接收的参数必须是form­data</strong> ，此时用到qs插件中的<strong>qs.stringify</strong>转换即可</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/17/vue-cli脚手架一键搭建项目/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Wuer">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Wuer">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/03/17/vue-cli脚手架一键搭建项目/" itemprop="url">vue-cli脚手架一键搭建项目</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-17T17:57:39+08:00">
+                2019-03-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="一、安装步骤"><a href="#一、安装步骤" class="headerlink" title="一、安装步骤"></a>一、安装步骤</h2><p>首先电脑上要安装最新版的nodeJS.官网下载，安装完之后安装淘宝npm镜像</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g cnpm --registry=https:<span class="comment">//registry.npm.taobao.org</span></span><br></pre></td></tr></table></figure>
+<h3 id="五部曲："><a href="#五部曲：" class="headerlink" title="五部曲："></a>五部曲：</h3><p>1､ 打开终端，全局安装vue-cli</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install -g vue-cli</span><br></pre></td></tr></table></figure>
+<p>2､进入目录并初始化项目</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">vue init webpack blog-client <span class="comment">//blog-client是你项目名称</span></span><br></pre></td></tr></table></figure>
+<p>当出现以下提示<br><img src="https://upload-images.jianshu.io/upload_images/14339384-f4a0b875118b5f75.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>直接按回车，项目描述和作者都默认按回车</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14339384-5e5828d4abd794e4.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>这里直接按回车</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14339384-9de08c75b9936edc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>这里按N 或是 Y ,都行，如果<strong>按Y，使用vue-router</strong></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14339384-a82b6901ad66f1c1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>3､之后终端会创建 blog-client文件夹及相关文件，进入项目</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd blog-client</span><br></pre></td></tr></table></figure>
+<p>4､安装依赖 （老安装不成功，不过也不影响后面的操作）</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install</span><br></pre></td></tr></table></figure>
+<p>5､启动项目</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm run dev</span><br></pre></td></tr></table></figure>
+<h2 id="二、目录结构的分析"><a href="#二、目录结构的分析" class="headerlink" title="二、目录结构的分析"></a>二、目录结构的分析</h2><h5 id="1、build-：项目构建-webpack-相关代码-（9个）"><a href="#1、build-：项目构建-webpack-相关代码-（9个）" class="headerlink" title="1、build ：项目构建(webpack)相关代码 （9个）"></a>1、build ：项目构建(webpack)相关代码 （9个）</h5><p>├── build<br>│ ├── build.js ——-<strong>生产环境构建代码</strong><br>│ ├── check­versions.js  ——- <strong>检查node&amp;npm等版本</strong><br>│ ├── dev­client.js  ——- <strong>热加载相关</strong><br>│ ├── dev­server.js  ——- <strong>构建本地服务器</strong><br>│ ├── utils.js  ——- <strong>构建配置公用工具</strong><br>│ ├── vue­loader.conf.js  ——- <strong>vue加载器</strong><br>│ ├── webpack.base.conf.js  ——- <strong>webpack基础环境配置</strong><br>│ ├── webpack.dev.conf.js  ——- <strong>webpack开发环境配置</strong><br>│ └── webpack.prod.conf.js  ——- <strong>webpack生产环境配置</strong></p>
+<h5 id="2､config：项目开发环境配置相关代码-（环境配置，基本上用不到）-3个"><a href="#2､config：项目开发环境配置相关代码-（环境配置，基本上用不到）-3个" class="headerlink" title="2､config：项目开发环境配置相关代码 （环境配置，基本上用不到） 3个"></a>2､config：项目开发环境配置相关代码 （环境配置，基本上用不到） 3个</h5><p>├── config<br>│ ├── dev.env.js  ——- <strong>开发环境变量（看词明意）</strong><br>│ ├── index.js  ——-<strong>项目一些配置变量</strong><br>│ └── prod.env.js  ——- <strong>生产环境变量</strong></p>
+<h5 id="3、node-modules：项目依赖的模块-记忆：-（所有的依赖）-N多个"><a href="#3、node-modules：项目依赖的模块-记忆：-（所有的依赖）-N多个" class="headerlink" title="3、node_modules：项目依赖的模块 记忆： （所有的依赖） N多个"></a>3、node_modules：项目依赖的模块 记忆： （所有的依赖） N多个</h5><p>├──node_modules</p>
+<h5 id="4、src：源码目录-5个"><a href="#4、src：源码目录-5个" class="headerlink" title="4、src：源码目录 5个"></a>4、src：源码目录 5个</h5><p>├── src<br>1<br>│ ├── assets——-<strong>资源目录</strong><br>│ │ └── logo.png<br>2<br>│ ├── components ——- <strong>vue公共组件</strong><br>│ │ └── Hello.vue<br>3<br>│ ├──router ——- <strong>前端路由</strong><br>│ │ └── index.js ——- <strong>路由配置文件</strong><br>4<br>│ ├── App.vue ——-<strong>页面入口文件（根组件）</strong><br>5<br>│ └── main.js ——- <strong>程序入口文件（入口js文件）</strong></p>
+<h5 id="5、static：静态文件，比如一些图片，mp3，json数据等"><a href="#5、static：静态文件，比如一些图片，mp3，json数据等" class="headerlink" title="5、static：静态文件，比如一些图片，mp3，json数据等"></a>5、static：静态文件，比如一些图片，mp3，json数据等</h5><p>└── static<br>│ ├── .gitkeep</p>
+<h5 id="6､其他"><a href="#6､其他" class="headerlink" title="6､其他:"></a>6､其他:</h5><p>├── .babelrc ——- <strong>ES6语法编译配置</strong><br>├── .editorconfig ——- <strong>定义代码格式</strong><br>├── .gitignore ——-<strong>git上传需要忽略的文件格式</strong><br>├── index.html ——- <strong>入口页面</strong><br>├── package.json ——- <strong>项目基本信息</strong><br>├── README.md ——- <strong>项目说明</strong></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/16/render函数/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -1404,276 +1716,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/08/v-bind 的 class+style的绑定/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Wuer">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Wuer">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/03/08/v-bind 的 class+style的绑定/" itemprop="url">v-bind 的class+style的绑定</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-08T18:15:50+08:00">
-                2019-03-08
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="一、绑定-Class"><a href="#一、绑定-Class" class="headerlink" title="一、绑定 Class"></a>一、绑定 Class</h3><h5 id="1､对象语法"><a href="#1､对象语法" class="headerlink" title="1､对象语法"></a>1､对象语法</h5><p>给<strong>v-bind:class</strong> 设置为一个对象，动态地切换 class，其中<strong>对象的键名是类名，值为布尔值 true 或 false</strong></p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;div v-bind:class="&#123; active: isActive &#125;"&gt;&lt;/div&gt; // active存在取决isActive的值</span><br></pre></td></tr></table></figure>
-<p>1.1､ 绑定数据对象不必定义在模板内</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//html</span></span><br><span class="line">&lt;div v-bind:<span class="class"><span class="keyword">class</span></span>=<span class="string">"classObject"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="comment">//js</span></span><br><span class="line">data: &#123;</span><br><span class="line">  classObject: &#123;</span><br><span class="line">    active: <span class="literal">true</span>,</span><br><span class="line">    <span class="string">'text-danger'</span>: <span class="literal">false</span></span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>1.2､ 绑定一个<strong>计算属</strong>性，可以使用 <strong>data</strong> 或 <strong>computed</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">data: &#123;</span><br><span class="line">  isActive: <span class="keyword">true</span>,</span><br><span class="line">  error: <span class="keyword">null</span></span><br><span class="line">&#125;,</span><br><span class="line">computed: &#123;</span><br><span class="line">  classObject: function () &#123;</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">      active: <span class="keyword">this</span>.isActive &amp;&amp; !<span class="keyword">this</span>.error,</span><br><span class="line">      <span class="string">'text-danger'</span>: <span class="keyword">this</span>.error &amp;&amp; <span class="keyword">this</span>.error.type === <span class="string">'fatal'</span></span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h5 id="2､数组语法"><a href="#2､数组语法" class="headerlink" title="2､数组语法"></a>2､数组语法</h5><p>把一个数组传给 <strong>v-bind:class</strong>，以应用一个 class 列表，<strong>数组成员直接对应className类名</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//html</span></span><br><span class="line">&lt;div v-bind:class="[activeClass, errorClass]"&gt;&lt;/div&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">//js</span></span><br><span class="line">data: &#123;</span><br><span class="line">  activeClass: <span class="string">'active'</span>,</span><br><span class="line">  errorClass: <span class="string">'text-danger'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>【Demo 实例 <a href="https://jsbin.com/honegiv/edit?html,output" target="_blank" rel="noopener">https://jsbin.com/honegiv/edit?html,output</a> 】</p>
-<h5 id="3､数组和对象混用"><a href="#3､数组和对象混用" class="headerlink" title="3､数组和对象混用"></a>3､数组和对象混用</h5><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;div v-bind:class="[&#123; active: isActive &#125;, errorClass]"&gt;&lt;/div&gt; // 这样写始终添加 errorClass</span><br></pre></td></tr></table></figure>
-<p>【Demo 实例 <a href="https://jsbin.com/desibet/edit?html,output" target="_blank" rel="noopener">https://jsbin.com/desibet/edit?html,output</a> 】</p>
-<h3 id="二、绑定-内联-Style"><a href="#二、绑定-内联-Style" class="headerlink" title="二、绑定 内联 Style"></a>二、绑定 内联 Style</h3><p>用 <strong>v­-bind:style （即：style</strong> ） 给元素绑定内联样式</p>
-<p>注：CSS 属性名可以用<strong>驼峰式 (camelCase)</strong> 或<strong>短横线</strong>分隔 (kebab-case，记得用<strong>单引号</strong>括起来) 来命名</p>
-<h5 id="1､对象语法-1"><a href="#1､对象语法-1" class="headerlink" title="1､对象语法"></a>1､对象语法</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//html</span></span><br><span class="line">&lt;div v-bind:style="&#123; color: activeColor, fontSize: fontSize + 'px' &#125;"&gt;&lt;/div&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">//js</span></span><br><span class="line">data: &#123;</span><br><span class="line">  activeColor: <span class="string">'red'</span>,</span><br><span class="line">  fontSize: <span class="number">30</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h5 id="2､数组语法-1"><a href="#2､数组语法-1" class="headerlink" title="2､数组语法"></a>2､数组语法</h5><p>使用<strong>v-bind:style</strong> 将多个样式对象应用到同一个元素上</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;div v-bind:style="[baseStyles, overridingStyles]"&gt;&lt;/div&gt;</span><br></pre></td></tr></table></figure>
-<p><strong>使用 :style 时， Vue .js 会自动给特殊的 css 属性名称增加前缀， 比如 transform</strong> </p>
-<p>【demo 实例 <a href="https://jsbin.com/qapozop/6/edit?html,output" target="_blank" rel="noopener">https://jsbin.com/qapozop/6/edit?html,output</a> 】</p>
-<p>切记： <strong>vue中只要是大写字母都会转换成 - 加 小写</strong> ，比如：</p>
-<p>​        fontSize 转化成 font-size</p>
-<p>​        dsfASDghG 转化成 dsf-a-s-dgh-g</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/07/计算属性/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Wuer">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Wuer">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/03/07/计算属性/" itemprop="url">计算属性</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-07T23:53:05+08:00">
-                2019-03-07
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="一、定义"><a href="#一、定义" class="headerlink" title="一、定义"></a>一、定义</h3><p>在模板中,对于任何复杂逻辑，应当使用<strong>计算属性</strong></p>
-<p>【Demo实例地址 <a href="https://jsbin.com/zehemop/2/edit?html,output" target="_blank" rel="noopener">https://jsbin.com/zehemop/2/edit?html,output</a> 】</p>
-<h3 id="二、用法"><a href="#二、用法" class="headerlink" title="二、用法"></a>二、用法</h3><p>1､所有计算属性都以<strong>函数形式</strong>写在 <strong>Vue 实例内的 computed</strong> 选项内，返回计算后的结果</p>
-<p>2､可以依赖多个Vue实例数据，只要其中任一个数据变化，计算属性会重新执行，视图也更新</p>
-<p>【Demo实例地址 <a href="https://jsbin.com/hajucur/edit?html,console,output" target="_blank" rel="noopener">https://jsbin.com/hajucur/edit?html,console,output</a> 】</p>
-<h3 id="三、setter-getter"><a href="#三、setter-getter" class="headerlink" title="三、setter|getter"></a>三、setter|getter</h3><p>计算属性<strong>默认只有 getter</strong> ，不过在需要时可以提供一个 setter </p>
-<p>当手动修改计算属性的值就像修改一个普通数据那样时，就会触发 setter函数，执行一些自定义的操作</p>
-<p>【Demo实例地址 <a href="https://jsbin.com/qoduboh/1/edit?html,output" target="_blank" rel="noopener">https://jsbin.com/qoduboh/1/edit?html,output</a> 】</p>
-<h3 id="四、计算属性缓存"><a href="#四、计算属性缓存" class="headerlink" title="四、计算属性缓存"></a>四、计算属性缓存</h3><p>调用 <strong>methods 里的方法</strong>与<strong>计算属性</strong>起到同样的作用</p>
-<p><strong>页面中的方法：</strong> 如果是调用方法，只要页面重新渲染。方法就会重新执行，不需要渲染，则不需要重新执行<br><strong>计算属性：</strong>不管是否渲染，只要计算属性依赖的数据未发生变化，就永远不变</p>
-<p>当遍历大数组和做大量计算时，应当使用计算属性，除非你不希望得到缓存</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1724,7 +1766,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">55</span>
+                  <span class="site-state-item-count">57</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

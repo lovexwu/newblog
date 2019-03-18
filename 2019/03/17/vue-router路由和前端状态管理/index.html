@@ -1,0 +1,705 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="一、路由简单四步走通俗地说：路由是输入不同网址打开，显示不同内容 （即不同网址就是不同的路由） 专业地说：访问不同的路由，加载不同的组件 1､安装 1npm install --save vue-router // 一定要在项目文件夹下安装 2､引用  12import router from &apos;vue-router&apos; //在入口文件main.js中引入，也可以是哪个文件用到，哪个文件引入Vue.">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vue-router路由和前端状态管理">
+<meta property="og:url" content="http://yoursite.com/2019/03/17/vue-router路由和前端状态管理/index.html">
+<meta property="og:site_name" content="Wuer">
+<meta property="og:description" content="一、路由简单四步走通俗地说：路由是输入不同网址打开，显示不同内容 （即不同网址就是不同的路由） 专业地说：访问不同的路由，加载不同的组件 1､安装 1npm install --save vue-router // 一定要在项目文件夹下安装 2､引用  12import router from &apos;vue-router&apos; //在入口文件main.js中引入，也可以是哪个文件用到，哪个文件引入Vue.">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14339384-52f71b72ceb4b2b5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2019-03-18T10:16:41.054Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="vue-router路由和前端状态管理">
+<meta name="twitter:description" content="一、路由简单四步走通俗地说：路由是输入不同网址打开，显示不同内容 （即不同网址就是不同的路由） 专业地说：访问不同的路由，加载不同的组件 1､安装 1npm install --save vue-router // 一定要在项目文件夹下安装 2､引用  12import router from &apos;vue-router&apos; //在入口文件main.js中引入，也可以是哪个文件用到，哪个文件引入Vue.">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/14339384-52f71b72ceb4b2b5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/03/17/vue-router路由和前端状态管理/">
+
+
+
+
+
+  <title>vue-router路由和前端状态管理 | Wuer</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Wuer</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/17/vue-router路由和前端状态管理/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Wuer">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Wuer">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">vue-router路由和前端状态管理</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-17T22:33:46+08:00">
+                2019-03-17
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h2 id="一、路由简单四步走"><a href="#一、路由简单四步走" class="headerlink" title="一、路由简单四步走"></a>一、路由简单四步走</h2><p>通俗地说：路由是输入不同网址打开，显示不同内容 （即不同网址就是不同的路由）</p>
+<p>专业地说：访问不同的路由，加载不同的组件</p>
+<p><strong>1､安装</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install --save vue-router <span class="comment">// 一定要在项目文件夹下安装</span></span><br></pre></td></tr></table></figure>
+<p><strong>2､引用</strong> </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> router from <span class="string">'vue-router'</span> <span class="comment">//在入口文件main.js中引入，也可以是哪个文件用到，哪个文件引入</span></span><br><span class="line">Vue.use(router)</span><br></pre></td></tr></table></figure>
+<p>此处一坑：router的引用，切记不能用npm 安装自带的 <strong>import router from ‘./router’</strong>，会报错</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14339384-52f71b72ceb4b2b5.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>要换成 <strong>import router from ‘vue-router’</strong> 即可</p>
+<p><strong>3､配置路由文件，并在 vue 实例中注入</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> rt = <span class="keyword">new</span> router(&#123;<span class="comment">//配置路由</span></span><br><span class="line">    routes:[&#123;</span><br><span class="line">        path:<span class="string">'/'</span>, <span class="comment">//指定要跳转的路径</span></span><br><span class="line">        components:HelloWorld <span class="comment">//指定要跳转的组件</span></span><br><span class="line">    &#125;]</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> Vue(&#123;<span class="comment">//在 vue 实例中注入</span></span><br><span class="line">    el: <span class="string">'#app'</span>,</span><br><span class="line">    router:router,</span><br><span class="line">    components: &#123;App&#125;,</span><br><span class="line">    template: <span class="string">'&lt;App/&gt;'</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p><strong>4､确定视图要加载的位置</strong></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;router-view&gt;&lt;/router-view&gt; // 定义的是path对应的组件渲染的位置</span><br></pre></td></tr></table></figure>
+<h2 id="二、路由的跳转"><a href="#二、路由的跳转" class="headerlink" title="二、路由的跳转"></a>二、路由的跳转</h2><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&lt;router-link to="/"&gt;&lt;/router-link&gt;</span><br><span class="line">&lt;template&gt;</span><br><span class="line">	&lt;ul&gt;</span><br><span class="line">		&lt;li&gt;</span><br><span class="line">			&lt;router-link to="/helloworld"&gt;HELLO WORLD&lt;/router-link&gt;</span><br><span class="line">		&lt;/li&gt;</span><br><span class="line">		&lt;li&gt;</span><br><span class="line">			&lt;router-link to="/helloearth"&gt;HELLO EARTH&lt;/router-link&gt;</span><br><span class="line">		&lt;/li&gt;</span><br><span class="line">	&lt;/ul&gt;</span><br><span class="line">&lt;/template&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="三、vue-router路由参数的传递"><a href="#三、vue-router路由参数的传递" class="headerlink" title="三、vue-router路由参数的传递"></a>三、vue-router路由参数的传递</h2><p>1､必须在路由内加入路由的name</p>
+<p>2､必须在path后加上  /: 和 传递的参数 </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">export <span class="keyword">default</span> new <span class="title">Router</span><span class="params">(&#123;</span></span></span><br><span class="line"><span class="function"><span class="params">  routes: [</span></span></span><br><span class="line"><span class="function"><span class="params">    &#123;</span></span></span><br><span class="line"><span class="function"><span class="params">      path: <span class="string">'/helloworld/:worldmsg'</span>, //在path后加上  /: 和 传递的参数</span></span></span><br><span class="line"><span class="function"><span class="params">      name: <span class="string">'helloworld'</span>, //加入路由的name</span></span></span><br><span class="line"><span class="function"><span class="params">      component: HelloWorld</span></span></span><br><span class="line"><span class="function"><span class="params">    &#125;,</span></span></span><br><span class="line"><span class="function"><span class="params">    &#123;</span></span></span><br><span class="line"><span class="function"><span class="params">      path: <span class="string">'/helloearth/:earthmsg'</span>,</span></span></span><br><span class="line"><span class="function"><span class="params">      name: <span class="string">'helloearth'</span>,</span></span></span><br><span class="line"><span class="function"><span class="params">      component: HelloEarth</span></span></span><br><span class="line"><span class="function"><span class="params">    &#125;</span></span></span><br><span class="line"><span class="function"><span class="params">  ]</span></span></span><br><span class="line"><span class="function"><span class="params">&#125;)</span></span></span><br></pre></td></tr></table></figure>
+<p>3､传递参数</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;router-link :to="&#123;name: helloearth,params:&#123;msg:'你我她'&#125;&#125;"&gt;Hello Earth&lt;/router-link&gt;// to前面 切记加冒号（:）</span><br></pre></td></tr></table></figure>
+<p>4､接收参数（往哪个组件跳转，就是哪个组件接收）</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">$route.params.msg <span class="comment">// msg是要传递的参数</span></span><br><span class="line"><span class="comment">//形式：..../helloworld/你好世界 </span></span><br><span class="line">    </span><br><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;div <span class="class"><span class="keyword">class</span></span>=<span class="string">"hello"</span>&gt;</span><br><span class="line">    &lt;h1&gt;Hello World&lt;/h1&gt;</span><br><span class="line">    &lt;h2&gt;Essential Links&lt;/h2&gt;</span><br><span class="line">    &lt;h3&gt;&#123;&#123;$route.params.msg&#125;&#125;&lt;/h3&gt;</span><br><span class="line">    &lt;hr&gt;</span><br><span class="line">  &lt;/div&gt;</span><br><span class="line">&lt;/template&gt;</span><br></pre></td></tr></table></figure>
+<h2 id="四、Axios中的get请求"><a href="#四、Axios中的get请求" class="headerlink" title="四、Axios中的get请求"></a>四、Axios中的get请求</h2><p><strong>1､axios定义</strong></p>
+<p>一个基于Promise 用于浏览器和nodejs 的 HTTP 客户端 ,它本身具有以下特征：</p>
+<p>a、从浏览器中创建 XMLHttpRequest</p>
+<p>b、从nodejs 发出 http 请求</p>
+<p>c、支持Promise API</p>
+<p>d、拦截请求和响应</p>
+<p>e、转换请求和响应数据</p>
+<p>f、取消请求</p>
+<p>g、自动转换JSON数据</p>
+<p>h、客户端支持防止 CSRF/ XSRF</p>
+<p><strong>2､axios 四步走</strong></p>
+<p>a、安装</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install axios</span><br></pre></td></tr></table></figure>
+<p>b、引入加载</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> axios from <span class="string">'axios'</span></span><br></pre></td></tr></table></figure>
+<p>c、将axios 全局挂载到 VUE 原型上</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Vue.prototype.$http= axios <span class="comment">//$http名字随意</span></span><br></pre></td></tr></table></figure>
+<p>d、发出请求，以cnode社区API 为例</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 为给定的id 的 user 创建请求</span></span><br><span class="line"></span><br><span class="line">getData()&#123;<span class="comment">//使用传统的function</span></span><br><span class="line">    <span class="keyword">var</span> self = <span class="keyword">this</span></span><br><span class="line">    <span class="keyword">this</span>.$http.get(<span class="string">'https://cnodejs.org/api/v1/topics'</span>)</span><br><span class="line">        .then(function(res)&#123;<span class="comment">//此处的this 指向的不是当前vue 实例</span></span><br><span class="line">            self.items = res.data.data</span><br><span class="line">            console.log(res.data.data)</span><br><span class="line">        &#125;)</span><br><span class="line">        .<span class="keyword">catch</span>(function(err)&#123;</span><br><span class="line">            console.log(err)</span><br><span class="line">        &#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">getData()&#123;<span class="comment">//使用es6</span></span><br><span class="line">   <span class="keyword">this</span>.$http.get(<span class="string">'https://cnodejs.org/api/v1/topics'</span>) <span class="comment">//请求</span></span><br><span class="line">       .then(res =&gt;&#123;</span><br><span class="line">			self.items = res.data.data</span><br><span class="line">            console.log(res.data.data)           </span><br><span class="line">       &#125;)</span><br><span class="line">        .<span class="keyword">catch</span>(err =&gt;&#123;</span><br><span class="line">            console.log(err)</span><br><span class="line">        &#125;)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>小总结：Get 请求有三种方式：</strong></p>
+<p>a、没参数时，直接通过url</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">axios.get(<span class="string">'https://cnodejs.org/api/v1/topics'</span>)</span><br></pre></td></tr></table></figure>
+<p>b、有参数时，两种传递参数形式</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">axios.get(<span class="string">'https://cnodejs.org/api/v1/topics'</span>, &#123;</span><br><span class="line">	params: &#123;<span class="comment">//params 里面可以接多个对象</span></span><br><span class="line">	  id: <span class="number">12345</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;)</span><br><span class="line">                                 <span class="comment">//当前页码是第一页，且每页显示15</span></span><br><span class="line">axios.get(<span class="string">'https://cnodejs.org/api/v1/topics?page=1&amp;limit=15'</span>, &#123;</span><br><span class="line">   id: <span class="number">12345</span>  <span class="comment">//如果只有一个params,没有其他参数，可以这么简写</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h2 id="五、Axios中的post请求"><a href="#五、Axios中的post请求" class="headerlink" title="五、Axios中的post请求"></a>五、Axios中的post请求</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">postData()&#123; <span class="comment">//在axios中，post请求接收的参数必须是form.data</span></span><br><span class="line">   <span class="keyword">this</span>.$http.post(url,qs.stringify(&#123;<span class="comment">//所以这里用到 qs插件，用qs.stringify转换即可</span></span><br><span class="line">        page:<span class="number">1</span>,</span><br><span class="line">        limit:<span class="number">20</span></span><br><span class="line">   &#125;)).then(res =&gt;&#123;</span><br><span class="line">      <span class="keyword">this</span>.items = res.data.data <span class="comment">//此处this指向的不是当前vue实例</span></span><br><span class="line">      console.log(res)</span><br><span class="line">   &#125;)</span><br><span class="line">   .<span class="keyword">catch</span>(err =&gt;&#123;</span><br><span class="line">        console.log(err)</span><br><span class="line">   &#125;)</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<p><strong>小总结：POST传递数据有两种格式：</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">a、form.data ?page=<span class="number">1</span>&amp;limit=<span class="number">48</span></span><br><span class="line">b、x.www.form.urlencoded &#123; page: <span class="number">1</span>,limit: <span class="number">10</span> &#125;</span><br></pre></td></tr></table></figure>
+<p><strong>特别注意</strong>：在axios中，<strong>post请求接收的参数必须是form­data</strong> ，此时用到qs插件中的<strong>qs.stringify</strong>转换即可</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/03/17/vue-cli脚手架一键搭建项目/" rel="next" title="vue-cli脚手架一键搭建项目">
+                <i class="fa fa-chevron-left"></i> vue-cli脚手架一键搭建项目
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Wuer</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">57</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、路由简单四步走"><span class="nav-number">1.</span> <span class="nav-text">一、路由简单四步走</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、路由的跳转"><span class="nav-number">2.</span> <span class="nav-text">二、路由的跳转</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#三、vue-router路由参数的传递"><span class="nav-number">3.</span> <span class="nav-text">三、vue-router路由参数的传递</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#四、Axios中的get请求"><span class="nav-number">4.</span> <span class="nav-text">四、Axios中的get请求</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#五、Axios中的post请求"><span class="nav-number">5.</span> <span class="nav-text">五、Axios中的post请求</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Wuer</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
