@@ -229,6 +229,171 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/11/表单 + v-model/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Wuer">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Wuer">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/03/11/表单 + v-model/" itemprop="url">表单 + v-model</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-11T13:39:09+08:00">
+                2019-03-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="A､-作用"><a href="#A､-作用" class="headerlink" title="A､ 作用"></a>A､ 作用</h3><p>表单类元素上双向绑定事件</p>
+<h3 id="B､基本用法"><a href="#B､基本用法" class="headerlink" title="B､基本用法"></a><strong>B､基本用法</strong></h3><p><strong>1、input + textarea</strong></p>
+<p>所显示的值只依赖于所绑定的数据，不再关心初始化时的插入的value</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!--我是多行文本的初始化值 不会显示了，显示内容是 msg 的内容 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">textarea</span> <span class="attr">name</span>=<span class="string">""</span> <span class="attr">id</span>=<span class="string">""</span> <span class="attr">cols</span>=<span class="string">"30"</span> <span class="attr">rows</span>=<span class="string">"2"</span> <span class="attr">v-model</span>=<span class="string">"msg"</span>&gt;</span>我是多行文本的初始化值<span class="tag">&lt;/<span class="name">textarea</span>&gt;</span> </span><br><span class="line">&#123;&#123; msg &#125;&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>2、单选按钮</strong></p>
+<p>2.1､ 单个单选框</p>
+<p><strong>只能用v-bind，而v-model 不管用</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"radio"</span> <span class="attr">v-bind:checked</span> = <span class="string">"oneradio"</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>2.2､ 多个单选框</p>
+<p>如果是<strong>多个单选框</strong>，一定要<strong>v-­model</strong>来绑定，绑定选中的<strong>单选框的value值</strong>，此处所绑定的初始值可以随意给</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//html    给name值表示多个单选项，只能选择一个 </span></span><br><span class="line">单选<span class="number">1</span>&lt;input type=<span class="string">"radio"</span> name=<span class="string">"checks"</span> value=<span class="string">"单选1"</span> v-model=<span class="string">"checkname"</span>&gt;<span class="xml"><span class="tag">&lt;<span class="name">br</span>&gt;</span></span></span><br><span class="line">单选2&lt;input type="radio" name="checks" value="单选2" v-model="checkname"&gt;&lt;br&gt;</span><br><span class="line">单选3&lt;input type="radio" name="checks" value="单选3" v-model="checkname"&gt;&lt;br&gt;</span><br><span class="line">&lt;br&gt;</span><br><span class="line">现在选中的是 &#123;&#123; checkname &#125;&#125;</span><br><span class="line"></span><br><span class="line">//js</span><br><span class="line">...</span><br><span class="line">data:&#123;</span><br><span class="line">        value: '',</span><br><span class="line">        msg: '',</span><br><span class="line">        oneradio: false,</span><br><span class="line">        checkname: '单选1' // 此处所绑定的初始值可以随意给</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>3、复选框</strong></p>
+<p>3.1､单个复选框</p>
+<p>直接用定一个布尔值，可以用<strong>v­-mode</strong> 或 <strong>v­-bind</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">单个复选框(v-bind表示)：<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"checkbox"</span> <span class="attr">v-bind:checked</span>=<span class="string">"oneradio"</span>&gt;</span> <span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line">单个复选框(v-model表示)：<span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"checkbox"</span> <span class="attr">v-model</span>=<span class="string">"oneradio"</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>3.2､多个复选框</p>
+<p>需要<strong>v­-model来配合value</strong>使用 +  <strong>v­-model绑定一个数组</strong></p>
+<p> 注：如果绑定的是<strong>字符串</strong>，则会<strong>转化为true或false</strong>，与<strong>所有绑定的复选框的checked属性相对应</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//html</span></span><br><span class="line">多个复选框 &lt;br&gt;</span><br><span class="line">选项<span class="number">1</span>&lt;input type=<span class="string">"checkbox"</span> value=<span class="string">"选项1"</span> v-model=<span class="string">"checks"</span>&gt;</span><br><span class="line">选项<span class="number">2</span>&lt;input type=<span class="string">"checkbox"</span> value=<span class="string">"选项2"</span> v-model=<span class="string">"checks"</span>&gt;</span><br><span class="line">选项<span class="number">3</span>&lt;input type=<span class="string">"checkbox"</span> value=<span class="string">"选项3"</span> v-model=<span class="string">"checks"</span>&gt;</span><br><span class="line">&lt;br&gt;</span><br><span class="line">现在选中的是 &#123;&#123; checks &#125;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//js</span></span><br><span class="line">...</span><br><span class="line">data:&#123;</span><br><span class="line">        value: <span class="string">''</span>,</span><br><span class="line">        msg: <span class="string">''</span>,</span><br><span class="line">        oneradio: <span class="keyword">true</span>,</span><br><span class="line">        checkname: <span class="string">'单选1'</span>,</span><br><span class="line">        checks: <span class="string">''</span> <span class="comment">// 绑定的是字符串，则会转化为true或false</span></span><br><span class="line">        checks: [] <span class="comment">// 绑定的是数组，含有选中的复选框的value值的一个数组</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>4､ 下拉框</strong></p>
+<p>4.1､ 如果是<strong>单选</strong>，所绑定的<strong>value值初始化</strong>可以为 <strong>数组</strong> 或 <strong>字符串</strong>，结果是转化为所选定项的value值</p>
+<p>  注：   有value直接优先匹配一个value值，没有value就匹配一个text值</p>
+<p>4.2､ 如果是<strong>多选</strong>，需要<strong>v­-model来配合value</strong>使用，v­-model绑定一个数组，与复选框类似</p>
+<p>4.3､ v­-model<strong>一定</strong>是<strong>绑定在select</strong>标签上</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//html</span></span><br><span class="line">&lt;select v-model=<span class="string">"selected"</span>&gt;</span><br><span class="line">        &lt;option value="选项1"&gt;选项1&lt;/option&gt;</span><br><span class="line">        &lt;option value="选项2"&gt;选项2&lt;/option&gt;</span><br><span class="line">        &lt;option value="选项3"&gt;选项3&lt;/option&gt;</span><br><span class="line">&lt;/select&gt;</span><br><span class="line">&lt;br&gt;</span><br><span class="line">现在选中的是 &#123;&#123; selected &#125;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//js</span></span><br><span class="line">...</span><br><span class="line">data:&#123;</span><br><span class="line">        value: <span class="string">''</span>,</span><br><span class="line">        msg: <span class="string">''</span>,</span><br><span class="line">        oneradio: <span class="keyword">true</span>,</span><br><span class="line">        checkname: <span class="string">'单选1'</span>,</span><br><span class="line">        checks: [],</span><br><span class="line">        selected:<span class="string">''</span>，<span class="comment">// value 值为字符串可以</span></span><br><span class="line">        selected:[] <span class="comment">// value 值为数组也可以</span></span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<p><strong>小总结：</strong></p>
+<p>1､如果是<strong>单选，初始化最好给定字符串</strong>，因为v­-model此时绑定的是静态字符串或者布尔值</p>
+<p>2､如果是<strong>多选，初始化最好给定一个数组</strong></p>
+<h3 id="C、绑定值"><a href="#C、绑定值" class="headerlink" title="C、绑定值"></a>C、绑定值</h3><p><strong>1､ 单选按钮</strong></p>
+<p>v­-bind给单个单选框绑定一个value值，此时，v­-model绑定的就是他的value值</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//v-model对单个单选框不生效，但是给单选按钮动态绑定一个value值，就能通过v-model获取它的value值</span></span><br><span class="line">&lt;input type=<span class="string">"radio"</span> v-model=<span class="string">"picked"</span> v-bind:value=<span class="string">"value"</span>&gt;&#123;&#123;picked&#125;&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>2､复选框</strong></p>
+<p>通过<strong>true-value、false-value</strong> 去绑定value值，v­-model绑定的就是他的value值</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//html	</span></span><br><span class="line">&lt;input type=<span class="string">"checkbox"</span> v-model=<span class="string">"toggle"</span> :<span class="keyword">true</span>-value=<span class="string">"value1"</span> :<span class="keyword">false</span>-value=<span class="string">"value2"</span>&gt;</span><br><span class="line">&#123;&#123;toggle&#125;&#125; &lt;br&gt;</span><br><span class="line">选中：&#123;&#123; toggle == value1&#125;&#125; &lt;br&gt;</span><br><span class="line">没选中： &#123;&#123; toggle == value2&#125;&#125;</span><br><span class="line"><span class="comment">//js</span></span><br><span class="line">...</span><br><span class="line">data:&#123;</span><br><span class="line">    toggle: <span class="keyword">true</span>,</span><br><span class="line">    value1: <span class="string">'选中啦'</span>,</span><br><span class="line">    value2: <span class="string">'没有选中啦'</span>   </span><br><span class="line">&#125; <span class="comment">// 选中和没选中时的value值不一样</span></span><br></pre></td></tr></table></figure>
+<p><strong>3､下拉框</strong><br>在select标签上，v-model绑定的是option上的value值，绑定value值对option并没有影响</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//html</span></span><br><span class="line">&lt;select v-model=<span class="string">"valueSele"</span> :value=<span class="string">"&#123;num:123&#125;"</span>&gt; </span><br><span class="line">  &lt;option value="list1"&gt;list1&lt;/option&gt;</span><br><span class="line">  &lt;option value="list2"&gt;list2&lt;/option&gt;</span><br><span class="line">  &lt;option value="list3"&gt;list3&lt;/option&gt;</span><br><span class="line">&lt;/select&gt;</span><br><span class="line">&#123;&#123;typeof valueSele&#125;&#125;----&#123;&#123; valueSele &#125;&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 若把 :value="&#123;num:123&#125;"动态绑定到option上</span></span><br><span class="line">&lt;select v-model=<span class="string">"valueSele"</span>&gt; </span><br><span class="line">  &lt;option value="list1" :value="&#123;num:123&#125;"&gt;list1&lt;/option&gt;</span><br><span class="line">&lt;/select&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">//js</span></span><br><span class="line">...</span><br><span class="line">data:&#123;</span><br><span class="line">    valueSele:<span class="string">''</span>   </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="D、修饰符"><a href="#D、修饰符" class="headerlink" title="D、修饰符"></a>D、修饰符</h3><p><strong>1､lazy</strong></p>
+<p><strong>v­-model默认</strong>是在input输入时<strong>实时同步输入框</strong>的数据，而<strong>lazy修饰符</strong>，可以使其<strong>在失去焦点或者敲回车键之后在更新</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">v-model.lazy</span>=<span class="string">"msg"</span>&gt;</span>&#123;&#123;msg&#125;&#125; // 敲回车或在失去焦点后渲染</span><br></pre></td></tr></table></figure>
+<p><strong>2､number</strong></p>
+<p>将输入 的字符串转化为number类型</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">v-model.number</span>=<span class="string">"value"</span>&gt;</span>&#123;&#123;typeof value&#125;&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>3､trim</strong></p>
+<p>自动过滤输入过程中首尾输入的空格</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">"text"</span> <span class="attr">v-model.trim</span>=<span class="string">'value'</span>&gt;</span>&#123;&#123;value.split('').length&#125;&#125;</span><br></pre></td></tr></table></figure>
+<p>【Demo 实例 <a href="https://jsbin.com/fabuqey/edit?html,output】" target="_blank" rel="noopener">https://jsbin.com/fabuqey/edit?html,output】</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/09/内置指令/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -1679,163 +1844,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/02/DOM元素及操作之习题/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Wuer">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Wuer">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/01/02/DOM元素及操作之习题/" itemprop="url">DOM元素及操作之习题</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-02T16:50:00+08:00">
-                2019-01-02
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>1､要求：当鼠标放置在<code>li</code>元素上，会在<code>img-preview</code>里展示当前<code>li</code>元素的<code>data-img</code>对应的图片。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&lt;ul class=&quot;ct&quot;&gt;</span><br><span class="line">    &lt;li data-img=&quot;1.png&quot;&gt;鼠标放置查看图片1&lt;/li&gt;</span><br><span class="line">    &lt;li data-img=&quot;2.png&quot;&gt;鼠标放置查看图片2&lt;/li&gt;</span><br><span class="line">    &lt;li data-img=&quot;3.png&quot;&gt;鼠标放置查看图片3&lt;/li&gt;</span><br><span class="line">&lt;/ul&gt;</span><br><span class="line">&lt;div class=&quot;img-preview&quot;&gt;&lt;/div&gt;</span><br><span class="line">&lt;script&gt;</span><br><span class="line">//你的代码</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-<p>预览地址：<br><a href="http://js.jirengu.com/tefom/5/edit?html,output" target="_blank" rel="noopener">http://js.jirengu.com/tefom/5/edit?html,output</a></p>
-<p>2､要求：</p>
-<ul>
-<li><p>当点击按钮<code>开头添加时</code>在<code>&lt;li&gt;这里是&lt;/li&gt;</code>元素前添加一个新元素，内容为用户输入的非空字符串；当点击<code>结尾添加</code>时在最后一个 li 元素后添加用户输入的非空字符串.</p>
-</li>
-<li><p>当点击每一个元素 li时，控制台展示该元素的文本内容。</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">"ct"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>这里是<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>饥人谷<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">li</span>&gt;</span>任务班<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">input</span> <span class="attr">class</span>=<span class="string">"ipt-add-content"</span> <span class="attr">placeholder</span>=<span class="string">"添加内容"</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">"btn-add-start"</span>&gt;</span>开头添加<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">button</span> <span class="attr">id</span>=<span class="string">"btn-add-end"</span>&gt;</span>结尾添加<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript"><span class="comment">//你的代码</span></span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-</li>
-</ul>
-<p>预览地址：<a href="http://js.jirengu.com/qonup/1/edit?html,output" target="_blank" rel="noopener">http://js.jirengu.com/qonup/1/edit?html,output</a></p>
-<p>3､要求当点击每一个元素<code>li</code>时控制台展示该元素的文本内容。不考虑兼容。</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">"ct"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>这里是<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>饥人谷<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span>前端14班<span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript"><span class="comment">//todo ...</span></span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>预览地址：<a href="http://js.jirengu.com/wabub/1/edit?html,console,output&gt;" target="_blank" rel="noopener">http://js.jirengu.com/wabub/1/edit?html,console,output&gt;</a></p>
-<p>4､解释DOM2事件传播机制。</p>
-<p>1、DOM2的事件传播包含三个阶段:<br>捕捉阶段（capturing），事件从顶级文档树节点一级一级向下遍历，直到到达该事件的目标节点。<br>到达事件的目标节点，执行目标节点的时间处理程序。<br>事件起泡（bubbling），事件从目标节点一级一级向上上溯，直到顶级文档树节点。</p>
-<p>2、相应的，2级DOM通过下面的两个函数给节点对象添加和删除事件处理函数。<br>addEventListener(eventType, handler, propagate);<br>removeEventListener(eventType, handler, propagate);</p>
-<p>三个参数意思分别如下:<br>eventType: 即事件类型（不加on）。比如：”click”。<br>handler: 事件处理函数。传入参数即为事件对象event。<br>propagate: 是否只执行捕获和目标节点两个阶段。true的话，只执行1，2两个阶段；false的话，只指向2，3两个阶段。</p>
-<p>3、IE的事件传播只包含上边的2和3两个阶段<br>相应的，IE通过下面两个函数给节点对象添加和删除事件处理函数。<br>attachEvent(eventType, handler);<br>detachEvent(eventType, handler);<br>参数意思同2级DOM对应的函数参数</p>
-<p>5､<code>onlick</code>与<code>addEventListener</code>的区别</p>
-<p>1、onclick 只能绑定一个事件，绑定多个会产生覆盖；不能设置参数，使用默认的事件冒泡阶段。</p>
-<p>2、addEventListener中有第3个参数，attachEvent没有。第3个参数传递的是false或true。这个参数可选，默认是false。<br>false–表示事件处理将在冒泡阶段执行。<br>true–表示事件处理将在捕获阶段执行。</p>
-<p>3、理论上，Event Listeners (addEventListener、attachEvent（IE使用 ）)可以无限增加事件监听给某个一元素。实际应用的约束就是客户端内存的限制，这一点因每个浏览器而异。</p>
-<p>参考链接：<a href="https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener" target="_blank" rel="noopener">https://developer.mozilla.org/en-US/docs/Web/API/EventTarget/addEventListener</a></p>
-<p>6､实现<a href="http://js.jirengu.com/nupom" target="_blank" rel="noopener">此效果</a>。</p>
-<p>预览地址：<br><a href="http://js.jirengu.com/cidag/13/edit" target="_blank" rel="noopener">http://js.jirengu.com/cidag/13/edit</a></p>
-<p>7､如何获取 DOM 计算后的样式？</p>
-<p>使用getComputedStyle获取元素计算后的样式，不要通过 node.style.属性 获取</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> node = <span class="built_in">document</span>.querySelector(<span class="string">'p'</span>)</span><br><span class="line"><span class="keyword">var</span> color = <span class="built_in">window</span>.getComputedStyle(node).color</span><br><span class="line"><span class="built_in">console</span>.log(color)</span><br></pre></td></tr></table></figure>
-<p>8､写一个函数，批量操作 css。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">css</span>(<span class="params">node, styleObj</span>)</span>&#123;</span><br><span class="line"><span class="comment">//todo ..</span></span><br><span class="line">&#125;</span><br><span class="line">css(<span class="built_in">document</span>.body, &#123;</span><br><span class="line">  <span class="string">'color'</span>: <span class="string">'red'</span>,</span><br><span class="line">  <span class="string">'background-color'</span>: <span class="string">'#ccc'</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<p>预览地址：<br><a href="http://js.jirengu.com/nixac/2/edit?html,js" target="_blank" rel="noopener">http://js.jirengu.com/nixac/2/edit?html,js</a></p>
-<p>9､列出DOM 元素选取的 API。</p>
-<p>getElementById() //获取id<br>getElementsByClassName() //获取class类名<br>getElementsByTagName() //获取标签名<br>getElementsByName() //获取有name属性的html元素<br>querySelector() //选择器<br>querySelectorAll() //选择所有选择器</p>
-<p>10､如何创建元素？如何添加元素？</p>
-<p>创建元素：<br>createElement() //元素节点<br>createTextNode() //文本节点<br>createDocumentFragment()</p>
-<p>添加元素:<br>appendChild() //添加元素<br>insertBefore() //某个元素之前插入元素<br>replaceChild() //要插入的元素和要替换的元素</p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1886,7 +1894,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">58</span>
+                  <span class="site-state-item-count">59</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
