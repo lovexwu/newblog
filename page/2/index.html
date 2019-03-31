@@ -229,6 +229,289 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/13/数据验证/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Wuer">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Wuer">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/03/13/数据验证/" itemprop="url">数据验证</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-13T18:44:18+08:00">
+                2019-03-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="一、Vue-组件中命名"><a href="#一、Vue-组件中命名" class="headerlink" title="一、Vue 组件中命名"></a>一、Vue 组件中命名</h2><p> camelCase（骆峰式）命名 |  kebab-case (短横线) 命名</p>
+<p>1､在组件中的<strong>html</strong> ，不能用骆峰式，必须用kebab-case<strong>（短横线）</strong>命名，因为<strong>myMessage===mymessage</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//html</span></span><br><span class="line">&lt;div id=<span class="string">"app"</span>&gt;</span><br><span class="line">    <span class="comment">//报错：[Vue warn]: Unknown custom element: &lt;mycomponent&gt; </span></span><br><span class="line">    &lt;myComponent&gt;&lt;/myComponent&gt; </span><br><span class="line">    <span class="comment">// 因为html 中 是不区分大小写的 也就是 myComponent === mycomponent--</span></span><br><span class="line">&lt;/div&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">//js</span></span><br><span class="line">Vue.component(<span class="string">'myComponent'</span>,&#123;<span class="comment">//js中是区分大小写的</span></span><br><span class="line">    template: <span class="string">'&lt;div&gt;我是一个组件&lt;/div&gt;'</span></span><br><span class="line">&#125;)</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p>2､在组件中，<strong>父组件给子组件传递数据</strong>必须用<strong>短横线</strong></p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//html</span></span><br><span class="line">&lt;div id=<span class="string">"app"</span>&gt; <span class="comment">//父组件给子组件传递数据,必须用短横线</span></span><br><span class="line">	&lt;my-component my-msg="hello"&gt;&lt;/my-component&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<p>3､在组件的<strong>template</strong>中和<strong>data</strong>中用<strong>this.xxx引用</strong>时，只能是<strong>驼峰式</strong>，如果用短横线，会直接报错</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//js</span></span><br><span class="line"><span class="keyword">var</span> app=<span class="keyword">new</span> Vue(&#123;</span><br><span class="line">    el: <span class="string">'#app'</span>,</span><br><span class="line">    components:&#123;</span><br><span class="line">        <span class="string">'my-component'</span>:&#123;</span><br><span class="line">            props: [<span class="string">'myMsg'</span>],<span class="comment">//props随意，也就是 myMsg 或 my-msg 都可以的</span></span><br><span class="line">            template:<span class="string">'&lt;div&gt;&#123;&#123;myMsg&#125;&#125;&lt;/div&gt;'</span>,<span class="comment">//在template中，必须用骆峰式</span></span><br><span class="line">            data:function()&#123;</span><br><span class="line">              <span class="keyword">return</span>&#123;</span><br><span class="line">            	title:<span class="keyword">this</span>.myMsg <span class="comment">////在data中用this.xxx引用时，必须用骆峰式</span></span><br><span class="line">              &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>4､在组件的props中随意</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//html</span></span><br><span class="line">&lt;div id=<span class="string">"app"</span>&gt; <span class="comment">//父组件给子组件传递数据,必须用短横线</span></span><br><span class="line">	&lt;my-component my-msg="hello"&gt;&lt;/my-component&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">//js</span></span><br><span class="line"><span class="keyword">var</span> app=<span class="keyword">new</span> Vue(&#123;</span><br><span class="line">    el: <span class="string">'#app'</span>,</span><br><span class="line">    components:&#123;</span><br><span class="line">        <span class="string">'my-component'</span>:&#123;</span><br><span class="line">            props: [<span class="string">'myMsg'</span>],</span><br><span class="line">            template:<span class="string">'&lt;div&gt;&#123;&#123;title&#125;&#125;&lt;/div&gt;'</span>,<span class="comment">//在template中，必须用骆峰式</span></span><br><span class="line">            data:function()&#123;</span><br><span class="line">              <span class="keyword">return</span>&#123;</span><br><span class="line">            	title:<span class="keyword">this</span>.myMsg</span><br><span class="line">              &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h2 id="二、六种验证的type类型-可以有"><a href="#二、六种验证的type类型-可以有" class="headerlink" title="二、六种验证的type类型(可以有)"></a>二、六种验证的type类型(可以有)</h2><p>String |  Number | Boolean | Object | Array | Function</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">Vue <span class="title">component</span><span class="params">(my-component,&#123;</span></span></span><br><span class="line"><span class="function"><span class="params">    props: &#123;</span></span></span><br><span class="line"><span class="function"><span class="params">       propA: Number,//必须是数字</span></span></span><br><span class="line"><span class="function"><span class="params">       propB: [String,Number],//必须字符串或是数字</span></span></span><br><span class="line"><span class="function"><span class="params">       propC: &#123;//布尔值，如果没定义，默认值是 <span class="keyword">true</span></span></span></span><br><span class="line"><span class="function"><span class="params">           type: Boolean,</span></span></span><br><span class="line"><span class="function"><span class="params">           <span class="keyword">default</span>: <span class="keyword">true</span></span></span></span><br><span class="line"><span class="function"><span class="params">       &#125;,</span></span></span><br><span class="line"><span class="function"><span class="params">       propD: &#123;//数字而且必须传</span></span></span><br><span class="line"><span class="function"><span class="params">           type: Number,</span></span></span><br><span class="line"><span class="function"><span class="params">           required: <span class="keyword">true</span> // 必须传</span></span></span><br><span class="line"><span class="function"><span class="params">       &#125;,</span></span></span><br><span class="line"><span class="function"><span class="params">       propE: &#123;//如果是数组或对象，默认值必须是一个函数来返回</span></span></span><br><span class="line"><span class="function"><span class="params">           type: Array,</span></span></span><br><span class="line"><span class="function"><span class="params">           <span class="keyword">default</span>: function()</span></span>&#123;</span><br><span class="line">               <span class="keyword">return</span> []</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;,</span><br><span class="line">       propF: &#123;<span class="comment">//自定义一个验证函数</span></span><br><span class="line">           validator: function(value)&#123;</span><br><span class="line">               <span class="keyword">return</span> value &gt; <span class="number">10</span></span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>【Demo实例 <a href="https://jsbin.com/zonohokihe/edit?html,output】" target="_blank" rel="noopener">https://jsbin.com/zonohokihe/edit?html,output】</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/11/组件/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Wuer">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Wuer">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/03/11/组件/" itemprop="url">组件</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-11T16:39:09+08:00">
+                2019-03-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="一、作用"><a href="#一、作用" class="headerlink" title="一、作用"></a>一、作用</h2><p>提高代码的复用性</p>
+<h2 id="二、注册"><a href="#二、注册" class="headerlink" title="二、注册"></a>二、注册</h2><p><strong>1､全局注册</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Vue.component(<span class="string">'my-component'</span>,&#123;</span><br><span class="line">    template: <span class="string">'&lt;div&gt;我是组件内容&lt;/div&gt;'</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>优点： 所有vue实例都可以使用</p>
+<p>缺点： 权取太大，容错率降低</p>
+<p><strong>2､局部注册</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> app = <span class="keyword">new</span> Vue(&#123;</span><br><span class="line">    el: <span class="string">'#app'</span>,</span><br><span class="line">    components:&#123;<span class="comment">//切记component后边要加s</span></span><br><span class="line">        <span class="string">'my-component'</span>:&#123;</span><br><span class="line">            template:<span class="string">'&lt;div&gt;我是局部注册的一个组件&lt;/div&gt;'</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>3､ vue 组件模板受html限制</strong></p>
+<p>在某些情况下会受到html标签的限制</p>
+<p>比如直接在table中使用组件是无效的，可以使用 is属性来挂载组件</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//html</span></span><br><span class="line">&lt;div id=<span class="string">"app"</span>&gt;</span><br><span class="line">  &lt;my-component&gt;我是组件内容&lt;/my-component&gt;</span><br><span class="line">  </span><br><span class="line">  &lt;table&gt;</span><br><span class="line">  	 &lt;my-component&gt;我是组件内容&lt;/my-component&gt;</span><br><span class="line">  &lt;/table&gt;</span><br><span class="line">  <span class="comment">// 无效是因为table 中 只能有 tr,td,tbody这些元素，改成用is属性即可</span></span><br><span class="line">  </span><br><span class="line">  &lt;table&gt;</span><br><span class="line">  	&lt;tbody is="my-component"&gt;&lt;/tbody&gt;</span><br><span class="line">  &lt;/table&gt;</span><br><span class="line">  </span><br><span class="line">&lt;/div&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">//js</span></span><br><span class="line">...</span><br><span class="line">Vue.component(<span class="string">'my-component'</span>,&#123;</span><br><span class="line">    template:<span class="string">'&lt;div&gt;我是组件内容&lt;/div&gt;'</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> app = <span class="keyword">new</span> Vue(&#123;</span><br><span class="line">    el: <span class="string">'#app'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="三、技巧"><a href="#三、技巧" class="headerlink" title="三、技巧"></a>三、技巧</h2><p>1､必须用<strong>小写字母</strong>命名（child、mycomponent 命名组件）</p>
+<p>2､<strong>template</strong> 中的内容<strong>必须</strong>是被<strong>一个DOM 元素</strong>包括，也可以嵌套</p>
+<p>3､在组件定义中，除了template外，其他选项也可以用（data、computed、methods）</p>
+<p>4､data 必须是一个方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// html</span></span><br><span class="line">&lt;div id=<span class="string">"app"</span>&gt;</span><br><span class="line"> &lt;btn-component&gt;&lt;/btn-component&gt;</span><br><span class="line">&lt;div&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">//js</span></span><br><span class="line">...</span><br><span class="line">components:&#123;</span><br><span class="line">  <span class="string">'btn-component'</span>:&#123;</span><br><span class="line">      template: <span class="string">'&lt;button @click="count++"&gt;&#123;&#123;count&#125;&#125;&lt;/button&gt;'</span>,</span><br><span class="line">      data:function()&#123; <span class="comment">//切记data必须是一个方法</span></span><br><span class="line">          <span class="keyword">return</span>&#123; <span class="comment">//每次return 返回的是不同的 data对象</span></span><br><span class="line">                  count:<span class="number">0</span></span><br><span class="line">          &#125;</span><br><span class="line">       &#125;</span><br><span class="line">    &#125;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<p>【Demo实例 <a href="https://jsbin.com/fucotab/edit?html,output】" target="_blank" rel="noopener">https://jsbin.com/fucotab/edit?html,output】</a></p>
+<h2 id="四、props传递数据-父传子"><a href="#四、props传递数据-父传子" class="headerlink" title="四、props传递数据 父传子"></a>四、props传递数据 父传子</h2><p>1､在组件中使用props 从父组件接收参数，<strong>注：在props中定义的属性，都可在组件中直接使用</strong></p>
+<p>2､props 来自 父级的数据 ，而组件中data return的数据是组件自已的数据，两种情况作用域就是组件本身，可在template、computed、methods中直接使用</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//html</span></span><br><span class="line">&lt;div id=<span class="string">"app"</span>&gt;</span><br><span class="line">	&lt;h5&gt;我是父组件&lt;/h5&gt;//1､父组件通过msg给子组件传递消息：在子组件subcomponent上写上msg 等于一个内容</span><br><span class="line">	&lt;subcomponent msg="我是父组件传递的内容"&gt;&lt;/subcomponent&gt;</span><br><span class="line">&lt;/div&gt; //2､子组件要用到父组件传过来的消息</span><br><span class="line"></span><br><span class="line"><span class="comment">//js</span></span><br><span class="line">...</span><br><span class="line">components:&#123;</span><br><span class="line">    subcomponent:&#123;</span><br><span class="line">        props: [<span class="string">'msg'</span>], <span class="comment">//数据来自父组件 2.1 props定义msg (以字符串数组形式)</span></span><br><span class="line">        template:<span class="string">'&lt;div&gt;&#123;&#123;msg&#125;&#125;&lt;/div&gt;'</span> <span class="comment">// 2.2 模板 template 就可以直接用了</span></span><br><span class="line">    &#125;     </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>3､props的值有两种： 一种是字符串数组（上述小例子就是)，另一种是对象</p>
+<p>4､可以用v-bind动态绑定父组件来的内容</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//html</span></span><br><span class="line">....</span><br><span class="line">&lt;subcomponent msg="我是来自父组件的内容"&gt;&lt;/subcomponent&gt;</span><br><span class="line">&lt;input type=<span class="string">"text"</span> v-model=<span class="string">"parentMsg"</span>&gt; <span class="comment">// 1､input v-model绑定的数据是父组件data 中的数据</span></span><br><span class="line">&#123;&#123; parentMsg&#125;&#125; </span><br><span class="line"><span class="comment">//2､把绑定的数据同时传递给子组件： 通过v-bind绑定属性msg,把属性msg用props进行接收</span></span><br><span class="line">&lt;bindcomponent v-bind:msg="parentMsg"&gt;&lt;/bindcomponent&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">//js</span></span><br><span class="line">...</span><br><span class="line">data:&#123;</span><br><span class="line">  parentMsg: <span class="string">'开始啦'</span>      </span><br><span class="line">&#125;</span><br><span class="line">components:&#123;</span><br><span class="line">    <span class="string">'bindcomponent'</span>:&#123;</span><br><span class="line">        props: [<span class="string">'msg'</span>],</span><br><span class="line">        template: <span class="string">'&lt;div&gt;&#123;&#123;msg&#125;&#125;&lt;/div&gt;'</span><span class="comment">//3､就可以在template中直接使用</span></span><br><span class="line">    &#125;     </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>【Demo实例 <a href="https://jsbin.com/jodaxer/1/edit?html,output】" target="_blank" rel="noopener">https://jsbin.com/jodaxer/1/edit?html,output】</a></p>
+<p>参考 <a href="https://cn.vuejs.org/v2/guide/components-props.html" target="_blank" rel="noopener">https://cn.vuejs.org/v2/guide/components-props.html</a></p>
+<h2 id="五、单向数据流props使用场景"><a href="#五、单向数据流props使用场景" class="headerlink" title="五、单向数据流props使用场景"></a>五、单向数据流props使用场景</h2><p><strong>1､ 第一种：</strong></p>
+<p>​     a、<strong>父组件</strong>：传递<strong>初始值</strong></p>
+<p>​     b、<strong>子组件</strong>：将它作为<strong>初始值保存</strong>起来，在自已的作用域下，可随意使用或修改    </p>
+<p>​     这种情况，<strong>可以在组件 data 内再声明一个数据</strong>，引用父组件的 props</p>
+ <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//html	</span></span><br><span class="line">&lt;div id=<span class="string">"app"</span>&gt; <span class="comment">//2.1 将父组件的数据传递进来</span></span><br><span class="line">	&lt;my-component msg="父组件传递的消息"&gt;&lt;/my-component&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">//js</span></span><br><span class="line"><span class="keyword">var</span> app = <span class="keyword">new</span> Vue(&#123;</span><br><span class="line">    el: <span class="string">'#app'</span>,</span><br><span class="line">    components:&#123; <span class="comment">// 1、注册组件</span></span><br><span class="line">        <span class="string">'my-component'</span>:&#123;</span><br><span class="line">            props: [<span class="string">'msg'</span>],<span class="comment">//2.2 在子组件中用props接收数据</span></span><br><span class="line">            template: <span class="string">'&lt;div&gt;&#123;&#123;count&#125;&#125;&lt;/div&gt;'</span>,</span><br><span class="line">            data:function()&#123;</span><br><span class="line">              <span class="keyword">return</span>&#123; <span class="comment">//将传递进来的数据用初始值保存起来</span></span><br><span class="line">            	count: <span class="keyword">this</span>.msg<span class="comment">//props中的值可以通过this.xxx直接来进行获取</span></span><br><span class="line">              &#125; </span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line">    </span><br><span class="line">分三步曲完成：</span><br><span class="line"><span class="number">1</span>､ 注册组件</span><br><span class="line"><span class="number">2</span>、将父组件的数据传递进来，并在子组件中用props接收</span><br><span class="line"><span class="number">3</span>、将传递进来的数据通过初始值保存起来</span><br></pre></td></tr></table></figure>
+<p><strong>2､ 第二种</strong></p>
+<p>  <strong>props</strong> 作为需要<strong>被转变的原始值</strong>传入，这种情况 用 <strong>计算属性</strong> 就可以</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//html</span></span><br><span class="line">&lt;div id=<span class="string">"app"</span>&gt;</span><br><span class="line"> &lt;input type=<span class="string">"text"</span> v-model=<span class="string">"width"</span>&gt;</span><br><span class="line"> &lt;my-component :width="width"&gt;&lt;/my-component&gt;//2.1 将父组件的数据传递进来</span><br><span class="line">&lt;/div&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">//js</span></span><br><span class="line"><span class="keyword">var</span> app = <span class="keyword">new</span> Vue(&#123;</span><br><span class="line">    el: <span class="string">'#app'</span>,</span><br><span class="line">    data:&#123;</span><br><span class="line">        width: <span class="number">0</span></span><br><span class="line">    &#125;,</span><br><span class="line">    components:&#123;<span class="comment">//1、注册组件</span></span><br><span class="line">        <span class="string">'my-component'</span>:&#123;</span><br><span class="line">            props: [<span class="string">'width'</span>],<span class="comment">//2.2 在子组件中用props接收数据</span></span><br><span class="line">            template:<span class="string">'&lt;div :style="style"&gt;&lt;/div&gt;'</span>,</span><br><span class="line">            computed:&#123;<span class="comment">//3､将传递进来的数据，通过计算属性重新计算工</span></span><br><span class="line">                style:function()&#123;</span><br><span class="line">                    <span class="keyword">return</span>&#123;</span><br><span class="line">                        width: <span class="keyword">this</span>.width+<span class="string">'px'</span>,</span><br><span class="line">                        background:<span class="string">'green'</span>,</span><br><span class="line">                        height:<span class="string">'20px'</span></span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">分三步曲完成：</span><br><span class="line"><span class="number">1</span>､注册组件</span><br><span class="line"><span class="number">2</span>､将父组件的数据传递进来，并在子组件中用props接收</span><br><span class="line"><span class="number">3</span>､将传递进来的数据，通过计算属性重新计算工</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/11/表单 + v-model/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -1493,362 +1776,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/13/Promise对象/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Wuer">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Wuer">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/01/13/Promise对象/" itemprop="url">Promise对象</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-13T22:45:00+08:00">
-                2019-01-13
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="一、定义"><a href="#一、定义" class="headerlink" title="一、定义"></a>一、定义</h1><p>异步编程的一种解决方案，ES6 将其写进了语言标准，统一了用法，原生提供了<code>Promise</code>对象，<strong>提供统一的 API，各种异步操作都可以用同样的方法进行处理</strong></p>
-<p>简单说就是一个对象，对象里存储一个状态，这个状态是可以随着内部的执行转化的</p>
-<p><strong>三种状态有：pending（进行中）、fulfilled（已成功）和rejected（已失败）</strong>。</p>
-<h1 id="二、特点"><a href="#二、特点" class="headerlink" title="二、特点"></a>二、特点</h1><p>1､ 对象的状态不受外界影响</p>
-<p>2､一旦状态改变，就不会再变，任何时候都可以得到这个结果</p>
-<p>注： </p>
-<p>a.  有了Promise对象，就可以将异步操作以同步操作的流程表达出来，避免了层层嵌套的回调函数。</p>
-<p>b.  Promise对象提供统一的接口，使得控制异步操作更加容易</p>
-<h1 id="三、基本用法"><a href="#三、基本用法" class="headerlink" title="三、基本用法"></a>三、基本用法</h1><p>ES6 规定，Promise对象是一个<strong>构造函数</strong>，用来生成<strong>Promise实例</strong></p>
-<p>先看一个创造Promise实例的代码</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> promise = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span>(<span class="params">resolve, reject</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// ... some code</span></span><br><span class="line"></span><br><span class="line">  <span class="keyword">if</span> (<span class="comment">/* 异步操作成功 */</span>)&#123;</span><br><span class="line">    resolve(value);</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    reject(error);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<p>上面代码解析</p>
-<p>1､ Promise构造函数接受<strong>一个函数</strong>作为参数，该函数的两个参数分别是<strong>resolve</strong>和<strong>reject</strong>。其中它们是两个函数，不用自己部署，由 JavaScript 引擎提供。</p>
-<p>2､ <strong>resolve</strong>函数作用是，将Promise对象的状态<strong>从“未完成”变为“成功”</strong>（即从 pending 变为 resolved），在异步操作成功时调用，并将异步操作的结果，作为参数传递出去</p>
-<p>3､ <strong>reject</strong>函数作用是，将Promise对象的状态<strong>从“未完成”变为“失败”</strong>（即从 pending 变为 rejected），在异步操作失败时调用，并将异步操作报出的错误，作为参数传递出去。</p>
-<p>还是上面的代码，如果Promise实例生成以后，可以用<strong>then</strong>方法分别指定<strong>resolved状态和rejected状态的回调函数</strong>。</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">promise.then(<span class="function"><span class="keyword">function</span>(<span class="params">value</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// success</span></span><br><span class="line">&#125;, <span class="function"><span class="keyword">function</span>(<span class="params">error</span>) </span>&#123;</span><br><span class="line">  <span class="comment">// failure</span></span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<p>然后呢！ <strong>then方法可以接受两个回调函数作为参数</strong>。</p>
-<p>1､ 第一个回调函数是Promise对象的状态变为resolved时调用</p>
-<p>2､ 第二个回调函数是Promise对象的状态变为rejected时调用，是可选的哦</p>
-<p><strong>注：这两个函数都接受Promise对象传出的值作为参数</strong></p>
-<p>再上一个Promise对象的简单例子</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">timeout</span>(<span class="params">ms</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">    setTimeout(resolve, ms, <span class="string">'done'</span>);</span><br><span class="line">  &#125;);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">timeout(<span class="number">100</span>).then(<span class="function">(<span class="params">value</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(value);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<p>上面代码解析</p>
-<p>1､ timeout方法返回一个Promise实例，表示一段时间以后才会发生的结果</p>
-<p>2､ 过了指定的时间（ms参数）以后，Promise实例的状态变为resolved，就会触发then方法绑定的回调函数</p>
-<p> Ajax 改造成一个返回 Promise对象  <a href="http://js.jirengu.com/gunoxosamu/2/edit" target="_blank" rel="noopener">http://js.jirengu.com/gunoxosamu/2/edit</a></p>
-<p>更多用法 <a href="http://es6.ruanyifeng.com/#docs/promise" target="_blank" rel="noopener">http://es6.ruanyifeng.com/#docs/promise</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/01/09/面向对象之原型、原型链/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Wuer">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Wuer">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/01/09/面向对象之原型、原型链/" itemprop="url">面向对象之原型、原型链</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-01-09T09:35:54+08:00">
-                2019-01-09
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="一、JS-中的对象"><a href="#一、JS-中的对象" class="headerlink" title="一、JS 中的对象"></a>一、JS 中的对象</h1><h2 id="A、定义"><a href="#A、定义" class="headerlink" title="A、定义"></a>A、定义</h2><p>一系列无序 key: value 的集合</p>
-<h2 id="B、实例"><a href="#B、实例" class="headerlink" title="B、实例"></a>B、实例</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123; <span class="attr">a</span>: <span class="number">1</span>, <span class="attr">b</span>: <span class="number">2</span>&#125;</span><br><span class="line"><span class="keyword">var</span> person = &#123;</span><br><span class="line">    name: <span class="string">'hunger'</span>,</span><br><span class="line">    sayName: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'My name is hunger'</span>)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>我们可以通过对象的属性来获取对应属性的值</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">console</span>.log(person.name) <span class="comment">// "hunger"</span></span><br><span class="line">person.sayName() <span class="comment">// My name is hunger</span></span><br></pre></td></tr></table></figure>
-<p>其实函数有也是JS 对象的一种，也有很多属性，比如定义一个函数</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sum</span>(<span class="params">a,b</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> a+b</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(sum.name) <span class="comment">// sum</span></span><br><span class="line"><span class="built_in">console</span>.log(sum.length) <span class="comment">// 2</span></span><br></pre></td></tr></table></figure>
-<h2 id="二、面向对象"><a href="#二、面向对象" class="headerlink" title="二、面向对象"></a>二、面向对象</h2><h2 id="A、定义-1"><a href="#A、定义-1" class="headerlink" title="A、定义"></a>A、定义</h2><p>面向对象编程，全称 OOP(Object-oriented programming）</p>
-<h2 id="B、实现思路"><a href="#B、实现思路" class="headerlink" title="B、实现思路"></a>B、实现思路</h2><p>(1) 把某个功能看成一个整体（对象）</p>
-<p>(2) 通过调用对象的某个方法来启动功能</p>
-<p>(3) 在用的时候不去考虑这个对象内部的实现细节</p>
-<p>(4)在去实现这个对象细节的时候不用管谁在调用</p>
-<h2 id="C、实例"><a href="#C、实例" class="headerlink" title="C、实例"></a>C、实例</h2><p>假设有两个车要启动，用面向过程的写法代码无法维护，而面向对象只需要</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Car1.拧钥匙()</span><br><span class="line">Car1.挂挡()</span><br><span class="line">Car1.踩油门() </span><br><span class="line">Car2.拧钥匙()</span><br><span class="line">Car2.挂挡()</span><br><span class="line">Car2.踩油门()</span><br></pre></td></tr></table></figure>
-<p>所以呀，面向对象的写法不仅更简洁，而且更可控</p>
-<h2 id="三、构造对象"><a href="#三、构造对象" class="headerlink" title="三、构造对象"></a>三、构造对象</h2><h2 id="A、new"><a href="#A、new" class="headerlink" title="A、new"></a>A、new</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">name</span>) </span>&#123;</span><br><span class="line">    <span class="comment">// var tmpObj = &#123;&#125;</span></span><br><span class="line">    <span class="keyword">this</span>.name = name</span><br><span class="line">    <span class="keyword">this</span>.sayName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="keyword">this</span>.name)</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">// return tmpObj</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> p = <span class="keyword">new</span> Person(<span class="string">'hunger'</span>)</span><br></pre></td></tr></table></figure>
-<p>上面代码解析为：</p>
-<p>(1) 执行 new Person</p>
-<p>​        a. 创建一个空对象{}, 假设名字是 tmpObj</p>
-<p>​        b. 执行Person 函数，执行过程中对 this 操作，就是对tmpObj 操作</p>
-<p>​        c. 函数执行完后返回刚刚创建的tmpObj</p>
-<p>(2) 把tmpObj 赋值给 p (p 也指向同一个对象)</p>
-<h2 id="B、instanceof"><a href="#B、instanceof" class="headerlink" title="B、instanceof"></a>B、instanceof</h2><p>操作符，判断对象是否为某个类型的实例</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">p1 <span class="keyword">instanceof</span> Person <span class="comment">// true</span></span><br><span class="line">p1 <span class="keyword">instanceof</span> <span class="built_in">Object</span> <span class="comment">// true</span></span><br><span class="line"><span class="number">1</span> <span class="keyword">instanceof</span> <span class="built_in">Number</span> <span class="comment">// false</span></span><br></pre></td></tr></table></figure>
-<p>instanceof 判断只是对象，所以呀，构造函数 出现了</p>
-<h2 id="四、构造函数"><a href="#四、构造函数" class="headerlink" title="四、构造函数"></a>四、构造函数</h2><h2 id="A、定义-2"><a href="#A、定义-2" class="headerlink" title="A、定义"></a>A、定义</h2><p>(1) 任何函数使用new表达式就是构造函数</p>
-<p>(2) 每个<strong>函数</strong>都自动添加一个名称为<code>prototype</code>属性，这是一个对象</p>
-<p>(3) 每个<strong>对象</strong>都有一个内部属性 <code>__proto__</code>(规范中没有指定这个名称，但是浏览器都这么实现的) 指向其类型的prototype属性，类的实例也是对象，其<strong><strong>proto</strong></strong>属性指向“类”的prototype</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/14339384-0c1116142a9c3cde.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-<p>从图可以看出，<strong>实例p1,p2 </strong>可以通过 <strong><strong>prop</strong></strong> 访问到其类型的 <strong>prototype</strong>  属性</p>
-<p><strong>结论是：类的prototype对象可以作为一个公共容器，供所有实例访问</strong></p>
-<p>那么上图我们又可以变装为</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/14339384-90415a514973fe24.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-<p>上图解析为</p>
-<p>(1) 所有实例都会通过原型链引用到类型的prototype</p>
-<p>(2) prototype相当于特定类型所有实例都可以访问到的一个公共容器</p>
-<p>(3) 重复的东西移动到公共容器里放一份就可以了</p>
-<p>如用代码表示</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Person</span>(<span class="params">nick, age</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.nick = nick;</span><br><span class="line">    <span class="keyword">this</span>.age = age;</span><br><span class="line">&#125;</span><br><span class="line">Person.prototype.sayName = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="keyword">this</span>.nick);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> p1 = <span class="keyword">new</span> Person();</span><br><span class="line">p1.sayName();</span><br></pre></td></tr></table></figure>
-<h2 id="B、调用函数时发生了什么，看实例"><a href="#B、调用函数时发生了什么，看实例" class="headerlink" title="B、调用函数时发生了什么，看实例"></a>B、调用函数时发生了什么，看实例</h2><p>(1)  构造函数最后没有 <code>return</code> 语句</p>
-<p>我们知道，构造函数中不需要 <code>return</code>语句，默认返回一个新对象，如下</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">People</span>(<span class="params">name,age</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.name = name</span><br><span class="line">  <span class="keyword">this</span>.age = age</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> o = <span class="keyword">new</span> People(<span class="string">'hunger'</span>,<span class="number">3</span>);</span><br><span class="line"><span class="built_in">console</span>.log(o); <span class="comment">// People &#123;name: "hunger", age: 3&#125;</span></span><br></pre></td></tr></table></figure>
-<p>(2) 构造函数最后 <code>return</code> 对象类型数据</p>
-<p>显式返回对象类型的值：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">People</span>(<span class="params">name,age</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.name = name</span><br><span class="line">  <span class="keyword">this</span>.age = age</span><br><span class="line">  <span class="keyword">return</span> &#123; <span class="attr">type</span>: <span class="string">"我是显示返回的"</span>&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> o = <span class="keyword">new</span> People(<span class="string">'hunger'</span>,<span class="number">3</span>);</span><br><span class="line"><span class="built_in">console</span>.log(o) <span class="comment">//&#123;type: "我是显示返回的"&#125;</span></span><br></pre></td></tr></table></figure>
-<p>上面代码解析</p>
-<p>返回结果是 return 后面的对象，也就是说 return 之前的工作都做白做了</p>
-<p>(3) 构造函数最后 <code>return</code> 基本类型数据</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">People</span>(<span class="params">name,age</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">this</span>.name = name</span><br><span class="line">  <span class="keyword">this</span>.age = age</span><br><span class="line">  <span class="keyword">return</span> <span class="number">1</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> o = <span class="keyword">new</span> People(<span class="string">'hunger'</span>,<span class="number">3</span>);</span><br><span class="line"><span class="built_in">console</span>.log(o) <span class="comment">//People &#123;name: "hunger", age: 3&#125;</span></span><br></pre></td></tr></table></figure>
-<p>上面代码解析</p>
-<p>return 后面是基本类型，会被认为和没有return时 效果一样</p>
-<h2 id="五、精典面试题"><a href="#五、精典面试题" class="headerlink" title="五、精典面试题"></a>五、精典面试题</h2><h4 id="题1"><a href="#题1" class="headerlink" title="题1"></a>题1</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">People</span>(<span class="params"></span>)</span>&#123;&#125;</span><br><span class="line"><span class="keyword">var</span> p = <span class="keyword">new</span> People()</span><br><span class="line">p.__proto__ === People.prototype  <span class="comment">// true</span></span><br><span class="line">People.__proto__ === <span class="built_in">Function</span>.prototype <span class="comment">// true</span></span><br><span class="line">People.prototype.__proto__ === <span class="built_in">Object</span>.prototype <span class="comment">//true</span></span><br></pre></td></tr></table></figure>
-<p>上面代码解析</p>
-<p>（1）People函数创建了对象 p，所以People.prototype === p.<strong>proto</strong>；</p>
-<p>（2）People 作为对象的角色被函数Function创建，所以 Function.prototype === People.<strong>proto</strong></p>
-<p>（3）Object函数创建了People.prototype对象，所以Object.prototype === People.prototype.<strong>proto</strong>；</p>
-<p>画个原型图了解</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/14339384-c52a6126b79d744e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-<h4 id="题2"><a href="#题2" class="headerlink" title="题2"></a>题2</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Function</span>.prototype === <span class="built_in">Function</span>.__proto__    <span class="comment">// true      </span></span><br><span class="line"><span class="built_in">Function</span>.prototype === <span class="built_in">Object</span>.__proto__    <span class="comment">// true        </span></span><br><span class="line"><span class="built_in">Function</span>.prototype.__proto__ === <span class="built_in">Object</span>.prototype <span class="comment">// true </span></span><br><span class="line"><span class="built_in">Function</span> <span class="keyword">instanceof</span> <span class="built_in">Object</span> <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
-<p>上面代码解析</p>
-<p>(1) 任何函数都是 Function 创建，所以Function 创建了 Function，所以 Function.prototype === Function.<strong>proto</strong>；</p>
-<p>(2) Object 也是函数。所以Function创建了Object，所以 Function.prototype === Object.<strong>proto</strong> ；</p>
-<p>(3) Function.prototype 是普通对象，普通对象是由Object创建的，所以 Function.prototype.<strong>proto</strong> === Object.prototype</p>
-<p>画个原型图了解</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/14339384-d8755ccb63c557e7.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-<h4 id="题3"><a href="#题3" class="headerlink" title="题3"></a>题3</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">Object</span> <span class="keyword">instanceof</span> <span class="built_in">Function</span> <span class="comment">// true</span></span><br><span class="line"><span class="built_in">Function</span> <span class="keyword">instanceof</span> <span class="built_in">Object</span> <span class="comment">// true</span></span><br><span class="line"><span class="built_in">Function</span> <span class="keyword">instanceof</span> <span class="built_in">Function</span> <span class="comment">// true</span></span><br><span class="line"><span class="built_in">Object</span> <span class="keyword">instanceof</span> <span class="built_in">Object</span> <span class="comment">// true</span></span><br></pre></td></tr></table></figure>
-<p>上面代码解析（原型图可以看题2即可）</p>
-<p>(1) 对于 Function instanceof Function，因为 Function.<strong>proto</strong> === Function.prototype，所以为true。</p>
-<p>(2) 对于 Object instanceof Object， 因为 Object.<strong>proto</strong>.<strong>proto</strong> === Function.prototype.<strong>proto</strong> === Object.prototype ， 所以为true</p>
-<p>(3) 对于 Function instanceof Object, 因为 Function.<strong>proto</strong>.<strong>proto</strong> === Function.prototype.<strong>proto</strong> === Object.prototype， 所以为 true</p>
-<p>(4) 对于 Object instanceof Function， 因为 Object.<strong>proto</strong> === Function.prototype，所以为 true</p>
-<p>结论：instanceof 的作用是判断一个对象是不是一个函数的实例。</p>
-<p>比如 ：</p>
-<p>obj instanceof fn， 实际上是判断fn的prototype是不是在obj的原型链上。</p>
-<p>比如：</p>
-<p>obj.<strong>proto</strong> === fn.prototype， </p>
-<p>obj.<strong>proto</strong>.<strong>proto</strong> === fn.prototype，</p>
-<p>obj.<strong>proto</strong>…_proto__ === fn.prototype，</p>
-<p>只要一个成立即可</p>
-<h2 id="六、最后总结"><a href="#六、最后总结" class="headerlink" title="六、最后总结"></a>六、最后总结</h2><p>关于原型方面的问题，记好以下三点</p>
-<p>(1) <strong>当 new 一个函数的时候会创建一个对象，『函数.prototype』 等于 『被创建对象.<strong>proto</strong>』</strong></p>
-<p>(2)  <strong>一切函数都是由 Function 这个函数创建的，所以『Function.prototype === 被创建的函数.<strong>proto</strong>』</strong></p>
-<p>(3)  <strong>一切函数的原型对象都是由 Object 这个函数创建的，所以『Object.prototype === 一切函数.prototype.<strong>proto</strong>』</strong></p>
-<p>参考  <a href="https://zhuanlan.zhihu.com/p/22473059" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/22473059</a></p>
-<p>​         <a href="https://zhuanlan.zhihu.com/p/23804247?refer=study-fe" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/23804247?refer=study-fe</a></p>
-<p>​        <a href="https://zhuanlan.zhihu.com/p/23987456?refer=study-fe" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/23987456?refer=study-fe</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
+    <a class="extend prev" rel="prev" href="/"><i class="fa fa-angle-left"></i></a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/3/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1894,7 +1826,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">59</span>
+                  <span class="site-state-item-count">61</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

@@ -1,0 +1,750 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="项目初始化一､ 项目文件夹 + README.md12345cd ~/Desktop  mkdir gulu-demo cd gulu-demotouch README.mdvi README.md 二､ 仓库建立12345git init git add .git commit -m&quot;init&quot;git remote git@github.com:xxx/gulu.gitgit push -u o">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vue简易轮子">
+<meta property="og:url" content="http://yoursite.com/2019/03/30/vue简易轮子/index.html">
+<meta property="og:site_name" content="Wuer">
+<meta property="og:description" content="项目初始化一､ 项目文件夹 + README.md12345cd ~/Desktop  mkdir gulu-demo cd gulu-demotouch README.mdvi README.md 二､ 仓库建立12345git init git add .git commit -m&quot;init&quot;git remote git@github.com:xxx/gulu.gitgit push -u o">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14339384-3e00576e7a6e023b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14339384-6242d1232a2d991a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14339384-b3b66093732f0240.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14339384-b17b44ba03346550.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14339384-805f87ee732c6922.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14339384-28ef37279383d0f1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14339384-2c3001ae7fbfd91d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14339384-5d6535e84064ab17.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14339384-eb0b461a5b237d19.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14339384-b6e7cb5c7881c6dc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14339384-2714c5b5a51390ee.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14339384-2b1337da2202aa5d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14339384-e5104a2b6f98b9dc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14339384-fab4b4211ebfdfc1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2019-03-30T17:24:47.873Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="vue简易轮子">
+<meta name="twitter:description" content="项目初始化一､ 项目文件夹 + README.md12345cd ~/Desktop  mkdir gulu-demo cd gulu-demotouch README.mdvi README.md 二､ 仓库建立12345git init git add .git commit -m&quot;init&quot;git remote git@github.com:xxx/gulu.gitgit push -u o">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/14339384-3e00576e7a6e023b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/03/30/vue简易轮子/">
+
+
+
+
+
+  <title>vue简易轮子 | Wuer</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Wuer</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/30/vue简易轮子/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Wuer">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Wuer">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">vue简易轮子</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-30T14:06:04+08:00">
+                2019-03-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="项目初始化"><a href="#项目初始化" class="headerlink" title="项目初始化"></a>项目初始化</h1><h4 id="一､-项目文件夹-README-md"><a href="#一､-项目文件夹-README-md" class="headerlink" title="一､ 项目文件夹 + README.md"></a>一､ 项目文件夹 + README.md</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cd ~<span class="regexp">/Desktop  </span></span><br><span class="line"><span class="regexp">mkdir gulu-demo </span></span><br><span class="line"><span class="regexp">cd gulu-demo</span></span><br><span class="line"><span class="regexp">touch README.md</span></span><br><span class="line"><span class="regexp">vi README.md</span></span><br></pre></td></tr></table></figure>
+<h4 id="二､-仓库建立"><a href="#二､-仓库建立" class="headerlink" title="二､ 仓库建立"></a>二､ 仓库建立</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git init </span><br><span class="line">git add .</span><br><span class="line">git commit -m<span class="string">"init"</span></span><br><span class="line">git remote git@github.com:xxx/gulu.git</span><br><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure>
+<h4 id="三､-许可证允许"><a href="#三､-许可证允许" class="headerlink" title="三､ 许可证允许"></a>三､ 许可证允许</h4><p>1､仓库页面 点击 <strong>Create new file</strong>，输入名字<strong>LICENSE</strong></p>
+<p>2､点击<strong>右侧 Choose a license template</strong>，选 <strong>MIT License</strong>【Year,Full name可以更改】，点绿色按钮提交</p>
+<p>3､继续一直点绿色按钮，到没有绿色为止，<strong>删除 Delete branch</strong>，这样就已提交到 master </p>
+<p>4､点code选项，发现<strong>多了一个LICENSE文件</strong></p>
+<h4 id="四､-第三方工具-npm"><a href="#四､-第三方工具-npm" class="headerlink" title="四､ 第三方工具(npm)"></a>四､ 第三方工具(npm)</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">npm init      <span class="comment">//下面这些括号里的都是默认值，要改的话，直接输入，不改的话，直接回车</span></span><br><span class="line">package name: (gulu-demo) gulu </span><br><span class="line">version:(<span class="number">1.0</span><span class="number">.0</span>) <span class="number">0.0</span><span class="number">.1</span></span><br><span class="line">description: 这是一个框架 </span><br><span class="line">entry point:(index.js) <span class="comment">//入口文件</span></span><br><span class="line">test command: </span><br><span class="line">git reponsitory:(https:<span class="comment">//github.com:xxx/gulu.git)</span></span><br><span class="line">keywords: vue ui</span><br><span class="line">author: xxx</span><br><span class="line">license:(ISC) MIT</span><br><span class="line">这一些信息后，会显示一大串刚设置和确信的信息，让你确认</span><br><span class="line">Is <span class="keyword">this</span> ok? (yes) <span class="comment">// 确认好，直接回车</span></span><br></pre></td></tr></table></figure>
+<p>此时到这里，就表示已选择好 npm 作为第三方工具的来源</p>
+<p>继续提交</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br><span class="line">git commit -m &quot;npm init&quot;</span><br><span class="line">git push</span><br></pre></td></tr></table></figure>
+<p>此时 package.json 也有啦</p>
+<h4 id="五､-底层代码（Vue）-WebStorm-控制-git-提交"><a href="#五､-底层代码（Vue）-WebStorm-控制-git-提交" class="headerlink" title="五､ 底层代码（Vue）+ WebStorm 控制 git 提交"></a>五､ 底层代码（Vue）+ WebStorm 控制 git 提交</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm i --save vue <span class="comment">// --save 可有可无，因为npm 6 开始，就是默认的</span></span><br><span class="line">git status -sb <span class="comment">// 里面有 package.json、node_modules</span></span><br></pre></td></tr></table></figure>
+<p>我们需要改写</p>
+<p>1､webStorm 打开仓库 (gulu-demo)</p>
+<p>2､webStorm 需记的2个快捷键 </p>
+<p>a、shift + shift （<strong>按2次 shift</strong>），会弹出搜索框，可搜索其他任意的快捷键</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14339384-3e00576e7a6e023b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p><strong>操作git 的话，搜vcs，并选择 VCS Operations Popup.. ^V</strong></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14339384-6242d1232a2d991a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>点击 <strong>VCS Operations Popup.. ^V</strong>，能展示 当前可用的所有git操作</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14339384-b3b66093732f0240.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>b、设置（没快捷键，鼠标直接点）</p>
+<p>1､WebStorm下的 Preferences</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14339384-b17b44ba03346550.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>2､选择 Keymap，进行设置，并删除不要的</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14339384-805f87ee732c6922.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14339384-28ef37279383d0f1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14339384-2c3001ae7fbfd91d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>提交仓库 gulu-demo时，发现太多不必要的文件，需要移除</p>
+<p>新建文件 .gitignore</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">node_modules/   <span class="comment">// 不要上传node_modules到git仓库</span></span><br></pre></td></tr></table></figure>
+<p>此时提交就只有三个文件了啦 （.gitignore、package.json、package-lock.json）</p>
+<p>在Commit Message 处 输入提交信息 如（nom install vue），点右下侧 commit 提交即可</p>
+<p>提示3个文件提交成功，WebStorm 完美地上传到 git 了啦</p>
+<p>push 的话，可以按上面搜索来操作或是直接终端操作</p>
+<h1 id="开始项目"><a href="#开始项目" class="headerlink" title="开始项目"></a>开始项目</h1><h4 id="一、勾选这一项，以防出错"><a href="#一、勾选这一项，以防出错" class="headerlink" title="一、勾选这一项，以防出错"></a>一、勾选这一项，以防出错</h4><p><img src="https://upload-images.jianshu.io/upload_images/14339384-5d6535e84064ab17.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<h4 id="二、组件"><a href="#二、组件" class="headerlink" title="二、组件"></a>二、组件</h4><p><strong>1､ css 样式 用 变量 形式</strong>，自由使用</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">:root&#123; //定义</span><br><span class="line">    <span class="selector-tag">--button-height</span>: 32<span class="selector-tag">px</span>;</span><br><span class="line">    <span class="selector-tag">--font-size</span>: 20<span class="selector-tag">px</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.g-button&#123;//使用</span><br><span class="line">    <span class="selector-tag">height</span>: <span class="selector-tag">var</span>(<span class="selector-tag">--button-height</span>);</span><br><span class="line">    <span class="selector-tag">font-size</span>: <span class="selector-tag">var</span>(<span class="selector-tag">--font-size</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>:root—根组件（就是html，也有不表示html时），若发现兼容问题，改成html即可</strong></p>
+<p><strong>2､ component</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Vue.component(<span class="string">'g-button'</span>,&#123;</span><br><span class="line">    template:`&lt;button class="g-button"&gt;submit&lt;/button&gt;`</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>样式在单独的style标签里 + Js 在单独的js 文件里+ Html 在 js 的 template 里(ES6模板)</p>
+<p>Vue 可以用 一个单文件 表示这 3 种 语言，但需借助工具 Parcel </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i -D parcel-bundler <span class="comment">// 局部安装</span></span><br></pre></td></tr></table></figure>
+<p>注：如果一个包是给用户使用的，就不需要 -D，比如之前安装的vue</p>
+<p>​        如果是给开发者使用，就要-D (D是Developer)，-g全局安装，也是给开发者用</p>
+<p>2.1､ <strong>Vue单文件组件</strong>的三样东西 ：<strong>template + script + style</strong></p>
+<p>2.2､ Vue 有<strong>语法糖</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Vue.component(<span class="string">'g-button'</span>,&#123;</span><br><span class="line">    template:<span class="string">`&lt;button class="g-button"&gt;submit&lt;/button&gt;`</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>只需一个对象，即 export default后接一个对象，template 里面的html内容放到template标签，css 使用scss</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;<span class="xml"><span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">"g-button"</span>&gt;</span>submit<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><span class="xml"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span>&#123;&#125;</span><br><span class="line">&lt;style lang=<span class="string">"scss"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+<p>2.3､ <strong>入口文件 (app.js)</strong></p>
+<p>a、通过<strong>import 添加依赖</strong> 【引入 vue + button】</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">'vue'</span></span><br><span class="line"><span class="keyword">import</span> Button <span class="keyword">from</span> <span class="string">'./button'</span></span><br></pre></td></tr></table></figure>
+<p>b、<strong>声明全局的g-button组件</strong> 【g-button 对应的是 Button】</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Vue.component(&apos;g-button&apos;,Button)</span><br></pre></td></tr></table></figure>
+<p>2.4 <strong>运行</strong> (安装需要的所有东西，不需配置)</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./node_modules/.bin/parcel index.html <span class="comment">//切记加上入口文件 index.html ，不然报错</span></span><br></pre></td></tr></table></figure>
+<p>再次运行，测试是否安装成功！出现下图表示成功</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14339384-eb0b461a5b237d19.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>vue 配置 Parcel 时，需在package.json添加以下代码，不然报错</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    ...</span><br><span class="line">    <span class="string">"alias"</span> :&#123;</span><br><span class="line">        <span class="string">"vue"</span>: <span class="string">"./node_modules/vue/dist/vue.common.js"</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>加完此代码后，再次运行时，会有缓冲，有2种办法解决</p>
+<p>a、<strong>加 –no-cache</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">./node_modules/.bin/parcel --no-cache index.html</span><br><span class="line">git push </span><br><span class="line">git status -sb  </span><br><span class="line">.cache/  <span class="comment">//Parcel 在编译过程会产生的一些缓冲 .cache/</span></span><br><span class="line">dist/</span><br><span class="line">******************************</span><br><span class="line">vi .gitignore <span class="comment">// 编辑.gitignore</span></span><br></pre></td></tr></table></figure>
+<p><img src="https://upload-images.jianshu.io/upload_images/14339384-b6e7cb5c7881c6dc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>b、<strong>直接删除.cache 文件</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rm -rf .cache</span><br><span class="line">./node_modules/.bin/parcel index.html <span class="comment">// 简写 npx parcel index.html</span></span><br></pre></td></tr></table></figure>
+<p><strong>小知识：</strong>快速预览提交到github上的文件的工具 <strong>git-open</strong></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14339384-2714c5b5a51390ee.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>装好后，执行 <strong>git open</strong> 会直接打开github对应的页面</p>
+<h4 id="三、单元测试"><a href="#三、单元测试" class="headerlink" title="三、单元测试"></a>三、单元测试</h4><p><strong>1､chai 库测试</strong> （BDD + TDD + Assert） <a href="http://www.chaijs.com" target="_blank" rel="noopener">www.chaijs.com</a></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14339384-2b1337da2202aa5d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<h5 id="单元测试两步曲"><a href="#单元测试两步曲" class="headerlink" title="单元测试两步曲"></a>单元测试两步曲</h5><p><strong>a、作用域隔离（大括号）</strong><br><strong>b、断言 (expect)</strong></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14339384-e5104a2b6f98b9dc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>测试完后，得清除元素 + 清除元素对象，不然内存会占用</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">vm.$el.remove()</span><br><span class="line">vm.$destroy()</span><br></pre></td></tr></table></figure>
+<p><img src="https://upload-images.jianshu.io/upload_images/14339384-fab4b4211ebfdfc1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<h5 id="2､-Chai-Spies"><a href="#2､-Chai-Spies" class="headerlink" title="2､ Chai Spies"></a>2､ Chai Spies</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i -D chai-spies</span><br></pre></td></tr></table></figure>
+<p>引入 +  使用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">import chai from &apos;chai&apos;</span><br><span class="line">chai.use(spy)</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/03/25/let和var/" rel="next" title="let和var">
+                <i class="fa fa-chevron-left"></i> let和var
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Wuer</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">61</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#项目初始化"><span class="nav-number">1.</span> <span class="nav-text">项目初始化</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#一､-项目文件夹-README-md"><span class="nav-number">1.0.0.1.</span> <span class="nav-text">一､ 项目文件夹 + README.md</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二､-仓库建立"><span class="nav-number">1.0.0.2.</span> <span class="nav-text">二､ 仓库建立</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#三､-许可证允许"><span class="nav-number">1.0.0.3.</span> <span class="nav-text">三､ 许可证允许</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#四､-第三方工具-npm"><span class="nav-number">1.0.0.4.</span> <span class="nav-text">四､ 第三方工具(npm)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#五､-底层代码（Vue）-WebStorm-控制-git-提交"><span class="nav-number">1.0.0.5.</span> <span class="nav-text">五､ 底层代码（Vue）+ WebStorm 控制 git 提交</span></a></li></ol></li></ol><li class="nav-item nav-level-1"><a class="nav-link" href="#开始项目"><span class="nav-number">2.</span> <span class="nav-text">开始项目</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#一、勾选这一项，以防出错"><span class="nav-number">2.0.0.1.</span> <span class="nav-text">一、勾选这一项，以防出错</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#二、组件"><span class="nav-number">2.0.0.2.</span> <span class="nav-text">二、组件</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#三、单元测试"><span class="nav-number">2.0.0.3.</span> <span class="nav-text">三、单元测试</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#单元测试两步曲"><span class="nav-number">2.0.0.3.1.</span> <span class="nav-text">单元测试两步曲</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2､-Chai-Spies"><span class="nav-number">2.0.0.3.2.</span> <span class="nav-text">2､ Chai Spies</span></a></li></ol></li></ol></li></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Wuer</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

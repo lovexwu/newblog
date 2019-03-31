@@ -229,6 +229,340 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/30/vue简易轮子/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Wuer">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Wuer">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/03/30/vue简易轮子/" itemprop="url">vue简易轮子</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-30T14:06:04+08:00">
+                2019-03-30
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="项目初始化"><a href="#项目初始化" class="headerlink" title="项目初始化"></a>项目初始化</h1><h4 id="一､-项目文件夹-README-md"><a href="#一､-项目文件夹-README-md" class="headerlink" title="一､ 项目文件夹 + README.md"></a>一､ 项目文件夹 + README.md</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">cd ~<span class="regexp">/Desktop  </span></span><br><span class="line"><span class="regexp">mkdir gulu-demo </span></span><br><span class="line"><span class="regexp">cd gulu-demo</span></span><br><span class="line"><span class="regexp">touch README.md</span></span><br><span class="line"><span class="regexp">vi README.md</span></span><br></pre></td></tr></table></figure>
+<h4 id="二､-仓库建立"><a href="#二､-仓库建立" class="headerlink" title="二､ 仓库建立"></a>二､ 仓库建立</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">git init </span><br><span class="line">git add .</span><br><span class="line">git commit -m<span class="string">"init"</span></span><br><span class="line">git remote git@github.com:xxx/gulu.git</span><br><span class="line">git push -u origin master</span><br></pre></td></tr></table></figure>
+<h4 id="三､-许可证允许"><a href="#三､-许可证允许" class="headerlink" title="三､ 许可证允许"></a>三､ 许可证允许</h4><p>1､仓库页面 点击 <strong>Create new file</strong>，输入名字<strong>LICENSE</strong></p>
+<p>2､点击<strong>右侧 Choose a license template</strong>，选 <strong>MIT License</strong>【Year,Full name可以更改】，点绿色按钮提交</p>
+<p>3､继续一直点绿色按钮，到没有绿色为止，<strong>删除 Delete branch</strong>，这样就已提交到 master </p>
+<p>4､点code选项，发现<strong>多了一个LICENSE文件</strong></p>
+<h4 id="四､-第三方工具-npm"><a href="#四､-第三方工具-npm" class="headerlink" title="四､ 第三方工具(npm)"></a>四､ 第三方工具(npm)</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">npm init      <span class="comment">//下面这些括号里的都是默认值，要改的话，直接输入，不改的话，直接回车</span></span><br><span class="line">package name: (gulu-demo) gulu </span><br><span class="line">version:(<span class="number">1.0</span><span class="number">.0</span>) <span class="number">0.0</span><span class="number">.1</span></span><br><span class="line">description: 这是一个框架 </span><br><span class="line">entry point:(index.js) <span class="comment">//入口文件</span></span><br><span class="line">test command: </span><br><span class="line">git reponsitory:(https:<span class="comment">//github.com:xxx/gulu.git)</span></span><br><span class="line">keywords: vue ui</span><br><span class="line">author: xxx</span><br><span class="line">license:(ISC) MIT</span><br><span class="line">这一些信息后，会显示一大串刚设置和确信的信息，让你确认</span><br><span class="line">Is <span class="keyword">this</span> ok? (yes) <span class="comment">// 确认好，直接回车</span></span><br></pre></td></tr></table></figure>
+<p>此时到这里，就表示已选择好 npm 作为第三方工具的来源</p>
+<p>继续提交</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br><span class="line">git commit -m &quot;npm init&quot;</span><br><span class="line">git push</span><br></pre></td></tr></table></figure>
+<p>此时 package.json 也有啦</p>
+<h4 id="五､-底层代码（Vue）-WebStorm-控制-git-提交"><a href="#五､-底层代码（Vue）-WebStorm-控制-git-提交" class="headerlink" title="五､ 底层代码（Vue）+ WebStorm 控制 git 提交"></a>五､ 底层代码（Vue）+ WebStorm 控制 git 提交</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">npm i --save vue <span class="comment">// --save 可有可无，因为npm 6 开始，就是默认的</span></span><br><span class="line">git status -sb <span class="comment">// 里面有 package.json、node_modules</span></span><br></pre></td></tr></table></figure>
+<p>我们需要改写</p>
+<p>1､webStorm 打开仓库 (gulu-demo)</p>
+<p>2､webStorm 需记的2个快捷键 </p>
+<p>a、shift + shift （<strong>按2次 shift</strong>），会弹出搜索框，可搜索其他任意的快捷键</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14339384-3e00576e7a6e023b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p><strong>操作git 的话，搜vcs，并选择 VCS Operations Popup.. ^V</strong></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14339384-6242d1232a2d991a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>点击 <strong>VCS Operations Popup.. ^V</strong>，能展示 当前可用的所有git操作</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14339384-b3b66093732f0240.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>b、设置（没快捷键，鼠标直接点）</p>
+<p>1､WebStorm下的 Preferences</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14339384-b17b44ba03346550.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>2､选择 Keymap，进行设置，并删除不要的</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14339384-805f87ee732c6922.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14339384-28ef37279383d0f1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14339384-2c3001ae7fbfd91d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>提交仓库 gulu-demo时，发现太多不必要的文件，需要移除</p>
+<p>新建文件 .gitignore</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">node_modules/   <span class="comment">// 不要上传node_modules到git仓库</span></span><br></pre></td></tr></table></figure>
+<p>此时提交就只有三个文件了啦 （.gitignore、package.json、package-lock.json）</p>
+<p>在Commit Message 处 输入提交信息 如（nom install vue），点右下侧 commit 提交即可</p>
+<p>提示3个文件提交成功，WebStorm 完美地上传到 git 了啦</p>
+<p>push 的话，可以按上面搜索来操作或是直接终端操作</p>
+<h1 id="开始项目"><a href="#开始项目" class="headerlink" title="开始项目"></a>开始项目</h1><h4 id="一、勾选这一项，以防出错"><a href="#一、勾选这一项，以防出错" class="headerlink" title="一、勾选这一项，以防出错"></a>一、勾选这一项，以防出错</h4><p><img src="https://upload-images.jianshu.io/upload_images/14339384-5d6535e84064ab17.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<h4 id="二、组件"><a href="#二、组件" class="headerlink" title="二、组件"></a>二、组件</h4><p><strong>1､ css 样式 用 变量 形式</strong>，自由使用</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">:root&#123; //定义</span><br><span class="line">    <span class="selector-tag">--button-height</span>: 32<span class="selector-tag">px</span>;</span><br><span class="line">    <span class="selector-tag">--font-size</span>: 20<span class="selector-tag">px</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.g-button&#123;//使用</span><br><span class="line">    <span class="selector-tag">height</span>: <span class="selector-tag">var</span>(<span class="selector-tag">--button-height</span>);</span><br><span class="line">    <span class="selector-tag">font-size</span>: <span class="selector-tag">var</span>(<span class="selector-tag">--font-size</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>:root—根组件（就是html，也有不表示html时），若发现兼容问题，改成html即可</strong></p>
+<p><strong>2､ component</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Vue.component(<span class="string">'g-button'</span>,&#123;</span><br><span class="line">    template:`&lt;button class="g-button"&gt;submit&lt;/button&gt;`</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>样式在单独的style标签里 + Js 在单独的js 文件里+ Html 在 js 的 template 里(ES6模板)</p>
+<p>Vue 可以用 一个单文件 表示这 3 种 语言，但需借助工具 Parcel </p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i -D parcel-bundler <span class="comment">// 局部安装</span></span><br></pre></td></tr></table></figure>
+<p>注：如果一个包是给用户使用的，就不需要 -D，比如之前安装的vue</p>
+<p>​        如果是给开发者使用，就要-D (D是Developer)，-g全局安装，也是给开发者用</p>
+<p>2.1､ <strong>Vue单文件组件</strong>的三样东西 ：<strong>template + script + style</strong></p>
+<p>2.2､ Vue 有<strong>语法糖</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Vue.component(<span class="string">'g-button'</span>,&#123;</span><br><span class="line">    template:<span class="string">`&lt;button class="g-button"&gt;submit&lt;/button&gt;`</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>只需一个对象，即 export default后接一个对象，template 里面的html内容放到template标签，css 使用scss</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;<span class="xml"><span class="tag">&lt;<span class="name">button</span> <span class="attr">class</span>=<span class="string">"g-button"</span>&gt;</span>submit<span class="tag">&lt;/<span class="name">button</span>&gt;</span></span><span class="xml"><span class="tag">&lt;/<span class="name">template</span>&gt;</span></span></span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span>&#123;&#125;</span><br><span class="line">&lt;style lang=<span class="string">"scss"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+<p>2.3､ <strong>入口文件 (app.js)</strong></p>
+<p>a、通过<strong>import 添加依赖</strong> 【引入 vue + button】</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">'vue'</span></span><br><span class="line"><span class="keyword">import</span> Button <span class="keyword">from</span> <span class="string">'./button'</span></span><br></pre></td></tr></table></figure>
+<p>b、<strong>声明全局的g-button组件</strong> 【g-button 对应的是 Button】</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Vue.component(&apos;g-button&apos;,Button)</span><br></pre></td></tr></table></figure>
+<p>2.4 <strong>运行</strong> (安装需要的所有东西，不需配置)</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">./node_modules/.bin/parcel index.html <span class="comment">//切记加上入口文件 index.html ，不然报错</span></span><br></pre></td></tr></table></figure>
+<p>再次运行，测试是否安装成功！出现下图表示成功</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14339384-eb0b461a5b237d19.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>vue 配置 Parcel 时，需在package.json添加以下代码，不然报错</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    ...</span><br><span class="line">    <span class="string">"alias"</span> :&#123;</span><br><span class="line">        <span class="string">"vue"</span>: <span class="string">"./node_modules/vue/dist/vue.common.js"</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>加完此代码后，再次运行时，会有缓冲，有2种办法解决</p>
+<p>a、<strong>加 –no-cache</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">./node_modules/.bin/parcel --no-cache index.html</span><br><span class="line">git push </span><br><span class="line">git status -sb  </span><br><span class="line">.cache/  <span class="comment">//Parcel 在编译过程会产生的一些缓冲 .cache/</span></span><br><span class="line">dist/</span><br><span class="line">******************************</span><br><span class="line">vi .gitignore <span class="comment">// 编辑.gitignore</span></span><br></pre></td></tr></table></figure>
+<p><img src="https://upload-images.jianshu.io/upload_images/14339384-b6e7cb5c7881c6dc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>b、<strong>直接删除.cache 文件</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">rm -rf .cache</span><br><span class="line">./node_modules/.bin/parcel index.html <span class="comment">// 简写 npx parcel index.html</span></span><br></pre></td></tr></table></figure>
+<p><strong>小知识：</strong>快速预览提交到github上的文件的工具 <strong>git-open</strong></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14339384-2714c5b5a51390ee.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>装好后，执行 <strong>git open</strong> 会直接打开github对应的页面</p>
+<h4 id="三、单元测试"><a href="#三、单元测试" class="headerlink" title="三、单元测试"></a>三、单元测试</h4><p><strong>1､chai 库测试</strong> （BDD + TDD + Assert） <a href="http://www.chaijs.com" target="_blank" rel="noopener">www.chaijs.com</a></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14339384-2b1337da2202aa5d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<h5 id="单元测试两步曲"><a href="#单元测试两步曲" class="headerlink" title="单元测试两步曲"></a>单元测试两步曲</h5><p><strong>a、作用域隔离（大括号）</strong><br><strong>b、断言 (expect)</strong></p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14339384-e5104a2b6f98b9dc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>测试完后，得清除元素 + 清除元素对象，不然内存会占用</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">vm.$el.remove()</span><br><span class="line">vm.$destroy()</span><br></pre></td></tr></table></figure>
+<p><img src="https://upload-images.jianshu.io/upload_images/14339384-fab4b4211ebfdfc1.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<h5 id="2､-Chai-Spies"><a href="#2､-Chai-Spies" class="headerlink" title="2､ Chai Spies"></a>2､ Chai Spies</h5><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm i -D chai-spies</span><br></pre></td></tr></table></figure>
+<p>引入 +  使用</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">import chai from &apos;chai&apos;</span><br><span class="line">chai.use(spy)</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/25/let和var/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Wuer">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Wuer">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/03/25/let和var/" itemprop="url">let和var</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-25T16:11:37+08:00">
+                2019-03-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>一、let </p>
+<p><strong>作用域</strong>：在最近的{} 之间</p>
+<p><strong>报错：</strong></p>
+<p>1､ 如果在 let a之前使用a，那么报错</p>
+<p>2､ 如果重复let a ，那么报错</p>
+<p>二、const </p>
+<p><strong>作用域</strong>：在最近的{} 之间</p>
+<p><strong>报错：</strong></p>
+<p>1､ 如果在 let a之前使用a，那么报错</p>
+<p>2､ 如果重复let a ，那么报错</p>
+<p><strong>切记： 只有一次赋值机会</strong>，而且必须在声明时，立马赋值</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">function <span class="title">x</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">var</span> a =<span class="number">1</span> </span><br><span class="line">    window.b = function()&#123;</span><br><span class="line">        console.log(a)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">目的: 只暴露b一个全局变量</span><br><span class="line"><span class="keyword">var</span> a = <span class="number">1</span>, 就会不小心暴露了 window.a 全局变量</span><br><span class="line">这个函数，有名字x，是一个全局变量</span><br></pre></td></tr></table></figure>
+<p>箭头函数</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">let xxx = (p1,p2) =&gt;&#123;</span><br><span class="line">    console.log(<span class="number">1</span>)</span><br><span class="line">    <span class="keyword">return</span> <span class="number">2</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">let xx2 = p1 =&gt;&#123; <span class="comment">//一个参数时，简化圆括号</span></span><br><span class="line">    console.log(<span class="number">1</span>)</span><br><span class="line">    <span class="keyword">return</span> <span class="number">2</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">let xx3 = (p1,p2) =&gt; p1+p2 <span class="comment">//只有一个函数体,return 这个函数数时,简化花括号</span></span><br><span class="line"></span><br><span class="line">let xx4 = p1 =&gt; p1*<span class="number">2</span> <span class="comment">//只有一个参数，一句话时,简化圆括号和花括号</span></span><br></pre></td></tr></table></figure>
+<p>this 是 call 的第一个参数</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/22/vue-cnode/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -1387,294 +1721,11 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/13/数据验证/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Wuer">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Wuer">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/03/13/数据验证/" itemprop="url">数据验证</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-13T18:44:18+08:00">
-                2019-03-13
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="一、Vue-组件中命名"><a href="#一、Vue-组件中命名" class="headerlink" title="一、Vue 组件中命名"></a>一、Vue 组件中命名</h2><p> camelCase（骆峰式）命名 |  kebab-case (短横线) 命名</p>
-<p>1､在组件中的<strong>html</strong> ，不能用骆峰式，必须用kebab-case<strong>（短横线）</strong>命名，因为<strong>myMessage===mymessage</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//html</span></span><br><span class="line">&lt;div id=<span class="string">"app"</span>&gt;</span><br><span class="line">    <span class="comment">//报错：[Vue warn]: Unknown custom element: &lt;mycomponent&gt; </span></span><br><span class="line">    &lt;myComponent&gt;&lt;/myComponent&gt; </span><br><span class="line">    <span class="comment">// 因为html 中 是不区分大小写的 也就是 myComponent === mycomponent--</span></span><br><span class="line">&lt;/div&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">//js</span></span><br><span class="line">Vue.component(<span class="string">'myComponent'</span>,&#123;<span class="comment">//js中是区分大小写的</span></span><br><span class="line">    template: <span class="string">'&lt;div&gt;我是一个组件&lt;/div&gt;'</span></span><br><span class="line">&#125;)</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
-<p>2､在组件中，<strong>父组件给子组件传递数据</strong>必须用<strong>短横线</strong></p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//html</span></span><br><span class="line">&lt;div id=<span class="string">"app"</span>&gt; <span class="comment">//父组件给子组件传递数据,必须用短横线</span></span><br><span class="line">	&lt;my-component my-msg="hello"&gt;&lt;/my-component&gt;</span><br><span class="line">&lt;/div&gt;</span><br></pre></td></tr></table></figure>
-<p>3､在组件的<strong>template</strong>中和<strong>data</strong>中用<strong>this.xxx引用</strong>时，只能是<strong>驼峰式</strong>，如果用短横线，会直接报错</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//js</span></span><br><span class="line"><span class="keyword">var</span> app=<span class="keyword">new</span> Vue(&#123;</span><br><span class="line">    el: <span class="string">'#app'</span>,</span><br><span class="line">    components:&#123;</span><br><span class="line">        <span class="string">'my-component'</span>:&#123;</span><br><span class="line">            props: [<span class="string">'myMsg'</span>],<span class="comment">//props随意，也就是 myMsg 或 my-msg 都可以的</span></span><br><span class="line">            template:<span class="string">'&lt;div&gt;&#123;&#123;myMsg&#125;&#125;&lt;/div&gt;'</span>,<span class="comment">//在template中，必须用骆峰式</span></span><br><span class="line">            data:function()&#123;</span><br><span class="line">              <span class="keyword">return</span>&#123;</span><br><span class="line">            	title:<span class="keyword">this</span>.myMsg <span class="comment">////在data中用this.xxx引用时，必须用骆峰式</span></span><br><span class="line">              &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<p>4､在组件的props中随意</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//html</span></span><br><span class="line">&lt;div id=<span class="string">"app"</span>&gt; <span class="comment">//父组件给子组件传递数据,必须用短横线</span></span><br><span class="line">	&lt;my-component my-msg="hello"&gt;&lt;/my-component&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">//js</span></span><br><span class="line"><span class="keyword">var</span> app=<span class="keyword">new</span> Vue(&#123;</span><br><span class="line">    el: <span class="string">'#app'</span>,</span><br><span class="line">    components:&#123;</span><br><span class="line">        <span class="string">'my-component'</span>:&#123;</span><br><span class="line">            props: [<span class="string">'myMsg'</span>],</span><br><span class="line">            template:<span class="string">'&lt;div&gt;&#123;&#123;title&#125;&#125;&lt;/div&gt;'</span>,<span class="comment">//在template中，必须用骆峰式</span></span><br><span class="line">            data:function()&#123;</span><br><span class="line">              <span class="keyword">return</span>&#123;</span><br><span class="line">            	title:<span class="keyword">this</span>.myMsg</span><br><span class="line">              &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<h2 id="二、六种验证的type类型-可以有"><a href="#二、六种验证的type类型-可以有" class="headerlink" title="二、六种验证的type类型(可以有)"></a>二、六种验证的type类型(可以有)</h2><p>String |  Number | Boolean | Object | Array | Function</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">Vue <span class="title">component</span><span class="params">(my-component,&#123;</span></span></span><br><span class="line"><span class="function"><span class="params">    props: &#123;</span></span></span><br><span class="line"><span class="function"><span class="params">       propA: Number,//必须是数字</span></span></span><br><span class="line"><span class="function"><span class="params">       propB: [String,Number],//必须字符串或是数字</span></span></span><br><span class="line"><span class="function"><span class="params">       propC: &#123;//布尔值，如果没定义，默认值是 <span class="keyword">true</span></span></span></span><br><span class="line"><span class="function"><span class="params">           type: Boolean,</span></span></span><br><span class="line"><span class="function"><span class="params">           <span class="keyword">default</span>: <span class="keyword">true</span></span></span></span><br><span class="line"><span class="function"><span class="params">       &#125;,</span></span></span><br><span class="line"><span class="function"><span class="params">       propD: &#123;//数字而且必须传</span></span></span><br><span class="line"><span class="function"><span class="params">           type: Number,</span></span></span><br><span class="line"><span class="function"><span class="params">           required: <span class="keyword">true</span> // 必须传</span></span></span><br><span class="line"><span class="function"><span class="params">       &#125;,</span></span></span><br><span class="line"><span class="function"><span class="params">       propE: &#123;//如果是数组或对象，默认值必须是一个函数来返回</span></span></span><br><span class="line"><span class="function"><span class="params">           type: Array,</span></span></span><br><span class="line"><span class="function"><span class="params">           <span class="keyword">default</span>: function()</span></span>&#123;</span><br><span class="line">               <span class="keyword">return</span> []</span><br><span class="line">           &#125;</span><br><span class="line">       &#125;,</span><br><span class="line">       propF: &#123;<span class="comment">//自定义一个验证函数</span></span><br><span class="line">           validator: function(value)&#123;</span><br><span class="line">               <span class="keyword">return</span> value &gt; <span class="number">10</span></span><br><span class="line">           &#125;</span><br><span class="line">       &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<p>【Demo实例 <a href="https://jsbin.com/zonohokihe/edit?html,output】" target="_blank" rel="noopener">https://jsbin.com/zonohokihe/edit?html,output】</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/11/组件/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Wuer">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Wuer">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/03/11/组件/" itemprop="url">组件</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-11T16:39:09+08:00">
-                2019-03-11
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="一、作用"><a href="#一、作用" class="headerlink" title="一、作用"></a>一、作用</h2><p>提高代码的复用性</p>
-<h2 id="二、注册"><a href="#二、注册" class="headerlink" title="二、注册"></a>二、注册</h2><p><strong>1､全局注册</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Vue.component(<span class="string">'my-component'</span>,&#123;</span><br><span class="line">    template: <span class="string">'&lt;div&gt;我是组件内容&lt;/div&gt;'</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<p>优点： 所有vue实例都可以使用</p>
-<p>缺点： 权取太大，容错率降低</p>
-<p><strong>2､局部注册</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> app = <span class="keyword">new</span> Vue(&#123;</span><br><span class="line">    el: <span class="string">'#app'</span>,</span><br><span class="line">    components:&#123;<span class="comment">//切记component后边要加s</span></span><br><span class="line">        <span class="string">'my-component'</span>:&#123;</span><br><span class="line">            template:<span class="string">'&lt;div&gt;我是局部注册的一个组件&lt;/div&gt;'</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>3､ vue 组件模板受html限制</strong></p>
-<p>在某些情况下会受到html标签的限制</p>
-<p>比如直接在table中使用组件是无效的，可以使用 is属性来挂载组件</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//html</span></span><br><span class="line">&lt;div id=<span class="string">"app"</span>&gt;</span><br><span class="line">  &lt;my-component&gt;我是组件内容&lt;/my-component&gt;</span><br><span class="line">  </span><br><span class="line">  &lt;table&gt;</span><br><span class="line">  	 &lt;my-component&gt;我是组件内容&lt;/my-component&gt;</span><br><span class="line">  &lt;/table&gt;</span><br><span class="line">  <span class="comment">// 无效是因为table 中 只能有 tr,td,tbody这些元素，改成用is属性即可</span></span><br><span class="line">  </span><br><span class="line">  &lt;table&gt;</span><br><span class="line">  	&lt;tbody is="my-component"&gt;&lt;/tbody&gt;</span><br><span class="line">  &lt;/table&gt;</span><br><span class="line">  </span><br><span class="line">&lt;/div&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">//js</span></span><br><span class="line">...</span><br><span class="line">Vue.component(<span class="string">'my-component'</span>,&#123;</span><br><span class="line">    template:<span class="string">'&lt;div&gt;我是组件内容&lt;/div&gt;'</span></span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> app = <span class="keyword">new</span> Vue(&#123;</span><br><span class="line">    el: <span class="string">'#app'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h2 id="三、技巧"><a href="#三、技巧" class="headerlink" title="三、技巧"></a>三、技巧</h2><p>1､必须用<strong>小写字母</strong>命名（child、mycomponent 命名组件）</p>
-<p>2､<strong>template</strong> 中的内容<strong>必须</strong>是被<strong>一个DOM 元素</strong>包括，也可以嵌套</p>
-<p>3､在组件定义中，除了template外，其他选项也可以用（data、computed、methods）</p>
-<p>4､data 必须是一个方法</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// html</span></span><br><span class="line">&lt;div id=<span class="string">"app"</span>&gt;</span><br><span class="line"> &lt;btn-component&gt;&lt;/btn-component&gt;</span><br><span class="line">&lt;div&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">//js</span></span><br><span class="line">...</span><br><span class="line">components:&#123;</span><br><span class="line">  <span class="string">'btn-component'</span>:&#123;</span><br><span class="line">      template: <span class="string">'&lt;button @click="count++"&gt;&#123;&#123;count&#125;&#125;&lt;/button&gt;'</span>,</span><br><span class="line">      data:function()&#123; <span class="comment">//切记data必须是一个方法</span></span><br><span class="line">          <span class="keyword">return</span>&#123; <span class="comment">//每次return 返回的是不同的 data对象</span></span><br><span class="line">                  count:<span class="number">0</span></span><br><span class="line">          &#125;</span><br><span class="line">       &#125;</span><br><span class="line">    &#125;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
-<p>【Demo实例 <a href="https://jsbin.com/fucotab/edit?html,output】" target="_blank" rel="noopener">https://jsbin.com/fucotab/edit?html,output】</a></p>
-<h2 id="四、props传递数据-父传子"><a href="#四、props传递数据-父传子" class="headerlink" title="四、props传递数据 父传子"></a>四、props传递数据 父传子</h2><p>1､在组件中使用props 从父组件接收参数，<strong>注：在props中定义的属性，都可在组件中直接使用</strong></p>
-<p>2､props 来自 父级的数据 ，而组件中data return的数据是组件自已的数据，两种情况作用域就是组件本身，可在template、computed、methods中直接使用</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//html</span></span><br><span class="line">&lt;div id=<span class="string">"app"</span>&gt;</span><br><span class="line">	&lt;h5&gt;我是父组件&lt;/h5&gt;//1､父组件通过msg给子组件传递消息：在子组件subcomponent上写上msg 等于一个内容</span><br><span class="line">	&lt;subcomponent msg="我是父组件传递的内容"&gt;&lt;/subcomponent&gt;</span><br><span class="line">&lt;/div&gt; //2､子组件要用到父组件传过来的消息</span><br><span class="line"></span><br><span class="line"><span class="comment">//js</span></span><br><span class="line">...</span><br><span class="line">components:&#123;</span><br><span class="line">    subcomponent:&#123;</span><br><span class="line">        props: [<span class="string">'msg'</span>], <span class="comment">//数据来自父组件 2.1 props定义msg (以字符串数组形式)</span></span><br><span class="line">        template:<span class="string">'&lt;div&gt;&#123;&#123;msg&#125;&#125;&lt;/div&gt;'</span> <span class="comment">// 2.2 模板 template 就可以直接用了</span></span><br><span class="line">    &#125;     </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>3､props的值有两种： 一种是字符串数组（上述小例子就是)，另一种是对象</p>
-<p>4､可以用v-bind动态绑定父组件来的内容</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//html</span></span><br><span class="line">....</span><br><span class="line">&lt;subcomponent msg="我是来自父组件的内容"&gt;&lt;/subcomponent&gt;</span><br><span class="line">&lt;input type=<span class="string">"text"</span> v-model=<span class="string">"parentMsg"</span>&gt; <span class="comment">// 1､input v-model绑定的数据是父组件data 中的数据</span></span><br><span class="line">&#123;&#123; parentMsg&#125;&#125; </span><br><span class="line"><span class="comment">//2､把绑定的数据同时传递给子组件： 通过v-bind绑定属性msg,把属性msg用props进行接收</span></span><br><span class="line">&lt;bindcomponent v-bind:msg="parentMsg"&gt;&lt;/bindcomponent&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">//js</span></span><br><span class="line">...</span><br><span class="line">data:&#123;</span><br><span class="line">  parentMsg: <span class="string">'开始啦'</span>      </span><br><span class="line">&#125;</span><br><span class="line">components:&#123;</span><br><span class="line">    <span class="string">'bindcomponent'</span>:&#123;</span><br><span class="line">        props: [<span class="string">'msg'</span>],</span><br><span class="line">        template: <span class="string">'&lt;div&gt;&#123;&#123;msg&#125;&#125;&lt;/div&gt;'</span><span class="comment">//3､就可以在template中直接使用</span></span><br><span class="line">    &#125;     </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>【Demo实例 <a href="https://jsbin.com/jodaxer/1/edit?html,output】" target="_blank" rel="noopener">https://jsbin.com/jodaxer/1/edit?html,output】</a></p>
-<p>参考 <a href="https://cn.vuejs.org/v2/guide/components-props.html" target="_blank" rel="noopener">https://cn.vuejs.org/v2/guide/components-props.html</a></p>
-<h2 id="五、单向数据流props使用场景"><a href="#五、单向数据流props使用场景" class="headerlink" title="五、单向数据流props使用场景"></a>五、单向数据流props使用场景</h2><p><strong>1､ 第一种：</strong></p>
-<p>​     a、<strong>父组件</strong>：传递<strong>初始值</strong></p>
-<p>​     b、<strong>子组件</strong>：将它作为<strong>初始值保存</strong>起来，在自已的作用域下，可随意使用或修改    </p>
-<p>​     这种情况，<strong>可以在组件 data 内再声明一个数据</strong>，引用父组件的 props</p>
- <figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//html	</span></span><br><span class="line">&lt;div id=<span class="string">"app"</span>&gt; <span class="comment">//2.1 将父组件的数据传递进来</span></span><br><span class="line">	&lt;my-component msg="父组件传递的消息"&gt;&lt;/my-component&gt;</span><br><span class="line">&lt;/div&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">//js</span></span><br><span class="line"><span class="keyword">var</span> app = <span class="keyword">new</span> Vue(&#123;</span><br><span class="line">    el: <span class="string">'#app'</span>,</span><br><span class="line">    components:&#123; <span class="comment">// 1、注册组件</span></span><br><span class="line">        <span class="string">'my-component'</span>:&#123;</span><br><span class="line">            props: [<span class="string">'msg'</span>],<span class="comment">//2.2 在子组件中用props接收数据</span></span><br><span class="line">            template: <span class="string">'&lt;div&gt;&#123;&#123;count&#125;&#125;&lt;/div&gt;'</span>,</span><br><span class="line">            data:function()&#123;</span><br><span class="line">              <span class="keyword">return</span>&#123; <span class="comment">//将传递进来的数据用初始值保存起来</span></span><br><span class="line">            	count: <span class="keyword">this</span>.msg<span class="comment">//props中的值可以通过this.xxx直接来进行获取</span></span><br><span class="line">              &#125; </span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line">    </span><br><span class="line">分三步曲完成：</span><br><span class="line"><span class="number">1</span>､ 注册组件</span><br><span class="line"><span class="number">2</span>、将父组件的数据传递进来，并在子组件中用props接收</span><br><span class="line"><span class="number">3</span>、将传递进来的数据通过初始值保存起来</span><br></pre></td></tr></table></figure>
-<p><strong>2､ 第二种</strong></p>
-<p>  <strong>props</strong> 作为需要<strong>被转变的原始值</strong>传入，这种情况 用 <strong>计算属性</strong> 就可以</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//html</span></span><br><span class="line">&lt;div id=<span class="string">"app"</span>&gt;</span><br><span class="line"> &lt;input type=<span class="string">"text"</span> v-model=<span class="string">"width"</span>&gt;</span><br><span class="line"> &lt;my-component :width="width"&gt;&lt;/my-component&gt;//2.1 将父组件的数据传递进来</span><br><span class="line">&lt;/div&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">//js</span></span><br><span class="line"><span class="keyword">var</span> app = <span class="keyword">new</span> Vue(&#123;</span><br><span class="line">    el: <span class="string">'#app'</span>,</span><br><span class="line">    data:&#123;</span><br><span class="line">        width: <span class="number">0</span></span><br><span class="line">    &#125;,</span><br><span class="line">    components:&#123;<span class="comment">//1、注册组件</span></span><br><span class="line">        <span class="string">'my-component'</span>:&#123;</span><br><span class="line">            props: [<span class="string">'width'</span>],<span class="comment">//2.2 在子组件中用props接收数据</span></span><br><span class="line">            template:<span class="string">'&lt;div :style="style"&gt;&lt;/div&gt;'</span>,</span><br><span class="line">            computed:&#123;<span class="comment">//3､将传递进来的数据，通过计算属性重新计算工</span></span><br><span class="line">                style:function()&#123;</span><br><span class="line">                    <span class="keyword">return</span>&#123;</span><br><span class="line">                        width: <span class="keyword">this</span>.width+<span class="string">'px'</span>,</span><br><span class="line">                        background:<span class="string">'green'</span>,</span><br><span class="line">                        height:<span class="string">'20px'</span></span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">分三步曲完成：</span><br><span class="line"><span class="number">1</span>､注册组件</span><br><span class="line"><span class="number">2</span>､将父组件的数据传递进来，并在子组件中用props接收</span><br><span class="line"><span class="number">3</span>､将传递进来的数据，通过计算属性重新计算工</span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
   <nav class="pagination">
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
   </nav>
 
 
@@ -1720,7 +1771,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">59</span>
+                  <span class="site-state-item-count">61</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
