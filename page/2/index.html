@@ -229,6 +229,150 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/14/组件通信/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Wuer">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Wuer">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/03/14/组件通信/" itemprop="url">组件通信</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-14T00:46:09+08:00">
+                2019-03-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="一、组件关系分类"><a href="#一、组件关系分类" class="headerlink" title="一、组件关系分类"></a>一、组件关系分类</h2><p>1､父子组件通信</p>
+<p>2､兄弟组件通信</p>
+<p>3､跨级组件通信</p>
+<h2 id="二、子组件传父组件数据"><a href="#二、子组件传父组件数据" class="headerlink" title="二、子组件传父组件数据"></a>二、子组件传父组件数据</h2><p>JavaScript 设计模式： 触发事件 dispatchEvent  |  监听事件 addEventListener</p>
+<p>VueJs有类似模式：子组件触发事件 \$emit()  | 父组件监听子组件 \$on()</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//html</span></span><br><span class="line">...</span><br><span class="line">&lt;btn-compnent @change="handleTotal"&gt;&lt;/btn-compnent&gt;//1､自定义事件change</span><br><span class="line"></span><br><span class="line"><span class="comment">//js</span></span><br><span class="line">...</span><br><span class="line">components:&#123;</span><br><span class="line">  <span class="string">'btn-compnent'</span>:&#123;</span><br><span class="line">	...</span><br><span class="line">	methods:&#123;</span><br><span class="line">			  handleincrease :function () &#123;</span><br><span class="line">					<span class="keyword">this</span>.count++;<span class="comment">//2､在子组件中用$emit触发事件</span></span><br><span class="line">					<span class="keyword">this</span>.$emit(<span class="string">'change'</span>,<span class="keyword">this</span>.count);</span><br><span class="line">	          &#125;,<span class="comment">//第一个参数是事件名，后边参数是传递过来的数据</span></span><br><span class="line"></span><br><span class="line">	          handlereduce:function () &#123;</span><br><span class="line">					<span class="keyword">this</span>.count--;</span><br><span class="line">					<span class="keyword">this</span>.$emit(<span class="string">'change'</span>,<span class="keyword">this</span>.count);</span><br><span class="line">			  &#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;,</span><br><span class="line">methods:&#123;</span><br><span class="line">		handleTotal:function (total)&#123;<span class="comment">//3､自定义事件中用一个参数 total 接收数据</span></span><br><span class="line">			<span class="keyword">this</span>.total = total;</span><br><span class="line">		&#125;</span><br><span class="line">&#125;</span><br><span class="line">...</span><br><span class="line">    </span><br><span class="line">三步曲完成</span><br><span class="line"><span class="number">1</span>､ 自定义事件</span><br><span class="line"><span class="number">2</span>､ 在子组件中用 $emit 触发事件，其中第一个参数是事件名，后边的参数是要传递的数据</span><br><span class="line"><span class="number">3</span>､ 在自定义事件中，用一个参数来接收数据</span><br></pre></td></tr></table></figure>
+<p>【Demo实例 <a href="https://jsbin.com/homuwol/1/edit?html,output" target="_blank" rel="noopener">https://jsbin.com/homuwol/1/edit?html,output</a> 】</p>
+<h2 id="三、组件中使用-v-model"><a href="#三、组件中使用-v-model" class="headerlink" title="三、组件中使用 v-model"></a>三、组件中使用 v-model</h2><p><strong>v-model 是一个语法糖</strong>：</p>
+<p>1､v-bind 绑定一个value 属性</p>
+<p>2､ v-on 给 当前元素 绑定 input 事件</p>
+<h5 id="使用条件"><a href="#使用条件" class="headerlink" title="使用条件"></a>使用条件</h5><p>1､接收一个value 属性</p>
+<p>2､在有新的 value 时，触发 input 事件</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//html</span></span><br><span class="line">... </span><br><span class="line">&lt;btn-component v-model="total"&gt;&lt;/btn-component&gt;</span><br><span class="line"><span class="comment">//v-model：</span></span><br><span class="line"><span class="comment">//1、其实就是绑定了 input 事件</span></span><br><span class="line"><span class="comment">//2、当触发input时，input事件就会自动接收传递过来的参数 this.count</span></span><br><span class="line"><span class="comment">//3、并赋值给已经绑定的total</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//js</span></span><br><span class="line">...</span><br><span class="line"><span class="keyword">this</span>.$emit(<span class="string">'input'</span>,<span class="keyword">this</span>.count) <span class="comment">//触发input事件，并把this.count传递过去</span></span><br><span class="line">...</span><br></pre></td></tr></table></figure>
+<p>【Demo实例 <a href="https://jsbin.com/yebahoy/edit?html,output" target="_blank" rel="noopener">https://jsbin.com/yebahoy/edit?html,output</a> 】</p>
+<h2 id="四、非父组件间通信"><a href="#四、非父组件间通信" class="headerlink" title="四、非父组件间通信"></a>四、非父组件间通信</h2><h5 id="1､定义"><a href="#1､定义" class="headerlink" title="1､定义"></a>1､定义</h5><p>两个组件间需要通信（非父子关系），在简单场景下，可用一个空的vue实例作为中央事件总线</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> bus = <span class="keyword">new</span> Vue()</span><br><span class="line"></span><br><span class="line">bus.$emit(<span class="string">'id-select'</span>,<span class="number">1</span>) <span class="comment">//触发组件 A 中的事件</span></span><br><span class="line"></span><br><span class="line">bus.$on(<span class="string">'id-select'</span>,<span class="function"><span class="keyword">function</span>(<span class="params">id</span>)</span>&#123;<span class="comment">//在组件 B 创建的钩子中监听事件</span></span><br><span class="line">    ...</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h5 id="2､操作流程-（点击A组件的东西，向B组件传递数据）"><a href="#2､操作流程-（点击A组件的东西，向B组件传递数据）" class="headerlink" title="2､操作流程 （点击A组件的东西，向B组件传递数据）"></a>2､操作流程 （点击A组件的东西，向B组件传递数据）</h5><p>a、组件A中，\$emit 触发一个事件，并把参数传递过去</p>
+<p>b、组件B中，在实例创建时监听这个事件，然后作为参数再传递进来就可以了</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">//html</span></span><br><span class="line">...</span><br><span class="line">&lt;a-com&gt;&lt;/a-com&gt; </span><br><span class="line">&lt;b-com&gt;&lt;/b-com&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">//js</span></span><br><span class="line"><span class="keyword">var</span> app = <span class="keyword">new</span> Vue(&#123;</span><br><span class="line">	el:<span class="string">'#app'</span>,</span><br><span class="line">	components:&#123; <span class="comment">// 1､定义两个组件</span></span><br><span class="line">		<span class="string">'a-com'</span>:&#123;</span><br><span class="line">			data:function()&#123;</span><br><span class="line">				<span class="keyword">return</span>&#123;</span><br><span class="line">						aaa: <span class="string">'我是A组件传过来的消息'</span></span><br><span class="line">				&#125;</span><br><span class="line">			&#125;,</span><br><span class="line">			template:<span class="string">'&lt;div&gt;&lt;button @click="handle"&gt;点我向B传肖息&lt;/button&gt;&lt;/div&gt;'</span>,</span><br><span class="line">			methods:&#123;</span><br><span class="line">				handle:function()&#123;<span class="comment">//3､ 组件A 写个方法 handle ，触发这个事件change</span></span><br><span class="line">					<span class="keyword">this</span>.$root.bus.$emit(<span class="string">'change'</span>,<span class="keyword">this</span>.aaa)</span><br><span class="line">				&#125;<span class="comment">// 因为bus 在 根组件下，所以 this.$root.bus 获取到 bus</span></span><br><span class="line">			&#125;</span><br><span class="line"></span><br><span class="line">		&#125;,</span><br><span class="line"></span><br><span class="line">		<span class="string">'b-com'</span>:&#123;</span><br><span class="line">			template:<span class="string">'&lt;div&gt;&lt;/div&gt;'</span>,			</span><br><span class="line">			created:function()&#123;<span class="comment">//4､组件B 在实例创建时，就监听这个事件change</span></span><br><span class="line">				<span class="keyword">this</span>.$root.bus.$on(<span class="string">'change'</span>,function(value)&#123;<span class="comment">//function中必须传一个参数</span></span><br><span class="line">				<span class="comment">//因为A组件的handle中就传了一个参数this.aaa，也可以多个，随handle中参数的个数</span></span><br><span class="line">					alert(value)</span><br><span class="line">				&#125;)</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;,</span><br><span class="line"></span><br><span class="line">	data:&#123;</span><br><span class="line">		bus: <span class="keyword">new</span> Vue() <span class="comment">// 2､创建空的Vue实例 即是个bus 中介</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line">三步曲：</span><br><span class="line"><span class="number">1</span>､首先建<span class="number">2</span>个组件，并在根组件下建立 bus中介</span><br><span class="line"></span><br><span class="line"><span class="number">2</span>､组件A中，点击按钮时，就要传递数据，并执行 handle 方法 </span><br><span class="line">  其中 <span class="keyword">this</span>.$root.bus.$emit(<span class="string">'change'</span>,<span class="keyword">this</span>.aaa)的意思是：</span><br><span class="line">  首先：<span class="keyword">this</span>.$root.bus 拿到bus 中介</span><br><span class="line">  其次：bus 去触发 change 事件</span><br><span class="line">  最后：change事件 把 <span class="keyword">this</span>.aaa 作为参数 传递过去</span><br><span class="line"></span><br><span class="line"><span class="number">3</span>､ 在组件B中，在实例创建的时侯监听 change事件 ,然后在change 事件后，接收一个带参数的function</span><br></pre></td></tr></table></figure>
+<p>【Demo实例 <a href="https://jsbin.com/yebahoy/8/edit?html,output】" target="_blank" rel="noopener">https://jsbin.com/yebahoy/8/edit?html,output】</a></p>
+<h5 id="3､父链-子实例访问父实例-this-parent"><a href="#3､父链-子实例访问父实例-this-parent" class="headerlink" title="3､父链  (子实例访问父实例) this.$parent"></a>3､父链  (子实例访问父实例) this.$parent</h5><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line">Vue.component(<span class="string">'child-component'</span>,&#123;</span><br><span class="line">	template:<span class="string">'&lt;button @click="setFatherData"&gt;点击我修改父亲的数据&lt;/button&gt;'</span>,</span><br><span class="line">	methods:&#123;</span><br><span class="line">		setFatherData:function () &#123;</span><br><span class="line">			<span class="keyword">this</span>.$parent.msg = <span class="string">'数据已经修改'</span></span><br><span class="line">		&#125;<span class="comment">// 通过$parent 拿到父组件的 data 中的 msg</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;)子实例可以用 <span class="keyword">this</span>.$parent 访问父实例</span><br><span class="line">...</span><br><span class="line">data:&#123;</span><br><span class="line">		bus: <span class="keyword">new</span> Vue(),</span><br><span class="line">		msg: <span class="string">'数据还没修改'</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>【Demo实例 <a href="https://jsbin.com/ducurig/edit?html,output】" target="_blank" rel="noopener">https://jsbin.com/ducurig/edit?html,output】</a></p>
+<h5 id="4､子链-父实例访问子实例-this-refs"><a href="#4､子链-父实例访问子实例-this-refs" class="headerlink" title="4､子链 (父实例访问子实例) this.$refs"></a>4､子链 (父实例访问子实例) this.$refs</h5><p><strong>子组件</strong>加索引：<strong>ref 属性</strong>   +  <strong>父组件</strong>拿子组件内容：<strong>this.$refs</strong></p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//html</span></span><br><span class="line">...</span><br><span class="line">&lt;a-com ref="a"&gt;&lt;/a-com&gt; </span><br><span class="line">&lt;b-com ref="b"&gt;&lt;/b-com&gt;&lt;br&gt;</span><br><span class="line">&lt;child-com ref="c"&gt;&lt;/child-com&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">//js</span></span><br><span class="line">...</span><br><span class="line">data:&#123;</span><br><span class="line">		bus: <span class="keyword">new</span> Vue(),</span><br><span class="line">		msg: <span class="string">'数据还没修改'</span>,</span><br><span class="line">		formchild:<span class="string">'还没拿到'</span></span><br><span class="line">&#125;,</span><br><span class="line"></span><br><span class="line">methods:&#123;</span><br><span class="line">		getChildData:function()&#123;</span><br><span class="line">			<span class="keyword">this</span>.formchild=<span class="keyword">this</span>.$refs.c.msg <span class="comment">//父组件要拿到子组件的内容</span></span><br><span class="line">		&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>【Demo实例 <a href="https://jsbin.com/nivujikeju/edit?html,output" target="_blank" rel="noopener">https://jsbin.com/nivujikeju/edit?html,output</a> 】</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/13/数据验证/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -1600,182 +1744,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/05/Flex/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Wuer">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Wuer">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/02/05/Flex/" itemprop="url">Flex</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-02-05T20:25:04+08:00">
-                2019-02-05
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="一、场景"><a href="#一、场景" class="headerlink" title="一、场景"></a>一、场景</h2><p>一个容器设置了 <strong>display: flex</strong>；属性就定义了一个<strong>flex容器</strong>，它的直接子元素会接受这个flex环境</p>
-<h2 id="二、属性"><a href="#二、属性" class="headerlink" title="二、属性"></a>二、属性</h2><h4 id="1､flex-direction"><a href="#1､flex-direction" class="headerlink" title="1､flex-direction"></a>1､flex-direction</h4><p>设置或检索伸缩盒对象的子元素在父容器中的位置</p>
-<p>.container {<br>  flex-direction: row | row-reverse | column | column-reverse;<br>}<br>row 默认值，水平从左到右<br>row-reverse 水平从右到左<br>column 垂直从上到下<br>column-reverse 垂直从下到上</p>
-<h4 id="2､flex-wrap"><a href="#2､flex-wrap" class="headerlink" title="2､flex-wrap"></a>2､flex-wrap</h4><p>设置或检索弹性盒模型对象的子元素超出父容器时是否换行</p>
-<p>默认所有的flex item会尝试放在一行中，可以通过设置flex-wrap设置新行的方向</p>
-<p>.container{<br>  flex-wrap: nowrap | wrap | wrap-reverse;<br>}<br>nowrap 默认值，不换行<br>wrap 换行<br>wrap-reverse 换行，并且颠倒行顺序</p>
-<h4 id="3､flex-flow"><a href="#3､flex-flow" class="headerlink" title="3､flex-flow"></a>3､flex-flow</h4><p>flex-direction 和 flex-wrap 的缩写，默认值row nowrap</p>
-<p>flex-flow: &lt;‘flex-direction’&gt; || &lt;‘flex-wrap’&gt;<br>设置或检索弹性盒子元素在主轴（横轴）方向上的对齐方式，当弹性盒里一行上的所有子元素都不能伸缩或已经达到其最大值时，这一属性可协助对多余的空间进行分配。当元素溢出某行时，这一属性同样会在对齐上进行控制</p>
-<p>.container {<br>  justify-content: flex-start | flex-end | center | space-between | space-around;<br>}<br>flex-start 默认值、弹性盒子元素将向行起始位置对齐</p>
-<p>flex-end 弹性盒子元素将向行结束位置对齐</p>
-<p>center弹性盒子元素将向行中间位置对齐。该行的子元素将相互对齐并在行中居中对齐</p>
-<p>space-between 弹性盒子元素会平均地分布在行里</p>
-<p>space-around 弹性盒子元素会平均地分布在行里，两端保留子元素与子元素之间间距大小的一半</p>
-<h4 id="4､align-items"><a href="#4､align-items" class="headerlink" title="4､align-items"></a>4､align-items</h4><p>设置或检索弹性盒子元素在侧轴（纵轴）方向上的对齐方式</p>
-<p>.container {<br>  align-items: flex-start | flex-end | center | baseline | stretch;<br>}<br>flex-start 弹性盒子元素的侧轴（纵轴）起始位置的边界紧靠住该行的侧轴起始边界。</p>
-<p>flex-end 弹性盒子元素的侧轴（纵轴）起始位置的边界紧靠住该行的侧轴结束边界。</p>
-<p>center 弹性盒子元素在该行的侧轴（纵轴）上居中放置。（如果该行的尺寸小于弹性盒子元素的尺寸，则会向两个方向溢出相同的长度）。</p>
-<p>baseline 如弹性盒子元素的行内轴与侧轴为同一条，则该值与flex-start等效。其它情况下，该值将参与基线对齐。</p>
-<p>stretch 如果指定侧轴大小的属性值为’auto’，则其值会使项目的边距盒的尺寸尽可能接近所在行的尺寸，但同时会遵照’min/max-width/height’属性的限制。</p>
-<h4 id="5､align-content"><a href="#5､align-content" class="headerlink" title="5､align-content"></a>5､align-content</h4><p>设置或检索弹性盒堆叠伸缩行的对齐方式</p>
-<p>.container {<br>  align-content: flex-start | flex-end | center | space-between | space-around | stretch;<br>}<br>flex-start 各行向弹性盒容器的起始位置堆叠。弹性盒容器中第一行的侧轴起始边界紧靠住该弹性盒容器的侧轴起始边界，之后的每一行都紧靠住前面一行。</p>
-<p>flex-end 各行向弹性盒容器的结束位置堆叠。弹性盒容器中最后一行的侧轴起结束界紧靠住该弹性盒容器的侧轴结束边界，之后的每一行都紧靠住前面一行。</p>
-<p>center 各行向弹性盒容器的中间位置堆叠。各行两两紧靠住同时在弹性盒容器中居中对齐，保持弹性盒容器的侧轴起始内容边界和第一行之间的距离与该容器的侧轴结束内容边界与第最后一行之间的距离相等。</p>
-<p>space-between 各行在弹性盒容器中平均分布。第一行的侧轴起始边界紧靠住弹性盒容器的侧轴起始内容边界，最后一行的侧轴结束边界紧靠住弹性盒容器的侧轴结束内容边界，剩余的行则按一定方式在弹性盒窗口中排列，以保持两两之间的空间相等。</p>
-<p>space-around 各行在弹性盒容器中平均分布，两端保留子元素与子元素之间间距大小的一半。各行会按一定方式在弹性盒容器中排列，以保持两两之间的空间相等，同时第一行前面及最后一行后面的空间是其他空间的一半。</p>
-<p>stretch 各行将会伸展以占用剩余的空间。剩余空间被所有行平分，以扩大它们的侧轴尺寸。</p>
-<p>然后是用在子元素上的属性</p>
-<h4 id="6､order"><a href="#6､order" class="headerlink" title="6､order"></a>6､order</h4><p>在默认情况下flex order会按照书写顺训呈现，可以通过order属性改变，数值小的在前面，还可以是负数</p>
-<p>.item {<br>  order: <integer>;<br>}</integer></p>
-<h4 id="8､flex-shrink"><a href="#8､flex-shrink" class="headerlink" title="8､flex-shrink"></a>8､flex-shrink</h4><p>设置或检索弹性盒的收缩比率,根据弹性盒子元素所设置的收缩因子作为比率来收缩空间</p>
-<p>.item {<br>  flex-shrink: <number>; /<em> default 1 </em>/<br>}</number></p>
-<h4 id="10､flex"><a href="#10､flex" class="headerlink" title="10､flex"></a>10､flex</h4><p>flex-grow, flex-shrink,flex-basis 的缩写</p>
-<p>.item {<br>  flex: none | [ &lt;’flex-grow’&gt; &lt;’flex-shrink’&gt;? || &lt;’flex-basis’&gt; ]<br>}</p>
-<h4 id="11､align-self"><a href="#11､align-self" class="headerlink" title="11､align-self"></a>11､align-self</h4><p>设置或检索弹性盒子元素在侧轴（纵轴）方向上的对齐方式，可以覆盖父容器align-items的设置</p>
-<p>.item {<br>  align-self: auto | flex-start | flex-end | center | baseline | stretch;<br>}</p>
-<h2 id="三、实例"><a href="#三、实例" class="headerlink" title="三、实例"></a>三、实例</h2><h4 id="1､flex-basis"><a href="#1､flex-basis" class="headerlink" title="1､flex-basis"></a>1､flex-basis</h4><p>用于设置子项的占用空间。如果设置了值，则子项占用的空间为设置的值；如果没设置或者为 auto，那子项的空间为width/height 的值</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/14339384-69b33e699be54f66.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-<p>解析：</p>
-<p>(1)、对于子项1，flex-basis 如果设置默认是auto，子项占用的宽度使用width 的宽度，width没设置也为 auto，所以子项占用空间由内容决定</p>
-<p>(2)、对于子项2，flex-basis 为auto，子项占用宽度使用width 的宽度，width 为70px，所以子项子项占用空间是70px</p>
-<p>(3)、对于子项3，flex-basis 为100px，覆盖width 的宽度，所以子项占用空间是100px</p>
-<p>demo地址 <a href="http://js.jirengu.com/weqoc/5/edit?html,output" target="_blank" rel="noopener">http://js.jirengu.com/weqoc/5/edit?html,output</a></p>
-<h4 id="2､flex-grow"><a href="#2､flex-grow" class="headerlink" title="2､flex-grow"></a>2､flex-grow</h4><p>用来“瓜分”父项的“剩余空间”</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/14339384-dab53ba492f1746a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-<p>解析：</p>
-<p>(1)、容器的宽度为400px, 子项1的占用的基础空间(flex-basis)为50px，子项2占用的基础空间是70px，子项3占用基础空间是100px，剩余空间为 400-50-70-100 = 180px</p>
-<p>(2)、其中子项1的flex-grow: 0(未设置默认为0)， 子项2flex-grow: 2，子项3flex-grow: 1，剩余空间分成3份，子项2占2份(120px)，子项3占1份(60px)。</p>
-<p>(3)、所以 子项1真实的占用空间为: 50+0 = 50px， 子项2真实的占用空间为: 70+120 = 190px， 子项3真实的占用空间为: 100+60 = 160px</p>
-<p>demo地址：<a href="http://js.jirengu.com/sivoy/1/edit?html,css,js,output" target="_blank" rel="noopener">http://js.jirengu.com/sivoy/1/edit?html,css,js,output</a></p>
-<h4 id="3､flex-shrink"><a href="#3､flex-shrink" class="headerlink" title="3､flex-shrink"></a>3､flex-shrink</h4><p>用来“吸收”超出的空间</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/14339384-0a39a2d1f2659645.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-<p>解析：</p>
-<p>(1)、容器的宽度为400px, 子项1的占用的基准空间(flex-basis)为250px，子项2占用的基准空间是150px，子项3占用基准空间是100px，总基准空间为 250+150+100=500px。</p>
-<p>(2)、容器放不下，多出来的空间需要被每个子项根据自己设置的flex-shrink 进行吸收。 子项1的flex-shrink: 1(未设置默认为1)， 子项2 flex-shrink: 2，子项3 flex-shrink: 2</p>
-<p>子项1需要吸收的的空间为 <code>(250*1)/(250*1+150*2+100*2) * 100 = 33.33px</code>，子项1真实的空间为 250-33.33 = 216.67px。同理子项2吸收的空间为<code>(150*2)/(250*1+150*2+100*2) * 100=40px</code>，子项2真实空间为 <code>150-40 = 110px</code>。子项3吸收的空间为<code>(100*2)/(250*1+150*2+100*2) * 100 = 26.67px</code>，真实的空间为<code>100-26.67=73.33px</code></p>
-<p>demo地址：<a href="http://jsbin.com/pozebetibu/edit?html,output" target="_blank" rel="noopener">http://jsbin.com/pozebetibu/edit?html,output</a></p>
-<h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h4><p><a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/" target="_blank" rel="noopener">A Complete Guide to Flexbox</a><br><a href="https://developer.mozilla.org/zh-CN/docs/Web/CSS/CSS_Flexible_Box_Layout/Basic_Concepts_of_Flexbox" target="_blank" rel="noopener">MDN</a><br><a href="http://js.jirengu.com/jur/2" target="_blank" rel="noopener">demo代码</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1826,7 +1794,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">61</span>
+                  <span class="site-state-item-count">62</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

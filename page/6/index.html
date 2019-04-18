@@ -229,6 +229,158 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/11/基本类型、引用类型/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Wuer">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Wuer">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2018/10/11/基本类型、引用类型/" itemprop="url">基本类型、引用类型</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-11T21:45:40+08:00">
+                2018-10-11
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="一、基本类型"><a href="#一、基本类型" class="headerlink" title="一、基本类型"></a>一、基本类型</h1><h3 id="A、定义"><a href="#A、定义" class="headerlink" title="A、定义"></a>A、定义</h3><p>保存在栈内存中的简单数据段</p>
+<h3 id="B、分类"><a href="#B、分类" class="headerlink" title="B、分类"></a>B、分类</h3><p>(1)  数值</p>
+<p>(2)  字符串</p>
+<p>(3)  布尔值</p>
+<p>(4)  null和undefine</p>
+<h1 id="二、引用类型"><a href="#二、引用类型" class="headerlink" title="二、引用类型"></a>二、引用类型</h1><h3 id="A、定义-1"><a href="#A、定义-1" class="headerlink" title="A、定义"></a>A、定义</h3><p>那些保存在堆内存中的对象，变量中保存的实际上只是一个指针，这个指针执行内存中的另一个位置，由该位置保存对象</p>
+<h3 id="B、分类-1"><a href="#B、分类-1" class="headerlink" title="B、分类"></a>B、分类</h3><p>(1)  对象</p>
+<p>(2)  数组</p>
+<p>(3)  函数</p>
+<p>(4)  正则</p>
+<h3 id="C、实例解析"><a href="#C、实例解析" class="headerlink" title="C、实例解析"></a>C、实例解析</h3><p>(1)  例1</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> a;</span><br><span class="line"><span class="keyword">var</span> b;</span><br><span class="line"><span class="keyword">var</span> obj;</span><br><span class="line"><span class="keyword">var</span> obj2;</span><br><span class="line"></span><br><span class="line">a = <span class="number">1</span>;</span><br><span class="line">b = <span class="number">2</span>;</span><br><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">    name: <span class="string">'xwu'</span>,</span><br><span class="line">    sex: <span class="string">'girl'</span>,</span><br><span class="line">    age: <span class="number">18</span>,</span><br><span class="line">    friend :&#123;</span><br><span class="line">        name: <span class="string">'hello'</span>,</span><br><span class="line">        age: <span class="number">100</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> newObj = &#123;&#125;;</span><br><span class="line"></span><br><span class="line">b = a;</span><br><span class="line"><span class="built_in">console</span>.log(b); <span class="comment">//1</span></span><br><span class="line"><span class="keyword">var</span> obj2 = obj;</span><br><span class="line">obj <span class="comment">//&#123;name: "xwu", sex: "girl", age: 18, friend: &#123;…&#125;&#125;</span></span><br><span class="line">obj2 <span class="comment">//&#123;name: "xwu", sex: "girl", age: 18, friend: &#123;…&#125;&#125;</span></span><br><span class="line"></span><br><span class="line">obj.name = <span class="string">'xxwu'</span> <span class="comment">//"xxwu"</span></span><br><span class="line">obj2.name  <span class="comment">//"xxwu"</span></span><br><span class="line"><span class="comment">// 只有一个东西，取了不同名字，这就是引用类型</span></span><br></pre></td></tr></table></figure>
+<p>例2</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj3 = &#123;<span class="attr">name</span>: <span class="string">'hello'</span>&#125;;</span><br><span class="line"><span class="keyword">var</span> obj4 = &#123;<span class="attr">name</span>: <span class="string">'hello'</span>&#125;;</span><br><span class="line">obj3 === obj4 <span class="comment">//false</span></span><br></pre></td></tr></table></figure>
+<p><strong>分析：</strong>如下图见分晓<br><img src="https://upload-images.jianshu.io/upload_images/9375265-61edb0c547ce4ef6.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="p1.jpg"></p>
+<p>例3</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params">m</span>)</span>&#123;<span class="comment">//定义都是形参，m是形参</span></span><br><span class="line">	m.k = <span class="number">5</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> m = &#123;</span><br><span class="line">	k: <span class="number">30</span></span><br><span class="line">&#125;</span><br><span class="line">test(m);<span class="comment">//调用都是实参调用，m是实参</span></span><br><span class="line"><span class="built_in">console</span>.log(m);</span><br><span class="line"><span class="comment">// &#123;k: 5&#125;</span></span><br></pre></td></tr></table></figure>
+<p><strong>分析：</strong>对象属于引用类型, 传进去的 m 实际是 m 的地址~ 所以 test 还是对 m 进行操作的</p>
+<p>例4</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sum</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line"> <span class="built_in">console</span>.log(<span class="string">'sum.....'</span>)   </span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> sum2 = sum</span><br><span class="line">sum2() <span class="comment">// sum.....</span></span><br><span class="line">sum2 === sum <span class="comment">//true</span></span><br></pre></td></tr></table></figure>
+<p><strong>分析</strong>：如下图，sum和sum2指向的是同一个地址code，即同一个东西，取了不同名字sum、sum2,这就是引用类型</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/9375265-51635ec7cc5406df.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="p2.jpg"></p>
+<p>例5</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">inc</span>(<span class="params">n</span>)</span>&#123;</span><br><span class="line">    n++;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> a = <span class="number">10</span>;</span><br><span class="line">inc(a);</span><br><span class="line"><span class="built_in">console</span>.log(a);<span class="comment">//10</span></span><br><span class="line"></span><br><span class="line">相当于</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">inc</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> n = <span class="built_in">arguments</span>[<span class="number">0</span>]</span><br><span class="line">    n++ <span class="comment">//可以使用arguments对象在函数中引用函数的参数,此对象包含传递给函数的每个参数,第一个参数在索引0处</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> a = <span class="number">10</span></span><br><span class="line">inc(a)</span><br><span class="line"><span class="built_in">console</span>.log(a) <span class="comment">//10</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">incObj</span>(<span class="params">obj</span>)</span>&#123;</span><br><span class="line">    <span class="comment">//var obj = o // 0x0001</span></span><br><span class="line">    obj.n++;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> o = &#123;<span class="attr">n</span>: <span class="number">10</span>&#125;; <span class="comment">//o = 0x0001</span></span><br><span class="line">incObj(o);</span><br><span class="line"><span class="built_in">console</span>.log(o);</span><br></pre></td></tr></table></figure>
+<p><strong>分析：</strong>如下图，引用类型存的对象地址</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/9375265-43b27d969403eae3.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="p3.jpg"></p>
+<p>例6</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">squireArr</span>(<span class="params">arr</span>)</span>&#123;</span><br><span class="line">    <span class="comment">//var arr = 0x0011</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i&lt;arr.length; i++)&#123;</span><br><span class="line">        arr[i] = arr[i]*arr[i]</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">squireArr2</span>(<span class="params">arr</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> newArr = []</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">var</span> i = <span class="number">0</span>; i&lt; arr.length; i++)&#123;</span><br><span class="line">        newArr = arr[i]*arr[i]</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> newArr</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> arr = [<span class="number">2</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>] <span class="comment">// arr 0x0011</span></span><br><span class="line">squireArr(arr)</span><br><span class="line"><span class="built_in">console</span>.log(arr) <span class="comment">// [4,9,16,25] </span></span><br><span class="line"><span class="comment">//在原数组操作</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> arr2 = squireArr2(arr)</span><br><span class="line"><span class="built_in">console</span>.log(arr2) <span class="comment">// [4,9,16,25]</span></span><br><span class="line"><span class="comment">//得到一个新数组，原数组没变</span></span><br></pre></td></tr></table></figure>
+<h1 id="三、对象深拷贝和浅拷贝"><a href="#三、对象深拷贝和浅拷贝" class="headerlink" title="三、对象深拷贝和浅拷贝"></a>三、对象深拷贝和浅拷贝</h1><h3 id="A、浅拷贝-（即拷贝一层）"><a href="#A、浅拷贝-（即拷贝一层）" class="headerlink" title="A、浅拷贝 （即拷贝一层）"></a>A、浅拷贝 （即拷贝一层）</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">shallowCopy</span>(<span class="params">oldObj</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> newObj = &#123;&#125;;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> i <span class="keyword">in</span> oldObj)&#123;</span><br><span class="line">        <span class="keyword">if</span>(oldObj.hasOwnProperty(i))&#123;</span><br><span class="line">            newObj[i] = oldObj[i];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> newObj;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="B、深拷贝-（）"><a href="#B、深拷贝-（）" class="headerlink" title="B、深拷贝 （）"></a>B、深拷贝 （）</h3><p>(1)  方法1</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">deepCopy</span>(<span class="params">oldObj</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> newObj = &#123;&#125;;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">var</span> key <span class="keyword">in</span> oldObj)&#123;</span><br><span class="line">        <span class="keyword">if</span>(<span class="keyword">typeof</span> oldObj[key] === <span class="string">'object'</span>)&#123;</span><br><span class="line">            newObj[key] = deepCopy(oldObj[key]);</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            newObj[key] = oldObj[key];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> newObj;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>(2)  方法2</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">    name: <span class="string">'hunger'</span>,</span><br><span class="line">    age: <span class="number">3</span>,</span><br><span class="line">    friends: [<span class="string">'aa'</span>, <span class="string">'bb'</span>, <span class="string">'cc'</span>]</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> obj2 = <span class="built_in">JSON</span>.parse(<span class="built_in">JSON</span>.stringify(obj))</span><br><span class="line">obj.age = <span class="number">4</span></span><br><span class="line"><span class="built_in">console</span>.log(obj2.age)</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/06/对象/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -1699,137 +1851,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/10/01/白屏和FOUC现象/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Wuer">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Wuer">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/10/01/白屏和FOUC现象/" itemprop="url">白屏和FOUC现象</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-10-01T18:01:20+08:00">
-                2018-10-01
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>通过以下语句将CSS文件的加载时间拉长，来演示白屏和FOUC现象</p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;link rel = "stylesheet" href = "b.css?t=10"&gt;</span><br><span class="line">&lt;link rel = "stylesheet" href = "a.css?t=3"&gt;</span><br></pre></td></tr></table></figure>
-<p>##一、白屏效果</p>
-<p>Chrome浏览器的加载机制会出现白屏的现象</p>
-<p>(1)  当我们访问服务器时，css在加载过程中，页面是这样的：<br><img src="https://upload-images.jianshu.io/upload_images/14339384-816e95cceee328f4.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="p2.jpg"></p>
-<p>(2)  当有一个css文件加载完成时，页面依然白屏：<br><img src="https://upload-images.jianshu.io/upload_images/14339384-dfce2b6069e4ee24.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="p3.jpg"></p>
-<p>(3)  当所有css文件加载完成时，浏览布局渲染，页面显示出来应有的效果：<br><img src="https://upload-images.jianshu.io/upload_images/14339384-16f43d75920527b3.jpg?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="p4.jpg"></p>
-<p>##二、FOUC效果</p>
-<p>Firefox浏览器的加载机制会出现FOUC的现象</p>
-<p>(1)  当我们访问服务器时，在任何一个css文件未加载完成时，页面已经有显示文本显示了：<br><img src="https://upload-images.jianshu.io/upload_images/14339384-802f547fe7896b1d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="p5.png"></p>
-<p>(2)  当有一个css文件加载完成时，浏览器就会通过已经加载完成的css文件渲染页面，没有加载完成的继续加载：<br><img src="https://upload-images.jianshu.io/upload_images/14339384-4ca7c061954e6490.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="p6.png"></p>
-<p>(3)  当全部css文件加载完成后，页面的最终呈现最终的效果，在每一个css文件加载完成后，页面的样式会发生变化：<br><img src="https://upload-images.jianshu.io/upload_images/14339384-f45228727bc00c4b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="p7.png"></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1880,7 +1901,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">61</span>
+                  <span class="site-state-item-count">62</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
