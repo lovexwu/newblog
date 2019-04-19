@@ -229,6 +229,290 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/19/webpack/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Wuer">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Wuer">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/04/19/webpack/" itemprop="url">webpack</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-19T23:03:41+08:00">
+                2019-04-19
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="一、配置"><a href="#一、配置" class="headerlink" title="一、配置"></a>一、配置</h3><p>1､ npm init -y  (生成package.json)</p>
+<p>2､ yarn add webpack  –dev</p>
+<p>3､ yarn add webpack-cli –dev</p>
+<p>4､ npx webpack  (将index.js打包生成dist下的js文件)</p>
+<p>5､ npx http-server . -c-1  (开启http-server )</p>
+<p>6､ 可以预览 index.html 文件</p>
+<h3 id="二、页面支持-scss"><a href="#二、页面支持-scss" class="headerlink" title="二、页面支持 scss"></a>二、页面支持 scss</h3><p>1､ yarn add sass-loader node-sass webpack –dev</p>
+<p>2､ yarn add style-loader css-loader –dev</p>
+<p>3､ 改写webpack.config.js ，照抄官网的</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>: &#123;</span><br><span class="line">        rules: [&#123;</span><br><span class="line">            test: <span class="regexp">/\.scss$/</span>,</span><br><span class="line">            use: [</span><br><span class="line">                <span class="string">"style-loader"</span>, <span class="comment">// creates style nodes from JS strings</span></span><br><span class="line">                <span class="string">"css-loader"</span>, <span class="comment">// translates CSS into CommonJS</span></span><br><span class="line">                <span class="string">"sass-loader"</span> <span class="comment">// compiles Sass to CSS, using Node Sass by default</span></span><br><span class="line">            ]</span><br><span class="line">        &#125;]</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>4､ 创建style.scss，然后在index.js 文件里 import 引入（import ‘./style.scss’）</p>
+<p>5､ npx webpack 打包</p>
+<p>6､ npx http-server . -c-1 打开页面</p>
+<p><strong>小Bug：</strong></p>
+<p>页面样式更新，要依次执行 <code>npx webpack</code> + <code>npx http-server . -c-1</code>，才实时更新</p>
+<p><strong>解决方法</strong>：</p>
+<p>装工具 webpack dev server即可，其中2个地方记得改下</p>
+<p>1､ index.html 引入的js 是 dist下的js文件</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14339384-e6edf3f3e08d05ad.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>2､ webpack.config.js中的mode选项是 <code>development</code> </p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14339384-1e5ee498f47a7e6e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>此时修改页面样式，就会实时更新了啦</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/18/scss的那些事/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Wuer">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Wuer">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/04/18/scss的那些事/" itemprop="url">scss的那些事</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-18T23:54:40+08:00">
+                2019-04-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h3 id="一、混合-Mixins"><a href="#一、混合-Mixins" class="headerlink" title="一、混合 Mixins"></a>一、混合 Mixins</h3><p>​           <u>@mixin【声明】 +   @include 【使用】</u>   (<strong>支持参数</strong>)</p>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">@<span class="keyword">mixin</span> Mixins名称(参数:参数值)&#123;</span><br><span class="line">    <span class="comment">/*公用样式*/</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>通过此方式将相同的样式定义一个模块，然后在需要使用的地方通过 <code>@include</code>调用 <code>@mixin</code> 定义好的模块</p>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">selector&#123;</span><br><span class="line">    @<span class="keyword">include</span> Mixins名称(参数值)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">@<span class="keyword">mixin</span> border(<span class="variable">$border-color</span>:red)&#123;</span><br><span class="line">	<span class="attribute">border</span>: <span class="number">4px</span> solid <span class="variable">$border-color</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.nav</span>&#123;@<span class="keyword">include</span> border;&#125;</span><br><span class="line"><span class="selector-class">.cont</span>&#123;@<span class="keyword">include</span> border(yellow)&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="二、选择器继承-extend"><a href="#二、选择器继承-extend" class="headerlink" title="二、选择器继承 @extend"></a>二、选择器继承 @extend</h3><p>​          <u>%【声明】 +   @extend 【使用】</u>   <strong>(不支持参数</strong>)</p>
+<p>​          把相同样式抽出来，写到定义的一个类中，并通过 <code>@extend</code>来调用</p>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">%sameStyle&#123;<span class="comment">/*相同样式*/</span>&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$border-color</span>: red;</span><br><span class="line">%<span class="attribute">border</span>&#123;</span><br><span class="line">	<span class="attribute">border</span>: <span class="number">4px</span> solid <span class="variable">$border-color</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.nav</span>&#123;@<span class="keyword">extend</span> %border;&#125;</span><br><span class="line"><span class="selector-class">.cont</span>&#123;@<span class="keyword">extend</span> %border&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>小总结：</strong></p>
+<p>1､ mixin：复制属性</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14339384-f5a74a81e83ac0d9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>2､ %：复制选择器 （尽量使用这种，代码会少）</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14339384-207d887b9ec9ad92.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<h3 id="三、-function"><a href="#三、-function" class="headerlink" title="三、@function"></a>三、@function</h3><p>​          复用属性值的计算逻辑</p>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">%box &#123;</span><br><span class="line">       <span class="variable">$color</span>: pink;</span><br><span class="line">        <span class="attribute">border</span>: <span class="number">5px</span> solid <span class="variable">$color</span>;</span><br><span class="line">&#125;</span><br><span class="line">@function px(<span class="variable">$value</span>)&#123;</span><br><span class="line">        @return <span class="variable">$value</span>/<span class="number">2</span> + px;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.smallBox</span>&#123;</span><br><span class="line">        <span class="attribute">width</span>: px(<span class="number">100</span>);</span><br><span class="line">        <span class="attribute">height</span>: px(<span class="number">100</span>);</span><br><span class="line">        @<span class="keyword">extend</span> %box;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.bigBox</span>&#123;</span><br><span class="line">        <span class="attribute">width</span>:px(<span class="number">200</span>);</span><br><span class="line">        <span class="attribute">height</span>:px(<span class="number">200</span>);</span><br><span class="line">        @<span class="keyword">extend</span> %box;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="https://upload-images.jianshu.io/upload_images/14339384-a210367be8841c96.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<h3 id="四、darken"><a href="#四、darken" class="headerlink" title="四、darken"></a>四、darken</h3><p><code>darken($color,$amount)</code>通过改变颜色的亮度值，让颜色变暗，创建一个新的颜色</p>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">darken(<span class="selector-id">#f36</span>,50%) <span class="comment">//把#f36颜色亮度降低50%</span></span><br></pre></td></tr></table></figure>
+<h3 id="五、适配所有手机（不含pc）"><a href="#五、适配所有手机（不含pc）" class="headerlink" title="五、适配所有手机（不含pc）"></a>五、适配所有手机（不含pc）</h3><p>1､所有宽度用 vw 计算，这样可以动态缩放</p>
+<p>2､使用函数将 px -&gt; vw 的计算过程简化</p>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">@function px(<span class="variable">$npx</span>)&#123;</span><br><span class="line">    @return @npx/<span class="number">375</span>*<span class="number">100vw</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="五、-content"><a href="#五、-content" class="headerlink" title="五、@ content"></a>五、@ content</h3><p>将内容块传递给mixin</p>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">@<span class="keyword">mixin</span> phone &#123;<span class="comment">// 定义</span></span><br><span class="line">        @<span class="keyword">media</span>(max-width:<span class="number">500px</span>)&#123;</span><br><span class="line">            @<span class="keyword">content</span></span><br><span class="line">        &#125; </span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">@<span class="keyword">include</span> phone&#123; <span class="comment">//使用</span></span><br><span class="line">        <span class="selector-tag">ul</span>&#123;</span><br><span class="line">            <span class="attribute">display</span>: none;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="selector-class">.menu</span>&#123;</span><br><span class="line">            <span class="attribute">display</span>: block;</span><br><span class="line">        &#125;   </span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line">@<span class="keyword">media</span> (max-width: 500px) &#123; <span class="comment">//生成的代码</span></span><br><span class="line">        <span class="selector-tag">ul</span>&#123;</span><br><span class="line">            <span class="attribute">display</span>: none;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="selector-class">.menu</span>&#123;</span><br><span class="line">            <span class="attribute">display</span>: block;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/18/Mac 终端目录跳转软件z/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -1495,294 +1779,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/16/自定义指令/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Wuer">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Wuer">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/03/16/自定义指令/" itemprop="url">自定义指令</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-16T12:55:31+08:00">
-                2019-03-16
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="一、基本用法"><a href="#一、基本用法" class="headerlink" title="一、基本用法"></a>一、基本用法</h2><p>全局注册和局部注册，和组件类似，区别是把<strong>component 换成了 directive</strong></p>
-<h2 id="二、钩子函数"><a href="#二、钩子函数" class="headerlink" title="二、钩子函数"></a>二、钩子函数</h2><p>1､bind</p>
-<p><strong>只调用一次</strong> (和@click类似)，指定第一次绑定到元素时调用</p>
-<p>用这个钩子函数可以定义一个在绑定时执行一次的初始化动作</p>
-<p>2､inserted</p>
-<p>被绑定元素插入父节点时调用（父节点存在即可调用，不必存在document中）</p>
-<p>3､update</p>
-<p>被绑定元素所在模板更新时调用（不论绑定值是否变化）</p>
-<p>通过比较更新前后的绑定值，可以忽略不必要的模板更新</p>
-<p>4､componentUpdated</p>
-<p>被绑定元素所在模板完成一次更新周期时调用</p>
-<p>5､unbind</p>
-<p>只调用一次，指令与元素解绑时调用</p>
-<h2 id="三、钩子函数的参数"><a href="#三、钩子函数的参数" class="headerlink" title="三、钩子函数的参数"></a>三、钩子函数的参数</h2><p>1､el ：指令所绑定的元素，可以用来直接操作DOM</p>
-<p>2、binding：一个对象，包含属性有:</p>
-<p>   2.1､name：指令名，不包括v- 前缀</p>
-<p>   2.2､value：指令的绑定值，如： v-my-directive=”1+1”,value值是2</p>
-<p>   2.3､oldValue：指令绑定的前一个值，<strong>仅在update 和 componentUpdated中用</strong>，无论值是否改变都可用</p>
-<p>   2.4､expression：绑定值的<strong>字符串形式</strong>（绑定值的属性名，也叫值的表达式)</p>
-<p>​     如：v-my-directive=”1+1”，expression值是”1+1”</p>
-<p>   2.5､arg：传给指令的参数，如：v-my-directive:foo，arg的值是”foo”</p>
-<p>   2.6､modifiers：一个包含修饰符的对象</p>
-<p>​      如：v-my-directive.foo.bar，修饰符对象modifiers的值是 {foo: true, bar:true}</p>
-<p>3､vnode：Vue 编译生成的虚拟节点</p>
-<p>4､oldVnode：上一个虚拟节点<strong>，仅在update 和 componentUpdated中</strong></p>
-<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;div v-test:xwu.e.f="word"&gt;&lt;/div&gt;</span><br></pre></td></tr></table></figure>
-<p>【Demo实例 <a href="https://jsbin.com/zovozoz/edit?html,output】" target="_blank" rel="noopener">https://jsbin.com/zovozoz/edit?html,output】</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/15/slot分发内容/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Wuer">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Wuer">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2019/03/15/slot分发内容/" itemprop="url">slot分发内容</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-15T11:17:44+08:00">
-                2019-03-15
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="一、slot定义"><a href="#一、slot定义" class="headerlink" title="一、slot定义"></a>一、slot定义</h2><p>中文<strong>插槽</strong>，<strong>混合父组件的内容与子组件自已模板的方式</strong></p>
-<p>其中 Vuejs 把 slot 元素作为原始内容的插槽</p>
-<h2 id="二、编译作用域"><a href="#二、编译作用域" class="headerlink" title="二、编译作用域"></a>二、编译作用域</h2><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//父组件</span></span><br><span class="line">&lt;div id=<span class="string">"app"</span>&gt;</span><br><span class="line">&lt;my-component&gt;&#123;&#123;msg&#125;&#125;&lt;/my-component&gt;</span><br><span class="line">&lt;/div&gt; //msg绑定到是父组件的内容</span><br><span class="line"></span><br><span class="line"><span class="comment">//子组件</span></span><br><span class="line">...</span><br><span class="line">components:&#123;</span><br><span class="line">  <span class="string">'my-component'</span>:&#123;</span><br><span class="line">    template:<span class="string">'&lt;div&gt;&lt;/div&gt;'</span>    </span><br><span class="line">   &#125;    </span><br><span class="line">&#125;</span><br><span class="line">...</span><br></pre></td></tr></table></figure>
-<p>小总结：</p>
-<p>父组件模板内容在父组件作用域内编译</p>
-<p>子组件模板内容在子组件作用域内编译</p>
-<h2 id="三、slot用法"><a href="#三、slot用法" class="headerlink" title="三、slot用法"></a>三、slot用法</h2><p><strong>1､单个插槽</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//html</span></span><br><span class="line">...</span><br><span class="line">&lt;my-component&gt;我是父组件内容&lt;/my-component&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">//js</span></span><br><span class="line">...</span><br><span class="line">template:<span class="string">'&lt;div&gt;\</span></span><br><span class="line"><span class="string">    &lt;slot&gt;\</span></span><br><span class="line"><span class="string">    如果没有内容显示，默认是我\</span></span><br><span class="line"><span class="string">    &lt;/slot&gt;\</span></span><br><span class="line"><span class="string">&lt;/div&gt;'</span></span><br><span class="line">...</span><br></pre></td></tr></table></figure>
-<p><strong>2､具名插槽</strong></p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//html</span></span><br><span class="line">...</span><br><span class="line">具名插槽（有具体名字的插槽）: 视图不变，数据变</span><br><span class="line">&lt;name-component&gt;</span><br><span class="line">  &lt;h3 slot="header"&gt;我是标题&lt;/h3&gt;</span><br><span class="line">  &lt;p&gt;我是正文内容&lt;/p&gt;</span><br><span class="line">  &lt;p&gt;正文内容有两段&lt;/p&gt;</span><br><span class="line">  &lt;p slot="footer"&gt;我是底部信息&lt;/p&gt;</span><br><span class="line">&lt;/name-component&gt;</span><br><span class="line"><span class="comment">//js</span></span><br><span class="line">...</span><br><span class="line"><span class="string">'name-component'</span>:&#123;</span><br><span class="line">  	template:<span class="string">'&lt;div&gt;\</span></span><br><span class="line"><span class="string">                &lt;div class="header"&gt;\n'</span> +</span><br><span class="line">                <span class="string">'        &lt;slot name="header"&gt;'</span> + <span class="comment">//取出name是 header 对应的内容</span></span><br><span class="line">                <span class="string">'&lt;/slot&gt;\n'</span> +</span><br><span class="line">                <span class="string">'    &lt;/div&gt;\n'</span> +</span><br><span class="line">                <span class="string">'    \n'</span> +</span><br><span class="line">                <span class="string">'    &lt;div class="container"&gt;\n'</span> +</span><br><span class="line">                <span class="string">'        &lt;slot&gt;'</span> + <span class="comment">// 没加 name 会把默认的取回来</span></span><br><span class="line">                <span class="string">'&lt;/slot&gt;\n'</span> +</span><br><span class="line">                <span class="string">'    &lt;/div&gt;\n'</span> +</span><br><span class="line">                <span class="string">'\n'</span> +</span><br><span class="line">                <span class="string">'    &lt;div class="footer"&gt;\n'</span> +</span><br><span class="line">                <span class="string">'        &lt;slot name="footer"&gt;'</span> + <span class="comment">//取出name是footer对应的内容</span></span><br><span class="line">                <span class="string">'&lt;/slot&gt;\n'</span> +</span><br><span class="line">                <span class="string">'    &lt;/div&gt;'</span> +</span><br><span class="line">                <span class="string">'&lt;/div&gt;'</span> </span><br><span class="line">     &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>【Demo实例<a href="https://jsbin.com/jijelop/edit?html,output】" target="_blank" rel="noopener">https://jsbin.com/jijelop/edit?html,output】</a></p>
-<h2 id="四､作用域插槽"><a href="#四､作用域插槽" class="headerlink" title="四､作用域插槽"></a>四､作用域插槽</h2><p>使用一个可以复用的模板来替换已经渲染的元素(<strong>从子组件中获取数据</strong>)</p>
-<p>注：template模板不会被渲染，渲染的是template标签内的内容 (v2.5.0版本之前)</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//html</span></span><br><span class="line">...</span><br><span class="line">&lt;my-component&gt;</span><br><span class="line">   &lt;template slot=<span class="string">"abc"</span> slot-scope=<span class="string">"prop"</span>&gt;</span><br><span class="line">     &#123;&#123; prop.text&#125;&#125;</span><br><span class="line">    &lt;/template&gt;   </span><br><span class="line"></span><br><span class="line">    <span class="comment">//v2.5.0版本后,可在别的标签(比如p,span,div等)上用 slot,slot-scope，并渲染标签</span></span><br><span class="line">    &lt;p slot=<span class="string">"abc"</span> slot-scope=<span class="string">"prop"</span>&gt; </span><br><span class="line">        &#123;&#123;prop.text&#125;&#125;</span><br><span class="line">    &lt;/p&gt;</span><br><span class="line"> &lt;/my-component&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">//js</span></span><br><span class="line">...</span><br><span class="line">components:&#123;</span><br><span class="line">   <span class="string">'my-component'</span>:&#123;</span><br><span class="line">      template:<span class="string">'&lt;div&gt;\</span></span><br><span class="line"><span class="string">            &lt;slot text="我是来自子组件" name="abc"&gt;\</span></span><br><span class="line"><span class="string">            &lt;/slot&gt;\</span></span><br><span class="line"><span class="string">      &lt;/div&gt;'</span><span class="comment">//在子组件定义一个slot，写上要传递的数据</span></span><br><span class="line">    &#125;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
-<p>【Demo实例<a href="https://jsbin.com/hawodox/edit?html,output】" target="_blank" rel="noopener">https://jsbin.com/hawodox/edit?html,output】</a></p>
-<h2 id="五、访问slot"><a href="#五、访问slot" class="headerlink" title="五、访问slot"></a>五、访问slot</h2><p>通过 this.$slots.name 访问</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//html</span></span><br><span class="line">...</span><br><span class="line">&lt;name-component&gt;</span><br><span class="line">	&lt;h3 slot="header"&gt;&lt;span&gt;我是标题&lt;/span&gt;&lt;/h3&gt;</span><br><span class="line">&lt;/name-component&gt;</span><br><span class="line"></span><br><span class="line"><span class="comment">//js</span></span><br><span class="line">...</span><br><span class="line">mounted:function()&#123;</span><br><span class="line"><span class="comment">// 访问插槽</span></span><br><span class="line"> <span class="keyword">var</span> header = <span class="keyword">this</span>.$slots.header </span><br><span class="line"> <span class="keyword">var</span> text = header[<span class="number">0</span>].elm.innerText</span><br><span class="line"> <span class="keyword">var</span> html = header[<span class="number">0</span>].elm.innerHTML</span><br><span class="line"> console.log(header)</span><br><span class="line"> console.log(text)</span><br><span class="line"> console.log(html)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>【Demo实例<a href="https://jsbin.com/zarewac/edit?html,console,output】" target="_blank" rel="noopener">https://jsbin.com/zarewac/edit?html,console,output】</a></p>
-<h2 id="六、组件高级用法-动态组件"><a href="#六、组件高级用法-动态组件" class="headerlink" title="六、组件高级用法-动态组件"></a>六、组件高级用法-动态组件</h2><p> component元素 （vue 提供）</p>
-<h5 id="1､作用"><a href="#1､作用" class="headerlink" title="1､作用"></a>1､作用</h5><p> 动态挂载不同组件</p>
-<h5 id="2､实现"><a href="#2､实现" class="headerlink" title="2､实现"></a>2､实现</h5><p>使用is属性实现</p>
-<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//html</span></span><br><span class="line">...</span><br><span class="line">&lt;button @click="handleView('A')"&gt;第1句&lt;/button&gt;</span><br><span class="line">&lt;button @click="handleView('B')"&gt;第2句&lt;/button&gt;</span><br><span class="line">&lt;button @click="handleView('C')"&gt;第3句&lt;/button&gt;</span><br><span class="line">&lt;button @click="handleView('D')"&gt;第4句&lt;/button&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//js</span></span><br><span class="line">...</span><br><span class="line">components:&#123;</span><br><span class="line">        <span class="string">'compA'</span>:&#123;</span><br><span class="line">            template:<span class="string">'&lt;div&gt;离离原上草&lt;/div&gt;'</span></span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="string">'compB'</span>:&#123;</span><br><span class="line">            template:<span class="string">'&lt;div&gt;一岁一枯荣&lt;/div&gt;'</span></span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="string">'compC'</span>:&#123;</span><br><span class="line">            template:<span class="string">'&lt;div&gt;野火烧不尽&lt;/div&gt;'</span></span><br><span class="line">        &#125;,</span><br><span class="line">        <span class="string">'compD'</span>:&#123;</span><br><span class="line">            template:<span class="string">'&lt;div&gt;春风吹又生&lt;/div&gt;'</span></span><br><span class="line">        &#125;</span><br><span class="line"> &#125;,</span><br><span class="line"> methods:&#123;</span><br><span class="line">        handleView:function(tag)&#123;</span><br><span class="line">            <span class="keyword">this</span>.thisView = <span class="string">'comp'</span> + tag</span><br><span class="line">        &#125;</span><br><span class="line"> &#125;</span><br><span class="line"> data:&#123;</span><br><span class="line">        thisView:<span class="string">'compA'</span></span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
-<p>【Demo实例 <a href="https://jsbin.com/gocarif/edit?html,output】" target="_blank" rel="noopener">https://jsbin.com/gocarif/edit?html,output】</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1833,7 +1829,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">62</span>
+                  <span class="site-state-item-count">64</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>

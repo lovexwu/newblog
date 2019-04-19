@@ -1,0 +1,686 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="zh-Hans">
+<head><meta name="generator" content="Hexo 3.8.0">
+  <meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css">
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css">
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Hexo, NexT">
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="一、混合 Mixins​           @mixin【声明】 +   @include 【使用】   (支持参数) 123@mixin Mixins名称(参数:参数值)&amp;#123;    /*公用样式*/&amp;#125; 通过此方式将相同的样式定义一个模块，然后在需要使用的地方通过 @include调用 @mixin 定义好的模块 123selector&amp;#123;    @include Mi">
+<meta property="og:type" content="article">
+<meta property="og:title" content="scss的那些事">
+<meta property="og:url" content="http://yoursite.com/2019/04/18/scss的那些事/index.html">
+<meta property="og:site_name" content="Wuer">
+<meta property="og:description" content="一、混合 Mixins​           @mixin【声明】 +   @include 【使用】   (支持参数) 123@mixin Mixins名称(参数:参数值)&amp;#123;    /*公用样式*/&amp;#125; 通过此方式将相同的样式定义一个模块，然后在需要使用的地方通过 @include调用 @mixin 定义好的模块 123selector&amp;#123;    @include Mi">
+<meta property="og:locale" content="zh-Hans">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14339384-f5a74a81e83ac0d9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14339384-207d887b9ec9ad92.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:image" content="https://upload-images.jianshu.io/upload_images/14339384-a210367be8841c96.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+<meta property="og:updated_time" content="2019-04-19T16:30:06.572Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="scss的那些事">
+<meta name="twitter:description" content="一、混合 Mixins​           @mixin【声明】 +   @include 【使用】   (支持参数) 123@mixin Mixins名称(参数:参数值)&amp;#123;    /*公用样式*/&amp;#125; 通过此方式将相同的样式定义一个模块，然后在需要使用的地方通过 @include调用 @mixin 定义好的模块 123selector&amp;#123;    @include Mi">
+<meta name="twitter:image" content="https://upload-images.jianshu.io/upload_images/14339384-f5a74a81e83ac0d9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: '博主'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2019/04/18/scss的那些事/">
+
+
+
+
+
+  <title>scss的那些事 | Wuer</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope="" itemtype="http://schema.org/WebPage" lang="zh-Hans">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope="" itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Wuer</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br>
+            
+            首页
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br>
+            
+            归档
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/04/18/scss的那些事/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Wuer">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Wuer">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">scss的那些事</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-04-18T23:54:40+08:00">
+                2019-04-18
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h3 id="一、混合-Mixins"><a href="#一、混合-Mixins" class="headerlink" title="一、混合 Mixins"></a>一、混合 Mixins</h3><p>​           <u>@mixin【声明】 +   @include 【使用】</u>   (<strong>支持参数</strong>)</p>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">@<span class="keyword">mixin</span> Mixins名称(参数:参数值)&#123;</span><br><span class="line">    <span class="comment">/*公用样式*/</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>通过此方式将相同的样式定义一个模块，然后在需要使用的地方通过 <code>@include</code>调用 <code>@mixin</code> 定义好的模块</p>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">selector&#123;</span><br><span class="line">    @<span class="keyword">include</span> Mixins名称(参数值)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">@<span class="keyword">mixin</span> border(<span class="variable">$border-color</span>:red)&#123;</span><br><span class="line">	<span class="attribute">border</span>: <span class="number">4px</span> solid <span class="variable">$border-color</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.nav</span>&#123;@<span class="keyword">include</span> border;&#125;</span><br><span class="line"><span class="selector-class">.cont</span>&#123;@<span class="keyword">include</span> border(yellow)&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="二、选择器继承-extend"><a href="#二、选择器继承-extend" class="headerlink" title="二、选择器继承 @extend"></a>二、选择器继承 @extend</h3><p>​          <u>%【声明】 +   @extend 【使用】</u>   <strong>(不支持参数</strong>)</p>
+<p>​          把相同样式抽出来，写到定义的一个类中，并通过 <code>@extend</code>来调用</p>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">%sameStyle&#123;<span class="comment">/*相同样式*/</span>&#125;</span><br></pre></td></tr></table></figure>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable">$border-color</span>: red;</span><br><span class="line">%<span class="attribute">border</span>&#123;</span><br><span class="line">	<span class="attribute">border</span>: <span class="number">4px</span> solid <span class="variable">$border-color</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.nav</span>&#123;@<span class="keyword">extend</span> %border;&#125;</span><br><span class="line"><span class="selector-class">.cont</span>&#123;@<span class="keyword">extend</span> %border&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>小总结：</strong></p>
+<p>1､ mixin：复制属性</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14339384-f5a74a81e83ac0d9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>2､ %：复制选择器 （尽量使用这种，代码会少）</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14339384-207d887b9ec9ad92.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<h3 id="三、-function"><a href="#三、-function" class="headerlink" title="三、@function"></a>三、@function</h3><p>​          复用属性值的计算逻辑</p>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line">%box &#123;</span><br><span class="line">       <span class="variable">$color</span>: pink;</span><br><span class="line">        <span class="attribute">border</span>: <span class="number">5px</span> solid <span class="variable">$color</span>;</span><br><span class="line">&#125;</span><br><span class="line">@function px(<span class="variable">$value</span>)&#123;</span><br><span class="line">        @return <span class="variable">$value</span>/<span class="number">2</span> + px;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.smallBox</span>&#123;</span><br><span class="line">        <span class="attribute">width</span>: px(<span class="number">100</span>);</span><br><span class="line">        <span class="attribute">height</span>: px(<span class="number">100</span>);</span><br><span class="line">        @<span class="keyword">extend</span> %box;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-class">.bigBox</span>&#123;</span><br><span class="line">        <span class="attribute">width</span>:px(<span class="number">200</span>);</span><br><span class="line">        <span class="attribute">height</span>:px(<span class="number">200</span>);</span><br><span class="line">        @<span class="keyword">extend</span> %box;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="https://upload-images.jianshu.io/upload_images/14339384-a210367be8841c96.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<h3 id="四、darken"><a href="#四、darken" class="headerlink" title="四、darken"></a>四、darken</h3><p><code>darken($color,$amount)</code>通过改变颜色的亮度值，让颜色变暗，创建一个新的颜色</p>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">darken(<span class="selector-id">#f36</span>,50%) <span class="comment">//把#f36颜色亮度降低50%</span></span><br></pre></td></tr></table></figure>
+<h3 id="五、适配所有手机（不含pc）"><a href="#五、适配所有手机（不含pc）" class="headerlink" title="五、适配所有手机（不含pc）"></a>五、适配所有手机（不含pc）</h3><p>1､所有宽度用 vw 计算，这样可以动态缩放</p>
+<p>2､使用函数将 px -&gt; vw 的计算过程简化</p>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">@function px(<span class="variable">$npx</span>)&#123;</span><br><span class="line">    @return @npx/<span class="number">375</span>*<span class="number">100vw</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h3 id="五、-content"><a href="#五、-content" class="headerlink" title="五、@ content"></a>五、@ content</h3><p>将内容块传递给mixin</p>
+<figure class="highlight scss"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">@<span class="keyword">mixin</span> phone &#123;<span class="comment">// 定义</span></span><br><span class="line">        @<span class="keyword">media</span>(max-width:<span class="number">500px</span>)&#123;</span><br><span class="line">            @<span class="keyword">content</span></span><br><span class="line">        &#125; </span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">@<span class="keyword">include</span> phone&#123; <span class="comment">//使用</span></span><br><span class="line">        <span class="selector-tag">ul</span>&#123;</span><br><span class="line">            <span class="attribute">display</span>: none;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="selector-class">.menu</span>&#123;</span><br><span class="line">            <span class="attribute">display</span>: block;</span><br><span class="line">        &#125;   </span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line">@<span class="keyword">media</span> (max-width: 500px) &#123; <span class="comment">//生成的代码</span></span><br><span class="line">        <span class="selector-tag">ul</span>&#123;</span><br><span class="line">            <span class="attribute">display</span>: none;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="selector-class">.menu</span>&#123;</span><br><span class="line">            <span class="attribute">display</span>: block;</span><br><span class="line">        &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2019/04/18/Mac 终端目录跳转软件z/" rel="next" title="Mac 终端目录跳转软件z">
+                <i class="fa fa-chevron-left"></i> Mac 终端目录跳转软件z
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2019/04/19/webpack/" rel="prev" title="webpack">
+                webpack <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            站点概览
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Wuer</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">64</span>
+                  <span class="site-state-item-name">日志</span>
+                </a>
+              </div>
+            
+
+            
+
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#一、混合-Mixins"><span class="nav-number">1.</span> <span class="nav-text">一、混合 Mixins</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#二、选择器继承-extend"><span class="nav-number">2.</span> <span class="nav-text">二、选择器继承 @extend</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#三、-function"><span class="nav-number">3.</span> <span class="nav-text">三、@function</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#四、darken"><span class="nav-number">4.</span> <span class="nav-text">四、darken</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#五、适配所有手机（不含pc）"><span class="nav-number">5.</span> <span class="nav-text">五、适配所有手机（不含pc）</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#五、-content"><span class="nav-number">6.</span> <span class="nav-text">五、@ content</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Wuer</span>
+
+  
+</div>
+
+
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">主题 &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

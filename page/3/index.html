@@ -229,6 +229,344 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/03/05/vue-blog/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Wuer">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Wuer">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/03/05/vue-blog/" itemprop="url">vue-blog</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-03-05T16:15:03+08:00">
+                2019-03-05
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="Vue-js之多人共享博客"><a href="#Vue-js之多人共享博客" class="headerlink" title="Vue.js之多人共享博客"></a>Vue.js之多人共享博客</h2><p><strong>预览地址：</strong><a href="https://lovexwu.github.io/vue-blogclient/#/" target="_blank" rel="noopener">https://lovexwu.github.io/vue-blogclient/#/</a></p>
+<h3 id="项目功能"><a href="#项目功能" class="headerlink" title="项目功能"></a>项目功能</h3><p>一、前、后端分离的<strong>多个页面</strong>的<strong>单页</strong>应用</p>
+<p>二、页面包括 首页、博客详情、创建、编辑、用户、我的、登录、注册 8个页面</p>
+<p> <strong>A、首页：</strong> 展示所有人设置到首页的博客列表<br> <strong>B、博客详情：</strong>展示博客详情<br> <strong>C、登录、注册：</strong> 用户登录注册<br> <strong>D、用户页面：</strong> 展示某个用户的所有博客列表<br> <strong>E、我的：</strong> 展示个人主页<br> <strong>F、编辑、删除、创建博客</strong></p>
+<p>注：</p>
+<p><strong>1､详情页面</strong>的博客内容是用 <strong>markdown 写 , html 方式 做一个展现</strong></p>
+<p>2､ <strong>创建页面 + 编辑页面 </strong>可以设置是否显示到首页（atIndex），如不设置，那首页就不会显示其内容</p>
+<h3 id="Get-到的点"><a href="#Get-到的点" class="headerlink" title="Get 到的点"></a>Get 到的点</h3><p>一、<strong>上传dist 文件内容 GitHub 四步曲</strong>   (考虑上传整个项目文件太大，可以上传编译后的dist文件内容即可)</p>
+<p>1､ GitHub 新建远程库</p>
+<p>2､ 终端 cd 到 项目文件夹 并 执行 npm run build 进行编译<br><img src="https://upload-images.jianshu.io/upload_images/14339384-1c7b52aca910751d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>3､编译完后，dist 文件夹下 会有新的东西啦</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14339384-9c1e49e63379181e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>4、终端切换到dist下，推送到 GitHub 上就行啦</p>
+<h4 id="工程化上面四步曲"><a href="#工程化上面四步曲" class="headerlink" title="工程化上面四步曲"></a>工程化上面四步曲</h4><p>1､加上这一连串代码在package.json里</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14339384-27b4a5b06088e1f9.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>分析： git push -f origin master  其中/f 是因为上传的不是源码，会覆盖也是应该的, 切记上传源码是不用 /f </p>
+<p><img src="/Users/laoda/Library/Application Support/typora-user-images/image-20190306122914148.png" alt="image-20190306122914148"></p>
+<p>2､终端就可以直接操作 npm run upload</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14339384-0d2ee3934dcd056a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"><br><img src="https://upload-images.jianshu.io/upload_images/14339384-f991ecf697e35a3a.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>也就是说，下次修改没问题，执行 npm run upload 就会依次执行那些命令操作啦</p>
+<h3 id="遇到的坑"><a href="#遇到的坑" class="headerlink" title="遇到的坑"></a>遇到的坑</h3><p>1､ Github pages预览，GitHub不支持http协议，将接口 <strong>http 改为 https</strong> 即可</p>
+<p>2、assetsPublicPath <strong>‘/‘改为‘./‘</strong> 即可<img src="https://upload-images.jianshu.io/upload_images/14339384-2247ad058106ad3b.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>Vue项目上传github在线预览 参考<br><a href="https://zhuanlan.zhihu.com/p/48631279" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/48631279</a><br><a href="https://www.jb51.net/article/142307.htm" target="_blank" rel="noopener">https://www.jb51.net/article/142307.htm</a><br><a href="https://zhuanlan.zhihu.com/p/35764920" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/35764920</a></p>
+<h3 id="技术栈"><a href="#技术栈" class="headerlink" title="技术栈"></a>技术栈</h3><p>vue-cli、vue2､axios、vue-router、vuex、es6､npm、elementUI</p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/08/Grid/">
+
+    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Wuer">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Wuer">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2019/02/08/Grid/" itemprop="url">Grid</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">发表于</span>
+              
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2019-02-08T22:27:57+08:00">
+                2019-02-08
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h2 id="一、场景"><a href="#一、场景" class="headerlink" title="一、场景"></a>一、场景</h2><p>1､ 一个容器设置了 <strong>display: grid</strong>属性，就把容器元素定义了一个网格</p>
+<p>2､ 设置列/行的大小：<strong>grid-template-columns / grid-template-rows</strong></p>
+<p>3､使用<strong>grid-column</strong>和 <strong>grid-row</strong>把它的子元素放入网格</p>
+<h2 id="二、重要术语"><a href="#二、重要术语" class="headerlink" title="二、重要术语"></a>二、重要术语</h2><h4 id="1､Grid-Container（父容器）"><a href="#1､Grid-Container（父容器）" class="headerlink" title="1､Grid Container（父容器）"></a>1､Grid Container（父容器）</h4><p>设置了 <strong>display: grid</strong> 的元素， 这是所有 grid item 的<strong>直接父项</strong>。 下面的.container 就是 grid container</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"container"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"item item-1"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"item item-2"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"item item-3"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h4 id="2､Grid-Item（Grid-容器的孩子）"><a href="#2､Grid-Item（Grid-容器的孩子）" class="headerlink" title="2､Grid Item（Grid 容器的孩子）"></a>2､Grid Item（Grid 容器的孩子）</h4><p>即<strong>直接子元素</strong>，下面的 .item 元素就是 grid item，但 <strong>.sub-item不是</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"container"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"item"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span> </span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"item"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">p</span> <span class="attr">class</span>=<span class="string">"sub-item"</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"item"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h4 id="3､Grid-Line（分界线）"><a href="#3､Grid-Line（分界线）" class="headerlink" title="3､Grid Line（分界线）"></a>3､Grid Line（分界线）</h4><p>这个分界线组成网格结构。 它们既可以是<strong>垂直的（“column grid lines”）</strong>，也可以是<strong>水平的（“row grid lines”）</strong>，并位于行或列的任一侧。 下面的黄线就是一个列网格线。</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14339384-efd9b54927a4b259.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<h4 id="4､Grid-Track（两个相邻网格线之间的空间）"><a href="#4､Grid-Track（两个相邻网格线之间的空间）" class="headerlink" title="4､Grid Track（两个相邻网格线之间的空间）"></a>4､Grid Track（两个相邻网格线之间的空间）</h4><p>可以把它们想象成网格的列或行。 下面是第二行和第三行网格线之间的网格轨道</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14339384-727620e3957041c6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<h4 id="5､Grid-Cell（两个相邻的行和两个相邻的列网格线之间的空间）"><a href="#5､Grid-Cell（两个相邻的行和两个相邻的列网格线之间的空间）" class="headerlink" title="5､Grid Cell（两个相邻的行和两个相邻的列网格线之间的空间）"></a>5､Grid Cell（两个相邻的行和两个相邻的列网格线之间的空间）</h4><p>它是网格的一个“单元”。 下面是行网格线1和2之间以及列网格线2和3的网格单元</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14339384-c95a216ad75a3b67.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<h4 id="6､Grid-Area（四个网格线包围的总空间）"><a href="#6､Grid-Area（四个网格线包围的总空间）" class="headerlink" title="6､Grid Area（四个网格线包围的总空间）"></a>6､Grid Area（四个网格线包围的总空间）</h4><p>网格区域可以由任意数量的网格单元组成。 下面是行网格线1和3以及列网格线1和3之间的网格区域</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14339384-06841c75d365ba46.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<h2 id="三、Grid-Container-的部分属性"><a href="#三、Grid-Container-的部分属性" class="headerlink" title="三、Grid Container 的部分属性"></a>三、Grid Container 的部分属性</h2><h4 id="1､-display"><a href="#1､-display" class="headerlink" title="1､ display"></a>1､ display</h4><h5 id="1-1-作用"><a href="#1-1-作用" class="headerlink" title="1.1 作用"></a>1.1 作用</h5><p>将元素定义为 grid contaienr，并为其内容建立新的网格格式化上下文(grid formatting context)</p>
+<h5 id="1-2-用法"><a href="#1-2-用法" class="headerlink" title="1.2 用法"></a>1.2 用法</h5><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">  <span class="attribute">display</span>: grid | inline-grid | subgrid;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>a). grid ——— 生成一个块级(block-level)网格<br>b). inline-grid ——— 生成一个行级(inline-level)网格<br>c). subgrid ——— 如果你的 grid container 本身就是一个 grid item（即,嵌套网格），可以使用这个属性来表示你想从它的父节点获取它的行/列的大小，而不是指定它自己的大小</p>
+<p><strong>注：column, float, clear, 以及 vertical-align 对一个 grid container 没有影响</strong></p>
+<h4 id="2､-grid-template"><a href="#2､-grid-template" class="headerlink" title="2､ grid-template"></a>2､ grid-template</h4><h5 id="2-1-作用"><a href="#2-1-作用" class="headerlink" title="2.1 作用"></a>2.1 作用</h5><p>在单个声明中定义 grid-template-rows、grid-template-columns、grid-template-areas 的简写</p>
+<h5 id="2-2-实例"><a href="#2-2-实例" class="headerlink" title="2.2 实例"></a>2.2 实例</h5><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">  <span class="attribute">grid-template</span>:</span><br><span class="line">    [row1-start] <span class="string">"header header header"</span> <span class="number">25px</span> [row1-end]</span><br><span class="line">    [row2-start] <span class="string">"footer footer footer"</span> <span class="number">25px</span> [row2-end]</span><br><span class="line">    / auto <span class="number">50px</span> auto;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>等价于</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">  <span class="attribute">grid-template-rows</span>: [row1-start] <span class="number">25px</span> [row1-end row2-start] <span class="number">25px</span> [row2-end];</span><br><span class="line">  <span class="attribute">grid-template-columns</span>: auto <span class="number">50px</span> auto;</span><br><span class="line">  <span class="attribute">grid-template-areas</span>: </span><br><span class="line">    <span class="string">"header header header"</span> </span><br><span class="line">    <span class="string">"footer footer footer"</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="3､grid-gap"><a href="#3､grid-gap" class="headerlink" title="3､grid-gap"></a>3､grid-gap</h4><h5 id="3-1-作用"><a href="#3-1-作用" class="headerlink" title="3.1 作用"></a>3.1 作用</h5><p>grid-row-gap 和 grid-column-gap 的缩写</p>
+<h5 id="3-2-用法"><a href="#3-2-用法" class="headerlink" title="3.2 用法"></a>3.2 用法</h5><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">  <span class="attribute">grid-gap</span>: &lt;grid-row-gap&gt; &lt;grid-column-gap&gt;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="3-3-实例"><a href="#3-3-实例" class="headerlink" title="3.3 实例"></a>3.3 实例</h5><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">  <span class="attribute">grid-template-columns</span>: <span class="number">100px</span> <span class="number">50px</span> <span class="number">100px</span>;</span><br><span class="line">  <span class="attribute">grid-template-rows</span>: <span class="number">80px</span> auto <span class="number">80px</span>; </span><br><span class="line">  <span class="attribute">grid-gap</span>: <span class="number">10px</span> <span class="number">15px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="4､justify-items"><a href="#4､justify-items" class="headerlink" title="4､justify-items"></a>4､justify-items</h4><h5 id="4-1-作用"><a href="#4-1-作用" class="headerlink" title="4.1 作用"></a>4.1 作用</h5><p>a). 沿着行轴对齐网格内的内容（与之对应的是 align-items, 即沿着列轴对齐）</p>
+<p>b). 该值适用于容器内的所有的 grid items</p>
+<h5 id="4-2-用法"><a href="#4-2-用法" class="headerlink" title="4.2 用法"></a>4.2 用法</h5><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">  <span class="attribute">justify-items</span>: start | end | center | stretch;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>a). start ——— 内容与网格区域的左端对齐</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14339384-ed82572142db676d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>b). end ——— 内容与网格区域的右端对齐</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14339384-8765e1169356dece.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>c). center ——— 内容位于网格区域的中间位置</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14339384-7174643083a92570.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>d). stretch ——— 内容宽度占据整个网格区域空间(这是默认值)</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14339384-98aeed32990c2a4d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<h4 id="5､align-items"><a href="#5､align-items" class="headerlink" title="5､align-items"></a>5､align-items</h4><h5 id="5-1-作用"><a href="#5-1-作用" class="headerlink" title="5.1 作用"></a>5.1 作用</h5><p>a). 沿着列轴对齐grid item 里的内容（与之对应的是使用 justify-items 设置沿着行轴对齐）</p>
+<p>b). 该值适用于容器内的所有 grid item</p>
+<h5 id="5-2-用法"><a href="#5-2-用法" class="headerlink" title="5.2 用法"></a>5.2 用法</h5><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.container</span> &#123;</span><br><span class="line">  <span class="attribute">align-items</span>: start | end | center | stretch;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>a). start ——— 内容与网格区域的左端对齐</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14339384-b16d1fa66a315d0f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>b). end ——— 内容与网格区域的底部对齐</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14339384-cc8d01542c71e44c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>c). center ——— 内容位于网格区域的垂直中心位置</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14339384-2a681576266a5680.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>d). stretch ——— 内容高度占据整个网格区域空间(这是默认值)</p>
+<p><img src="https://upload-images.jianshu.io/upload_images/14339384-bfce968a5623f44d.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<h2 id="四、Grid-Items-的部分属性"><a href="#四、Grid-Items-的部分属性" class="headerlink" title="四、Grid Items 的部分属性"></a>四、Grid Items 的部分属性</h2><h4 id="1､grid-column-start-grid-column-end-grid-row-start-grid-row-end"><a href="#1､grid-column-start-grid-column-end-grid-row-start-grid-row-end" class="headerlink" title="1､grid-column-start / grid-column-end / grid-row-start /grid-row-end"></a>1､grid-column-start / grid-column-end / grid-row-start /grid-row-end</h4><h5 id="1-1-作用-1"><a href="#1-1-作用-1" class="headerlink" title="1.1 作用"></a>1.1 作用</h5><p>a). 使用特定的网格线确定 grid item 在网格内的位置。</p>
+<p>b). grid-column-start/grid-row-start 属性表示grid item的网格线的起始位置</p>
+<p>c). grid-column-end/grid-row-end属性表示网格项的网格线的终止位置</p>
+<h5 id="1-2-用法-1"><a href="#1-2-用法-1" class="headerlink" title="1.2 用法"></a>1.2 用法</h5><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.item</span> &#123;</span><br><span class="line">  <span class="attribute">grid-column-start</span>: &lt;number&gt; | &lt;name&gt; | span &lt;number&gt; | span &lt;name&gt; | auto</span><br><span class="line">  grid-column-end: &lt;number&gt; | &lt;name&gt; | span &lt;number&gt; | span &lt;name&gt; | auto</span><br><span class="line">  grid-row-start: &lt;number&gt; | &lt;name&gt; | span &lt;number&gt; | span &lt;name&gt; | auto</span><br><span class="line">  grid-row-end: &lt;number&gt; | &lt;name&gt; | span &lt;number&gt; | span &lt;name&gt; | auto</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>a). <line> ——— 可以是一个数字来指代相应编号的网格线，也可使用名称指代相应命名的网格线<br>b). span <number> ——— 网格项将跨越指定数量的网格轨道<br>c). span <name> ——— 网格项将跨越一些轨道，直到碰到指定命名的网格线<br>d). auto ——— 自动布局， 或者自动跨越， 或者跨越一个默认的轨道</name></number></line></p>
+<h5 id="1-3-实例"><a href="#1-3-实例" class="headerlink" title="1.3 实例"></a>1.3 实例</h5><p>实例一</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.item-a</span> &#123;</span><br><span class="line">  <span class="attribute">grid-column-start</span>: <span class="number">2</span>;</span><br><span class="line">  <span class="attribute">grid-column-end</span>: five;</span><br><span class="line">  <span class="attribute">grid-row-start</span>: row1-start</span><br><span class="line">  grid-row-end: <span class="number">3</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="https://upload-images.jianshu.io/upload_images/14339384-78e4a28bc0773421.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p>实例二</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.item-b</span> &#123;</span><br><span class="line">  <span class="attribute">grid-column-start</span>: <span class="number">1</span>;</span><br><span class="line">  <span class="attribute">grid-column-end</span>: span col4-start;</span><br><span class="line">  <span class="attribute">grid-row-start</span>: <span class="number">2</span></span><br><span class="line">  grid-row-end: span <span class="number">2</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="https://upload-images.jianshu.io/upload_images/14339384-b3731a1a1fe1576f.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p><strong>特别注意：</strong> </p>
+<p>1)､如果没有声明 grid-column-end / grid-row-end，<strong>默认情况下，该网格项将跨越1个轨道</strong></p>
+<p>2)､网格项可以相互重叠。 您可以<strong>使用z-index来控制它们的堆叠顺序</strong></p>
+<h4 id="2､grid-column-grid-row"><a href="#2､grid-column-grid-row" class="headerlink" title="2､grid-column / grid-row"></a>2､grid-column / grid-row</h4><h5 id="2-1-作用-1"><a href="#2-1-作用-1" class="headerlink" title="2.1 作用"></a>2.1 作用</h5><p>grid-column-start + grid-column-end, 和 grid-row-start + grid-row-end 的简写形式</p>
+<h5 id="2-2-用法"><a href="#2-2-用法" class="headerlink" title="2.2 用法"></a>2.2 用法</h5><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.item</span> &#123;</span><br><span class="line">  <span class="attribute">grid-column</span>: &lt;start-line&gt; / &lt;end-line&gt; | &lt;start-line&gt; / span &lt;value&gt;;</span><br><span class="line">  <span class="attribute">grid-row</span>: &lt;start-line&gt; / &lt;end-line&gt; | &lt;start-line&gt; / span &lt;value&gt;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="2-3-实例"><a href="#2-3-实例" class="headerlink" title="2.3 实例"></a>2.3 实例</h5><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.item-c</span> &#123;</span><br><span class="line">  <span class="attribute">grid-column</span>: <span class="number">3</span> / span <span class="number">2</span>;</span><br><span class="line">  <span class="attribute">grid-row</span>: third-line / <span class="number">4</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="https://upload-images.jianshu.io/upload_images/14339384-026a9f40f77462f6.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<p><strong>特别注意：如果没有指定结束行值，则该网格项默认跨越1个轨道</strong></p>
+<h4 id="3､grid-area"><a href="#3､grid-area" class="headerlink" title="3､grid-area"></a>3､grid-area</h4><h5 id="3-1-作用-1"><a href="#3-1-作用-1" class="headerlink" title="3.1 作用"></a>3.1 作用</h5><p>a). 给 grid item 进行命名以便于使用 grid-template-areas 属性创建模板时来进行引用。</p>
+<p>b). 可以做为 grid-row-start + grid-column-start + grid-row-end + grid-column-end 的简写形式</p>
+<h5 id="3-2-用法-1"><a href="#3-2-用法-1" class="headerlink" title="3.2 用法"></a>3.2 用法</h5><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.item</span> &#123;</span><br><span class="line">  <span class="attribute">grid-area</span>: &lt;name&gt; | &lt;row-start&gt; / &lt;column-start&gt; / &lt;row-end&gt; / &lt;column-end&gt;;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>a). <name> - 你的命名<br>b). <row-start> / <column-start> / <row-end> / <column-end> - 可以是数字，也可以是网格线的名字</column-end></row-end></column-start></row-start></name></p>
+<h5 id="3-3-实例-1"><a href="#3-3-实例-1" class="headerlink" title="3.3 实例"></a>3.3 实例</h5><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.item-d</span> &#123;</span><br><span class="line">  <span class="attribute">grid-area</span>: header</span><br><span class="line">&#125;<span class="comment">/*给一个网格项命名*/</span></span><br></pre></td></tr></table></figure>
+<p>作为 grid-row-start + grid-column-start + grid-row-end + grid-column-end 的简写:</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.item-d</span> &#123;</span><br><span class="line">  <span class="attribute">grid-area</span>: <span class="number">1</span> / col4-start / last-line / <span class="number">6</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><img src="https://upload-images.jianshu.io/upload_images/14339384-2ff00b0b270e7a4e.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
+<h4 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h4><p><a href="http://chris.house/blog/a-complete-guide-css-grid-layout/" target="_blank" rel="noopener">http://chris.house/blog/a-complete-guide-css-grid-layout/</a></p>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="http://yoursite.com/2019/02/05/Flex/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
@@ -1478,281 +1816,6 @@
 
 
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/24/ohmyzsh安装/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Wuer">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Wuer">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/12/24/ohmyzsh安装/" itemprop="url">ohmyzsh</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-24T12:09:44+08:00">
-                2018-12-24
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="一、终端输入命令，安装-oh-my-zsh"><a href="#一、终端输入命令，安装-oh-my-zsh" class="headerlink" title="一、终端输入命令，安装 oh-my-zsh"></a>一、终端输入命令，安装 oh-my-zsh</h3><figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sh -c <span class="string">"$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"</span></span><br></pre></td></tr></table></figure>
-<p>执行过程中会要求输入用户密码（过程中密码并不会显示，输入完成后直接敲回车就可以）<br>安装成功之后，终端显示如下：</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/14339384-20500f47d3a7e5cc.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-<p>终端的上面就已经显示，已经从默认的 bash 切换到了 zsh 。<br>如果不想用了可以随时直接切换回原本的 bash ，输入命令：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">chsh -s /bin/bash</span><br></pre></td></tr></table></figure>
-<p>同理，切换回zsh，只要把 bash 改成 zsh 执行命令即可</p>
-<h3 id="二、安装前-后"><a href="#二、安装前-后" class="headerlink" title="二、安装前/后"></a>二、安装前/后</h3><p>安装前：</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/14339384-27932858a7085ad2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-<p>安装后：</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/14339384-bf302f4f731dade2.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-<p>参考 <a href="https://www.jianshu.com/p/300827734b69" target="_blank" rel="noopener">https://www.jianshu.com/p/300827734b69</a></p>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope="" itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/12/20/js犯的小通病/">
-
-    <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Wuer">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope="" itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Wuer">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/12/20/js犯的小通病/" itemprop="url">js犯的小通病</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">发表于</span>
-              
-              <time title="创建于" itemprop="dateCreated datePublished" datetime="2018-12-20T16:39:09+08:00">
-                2018-12-20
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h3 id="一､-console-log-和-return"><a href="#一､-console-log-和-return" class="headerlink" title="一､ console.log 和 return"></a>一､ console.log 和 return</h3><p> 1､情况一、a的值是 undefined</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params">a,b</span>)</span>&#123;</span><br><span class="line">   <span class="built_in">console</span>.log(a+b); </span><br><span class="line">    <span class="comment">//console.log 相当于画画，把a+b画出来，然后在控制台下可以看见出来，但是它并没有放在变量a里面</span></span><br><span class="line">    <span class="keyword">return</span> <span class="literal">undefined</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> a = fn()</span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">fn()看成一个整体，看成一个值，也就是函数的值，是 return 出来的值</span></span><br><span class="line"><span class="comment">a的值并不是console.log(a+b)的值，是 return 出来的值，也就是 undefined</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
-<p>2､情况二、a的值是 undefined</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params">a,b</span>)</span>&#123;</span><br><span class="line">   <span class="keyword">return</span> <span class="built_in">console</span>.log(a+b)   </span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> a = fn(<span class="number">1</span>,<span class="number">3</span>) </span><br><span class="line"></span><br><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">控制台是看到值了，但是a 还是undefined, 为什么呢</span></span><br><span class="line"><span class="comment">因为a 是 函数fn，return 出来的值，也就是console.log执行的结果，但是console.log也是函数，那console.log(a+b)的值是多少呢，它的返回值是undefined,它本身的值是没有的</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
-<p>3､情况三、正确这么写才对</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params">a,b</span>)</span>&#123;</span><br><span class="line">   <span class="built_in">console</span>.log(a+b); </span><br><span class="line">   <span class="keyword">return</span> a+b;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> a = fn(<span class="number">1</span>,<span class="number">3</span>)</span><br></pre></td></tr></table></figure>
-<h3 id="二、切换效果需注意事项"><a href="#二、切换效果需注意事项" class="headerlink" title="二、切换效果需注意事项"></a>二、切换效果需注意事项</h3><p>html文件</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="undefined">.tab-header&#123;display: flex;&#125;</span></span><br><span class="line"><span class="undefined">.tab-header div&#123;padding:5px 15px 0;background:#ccc;margin-right:5px;&#125;	</span></span><br><span class="line"><span class="undefined">.tab-header div.active&#123;color:red;&#125;</span></span><br><span class="line"><span class="undefined"></span></span><br><span class="line"><span class="undefined">.tab-panels div&#123;display: none;background:pink;&#125;</span></span><br><span class="line"><span class="undefined">.tab-panels div.active&#123;display: block;&#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"tab-container"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"tab-header"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>= <span class="string">"active"</span>&gt;</span>1<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">div</span>&gt;</span>2<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">div</span>&gt;</span>3<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"tab-panels"</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"active"</span>&gt;</span>box1<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">div</span>&gt;</span>box2<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">		<span class="tag">&lt;<span class="name">div</span>&gt;</span>box3<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>js文件</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 选择好之后 去绑定事件 因为它是列数组对象,不能用 .on('click',function()&#123;&#125;)事件，可以用forEach</span></span><br><span class="line"><span class="keyword">var</span> tabs = <span class="built_in">document</span>.querySelectorAll(<span class="string">'.tab-header div'</span>);</span><br><span class="line"><span class="keyword">var</span> panels = <span class="built_in">document</span>.querySelectorAll(<span class="string">'.tab-panel div'</span>);</span><br><span class="line">tabs.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">node</span>)</span>&#123;</span><br><span class="line">    node.onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">var</span> index = <span class="number">0</span>;</span><br><span class="line">        tabs.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">tab,idx</span>)</span>&#123;</span><br><span class="line">           <span class="built_in">console</span>.log(tab);        </span><br><span class="line">           tab.classList.remove(<span class="string">'active'</span>);   </span><br><span class="line">           <span class="keyword">if</span>(node === tab)&#123;</span><br><span class="line">            index = idx;</span><br><span class="line">        	&#125;</span><br><span class="line">        &#125;);</span><br><span class="line">        <span class="keyword">this</span>.classList.add(<span class="string">'active'</span>);  </span><br><span class="line">        </span><br><span class="line">        panels.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">panel</span>)</span>&#123;</span><br><span class="line">            panel.classList.remove(<span class="string">'active'</span>);</span><br><span class="line">            panels[index].classList.add(<span class="string">'active'</span>);</span><br><span class="line">        &#125;)    </span><br><span class="line">    &#125;;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
-<p>实现了一个切换效果</p>
-<p><img src="https://upload-images.jianshu.io/upload_images/14339384-82e5ade1267e519c.png?imageMogr2/auto-orient/strip%7CimageView2/2/w/1240" alt="image.png"></p>
-<p>假设页面有多个切换，上面这写法不行了，所以呢，我们要优化代码</p>
-<p>第一次优化：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> Tab = &#123;</span><br><span class="line">    init:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">this</span>.tabs = <span class="built_in">document</span>.querySelectorAll(<span class="string">'.tab-header div'</span>);</span><br><span class="line">        <span class="keyword">this</span>.panels = <span class="built_in">document</span>.querySelectorAll(<span class="string">'.tab-panel div'</span>);</span><br><span class="line">    &#125;,</span><br><span class="line">    bind:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">var</span> self = <span class="keyword">this</span>;</span><br><span class="line">        self.tabs.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">node</span>)</span>&#123;</span><br><span class="line">            node.onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">                <span class="keyword">var</span> index = <span class="number">0</span>;</span><br><span class="line">                self.tabs.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">tab,idx</span>)</span>&#123;</span><br><span class="line">                   <span class="built_in">console</span>.log(tab);        </span><br><span class="line">                   tab.classList.remove(<span class="string">'active'</span>);   </span><br><span class="line">                   <span class="keyword">if</span>(node === tab)&#123;</span><br><span class="line">                    index = idx;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;);</span><br><span class="line">                <span class="keyword">this</span>.classList.add(<span class="string">'active'</span>);  </span><br><span class="line"></span><br><span class="line">                self.panels.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">panel</span>)</span>&#123;</span><br><span class="line">                    panel.classList.remove(<span class="string">'active'</span>);</span><br><span class="line">                    self.panels[index].classList.add(<span class="string">'active'</span>);</span><br><span class="line">                &#125;)    </span><br><span class="line">            &#125;</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">Tab.init()</span><br></pre></td></tr></table></figure>
-<p>执行结果发现 ：</p>
-<p>1､只能<strong>实现一个切换</strong>，要<strong>多个切换的实现</strong>，代码部分还得继续优化呀</p>
-<p>2､但是代码部分简洁了，页面只有一个全局变量Tab</p>
-<p>好吧，<strong>继续更改优化吧</strong></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Tab</span>(<span class="params">container</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.container = container;</span><br><span class="line">    <span class="keyword">this</span>.init();</span><br><span class="line">    <span class="keyword">this</span>.bind();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Tab.prototype.init = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">this</span>.tabs = <span class="keyword">this</span>.container.querySelectorAll(<span class="string">'.tab-header div'</span>);</span><br><span class="line">    <span class="keyword">this</span>.panels = <span class="keyword">this</span>.container.querySelectorAll(<span class="string">'.tab-panel div'</span>);</span><br><span class="line">    <span class="keyword">this</span>.bind();</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">Tab.prototype.bind = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line"> 	<span class="keyword">var</span> self = <span class="keyword">this</span>;</span><br><span class="line">    self.tabs.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">node</span>)</span>&#123;</span><br><span class="line">        node.onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            <span class="keyword">var</span> index = <span class="number">0</span>;</span><br><span class="line">            self.tabs.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">tab,idx</span>)</span>&#123;</span><br><span class="line">                <span class="built_in">console</span>.log(tab);        </span><br><span class="line">                tab.classList.remove(<span class="string">'active'</span>);   </span><br><span class="line">                <span class="keyword">if</span>(node === tab)&#123;</span><br><span class="line">                        index = idx;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;);</span><br><span class="line">            <span class="keyword">this</span>.classList.add(<span class="string">'active'</span>);  </span><br><span class="line"></span><br><span class="line">            self.panels.forEach(<span class="function"><span class="keyword">function</span>(<span class="params">panel</span>)</span>&#123;</span><br><span class="line">                panel.classList.remove(<span class="string">'active'</span>);</span><br><span class="line">                self.panels[index].classList.add(<span class="string">'active'</span>);</span><br><span class="line">            &#125;)    </span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)  </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//var tab1 = new Tab(document.querySelectorAll('.tab-container')[0])</span></span><br><span class="line"><span class="comment">//var tab2 = new Tab(document.querySelectorAll('.tab-container')[1])</span></span><br><span class="line"></span><br><span class="line"><span class="built_in">document</span>.querySelectorAll(<span class="string">'.tab-container'</span>).forEach(<span class="function"><span class="keyword">function</span>(<span class="params">container</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">new</span> Tab(container)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<p>Demo 地址：<a href="http://js.jirengu.com/qutaz/6/edit" target="_blank" rel="noopener">http://js.jirengu.com/qutaz/6/edit</a></p>
-<p>老师地址：<a href="http://js.jirengu.com/setod/1/edit?html,output" target="_blank" rel="noopener">http://js.jirengu.com/setod/1/edit?html,output</a></p>
-<h3 id="三、写js-的三步曲"><a href="#三、写js-的三步曲" class="headerlink" title="三、写js 的三步曲"></a>三、写js 的三步曲</h3><p>1､ 初始化 init</p>
-<p>2､绑定事件 bind</p>
-<p>3､渲染数据 render</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> App=&#123;</span><br><span class="line">    init: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;,</span><br><span class="line">    bind: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;,</span><br><span class="line">    render: <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line">App.init() <span class="comment">// 切记别忘记了这一句，不然代码没法执行，老掉的坑就是没加这一句，请求的数据，拿不到</span></span><br></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
   </section>
 
   
@@ -1803,7 +1866,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">62</span>
+                  <span class="site-state-item-count">64</span>
                   <span class="site-state-item-name">日志</span>
                 </a>
               </div>
